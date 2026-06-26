@@ -13,16 +13,17 @@
   :root{--ink:#1e1b18;--paper:#faf7f1;--muted:#7a7263;--line:#e7dfd2;--accent:#b5482f}
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1000px;margin:0 auto;padding:64px 28px 80px}
+  .wrap{max-width:1080px;margin:0 auto;padding:64px 28px 80px}
   h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.05;margin-bottom:.3em}
   .lead{color:var(--muted);font-size:1.1rem;max-width:60ch;margin-bottom:8px}
-  .note{color:var(--muted);font-size:.86rem;max-width:64ch;margin-bottom:44px}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  a.card{display:block;border:1px solid var(--line);border-radius:14px;padding:26px 28px;background:#fff;text-decoration:none;color:inherit;transition:.2s;box-shadow:0 10px 30px -24px rgba(30,27,24,.5)}
+  .note{color:var(--muted);font-size:.86rem;max-width:66ch;margin-bottom:40px}
+  h2.grp{font-family:'Fraunces',serif;font-weight:600;font-size:1.25rem;margin:34px 0 16px;color:var(--accent)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  a.card{display:block;border:1px solid var(--line);border-radius:14px;padding:22px 24px;background:#fff;text-decoration:none;color:inherit;transition:.2s;box-shadow:0 10px 30px -24px rgba(30,27,24,.5)}
   a.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 18px 40px -24px rgba(30,27,24,.5)}
-  .card h2{font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem;margin-bottom:4px}
-  .card .meta{color:var(--muted);font-size:.92rem}
-  .card .go{color:var(--accent);font-weight:600;font-size:.92rem;margin-top:12px;display:inline-block}
+  .card h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;margin-bottom:3px}
+  .card .meta{color:var(--muted);font-size:.9rem}
+  .card .go{color:var(--accent);font-weight:600;font-size:.9rem;margin-top:10px;display:inline-block}
   @media(max-width:680px){.grid{grid-template-columns:1fr}}
   footer{color:var(--muted);font-size:.82rem;margin-top:44px;border-top:1px solid var(--line);padding-top:20px}
 </style>
@@ -31,13 +32,40 @@
 <div class="wrap">
   <h1>Restaurant website demos</h1>
   <p class="lead">Trilingual (FR / DE / EN) single-page mockups, built from each venue's public branding.</p>
-  <p class="note">Private preview for outreach. Menus, prices and hours are illustrative and must be confirmed with each owner before publishing. Photos sourced from public listings.</p>
+  <p class="note">Private preview for outreach. Menus, prices and hours are illustrative and must be confirmed with each owner before publishing. Photos sourced from public listings; these pages are not affiliated with the venues.</p>
+
+  <h2 class="grp">Showcase</h2>
   <div class="grid">
-    <a class="card" href="bella-napoli/"><h2>Bella Napoli</h2><div class="meta">Pizzeria napolitaine · Luxembourg, depuis 1976</div><span class="go">View demo →</span></a>
-    <a class="card" href="lannexe/"><h2>L'Annexe</h2><div class="meta">Brasserie gastronomique · Luxembourg-Ville</div><span class="go">View demo →</span></a>
-    <a class="card" href="il-fragolino/"><h2>Il Fragolino</h2><div class="meta">Cuisine italienne · depuis 1999</div><span class="go">View demo →</span></a>
-    <a class="card" href="luxburgers/"><h2>Lux'Burgers</h2><div class="meta">La maison du burger · Bonnevoie</div><span class="go">View demo →</span></a>
+    <a class="card" href="lannexe/"><h3>L'Annexe</h3><div class="meta">Brasserie gastronomique · Ville-Haute</div><span class="go">View demo →</span></a>
+    <a class="card" href="perle-noire/"><h3>Perle Noire</h3><div class="meta">Bar à cocktails · Place d'Armes</div><span class="go">View demo →</span></a>
+    <a class="card" href="caftan/"><h3>Caftan</h3><div class="meta">Restaurant marocain · Limpertsberg</div><span class="go">View demo →</span></a>
+    <a class="card" href="bella-napoli/"><h3>Bella Napoli</h3><div class="meta">Pizzeria napolitaine · depuis 1976</div><span class="go">View demo →</span></a>
+    <a class="card" href="il-fragolino/"><h3>Il Fragolino</h3><div class="meta">Cuisine italienne · depuis 1999</div><span class="go">View demo →</span></a>
+    <a class="card" href="luxburgers/"><h3>Lux'Burgers</h3><div class="meta">La maison du burger · Bonnevoie</div><span class="go">View demo →</span></a>
   </div>
+
+  <h2 class="grp">Luxembourg City</h2>
+  <div class="grid">
+    <a class="card" href="the-game/"><h3>The Game</h3><div class="meta">Sports bar · Kirchberg</div><span class="go">View demo →</span></a>
+    <a class="card" href="cafe-bel-air/"><h3>Café Bel Air</h3><div class="meta">Café-brasserie · Luxembourg-Ville</div><span class="go">View demo →</span></a>
+    <a class="card" href="bo-zai-fan/"><h3>Bo Zai Fan</h3><div class="meta">Cuisine asiatique · Luxembourg</div><span class="go">View demo →</span></a>
+    <a class="card" href="bali-beach/"><h3>Bali Beach</h3><div class="meta">Indien · Thaï · Luxembourg-Ville</div><span class="go">View demo →</span></a>
+    <a class="card" href="brasserie-beaulieu/"><h3>Brasserie Beaulieu</h3><div class="meta">Brasserie · Luxembourg-Ville</div><span class="go">View demo →</span></a>
+    <a class="card" href="bistrot-de-la-presse/"><h3>Bistrot de la Presse</h3><div class="meta">Bistrot · Luxembourg-Ville</div><span class="go">View demo →</span></a>
+  </div>
+
+  <h2 class="grp">Suburbs — Bertrange · Hesperange · Howald</h2>
+  <div class="grid">
+    <a class="card" href="am-besch/"><h3>Am Besch</h3><div class="meta">Brasserie · Bertrange</div><span class="go">View demo →</span></a>
+    <a class="card" href="chez-fox/"><h3>Chez Fox</h3><div class="meta">Brasserie · Bertrange</div><span class="go">View demo →</span></a>
+    <a class="card" href="chez-vito/"><h3>Chez Vito</h3><div class="meta">Cuisine italienne · Hesperange</div><span class="go">View demo →</span></a>
+    <a class="card" href="duc-brasserie/"><h3>Duc Brasserie</h3><div class="meta">Brasserie · Hesperange</div><span class="go">View demo →</span></a>
+    <a class="card" href="atlantico/"><h3>Atlantico</h3><div class="meta">Cuisine portugaise · Howald</div><span class="go">View demo →</span></a>
+    <a class="card" href="bistrot-burger/"><h3>Bistrot Burger</h3><div class="meta">Burgers · Howald</div><span class="go">View demo →</span></a>
+    <a class="card" href="brasserie-pic-pic/"><h3>Brasserie Pic Pic</h3><div class="meta">Brasserie artisanale · Howald</div><span class="go">View demo →</span></a>
+    <a class="card" href="dc-restaurant/"><h3>D&amp;C Restaurant</h3><div class="meta">Asiatique · Sushi · Howald</div><span class="go">View demo →</span></a>
+  </div>
+
   <footer>Built for outreach — not affiliated with the venues. Content pending owner confirmation.</footer>
 </div>
 </body>

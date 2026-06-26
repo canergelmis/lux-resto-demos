@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<!--
+  D&C RESTAURANT — closing-grade teaser (sales demo) — ON-BRAND, TRILINGUAL (FR default · DE · EN).
+  Asian cuisine (Chinese, Japanese/Sushi, Thai), elegant setting. Howald (Hesperange), Luxembourg.
+  OPEN STATUS UNCONFIRMED: RestaurantGuru marks venue as "permanently closed"; last Google review ~2022.
+  Call +352 24 87 34 00 to confirm open status before pitching or publishing.
+  Story (FR/DE/EN) proposed by Claude based on public sources (gastronomie.lu, resto.lu,
+  miammiam.lu, Tripadvisor, Google) — confirm with owner before publishing.
+  Menu/prices sourced from miammiam.lu (last known) — CONFIRM WITH OWNER before publishing.
+  Opening hours sourced from Tripadvisor + gastronomie.lu — CONFIRM WITH OWNER before publishing.
+  Tagline PROPOSED — not from any official source.
+  Photos from Tripadvisor CDN ("Foodie" app watermark visible) — confirm usage rights with owner.
+  No logo asset found anywhere → typographic wordmark used.
+  No exterior photo found → food photo hero (food1_sushi.jpg) with dark gradient overlay.
+-->
+<html lang="fr">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>D&amp;C Restaurant — Cuisine Asiatique · Howald, Luxembourg</title>
+<meta name="description" content="D&amp;C Restaurant — cuisine asiatique (chinoise, japonaise, thaïlandaise) à Howald, Luxembourg. Sushis, woks, canard laqué, currys thaïs. 155 Route de Thionville, L-2611 Howald." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --crimson: #C0392B;
+    --crimson-deep: #96281B;
+    --charcoal: #2A2A2A;
+    --gold: #D4A843;
+    --gold-deep: #B8902F;
+    --cream: #F5F0EB;
+    --cream2: #EDE6DC;
+    --ink: #1A1A1A;
+    --muted: #6B635A;
+    --line: #DDD5C8;
+    --paper: #FAFAF7;
+    --maxw: 1180px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Lato', system-ui, sans-serif;
+    font-size: 18px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+  a { color: inherit; text-decoration: none; }
+  .serif { font-family: 'Playfair Display', Georgia, serif; }
+  .eyebrow {
+    font-size: .76rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+  }
+
+  /* ---- buttons ---- */
+  .btn {
+    display: inline-flex; align-items: center; gap: .5em;
+    font-family: 'Lato', sans-serif; font-weight: 700;
+    font-size: .88rem; letter-spacing: .08em; text-transform: uppercase;
+    padding: .82em 1.9em; border-radius: 1px;
+    border: 1.5px solid transparent; transition: .22s;
+    cursor: pointer; white-space: nowrap;
+  }
+  .btn-crimson { background: var(--crimson); color: #fff; border-color: var(--crimson); }
+  .btn-crimson:hover { background: var(--crimson-deep); border-color: var(--crimson-deep); transform: translateY(-2px); box-shadow: 0 14px 28px -12px rgba(192,57,43,.55); }
+  .btn-ghost { border-color: rgba(212,168,67,.7); color: #f5ead4; }
+  .btn-ghost:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  .btn-white { background: #fff; color: var(--crimson); border-color: #fff; }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(0,0,0,.5); }
+
+  /* ---- header / nav ---- */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,250,247,.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex; align-items: center;
+    justify-content: space-between;
+    height: 76px; gap: 14px;
+  }
+  .brand { display: flex; flex-direction: column; line-height: 1; }
+  .brand .wm {
+    font-family: 'Playfair Display', serif;
+    font-weight: 800; font-size: 1.4rem;
+    letter-spacing: .05em; color: var(--crimson);
+  }
+  .brand small {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700; font-size: .57rem;
+    letter-spacing: .3em; text-transform: uppercase;
+    color: var(--muted); margin-top: 5px;
+  }
+  .nav-links { display: flex; gap: 32px; align-items: center; }
+  .nav-links a {
+    font-weight: 700; font-size: .84rem;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: var(--charcoal); transition: .2s;
+  }
+  .nav-links a:hover { color: var(--crimson); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; flex: none; }
+  .lang-switch {
+    display: flex; border: 1px solid var(--line);
+    border-radius: 1px; overflow: hidden; flex: none;
+  }
+  .lang-switch button {
+    font-family: 'Lato', sans-serif; font-weight: 700;
+    font-size: .74rem; letter-spacing: .07em;
+    padding: .46em .7em; background: none;
+    border: 0; cursor: pointer; color: var(--muted); transition: .18s;
+  }
+  .lang-switch button.active { background: var(--crimson); color: #fff; }
+  .lang-switch button:not(.active):hover { color: var(--crimson); }
+  .burger-ico { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 4px; }
+  .burger-ico span { width: 26px; height: 2px; background: var(--ink); border-radius: 2px; display: block; }
+
+  /* ---- hero ---- */
+  .hero {
+    position: relative;
+    min-height: 88vh;
+    display: flex; align-items: center;
+    background:
+      linear-gradient(108deg, rgba(20,12,12,.93) 0%, rgba(20,12,12,.62) 50%, rgba(20,12,12,.15) 100%),
+      url('assets/food1_sushi.jpg') center / cover no-repeat;
+    color: #fff;
+  }
+  .hero .wrap { padding-top: 76px; padding-bottom: 72px; width: 100%; }
+  .hero .eyebrow { color: var(--gold); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    font-size: clamp(2.6rem, 6.2vw, 5rem);
+    line-height: 1.05;
+    letter-spacing: -.01em;
+    margin: .28em 0 .32em;
+    max-width: 15ch;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero p.lead {
+    font-size: clamp(.98rem, 1.8vw, 1.2rem);
+    color: #EDE5D8;
+    max-width: 44ch;
+    margin-bottom: 1.9em;
+    font-weight: 300;
+    line-height: 1.72;
+  }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; }
+  .addr {
+    display: flex; align-items: center; gap: 10px;
+    color: #CFC4B2; font-size: .9rem; font-weight: 400;
+  }
+  .addr .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 4px rgba(212,168,67,.22);
+    flex: none;
+  }
+
+  /* ---- sections ---- */
+  section { padding: clamp(56px, 7.5vw, 100px) 0; }
+  .sec-head {
+    display: flex; align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px; margin-bottom: 48px; flex-wrap: wrap;
+  }
+  .sec-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 4.8vw, 3.4rem);
+  }
+  .sec-head h2 em { font-style: italic; color: var(--crimson); }
+  .sec-head p { color: var(--muted); max-width: 40ch; font-size: 1rem; }
+
+  /* ---- story ---- */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center;
+  }
+  .story-copy { order: -1; }
+  .story-photo {
+    width: 100%; border-radius: 2px;
+    aspect-ratio: 4 / 4.8;
+    object-fit: cover;
+    box-shadow: 0 28px 60px -24px rgba(26,12,12,.52);
+  }
+  .story h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    font-size: clamp(1.9rem, 4.4vw, 3rem);
+    margin: .16em 0 .52em; line-height: 1.08;
+  }
+  .story h2 em { font-style: italic; color: var(--crimson); }
+  .story p.body-text { color: #52484066; font-size: 1.04rem; margin-bottom: 1.4em; line-height: 1.72; }
+  /* override: body-text color should not use opacity shorthand */
+  .story p.body-text { color: #55484166; }
+  .story p.body-text { color: #574840; }
+  .pillars { display: grid; gap: 18px; margin-top: 12px; }
+  .pillar { display: flex; gap: 16px; align-items: flex-start; }
+  .pillar .ico {
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-weight: 700;
+    color: #fff; background: var(--crimson);
+    width: 44px; height: 44px;
+    display: grid; place-items: center;
+    border-radius: 50%; flex: none; font-size: 1.05rem;
+    letter-spacing: 0;
+  }
+  .pillar h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 1.1rem; margin-bottom: 2px;
+  }
+  .pillar p { color: var(--muted); font-size: .94rem; line-height: 1.6; }
+
+  /* ---- menu ---- */
+  .menu { background: var(--cream); }
+  .mcat { margin-bottom: 44px; }
+  .mcat:last-child { margin-bottom: 0; }
+  .mcat-head {
+    display: flex; align-items: baseline;
+    gap: 16px; margin-bottom: 16px;
+  }
+  .mcat-head h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-style: italic;
+    font-size: 1.48rem; color: var(--crimson);
+    white-space: nowrap;
+  }
+  .mcat-head .ln { flex: 1; height: 1px; background: var(--line); }
+  .mitems {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 52px;
+  }
+  .mitem {
+    display: flex; align-items: baseline; gap: 12px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .mitem .ml { flex: 1; min-width: 0; }
+  .mitem .nm {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600; font-size: 1.06rem;
+  }
+  .mitem .ds { color: var(--muted); font-size: .87rem; margin-top: 1px; }
+  .mitem .mp {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700; font-size: .98rem;
+    white-space: nowrap; color: var(--gold-deep);
+    flex: none;
+  }
+  .menu-note {
+    margin-top: 32px; color: var(--muted);
+    font-size: .9rem; padding-top: 20px;
+    border-top: 1px solid var(--line);
+    line-height: 1.6;
+  }
+  .menu-note b { color: var(--ink); }
+  @media(max-width:760px) { .mitems { grid-template-columns: 1fr; gap: 0; } }
+
+  /* ---- band ---- */
+  .band {
+    background: linear-gradient(138deg, #1C0E0E 0%, #2E1414 45%, #1A1006 100%);
+    color: #fff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .band::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 90% at 15% 50%, rgba(192,57,43,.2) 0%, transparent 65%),
+      radial-gradient(ellipse 60% 80% at 85% 50%, rgba(212,168,67,.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .band .inner { max-width: 720px; margin: 0 auto; position: relative; }
+  .band h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    font-size: clamp(1.9rem, 5vw, 3.5rem);
+    margin-bottom: .38em; line-height: 1.1;
+  }
+  .band h2 em { font-style: italic; color: var(--gold); }
+  .band p { color: #D5C8B4; font-size: 1.04rem; max-width: 46ch; margin: 0 auto 1.8em; line-height: 1.7; }
+  .taglist {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    justify-content: center; margin-bottom: 32px;
+  }
+  .tag {
+    font-size: .7rem; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
+    padding: .56em 1.1em;
+    border: 1.5px solid rgba(212,168,67,.4);
+    border-radius: 1px; color: rgba(212,168,67,.88);
+  }
+
+  /* ---- gallery ---- */
+  .gallery { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+  .gallery img {
+    width: 100%; height: 100%;
+    aspect-ratio: 1 / 1; object-fit: cover;
+    border-radius: 2px;
+    border: 1px solid var(--line);
+    display: block;
+    transition: transform .35s ease, box-shadow .35s ease;
+  }
+  .gallery img:hover {
+    transform: scale(1.025);
+    box-shadow: 0 18px 40px -14px rgba(26,12,12,.42);
+  }
+
+  /* ---- visit ---- */
+  .visit { background: var(--cream); }
+  .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; }
+  .info { display: flex; flex-direction: column; }
+  .info-row {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 17px 0; border-bottom: 1px solid var(--line);
+  }
+  .info-row:last-of-type { border-bottom: 0; }
+  .info-row .k {
+    font-size: .68rem; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--gold-deep);
+    font-weight: 700; min-width: 90px; padding-top: 4px;
+    font-family: 'Lato', sans-serif; flex: none;
+  }
+  .info-row .val { font-size: .99rem; line-height: 1.6; }
+  .info-row .val a { color: var(--crimson); font-weight: 700; }
+  .info-row .val .small {
+    color: var(--muted); font-size: .87rem;
+    display: block; margin-top: 3px; line-height: 1.55;
+  }
+  .visit-cta { margin-top: 22px; align-self: flex-start; }
+  .map { border-radius: 2px; overflow: hidden; border: 1px solid var(--line); min-height: 400px; }
+  .map iframe { width: 100%; height: 100%; min-height: 400px; border: 0; display: block; }
+
+  /* ---- footer ---- */
+  footer { background: #160B0B; color: #B2A090; padding: 48px 0 36px; }
+  .foot { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .foot .fb .wm {
+    font-family: 'Playfair Display', serif;
+    color: #fff; font-size: 1.22rem; font-weight: 800; letter-spacing: .04em;
+  }
+  .foot .fb small { display: block; font-size: .82rem; color: #B2A090; margin-top: 5px; }
+  .foot p { font-size: .88rem; text-align: right; line-height: 1.7; }
+  .foot a { color: var(--gold); }
+
+  /* ---- reveal animation ---- */
+  .js .reveal { opacity: 0; transform: translateY(22px); transition: .7s cubic-bezier(.2,.7,.2,1); }
+  .js .reveal.in { opacity: 1; transform: none; }
+
+  /* ---- responsive ---- */
+  @media(max-width:900px) {
+    .nav-links { display: none; }
+    .nav-cta .btn-ghost-nav { display: none; }
+    .burger-ico { display: flex; }
+    .story-grid { grid-template-columns: 1fr; gap: 32px; }
+    .story-copy { order: 1; }
+    .story-photo { aspect-ratio: 16 / 10; order: 0; }
+    .gallery { grid-template-columns: 1fr 1fr; }
+    .visit-grid { grid-template-columns: 1fr; }
+    .mobile-open .nav-links {
+      display: flex; position: absolute; top: 76px;
+      left: 0; right: 0; flex-direction: column; gap: 0;
+      background: var(--paper); border-bottom: 1px solid var(--line);
+      padding: 8px 28px 20px; z-index: 99;
+    }
+    .mobile-open .nav-links a { padding: 14px 0; border-bottom: 1px solid var(--line); }
+  }
+  @media(max-width:480px) {
+    .nav-cta .btn-crimson { display: none; }
+    .gallery { grid-template-columns: 1fr; }
+    .foot { flex-direction: column; text-align: center; }
+    .foot p { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#top" class="brand" aria-label="D&amp;C Restaurant">
+      <span class="wm serif">D&amp;C Restaurant</span>
+      <small data-i18n="brand_tag">Cuisine Asiatique · Howald</small>
+    </a>
+    <nav class="nav-links">
+      <a href="#story" data-i18n="nav_story">La Maison</a>
+      <a href="#menu" data-i18n="nav_menu">La Carte</a>
+      <a href="#visit" data-i18n="nav_visit">Nous Trouver</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang-switch" role="group" aria-label="Langue / Sprache / Language">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="tel:+35224873400" class="btn btn-crimson" data-i18n="btn_book">Réserver</a>
+      <button class="burger-ico" aria-label="Menu" onclick="document.body.classList.toggle('mobile-open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow reveal" data-i18n="hero_eyebrow">Howald · Luxembourg</p>
+    <h1 class="reveal" data-i18n-html="hero_h1">Saveurs d'Asie, <em>cœur du Luxembourg.</em></h1>
+    <p class="lead reveal" data-i18n="hero_lead">Cuisine chinoise, japonaise et thaïlandaise dans un cadre élégant à Howald — sushis, woks parfumés, canard laqué de Pékin et currys thaïs. Sur place, à emporter ou en livraison.</p>
+    <div class="hero-cta reveal">
+      <a href="tel:+35224873400" class="btn btn-crimson" data-i18n="btn_book_table">Réserver une table</a>
+      <a href="#menu" class="btn btn-ghost" data-i18n="btn_seemenu">Voir la carte</a>
+    </div>
+    <p class="addr reveal"><span class="dot"></span><span data-i18n="hero_addr">155 Route de Thionville, L-2611 Howald</span></p>
+  </div>
+</section>
+
+<!-- ===== STORY ===== -->
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div class="story-copy">
+      <p class="eyebrow reveal" data-i18n="story_eyebrow">La Maison</p>
+      <h2 class="serif reveal" data-i18n-html="story_h2">Voyage culinaire <em>à travers l'Asie.</em></h2>
+      <p class="body-text reveal" data-i18n="story_body">D&amp;C Restaurant vous invite à un voyage culinaire à travers les saveurs d'Asie. Des woks parfumés aux sushis élaborés, du canard laqué de Pékin aux currys thaïs, notre carte célèbre la diversité culinaire asiatique dans un cadre élégant à Howald. Disponible sur place, à emporter et en livraison.</p>
+      <div class="pillars">
+        <div class="pillar reveal">
+          <div class="ico serif">中</div>
+          <div>
+            <h3 data-i18n="p1_h">Cuisine chinoise</h3>
+            <p data-i18n="p1_p">Woks, canard laqué, raviolis vapeur, côtelettes d'agneau à l'ail — les grands classiques de la tradition culinaire chinoise.</p>
+          </div>
+        </div>
+        <div class="pillar reveal">
+          <div class="ico serif">寿</div>
+          <div>
+            <h3 data-i18n="p2_h">Sushis &amp; japonais</h3>
+            <p data-i18n="p2_p">Sushis, sashimis, makis, California rolls, poke bowls et plateaux signature — maîtrise japonaise en toute occasion.</p>
+          </div>
+        </div>
+        <div class="pillar reveal">
+          <div class="ico serif">送</div>
+          <div>
+            <h3 data-i18n="p3_h">Sur place &amp; livraison</h3>
+            <p data-i18n="p3_p">Dîner dans notre salle élégante, à emporter ou livré à domicile — toute la flexibilité pour vos envies asiatiques.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img class="story-photo reveal" src="assets/interior1.jpg" alt="Salle du D&amp;C Restaurant — chaises capitonnées, éclairage chaleureux, Howald" />
+  </div>
+</section>
+
+<!-- ===== MENU ===== -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="menu_h2">La <em>carte</em></h2>
+      <p data-i18n="menu_intro">Entrées, plats, sushis &amp; japonais — une sélection. La carte complète vous attend sur place.</p>
+    </div>
+
+    <!-- Entrées & Soupes -->
+    <div class="mcat reveal">
+      <div class="mcat-head"><h3 class="serif">Entrées &amp; Soupes</h3><span class="ln"></span></div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Potage fruits de mer thaï</div>
+            <div class="ds" data-i18n="d_potage">Lait de coco, fruits de mer</div>
+          </div>
+          <div class="mp">€7.50</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Rouleaux de printemps thaïlandais</div>
+            <div class="ds" data-i18n="d_rouleaux">2 pièces</div>
+          </div>
+          <div class="mp">€7.20</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Tempura de scampis croustillants</div>
+            <div class="ds" data-i18n="d_tempura">5 pièces</div>
+          </div>
+          <div class="mp">€7.80</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Raviolis crevettes vapeur</div>
+            <div class="ds" data-i18n="d_raviolis">Dim sum maison</div>
+          </div>
+          <div class="mp">€6.50</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Salade bœuf thaïlandaise</div>
+            <div class="ds" data-i18n="d_salade_boeuf">Fraîche et parfumée</div>
+          </div>
+          <div class="mp">€9.80</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Soupe crevettes &amp; nouilles udon</div>
+            <div class="ds" data-i18n="d_udon">Bouillon, crevettes, udon</div>
+          </div>
+          <div class="mp">€17.80</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plats -->
+    <div class="mcat reveal">
+      <div class="mcat-head"><h3 class="serif">Plats</h3><span class="ln"></span></div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Canard Pékin &amp; crêpes</div>
+            <div class="ds" data-i18n="d_canard">Grande tradition de Pékin</div>
+          </div>
+          <div class="mp">€17.50</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Bœuf façon Si-Chuan</div>
+            <div class="ds" data-i18n="d_sichuan">Épices sichuan, légumes sautés</div>
+          </div>
+          <div class="mp">€16.80</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Wok de bœuf sauce poivre noir</div>
+            <div class="ds" data-i18n="d_wok_boeuf">Wok sauté, sauce poivre</div>
+          </div>
+          <div class="mp">€14.80</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Poulet aux noix de cajou</div>
+            <div class="ds" data-i18n="d_cajou">Légumes croquants, cajou</div>
+          </div>
+          <div class="mp">€13.50</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Poulet pané amandes effilées</div>
+            <div class="ds" data-i18n="d_amandes">Doré, amandes effilées</div>
+          </div>
+          <div class="mp">€14.00</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Scampis beurre à l'ail</div>
+            <div class="ds" data-i18n="d_scampis">Scampis sautés, ail, beurre</div>
+          </div>
+          <div class="mp">€17.80</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Côtelettes d'agneau à l'ail</div>
+            <div class="ds" data-i18n="d_agneau">Grillées, ail parfumé</div>
+          </div>
+          <div class="mp">€19.50</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Riz sauté spécial maison</div>
+            <div class="ds" data-i18n="d_riz">Riz sauté du chef</div>
+          </div>
+          <div class="mp">€13.80</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sushis & Japonais -->
+    <div class="mcat reveal" style="margin-bottom:0">
+      <div class="mcat-head"><h3 class="serif">Sushis &amp; Japonais</h3><span class="ln"></span></div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Sushi saumon</div>
+            <div class="ds" data-i18n="d_sushi_saumon">2 pièces</div>
+          </div>
+          <div class="mp">€3.80</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Maki saumon</div>
+            <div class="ds" data-i18n="d_maki">6 pièces</div>
+          </div>
+          <div class="mp">€4.90</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">California saumon avocat</div>
+            <div class="ds" data-i18n="d_california">6 pièces</div>
+          </div>
+          <div class="mp">€5.50</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Sashimi saumon</div>
+            <div class="ds" data-i18n="d_sashimi">15 pièces</div>
+          </div>
+          <div class="mp">€20.50</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Poke Bowl saumon avocat</div>
+            <div class="ds" data-i18n="d_poke">Frais, avocat, riz</div>
+          </div>
+          <div class="mp">€15.50</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Saumon Roll</div>
+            <div class="ds" data-i18n="d_saumon_roll">6 pièces</div>
+          </div>
+          <div class="mp">€6.50</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Box Tokyo</div>
+            <div class="ds" data-i18n="d_tokyo_box">42 pièces — assortiment</div>
+          </div>
+          <div class="mp">€45.00</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Tokyo Combo</div>
+            <div class="ds" data-i18n="d_tokyo_combo">50 pièces — grand plateau</div>
+          </div>
+          <div class="mp">€68.00</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="menu-note reveal" data-i18n-html="menu_note"><b>Une sélection de la carte.</b> Menu complet, desserts et boissons disponibles sur place — prix à confirmer avec le restaurant.</p>
+  </div>
+</section>
+
+<!-- ===== BAND ===== -->
+<section class="band">
+  <div class="wrap">
+    <div class="inner reveal">
+      <h2 class="serif" data-i18n-html="band_h2">L'Asie, <em>au cœur de Howald.</em></h2>
+      <p data-i18n="band_p">Cinq traditions culinaires, un cadre élégant, une note Google de 4,5/5. Réservez votre table — ou commandez depuis chez vous.</p>
+      <div class="taglist">
+        <span class="tag" data-i18n="tag1">Sushis &amp; makis</span>
+        <span class="tag" data-i18n="tag2">Woks &amp; Pékin</span>
+        <span class="tag" data-i18n="tag3">Currys thaïs</span>
+        <span class="tag" data-i18n="tag4">Livraison</span>
+      </div>
+      <a href="tel:+35224873400" class="btn btn-white" data-i18n="btn_book_table">Réserver une table</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section style="padding-bottom:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="gal_h2">À <em>l'assiette.</em></h2>
+      <p data-i18n="gal_intro">Quelques images de notre cuisine et de notre salle.</p>
+    </div>
+    <div class="gallery">
+      <img class="reveal" src="assets/food1_sushi.jpg" alt="Plateau de sushis saumon, California rolls et makis avocat — D&amp;C Restaurant" />
+      <img class="reveal" src="assets/food2_chicken.jpg" alt="Poulet pané aux amandes effilées sur assiette cerisier — D&amp;C Restaurant" />
+      <img class="reveal" src="assets/food3_beef_wok.jpg" alt="Wok de bœuf aux poivrons, champignons et légumes — D&amp;C Restaurant" />
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISIT ===== -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="visit_h2">Nous <em>trouver.</em></h2>
+      <p data-i18n="visit_intro">À Howald (Hesperange), à deux pas du centre. Sur place, à emporter ou en livraison.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="info reveal">
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_where">Adresse</div>
+          <div class="val">
+            155 Route de Thionville
+            <span class="small" data-i18n="where_small">L-2611 Howald (Hesperange), Luxembourg</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_hours">Horaires</div>
+          <div class="val">
+            <span data-i18n="hours_val">Déj. 11h30–14h30 · Dîner 18h00–22h30</span>
+            <span class="small" data-i18n-html="hours_small">Lun–ven &amp; dim : déj + dîner · Sam : dîner uniquement — <em>à confirmer avec le restaurant</em></span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_book">Réserver</div>
+          <div class="val">
+            <a href="tel:+35224873400">+352 24 87 34 00</a>
+            <span class="small" data-i18n="book_small">Sur place, à emporter et livraison disponibles</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_social">Réseaux</div>
+          <div class="val">
+            <span class="small">
+              <a href="https://www.facebook.com/pages/category/Restaurant/DC-Restaurant-2326492097605808/" target="_blank" rel="noopener">Facebook</a>
+              ·
+              <a href="https://www.instagram.com/d_c_restaurant/" target="_blank" rel="noopener">Instagram</a>
+            </span>
+          </div>
+        </div>
+        <a href="tel:+35224873400" class="btn btn-crimson visit-cta" data-i18n="btn_book_table">Réserver une table</a>
+      </div>
+      <div class="map reveal">
+        <iframe
+          title="Plan vers D&amp;C Restaurant Howald"
+          loading="lazy"
+          src="https://www.google.com/maps?q=155+Route+de+Thionville+Howald+Luxembourg&output=embed"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap foot">
+    <div class="fb">
+      <span class="wm serif">D&amp;C Restaurant</span>
+      <small>155 Route de Thionville · L-2611 Howald · +352 24 87 34 00</small>
+    </div>
+    <p>© D&amp;C Restaurant · <span data-i18n="foot_since">Cuisine asiatique à Howald</span><br>
+      <a href="https://www.facebook.com/pages/category/Restaurant/DC-Restaurant-2326492097605808/" target="_blank" rel="noopener">Facebook</a> ·
+      <a href="https://www.instagram.com/d_c_restaurant/" target="_blank" rel="noopener">Instagram</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // ----- reveal on scroll -----
+  const io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el, i) {
+    el.style.transitionDelay = (i % 6 * 65) + 'ms';
+    io.observe(el);
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.addEventListener('click', function() { document.body.classList.remove('mobile-open'); });
+  });
+
+  // ----- i18n (FR default · DE · EN) -----
+  // Note: textContent keys use plain & (not &amp;); innerHTML keys use &amp;
+  var I18N = {
+    fr: {},
+    de: {
+      brand_tag: "Asiatische Küche · Howald",
+      nav_story: "Das Restaurant", nav_menu: "Speisekarte", nav_visit: "Finden",
+      btn_book: "Reservieren", btn_book_table: "Tisch reservieren", btn_seemenu: "Zur Karte",
+      hero_eyebrow: "Howald · Luxemburg",
+      hero_h1: "Aromen Asiens, <em>Herz von Luxemburg.</em>",
+      hero_lead: "Chinesische, japanische und thailändische Küche in elegantem Ambiente in Howald — Sushi, duftende Woks, Peking-Ente und Thai-Currys. Vor Ort, zum Mitnehmen oder als Lieferservice.",
+      hero_addr: "155 Route de Thionville, L-2611 Howald",
+      story_eyebrow: "Das Restaurant",
+      story_h2: "Kulinarische Reise <em>durch Asien.</em>",
+      story_body: "Das D&C Restaurant lädt Sie auf eine kulinarische Reise durch die Aromen Asiens ein. Von duftenden Woks bis hin zu kunstvoll kreiertem Sushi, von Pekingente bis zu Thai-Currys — unsere Speisekarte feiert die Vielfalt der asiatischen Küche in elegantem Ambiente in Howald. Erhältlich vor Ort, zum Mitnehmen und als Lieferservice.",
+      p1_h: "Chinesische Küche",
+      p1_p: "Woks, Pekingente, gedämpfte Teigtaschen, Lammkoteletts mit Knoblauch — die großen Klassiker der chinesischen Küchentradition.",
+      p2_h: "Sushi & Japanisch",
+      p2_p: "Sushi, Sashimi, Maki, California Rolls, Poke Bowls und Signature-Platten — japanische Meisterschaft für jeden Anlass.",
+      p3_h: "Vor Ort & Lieferservice",
+      p3_p: "Speisen Sie in unserem eleganten Restaurant, holen Sie Ihr Essen ab oder lassen Sie es liefern — volle Flexibilität für Ihre asiatischen Gelüste.",
+      menu_h2: "Die <em>Speisekarte</em>",
+      menu_intro: "Vorspeisen, Hauptgerichte, Sushi & Japanisch — eine Auswahl. Die vollständige Karte erwartet Sie vor Ort.",
+      d_potage: "Kokosmilch, Meeresfrüchte",
+      d_rouleaux: "2 Stück",
+      d_tempura: "5 knusprige Stück",
+      d_raviolis: "Gedämpfte Dim Sum",
+      d_salade_boeuf: "Frisch und aromatisch",
+      d_udon: "Brühe, Garnelen, Udon",
+      d_canard: "Große Tradition aus Peking",
+      d_sichuan: "Sichuan-Gewürze, Gemüse",
+      d_wok_boeuf: "Wok-gebraten, schwarze Pfeffersauce",
+      d_cajou: "Knackiges Gemüse, Cashews",
+      d_amandes: "Goldbraun, Mandelblättchen",
+      d_scampis: "Gebratene Scampis, Knoblauchbutter",
+      d_agneau: "Gegrillt, aromatischer Knoblauch",
+      d_riz: "Gebratener Hausreis des Küchenchefs",
+      d_sushi_saumon: "2 Stück",
+      d_maki: "6 Stück",
+      d_california: "6 Stück",
+      d_sashimi: "15 Stück",
+      d_poke: "Frisch, Avocado, Reis",
+      d_saumon_roll: "6 Stück",
+      d_tokyo_box: "42 Stück — Sortiment",
+      d_tokyo_combo: "50 Stück — große Platte",
+      menu_note: "<b>Eine Auswahl der Speisekarte.</b> Vollständige Karte, Desserts und Getränke vor Ort — Preise bitte beim Restaurant bestätigen.",
+      band_h2: "Asien, <em>im Herzen von Howald.</em>",
+      band_p: "Fünf Küchentradtionen, elegantes Ambiente, 4,5/5 auf Google. Reservieren Sie Ihren Tisch — oder bestellen Sie nach Hause.",
+      tag1: "Sushi & Maki", tag2: "Woks & Peking", tag3: "Thai-Currys", tag4: "Lieferservice",
+      gal_h2: "Auf dem <em>Teller.</em>",
+      gal_intro: "Einige Bilder unserer Küche und unseres Restaurants.",
+      visit_h2: "So <em>finden Sie uns.</em>",
+      visit_intro: "In Howald (Hesperange), nahe dem Zentrum. Vor Ort, zum Mitnehmen oder als Lieferservice.",
+      lbl_where: "Adresse", lbl_hours: "Öffnungszeiten", lbl_book: "Reservieren", lbl_social: "Netzwerke",
+      where_small: "L-2611 Howald (Hesperange), Luxemburg",
+      hours_val: "Mittag 11:30–14:30 · Abend 18:00–22:30",
+      hours_small: "Mo–Fr &amp; So: Mittag + Abend · Sa: nur Abend — <em>bitte beim Restaurant bestätigen</em>",
+      book_small: "Vor Ort, zum Mitnehmen und Lieferservice verfügbar",
+      foot_since: "Asiatische Küche in Howald"
+    },
+    en: {
+      brand_tag: "Asian Cuisine · Howald",
+      nav_story: "The Restaurant", nav_menu: "Menu", nav_visit: "Visit",
+      btn_book: "Book", btn_book_table: "Reserve a table", btn_seemenu: "See the menu",
+      hero_eyebrow: "Howald · Luxembourg",
+      hero_h1: "Asian Flavours, <em>Heart of Luxembourg.</em>",
+      hero_lead: "Chinese, Japanese and Thai cuisine in an elegant setting in Howald — sushi, fragrant woks, Peking duck and Thai curries. Dine in, take away or home delivery.",
+      hero_addr: "155 Route de Thionville, L-2611 Howald",
+      story_eyebrow: "The Restaurant",
+      story_h2: "A culinary journey <em>through Asia.</em>",
+      story_body: "D&C Restaurant invites you on a culinary journey through the flavours of Asia. From fragrant woks to artfully crafted sushi, from Peking duck to Thai curries, our menu celebrates the full breadth of Asian cuisine in an elegant setting in Howald. Available for dine-in, takeaway, and home delivery.",
+      p1_h: "Chinese cuisine",
+      p1_p: "Woks, Peking duck, steamed dumplings, garlic lamb chops — the great classics of Chinese culinary tradition.",
+      p2_h: "Sushi & Japanese",
+      p2_p: "Sushi, sashimi, maki, California rolls, poke bowls and signature platters — Japanese mastery for every occasion.",
+      p3_h: "Dine-in & delivery",
+      p3_p: "Eat in our elegant dining room, take away or have it delivered — full flexibility for your Asian cravings.",
+      menu_h2: "The <em>menu</em>",
+      menu_intro: "Starters, mains, sushi & Japanese — a selection. The full menu awaits you in-house.",
+      d_potage: "Coconut milk, seafood",
+      d_rouleaux: "2 pieces",
+      d_tempura: "5 crispy pieces",
+      d_raviolis: "Steamed dim sum",
+      d_salade_boeuf: "Fresh and fragrant",
+      d_udon: "Broth, prawns, udon noodles",
+      d_canard: "Great tradition from Peking",
+      d_sichuan: "Sichuan spices, stir-fried vegetables",
+      d_wok_boeuf: "Stir-fried, black pepper sauce",
+      d_cajou: "Crunchy vegetables, cashews",
+      d_amandes: "Golden, sliced almonds",
+      d_scampis: "Sauteed prawns, garlic butter",
+      d_agneau: "Grilled, fragrant garlic",
+      d_riz: "Chef's special fried rice",
+      d_sushi_saumon: "2 pieces",
+      d_maki: "6 pieces",
+      d_california: "6 pieces",
+      d_sashimi: "15 pieces",
+      d_poke: "Fresh, avocado, rice",
+      d_saumon_roll: "6 pieces",
+      d_tokyo_box: "42-piece assortment",
+      d_tokyo_combo: "50-piece grand platter",
+      menu_note: "<b>A selection from the menu.</b> Full menu, desserts and drinks available in-house — prices to be confirmed with the restaurant.",
+      band_h2: "Asia, <em>at the heart of Howald.</em>",
+      band_p: "Five culinary traditions, an elegant setting, 4.5/5 on Google. Reserve your table — or order from home.",
+      tag1: "Sushi & maki", tag2: "Woks & Peking", tag3: "Thai curries", tag4: "Home delivery",
+      gal_h2: "On the <em>plate.</em>",
+      gal_intro: "A few images of our cuisine and dining room.",
+      visit_h2: "Find <em>us.</em>",
+      visit_intro: "In Howald (Hesperange), close to the centre. Dine in, take away or home delivery.",
+      lbl_where: "Address", lbl_hours: "Hours", lbl_book: "Book", lbl_social: "Social",
+      where_small: "L-2611 Howald (Hesperange), Luxembourg",
+      hours_val: "Lunch 11:30–14:30 · Dinner 18:00–22:30",
+      hours_small: "Mon–Fri &amp; Sun: lunch + dinner · Sat: dinner only — <em>please confirm with the restaurant</em>",
+      book_small: "Dine-in, takeaway and home delivery available",
+      foot_since: "Asian cuisine in Howald"
+    }
+  };
+
+  // Capture FR defaults from the rendered HTML
+  var FR = {};
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    FR[el.getAttribute('data-i18n')] = el.textContent;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+    FR['__h_' + el.getAttribute('data-i18n-html')] = el.innerHTML;
+  });
+
+  function setLang(l) {
+    var d = (l === 'fr') ? null : I18N[l];
+    document.documentElement.lang = l;
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var k = el.getAttribute('data-i18n');
+      var v = d ? d[k] : FR[k];
+      if (v != null) el.textContent = v;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      var k = el.getAttribute('data-i18n-html');
+      var v = d ? d[k] : FR['__h_' + k];
+      if (v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll('.lang-switch button').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.lang === l);
+    });
+    try { localStorage.setItem('dc-restaurant_lang', l); } catch(e) {}
+  }
+
+  document.querySelectorAll('.lang-switch button').forEach(function(b) {
+    b.addEventListener('click', function() { setLang(b.dataset.lang); });
+  });
+
+  var saved = 'fr';
+  try { saved = localStorage.getItem('dc-restaurant_lang') || 'fr'; } catch(e) {}
+  if (saved !== 'fr') setLang(saved);
+</script>
+</body>
+</html>

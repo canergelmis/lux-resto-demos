@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<!--
+  CAFÉ BEL AIR — démo commerciale (sales demo) — trilingue FR·DE·EN (FR par défaut).
+  Burger bar artisanal, quartier Belair, Luxembourg-Ville. Aucun site web actif (cafebelair.lu → 404).
+  Sources contenu : restaurantguru.com, tripadvisor.com, wanderlog.com, because-gus.com,
+                    rankeat.fr, luxtoday.lu (photo hero), res-discover.com, facebook.com/cafebelair.
+  Photos : hero.webp (luxtoday.lu / crédit Serge Molitor), food1–3 + interior (restaurantguru.com CDN).
+  Palette & typographie : PROPOSÉES — à confirmer avec le propriétaire.
+  Menu / prix / horaires : APPROXIMATIFS, tirés d'avis en ligne — À CONFIRMER AVEC LE PROPRIÉTAIRE avant mise en ligne.
+-->
+<html lang="fr">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Café Bel Air — Burgers artisanaux · Belair, Luxembourg</title>
+<meta name="description" content="Café Bel Air — burger bar artisanal dans le quartier Belair à Luxembourg-Ville. Le Munsterosaurus légendaire, steaks hachés frais et desserts Pain de Mary. 99 Val Sainte-Croix, L-1371 Belair." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --forest:#1C2B1E; --forest-deep:#131F15; --forest-light:#2E4431;
+    --amber:#D4870A; --amber-deep:#B37008; --amber-pale:#F5E8CC;
+    --wine:#8B2635;
+    --paper:#F9F4EC; --cream:#EDE5D6; --cream2:#E2D8C6;
+    --ink:#1A1A1A; --muted:#6B5F50; --line:#DDD5C4;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:'Lato',system-ui,sans-serif;
+    font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:'Playfair Display',Georgia,serif}
+  .eyebrow{font-size:.76rem;letter-spacing:.28em;text-transform:uppercase;color:var(--amber);font-weight:700}
+
+  .btn{display:inline-flex;align-items:center;gap:.5em;font-family:'Lato',sans-serif;font-weight:700;
+    font-size:.95rem;letter-spacing:.03em;padding:.78em 1.7em;border-radius:3px;border:1.5px solid transparent;
+    transition:.22s;cursor:pointer;white-space:nowrap}
+  .btn-forest{background:var(--forest);color:#fff}
+  .btn-forest:hover{background:var(--forest-deep);transform:translateY(-2px);box-shadow:0 14px 28px -12px rgba(28,43,30,.55)}
+  .btn-ghost{border-color:var(--amber);color:var(--ink)}
+  .btn-ghost:hover{background:var(--amber);color:#fff}
+  .btn-amber{background:var(--amber);color:#fff}
+  .btn-amber:hover{background:var(--amber-deep);transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(0,0,0,.35)}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:100;background:rgba(249,244,236,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:80px;gap:14px}
+  .brand{display:flex;flex-direction:column;line-height:1}
+  .brand .wm{font-family:'Playfair Display',serif;font-weight:700;font-size:1.42rem;letter-spacing:.01em;color:var(--forest)}
+  .brand small{font-family:'Lato';font-weight:700;font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--amber);margin-top:5px}
+  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links a{font-weight:700;font-size:.93rem;letter-spacing:.01em;color:#4A3F30;transition:.2s}
+  .nav-links a:hover{color:var(--forest)}
+  .nav-cta{display:flex;gap:14px;align-items:center}
+  .lang-switch{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden;flex:none}
+  .lang-switch button{font-family:'Lato',sans-serif;font-weight:700;font-size:.76rem;letter-spacing:.04em;
+    padding:.46em .68em;background:none;border:0;cursor:pointer;color:var(--muted);transition:.18s}
+  .lang-switch button.active{background:var(--forest);color:#fff}
+  .lang-switch button:not(.active):hover{color:var(--forest)}
+  .burger-ico{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer}
+  .burger-ico span{width:26px;height:2.5px;background:var(--ink);border-radius:2px}
+
+  /* hero */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;
+    background:linear-gradient(180deg,rgba(20,38,22,.08) 0%,rgba(20,38,22,.80) 60%,rgba(20,38,22,.92) 100%),
+    url('assets/hero.webp') center/cover no-repeat;color:#fff}
+  .hero .wrap{padding-top:90px;padding-bottom:68px;width:100%}
+  .hero .eyebrow{color:var(--amber)}
+  .hero h1{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2.8rem,6.4vw,5.2rem);
+    line-height:1.03;letter-spacing:-.01em;margin:.22em 0 .28em}
+  .hero h1 em{font-style:italic;color:var(--amber)}
+  .hero p.lead{font-size:clamp(1.05rem,1.85vw,1.26rem);color:#F0E8D8;max-width:50ch;margin-bottom:1.7em}
+  .hero-cta{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:26px}
+  .hero .btn-ghost-hero{border:1.5px solid rgba(255,255,255,.5);color:#fff;background:none;border-radius:3px;
+    display:inline-flex;align-items:center;font-family:'Lato',sans-serif;font-weight:700;font-size:.95rem;
+    letter-spacing:.03em;padding:.78em 1.7em;transition:.22s;cursor:pointer;white-space:nowrap}
+  .hero .btn-ghost-hero:hover{background:rgba(255,255,255,.15)}
+  .addr{display:flex;align-items:center;gap:10px;color:#E8DCC8;font-size:.95rem;font-weight:400}
+  .addr .dot{width:8px;height:8px;border-radius:50%;background:var(--amber);
+    box-shadow:0 0 0 4px rgba(212,135,10,.28);flex:none}
+
+  section{padding:clamp(56px,7.5vw,104px) 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:46px;flex-wrap:wrap}
+  .sec-head h2{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2.1rem,5vw,3.6rem)}
+  .sec-head h2 em{font-style:italic;color:var(--amber)}
+  .sec-head p{color:var(--muted);max-width:40ch;font-size:1.02rem}
+
+  /* story */
+  .story-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:54px;align-items:center}
+  .story-photo{width:100%;border-radius:4px;aspect-ratio:4/3.6;object-fit:cover;
+    box-shadow:0 28px 60px -28px rgba(28,43,30,.45)}
+  .story h2{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2rem,4.5vw,3.1rem);
+    margin:.12em 0 .55em;line-height:1.06}
+  .story h2 em{font-style:italic;color:var(--forest)}
+  .story p.body{color:#4A3F30;font-size:1.05rem;margin-bottom:1.5em;line-height:1.7}
+  .pillars{display:grid;gap:16px;margin-top:8px}
+  .pillar{display:flex;gap:16px;align-items:flex-start}
+  .pillar .ico{font-family:'Lato',sans-serif;font-weight:900;color:#fff;background:var(--forest);
+    width:44px;height:44px;display:grid;place-items:center;border-radius:4px;
+    flex:none;font-size:.82rem;letter-spacing:.06em}
+  .pillar h3{font-family:'Playfair Display',serif;font-weight:700;font-size:1.12rem;margin-bottom:3px}
+  .pillar p{color:var(--muted);font-size:.95rem;line-height:1.55}
+
+  /* menu */
+  .menu{background:var(--cream)}
+  .mcat{margin-bottom:44px}
+  .mcat:last-child{margin-bottom:0}
+  .mcat-head{display:flex;align-items:baseline;gap:16px;margin-bottom:16px}
+  .mcat-head h3{font-family:'Playfair Display',serif;font-weight:700;font-style:italic;
+    font-size:1.5rem;color:var(--forest)}
+  .mcat-head .ln{flex:1;height:1px;background:var(--line)}
+  .mitems{display:grid;grid-template-columns:1fr 1fr;gap:4px 44px}
+  .mitem{display:flex;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+  .mitem .ml{flex:1}
+  .mitem .nm{font-family:'Playfair Display',serif;font-weight:600;font-size:1.08rem}
+  .mitem .ds{color:var(--muted);font-size:.89rem;margin-top:2px}
+  .mitem .mp{font-family:'Lato',sans-serif;font-weight:700;font-size:1rem;white-space:nowrap;color:var(--amber-deep)}
+  .pill{font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    padding:.2em .55em;border-radius:100px;margin-left:6px;vertical-align:middle}
+  .pill-sig{background:var(--amber-pale);color:var(--amber-deep);border:1px solid #E8C884}
+  .pill-vg{background:#E0EFD8;color:#3A6B28;border:1px solid #C2DFB4}
+  .menu-note{color:var(--muted);font-size:.92rem;line-height:1.55}
+  .menu-note b{color:var(--ink)}
+  .sub-note{color:var(--muted);font-size:.9rem;margin-top:10px;font-style:italic}
+  @media(max-width:760px){.mitems{grid-template-columns:1fr;gap:0}}
+
+  /* band */
+  .band{background:var(--forest);color:#fff;text-align:center}
+  .band .inner{max-width:740px;margin:0 auto}
+  .band h2{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2rem,5vw,3.6rem);margin-bottom:.34em}
+  .band h2 em{font-style:italic;color:var(--amber)}
+  .band p{color:#C8D8C4;font-size:1.08rem;max-width:50ch;margin:0 auto 1.7em}
+  .taglist{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:30px}
+  .tag{font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    padding:.55em .95em;border:1.5px solid rgba(255,255,255,.35);border-radius:100px;color:rgba(255,255,255,.85)}
+
+  /* gallery */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .gallery img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;
+    border-radius:4px;border:1px solid var(--line)}
+
+  /* visit */
+  .visit{background:var(--cream)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:stretch}
+  .info{display:flex;flex-direction:column;gap:18px}
+  .info-row{display:flex;gap:16px;align-items:flex-start;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .info-row .k{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--amber-deep);font-weight:700;min-width:94px;padding-top:5px}
+  .info-row .val{font-size:1.02rem}
+  .info-row .val a{color:var(--forest);font-weight:700}
+  .info-row .val .small{color:var(--muted);font-size:.88rem;display:block;margin-top:3px}
+  .map{border-radius:4px;overflow:hidden;border:1px solid var(--line);min-height:360px}
+  .map iframe{width:100%;height:100%;min-height:360px;border:0}
+
+  footer{background:#111D12;color:#A8B8A0;padding:52px 0 40px}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .foot .fb .wm{font-family:'Playfair Display',serif;color:#fff;font-size:1.26rem;font-weight:700}
+  .foot .fb small{display:block;font-size:.82rem;color:#A8B8A0;margin-top:5px}
+  .foot p{font-size:.9rem;text-align:right}
+  .foot a{color:var(--amber)}
+
+  .js .reveal{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .js .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:880px){
+    .nav-links{display:none}.nav-cta .btn-ghost{display:none}.burger-ico{display:flex}
+    .story-grid{grid-template-columns:1fr;gap:30px}.story-photo{aspect-ratio:16/11;order:-1}
+    .gallery{grid-template-columns:1fr 1fr}.visit-grid{grid-template-columns:1fr}
+    .mobile-open .nav-links{display:flex;position:absolute;top:80px;left:0;right:0;flex-direction:column;
+      gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:8px 28px 20px}
+    .mobile-open .nav-links a{padding:14px 0;border-bottom:1px solid var(--line)}
+  }
+  @media(max-width:480px){.nav-cta .btn-forest{display:none}
+    .foot{flex-direction:column;text-align:center}.foot p{text-align:center}}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#top" class="brand" aria-label="Café Bel Air">
+      <span class="wm serif">Café Bel Air</span>
+      <small data-i18n="brand_tag">Burger Bar · Belair</small>
+    </a>
+    <nav class="nav-links">
+      <a href="#story" data-i18n="nav_story">Le Café</a>
+      <a href="#menu" data-i18n="nav_menu">Les Burgers</a>
+      <a href="#visit" data-i18n="nav_visit">Nous Trouver</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang-switch" role="group" aria-label="Langue">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="tel:+35226383761" class="btn btn-forest" data-i18n="btn_book">Réserver</a>
+      <button class="burger-ico" aria-label="Menu"
+        onclick="document.body.classList.toggle('mobile-open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow reveal" data-i18n="hero_eyebrow">Belair · Luxembourg-Ville</p>
+    <h1 class="reveal" data-i18n-html="hero_h1">Burgers artisanaux, <em>cœur de quartier.</em></h1>
+    <p class="lead reveal" data-i18n="hero_lead">Dans les rues verdoyantes du Belair, une adresse de légende : burgers faits main, Munsterosaurus légendaire et desserts signés Pain de Mary. Réservez tôt — les tables se remplissent plusieurs semaines à l'avance.</p>
+    <div class="hero-cta reveal">
+      <a href="tel:+35226383761" class="btn btn-amber" data-i18n="btn_book_table">Réserver une table</a>
+      <a href="#menu" class="btn-ghost-hero" data-i18n="btn_seemenu">Voir la carte</a>
+    </div>
+    <p class="addr reveal">
+      <span class="dot"></span>
+      <span data-i18n="hero_addr">99 Val Sainte-Croix, L-1371 Belair, Luxembourg</span>
+    </p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <img class="story-photo reveal" src="assets/food3.jpg"
+      alt="Deux burgers du Café Bel Air accompagnés d'une bière artisanale Lupulus" />
+    <div>
+      <p class="eyebrow reveal" data-i18n="story_eyebrow">Le Café</p>
+      <h2 class="serif reveal" data-i18n-html="story_h2">Une adresse de légende, <em>au cœur du Belair.</em></h2>
+      <p class="body reveal" data-i18n="story_body">Niché dans les rues calmes et verdoyantes du quartier Belair à Luxembourg-Ville, le Café Bel Air est devenu l'une des adresses les plus appréciées de la capitale. Les menus arrivent écrits sur de vieux comics, le patron passe de table en table, et la salle vibre d'une atmosphère chaleureuse que seule une cuisine sincère peut créer. Tout est fait maison : steaks hachés frais issus de producteurs locaux, frites dorées, pains artisanaux et irrésistibles desserts signés Pain de Mary.</p>
+      <div class="pillars">
+        <div class="pillar reveal">
+          <div class="ico">01</div>
+          <div>
+            <h3 data-i18n="p1_h">Burgers faits main</h3>
+            <p data-i18n="p1_p">Steaks hachés frais de producteurs locaux, pains artisanaux et frites dorées — tout préparé sur place, chaque jour.</p>
+          </div>
+        </div>
+        <div class="pillar reveal">
+          <div class="ico">02</div>
+          <div>
+            <h3 data-i18n="p2_h">L'âme du quartier</h3>
+            <p data-i18n="p2_p">Le patron de table en table, des menus écrits sur de vieux comics : une atmosphère chaleureuse que seule une cuisine sincère peut créer.</p>
+          </div>
+        </div>
+        <div class="pillar reveal">
+          <div class="ico">03</div>
+          <div>
+            <h3 data-i18n="p3_h">Desserts Pain de Mary</h3>
+            <p data-i18n="p3_p">Brownies, tartes citron et gâteaux chocolat signés Pain de Mary — l'artisanat jusqu'au bout du repas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="menu_h2">La <em>Carte</em></h2>
+      <p data-i18n="menu_intro">Burgers faits main, desserts artisanaux, bières craft. Une sélection — prix approximatifs, à confirmer avec le restaurant.</p>
+    </div>
+
+    <!-- Burgers -->
+    <div class="mcat reveal">
+      <div class="mcat-head"><h3 class="serif">Burgers</h3><span class="ln"></span></div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Munsterosaurus <span class="pill pill-sig" data-i18n="pill_sig">Signature</span></div>
+            <div class="ds" data-i18n="d_munsterosaurus">Munster frais du terroir, steak juteux — notre burger légendaire</div>
+          </div>
+          <div class="mp">~€22</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Charly Burger</div>
+            <div class="ds" data-i18n="d_charly">200 g de bœuf, légumes grillés, fromage</div>
+          </div>
+          <div class="mp">~€19</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Guacamole Burger</div>
+            <div class="ds" data-i18n="d_guacamole">Steak de bœuf, guacamole crémeux à l'avocat, salade</div>
+          </div>
+          <div class="mp">~€20</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">New York Cheddar</div>
+            <div class="ds" data-i18n="d_nycheddar">Steak de bœuf, cheddar affiné</div>
+          </div>
+          <div class="mp">~€21</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Falafel Burger <span class="pill pill-vg" data-i18n="pill_vg">Végétarien</span></div>
+            <div class="ds" data-i18n="d_falafel">Patty végétarien au falafel, salade fraîche</div>
+          </div>
+          <div class="mp">~€18</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Smash Burger</div>
+            <div class="ds" data-i18n="d_smash">Double smash-style, deux steaks fondants</div>
+          </div>
+          <div class="mp">~€24</div>
+        </div>
+      </div>
+      <p class="sub-note reveal" data-i18n="gf_note">Pain sans gluten disponible sur tous les burgers (+€1). Servi avec frites maison et salade verte.</p>
+    </div>
+
+    <!-- Desserts -->
+    <div class="mcat reveal">
+      <div class="mcat-head"><h3 class="serif">Desserts Pain de Mary</h3><span class="ln"></span></div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Brownie Pain de Mary</div>
+            <div class="ds" data-i18n="d_brownie">Brownie artisanal signé Pain de Mary</div>
+          </div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Tarte Citron</div>
+            <div class="ds" data-i18n="d_lemon_tart">Tarte citron artisanale Pain de Mary</div>
+          </div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Gâteau Chocolat</div>
+            <div class="ds" data-i18n="d_choco_cake">Gâteau chocolat Pain de Mary</div>
+          </div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Dessert du Jour</div>
+            <div class="ds" data-i18n="d_daily">Pâtisserie du jour selon arrivage Pain de Mary</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Boissons -->
+    <div class="mcat reveal" style="margin-bottom:0">
+      <div class="mcat-head"><h3 class="serif">Boissons</h3><span class="ln"></span></div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Bières Craft</div>
+            <div class="ds" data-i18n="d_beers">Lupulus belge et sélection rotative de bières artisanales</div>
+          </div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Vins au Verre</div>
+            <div class="ds" data-i18n="d_wines">Sélection soignée de vins par verre</div>
+          </div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Café &amp; Boissons</div>
+            <div class="ds" data-i18n="d_coffee">Café dès 09h00, boissons chaudes et softs</div>
+          </div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Spiritueux &amp; Digestifs</div>
+            <div class="ds" data-i18n="d_spirits">Large sélection de rhums, whiskies et digestifs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="menu-note reveal" style="margin-top:28px" data-i18n-html="menu_note"><b>Carte et prix à confirmer avec le restaurant.</b> Sélection simplifiée — carte complète, plats du jour et desserts du jour disponibles sur place. Prix burgers tirés d'avis en ligne (env. €17–26).</p>
+  </div>
+</section>
+
+<!-- BAND CTA -->
+<section class="band">
+  <div class="wrap inner reveal">
+    <h2 class="serif" data-i18n-html="band_h2">Réservez <em>maintenant.</em></h2>
+    <p data-i18n="band_p">Tables souvent complètes plusieurs semaines à l'avance. N'attendez pas — un coup de fil suffit.</p>
+    <div class="taglist">
+      <span class="tag" data-i18n="tag1">Burgers faits main</span>
+      <span class="tag" data-i18n="tag2">Pain de Mary</span>
+      <span class="tag" data-i18n="tag3">Bières craft</span>
+      <span class="tag" data-i18n="tag4">Belair · Luxembourg</span>
+    </div>
+    <a href="tel:+35226383761" class="btn btn-amber" data-i18n="btn_book_table">Réserver une table</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section style="padding-bottom:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="gal_h2">À <em>table.</em></h2>
+      <p data-i18n="gal_intro">Un aperçu de l'assiette et de l'atmosphère du Café Bel Air.</p>
+    </div>
+    <div class="gallery">
+      <img class="reveal" src="assets/food1.png" alt="Plat du Café Bel Air, Belair Luxembourg" />
+      <img class="reveal" src="assets/food2.jpg" alt="Burgers, desserts et vin au Café Bel Air" />
+      <img class="reveal" src="assets/interior.jpg" alt="Atmosphère intérieure du Café Bel Air, quartier Belair" />
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="visit_h2">Nous <em>trouver.</em></h2>
+      <p data-i18n="visit_intro">Dans le quartier Belair, à Luxembourg-Ville. Réservation vivement recommandée.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="info reveal">
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_where">Adresse</div>
+          <div class="val">99 Val Sainte-Croix
+            <span class="small" data-i18n="where_small">L-1371 Belair · Luxembourg-Ville</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_hours">Horaires</div>
+          <div class="val">
+            <span data-i18n="hours_val">Lun–Jeu : 11h45–15h &amp; 17h30–23h · Ven : 11h45–23h</span>
+            <span class="small" data-i18n-html="hours_small">Jeu jusqu'à minuit · Sam–Dim : fermé — <em>à confirmer avec le restaurant</em></span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_book">Réserver</div>
+          <div class="val">
+            <a href="tel:+35226383761">+352 26 38 37 61</a>
+            <span class="small" data-i18n="book_small">Tables souvent complètes plusieurs semaines à l'avance</span>
+          </div>
+        </div>
+        <div class="info-row" style="border-bottom:0">
+          <div class="k" data-i18n="lbl_contact">Contact</div>
+          <div class="val">
+            <a href="mailto:info@cafebelair.lu">info@cafebelair.lu</a>
+            <span class="small">
+              <a href="https://www.facebook.com/cafebelair" target="_blank" rel="noopener">Facebook</a> ·
+              <a href="https://www.instagram.com/cafe.bel.air/" target="_blank" rel="noopener">Instagram</a>
+            </span>
+          </div>
+        </div>
+        <a href="tel:+35226383761" class="btn btn-forest" style="align-self:flex-start;margin-top:4px"
+          data-i18n="btn_book_table">Réserver une table</a>
+      </div>
+      <div class="map reveal">
+        <iframe title="Plan vers Café Bel Air"
+          loading="lazy"
+          src="https://www.google.com/maps?q=99+Val+Sainte-Croix%2C+L-1371+Belair%2C+Luxembourg&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div class="fb">
+      <span class="wm serif">Café Bel Air</span>
+      <small>99 Val Sainte-Croix · L-1371 Belair · +352 26 38 37 61</small>
+    </div>
+    <p>© Café Bel Air · <span data-i18n="foot_since">Burgers artisanaux · Belair, Luxembourg</span><br>
+      <a href="https://www.facebook.com/cafebelair" target="_blank" rel="noopener">Facebook</a> ·
+      <a href="https://www.instagram.com/cafe.bel.air/" target="_blank" rel="noopener">Instagram</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // reveal on scroll
+  const io = new IntersectionObserver((es) => {
+    es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 6 * 70) + 'ms';
+    io.observe(el);
+  });
+  document.querySelectorAll('.nav-links a').forEach(a =>
+    a.addEventListener('click', () => document.body.classList.remove('mobile-open'))
+  );
+
+  // ---------- i18n — FR default · DE · EN ----------
+  // Keys used by data-i18n (textContent) must use literal & in JS values.
+  // Keys used by data-i18n-html (innerHTML) must use &amp; for ampersands.
+  const I18N = {
+    fr: {},
+    de: {
+      brand_tag: "Burger-Bar · Belair, Luxemburg",
+      nav_story: "Das Café", nav_menu: "Speisekarte", nav_visit: "Finden",
+      btn_book: "Reservieren", btn_book_table: "Tisch reservieren", btn_seemenu: "Zur Karte",
+      hero_eyebrow: "Belair · Luxemburg-Stadt",
+      hero_h1: "Handgemachte Burger, <em>Seele des Viertels.</em>",
+      hero_lead: "Im ruhigen, grünen Belair-Viertel — handgeformte Rindfleischpatties, der legendäre Munsterosaurus und Desserts von Pain de Mary. Frühzeitig reservieren: Tische sind oft Wochen im Voraus ausgebucht.",
+      hero_addr: "99 Val Sainte-Croix, L-1371 Belair, Luxemburg",
+      story_eyebrow: "Das Café",
+      story_h2: "Eine legendäre Adresse, <em>im Herzen von Belair.</em>",
+      story_body: "Im ruhigen, grünen Belair-Viertel von Luxemburg-Stadt hat sich das Café Bel Air zu einem der beliebtesten Restaurants der Hauptstadt entwickelt. Die Speisekarten kommen auf alten Comics, der Inhaber geht von Tisch zu Tisch, und im Raum liegt die entspannte Wärme, die nur wirklich gute Küche erzeugt. Alles wird frisch zubereitet: handgeformte Rindfleischpatties von lokalen Lieferanten, goldene Pommes, handwerkliche Brötchen und unwiderstehliche Desserts der Bäckerei Pain de Mary.",
+      p1_h: "Burger handgemacht",
+      p1_p: "Frische Rindfleischpatties von lokalen Lieferanten, handwerkliche Brötchen und goldene Pommes — täglich frisch zubereitet.",
+      p2_h: "Die Seele des Viertels",
+      p2_p: "Der Inhaber von Tisch zu Tisch, Speisekarten auf alten Comics: die entspannte Wärme, die nur wirklich gute Küche erzeugt.",
+      p3_h: "Desserts von Pain de Mary",
+      p3_p: "Brownie, Zitronentarte und Schokoladenkuchen von der Bäckerei Pain de Mary — der perfekte Abschluss.",
+      menu_h2: "Die <em>Karte</em>",
+      menu_intro: "Handgemachte Burger, handwerkliche Desserts und Craft-Biere. Eine Auswahl — Preise bitte beim Restaurant bestätigen.",
+      pill_sig: "Signature", pill_vg: "Vegetarisch",
+      d_munsterosaurus: "Lokaler Munster-Käse, saftiges Rindfleischpatty — unser legendärer Burger",
+      d_charly: "200 g Rind, gegrilltes Gemüse, Käse",
+      d_guacamole: "Rindfleischpatty, cremiges Avocado-Guacamole, Salat",
+      d_nycheddar: "Rindfleischpatty, gereifter Cheddar",
+      d_falafel: "Vegetarisches Falafel-Patty, frischer Salat",
+      d_smash: "Doppelter Smash Burger, zwei saftige Patties",
+      gf_note: "Glutenfreies Brot auf allen Burgern verfügbar (+€1). Serviert mit hausgemachten Pommes und grünem Salat.",
+      d_brownie: "Handwerklicher Brownie von Pain de Mary",
+      d_lemon_tart: "Zitronentarte von Pain de Mary",
+      d_choco_cake: "Schokoladenkuchen von Pain de Mary",
+      d_daily: "Tagespâtisserie — je nach Lieferung von Pain de Mary",
+      d_beers: "Belgisches Lupulus und rotierende Auswahl an Craft-Bieren",
+      d_wines: "Sorgfältig ausgewählte Weine, auch glasweise",
+      d_coffee: "Kaffee ab 09:00 Uhr, Heißgetränke und Softdrinks",
+      d_spirits: "Große Auswahl an Rum, Whisky und Digestifs",
+      menu_note: "<b>Karte und Preise bitte beim Restaurant bestätigen.</b> Vereinfachte Auswahl — vollständige Speisekarte und Tagesangebote vor Ort. Burgerpreise aus Online-Bewertungen (ca. €17–26).",
+      band_h2: "Jetzt <em>reservieren.</em>",
+      band_p: "Tische oft Wochen im Voraus ausgebucht — nicht zu lange warten.",
+      tag1: "Handgemachte Burger", tag2: "Pain de Mary", tag3: "Craft-Biere", tag4: "Belair · Luxemburg",
+      gal_h2: "Am <em>Tisch.</em>",
+      gal_intro: "Ein Blick auf den Teller und die Atmosphäre des Café Bel Air.",
+      visit_h2: "So <em>finden Sie uns.</em>",
+      visit_intro: "Im Belair-Viertel von Luxemburg-Stadt. Reservierung dringend empfohlen.",
+      lbl_where: "Adresse", lbl_hours: "Öffnungszeiten", lbl_book: "Reservieren", lbl_contact: "Kontakt",
+      where_small: "L-1371 Belair · Luxemburg-Stadt",
+      hours_val: "Mo–Do: 11:45–15:00 & 17:30–23:00 · Fr: 11:45–23:00",
+      hours_small: "Do bis Mitternacht · Sa–So: geschlossen — <em>bitte beim Restaurant bestätigen</em>",
+      book_small: "Tische oft Wochen im Voraus ausgebucht",
+      foot_since: "Handgemachte Burger · Belair, Luxemburg"
+    },
+    en: {
+      brand_tag: "Burger bar · Belair, Luxembourg",
+      nav_story: "The Café", nav_menu: "Menu", nav_visit: "Visit",
+      btn_book: "Book", btn_book_table: "Book a table", btn_seemenu: "See the menu",
+      hero_eyebrow: "Belair · Luxembourg City",
+      hero_h1: "Craft burgers, <em>neighbourhood heart.</em>",
+      hero_lead: "In the leafy streets of Belair, a cult address for hand-formed burgers, the legendary Munsterosaurus and desserts by Pain de Mary. Book early — tables fill up weeks in advance.",
+      hero_addr: "99 Val Sainte-Croix, L-1371 Belair, Luxembourg",
+      story_eyebrow: "The Café",
+      story_h2: "A neighbourhood legend, <em>in the heart of Belair.</em>",
+      story_body: "Tucked into the quiet, leafy streets of Luxembourg City's Belair neighbourhood, Café Bel Air has become one of the capital's most cherished dining spots. The menus arrive written on old comic books, the owner mingles with every table, and the room hums with the kind of easy contentment that only comes from food done right. Everything is freshly made: hand-formed beef patties from local suppliers, golden fries, artisan buns, and irresistible desserts from pastry house Pain de Mary.",
+      p1_h: "Burgers, hand-formed",
+      p1_p: "Fresh beef patties from local suppliers, artisan buns and golden fries — made fresh every day.",
+      p2_h: "The soul of the neighbourhood",
+      p2_p: "The owner at every table, menus on old comic books: the easy warmth that only comes from food done right.",
+      p3_h: "Pain de Mary desserts",
+      p3_p: "Brownies, lemon tarts and chocolate cake from artisan bakery Pain de Mary — the perfect ending.",
+      menu_h2: "The <em>menu</em>",
+      menu_intro: "Hand-formed burgers, artisan desserts and craft beers. A selection — prices are approximate, confirm with the restaurant.",
+      pill_sig: "Signature", pill_vg: "Vegetarian",
+      d_munsterosaurus: "Local Munster cheese, juicy beef patty — our legendary signature burger",
+      d_charly: "200g beef, grilled vegetables, cheese",
+      d_guacamole: "Beef patty, creamy avocado guacamole, lettuce",
+      d_nycheddar: "Beef patty, aged cheddar",
+      d_falafel: "Vegetarian falafel patty, fresh salad",
+      d_smash: "Double smash-style, two juicy patties",
+      gf_note: "Gluten-free bread available on all burgers (+€1). Served with homemade fries and green salad.",
+      d_brownie: "Artisan brownie from Pain de Mary",
+      d_lemon_tart: "Lemon tart from Pain de Mary",
+      d_choco_cake: "Chocolate cake from Pain de Mary",
+      d_daily: "Daily pastry — subject to Pain de Mary delivery",
+      d_beers: "Belgian Lupulus and a rotating selection of craft beers",
+      d_wines: "A curated selection of wines, also by the glass",
+      d_coffee: "Coffee from 09:00, hot drinks and soft drinks",
+      d_spirits: "Wide selection of rum, whisky and digestifs",
+      menu_note: "<b>Menu and prices to be confirmed with the restaurant.</b> Simplified selection — full menu and daily specials available in-house. Burger prices sourced from online reviews (approx. €17–26).",
+      band_h2: "Book your <em>table.</em>",
+      band_p: "Tables fill up weeks ahead — don't wait.",
+      tag1: "Hand-formed burgers", tag2: "Pain de Mary", tag3: "Craft beers", tag4: "Belair · Luxembourg",
+      gal_h2: "At <em>the table.</em>",
+      gal_intro: "A glimpse of the plate and the atmosphere at Café Bel Air.",
+      visit_h2: "Find <em>us.</em>",
+      visit_intro: "In the Belair neighbourhood, Luxembourg City. Reservation strongly recommended.",
+      lbl_where: "Address", lbl_hours: "Hours", lbl_book: "Book", lbl_contact: "Contact",
+      where_small: "L-1371 Belair · Luxembourg City",
+      hours_val: "Mon–Thu: 11:45–15:00 & 17:30–23:00 · Fri: 11:45–23:00",
+      hours_small: "Thu to midnight · Sat–Sun: closed — <em>please confirm with the restaurant</em>",
+      book_small: "Tables often booked up weeks in advance",
+      foot_since: "Craft burgers · Belair, Luxembourg"
+    }
+  };
+
+  // Capture FR defaults from DOM
+  const FR = {};
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    FR[el.getAttribute('data-i18n')] = el.textContent;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    FR['__h_' + el.getAttribute('data-i18n-html')] = el.innerHTML;
+  });
+
+  function setLang(l) {
+    const d = l === 'fr' ? null : I18N[l];
+    document.documentElement.lang = l;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      const v = d ? d[k] : FR[k];
+      if (v != null) el.textContent = v;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const k = el.getAttribute('data-i18n-html');
+      const v = d ? d[k] : FR['__h_' + k];
+      if (v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll('.lang-switch button').forEach(b =>
+      b.classList.toggle('active', b.dataset.lang === l)
+    );
+    try { localStorage.setItem('cafe-bel-air_lang', l); } catch (e) {}
+  }
+
+  document.querySelectorAll('.lang-switch button').forEach(b =>
+    b.addEventListener('click', () => setLang(b.dataset.lang))
+  );
+
+  let saved = 'fr';
+  try { saved = localStorage.getItem('cafe-bel-air_lang') || 'fr'; } catch (e) {}
+  if (saved !== 'fr') setLang(saved);
+</script>
+</body>
+</html>

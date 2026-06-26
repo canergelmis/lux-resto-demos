@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<!--
+  BISTROT BURGER — Sales demo site. NOT published. For pitch use only.
+  Sources: menu.lu, resto.lu, Sluurpy, supermiro.lu, Wedely, Tripadvisor, Facebook.
+  About/story (FR/DE/EN) sourced and adapted from supermiro.lu promotional listing.
+  Menu items inferred from public web listings (resto.lu, Sluurpy index); names are inferred.
+  ALL menu items, prices, and opening hours MUST BE CONFIRMED WITH THE OWNER before publishing.
+  Owner contact: +352 26 48 31 41 · info@bistroburger.lu (confirm active before pitching).
+  Photos: 112×112 px Facebook thumbnails — hi-res versions to be requested from owner.
+-->
+<html lang="fr">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Bistrot Burger — Gourmet Burgers à Howald, Luxembourg</title>
+<meta name="description" content="Bistrot Burger — burgers de qualité dans un cadre urbain et vintage à Howald, Luxembourg. 7 Rue des Scillas, L-2529 Howald. Tél : +352 26 48 31 41." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500;1,700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --red: #7A2020;
+  --red-deep: #5A1515;
+  --red-dark: #1A0808;
+  --cream: #F8F3EC;
+  --cream2: #EDE5D8;
+  --espresso: #2C1510;
+  --gold: #D4A544;
+  --gold-deep: #B8882A;
+  --line: #E0D5C4;
+  --muted: #8A7060;
+  --maxw: 1160px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--espresso);
+  font-family: 'Lato', system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+a { color: inherit; text-decoration: none; }
+.serif { font-family: 'Playfair Display', Georgia, serif; }
+.eyebrow {
+  font-size: .72rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  display: block;
+}
+
+/* --- BUTTONS --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5em;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: .82rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .85em 1.9em;
+  border-radius: 1px;
+  border: 2px solid transparent;
+  transition: background .2s, border-color .2s, transform .2s, box-shadow .2s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--red); color: #fff; border-color: var(--red); }
+.btn-primary:hover { background: var(--red-deep); border-color: var(--red-deep); transform: translateY(-2px); box-shadow: 0 14px 28px -10px rgba(122,32,32,.55); }
+.btn-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.5); }
+.btn-ghost:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+.btn-gold { background: var(--gold); color: var(--espresso); border-color: var(--gold); }
+.btn-gold:hover { background: var(--gold-deep); border-color: var(--gold-deep); transform: translateY(-2px); box-shadow: 0 12px 24px -8px rgba(184,136,42,.5); }
+.btn-outline-red { background: transparent; color: var(--red); border-color: var(--red); }
+.btn-outline-red:hover { background: var(--red); color: #fff; transform: translateY(-2px); }
+
+/* --- NAV --- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(26,8,8,.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(212,165,68,.18);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 76px;
+  gap: 14px;
+}
+.brand { display: flex; flex-direction: column; line-height: 1; }
+.brand .wm {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: 1.38rem;
+  letter-spacing: .03em;
+  color: var(--cream);
+}
+.brand small {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 5px;
+}
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a {
+  font-weight: 700;
+  font-size: .75rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(248,243,236,.65);
+  transition: color .18s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { display: flex; gap: 12px; align-items: center; }
+.lang-switch {
+  display: flex;
+  border: 1px solid rgba(212,165,68,.3);
+  border-radius: 1px;
+  overflow: hidden;
+  flex: none;
+}
+.lang-switch button {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: .7rem;
+  letter-spacing: .1em;
+  padding: .5em .78em;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: rgba(248,243,236,.5);
+  transition: background .15s, color .15s;
+}
+.lang-switch button.active { background: var(--gold); color: var(--espresso); }
+.lang-switch button:not(.active):hover { color: var(--cream); }
+.burger-ico { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; }
+.burger-ico span { width: 26px; height: 2px; background: var(--cream); border-radius: 2px; display: block; }
+
+/* --- HERO (gradient, no photo) --- */
+.hero {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(155deg, var(--red-dark) 0%, #3D0F0F 50%, var(--red) 100%);
+  color: #fff;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 65% 35%, rgba(212,165,68,.09) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 70%, rgba(122,32,32,.35) 0%, transparent 50%),
+    repeating-linear-gradient(0deg, transparent, transparent 80px, rgba(255,255,255,.012) 80px, rgba(255,255,255,.012) 81px),
+    repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(255,255,255,.012) 80px, rgba(255,255,255,.012) 81px);
+  pointer-events: none;
+}
+.hero::after {
+  content: 'BB';
+  position: absolute;
+  right: -4vw;
+  bottom: -6vw;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(18rem, 32vw, 42rem);
+  line-height: 1;
+  color: rgba(255,255,255,.025);
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -.04em;
+}
+.hero .wrap { position: relative; z-index: 1; padding-top: 60px; padding-bottom: 60px; width: 100%; }
+.hero .eyebrow { color: var(--gold); margin-bottom: 1.6em; display: block; }
+.hero-wm {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: clamp(3rem, 7.5vw, 6.5rem);
+  line-height: .95;
+  letter-spacing: .01em;
+  color: #fff;
+  margin-bottom: .2em;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(1.2rem, 2.6vw, 1.9rem);
+  color: var(--gold);
+  margin-bottom: 1.3em;
+  letter-spacing: .01em;
+}
+.hero h1 em { font-style: italic; }
+.hero p.lead {
+  font-size: clamp(.97rem, 1.6vw, 1.14rem);
+  color: rgba(248,243,236,.78);
+  max-width: 54ch;
+  margin: 0 auto 2em;
+  font-weight: 300;
+  line-height: 1.85;
+}
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-bottom: 34px; }
+.hero-addr {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(212,165,68,.75);
+  font-size: .85rem;
+  font-weight: 400;
+  letter-spacing: .04em;
+}
+.hero-addr .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(212,165,68,.2);
+  flex: none;
+  display: inline-block;
+}
+
+/* --- SECTIONS base --- */
+section { padding: clamp(60px,8vw,108px) 0; }
+.sec-head { margin-bottom: 52px; }
+.sec-head .eyebrow { margin-bottom: .9em; }
+.sec-head h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4.8vw, 3.4rem);
+  line-height: 1.06;
+  margin-bottom: .5em;
+}
+.sec-head h2 em { font-style: italic; color: var(--red); }
+.sec-head p { color: var(--muted); max-width: 48ch; font-size: 1.02rem; }
+
+/* --- STORY --- */
+.story { background: #fff; }
+.story-lead {
+  max-width: 72ch;
+  margin-bottom: 56px;
+}
+.story-lead h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4.8vw, 3.4rem);
+  line-height: 1.08;
+  margin: .28em 0 .65em;
+}
+.story-lead h2 em { font-style: italic; color: var(--red); }
+.story-lead p.body { color: #5A4840; font-size: 1.04rem; line-height: 1.78; }
+.pillars-row {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 32px;
+  border-top: 2px solid var(--red);
+  padding-top: 40px;
+}
+.pillar-card { display: flex; flex-direction: column; gap: 14px; }
+.pillar-num {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-style: italic;
+  font-size: 2.4rem;
+  color: var(--red);
+  line-height: 1;
+  opacity: .3;
+}
+.pillar-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--espresso);
+  line-height: 1.3;
+}
+.pillar-card p { color: var(--muted); font-size: .96rem; line-height: 1.6; }
+
+/* --- MENU (dark) --- */
+.menu-sec { background: var(--espresso); color: var(--cream); }
+.menu-sec .sec-head h2 em { color: var(--gold); }
+.menu-sec .sec-head p { color: rgba(248,243,236,.55); }
+.menu-sec .eyebrow { color: var(--gold); }
+.mcat { margin-bottom: 48px; }
+.mcat:last-of-type { margin-bottom: 0; }
+.mcat-head {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(212,165,68,.22);
+}
+.mcat-head h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1.55rem;
+  color: var(--gold);
+  white-space: nowrap;
+}
+.mitems {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 52px;
+}
+.mitem {
+  display: flex;
+  gap: 16px;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255,255,255,.055);
+  align-items: flex-start;
+}
+.mitem .ml { flex: 1; }
+.mitem .nm {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1.06rem;
+  color: #fff;
+  display: block;
+}
+.mitem .ds {
+  color: rgba(248,243,236,.47);
+  font-size: .86rem;
+  margin-top: 3px;
+  line-height: 1.5;
+  display: block;
+}
+.menu-more {
+  margin-top: 38px;
+  padding: 22px 26px;
+  border: 1px solid rgba(212,165,68,.18);
+  border-radius: 1px;
+  color: rgba(248,243,236,.6);
+  font-size: .95rem;
+  line-height: 1.7;
+}
+.menu-more b { color: var(--gold); }
+.menu-note {
+  margin-top: 20px;
+  color: rgba(248,243,236,.35);
+  font-size: .84rem;
+  font-style: italic;
+}
+
+/* --- BAND CTA --- */
+.band {
+  background: var(--red);
+  color: #fff;
+  text-align: center;
+  padding: clamp(60px,7.5vw,100px) 0;
+}
+.band-inner { max-width: 720px; margin: 0 auto; }
+.band h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  margin-bottom: .4em;
+  line-height: 1.1;
+}
+.band h2 em { font-style: italic; color: var(--gold); }
+.band p { color: rgba(255,255,255,.8); font-size: 1.08rem; max-width: 50ch; margin: 0 auto 2em; font-weight: 300; }
+.taglist { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 32px; }
+.tag {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .52em 1.1em;
+  border: 1.5px solid rgba(255,255,255,.32);
+  border-radius: 1px;
+  color: rgba(255,255,255,.78);
+}
+
+/* --- GALLERY --- */
+.gallery-sec { background: var(--cream2); }
+.gallery-sec .sec-head h2 em { color: var(--red); }
+.gallery-sec .eyebrow { color: var(--red); }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 10px;
+}
+.gallery img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+  border: 1px solid var(--line);
+}
+.gallery-note {
+  margin-top: 18px;
+  font-size: .82rem;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* --- VISIT --- */
+.visit-sec { background: #fff; }
+.visit-sec .sec-head h2 em { color: var(--red); }
+.visit-sec .eyebrow { color: var(--red); }
+.visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items: stretch; }
+.info { display: flex; flex-direction: column; }
+.info-row {
+  display: flex;
+  gap: 20px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: flex-start;
+}
+.info-row .k {
+  font-size: .66rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 700;
+  min-width: 88px;
+  padding-top: 4px;
+  font-family: 'Lato', sans-serif;
+  flex: none;
+}
+.info-row .val { font-size: 1rem; color: var(--espresso); line-height: 1.65; }
+.info-row .val a { color: var(--red); font-weight: 700; }
+.info-row .val .small { color: var(--muted); font-size: .88rem; display: block; margin-top: 4px; }
+.hours-tbl { width: 100%; border-collapse: collapse; font-size: .88rem; margin-bottom: 4px; }
+.hours-tbl tr td { padding: 3px 0; vertical-align: top; }
+.hours-tbl tr td:first-child { font-weight: 700; color: var(--espresso); width: 36px; }
+.hours-tbl tr td:last-child { color: var(--muted); padding-left: 10px; }
+.hours-tbl tr.closed-day td { opacity: .4; }
+.map-wrap { border-radius: 2px; overflow: hidden; border: 1px solid var(--line); min-height: 390px; display: flex; }
+.map-wrap iframe { width: 100%; min-height: 390px; border: 0; display: block; flex: 1; }
+.info .btn { align-self: flex-start; margin-top: 20px; }
+
+/* --- FOOTER --- */
+footer { background: var(--red-dark); color: rgba(248,243,236,.62); padding: 50px 0 38px; }
+.foot { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+.foot .fb .wm {
+  font-family: 'Playfair Display', serif;
+  color: var(--cream);
+  font-size: 1.22rem;
+  font-weight: 800;
+  display: block;
+}
+.foot .fb small { font-size: .78rem; color: rgba(212,165,68,.7); margin-top: 5px; display: block; }
+.foot p { font-size: .86rem; text-align: right; }
+.foot a { color: var(--gold); }
+.foot a:hover { color: #fff; }
+
+/* --- REVEAL --- */
+.js .reveal { opacity: 0; transform: translateY(20px); transition: .65s cubic-bezier(.2,.7,.2,1); }
+.js .reveal.in { opacity: 1; transform: none; }
+
+/* --- RESPONSIVE --- */
+@media(max-width: 920px) {
+  .nav-links { display: none; }
+  .burger-ico { display: flex; }
+  .pillars-row { grid-template-columns: 1fr; gap: 28px; }
+  .mitems { grid-template-columns: 1fr; gap: 0; }
+  .visit-grid { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2,1fr); }
+  .mobile-open .nav-links {
+    display: flex;
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--red-dark);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    padding: 8px 28px 20px;
+    z-index: 99;
+  }
+  .mobile-open .nav-links a { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.07); display: block; }
+}
+@media(max-width: 560px) {
+  .nav-cta .btn-gold { display: none; }
+  .hero::after { display: none; }
+  .hero-wm { font-size: clamp(2.6rem,11vw,4.2rem); }
+  .gallery { grid-template-columns: repeat(2,1fr); }
+  .foot { flex-direction: column; text-align: center; }
+  .foot p { text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<header id="top">
+  <div class="wrap nav">
+    <a href="#top" class="brand" aria-label="Bistrot Burger">
+      <span class="wm serif">Bistrot Burger</span>
+      <small data-i18n="brand_tag">Gourmet Burgers · Howald</small>
+    </a>
+    <nav class="nav-links">
+      <a href="#story" data-i18n="nav_story">La Maison</a>
+      <a href="#menu" data-i18n="nav_menu">La Carte</a>
+      <a href="#visit" data-i18n="nav_visit">Nous Trouver</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang-switch" role="group" aria-label="Langue / Sprache / Language">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="tel:+35226483141" class="btn btn-gold" data-i18n="btn_book">Appeler</a>
+      <button class="burger-ico" aria-label="Menu" onclick="document.body.classList.toggle('mobile-open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow reveal" data-i18n="hero_eyebrow">Howald · Luxembourg</p>
+    <div class="hero-wm reveal">Bistrot Burger</div>
+    <h1 class="reveal" data-i18n-html="hero_h1">Un Burger <em>au Bistrot.</em></h1>
+    <p class="lead reveal" data-i18n="hero_lead">Dans un cadre chaleureux et urbain, des burgers de qualité préparés avec des produits frais et des pains soigneusement choisis pour leur complémentarité avec chaque plat.</p>
+    <div class="hero-cta reveal">
+      <a href="tel:+35226483141" class="btn btn-gold" data-i18n="btn_book_table">Appeler pour réserver</a>
+      <a href="#menu" class="btn btn-ghost" data-i18n="btn_seemenu">Voir la carte</a>
+    </div>
+    <p class="hero-addr reveal">
+      <span class="dot"></span>
+      <span data-i18n="hero_addr">7 Rue des Scillas, L-2529 Howald</span>
+    </p>
+  </div>
+</section>
+
+<!-- ===================== STORY ===================== -->
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="story-lead reveal">
+      <p class="eyebrow" style="color:var(--red)" data-i18n="story_eyebrow">La Maison</p>
+      <h2 data-i18n-html="story_h2">Un bistrot de quartier, <em>à part entière.</em></h2>
+      <p class="body" data-i18n="story_body">Dans un cadre chaleureux et urbain, où mobilier vintage et visuels modernes se partagent la même atmosphère, le chef de Bistrot Burger prépare des burgers de qualité avec une touche d'originalité — à partir de produits frais et de pains soigneusement choisis pour leur complémentarité avec chaque plat. Autant bistrot de quartier que restaurant, les portes ouvrent à 10h00 pour un café du matin et restent ouvertes jusqu'à 22h00 pour un dîner tardif. L'espace peut également être privatisé pour vos événements.</p>
+    </div>
+    <div class="pillars-row">
+      <div class="pillar-card reveal">
+        <span class="pillar-num">01</span>
+        <h3 data-i18n="p1_h">Produits frais, pains d'exception</h3>
+        <p data-i18n="p1_p">Chaque burger est assemblé avec des ingrédients soigneusement sélectionnés et un pain choisi pour sa complémentarité parfaite avec le plat.</p>
+      </div>
+      <div class="pillar-card reveal">
+        <span class="pillar-num">02</span>
+        <h3 data-i18n="p2_h">Ouvert dès 10h00</h3>
+        <p data-i18n="p2_p">De l'espresso du matin jusqu'au dîner tardif — le bistrot vous accueille tout au long de la journée, du lundi au samedi.</p>
+      </div>
+      <div class="pillar-card reveal">
+        <span class="pillar-num">03</span>
+        <h3 data-i18n="p3_h">Espace privatisable</h3>
+        <p data-i18n="p3_p">L'espace peut être privatisé pour vos réceptions, anniversaires ou événements d'entreprise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MENU ===================== -->
+<section class="menu-sec" id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">La Carte</p>
+      <h2 class="serif" data-i18n-html="menu_h2">Les <em>Burgers</em></h2>
+      <p data-i18n="menu_intro">Une sélection de nos burgers de caractère — produits frais, recettes originales. Prix à confirmer avec le restaurant.</p>
+    </div>
+
+    <div class="mcat reveal">
+      <div class="mcat-head"><h3 class="serif" data-i18n="mcat_burgers">Les Burgers</h3></div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <span class="nm serif">Le Bistrot</span>
+            <span class="ds" data-i18n="d_bistrot">Pain sésame · bœuf · iceberg · cheddar · oignons caramélisés · pickles · tomate cœur de bœuf · sauce Bistrot Burger</span>
+          </div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <span class="nm serif">Le Poulet</span>
+            <span class="ds" data-i18n="d_poulet">Pain sésame · poulet pané maison · iceberg · cheddar · oignons caramélisés · pickles · tomate cœur de bœuf · sauce Bistrot</span>
+          </div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <span class="nm serif">L'Italiano</span>
+            <span class="ds" data-i18n="d_italiano">Pain sésame · bœuf · fontina · jambon de Parme · roquette · sauce tomate épicée · tomate cœur de bœuf</span>
+          </div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <span class="nm serif">Le Noir</span>
+            <span class="ds" data-i18n="d_noir">Pain encre de seiche · thon grillé · guacamole · roquette · citron · wakamé · tomate cœur de bœuf</span>
+          </div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <span class="nm serif">L'Agneau</span>
+            <span class="ds" data-i18n="d_agneau">Pain sésame · steak d'agneau · tomate cœur de bœuf · sauce à l'ail et herbes fraîches · roquette · cheddar</span>
+          </div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <span class="nm serif">Le Chèvre-Miel</span>
+            <span class="ds" data-i18n="d_chevremiel">Pain citron · poulet grillé · chèvre · miel · pomme verte · iceberg · tzatziki · curry · tomate cœur de bœuf</span>
+          </div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <span class="nm serif">Le Big B</span>
+            <span class="ds" data-i18n="d_bigb">Pain sésame · 300 g de bœuf · double cheddar · bacon · iceberg · tomate cœur de bœuf · sauce Bistrot</span>
+          </div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <span class="nm serif">Le Végétarien</span>
+            <span class="ds" data-i18n="d_vege">Pain sésame · galette végétale maison · guacamole · tomate cœur de bœuf · iceberg · oignons caramélisés · sauce Bistrot</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-more reveal" data-i18n-html="menu_more">
+      <b>Également à la carte :</b> Kid's Corner · Plat Bistrot · Entrées · Desserts · Boissons · Vins.<br>
+      Carte complète disponible sur place.
+    </div>
+    <p class="menu-note reveal" data-i18n="menu_note">* Noms et ingrédients identifiés depuis nos listings publics — à confirmer avec le restaurant. Prix non disponibles en ligne.</p>
+  </div>
+</section>
+
+<!-- ===================== BAND CTA ===================== -->
+<section class="band">
+  <div class="wrap band-inner reveal">
+    <h2 class="serif" data-i18n-html="band_h2">Envie d'un <em>burger d'exception</em>&nbsp;?</h2>
+    <p data-i18n="band_p">Un cadre urbain chaleureux, des saveurs authentiques, un service convivial. Venez nous voir à Howald ou appelez pour réserver.</p>
+    <div class="taglist">
+      <span class="tag" data-i18n="tag1">Produits frais</span>
+      <span class="tag" data-i18n="tag2">Pains artisanaux</span>
+      <span class="tag" data-i18n="tag3">Ambiance vintage</span>
+      <span class="tag" data-i18n="tag4">Privatisable</span>
+    </div>
+    <a href="tel:+35226483141" class="btn btn-gold" data-i18n="btn_book_table">Appeler pour réserver</a>
+  </div>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section class="gallery-sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Photos</p>
+      <h2 class="serif" data-i18n-html="gal_h2">L'<em>ambiance.</em></h2>
+      <p data-i18n="gal_intro">La salle, les tables, l'assiette — dans un décor vintage et chaleureux à Howald.</p>
+    </div>
+    <div class="gallery">
+      <img class="reveal" src="assets/food1.jpg" alt="Burger Le Noir — pain encre de seiche, Bistrot Burger Howald" />
+      <img class="reveal" src="assets/interior1.jpg" alt="Salle du restaurant Bistrot Burger, Howald" />
+      <img class="reveal" src="assets/interior2.jpg" alt="Chaises colorées et ambiance vintage, Bistrot Burger" />
+      <img class="reveal" src="assets/interior3.jpg" alt="Vue d'ensemble de la salle, Bistrot Burger Howald" />
+    </div>
+    <p class="gallery-note reveal" data-i18n="gal_note">Photos à titre indicatif — visuels haute résolution à fournir par le restaurant.</p>
+  </div>
+</section>
+
+<!-- ===================== VISIT ===================== -->
+<section class="visit-sec" id="visit">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Venir</p>
+      <h2 class="serif" data-i18n-html="visit_h2">Nous <em>trouver.</em></h2>
+      <p data-i18n="visit_intro">À Howald, à deux pas de Luxembourg-Ville. Appelez pour réserver.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="info reveal">
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_where">Adresse</div>
+          <div class="val">
+            7 Rue des Scillas
+            <span class="small">L-2529 Howald, Luxembourg</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_hours">Horaires</div>
+          <div class="val">
+            <table class="hours-tbl">
+              <tr><td data-i18n="day_mon">Lun</td><td data-i18n="h_mon">10:00–22:00 · Cuisine 11:30–14:30 et 18:00–21:00</td></tr>
+              <tr><td data-i18n="day_tue">Mar</td><td data-i18n="h_tue">10:00–18:00 · Cuisine 11:30–14:30</td></tr>
+              <tr><td data-i18n="day_wed">Mer</td><td data-i18n="h_wed">10:00–22:00 · Cuisine 11:30–14:30 et 18:00–21:00</td></tr>
+              <tr><td data-i18n="day_thu">Jeu</td><td data-i18n="h_thu">10:00–22:00 · Cuisine 11:30–14:30 et 18:00–21:00</td></tr>
+              <tr><td data-i18n="day_fri">Ven</td><td data-i18n="h_fri">10:00–22:00 · Cuisine 11:30–14:30 et 18:00–21:00</td></tr>
+              <tr><td data-i18n="day_sat">Sam</td><td data-i18n="h_sat">10:00–16:00 · Cuisine 11:30–14:30</td></tr>
+              <tr class="closed-day"><td data-i18n="day_sun">Dim</td><td data-i18n="h_sun">Fermé</td></tr>
+            </table>
+            <span class="small" data-i18n="hours_note">Horaires à confirmer avec le restaurant.</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_phone">Téléphone</div>
+          <div class="val"><a href="tel:+35226483141">+352 26 48 31 41</a></div>
+        </div>
+        <div class="info-row" style="border-bottom:0">
+          <div class="k" data-i18n="lbl_contact">Contact</div>
+          <div class="val">
+            <a href="mailto:info@bistroburger.lu">info@bistroburger.lu</a>
+            <span class="small">
+              <a href="https://www.facebook.com/bistrotburgerlux/" target="_blank" rel="noopener">Facebook</a>
+            </span>
+          </div>
+        </div>
+        <a href="tel:+35226483141" class="btn btn-primary" data-i18n="btn_book_table">Appeler pour réserver</a>
+      </div>
+      <div class="map-wrap reveal">
+        <iframe
+          title="Plan vers Bistrot Burger"
+          loading="lazy"
+          src="https://www.google.com/maps?q=Bistrot+Burger+7+Rue+des+Scillas+Howald+Luxembourg&output=embed"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap foot">
+    <div class="fb">
+      <span class="wm serif">Bistrot Burger</span>
+      <small data-i18n="foot_addr">7 Rue des Scillas · L-2529 Howald · +352 26 48 31 41</small>
+    </div>
+    <p>
+      &copy; Bistrot Burger &middot; <span data-i18n="foot_copy">Gourmet burgers à Howald</span><br>
+      <a href="https://www.facebook.com/bistrotburgerlux/" target="_blank" rel="noopener">Facebook</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+// ---- Reveal on scroll ----
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: .12 });
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i % 7 * 60) + 'ms';
+  io.observe(el);
+});
+document.querySelectorAll('.nav-links a').forEach(a =>
+  a.addEventListener('click', () => document.body.classList.remove('mobile-open'))
+);
+
+// ---- i18n: FR default (captured from HTML) · DE · EN ----
+const I18N = {
+  fr: {},
+  de: {
+    brand_tag: "Gourmet Burger · Howald",
+    nav_story: "Das Bistrot",
+    nav_menu: "Speisekarte",
+    nav_visit: "Anfahrt",
+    btn_book: "Anrufen",
+    btn_book_table: "Anrufen zum Reservieren",
+    btn_seemenu: "Zur Karte",
+    hero_eyebrow: "Howald · Luxemburg",
+    hero_h1: "Ein Burger <em>im Bistrot.</em>",
+    hero_lead: "In einem warmen, urbanen Rahmen: Qualitätsburger aus frischen Zutaten und sorgfältig ausgewählten Brötchen, die perfekt zum jeweiligen Gericht passen.",
+    hero_addr: "7 Rue des Scillas, L-2529 Howald",
+    story_eyebrow: "Das Bistrot",
+    story_h2: "Ein echtes <em>Stadtteilbistro.</em>",
+    story_body: "In einem warmen, urbanen Rahmen, in dem Vintage-Möbel und moderne Grafiken dieselbe Atmosphäre teilen, kreiert der Küchenchef des Bistrot Burger qualitativ hochwertige Burger mit einem originellen Touch — aus frischen Zutaten und sorgfältig ausgewählten Brötchen, die perfekt zum jeweiligen Gericht passen. Mehr als nur ein Restaurant ist es ein echtes Stadtteilbistro: Die Türen öffnen um 10:00 Uhr für den Morgenkaffee und schließen erst um 22:00 Uhr nach dem Abendessen. Die Räumlichkeiten können auch für private Veranstaltungen gebucht werden.",
+    p1_h: "Frische Zutaten, besondere Brötchen",
+    p1_p: "Jeder Burger wird mit sorgfältig ausgewählten Zutaten und einem Brötchen zusammengestellt, das perfekt zum Gericht passt.",
+    p2_h: "Schon ab 10:00 Uhr geöffnet",
+    p2_p: "Von Morgenkaffee bis Abendessen — das Bistrot begrüßt Sie den ganzen Tag, Montag bis Samstag.",
+    p3_h: "Räumlichkeiten für Veranstaltungen",
+    p3_p: "Die Räumlichkeiten können für private Feiern, Geburtstage oder Firmenevents exklusiv gebucht werden.",
+    mcat_burgers: "Die Burger",
+    menu_h2: "Die <em>Burger</em>",
+    menu_intro: "Eine Auswahl unserer charaktervollen Burger — frische Zutaten, originelle Rezepte. Preise bitte beim Restaurant erfragen.",
+    d_bistrot: "Sesambrötchen · Rind · Eisbergsalat · Cheddar · karamellisierte Zwiebeln · Pickles · Ochsenherztomaten · Bistrot-Burger-Sauce",
+    d_poulet: "Sesambrötchen · hausgebratenes Hähnchen · Eisbergsalat · Cheddar · karamellisierte Zwiebeln · Pickles · Ochsenherztomaten · Bistrot-Sauce",
+    d_italiano: "Sesambrötchen · Rind · Fontina · Parmaschinken · Rucola · scharfe Tomatensauce · Ochsenherztomaten",
+    d_noir: "Tintenfisch-Brötchen · gegrillter Thunfisch · Guacamole · Rucola · Zitrone · Wakamé · Ochsenherztomaten",
+    d_agneau: "Sesambrötchen · Lammsteak · Ochsenherztomaten · Knoblauch- und Kräutersauce · Rucola · Cheddar",
+    d_chevremiel: "Zitronenbrötchen · gegrilltes Hähnchen · Ziegenkäse · Honig · grüner Apfel · Eisbergsalat · Tzatziki · Curry · Ochsenherztomaten",
+    d_bigb: "Sesambrötchen · 300 g Rindfleisch · doppelter Cheddar · Speck · Eisbergsalat · Ochsenherztomaten · Bistrot-Sauce",
+    d_vege: "Sesambrötchen · hausgemachtes Pflanzensteak · Guacamole · Ochsenherztomaten · Eisbergsalat · karamellisierte Zwiebeln · Bistrot-Sauce",
+    menu_more: "<b>Ebenfalls auf der Karte:</b> Kid's Corner · Plat Bistrot · Vorspeisen · Desserts · Getränke · Weine.<br>Vollständige Karte vor Ort erhältlich.",
+    menu_note: "* Zutaten aus öffentlichen Quellen ermittelt — beim Restaurant bestätigen. Preise online nicht verfügbar.",
+    band_h2: "Lust auf einen <em>besonderen Burger</em> ?",
+    band_p: "Warmes urbanes Ambiente, authentische Aromen, herzlicher Service. Besuchen Sie uns in Howald oder rufen Sie an.",
+    tag1: "Frische Zutaten",
+    tag2: "Handverlesene Brötchen",
+    tag3: "Vintage-Ambiente",
+    tag4: "Für Events buchbar",
+    gal_h2: "Die <em>Atmosphäre.</em>",
+    gal_intro: "Der Saal, die Tische, der Teller — in einem warmen, urbanen Vintage-Rahmen in Howald.",
+    gal_note: "Fotos zu Illustrationszwecken — hochauflösende Bilder vom Restaurant anzufordern.",
+    visit_h2: "So <em>finden Sie uns.</em>",
+    visit_intro: "In Howald, nahe Luxemburg-Stadt. Rufen Sie uns an, um zu reservieren.",
+    lbl_where: "Adresse",
+    lbl_hours: "Öffnungszeiten",
+    lbl_phone: "Telefon",
+    lbl_contact: "Kontakt",
+    day_mon: "Mo", day_tue: "Di", day_wed: "Mi", day_thu: "Do", day_fri: "Fr", day_sat: "Sa", day_sun: "So",
+    h_mon: "10:00–22:00 · Küche 11:30–14:30 und 18:00–21:00",
+    h_tue: "10:00–18:00 · Küche 11:30–14:30",
+    h_wed: "10:00–22:00 · Küche 11:30–14:30 und 18:00–21:00",
+    h_thu: "10:00–22:00 · Küche 11:30–14:30 und 18:00–21:00",
+    h_fri: "10:00–22:00 · Küche 11:30–14:30 und 18:00–21:00",
+    h_sat: "10:00–16:00 · Küche 11:30–14:30",
+    h_sun: "Geschlossen",
+    hours_note: "Öffnungszeiten bitte beim Restaurant bestätigen.",
+    foot_addr: "7 Rue des Scillas · L-2529 Howald · +352 26 48 31 41",
+    foot_copy: "Gourmet-Burger in Howald"
+  },
+  en: {
+    brand_tag: "Gourmet Burgers · Howald",
+    nav_story: "The Bistro",
+    nav_menu: "Menu",
+    nav_visit: "Visit",
+    btn_book: "Call us",
+    btn_book_table: "Call to reserve",
+    btn_seemenu: "See the menu",
+    hero_eyebrow: "Howald · Luxembourg",
+    hero_h1: "A Burger <em>in a Bistro.</em>",
+    hero_lead: "In a warm, urban setting: quality burgers built from fresh produce and hand-picked buns chosen for their perfect match with each dish.",
+    hero_addr: "7 Rue des Scillas, L-2529 Howald",
+    story_eyebrow: "The Bistro",
+    story_h2: "A neighbourhood bistro, <em>through and through.</em>",
+    story_body: "In a warm, urban setting where vintage furniture and modern visuals share the same atmosphere, the Bistrot Burger chef crafts quality burgers with a touch of originality — using fresh produce and hand-picked buns chosen for their perfect match with each dish. As much a neighbourhood bistro as a restaurant, the doors open at 10:00 for a morning coffee and stay open until 22:00 for a late dinner. The space can also be privatised for events.",
+    p1_h: "Fresh produce, exceptional buns",
+    p1_p: "Every burger is assembled with carefully sourced ingredients and a bun chosen to complement each dish perfectly.",
+    p2_h: "Open from 10:00",
+    p2_p: "From morning coffee to late dinner — the bistro welcomes you all day, Monday to Saturday.",
+    p3_h: "Private hire available",
+    p3_p: "The space can be privatised for your receptions, birthdays or corporate events.",
+    mcat_burgers: "The Burgers",
+    menu_h2: "The <em>Burgers</em>",
+    menu_intro: "A selection of our character-driven burgers — fresh produce, original recipes. Prices to be confirmed with the restaurant.",
+    d_bistrot: "Sesame bun · beef patty · iceberg · cheddar · caramelised onions · pickles · ox-heart tomato · Bistrot Burger sauce",
+    d_poulet: "Sesame bun · house-breaded chicken · iceberg · cheddar · caramelised onions · pickles · ox-heart tomato · Bistrot sauce",
+    d_italiano: "Sesame bun · beef · fontina · Parma ham · arugula · spicy tomato sauce · ox-heart tomato",
+    d_noir: "Squid-ink bun · grilled tuna · guacamole · arugula · lemon · wakamé · ox-heart tomato",
+    d_agneau: "Sesame bun · lamb patty · ox-heart tomato · garlic and fresh herb sauce · arugula · cheddar",
+    d_chevremiel: "Lemon bun · grilled chicken · goat cheese · honey · green apple · iceberg · tzatziki · curry · ox-heart tomato",
+    d_bigb: "Sesame bun · 300 g beef patty · double cheddar · bacon · iceberg · ox-heart tomato · Bistrot sauce",
+    d_vege: "Sesame bun · house plant-based patty · guacamole · ox-heart tomato · iceberg · caramelised onions · Bistrot sauce",
+    menu_more: "<b>Also on the menu:</b> Kid's Corner · Bistro Plate · Starters · Desserts · Drinks · Wines.<br>Full menu available in-house.",
+    menu_note: "* Ingredients identified from public listings — confirm with the restaurant. Prices not available online.",
+    band_h2: "Craving an <em>exceptional burger</em>?",
+    band_p: "A warm urban setting, authentic flavours, friendly service. Come see us in Howald or call to reserve.",
+    tag1: "Fresh produce",
+    tag2: "Artisan buns",
+    tag3: "Vintage setting",
+    tag4: "Available for events",
+    gal_h2: "The <em>atmosphere.</em>",
+    gal_intro: "The room, the tables, the plate — in a warm, urban vintage setting in Howald.",
+    gal_note: "Illustrative photos — high-resolution images to be provided by the restaurant.",
+    visit_h2: "Find <em>us.</em>",
+    visit_intro: "In Howald, just outside Luxembourg City. Call to reserve.",
+    lbl_where: "Address",
+    lbl_hours: "Hours",
+    lbl_phone: "Phone",
+    lbl_contact: "Contact",
+    day_mon: "Mon", day_tue: "Tue", day_wed: "Wed", day_thu: "Thu", day_fri: "Fri", day_sat: "Sat", day_sun: "Sun",
+    h_mon: "10:00–22:00 · Kitchen 11:30–14:30 and 18:00–21:00",
+    h_tue: "10:00–18:00 · Kitchen 11:30–14:30",
+    h_wed: "10:00–22:00 · Kitchen 11:30–14:30 and 18:00–21:00",
+    h_thu: "10:00–22:00 · Kitchen 11:30–14:30 and 18:00–21:00",
+    h_fri: "10:00–22:00 · Kitchen 11:30–14:30 and 18:00–21:00",
+    h_sat: "10:00–16:00 · Kitchen 11:30–14:30",
+    h_sun: "Closed",
+    hours_note: "Hours to be confirmed with the restaurant.",
+    foot_addr: "7 Rue des Scillas · L-2529 Howald · +352 26 48 31 41",
+    foot_copy: "Gourmet burgers in Howald"
+  }
+};
+
+// Capture FR defaults from HTML
+const FR = {};
+document.querySelectorAll('[data-i18n]').forEach(el => {
+  FR[el.getAttribute('data-i18n')] = el.textContent;
+});
+document.querySelectorAll('[data-i18n-html]').forEach(el => {
+  FR['__h_' + el.getAttribute('data-i18n-html')] = el.innerHTML;
+});
+
+function setLang(l) {
+  const d = (l === 'fr') ? null : I18N[l];
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    const v = d ? d[k] : FR[k];
+    if (v != null) el.textContent = v;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const k = el.getAttribute('data-i18n-html');
+    const v = d ? d[k] : FR['__h_' + k];
+    if (v != null) el.innerHTML = v;
+  });
+  document.querySelectorAll('.lang-switch button').forEach(b =>
+    b.classList.toggle('active', b.dataset.lang === l)
+  );
+  try { localStorage.setItem('bistrot-burger_lang', l); } catch (e) {}
+}
+
+document.querySelectorAll('.lang-switch button').forEach(b =>
+  b.addEventListener('click', () => setLang(b.dataset.lang))
+);
+
+let saved = 'fr';
+try { saved = localStorage.getItem('bistrot-burger_lang') || 'fr'; } catch (e) {}
+if (saved !== 'fr') setLang(saved);
+</script>
+</body>
+</html>

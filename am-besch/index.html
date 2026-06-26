@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<!--
+  AM BESCH — demo site (sales demo) — ON-BRAND, TRILINGUAL (FR default · DE · EN).
+  Forest-themed brasserie, City Concorde Level -1, Bertrange, Luxembourg.
+
+  NOTICE: RestaurantGuru marks this venue "Permanently closed" as of Jun 2026.
+  City Concorde's own directory (concorde.lu/en/restaurants/) does not list Am Besch as of Jun 2026.
+  CALL +352 26 45 84 52 (Ms. Cidalia Alves) to verify status before any outreach.
+
+  Sources:
+  - Story (FR/DE/EN): restaurantguru.com descriptions, menu.lu, public review corpus.
+  - Photos: RestaurantGuru (carry RG watermark — demo use only; owner to supply clean press photos).
+  - Address + phone: editus.lu, menu.lu.
+  - Hours: RestaurantGuru + menu.lu (sources diverge on split vs. continuous service).
+  - Menu items: RestaurantGuru, menu.lu, review corpus.
+  - Brand colours: sampled from interior.jpg and food2.jpg — confirm with owner.
+  - Tagline: PROPOSED — confirm with owner.
+
+  MENU / PRICES / HOURS TO BE CONFIRMED WITH OWNER.
+  Only Penne Franky (EUR 24) has a confirmed public price.
+-->
+<html lang="fr">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Am Besch — Brasserie forestiere · Bertrange, Luxembourg</title>
+<meta name="description" content="Am Besch — brasserie au decor forestier au City Concorde de Bertrange. Cuisine luxembourgeoise, grillades au charbon et pates fraiches. 80 Route de Longwy, L-8060 Bertrange." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#2B2824; --paper:#F5F2EC; --cream:#EEE9DF; --cream2:#E5DDD0;
+    --forest:#2D5A27; --forest-deep:#1E3E1B; --gold:#C8963A; --gold-deep:#A07828; --wood:#8B6B45;
+    --line:#DDD8CE; --muted:#7A6E65; --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:'Lato',system-ui,sans-serif;
+    font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:'Playfair Display',Georgia,serif}
+  .eyebrow{font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-deep);font-weight:700}
+
+  .btn{display:inline-flex;align-items:center;gap:.5em;font-family:'Lato',sans-serif;font-weight:700;
+    font-size:.95rem;letter-spacing:.04em;text-transform:uppercase;padding:.78em 1.7em;border-radius:2px;
+    border:1.5px solid transparent;transition:.22s;cursor:pointer;white-space:nowrap}
+  .btn-forest{background:var(--forest);color:#fff}
+  .btn-forest:hover{background:var(--forest-deep);transform:translateY(-2px);box-shadow:0 14px 28px -12px rgba(45,90,39,.55)}
+  .btn-ghost{border-color:rgba(255,255,255,.65);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.15);border-color:#fff}
+  .btn-white{background:#fff;color:var(--forest)}
+  .btn-white:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(0,0,0,.4)}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:100;background:rgba(245,242,236,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:80px;gap:14px}
+  .brand{display:flex;flex-direction:column;line-height:1}
+  .brand .wm{font-family:'Playfair Display',serif;font-weight:700;font-size:1.52rem;letter-spacing:.01em;color:var(--forest)}
+  .brand small{font-family:'Lato';font-weight:700;font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin-top:5px}
+  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links a{font-weight:700;font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:.2s}
+  .nav-links a:hover{color:var(--forest)}
+  .nav-cta{display:flex;gap:14px;align-items:center}
+  .lang-switch{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden;flex:none}
+  .lang-switch button{font-family:'Lato',sans-serif;font-weight:700;font-size:.76rem;letter-spacing:.04em;
+    padding:.46em .68em;background:none;border:0;cursor:pointer;color:var(--muted);transition:.18s}
+  .lang-switch button.active{background:var(--forest);color:#fff}
+  .lang-switch button:not(.active):hover{color:var(--forest)}
+  .burger-ico{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer}
+  .burger-ico span{width:26px;height:2.5px;background:var(--ink);border-radius:2px}
+
+  /* HERO */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;
+    background:linear-gradient(180deg,rgba(18,32,16,.12) 0%,rgba(18,32,16,.84) 100%),
+    url('assets/interior.jpg') center/cover no-repeat;color:#fff}
+  .hero .wrap{padding-top:90px;padding-bottom:72px;width:100%}
+  .hero .eyebrow{color:var(--gold);letter-spacing:.32em}
+  .hero h1{font-family:'Playfair Display',serif;font-weight:800;
+    font-size:clamp(2.7rem,6.4vw,5.2rem);line-height:1.04;letter-spacing:-.01em;margin:.22em 0 .3em}
+  .hero h1 em{font-style:italic;color:var(--gold)}
+  .hero p.lead{font-size:clamp(1.03rem,1.8vw,1.25rem);color:#e8e2d8;max-width:52ch;
+    margin-bottom:1.8em;font-weight:300;line-height:1.75}
+  .hero-cta{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:24px}
+  .addr{display:flex;align-items:center;gap:10px;color:#cdc5b8;font-size:.92rem;font-weight:400}
+  .addr .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);
+    box-shadow:0 0 0 4px rgba(200,150,58,.28);flex:none}
+
+  /* SECTIONS */
+  section{padding:clamp(56px,7.5vw,100px) 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:46px;flex-wrap:wrap}
+  .sec-head h2{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2rem,4.8vw,3.4rem)}
+  .sec-head h2 em{font-style:italic;color:var(--forest)}
+  .sec-head p{color:var(--muted);max-width:40ch;font-size:.97rem;font-weight:300}
+
+  /* STORY */
+  .story-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:54px;align-items:center}
+  .story-photo{width:100%;border-radius:4px;aspect-ratio:4/4.6;object-fit:cover;
+    box-shadow:0 30px 64px -32px rgba(30,62,27,.45)}
+  .story h2{font-family:'Playfair Display',serif;font-weight:800;
+    font-size:clamp(1.9rem,4.2vw,3rem);margin:.12em 0 .55em;line-height:1.07}
+  .story h2 em{font-style:italic;color:var(--forest)}
+  .story p.body{color:#5a5348;font-size:1.05rem;margin-bottom:1.5em;font-weight:300;line-height:1.77}
+  .pillars{display:grid;gap:16px;margin-top:8px}
+  .pillar{display:flex;gap:16px;align-items:flex-start}
+  .pillar .ico{font-family:'Playfair Display',serif;font-weight:600;color:#fff;background:var(--forest);
+    width:46px;height:46px;display:grid;place-items:center;border-radius:50%;flex:none;
+    font-size:.8rem;letter-spacing:.06em}
+  .pillar h3{font-family:'Playfair Display',serif;font-weight:700;font-size:1.13rem;margin-bottom:3px;color:var(--ink)}
+  .pillar p{color:var(--muted);font-size:.94rem;font-weight:300}
+
+  /* MENU */
+  .menu{background:var(--cream)}
+  .mcat{margin-bottom:44px}
+  .mcat:last-child{margin-bottom:0}
+  .mcat-head{display:flex;align-items:baseline;gap:16px;margin-bottom:18px}
+  .mcat-head h3{font-family:'Playfair Display',serif;font-weight:700;font-style:italic;font-size:1.5rem;color:var(--forest)}
+  .mcat-head .ln{flex:1;height:1px;background:var(--line)}
+  .mitems{display:grid;grid-template-columns:1fr 1fr;gap:4px 44px}
+  .mitem{display:flex;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+  .mitem .ml{flex:1}
+  .mitem .nm{font-family:'Playfair Display',serif;font-weight:600;font-size:1.1rem}
+  .mitem .ds{color:var(--muted);font-size:.87rem;margin-top:2px;font-weight:300}
+  .mitem .mp{font-family:'Lato',sans-serif;font-weight:700;font-size:1rem;white-space:nowrap;color:var(--gold-deep)}
+  .mitem .mp.nc{color:var(--muted);font-weight:300;font-size:.85rem;font-style:italic}
+  .menu-note{margin-top:28px;color:var(--muted);font-size:.9rem;font-style:italic;
+    border-top:1px solid var(--line);padding-top:18px;line-height:1.65}
+  .menu-note b{color:var(--ink);font-style:normal}
+  @media(max-width:760px){.mitems{grid-template-columns:1fr;gap:0}}
+
+  /* BAND */
+  .band{background:linear-gradient(150deg,var(--forest),var(--forest-deep));color:#fff;text-align:center}
+  .band .inner{max-width:760px;margin:0 auto}
+  .band h2{font-family:'Playfair Display',serif;font-weight:800;
+    font-size:clamp(2rem,5vw,3.6rem);margin-bottom:.34em;line-height:1.1}
+  .band h2 em{font-style:italic;color:var(--gold)}
+  .band p{color:#cddec9;font-size:1.07rem;max-width:50ch;margin:0 auto 1.65em;font-weight:300;line-height:1.7}
+  .taglist{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:30px}
+  .tag{font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+    padding:.55em 1em;border:1.5px solid rgba(255,255,255,.35);border-radius:100px}
+
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .gallery img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;border-radius:4px;border:1px solid var(--line)}
+
+  /* VISIT */
+  .visit{background:var(--cream)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:stretch}
+  .info{display:flex;flex-direction:column;gap:18px}
+  .info-row{display:flex;gap:16px;align-items:flex-start;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .info-row .k{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold-deep);font-weight:700;min-width:94px;padding-top:5px}
+  .info-row .val{font-size:1.01rem}
+  .info-row .val a{color:var(--forest);font-weight:700}
+  .info-row .val .small{color:var(--muted);font-size:.87rem;display:block;margin-top:3px;font-weight:300}
+  .map{border-radius:4px;overflow:hidden;border:1px solid var(--line);min-height:360px}
+  .map iframe{width:100%;height:100%;min-height:360px;border:0}
+
+  /* FOOTER */
+  footer{background:#162914;color:#8fa48c;padding:50px 0 38px}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .foot .fb .wm{font-family:'Playfair Display',serif;color:#fff;font-size:1.28rem;font-weight:700}
+  .foot .fb small{display:block;font-size:.82rem;color:#8fa48c;margin-top:4px;font-weight:300}
+  .foot p{font-size:.88rem;text-align:right;line-height:1.65}
+  .foot a{color:var(--gold)}
+
+  /* REVEAL */
+  .js .reveal{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .js .reveal.in{opacity:1;transform:none}
+
+  /* RESPONSIVE */
+  @media(max-width:880px){
+    .nav-links{display:none}
+    .nav-cta .btn-ghost{display:none}
+    .burger-ico{display:flex}
+    .story-grid{grid-template-columns:1fr;gap:30px}
+    .story-photo{aspect-ratio:16/11;order:-1}
+    .gallery{grid-template-columns:1fr 1fr}
+    .visit-grid{grid-template-columns:1fr}
+    .mobile-open .nav-links{
+      display:flex;position:absolute;top:80px;left:0;right:0;flex-direction:column;
+      gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:8px 28px 20px}
+    .mobile-open .nav-links a{padding:14px 0;border-bottom:1px solid var(--line);color:var(--ink)}
+  }
+  @media(max-width:480px){
+    .nav-cta .btn-forest{display:none}
+    .foot{flex-direction:column;text-align:center}
+    .foot p{text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="top">
+  <div class="wrap nav">
+    <a href="#top" class="brand" aria-label="Am Besch">
+      <span class="wm serif">Am B&#235;sch</span>
+      <small data-i18n="brand_tag">Brasserie foresti&#232;re &middot; Bertrange</small>
+    </a>
+    <nav class="nav-links">
+      <a href="#story" data-i18n="nav_story">La Maison</a>
+      <a href="#menu" data-i18n="nav_menu">La Carte</a>
+      <a href="#visit" data-i18n="nav_visit">Nous Trouver</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang-switch" role="group" aria-label="Langue">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="tel:+35226458452" class="btn btn-forest" data-i18n="btn_book">R&#233;server</a>
+      <button class="burger-ico" aria-label="Menu" onclick="document.body.classList.toggle('mobile-open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow reveal" data-i18n="hero_eyebrow">Luxembourg &middot; City Concorde, Bertrange</p>
+    <h1 class="reveal" data-i18n-html="hero_h1">La for&#234;t, <em>au c&#339;ur de la ville.</em></h1>
+    <p class="lead reveal" data-i18n="hero_lead">Brasserie au d&#233;cor forestier, au c&#339;ur du City Concorde de Bertrange. Sp&#233;cialit&#233;s luxembourgeoises, viandes grill&#233;es au charbon et p&#226;tes fra&#238;ches &#8212; dans un cadre nature et chaleureux.</p>
+    <div class="hero-cta reveal">
+      <a href="tel:+35226458452" class="btn btn-forest" data-i18n="btn_book_table">R&#233;server une table</a>
+      <a href="#menu" class="btn btn-ghost" data-i18n="btn_seemenu">Voir la carte</a>
+    </div>
+    <p class="addr reveal"><span class="dot"></span>&nbsp;<span data-i18n="hero_addr">80 Route de Longwy, L-8060 Bertrange &middot; City Concorde</span></p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <img class="story-photo reveal" src="assets/food2.jpg"
+         alt="Salle du restaurant Am Besch &#8212; muraux forestiers, table dress&#233;e et ambiance chaleureuse" />
+    <div>
+      <p class="eyebrow reveal" data-i18n="story_eyebrow">La Maison</p>
+      <h2 class="serif reveal" data-i18n-html="story_h2">Une brasserie au c&#339;ur de la <em>for&#234;t.</em></h2>
+      <p class="body reveal" data-i18n="story_body">Am B&#235;sch &#8212; &#171;&#160;dans la for&#234;t&#160;&#187; en luxembourgeois &#8212; est une brasserie au d&#233;cor forestier situ&#233;e au niveau inf&#233;rieur du centre lifestyle City Concorde, &#224; Bertrange. D&#232;s l&#8217;entr&#233;e, de grands panoramas de for&#234;t, des surfaces en bois chaud et une v&#233;g&#233;tation abondante font oublier l&#8217;agitation du centre commercial. En cuisine, sp&#233;cialit&#233;s luxembourgeoises, viandes grill&#233;es au four &#224; charbon, p&#226;tes fra&#238;ches et poissons de saison composent une carte g&#233;n&#233;reuse et accueillante.</p>
+      <div class="pillars">
+        <div class="pillar reveal">
+          <div class="ico serif">I</div>
+          <div>
+            <h3 data-i18n="p1_h">Cuisine g&#233;n&#233;reuse</h3>
+            <p data-i18n="p1_p">Sp&#233;cialit&#233;s luxembourgeoises, grillades au charbon et p&#226;tes fra&#238;ches &#8212; une carte ample pour toutes les envies.</p>
+          </div>
+        </div>
+        <div class="pillar reveal">
+          <div class="ico serif">II</div>
+          <div>
+            <h3 data-i18n="p2_h">Un d&#233;cor for&#234;t unique</h3>
+            <p data-i18n="p2_p">Panoramas forestiers, bois chaud et verdure &#8212; une parent&#232;se nature en plein c&#339;ur de la ville.</p>
+          </div>
+        </div>
+        <div class="pillar reveal">
+          <div class="ico serif">III</div>
+          <div>
+            <h3 data-i18n="p3_h">Dans le City Concorde</h3>
+            <p data-i18n="p3_p">Niveau -1 du centre de Bertrange &#8212; id&#233;al pour un d&#233;jeuner ou un d&#238;ner apr&#232;s les courses.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="menu_h2">La <em>carte</em></h2>
+      <p data-i18n="menu_intro">Entr&#233;es, plats luxembourgeois, grillades, pasta et desserts. Une s&#233;lection &#8212; la carte compl&#232;te vous attend &#224; table.</p>
+    </div>
+
+    <!-- Entrees -->
+    <div class="mcat reveal">
+      <div class="mcat-head">
+        <h3 class="serif">Entr&#233;es</h3>
+        <span class="ln"></span>
+      </div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Filet am&#233;ricain</div>
+            <div class="ds" data-i18n="d_fam">Steak tartare, cornichons, c&#226;pres</div>
+          </div>
+          <div class="mp nc">&#8212;</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Tartare de saumon</div>
+            <div class="ds" data-i18n="d_tart">Mangue fra&#238;che, perles de caviar</div>
+          </div>
+          <div class="mp nc">&#8212;</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Croustade de volaille</div>
+            <div class="ds" data-i18n="d_croustade">Sp&#233;cialit&#233; luxembourgeoise, en croute</div>
+          </div>
+          <div class="mp nc">&#8212;</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Duo de jambon &amp; Tr&#228;ipen</div>
+            <div class="ds" data-i18n="d_jambon">Charcuterie luxembourgeoise maison</div>
+          </div>
+          <div class="mp nc">&#8212;</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plats -->
+    <div class="mcat reveal">
+      <div class="mcat-head">
+        <h3 class="serif">Plats</h3>
+        <span class="ln"></span>
+      </div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Penne Franky</div>
+            <div class="ds" data-i18n="d_penne">Penne &#224; la cr&#232;me, sp&#233;cialit&#233; de la maison</div>
+          </div>
+          <div class="mp">&#8364;24</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Spaghetti alle vongole</div>
+            <div class="ds" data-i18n="d_vongole">Spaghetti aux palourdes fra&#238;ches</div>
+          </div>
+          <div class="mp nc">&#8212;</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Entrecote au four &#224; charbon</div>
+            <div class="ds" data-i18n="d_entrecote">Sauce poivre ou champignons, l&#233;gumes de saison</div>
+          </div>
+          <div class="mp nc">&#8212;</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Bar grille, ratatouille</div>
+            <div class="ds" data-i18n="d_bar">Pur&#233;e maison, poisson du jour</div>
+          </div>
+          <div class="mp nc">&#8212;</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Letz Burger</div>
+            <div class="ds" data-i18n="d_letzburg">Sur galette de pommes de terre &#8212; sp&#233;cialit&#233; luxembourgeoise</div>
+          </div>
+          <div class="mp nc">&#8212;</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Spare ribs laqu&#233;s</div>
+            <div class="ds" data-i18n="d_ribs">Marinade au miel, four &#224; charbon</div>
+          </div>
+          <div class="mp nc">&#8212;</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desserts -->
+    <div class="mcat reveal" style="margin-bottom:0">
+      <div class="mcat-head">
+        <h3 class="serif">Desserts</h3>
+        <span class="ln"></span>
+      </div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Panna cotta aux fruits de saison</div>
+            <div class="ds" data-i18n="d_pannacotta">Coulis de fruits rouges</div>
+          </div>
+          <div class="mp nc">&#8212;</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Caf&#233; gourmand</div>
+            <div class="ds" data-i18n="d_cafe">Espresso, sp&#233;culoos &amp; douceur du jour</div>
+          </div>
+          <div class="mp nc">&#8212;</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="menu-note reveal" data-i18n-html="menu_note"><b>Une s&#233;lection.</b> Seul le prix de <em>Penne Franky</em> (&#8364;24) est confirm&#233; &#8212; tous les autres prix et la carte compl&#232;te sont &#224; confirmer avec le restaurant.</p>
+  </div>
+</section>
+
+<!-- BAND -->
+<section class="band">
+  <div class="wrap inner reveal">
+    <h2 class="serif" data-i18n-html="band_h2">La <em>for&#234;t</em>, au c&#339;ur de la ville.</h2>
+    <p data-i18n="band_p">Un d&#233;cor forestier unique, une cuisine g&#233;n&#233;reuse, une adresse insolite au c&#339;ur du City Concorde. R&#233;servez votre table.</p>
+    <div class="taglist">
+      <span class="tag" data-i18n="tag1">Cuisine luxembourgeoise</span>
+      <span class="tag" data-i18n="tag2">Grill au charbon</span>
+      <span class="tag" data-i18n="tag3">D&#233;cor forestier</span>
+    </div>
+    <a href="tel:+35226458452" class="btn btn-white" data-i18n="btn_book_table">R&#233;server une table</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section style="padding-bottom:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="gal_h2">&#192; <em>table.</em></h2>
+      <p data-i18n="gal_intro">Quelques images de la cuisine et de la salle.</p>
+    </div>
+    <div class="gallery">
+      <img class="reveal" src="assets/food1.jpg" alt="Assiettes du restaurant Am Besch &#8212; viandes et desserts" />
+      <img class="reveal" src="assets/food3.jpg" alt="Burger, plateau de fruits de mer et grillades Am Besch" />
+      <img class="reveal" src="assets/food4.jpg" alt="Bar grille, cappuccino et plats de la carte Am Besch" />
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="visit_h2">Nous <em>trouver.</em></h2>
+      <p data-i18n="visit_intro">Au City Concorde, niveau -1 &#8212; route de Longwy, Bertrange. R&#233;servez par t&#233;l&#233;phone.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="info reveal">
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_where">Adresse</div>
+          <div class="val">80 Route de Longwy
+            <span class="small" data-i18n="where_small">L-8060 Bertrange &middot; City Concorde, Niveau -1</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_hours">Horaires</div>
+          <div class="val">
+            <span data-i18n="hours_val">Lun&#8211;Sam &middot; 11h30&#8211;14h30 &amp; 18h00&#8211;21h00</span>
+            <span class="small" data-i18n-html="hours_small">Dim&#160;: ferm&#233; &#8212; <em>&#224; confirmer avec le restaurant</em></span>
+          </div>
+        </div>
+        <div class="info-row" style="border-bottom:0">
+          <div class="k" data-i18n="lbl_book">R&#233;server</div>
+          <div class="val">
+            <a href="tel:+35226458452">+352 26 45 84 52</a>
+            <span class="small" data-i18n="book_small">R&#233;servation recommand&#233;e</span>
+          </div>
+        </div>
+        <a href="tel:+35226458452" class="btn btn-forest"
+           style="align-self:flex-start;margin-top:6px" data-i18n="btn_book_table">R&#233;server une table</a>
+      </div>
+      <div class="map reveal">
+        <iframe title="Plan vers Am Besch, City Concorde Bertrange" loading="lazy"
+          src="https://www.google.com/maps?q=Am+B%C3%ABsch+80+Route+de+Longwy+8060+Bertrange+Luxembourg&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot">
+    <div class="fb">
+      <span class="wm serif">Am B&#235;sch</span>
+      <small>80 Route de Longwy &middot; L-8060 Bertrange &middot; +352 26 45 84 52</small>
+    </div>
+    <p>&#169; Am B&#235;sch &middot; <span data-i18n="foot_since">brasserie foresti&#232;re &middot; Bertrange</span><br>
+      <a href="https://www.tripadvisor.com/Restaurant_Review-g1754955-d3998552-Reviews-Am_Besch-Bertrange.html"
+         target="_blank" rel="noopener">TripAdvisor</a> &middot;
+      <a href="https://www.editus.lu/en/am-besch-brasserie-bertrange-1513035"
+         target="_blank" rel="noopener">Editus</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el, i) {
+    el.style.transitionDelay = (i % 6 * 70) + 'ms';
+    io.observe(el);
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.addEventListener('click', function() { document.body.classList.remove('mobile-open'); });
+  });
+
+  // ---- i18n: FR default in HTML · DE + EN in dict ----
+  var I18N = {
+    fr: {},
+    de: {
+      brand_tag: "Walddekor-Brasserie · Bertrange",
+      nav_story: "Das Haus", nav_menu: "Speisekarte", nav_visit: "Finden",
+      btn_book: "Reservieren", btn_book_table: "Tisch reservieren", btn_seemenu: "Zur Karte",
+      hero_eyebrow: "Luxemburg · City Concorde, Bertrange",
+      hero_h1: "Der Wald, <em>mitten im Herz der Stadt.</em>",
+      hero_lead: "Eine Brasserie mit Walddekor im City Concorde in Bertrange. Luxemburgische Klassiker, Holzkohlegrill und hausgemachte Pasta — in einem naturnahen, warmen Ambiente.",
+      hero_addr: "80 Route de Longwy, L-8060 Bertrange · City Concorde",
+      story_eyebrow: "Das Haus",
+      story_h2: "Eine Brasserie <em>mitten im Wald.</em>",
+      story_body: "Am Bësch — auf Luxemburgisch „im Wald“ — ist ein walddekoriertes Brasserie-Restaurant im Untergeschoss des City Concorde Lifestyle Centers in Bertrange. Großflächige Waldpanoramen, warme Holzoberflächen und Grünpflanzen schaffen beim Eintreten eine Naturidylle inmitten des Einkaufszentrums. Die Küche verbindet luxemburgische Klassiker mit Fleisch aus dem Holzkohlegrill, hausgemachten Pasta-Gerichten und saisonalem Fisch.",
+      p1_h: "Großzügige Küche",
+      p1_p: "Luxemburgische Spezialitäten, Grillgerichte und hausgemachte Pasta — eine vielfältige Karte für jeden Geschmack.",
+      p2_h: "Einzigartiges Waldambiente",
+      p2_p: "Waldpanoramen, warmes Holz und Grünpflanzen — eine Naturpause mitten in der Stadt.",
+      p3_h: "Im City Concorde",
+      p3_p: "Ebene -1 des Lifestyle Centers in Bertrange — ideal zum Mittag- oder Abendessen.",
+      menu_h2: "Die <em>Karte</em>",
+      menu_intro: "Vorspeisen, luxemburgische Gerichte, Grillspezialitäten, Pasta und Desserts. Eine Auswahl — die vollständige Karte erwartet Sie am Tisch.",
+      d_fam: "Steak-Tartare, Cornichons, Kapern",
+      d_tart: "Frische Mango, Kaviarkugeln",
+      d_croustade: "Luxemburgische Spezialität, im Teig gebacken",
+      d_jambon: "Luxemburgische Wurstwaren, hausgemachte Träipen",
+      d_penne: "Penne in Sahnesauce, Spezialität des Hauses",
+      d_vongole: "Spaghetti mit frischen Venusmuscheln",
+      d_entrecote: "Holzkohlegrill, Pfeffer- oder Pilzsoße, Gemüse der Saison",
+      d_bar: "Ratatouille, hausgemachtes Kartoffelpüree",
+      d_letzburg: "Auf Kartoffelpuffer — luxemburgische Spezialität",
+      d_ribs: "Honigmarinade, Holzkohlegrill",
+      d_pannacotta: "Saisonale rote Früchte, Coulis",
+      d_cafe: "Espresso, Spekulaas & Dessert des Tages",
+      menu_note: "<b>Eine Auswahl.</b> Nur der Preis für <em>Penne Franky</em> (€24) ist bestätigt — alle anderen Preise und die vollständige Karte bitte beim Restaurant erfragen.",
+      band_h2: "Der <em>Wald</em>, mitten im Herz der Stadt.",
+      band_p: "Einzigartiges Walddekor, herzhafte Küche, eine besondere Adresse im City Concorde. Reservieren Sie Ihren Tisch.",
+      tag1: "Luxemburgische Küche", tag2: "Holzkohlegrill", tag3: "Walddekor",
+      gal_h2: "Zu <em>Tisch.</em>",
+      gal_intro: "Ein paar Bilder aus der Küche und dem Speisesaal.",
+      visit_h2: "So <em>finden Sie uns.</em>",
+      visit_intro: "Im City Concorde, Ebene -1 — Route de Longwy, Bertrange. Reservierung per Telefon.",
+      lbl_where: "Adresse", lbl_hours: "Öffnungszeiten", lbl_book: "Reservieren",
+      where_small: "L-8060 Bertrange · City Concorde, Ebene -1",
+      hours_val: "Mo–Sa · 11:30–14:30 & 18:00–21:00",
+      hours_small: "So : geschlossen — <em>bitte beim Restaurant bestätigen</em>",
+      book_small: "Reservierung empfohlen",
+      foot_since: "Walddekor-Brasserie · Bertrange"
+    },
+    en: {
+      brand_tag: "Forest-themed brasserie · Bertrange",
+      nav_story: "The House", nav_menu: "Menu", nav_visit: "Visit",
+      btn_book: "Book", btn_book_table: "Reserve a table", btn_seemenu: "See the menu",
+      hero_eyebrow: "Luxembourg · City Concorde, Bertrange",
+      hero_h1: "The forest, <em>at the heart of the city.</em>",
+      hero_lead: "A forest-themed brasserie at the City Concorde lifestyle centre in Bertrange. Luxembourg classics, charcoal-grilled meats and fresh pasta — in a warm, nature-inspired setting.",
+      hero_addr: "80 Route de Longwy, L-8060 Bertrange · City Concorde",
+      story_eyebrow: "The House",
+      story_h2: "A brasserie <em>in the heart of the forest.</em>",
+      story_body: "Am Bësch — ‘in the forest’ in Luxembourgish — is a forest-themed brasserie located on the lower level of the City Concorde lifestyle centre in Bertrange. From the moment you step in from the mall corridor, floor-to-ceiling forest murals, warm wood surfaces and greenery create a nature retreat in the heart of the city. The kitchen offers a wide-ranging menu: Luxembourg classics, charcoal-grilled meats, fresh pasta and seasonal seafood.",
+      p1_h: "Generous kitchen",
+      p1_p: "Luxembourg specialities, charcoal grills and fresh pasta — a varied menu for every appetite.",
+      p2_h: "Unique forest setting",
+      p2_p: "Forest murals, warm wood and greenery — a breath of nature in the middle of the city.",
+      p3_h: "Inside City Concorde",
+      p3_p: "Lower level of Bertrange’s lifestyle centre — perfect for lunch or dinner while in the area.",
+      menu_h2: "The <em>menu</em>",
+      menu_intro: "Starters, Luxembourg classics, grills, pasta and desserts. A selection — the full menu awaits at the table.",
+      d_fam: "Steak tartare, gherkins, capers",
+      d_tart: "Fresh mango, caviar pearls",
+      d_croustade: "Luxembourg specialty, baked in pastry",
+      d_jambon: "Luxembourg charcuterie, house-made Träipen",
+      d_penne: "Penne in cream sauce, house specialty",
+      d_vongole: "Spaghetti with fresh clams",
+      d_entrecote: "Charcoal oven, pepper or mushroom sauce, seasonal vegetables",
+      d_bar: "Ratatouille, mashed potato",
+      d_letzburg: "On a potato pancake — Luxembourg specialty",
+      d_ribs: "Honey-glazed, charcoal-grilled",
+      d_pannacotta: "Seasonal red fruits, coulis",
+      d_cafe: "Espresso, speculoos & dessert of the day",
+      menu_note: "<b>A selection.</b> Only <em>Penne Franky</em> (€24) has a confirmed price — all other prices and the full menu to be confirmed with the restaurant.",
+      band_h2: "The <em>forest</em>, at the heart of the city.",
+      band_p: "A one-of-a-kind forest setting, hearty cooking, a distinctive address at City Concorde. Reserve your table.",
+      tag1: "Luxembourg cuisine", tag2: "Charcoal grill", tag3: "Forest setting",
+      gal_h2: "At <em>the table.</em>",
+      gal_intro: "A few images from the kitchen and the dining room.",
+      visit_h2: "Find <em>us.</em>",
+      visit_intro: "At City Concorde, level -1 — Route de Longwy, Bertrange. Reserve by phone.",
+      lbl_where: "Address", lbl_hours: "Hours", lbl_book: "Book",
+      where_small: "L-8060 Bertrange · City Concorde, Level -1",
+      hours_val: "Mon–Sat · 11:30–14:30 & 18:00–21:00",
+      hours_small: "Sun: closed — <em>please confirm with the restaurant</em>",
+      book_small: "Reservation recommended",
+      foot_since: "forest-themed brasserie · Bertrange"
+    }
+  };
+
+  // Snapshot FR defaults from rendered HTML
+  var FR = {};
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    FR[el.getAttribute('data-i18n')] = el.textContent;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+    FR['__h_' + el.getAttribute('data-i18n-html')] = el.innerHTML;
+  });
+
+  function setLang(l) {
+    var d = (l === 'fr') ? null : I18N[l];
+    document.documentElement.lang = l;
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var k = el.getAttribute('data-i18n');
+      var v = d ? d[k] : FR[k];
+      if (v != null) el.textContent = v;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      var k = el.getAttribute('data-i18n-html');
+      var v = d ? d[k] : FR['__h_' + k];
+      if (v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll('.lang-switch button').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.lang === l);
+    });
+    try { localStorage.setItem('am-besch_lang', l); } catch(e) {}
+  }
+
+  document.querySelectorAll('.lang-switch button').forEach(function(b) {
+    b.addEventListener('click', function() { setLang(b.dataset.lang); });
+  });
+
+  // Restore saved language
+  var saved = 'fr';
+  try { saved = localStorage.getItem('am-besch_lang') || 'fr'; } catch(e) {}
+  if (saved !== 'fr') setLang(saved);
+</script>
+</body>
+</html>

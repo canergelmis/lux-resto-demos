@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<!--
+  PERLE NOIRE — sales demo · single-page · trilingual (FR default · DE · EN)
+  Gault&Millau Bar of the Year 2026 · cocktail bar · 7 Place d'Armes, Luxembourg City
+  Sources: Paperjam EN (https://en.paperjam.lu/article/new-cocktail-bar-la-perle-noire-little-sister-of-la-lorraine),
+           Paperjam FR, Gault&Millau Luxembourg (https://www.gaultmillau.lu/en/bars/perle-noire-luxembourg),
+           Supermiro (https://www.supermiro.lu/fr/bonnes-adresses/4070-mais-quelle-perle-ce-bar-perle-noire-luxembourg),
+           Instagram @perlenoire_luxembourg, Facebook.
+  Menu / prices / hours to be confirmed with owner before publishing.
+  Bartender first name discrepancy: Lucas vs Ayrton Mongenie — confirm with owner before publishing.
+  Non-alcoholic + food prices not publicly confirmed — marked "a confirmer".
+  Photo credits: Simon Krawies / Paperjam press, Sep 2025 — editorial images. Request owner permission for live use.
+  Brand colours and typography: PROPOSED — no official guidelines found in public sources.
+-->
+<html lang="fr">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Perle Noire — Bar de l'Année 2026 · Place d'Armes, Luxembourg</title>
+<meta name="description" content="Perle Noire — cocktail bar élu Bar de l'Année 2026 par Gault&amp;Millau. 30 places, ouvert mercredi au samedi dès 18h, sans réservation. 7 Place d'Armes, Luxembourg." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --midnight:#0D1422; --navy:#1A2744; --gold:#C9A96E; --gold-deep:#A8843E;
+    --pearl:#E8E0D5; --bone:#F5EFE8; --muted:#8A7F72; --line:rgba(201,169,110,.2);
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--midnight);color:var(--bone);font-family:'Raleway',system-ui,sans-serif;
+    font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:'Cormorant Garamond',Georgia,serif}
+  .eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:500;font-family:'Raleway',sans-serif}
+
+  .btn{display:inline-flex;align-items:center;gap:.5em;font-family:'Raleway',sans-serif;font-weight:500;
+    font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;padding:.82em 2.1em;border:1px solid transparent;
+    transition:.22s;cursor:pointer;white-space:nowrap}
+  .btn-gold{background:var(--gold);color:var(--midnight);border-color:var(--gold)}
+  .btn-gold:hover{background:var(--gold-deep);border-color:var(--gold-deep);transform:translateY(-2px);box-shadow:0 14px 28px -12px rgba(201,169,110,.5)}
+  .btn-outline{border-color:var(--gold);color:var(--gold)}
+  .btn-outline:hover{background:var(--gold);color:var(--midnight)}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:100;background:rgba(13,20,34,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:80px;gap:14px}
+  .brand{display:flex;flex-direction:column;line-height:1;gap:5px}
+  .brand .wm{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.42rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pearl)}
+  .brand small{font-family:'Raleway';font-weight:400;font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links a{font-weight:400;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);transition:.2s}
+  .nav-links a:hover{color:var(--gold)}
+  .nav-cta{display:flex;gap:14px;align-items:center}
+  .lang-switch{display:flex;border:1px solid var(--line);overflow:hidden;flex:none}
+  .lang-switch button{font-family:'Raleway',sans-serif;font-weight:500;font-size:.7rem;letter-spacing:.1em;
+    padding:.46em .72em;background:none;border:0;cursor:pointer;color:var(--muted);transition:.18s}
+  .lang-switch button.active{background:var(--gold);color:var(--midnight)}
+  .lang-switch button:not(.active):hover{color:var(--gold)}
+  .burger-ico{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer}
+  .burger-ico span{width:26px;height:1.5px;background:var(--pearl);border-radius:2px}
+
+  /* hero */
+  .hero{position:relative;min-height:94vh;display:flex;align-items:flex-end;
+    background:
+      linear-gradient(180deg,rgba(13,20,34,.22) 0%,rgba(13,20,34,.68) 50%,rgba(13,20,34,.97) 100%),
+      url('assets/hero.jpg') center/cover no-repeat;
+    color:var(--bone)}
+  .hero .wrap{padding-top:90px;padding-bottom:76px;width:100%}
+  .hero .eyebrow{margin-bottom:1.4em}
+  .award-badge{display:inline-flex;flex-direction:column;align-items:center;gap:3px;
+    border:1px solid var(--gold);padding:.65em 1.5em;margin-bottom:2.2em}
+  .award-badge .ab-top{font-family:'Raleway',sans-serif;font-size:.56rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:500}
+  .award-badge .ab-year{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--pearl);line-height:1;letter-spacing:.22em}
+  .award-badge .ab-body{font-family:'Raleway',sans-serif;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .hero-wm{font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:clamp(3.4rem,8.5vw,7.2rem);letter-spacing:.12em;text-transform:uppercase;
+    line-height:.92;color:var(--pearl);margin-bottom:.22em}
+  .hero-wm em{display:block;font-style:italic;font-weight:300;font-size:.42em;
+    letter-spacing:.28em;color:var(--gold);margin-top:.55em;text-transform:none}
+  .hero p.lead{font-size:clamp(.98rem,1.7vw,1.15rem);color:rgba(232,224,213,.85);max-width:46ch;
+    margin:.6em 0 1.9em;font-weight:300;letter-spacing:.03em;line-height:1.9}
+  .hero-cta{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:28px}
+  .addr{display:flex;align-items:center;gap:14px;color:var(--muted);font-size:.75rem;
+    font-weight:400;letter-spacing:.14em;text-transform:uppercase}
+  .addr::before{content:'';display:inline-block;width:28px;height:1px;background:var(--gold);flex:none}
+
+  section{padding:clamp(64px,8vw,112px) 0}
+  .sec-head{margin-bottom:56px}
+  .sec-head .eyebrow{margin-bottom:1em}
+  .sec-head h2{font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:clamp(2.4rem,5.5vw,4rem);line-height:.96;letter-spacing:.04em}
+  .sec-head h2 em{font-style:italic;font-weight:300;color:var(--gold)}
+  .sec-head p{color:var(--muted);max-width:46ch;margin-top:.9em;font-weight:300;font-size:.98rem;line-height:1.75}
+
+  /* story */
+  .story-wrap{background:var(--midnight)}
+  .story-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:68px;align-items:center}
+  .story-photo-frame{position:relative}
+  .story-photo-frame::after{content:'';position:absolute;inset:16px -16px -16px 16px;border:1px solid var(--line);z-index:0;pointer-events:none}
+  .story-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;display:block;position:relative;z-index:1}
+  .story h2{font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:clamp(2rem,4vw,3rem);margin:.1em 0 .7em;line-height:1.05;letter-spacing:.03em}
+  .story h2 em{font-style:italic;font-weight:300;color:var(--gold)}
+  .story p.body{color:rgba(232,224,213,.8);font-size:.99rem;margin-bottom:1.8em;font-weight:300;line-height:1.9}
+  .pillars{display:flex;flex-direction:column;gap:0}
+  .pillar{display:flex;gap:22px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line)}
+  .pillar:last-child{border-bottom:0;padding-bottom:0}
+  .pillar .ico{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+    color:var(--gold);font-size:1.4rem;line-height:1;flex:none;width:26px;text-align:right;padding-top:2px}
+  .pillar h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.08rem;
+    color:var(--pearl);margin-bottom:3px;letter-spacing:.04em}
+  .pillar p{color:var(--muted);font-size:.86rem;font-weight:300;line-height:1.7}
+
+  /* menu */
+  .menu-wrap{background:var(--navy)}
+  .mcat{margin-bottom:48px}
+  .mcat:last-child{margin-bottom:0}
+  .mcat-head{display:flex;align-items:baseline;gap:18px;margin-bottom:20px}
+  .mcat-head h3{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;
+    font-size:1.65rem;color:var(--gold);letter-spacing:.06em;white-space:nowrap}
+  .mcat-head .ln{flex:1;height:1px;background:var(--line)}
+  .mcat-head .price-tier{font-family:'Cormorant Garamond',serif;font-size:1.1rem;
+    color:var(--muted);font-weight:300;white-space:nowrap}
+  .mitems{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+  .mitem{display:flex;align-items:flex-start;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+  .mitem .ml{flex:1}
+  .mitem .nm{font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:1.12rem;color:var(--pearl);letter-spacing:.04em}
+  .mitem .ds{color:var(--muted);font-size:.83rem;margin-top:3px;font-weight:300;letter-spacing:.02em;line-height:1.5}
+  .mitem .mp{font-family:'Cormorant Garamond',serif;font-weight:300;
+    font-size:1.05rem;white-space:nowrap;color:var(--gold);flex:none;padding-top:2px}
+  .menu-note{margin-top:38px;color:var(--muted);font-size:.86rem;font-weight:300;
+    border-top:1px solid var(--line);padding-top:26px;line-height:1.85}
+  .menu-note b{color:var(--pearl);font-weight:500}
+  @media(max-width:760px){.mitems{grid-template-columns:1fr;gap:0}}
+
+  /* band */
+  .band-wrap{background:linear-gradient(148deg,var(--navy) 0%,#0D1B38 100%);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
+  .band-inner{max-width:700px;margin:0 auto}
+  .band-inner h2{font-family:'Cormorant Garamond',serif;font-weight:300;
+    font-size:clamp(2.4rem,5.5vw,3.9rem);margin-bottom:.3em;letter-spacing:.06em;line-height:1.05}
+  .band-inner h2 em{font-style:italic;color:var(--gold)}
+  .band-inner p{color:var(--muted);font-size:.98rem;max-width:48ch;margin:0 auto 1.9em;
+    font-weight:300;line-height:1.85}
+  .taglist{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-bottom:34px}
+  .tag{font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+    padding:.55em 1.1em;border:1px solid var(--line);color:var(--muted)}
+
+  /* gallery */
+  .gallery-section{background:var(--midnight);padding-bottom:0}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-top:0}
+  .gallery-grid img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;
+    opacity:.84;transition:opacity .3s}
+  .gallery-grid img:hover{opacity:1}
+
+  /* visit */
+  .visit-wrap{background:var(--midnight)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:stretch}
+  .info{display:flex;flex-direction:column}
+  .info-row{display:flex;gap:22px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line)}
+  .info-row:first-child{padding-top:0}
+  .info-row .k{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
+    font-weight:500;min-width:88px;padding-top:4px;font-family:'Raleway',sans-serif;flex:none}
+  .info-row .val{font-size:.96rem;font-weight:300;line-height:1.75}
+  .info-row .val a{color:var(--gold)}
+  .info-row .val a:hover{text-decoration:underline}
+  .info-row .val .small{color:var(--muted);font-size:.82rem;display:block;margin-top:4px}
+  .map-frame{border:1px solid var(--line);min-height:380px;overflow:hidden}
+  .map-frame iframe{width:100%;height:100%;min-height:380px;border:0;
+    filter:grayscale(1) invert(1) brightness(.75) contrast(.9)}
+
+  footer{background:#060D1A;color:var(--muted);padding:54px 0 42px;border-top:1px solid var(--line)}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .foot .fb .wm{font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:1.4rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pearl)}
+  .foot .fb small{display:block;font-size:.7rem;color:var(--muted);margin-top:6px;letter-spacing:.08em;font-weight:300}
+  .foot p{font-size:.8rem;text-align:right;line-height:2;font-weight:300}
+  .foot a{color:var(--gold)}
+
+  .js .reveal{opacity:0;transform:translateY(22px);transition:.75s cubic-bezier(.2,.7,.2,1)}
+  .js .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:880px){
+    .nav-links{display:none}.burger-ico{display:flex}
+    .story-grid{grid-template-columns:1fr;gap:36px}.story-photo{aspect-ratio:16/10;order:-1}
+    .story-photo-frame::after{display:none}
+    .gallery-grid{grid-template-columns:1fr 1fr}
+    .visit-grid{grid-template-columns:1fr}
+    .mobile-open .nav-links{display:flex;position:absolute;top:80px;left:0;right:0;flex-direction:column;
+      gap:0;background:rgba(13,20,34,.97);border-bottom:1px solid var(--line);padding:8px 28px 24px}
+    .mobile-open .nav-links a{padding:14px 0;border-bottom:1px solid var(--line)}
+  }
+  @media(max-width:480px){
+    .nav-cta .btn-gold{display:none}
+    .foot{flex-direction:column;text-align:center}.foot p{text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="top">
+  <div class="wrap nav">
+    <a href="#top" class="brand" aria-label="Perle Noire">
+      <span class="wm serif">Perle Noire</span>
+      <small data-i18n="brand_tag">Cocktail Bar · Place d'Armes</small>
+    </a>
+    <nav class="nav-links">
+      <a href="#story" data-i18n="nav_story">La Maison</a>
+      <a href="#menu" data-i18n="nav_menu">La Carte</a>
+      <a href="#visit" data-i18n="nav_visit">Nous Trouver</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang-switch" role="group" aria-label="Langue">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="#visit" class="btn btn-gold" data-i18n="btn_visit">Nous Trouver</a>
+      <button class="burger-ico" aria-label="Menu" onclick="document.body.classList.toggle('mobile-open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow reveal" data-i18n="hero_eyebrow">Luxembourg · Place d'Armes</p>
+    <div class="award-badge reveal">
+      <span class="ab-top" data-i18n="award_label">Gault&amp;Millau</span>
+      <span class="ab-year serif">2026</span>
+      <span class="ab-body" data-i18n="award_body">Bar de l'Année</span>
+    </div>
+    <div class="hero-wm serif reveal">
+      PERLE<br>NOIRE
+      <em data-i18n="hero_tagline">Rare par nature. Ouvert la nuit.</em>
+    </div>
+    <p class="lead reveal" data-i18n="hero_lead">Trente places, quatre soirs par semaine, sans réservation. Au dernier étage de La Lorraine — le bar qui a redéfini les nuits luxembourgeoises.</p>
+    <div class="hero-cta reveal">
+      <a href="#story" class="btn btn-outline" data-i18n="btn_discover">Découvrir</a>
+      <a href="#menu" class="btn btn-gold" data-i18n="btn_seemenu">La Carte</a>
+    </div>
+    <p class="addr reveal"><span data-i18n="hero_addr">7 Place d'Armes, 1136 Luxembourg · Mer–Sam dès 18h</span></p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story-wrap" id="story">
+  <div class="wrap story-grid">
+    <div class="story-photo-frame reveal">
+      <img class="story-photo" src="assets/bartender.jpg" alt="Bartender au bar Perle Noire" />
+    </div>
+    <div class="story">
+      <p class="eyebrow reveal" data-i18n="story_eyebrow">La Maison</p>
+      <h2 class="reveal" data-i18n-html="story_h2">Un bar <em>hors du commun.</em></h2>
+      <p class="body reveal" data-i18n="story_body">Perle Noire a ouvert ses portes le 13 septembre 2025, au dernier étage de La Lorraine, l'emblématique brasserie de la Place d'Armes. Dans cet écrin de velours sombre et de lumières feutrées, le barman — ancien parfumeur — compose ses cocktails comme des créations olfactives : huiles essentielles, acidité mesurée, équilibre naturel. Trente places, quatre soirs par semaine, sans réservation : la rareté est au cœur du projet. Élu Bar de l'Année 2026 par Gault&amp;Millau, Perle Noire s'est vite imposé comme l'adresse incontournable des nuits luxembourgeoises.</p>
+      <div class="pillars reveal">
+        <div class="pillar">
+          <span class="ico serif">I</span>
+          <div>
+            <h3 data-i18n="p1_h">Cocktails olfactifs</h3>
+            <p data-i18n="p1_p">Huiles essentielles, acidité mesurée, équilibre naturel — chaque création est une composition parfumée.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <span class="ico serif">II</span>
+          <div>
+            <h3 data-i18n="p2_h">30 places, sans réservation</h3>
+            <p data-i18n="p2_p">Quatre soirs par semaine, sur le principe du premier arrivé. La rareté est au cœur du projet.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <span class="ico serif">III</span>
+          <div>
+            <h3 data-i18n="p3_h">Piano, jazz &amp; DJ sets</h3>
+            <p data-i18n="p3_p">Chaque soir une atmosphère différente — musique live, sessions jazz, et nuits plus dansantes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-wrap" id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow" data-i18n="menu_eyebrow">Cocktails</p>
+      <h2 class="serif" data-i18n-html="menu_h2">La <em>carte.</em></h2>
+      <p data-i18n="menu_intro">Signatures maison, classiques revisités et une création sans alcool. Une sélection — la carte complète vous attend sur place.</p>
+    </div>
+
+    <div class="mcat reveal">
+      <div class="mcat-head">
+        <h3 class="serif" data-i18n="cat_sig">Signatures</h3>
+        <span class="ln"></span>
+        <span class="price-tier serif">€16</span>
+      </div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Perle Noire</div>
+            <div class="ds" data-i18n="d_perlenoire">Calvados · monoï · sherry</div>
+          </div>
+          <div class="mp">€16</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Lulu</div>
+            <div class="ds" data-i18n="d_lulu">Vodka · vanille · olives</div>
+          </div>
+          <div class="mp">€16</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Ojo Verde</div>
+            <div class="ds" data-i18n="d_ojoverde">Frais &amp; complexe</div>
+          </div>
+          <div class="mp">€16</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Rouge</div>
+            <div class="ds" data-i18n="d_rouge">Bloody Mary revisité · tomate · poivre · framboise</div>
+          </div>
+          <div class="mp">€16</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mcat reveal">
+      <div class="mcat-head">
+        <h3 class="serif" data-i18n="cat_class">Classiques</h3>
+        <span class="ln"></span>
+        <span class="price-tier serif">€18</span>
+      </div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Naked &amp; Famous</div>
+            <div class="ds" data-i18n="d_naked">Mezcal · Aperol · réinterprétation</div>
+          </div>
+          <div class="mp">€18</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Negroni</div>
+            <div class="ds" data-i18n="d_negroni">Version maison</div>
+          </div>
+          <div class="mp">€18</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Old Fashioned</div>
+            <div class="ds" data-i18n="d_oldfashioned">Version maison</div>
+          </div>
+          <div class="mp">€18</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mcat reveal" style="margin-bottom:0">
+      <div class="mcat-head">
+        <h3 class="serif" data-i18n="cat_other">Sans alcool &amp; Accords</h3>
+        <span class="ln"></span>
+      </div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Sparkling Caramel</div>
+            <div class="ds" data-i18n="d_sparkling">Caramel beurre salé · pétillant · sans alcool</div>
+          </div>
+          <div class="mp" data-i18n="price_tbc">À confirmer</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif" data-i18n="nm_charcuterie">Planche charcuterie</div>
+            <div class="ds" data-i18n="d_charcuterie">Accord parfait avec les signatures</div>
+          </div>
+          <div class="mp" data-i18n="price_tbc2">À confirmer</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif" data-i18n="nm_oysters">Huîtres</div>
+            <div class="ds" data-i18n="d_oysters">Partenariat avec un ostréiculteur breton</div>
+          </div>
+          <div class="mp" data-i18n="price_tbc3">À confirmer</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="menu-note reveal" data-i18n-html="menu_note"><b>Une sélection de presse.</b> Carte complète disponible sur place du mercredi au samedi — prix et disponibilité à confirmer avec le bar.</p>
+  </div>
+</section>
+
+<!-- BAND -->
+<section class="band-wrap">
+  <div class="wrap band-inner reveal">
+    <p class="eyebrow" style="margin-bottom:1.1em" data-i18n="band_eyebrow">Place d'Armes · Luxembourg</p>
+    <h2 class="serif" data-i18n-html="band_h2">La nuit <em>commence ici.</em></h2>
+    <p data-i18n="band_p">Trente places. Quatre soirs. Aucune réservation. Venez quand la ville s'endort — Perle Noire commence à vivre.</p>
+    <div class="taglist">
+      <span class="tag" data-i18n="tag1">Sans réservation</span>
+      <span class="tag" data-i18n="tag2">Mercredi – Samedi</span>
+      <span class="tag" data-i18n="tag3">Dès 18h</span>
+      <span class="tag" data-i18n="tag4">Bar de l'Année 2026</span>
+    </div>
+    <a href="#visit" class="btn btn-outline" data-i18n="btn_find">Nous Trouver</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow" data-i18n="gal_eyebrow">L'atmosphère</p>
+      <h2 class="serif" data-i18n-html="gal_h2">Dans <em>l'obscurité.</em></h2>
+    </div>
+  </div>
+  <div class="gallery-grid">
+    <img class="reveal" src="assets/interior1.jpg" alt="Intérieur du bar Perle Noire, Luxembourg" />
+    <img class="reveal" src="assets/cocktail1.jpg" alt="Cocktail signature Perle Noire" />
+    <img class="reveal" src="assets/interior2.jpg" alt="Ambiance Perle Noire" />
+    <img class="reveal" src="assets/interior3.jpg" alt="Détail intérieur Perle Noire" />
+    <img class="reveal" src="assets/cocktail2.jpg" alt="Cocktail Perle Noire" />
+    <img class="reveal" src="assets/atmosphere.jpg" alt="Atmosphère nocturne Perle Noire" />
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit-wrap" id="visit">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow" data-i18n="visit_eyebrow">Venir</p>
+      <h2 class="serif" data-i18n-html="visit_h2">Nous <em>trouver.</em></h2>
+      <p data-i18n="visit_intro">Au dernier étage de La Lorraine, Place d'Armes. Sans réservation — venez, sonnez, entrez.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="info reveal">
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_where">Adresse</div>
+          <div class="val">
+            7 Place d'Armes
+            <span class="small" data-i18n="where_small">1136 Luxembourg-Ville · au-dessus de La Lorraine</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_hours">Horaires</div>
+          <div class="val">
+            <span data-i18n="hours_val">Mer – Sam · 18h00 – 01h00</span>
+            <span class="small" data-i18n="hours_small">Lun · Mar · Dim fermés — sans réservation · 30 places</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_phone">Téléphone</div>
+          <div class="val">
+            <a href="tel:+352471436">+352 47 14 36</a>
+            <span class="small" data-i18n="phone_small">Informations uniquement — aucune réservation acceptée</span>
+          </div>
+        </div>
+        <div class="info-row" style="border-bottom:0">
+          <div class="k" data-i18n="lbl_social">Réseaux</div>
+          <div class="val">
+            <a href="https://www.instagram.com/perlenoire_luxembourg/" target="_blank" rel="noopener">Instagram</a>
+            &nbsp;·&nbsp;
+            <a href="https://www.facebook.com/p/Perle-Noire-61578914399176/" target="_blank" rel="noopener">Facebook</a>
+          </div>
+        </div>
+        <a href="https://www.instagram.com/perlenoire_luxembourg/" target="_blank" rel="noopener"
+           class="btn btn-outline" style="align-self:flex-start;margin-top:22px"
+           data-i18n="btn_instagram">Suivre sur Instagram</a>
+      </div>
+      <div class="map-frame reveal">
+        <iframe
+          title="Plan vers Perle Noire"
+          loading="lazy"
+          src="https://www.google.com/maps?q=7+Place+d%27Armes%2C+1136+Luxembourg&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div class="fb">
+      <span class="wm serif">Perle Noire</span>
+      <small data-i18n="foot_addr">7 Place d'Armes · 1136 Luxembourg · +352 47 14 36</small>
+    </div>
+    <p>
+      © Perle Noire · <span data-i18n="foot_since">Gault&amp;Millau Bar de l'Année 2026</span><br>
+      <a href="https://www.instagram.com/perlenoire_luxembourg/" target="_blank" rel="noopener">Instagram</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.facebook.com/p/Perle-Noire-61578914399176/" target="_blank" rel="noopener">Facebook</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: .1 });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 5 * 80) + 'ms';
+    io.observe(el);
+  });
+  document.querySelectorAll('.nav-links a').forEach(a =>
+    a.addEventListener('click', () => document.body.classList.remove('mobile-open'))
+  );
+
+  // ---------- i18n (FR default · DE · EN) ----------
+  const I18N = {
+    fr: {},
+    de: {
+      brand_tag: "Cocktail Bar · Place d'Armes",
+      nav_story: "Das Haus", nav_menu: "Karte", nav_visit: "Finden",
+      btn_visit: "Finden", btn_discover: "Entdecken", btn_seemenu: "Die Karte",
+      btn_find: "Uns finden", btn_instagram: "Instagram folgen",
+      hero_eyebrow: "Luxemburg · Place d'Armes",
+      award_label: "Gault&Millau", award_body: "Bar des Jahres",
+      hero_tagline: "Seltenheit nach Maß. Offen bei Nacht.",
+      hero_lead: "Dreißig Plätze, vier Abende pro Woche, ohne Reservierung. Im Obergeschoss von La Lorraine — die Bar, die Luxemburgs Nächte neu definiert hat.",
+      hero_addr: "7 Place d'Armes, 1136 Luxemburg · Mi–Sa ab 18 Uhr",
+      story_eyebrow: "Das Haus",
+      story_h2: "Eine Bar <em>ohne Gleichen.</em>",
+      story_body: "Am 13. September 2025 öffnete Perle Noire seine Türen im Obergeschoss von La Lorraine, der ikonischen Brasserie am Place d'Armes. In einem Rahmen aus dunklem Samt, gedämpftem Licht und Austernschalen an den Wänden komponiert der Barmann — ehemaliger Parfümeur — seine Cocktails wie olfaktorische Werke: ätherische Öle, präzise Säure, natürliches Gleichgewicht. Dreißig Plätze, vier Abende pro Woche, ohne Reservierung: Seltenheit ist das Konzept. Als Bar des Jahres 2026 von Gault&Millau ausgezeichnet, ist Perle Noire zur unverzichtbaren Adresse für Luxemburger Nächte geworden.",
+      p1_h: "Olfaktorische Cocktails", p1_p: "Ätherische Öle, präzise Säure, natürliches Gleichgewicht — jede Kreation ist eine Duftkomposition.",
+      p2_h: "30 Plätze, ohne Reservierung", p2_p: "Vier Abende pro Woche, nach dem Prinzip: Wer zuerst kommt. Seltenheit ist das Konzept.",
+      p3_h: "Piano, Jazz &amp; DJ-Sets", p3_p: "Jeden Abend eine andere Atmosphäre — Live-Musik, Jazz-Sessions und lebhaftere Nächte.",
+      menu_eyebrow: "Cocktails",
+      menu_h2: "Die <em>Karte.</em>",
+      menu_intro: "Hausgemachte Signaturen, neu interpretierte Klassiker und eine alkoholfreie Kreation. Eine Auswahl — die vollständige Karte erwartet Sie vor Ort.",
+      cat_sig: "Signaturen", cat_class: "Klassiker", cat_other: "Alkoholfrei &amp; Speisen",
+      d_perlenoire: "Calvados · Monoï · Sherry",
+      d_lulu: "Wodka · Vanille · Oliven",
+      d_ojoverde: "Frisch &amp; komplex",
+      d_rouge: "Neu interpretierter Bloody Mary · Tomate · Pfeffer · Himbeere",
+      d_naked: "Mezcal · Aperol · Neuinterpretation",
+      d_negroni: "Hausversion",
+      d_oldfashioned: "Hausversion",
+      d_sparkling: "Gesalzenes Butterkaramell · perlend · alkoholfrei",
+      nm_charcuterie: "Charcuterie-Platte", d_charcuterie: "Perfekter Begleiter zu den Signaturen",
+      nm_oysters: "Austern", d_oysters: "Partnerschaft mit einem bretonischen Austernzüchter",
+      price_tbc: "Auf Anfrage", price_tbc2: "Auf Anfrage", price_tbc3: "Auf Anfrage",
+      menu_note: "<b>Eine Presseauswahl.</b> Vollständige Karte vor Ort, Mittwoch bis Samstag — Preise und Verfügbarkeit bitte beim Bar bestätigen.",
+      band_eyebrow: "Place d'Armes · Luxemburg",
+      band_h2: "Die Nacht <em>beginnt hier.</em>",
+      band_p: "Dreißig Plätze. Vier Abende. Keine Reservierung. Kommen Sie, wenn die Stadt schläft — Perle Noire erwacht.",
+      tag1: "Ohne Reservierung", tag2: "Mittwoch – Samstag", tag3: "Ab 18 Uhr", tag4: "Bar des Jahres 2026",
+      gal_eyebrow: "Die Atmosphäre",
+      gal_h2: "Im <em>Dunkeln.</em>",
+      visit_eyebrow: "Kommen",
+      visit_h2: "Uns <em>finden.</em>",
+      visit_intro: "Im Obergeschoss von La Lorraine, Place d'Armes. Ohne Reservierung — kommen Sie, klingeln Sie, treten Sie ein.",
+      lbl_where: "Adresse", lbl_hours: "Öffnungszeiten", lbl_phone: "Telefon", lbl_social: "Netzwerke",
+      where_small: "1136 Luxemburg-Stadt · über La Lorraine",
+      hours_val: "Mi – Sa · 18:00 – 01:00 Uhr",
+      hours_small: "Mo · Di · So geschlossen — ohne Reservierung · 30 Plätze",
+      phone_small: "Nur Informationen — keine Reservierungen möglich",
+      foot_addr: "7 Place d'Armes · 1136 Luxemburg · +352 47 14 36",
+      foot_since: "Gault&Millau Bar des Jahres 2026"
+    },
+    en: {
+      brand_tag: "Cocktail Bar · Place d'Armes",
+      nav_story: "The Bar", nav_menu: "Menu", nav_visit: "Visit",
+      btn_visit: "Visit Us", btn_discover: "Discover", btn_seemenu: "See Menu",
+      btn_find: "Find Us", btn_instagram: "Follow on Instagram",
+      hero_eyebrow: "Luxembourg · Place d'Armes",
+      award_label: "Gault&Millau", award_body: "Bar of the Year",
+      hero_tagline: "Rare by design. Open by night.",
+      hero_lead: "Thirty seats, four nights a week, no reservations. Above La Lorraine on Place d'Armes — the bar that redefined Luxembourg's late nights.",
+      hero_addr: "7 Place d'Armes, 1136 Luxembourg · Wed–Sat from 18h",
+      story_eyebrow: "The Bar",
+      story_h2: "A bar <em>like no other.</em>",
+      story_body: "Perle Noire opened on 13 September 2025, tucked above La Lorraine on Place d'Armes. In a room of dark velvet, hushed lighting, and oyster shells on the walls, the head bartender — a self-taught mixologist with a perfumer's past — crafts cocktails as olfactory compositions: essential oils, measured acidity, natural balance. Thirty seats, four nights a week, no reservations: scarcity is the point. Named Bar of the Year 2026 by Gault&Millau, Perle Noire has swiftly become the defining address for Luxembourg's late nights.",
+      p1_h: "Olfactory cocktails", p1_p: "Essential oils, measured acidity, natural balance — each creation is a fragrance composition.",
+      p2_h: "30 seats, walk-in only", p2_p: "Four nights a week, first come first served. Scarcity is the point.",
+      p3_h: "Piano, jazz &amp; DJ sets", p3_p: "A different atmosphere every evening — live music, jazz sessions, and livelier nights.",
+      menu_eyebrow: "Cocktails",
+      menu_h2: "The <em>menu.</em>",
+      menu_intro: "House signatures, reimagined classics and a non-alcoholic creation. A selection — the full menu awaits you in person.",
+      cat_sig: "Signatures", cat_class: "Classics", cat_other: "Non-alcoholic &amp; Food",
+      d_perlenoire: "Calvados · monoï · sherry",
+      d_lulu: "Vodka · vanilla · olives",
+      d_ojoverde: "Fresh &amp; complex",
+      d_rouge: "Reimagined Bloody Mary · tomato · pepper · raspberry",
+      d_naked: "Mezcal · Aperol · reinterpretation",
+      d_negroni: "House version",
+      d_oldfashioned: "House version",
+      d_sparkling: "Salted butter toffee · sparkling · non-alcoholic",
+      nm_charcuterie: "Charcuterie board", d_charcuterie: "Perfect pairing with the signatures",
+      nm_oysters: "Oysters", d_oysters: "Partnership with a Breton oyster farmer",
+      price_tbc: "To confirm", price_tbc2: "To confirm", price_tbc3: "To confirm",
+      menu_note: "<b>A press selection.</b> Full menu available in person, Wednesday to Saturday — prices and availability to be confirmed with the bar.",
+      band_eyebrow: "Place d'Armes · Luxembourg",
+      band_h2: "The night <em>starts here.</em>",
+      band_p: "Thirty seats. Four nights. No reservations. Come when the city sleeps — Perle Noire comes alive.",
+      tag1: "Walk-in only", tag2: "Wednesday – Saturday", tag3: "From 18h", tag4: "Bar of the Year 2026",
+      gal_eyebrow: "The atmosphere",
+      gal_h2: "In <em>the dark.</em>",
+      visit_eyebrow: "Visit",
+      visit_h2: "Find <em>us.</em>",
+      visit_intro: "On the upper floor of La Lorraine, Place d'Armes. No reservations — come, ring the bell, step in.",
+      lbl_where: "Address", lbl_hours: "Hours", lbl_phone: "Phone", lbl_social: "Social",
+      where_small: "1136 Luxembourg City · above La Lorraine",
+      hours_val: "Wed – Sat · 18:00 – 01:00",
+      hours_small: "Mon · Tue · Sun closed — walk-in only · 30 seats max",
+      phone_small: "Information only — no reservations accepted",
+      foot_addr: "7 Place d'Armes · 1136 Luxembourg · +352 47 14 36",
+      foot_since: "Gault&Millau Bar of the Year 2026"
+    }
+  };
+
+  // Snapshot FR defaults from the DOM
+  const FR = {};
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    FR[el.getAttribute('data-i18n')] = el.textContent;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    FR['__h_' + el.getAttribute('data-i18n-html')] = el.innerHTML;
+  });
+
+  function setLang(l) {
+    const d = l === 'fr' ? null : I18N[l];
+    document.documentElement.lang = l;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      const v = d ? d[k] : FR[k];
+      if (v != null) el.textContent = v;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const k = el.getAttribute('data-i18n-html');
+      const v = d ? d[k] : FR['__h_' + k];
+      if (v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll('.lang-switch button').forEach(b =>
+      b.classList.toggle('active', b.dataset.lang === l)
+    );
+    try { localStorage.setItem('perle-noire_lang', l); } catch (e) {}
+  }
+
+  document.querySelectorAll('.lang-switch button').forEach(b =>
+    b.addEventListener('click', () => setLang(b.dataset.lang))
+  );
+
+  let saved = 'fr';
+  try { saved = localStorage.getItem('perle-noire_lang') || 'fr'; } catch (e) {}
+  if (saved !== 'fr') setLang(saved);
+</script>
+</body>
+</html>

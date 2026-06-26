@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<!--
+  BRASSERIE BEAULIEU — démo commerciale (closing-grade teaser) — TRILINGUE (FR défaut · DE · EN)
+  Brasserie de quartier · Bonnevoie, Luxembourg · depuis c. 1959
+  Propriétaire : Cyrille Schneider
+
+  SOURCES :
+  - Story (FR/DE/EN) : dérivé de delano.lu, paperjam.lu, janette.lu, restaurantguru.com, goosty.lu, rankeat.fr
+  - Photos : photos réelles du restaurant collectées depuis janette.lu, evendo.lu, goosty.lu, TripAdvisor
+  - Téléphone +352 26 48 33 02 : confirmé sur restaurantguru.com, triptap.com, goosty.lu
+  - Adresse : 25, Rue Félix de Blochausen, 1243 Bonnevoie — confirmée sur sources multiples
+  - Fondation c. 1959 : citée par goosty.lu et janette.lu — NON VÉRIFIÉE avec le propriétaire
+  - Email contact@brasseriebeaulieu.com : source agrégateur, domaine 404 — vérifier la délivrabilité
+  - Tagline proposé (non confirmé par le propriétaire)
+  - Aucun logo officiel trouvé — wordmark typographique utilisé
+
+  MENU / PRIX / HORAIRES À CONFIRMER AVEC LE PROPRIÉTAIRE.
+-->
+<html lang="fr">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Brasserie Beaulieu — Cuisine de quartier · Bonnevoie, Luxembourg</title>
+<meta name="description" content="Brasserie Beaulieu — brasserie de quartier généreuse et sincère depuis c. 1959, au cœur de Bonnevoie. Cuisine française, terrasse ensoleillée, vins soignés. 25, Rue Félix de Blochausen, 1243 Luxembourg. +352 26 48 33 02." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500;1,700&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink:#1A1A1A; --paper:#FAF8F3; --cream:#F2EEE4; --cream2:#E9E3D5;
+    --green:#A8D400; --green-deep:#88AC00; --green-glow:rgba(168,212,0,.2);
+    --red:#C0392B; --red-deep:#9B2F24;
+    --stone:#8B7355; --stone-light:#B09A7C;
+    --line:#DDD8CB; --muted:#6B5E52; --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:'Lato',system-ui,sans-serif;
+    font-size:18px;line-height:1.68;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:'Playfair Display',Georgia,serif}
+  .eyebrow{font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:var(--green-deep);font-weight:700}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:.5em;font-family:'Lato',sans-serif;font-weight:700;
+    font-size:.93rem;letter-spacing:.03em;padding:.78em 1.72em;border-radius:2px;
+    border:1.5px solid transparent;transition:.22s;cursor:pointer;white-space:nowrap}
+  .btn-red{background:var(--red);color:#fff}
+  .btn-red:hover{background:var(--red-deep);transform:translateY(-2px);box-shadow:0 14px 28px -12px rgba(192,57,43,.55)}
+  .btn-ghost{border-color:var(--stone-light);color:var(--ink)}
+  .btn-ghost:hover{background:var(--red);border-color:var(--red);color:#fff}
+  .btn-white{background:#fff;color:var(--red)}
+  .btn-white:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(0,0,0,.4)}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:100;background:rgba(250,248,243,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:80px;gap:14px}
+  .brand{display:flex;flex-direction:column;line-height:1.15}
+  .brand .wm-pre{font-family:'Lato',sans-serif;font-weight:300;font-size:.62rem;letter-spacing:.38em;
+    text-transform:uppercase;color:var(--stone);margin-bottom:1px}
+  .brand .wm{font-family:'Playfair Display',serif;font-weight:800;font-size:1.5rem;
+    letter-spacing:.01em;color:var(--ink);line-height:1}
+  .brand .wm em{font-style:italic;color:var(--green-deep)}
+  .brand small{font-family:'Lato';font-weight:400;font-size:.54rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--stone-light);margin-top:3px}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-weight:600;font-size:.93rem;color:var(--muted);transition:.18s;letter-spacing:.01em}
+  .nav-links a:hover{color:var(--red)}
+  .nav-cta{display:flex;gap:12px;align-items:center}
+  .lang-switch{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden;flex:none}
+  .lang-switch button{font-family:'Lato',sans-serif;font-weight:700;font-size:.73rem;letter-spacing:.06em;
+    padding:.46em .66em;background:none;border:0;cursor:pointer;color:var(--muted);transition:.18s}
+  .lang-switch button.active{background:var(--green-deep);color:#fff}
+  .lang-switch button:not(.active):hover{color:var(--green-deep)}
+  .burger-ico{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:4px}
+  .burger-ico span{width:26px;height:2.5px;background:var(--ink);border-radius:2px;display:block}
+
+  /* hero */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;
+    background:linear-gradient(168deg,rgba(8,8,6,.18) 0%,rgba(8,8,6,.84) 100%),
+    url('assets/food1.jpeg') center/cover no-repeat;color:#fff}
+  .hero .wrap{padding-top:90px;padding-bottom:70px;width:100%}
+  .hero .eyebrow{color:var(--green);letter-spacing:.26em}
+  .hero h1{font-family:'Playfair Display',serif;font-weight:800;
+    font-size:clamp(2.6rem,6.2vw,5rem);line-height:1.05;letter-spacing:-.01em;margin:.22em 0 .32em}
+  .hero h1 em{font-style:italic;color:var(--green)}
+  .hero p.lead{font-size:clamp(1.02rem,1.85vw,1.26rem);color:#e8e0d4;
+    max-width:52ch;margin-bottom:1.8em;font-weight:300;line-height:1.74}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+  .addr{display:flex;align-items:center;gap:10px;color:#ccc4b8;font-size:.92rem;font-weight:400}
+  .addr .dot{width:8px;height:8px;border-radius:50%;background:var(--green);
+    box-shadow:0 0 0 4px rgba(168,212,0,.22);flex:none}
+
+  /* sections */
+  section{padding:clamp(56px,7.5vw,100px) 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;
+    gap:30px;margin-bottom:46px;flex-wrap:wrap}
+  .sec-head h2{font-family:'Playfair Display',serif;font-weight:800;
+    font-size:clamp(2.1rem,4.8vw,3.5rem)}
+  .sec-head h2 em{font-style:italic;color:var(--red)}
+  .sec-head p{color:var(--muted);max-width:40ch;font-size:1.02rem}
+
+  /* story */
+  .story-grid{display:grid;grid-template-columns:1fr 1.08fr;gap:58px;align-items:center}
+  .story-photo{width:100%;border-radius:3px;aspect-ratio:4/4.9;object-fit:cover;
+    box-shadow:0 34px 70px -28px rgba(26,26,26,.45),0 0 0 1px var(--line);display:block}
+  .story h2{font-family:'Playfair Display',serif;font-weight:800;
+    font-size:clamp(1.9rem,4.4vw,3rem);margin:.1em 0 .52em;line-height:1.07}
+  .story h2 em{font-style:italic;color:var(--red)}
+  .story p.body-text{color:var(--muted);font-size:1.04rem;line-height:1.76;margin-bottom:1.5em}
+  .pillars{display:grid;gap:14px;margin-top:6px}
+  .pillar{display:flex;gap:14px;align-items:flex-start}
+  .pillar .ico{font-family:'Lato',sans-serif;font-weight:700;color:var(--ink);background:var(--green);
+    width:44px;height:44px;display:grid;place-items:center;border-radius:2px;
+    flex:none;font-size:.76rem;letter-spacing:.04em}
+  .pillar h3{font-family:'Playfair Display',serif;font-weight:700;
+    font-size:1.12rem;margin-bottom:3px;line-height:1.22}
+  .pillar p{color:var(--muted);font-size:.94rem;line-height:1.62}
+
+  /* menu */
+  .menu{background:var(--cream)}
+  .mcat{margin-bottom:44px}
+  .mcat:last-child{margin-bottom:0}
+  .mcat-head{display:flex;align-items:baseline;gap:16px;margin-bottom:16px}
+  .mcat-head h3{font-family:'Playfair Display',serif;font-weight:700;font-style:italic;
+    font-size:1.48rem;color:var(--red)}
+  .mcat-head .ln{flex:1;height:1px;background:var(--line)}
+  .mitems{display:grid;grid-template-columns:1fr 1fr;gap:4px 44px}
+  .mitem{display:flex;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+  .mitem .ml{flex:1}
+  .mitem .nm{font-family:'Playfair Display',serif;font-weight:600;font-size:1.08rem}
+  .mitem .ds{color:var(--muted);font-size:.88rem;margin-top:2px}
+  .mitem .mp{font-family:'Lato',sans-serif;font-weight:700;font-size:1rem;
+    white-space:nowrap;color:var(--stone)}
+  .mp-dash{font-style:normal;color:var(--stone-light);font-weight:400;font-size:.95rem}
+  .pill-s{font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    padding:.18em .48em;border-radius:100px;margin-left:6px;vertical-align:middle;
+    background:#eef6d0;color:var(--green-deep);border:1px solid #c8e068}
+  .menu-note{margin-top:26px;color:var(--muted);font-size:.91rem;line-height:1.65}
+  .menu-note b{color:var(--ink)}
+  @media(max-width:760px){.mitems{grid-template-columns:1fr;gap:0}}
+
+  /* band */
+  .band{background:#101009;color:#fff;text-align:center}
+  .band .inner{max-width:760px;margin:0 auto}
+  .band .eyebrow{color:var(--green);margin-bottom:6px}
+  .band h2{font-family:'Playfair Display',serif;font-weight:800;
+    font-size:clamp(2rem,5vw,3.6rem);margin:.2em 0 .36em;line-height:1.08}
+  .band h2 em{font-style:italic;color:var(--green)}
+  .band p{color:#cdc5b4;font-size:1.06rem;max-width:50ch;margin:0 auto 1.7em;
+    font-weight:300;line-height:1.74}
+  .taglist{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:30px}
+  .tag{font-size:.73rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    padding:.52em .9em;border:1.5px solid rgba(168,212,0,.38);border-radius:100px;
+    color:rgba(255,255,255,.78)}
+
+  /* gallery */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:3px;
+    border:1px solid var(--line);transition:.28s;display:block}
+  .gallery img:hover{opacity:.88;transform:scale(1.018)}
+
+  /* visit */
+  .visit{background:var(--cream)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:stretch}
+  .info{display:flex;flex-direction:column;gap:0}
+  .info-row{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line)}
+  .info-row:first-child{padding-top:0}
+  .info-row .k{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--green-deep);font-weight:700;min-width:92px;padding-top:4px}
+  .info-row .val{font-size:1.01rem;line-height:1.66}
+  .info-row .val a{color:var(--red);font-weight:700}
+  .info-row .val a:hover{color:var(--red-deep)}
+  .info-row .val .small{color:var(--muted);font-size:.87rem;display:block;margin-top:3px}
+  .map{border-radius:3px;overflow:hidden;border:1px solid var(--line);min-height:360px}
+  .map iframe{width:100%;height:100%;min-height:360px;border:0;display:block}
+  .visit-btn{margin-top:22px}
+
+  /* footer */
+  footer{background:#0C0C09;color:#A09080;padding:52px 0 40px}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .foot .fb .wm{font-family:'Playfair Display',serif;color:var(--green);
+    font-size:1.32rem;font-weight:800;font-style:italic}
+  .foot .fb .wm span{color:#fff;font-style:normal;font-weight:300}
+  .foot .fb small{display:block;font-size:.79rem;color:#A09080;margin-top:5px;letter-spacing:.02em}
+  .foot p{font-size:.87rem;text-align:right;line-height:1.72}
+  .foot a{color:var(--green);font-weight:700}
+  .foot a:hover{color:#fff}
+
+  /* reveal */
+  .js .reveal{opacity:0;transform:translateY(22px);transition:.68s cubic-bezier(.2,.7,.2,1)}
+  .js .reveal.in{opacity:1;transform:none}
+
+  /* responsive */
+  @media(max-width:880px){
+    .nav-links{display:none}
+    .burger-ico{display:flex}
+    .story-grid{grid-template-columns:1fr;gap:28px}
+    .story-photo{aspect-ratio:16/10;order:-1}
+    .gallery{grid-template-columns:1fr 1fr}
+    .visit-grid{grid-template-columns:1fr}
+    .mobile-open .nav-links{
+      display:flex;position:absolute;top:80px;left:0;right:0;
+      flex-direction:column;gap:0;background:var(--paper);
+      border-bottom:1px solid var(--line);padding:8px 28px 20px;z-index:99}
+    .mobile-open .nav-links a{padding:13px 0;border-bottom:1px solid var(--line)}
+  }
+  @media(max-width:480px){
+    .nav-cta .btn-red{display:none}
+    .foot{flex-direction:column;text-align:center}
+    .foot p{text-align:center}
+    .gallery{grid-template-columns:1fr 1fr}
+    .sec-head{flex-direction:column;gap:10px}
+  }
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#top" class="brand" aria-label="Brasserie Beaulieu">
+      <span class="wm-pre" data-i18n="brand_pre">Brasserie</span>
+      <span class="wm serif"><em>Beaulieu</em></span>
+      <small data-i18n="brand_tag">Bonnevoie · Luxembourg · depuis c. 1959</small>
+    </a>
+    <nav class="nav-links">
+      <a href="#story" data-i18n="nav_story">La Maison</a>
+      <a href="#menu" data-i18n="nav_menu">La Carte</a>
+      <a href="#visit" data-i18n="nav_visit">Nous Trouver</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang-switch" role="group" aria-label="Langue">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="tel:+35226483302" class="btn btn-red" data-i18n="btn_book">Réserver</a>
+      <button class="burger-ico" aria-label="Menu" onclick="document.body.classList.toggle('mobile-open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow reveal" data-i18n="hero_eyebrow">Bonnevoie · Luxembourg, depuis c. 1959</p>
+    <h1 class="reveal" data-i18n-html="hero_h1">Cuisine canaille. <em>Ambiance de quartier.</em></h1>
+    <p class="lead reveal" data-i18n="hero_lead">Brasserie généreuse, terrasse ensoleillée et vins soignés — l'adresse de Bonnevoie que les Luxembourgeois ont adoptée pour de bon.</p>
+    <div class="hero-cta reveal">
+      <a href="tel:+35226483302" class="btn btn-red" data-i18n="btn_book_table">Réserver une table</a>
+      <a href="#menu" class="btn btn-ghost" style="border-color:rgba(255,255,255,.45);color:#fff" data-i18n="btn_seemenu">Voir la carte</a>
+    </div>
+    <p class="addr reveal"><span class="dot"></span><span data-i18n="hero_addr">25, Rue Félix de Blochausen · 1243 Bonnevoie, Luxembourg</span></p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <img class="story-photo reveal" src="assets/hero.jpg"
+      alt="Salle intérieure de la Brasserie Beaulieu — nappes vichy rouge et blanc, atmosphère chaleureuse" />
+    <div>
+      <p class="eyebrow reveal" data-i18n="story_eyebrow">La Maison</p>
+      <h2 class="serif reveal" data-i18n-html="story_h2">Une brasserie de quartier <em>depuis 1959.</em></h2>
+      <p class="body-text reveal" data-i18n="story_body">Depuis (environ) 1959, la Brasserie Beaulieu est l'adresse incontournable du quartier Bonnevoie. Repris avec passion par Cyrille Schneider et son équipe enthousiaste, l'établissement propose une cuisine de brasserie généreuse et sincère — cordons bleus, entrecôtes, cassoulet, tartares et plats du marché tournants — dans une atmosphère chaleureuse, sans chichi, entre famille et fête. Une belle terrasse ensoleillée et une sélection de vins soignée, dont des vins biologiques, complètent ce bistrot de quartier devenu référence pour toute la ville.</p>
+      <div class="pillars">
+        <div class="pillar reveal">
+          <div class="ico">01</div>
+          <div>
+            <h3 data-i18n="p1_h">Cuisine généreuse</h3>
+            <p data-i18n="p1_p">Cordons bleus, entrecôtes, cassoulet, tartares et plats du marché — la générosité brasserie à chaque assiette.</p>
+          </div>
+        </div>
+        <div class="pillar reveal">
+          <div class="ico">02</div>
+          <div>
+            <h3 data-i18n="p2_h">Terrasse ensoleillée</h3>
+            <p data-i18n="p2_p">Une belle terrasse au soleil, pour l'apéro, le déjeuner ou une longue soirée de quartier.</p>
+          </div>
+        </div>
+        <div class="pillar reveal">
+          <div class="ico">03</div>
+          <div>
+            <h3 data-i18n="p3_h">Vins soignés</h3>
+            <p data-i18n="p3_p">Une sélection de vins attentive avec des cuvées biologiques pour les amateurs de nature.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="menu_h2">La <em>carte</em></h2>
+      <p data-i18n="menu_intro">Plats de brasserie, burgers et desserts. Une sélection — la carte du jour vous attend à table.</p>
+    </div>
+
+    <!-- Entrées -->
+    <div class="mcat reveal">
+      <div class="mcat-head">
+        <h3 class="serif" data-i18n="mcat_starters">Entrées</h3>
+        <span class="ln"></span>
+      </div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Plateau apéritif</div>
+            <div class="ds" data-i18n="d_plateau">Charcuterie, fromages, calamars, jambon — pour partager</div>
+          </div>
+          <div class="mp"><span class="mp-dash">—</span></div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Poireaux sauce gribiche</div>
+            <div class="ds" data-i18n="d_poireaux">Poireaux tiédis, sauce gribiche maison</div>
+          </div>
+          <div class="mp"><span class="mp-dash">—</span></div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Salade composée</div>
+            <div class="ds" data-i18n="d_salade">Salade du moment</div>
+          </div>
+          <div class="mp"><span class="mp-dash">—</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plats de brasserie -->
+    <div class="mcat reveal">
+      <div class="mcat-head">
+        <h3 class="serif" data-i18n="mcat_mains">Plats de brasserie</h3>
+        <span class="ln"></span>
+      </div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Cordon Bleu</div>
+            <div class="ds" data-i18n="d_cordon">La classique maison, bien dorée</div>
+          </div>
+          <div class="mp">~€27</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Entrecôte</div>
+            <div class="ds" data-i18n="d_entrecote">Entrecôte grillée, frites maison</div>
+          </div>
+          <div class="mp">~€30</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Tartare de Bœuf</div>
+            <div class="ds" data-i18n="d_tartare">Préparé à la commande, à votre façon</div>
+          </div>
+          <div class="mp"><span class="mp-dash">—</span></div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Cassoulet</div>
+            <div class="ds" data-i18n="d_cassoulet">Du Sud-Ouest, confit et saucisse</div>
+          </div>
+          <div class="mp">~€30</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Blanquette de Veau</div>
+            <div class="ds" data-i18n="d_blanquette">Blanquette traditionnelle, riz blanc</div>
+          </div>
+          <div class="mp"><span class="mp-dash">—</span></div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Moules-Frites <span class="pill-s" data-i18n="pill_seasonal">saison</span></div>
+            <div class="ds" data-i18n="d_moules">En saison · selon arrivage</div>
+          </div>
+          <div class="mp"><span class="mp-dash">—</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Burgers -->
+    <div class="mcat reveal">
+      <div class="mcat-head">
+        <h3 class="serif" data-i18n="mcat_burgers">Burgers</h3>
+        <span class="ln"></span>
+      </div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Burger Poulet</div>
+            <div class="ds" data-i18n="d_burger_poulet">Poulet croustillant, salade, sauce maison</div>
+          </div>
+          <div class="mp">~€20</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Burger Végétarien</div>
+            <div class="ds" data-i18n="d_burger_veg">Galette végétarienne, garniture du jour</div>
+          </div>
+          <div class="mp">~€20</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desserts -->
+    <div class="mcat reveal" style="margin-bottom:0">
+      <div class="mcat-head">
+        <h3 class="serif" data-i18n="mcat_desserts">Desserts</h3>
+        <span class="ln"></span>
+      </div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Cheesecake</div>
+            <div class="ds" data-i18n="d_cheesecake">Cheesecake du moment</div>
+          </div>
+          <div class="mp"><span class="mp-dash">—</span></div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Parfait</div>
+            <div class="ds" data-i18n="d_parfait">Parfait glacé maison</div>
+          </div>
+          <div class="mp"><span class="mp-dash">—</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="menu-note reveal" style="margin-top:28px" data-i18n-html="menu_note"><b>Une sélection.</b> Carte du jour en rotation et plats du marché à découvrir sur place — prix approximatifs (~) issus d'agrégateurs tiers, à confirmer avec le restaurant.</p>
+  </div>
+</section>
+
+<!-- BAND -->
+<section class="band">
+  <div class="wrap inner reveal">
+    <p class="eyebrow" data-i18n="band_eyebrow">Brasserie Beaulieu · Bonnevoie</p>
+    <h2 class="serif" data-i18n-html="band_h2">L'<em>adresse</em> de tout Bonnevoie.</h2>
+    <p data-i18n="band_p">Depuis (environ) 1959, une table chaleureuse au cœur du quartier. Que ce soit pour un déjeuner express ou une longue soirée, réservez votre table.</p>
+    <div class="taglist">
+      <span class="tag" data-i18n="tag1">Cuisine française</span>
+      <span class="tag" data-i18n="tag2">Terrasse ensoleillée</span>
+      <span class="tag" data-i18n="tag3">Vins biologiques</span>
+      <span class="tag" data-i18n="tag4">Depuis c. 1959</span>
+    </div>
+    <a href="tel:+35226483302" class="btn btn-white" data-i18n="btn_book_table">Réserver une table</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section style="padding-bottom:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="gal_h2">En <em>salle.</em></h2>
+      <p data-i18n="gal_intro">La salle, la terrasse et l'assiette — quelques images de la maison.</p>
+    </div>
+    <div class="gallery">
+      <img class="reveal" src="assets/food2.jpg"
+        alt="Enseigne néon Beaulieu de nuit — la signature visuelle de la brasserie" />
+      <img class="reveal" src="assets/press1.jpg"
+        alt="Terrasse de la Brasserie Beaulieu, salle comble, convives attablés en terrasse" />
+      <img class="reveal" src="assets/interior.jpeg"
+        alt="Plateau apéritif Brasserie Beaulieu — charcuterie, fromages, calamars, jambon" />
+      <img class="reveal" src="assets/terrace.jpeg"
+        alt="Cave à vins de la Brasserie Beaulieu — sélection avec vins biologiques" />
+      <img class="reveal" src="assets/photo_evendo.jpg"
+        alt="Salle intérieure Brasserie Beaulieu — nappe vichy, lumière chaude" />
+      <img class="reveal" src="assets/food1.jpeg"
+        alt="Ambiance en soirée devant la Brasserie Beaulieu, foule sous les parasols" />
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="visit_h2">Nous <em>trouver.</em></h2>
+      <p data-i18n="visit_intro">En plein cœur de Bonnevoie. Réservation par téléphone.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="info reveal">
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_where">Adresse</div>
+          <div class="val">25, Rue Félix de Blochausen
+            <span class="small" data-i18n="where_small">1243 Bonnevoie · Luxembourg-Ville</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_hours">Horaires</div>
+          <div class="val">
+            <span data-i18n="hours_val">Tous les jours 10h00 – 01h00</span>
+            <span class="small" data-i18n-html="hours_small">Cuisine jusqu'à ~22h · jeudi : vérifier avec le restaurant — <em>à confirmer avec le propriétaire</em></span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_book">Réserver</div>
+          <div class="val">
+            <a href="tel:+35226483302">+352 26 48 33 02</a>
+            <span class="small" data-i18n="book_small">Terrasse très demandée aux beaux jours — réservez</span>
+          </div>
+        </div>
+        <div class="info-row" style="border-bottom:0">
+          <div class="k" data-i18n="lbl_contact">Contact</div>
+          <div class="val">
+            <a href="https://www.facebook.com/BrasserieBeaulieu/" target="_blank" rel="noopener">Facebook</a>
+            <span class="small" data-i18n="contact_note">Email non vérifié — contacter via Facebook ou téléphone</span>
+          </div>
+        </div>
+        <a href="tel:+35226483302" class="btn btn-red visit-btn" data-i18n="btn_book_table">Réserver une table</a>
+      </div>
+      <div class="map reveal">
+        <iframe
+          title="Plan vers Brasserie Beaulieu"
+          loading="lazy"
+          src="https://www.google.com/maps?q=Brasserie+Beaulieu+25+Rue+Felix+de+Blochausen+1243+Luxembourg&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div class="fb">
+      <div class="wm serif"><span>Brasserie</span> Beaulieu</div>
+      <small>25, Rue Félix de Blochausen · 1243 Bonnevoie · +352 26 48 33 02</small>
+    </div>
+    <p>© Brasserie Beaulieu · <span data-i18n="foot_since">brasserie de quartier depuis c. 1959</span><br>
+      <a href="https://www.facebook.com/BrasserieBeaulieu/" target="_blank" rel="noopener">Facebook</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 6 * 65) + 'ms';
+    io.observe(el);
+  });
+  document.querySelectorAll('.nav-links a').forEach(a =>
+    a.addEventListener('click', () => document.body.classList.remove('mobile-open'))
+  );
+
+  // ---------- i18n (FR default in HTML · DE · EN) ----------
+  const I18N = {
+    fr: {},
+    de: {
+      brand_pre: "Brasserie",
+      brand_tag: "Bonnevoie · Luxemburg · seit ca. 1959",
+      nav_story: "Das Lokal", nav_menu: "Speisekarte", nav_visit: "Uns Finden",
+      btn_book: "Reservieren", btn_book_table: "Tisch reservieren", btn_seemenu: "Zur Speisekarte",
+      hero_eyebrow: "Bonnevoie · Luxemburg, seit ca. 1959",
+      hero_h1: "Herzhafte Küche. <em>Nachbarschaftliches Flair.</em>",
+      hero_lead: "Großzügige Brasserie-Küche, sonnige Terrasse und sorgsam ausgewählte Weine — die Adresse von Bonnevoie, die ganz Luxemburg kennt.",
+      hero_addr: "25, Rue Félix de Blochausen · 1243 Bonnevoie, Luxemburg",
+      story_eyebrow: "Das Lokal",
+      story_h2: "Ein Quartiersbistro <em>seit 1959.</em>",
+      story_body: "Seit (etwa) 1959 ist die Brasserie Beaulieu die unverzichtbare Adresse im Viertel Bonnevoie. Von Cyrille Schneider und seinem begeisterten Team mit Leidenschaft weitergeführt, bietet das Lokal eine großzügige, ehrliche Brasserie-Küche — Cordon bleu, Entrecôte, Cassoulet, Tartar und wechselnde Tagesgerichte vom Markt — in einer herzlichen, ungezwungenen Atmosphäre, die mal familiär, mal ausgelassen feiert. Eine sonnige Terrasse und eine sorgsam ausgewählte Weinkarte mit Naturweinen machen dieses Quartiersbistro zur Adresse für ganz Luxemburg-Stadt.",
+      p1_h: "Großzügige Küche", p1_p: "Cordon bleu, Entrecôte, Cassoulet, Tartar und Marktgerichte — Brasserie-Großzügigkeit auf jedem Teller.",
+      p2_h: "Sonnige Terrasse", p2_p: "Eine schöne Sonnenterrasse für den Aperitif, das Mittagessen oder einen langen Abend im Viertel.",
+      p3_h: "Sorgfältige Weinkarte", p3_p: "Eine aufmerksame Weinauswahl mit biologischen Weinen für Naturwein-Liebhaber.",
+      menu_h2: "Die <em>Karte</em>",
+      menu_intro: "Brasserie-Gerichte, Burger und Desserts. Eine Auswahl — die Tageskarte wartet am Tisch auf Sie.",
+      mcat_starters: "Vorspeisen",
+      mcat_mains: "Hauptgerichte",
+      mcat_burgers: "Burger",
+      mcat_desserts: "Desserts",
+      d_plateau: "Charcuterie, Käse, Calamari, Schinken — zum Teilen",
+      d_poireaux: "Lauwarmer Lauch mit hausgemachter Sauce gribiche",
+      d_salade: "Gemischter Salat des Tages",
+      d_cordon: "Der Hausklassiker, goldbraun gebraten",
+      d_entrecote: "Gegrilltes Entrecôte, hausgemachte Frites",
+      d_tartare: "Auf Bestellung zubereitet, nach Ihrem Wunsch",
+      d_cassoulet: "Südwestfranzösisches Cassoulet, Confit, Wurst",
+      d_blanquette: "Traditionelle Kalbsblanquette, weißer Reis",
+      d_moules: "Saisonal · nach Verfügbarkeit",
+      d_burger_poulet: "Knuspriges Hühnchen, Salat, Hausdressing",
+      d_burger_veg: "Veganer Patty, Tagesgarnitur",
+      d_cheesecake: "Cheesecake des Tages",
+      d_parfait: "Hausgemachtes Eisparfait",
+      pill_seasonal: "Saison",
+      menu_note: "<b>Eine Auswahl.</b> Täglich rotierende Karte und Marktgerichte vor Ort — ungefähre Preise (~) aus Drittanbieter-Aggregatoren, bitte beim Restaurant bestätigen.",
+      band_eyebrow: "Brasserie Beaulieu · Bonnevoie",
+      band_h2: "Die <em>Adresse</em> von ganz Bonnevoie.",
+      band_p: "Seit (etwa) 1959 ein herzlicher Tisch im Herzen des Viertels. Ob schnelles Mittagessen oder langer Abend — reservieren Sie Ihren Tisch.",
+      tag1: "Französische Küche", tag2: "Sonnige Terrasse", tag3: "Naturweine", tag4: "Seit ca. 1959",
+      gal_h2: "Im <em>Lokal.</em>",
+      gal_intro: "Raum, Terrasse und Teller — ein paar Bilder aus dem Haus.",
+      visit_h2: "Uns <em>finden.</em>",
+      visit_intro: "Mitten im Herzen von Bonnevoie. Reservierung per Telefon.",
+      lbl_where: "Adresse", lbl_hours: "Öffnungszeiten", lbl_book: "Reservieren", lbl_contact: "Kontakt",
+      where_small: "1243 Bonnevoie · Luxemburg-Stadt",
+      hours_val: "Täglich 10:00 – 01:00 Uhr",
+      hours_small: "Küche bis ca. 22:00 · Donnerstag: bitte beim Restaurant nachfragen — <em>Zeiten zu bestätigen</em>",
+      book_small: "Terrasse sehr gefragt an schönen Tagen — Reservierung empfohlen",
+      contact_note: "E-Mail nicht verifiziert — Kontakt über Facebook oder Telefon",
+      foot_since: "Quartiersbistro seit ca. 1959"
+    },
+    en: {
+      brand_pre: "Brasserie",
+      brand_tag: "Bonnevoie · Luxembourg · since c. 1959",
+      nav_story: "The House", nav_menu: "Menu", nav_visit: "Visit",
+      btn_book: "Book", btn_book_table: "Reserve a table", btn_seemenu: "See the menu",
+      hero_eyebrow: "Bonnevoie · Luxembourg, since c. 1959",
+      hero_h1: "Hearty food. <em>Neighbourhood soul.</em>",
+      hero_lead: "Generous brasserie cooking, a sunny terrace and a thoughtful wine list — Bonnevoie's address that all of Luxembourg City has made its own.",
+      hero_addr: "25, Rue Félix de Blochausen · 1243 Bonnevoie, Luxembourg",
+      story_eyebrow: "The House",
+      story_h2: "A neighbourhood brasserie <em>since 1959.</em>",
+      story_body: "Since (approximately) 1959, Brasserie Beaulieu has been the unmissable address in Bonnevoie. Brought forward with passion by Cyrille Schneider and his enthusiastic team, the brasserie serves generous, honest French food — cordon bleu, entrecôte, cassoulet, tartare and rotating market specials — in a warm, unpretentious setting that swings between family lunch and festive evening. A sunny terrace and a thoughtful wine list, including organic options, complete this neighbourhood bistro that has become a reference for all of Luxembourg City.",
+      p1_h: "Generous cooking", p1_p: "Cordon bleu, entrecôte, cassoulet, tartare and market specials — brasserie generosity on every plate.",
+      p2_h: "Sunny terrace", p2_p: "A lovely sun-drenched terrace for aperitifs, lunch or a long neighbourhood evening.",
+      p3_h: "Thoughtful wine list", p3_p: "A carefully chosen wine selection with organic cuvées for natural wine lovers.",
+      menu_h2: "The <em>menu</em>",
+      menu_intro: "Brasserie mains, burgers and desserts. A selection — the daily board awaits you at the table.",
+      mcat_starters: "Starters",
+      mcat_mains: "Brasserie mains",
+      mcat_burgers: "Burgers",
+      mcat_desserts: "Desserts",
+      d_plateau: "Charcuterie, cheese, calamari, ham — to share",
+      d_poireaux: "Warm leeks, house-made gribiche dressing",
+      d_salade: "Composed salad of the moment",
+      d_cordon: "The house classic, golden and generous",
+      d_entrecote: "Grilled entrecôte, house fries",
+      d_tartare: "Made to order, your way",
+      d_cassoulet: "South-West French cassoulet, confit, sausage",
+      d_blanquette: "Traditional veal blanquette, white rice",
+      d_moules: "Seasonal · subject to availability",
+      d_burger_poulet: "Crispy chicken, lettuce, house sauce",
+      d_burger_veg: "Vegetarian patty, daily garnish",
+      d_cheesecake: "Cheesecake of the moment",
+      d_parfait: "House-made parfait",
+      pill_seasonal: "seasonal",
+      menu_note: "<b>A selection.</b> Rotating daily board and market specials in-house — approximate prices (~) sourced from third-party aggregators, confirm with the restaurant.",
+      band_eyebrow: "Brasserie Beaulieu · Bonnevoie",
+      band_h2: "The <em>go-to</em> for all of Bonnevoie.",
+      band_p: "Since (approximately) 1959, a warm table at the heart of the neighbourhood. Whether a quick lunch or a long evening — reserve your table.",
+      tag1: "French cuisine", tag2: "Sunny terrace", tag3: "Organic wines", tag4: "Since c. 1959",
+      gal_h2: "In <em>the house.</em>",
+      gal_intro: "The room, the terrace and the plate — a few images from the brasserie.",
+      visit_h2: "Find <em>us.</em>",
+      visit_intro: "In the heart of Bonnevoie. Reserve by phone.",
+      lbl_where: "Address", lbl_hours: "Hours", lbl_book: "Book", lbl_contact: "Contact",
+      where_small: "1243 Bonnevoie · Luxembourg City",
+      hours_val: "Daily 10:00 – 01:00",
+      hours_small: "Kitchen until approx. 22:00 · Thursday: check with the restaurant — <em>hours to be confirmed with owner</em>",
+      book_small: "Sunny terrace — booking recommended on fine days",
+      contact_note: "Email unverified — contact via Facebook or phone",
+      foot_since: "neighbourhood brasserie since c. 1959"
+    }
+  };
+
+  // Snapshot FR defaults from live DOM
+  const FR = {};
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    FR[el.getAttribute('data-i18n')] = el.textContent;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    FR['__h_' + el.getAttribute('data-i18n-html')] = el.innerHTML;
+  });
+
+  function setLang(l) {
+    const d = l === 'fr' ? null : I18N[l];
+    document.documentElement.lang = l;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      const v = d ? d[k] : FR[k];
+      if (v != null) el.textContent = v;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const k = el.getAttribute('data-i18n-html');
+      const v = d ? d[k] : FR['__h_' + k];
+      if (v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll('.lang-switch button').forEach(b =>
+      b.classList.toggle('active', b.dataset.lang === l)
+    );
+    try { localStorage.setItem('brasserie-beaulieu_lang', l); } catch (e) {}
+  }
+
+  document.querySelectorAll('.lang-switch button').forEach(b =>
+    b.addEventListener('click', () => setLang(b.dataset.lang))
+  );
+
+  let saved = 'fr';
+  try { saved = localStorage.getItem('brasserie-beaulieu_lang') || 'fr'; } catch (e) {}
+  if (saved !== 'fr') setLang(saved);
+</script>
+</body>
+</html>

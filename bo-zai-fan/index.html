@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<!--
+  BO ZAI FAN 煲仔飯 — closing-grade teaser (sales demo) — ON-BRAND, TRILINGUAL (FR default · DE · EN).
+  Hong Kong street food / Cantonese. Limpertsberg, Luxembourg.
+  Sources:
+    - Gault&Millau Luxembourg: https://www.gaultmillau.lu/en/restaurants/bo-zai-fan-luxembourg
+    - Wedely delivery platform: https://www.wedely.com/restaurant/174471-bo-zai-fan
+    - Paperjam review: https://paperjam.lu/article/on-a-teste-street-food-hong-ko
+    - Editus listing (owner name): https://www.editus.lu/en/bo-zai-fan-moutfort-1990093
+    - Mapstr: https://mapstr.com/place/ILT218NNOD/
+    - Instagram: https://www.instagram.com/bozaifanluxembourg/
+  Menu items and prices sourced from Wedely delivery platform (may carry delivery markup) — CONFIRM ALL PRICES WITH OWNER before publishing.
+  Opening hours sourced from Gault&Millau and search results — CONFIRM WITH OWNER before publishing.
+  Photos from Gault&Millau CDN (cdn.gaultmillau.lu) — confirm usage rights with owner before publishing.
+  Tagline and brand palette are PROPOSED (no official palette exists) — confirm with owner.
+  Typographic wordmark used; logo.jpg available as brand asset.
+-->
+<html lang="fr">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Bo Zai Fan 煲仔飯 — Dim Sum &amp; Clay Pot Rice · Limpertsberg, Luxembourg</title>
+<meta name="description" content="Bo Zai Fan apporte l'âme de la street food hongkongaise au cœur de Limpertsberg — dim sum faits main, riz bo zai fan et soupes de nouilles HK. 48 Avenue de la Faïencerie, L-1510 Luxembourg." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#1A1A1A; --paper:#FAFAF6; --clay:#EDE8DF; --clay2:#E0D9CE;
+    --red:#C9302A; --red-deep:#A6251F; --gold:#D4A853; --gold-deep:#B5882D;
+    --line:#DDD7CC; --muted:#6B6055; --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;
+    font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:'Cormorant Garamond',Georgia,serif}
+  .eyebrow{font-size:.76rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);font-weight:600}
+
+  .btn{display:inline-flex;align-items:center;gap:.5em;font-family:'DM Sans',sans-serif;font-weight:600;
+    font-size:.96rem;letter-spacing:.01em;padding:.78em 1.7em;border-radius:2px;border:1.5px solid transparent;transition:.22s;cursor:pointer;white-space:nowrap}
+  .btn-red{background:var(--red);color:#fff}
+  .btn-red:hover{background:var(--red-deep);transform:translateY(-2px);box-shadow:0 14px 28px -12px rgba(201,48,42,.45)}
+  .btn-ghost{border-color:var(--gold);color:var(--ink)}
+  .btn-ghost:hover{background:var(--gold);color:#fff}
+  .btn-white{background:#fff;color:var(--red)}
+  .btn-white:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(0,0,0,.4)}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:100;background:rgba(250,250,246,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:80px;gap:14px}
+  .brand{display:flex;flex-direction:column;line-height:1;gap:0}
+  .brand .wm{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.48rem;letter-spacing:.02em;color:var(--ink)}
+  .brand .hz{font-size:.7rem;letter-spacing:.1em;color:var(--red);font-weight:600;font-family:'DM Sans',sans-serif;margin-top:2px}
+  .brand small{font-family:'DM Sans',sans-serif;font-weight:500;font-size:.57rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links a{font-weight:500;font-size:.96rem;color:var(--muted);transition:.2s}
+  .nav-links a:hover{color:var(--red)}
+  .nav-cta{display:flex;gap:14px;align-items:center}
+  .lang-switch{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden;flex:none}
+  .lang-switch button{font-family:'DM Sans',sans-serif;font-weight:600;font-size:.76rem;letter-spacing:.04em;
+    padding:.46em .68em;background:none;border:0;cursor:pointer;color:var(--muted);transition:.18s}
+  .lang-switch button.active{background:var(--red);color:#fff}
+  .lang-switch button:not(.active):hover{color:var(--red)}
+  .burger-ico{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer}
+  .burger-ico span{width:26px;height:2.5px;background:var(--ink);border-radius:2px}
+
+  /* hero — photo with dark gradient */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;
+    background:linear-gradient(180deg,rgba(26,26,26,.1) 0%,rgba(26,26,26,.84) 100%),
+    url('assets/hero.jpg') center/cover no-repeat;color:#fff}
+  .hero .wrap{padding-top:90px;padding-bottom:72px;width:100%}
+  .hero .eyebrow{color:var(--gold)}
+  .hero-hz{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2.2rem);font-weight:400;
+    letter-spacing:.22em;color:rgba(212,168,83,.75);display:block;margin-bottom:.15em}
+  .hero h1{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(3rem,7vw,5.8rem);
+    line-height:1.0;letter-spacing:-.01em;margin:.2em 0 .3em}
+  .hero h1 em{font-style:italic;color:var(--gold)}
+  .hero p.lead{font-size:clamp(1rem,1.9vw,1.26rem);color:#f0e9df;max-width:52ch;margin-bottom:1.6em}
+  .badge-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:1.6em}
+  .badge{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    padding:.32em .78em;border-radius:1px;border:1px solid rgba(255,255,255,.38);color:#fff}
+  .badge.gold-badge{background:var(--gold);border-color:var(--gold);color:#1A1A1A}
+  .hero-cta{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:24px}
+  .addr{display:flex;align-items:center;gap:10px;color:#e8d9c8;font-size:.95rem;font-weight:500}
+  .addr .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(212,168,83,.28);flex:none}
+
+  section{padding:clamp(56px,7.5vw,100px) 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:46px;flex-wrap:wrap}
+  .sec-head h2{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(2.2rem,5vw,3.8rem)}
+  .sec-head h2 em{font-style:italic;color:var(--red)}
+  .sec-head p{color:var(--muted);max-width:40ch;font-size:1rem}
+
+  /* story */
+  .story-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center}
+  .story-photo{width:100%;border-radius:3px;aspect-ratio:4/4.8;object-fit:cover;
+    box-shadow:0 28px 60px -24px rgba(26,26,26,.45)}
+  .story h2{font-family:'Cormorant Garamond',serif;font-weight:700;
+    font-size:clamp(2rem,4.6vw,3.3rem);margin:.1em 0 .5em;line-height:1.05}
+  .story h2 em{font-style:italic;color:var(--red)}
+  .gm-badge{display:inline-flex;align-items:center;gap:12px;border:1.5px solid var(--gold);
+    border-radius:2px;padding:.5em 1em;margin-bottom:1.4em}
+  .gm-badge .score{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.6rem;color:var(--gold-deep)}
+  .gm-badge .label{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .story p.body{color:var(--muted);font-size:1.04rem;margin-bottom:1.4em;line-height:1.72}
+  .pillars{display:grid;gap:16px;margin-top:6px}
+  .pillar{display:flex;gap:16px;align-items:flex-start}
+  .pillar .ico{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;flex:none;
+    font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;font-style:normal;
+    background:var(--clay);color:var(--red);border:1.5px solid var(--line)}
+  .pillar h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.15rem;margin-bottom:2px}
+  .pillar p{color:var(--muted);font-size:.95rem}
+
+  /* menu */
+  .menu{background:var(--clay)}
+  .mcat{margin-bottom:44px}
+  .mcat:last-child{margin-bottom:0}
+  .mcat-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+  .mcat-head h3{font-family:'Cormorant Garamond',serif;font-weight:700;font-style:italic;font-size:1.65rem;color:var(--ink)}
+  .mcat-head .hz-cat{font-size:.82rem;font-weight:500;color:var(--muted);letter-spacing:.05em;font-style:normal}
+  .mcat-head .ln{flex:1;height:1px;background:var(--clay2);min-width:20px}
+  .mitems{display:grid;grid-template-columns:1fr 1fr;gap:4px 44px}
+  .mitem{display:flex;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px solid var(--clay2)}
+  .mitem .ml{flex:1}
+  .mitem .nm{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.1rem}
+  .mitem .ds{color:var(--muted);font-size:.88rem;margin-top:2px}
+  .mitem .mp{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.1rem;white-space:nowrap;color:var(--red)}
+  .pill-sig{font-size:.58rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+    padding:.22em .55em;border-radius:100px;margin-left:6px;vertical-align:middle;
+    background:rgba(201,48,42,.1);color:var(--red);border:1px solid rgba(201,48,42,.3)}
+  .menu-note{margin-top:10px;color:var(--muted);font-size:.92rem}
+  .menu-note b{color:var(--ink)}
+  @media(max-width:760px){.mitems{grid-template-columns:1fr;gap:0}}
+
+  /* band */
+  .band{background:linear-gradient(148deg,var(--red) 0%,var(--red-deep) 100%);color:#fff;text-align:center}
+  .band .inner{max-width:740px;margin:0 auto}
+  .band h2{font-family:'Cormorant Garamond',serif;font-weight:700;
+    font-size:clamp(2.2rem,5.5vw,4rem);margin-bottom:.3em;line-height:1.05}
+  .band h2 em{font-style:italic;color:var(--gold)}
+  .band p{color:rgba(255,240,228,.9);font-size:1.08rem;max-width:50ch;margin:0 auto 1.6em}
+  .taglist{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
+  .tag{font-size:.73rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+    padding:.55em .95em;border:1.5px solid rgba(255,255,255,.38);border-radius:100px;color:#fff}
+
+  /* gallery */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:3px;border:1px solid var(--line)}
+
+  /* visit */
+  .visit{background:var(--clay)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:stretch}
+  .info{display:flex;flex-direction:column;gap:18px}
+  .info-row{display:flex;gap:16px;align-items:flex-start;padding-bottom:18px;border-bottom:1px solid var(--clay2)}
+  .info-row .k{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold-deep);font-weight:700;min-width:90px;padding-top:5px;flex:none}
+  .info-row .val{font-size:1.02rem}
+  .info-row .val a{color:var(--red);font-weight:600}
+  .info-row .val .small{color:var(--muted);font-size:.88rem;display:block;margin-top:3px}
+  .map{border-radius:3px;overflow:hidden;border:1px solid var(--line);min-height:360px}
+  .map iframe{width:100%;height:100%;min-height:360px;border:0;display:block}
+
+  footer{background:#111;color:#a89e94;padding:48px 0 36px}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .foot .fb .wm{font-family:'Cormorant Garamond',serif;color:#fff;font-size:1.35rem;font-weight:700}
+  .foot .fb .fhz{font-size:.78rem;color:var(--gold);letter-spacing:.08em;margin-top:3px;display:block}
+  .foot .fb small{display:block;font-size:.82rem;color:#a89e94;margin-top:5px}
+  .foot p{font-size:.88rem;text-align:right}
+  .foot a{color:var(--gold)}
+
+  .js .reveal{opacity:0;transform:translateY(22px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .js .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:880px){
+    .nav-links{display:none}
+    .nav-cta .btn-ghost{display:none}
+    .burger-ico{display:flex}
+    .story-grid{grid-template-columns:1fr;gap:30px}
+    .story-photo{aspect-ratio:16/11;order:-1}
+    .gallery{grid-template-columns:1fr 1fr}
+    .visit-grid{grid-template-columns:1fr}
+    .mobile-open .nav-links{
+      display:flex;position:absolute;top:80px;left:0;right:0;flex-direction:column;gap:0;
+      background:var(--paper);border-bottom:1px solid var(--line);padding:8px 28px 20px}
+    .mobile-open .nav-links a{padding:14px 0;border-bottom:1px solid var(--line)}
+  }
+  @media(max-width:480px){
+    .nav-cta .btn-red{display:none}
+    .foot{flex-direction:column;text-align:center}
+    .foot p{text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#top" class="brand" aria-label="Bo Zai Fan">
+      <span class="wm serif">Bo Zai Fan</span>
+      <span class="hz">煲仔飯</span>
+      <small data-i18n="brand_tag">Limpertsberg · Luxembourg</small>
+    </a>
+    <nav class="nav-links">
+      <a href="#story" data-i18n="nav_story">La Maison</a>
+      <a href="#menu" data-i18n="nav_menu">La Carte</a>
+      <a href="#visit" data-i18n="nav_visit">Nous Trouver</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang-switch" role="group" aria-label="Langue">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="tel:+352462147" class="btn btn-red" data-i18n="btn_book">Réserver</a>
+      <button class="burger-ico" aria-label="Menu" onclick="document.body.classList.toggle('mobile-open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO — photo hero with dark gradient overlay -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow reveal" data-i18n="hero_eyebrow">Limpertsberg · Luxembourg</p>
+    <span class="hero-hz reveal">煲仔飯</span>
+    <h1 class="reveal" data-i18n-html="hero_h1">Hong Kong, <em>au cœur de Limpertsberg.</em></h1>
+    <p class="lead reveal" data-i18n="hero_lead">Dim sum faits à la main, riz bo zai fan au fond croustillant, soupes de nouilles façon Hong Kong — et une note Gault&amp;Millau 12/20.</p>
+    <div class="badge-row reveal">
+      <span class="badge gold-badge">Gault&amp;Millau 12/20</span>
+      <span class="badge">HIP</span>
+      <span class="badge">POP</span>
+    </div>
+    <div class="hero-cta reveal">
+      <a href="tel:+352462147" class="btn btn-red" data-i18n="btn_book_table">Réserver une table</a>
+      <a href="#menu" class="btn btn-ghost" data-i18n="btn_seemenu">Voir la carte</a>
+    </div>
+    <p class="addr reveal">
+      <span class="dot"></span>
+      <span data-i18n="hero_addr">48 Avenue de la Faïencerie, L-1510 Luxembourg</span>
+    </p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <img class="story-photo reveal" src="assets/food1.jpg" alt="Riz bo zai fan en cocotte d'argile, plat signature de la maison" />
+    <div>
+      <p class="eyebrow reveal" data-i18n="story_eyebrow">La Maison</p>
+      <h2 class="serif reveal" data-i18n-html="story_h2">L'âme de Hong Kong, <em>à Limpertsberg.</em></h2>
+      <div class="gm-badge reveal">
+        <span class="score">12<span style="font-size:.9rem">/20</span></span>
+        <span class="label">Gault&amp;Millau Luxembourg · HIP &amp; POP</span>
+      </div>
+      <p class="body reveal" data-i18n="story_body">Bo Zai Fan apporte l'âme de la street food hongkongaise au cœur de Limpertsberg. Baptisé d'après le plat cantonais de riz cuit en cocotte d'argile, le restaurant propose des dim sum faits maison, du riz bo zai fan au fond croustillant et des soupes de nouilles façon Hong Kong. Reconnu par le Gault&amp;Millau Luxembourg avec une note de 12/20, il s'est forgé une clientèle fidèle grâce à la précision et à la générosité de ses préparations artisanales.</p>
+      <div class="pillars">
+        <div class="pillar reveal">
+          <div class="ico">点</div>
+          <div>
+            <h3 data-i18n="p1_h">Dim sum faits main</h3>
+            <p data-i18n="p1_p">Chaque pièce pliée et cuite à la vapeur à la commande — Siu Long Pau, Ha Kao, Fan Koh et bien d'autres.</p>
+          </div>
+        </div>
+        <div class="pillar reveal">
+          <div class="ico">煲</div>
+          <div>
+            <h3 data-i18n="p2_h">Riz en cocotte d'argile</h3>
+            <p data-i18n="p2_p">Riz cuit sur braise vive, fond croustillant, garnitures au choix — le plat signature qui donne son nom à la maison.</p>
+          </div>
+        </div>
+        <div class="pillar reveal">
+          <div class="ico">麵</div>
+          <div>
+            <h3 data-i18n="p3_h">Soupes de nouilles HK</h3>
+            <p data-i18n="p3_p">Bouillons profonds, garnitures généreuses — bœuf, poulet frit, scampis ou tofu. La tradition hongkongaise.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="menu_h2">La <em>carte</em></h2>
+      <p data-i18n="menu_intro">Dim sum, riz en cocotte, soupes de nouilles et plats principaux. Une sélection — la carte complète sur place.</p>
+    </div>
+
+    <!-- Dim Sum -->
+    <div class="mcat reveal">
+      <div class="mcat-head">
+        <h3 class="serif">Dim Sum</h3>
+        <span class="hz-cat">点心</span>
+        <span class="ln"></span>
+      </div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Siu Long Pau</div>
+            <div class="ds" data-i18n="d_slp">Raviolis vapeur à la soupe</div>
+          </div>
+          <div class="mp">€10.50</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Ha Kao</div>
+            <div class="ds" data-i18n="d_hakao">Raviolis aux crevettes, vapeur</div>
+          </div>
+          <div class="mp">€13.80</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Wo Dit</div>
+            <div class="ds" data-i18n="d_wodit">Gyoza poêlés, pliage maison</div>
+          </div>
+          <div class="mp">€11.50</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Fan Koh</div>
+            <div class="ds" data-i18n="d_fankoh">Raviolis cristal légumes &amp; crevettes</div>
+          </div>
+          <div class="mp">€12.00</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Sieuw Mai</div>
+            <div class="ds" data-i18n="d_sieuwmai">Bouchées vapeur porc &amp; crevettes</div>
+          </div>
+          <div class="mp">€11.00</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Assortiment Dim Sum&nbsp;<span class="pill-sig" data-i18n="pil_10p">10 pièces</span></div>
+            <div class="ds" data-i18n="d_assort">Sélection du chef</div>
+          </div>
+          <div class="mp">€23.50</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clay Pot Rice -->
+    <div class="mcat reveal">
+      <div class="mcat-head">
+        <h3 class="serif">Clay Pot Rice</h3>
+        <span class="hz-cat">煲仔飯 · Signature</span>
+        <span class="ln"></span>
+      </div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Bo Zai Kai Fan</div>
+            <div class="ds" data-i18n="d_kaifan">Poulet &amp; saucisse chinoise sur riz en cocotte</div>
+          </div>
+          <div class="mp">€23.80</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Bo Zai Pai Gu Fan</div>
+            <div class="ds" data-i18n="d_paigufan">Côtes de porc &amp; saucisse chinoise sur riz en cocotte</div>
+          </div>
+          <div class="mp">€24.80</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Bo Zai Ngau Yuk Fan</div>
+            <div class="ds" data-i18n="d_ngauyukfan">Bœuf &amp; saucisse chinoise sur riz en cocotte</div>
+          </div>
+          <div class="mp">€25.80</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Bo Zai Man Yu Fan</div>
+            <div class="ds" data-i18n="d_manyufan">Unagi &amp; saucisse chinoise sur riz en cocotte</div>
+          </div>
+          <div class="mp">€27.80</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Bo Zai Fan Tofu &amp; Légumes&nbsp;<span class="pill-sig" data-i18n="pil_vg">végétarien</span></div>
+            <div class="ds" data-i18n="d_tofufan">Tofu &amp; légumes sur riz en cocotte</div>
+          </div>
+          <div class="mp">€22.80</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Noodles -->
+    <div class="mcat reveal">
+      <div class="mcat-head">
+        <h3 class="serif">Noodles — HK Style</h3>
+        <span class="hz-cat">港式麵</span>
+        <span class="ln"></span>
+      </div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Soupe de Nouilles au Bœuf</div>
+            <div class="ds" data-i18n="d_noodboeuf">Bouillon profond, bœuf tendre</div>
+          </div>
+          <div class="mp">€23.80</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Soupe de Nouilles au Poulet Frit</div>
+            <div class="ds" data-i18n="d_noodpoulet">Poulet frit croustillant, bouillon clair</div>
+          </div>
+          <div class="mp">€22.80</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Soupe de Nouilles aux Scampis</div>
+            <div class="ds" data-i18n="d_noodscampi">Scampis, bouillon parfumé</div>
+          </div>
+          <div class="mp">€25.50</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Soupe de Nouilles au Tofu</div>
+            <div class="ds" data-i18n="d_noodtofu">Tofu &amp; légumes, bouillon végétarien</div>
+          </div>
+          <div class="mp">€21.80</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plats principaux -->
+    <div class="mcat reveal" style="margin-bottom:0">
+      <div class="mcat-head">
+        <h3 class="serif">Plats Principaux</h3>
+        <span class="ln"></span>
+      </div>
+      <div class="mitems">
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Canard Façon Hong Kong</div>
+            <div class="ds" data-i18n="d_canard">Sauce gingembre &amp; vinaigre</div>
+          </div>
+          <div class="mp">€27.80</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Scampis Croustillants</div>
+            <div class="ds" data-i18n="d_scampis">Ail, poivre noir</div>
+          </div>
+          <div class="mp">€32.80</div>
+        </div>
+        <div class="mitem">
+          <div class="ml">
+            <div class="nm serif">Filet de Dorade Royale</div>
+            <div class="ds" data-i18n="d_dorade">Sauce soja-gingembre, légumes</div>
+          </div>
+          <div class="mp">€28.80</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="menu-note reveal" style="margin-top:30px" data-i18n-html="menu_note"><b>Une sélection.</b> Carte complète disponible sur place. Tarifs issus de la plateforme de livraison Wedely — <em>prix à confirmer avec le restaurant.</em></p>
+  </div>
+</section>
+
+<!-- BAND CTA -->
+<section class="band">
+  <div class="wrap inner reveal">
+    <h2 class="serif" data-i18n-html="band_h2">Hong Kong, <em>à votre table.</em></h2>
+    <p data-i18n="band_p">Dim sum pliés à la main, riz en cocotte croustillant, bouillons profonds. Réservez votre table au cœur de Limpertsberg.</p>
+    <div class="taglist">
+      <span class="tag" data-i18n="tag1">Dim Sum faits main</span>
+      <span class="tag" data-i18n="tag2">Clay Pot Rice</span>
+      <span class="tag" data-i18n="tag3">Gault&amp;Millau 12/20</span>
+      <span class="tag" data-i18n="tag4">Noodles HK</span>
+    </div>
+    <a href="tel:+352462147" class="btn btn-white" data-i18n="btn_book_table">Réserver une table</a>
+  </div>
+</section>
+
+<!-- GALLERY — 3 real food photos -->
+<section style="padding-bottom:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="gal_h2">À <em>table.</em></h2>
+      <p data-i18n="gal_intro">Quelques images de la maison et de l'assiette.</p>
+    </div>
+    <div class="gallery">
+      <img class="reveal" src="assets/food1.jpg" alt="Riz bo zai fan en cocotte d'argile, plat signature" />
+      <img class="reveal" src="assets/food2.jpg" alt="Assortiment de dim sum dans un panier vapeur en bambou" />
+      <img class="reveal" src="assets/food3.jpg" alt="Soupe de nouilles façon Hong Kong, bœuf et légumes" />
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="visit_h2">Nous <em>trouver.</em></h2>
+      <p data-i18n="visit_intro">Au cœur de Limpertsberg. Réservez par téléphone.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="info reveal">
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_where">Adresse</div>
+          <div class="val">
+            48 Avenue de la Faïencerie
+            <span class="small" data-i18n="where_small">L-1510 Luxembourg · Limpertsberg</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_hours">Horaires</div>
+          <div class="val">
+            <span data-i18n="hours_val">Mar–Sam : déj. 11h30–14h · dîner 18h–22h</span>
+            <span class="small" data-i18n-html="hours_small">Lun &amp; dim : fermé — <em>à confirmer avec le restaurant</em></span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="k" data-i18n="lbl_book">Réserver</div>
+          <div class="val">
+            <a href="tel:+352462147">+352 46 21 47</a>
+            <span class="small" data-i18n="book_small">Par téléphone, du mardi au samedi</span>
+          </div>
+        </div>
+        <div class="info-row" style="border-bottom:0">
+          <div class="k" data-i18n="lbl_contact">Contact</div>
+          <div class="val">
+            <a href="mailto:contact@bozaifan.lu">contact@bozaifan.lu</a>
+            <span class="small"><a href="https://www.instagram.com/bozaifanluxembourg/" target="_blank" rel="noopener">@bozaifanluxembourg</a></span>
+          </div>
+        </div>
+        <a href="tel:+352462147" class="btn btn-red" style="align-self:flex-start;margin-top:6px" data-i18n="btn_book_table">Réserver une table</a>
+      </div>
+      <div class="map reveal">
+        <iframe
+          title="Plan vers Bo Zai Fan"
+          loading="lazy"
+          src="https://www.google.com/maps?q=48+Avenue+de+la+Fa%C3%AFencerie+L-1510+Luxembourg&output=embed"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div class="fb">
+      <span class="wm serif">Bo Zai Fan</span>
+      <span class="fhz">煲仔飯</span>
+      <small>48 Avenue de la Faïencerie · L-1510 Luxembourg · +352 46 21 47</small>
+    </div>
+    <p>
+      © Bo Zai Fan · <span data-i18n="foot_tag">street food de Hong Kong</span><br>
+      <a href="https://www.instagram.com/bozaifanluxembourg/" target="_blank" rel="noopener">Instagram</a> ·
+      <a href="https://www.gaultmillau.lu/en/restaurants/bo-zai-fan-luxembourg" target="_blank" rel="noopener">Gault&amp;Millau</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // reveal on scroll
+  const io = new IntersectionObserver((es) => {
+    es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 6 * 70) + 'ms';
+    io.observe(el);
+  });
+  document.querySelectorAll('.nav-links a').forEach(a =>
+    a.addEventListener('click', () => document.body.classList.remove('mobile-open'))
+  );
+
+  // ---------- i18n (FR default in HTML · DE · EN) ----------
+  const I18N = {
+    fr: {},
+    de: {
+      brand_tag: "Limpertsberg · Luxemburg",
+      nav_story: "Das Lokal", nav_menu: "Speisekarte", nav_visit: "Finden",
+      btn_book: "Reservieren", btn_book_table: "Tisch reservieren", btn_seemenu: "Zur Karte",
+      hero_eyebrow: "Limpertsberg · Luxemburg",
+      hero_h1: "Hongkong, <em>mitten in Limpertsberg.</em>",
+      hero_lead: "Handgemachte Dim Sum, knusprig-gebratener Bo-Zai-Fan-Tonpfannenreis, Nudelsuppen nach Hongkonger Art — und eine Gault&Millau-Note von 12/20.",
+      hero_addr: "48 Avenue de la Faïencerie, L-1510 Luxemburg",
+      story_eyebrow: "Das Lokal",
+      story_h2: "Die Seele Hongkongs, <em>in Limpertsberg.</em>",
+      story_body: "Bo Zai Fan bringt die Streetfood-Seele Hongkongs ins Herz von Limpertsberg. Das Restaurant, benannt nach dem kantonesischen Tonkopf-Reisgericht, bietet handgemachte Dim Sum, knusprig gebratenen Bo-Zai-Fan-Reis und Nudelsuppen nach Hongkonger Art. Mit einer Bewertung von 12/20 im Gault&Millau Luxemburg hat es sich durch die Sorgfalt und Wärme seiner hausgemachten Gerichte eine treue Stammkundschaft erarbeitet.",
+      p1_h: "Dim Sum, handgemacht",
+      p1_p: "Jedes Stück wird auf Bestellung gefaltet und gedämpft — Siu Long Pau, Ha Kao, Fan Koh und viele mehr.",
+      p2_h: "Reis in der Tonpfanne",
+      p2_p: "Reis über offener Glut gegart, knuspriger Boden, Zutaten nach Wahl — das Signature-Gericht, das dem Lokal seinen Namen gibt.",
+      p3_h: "HK-Nudelsuppen",
+      p3_p: "Tiefe Brühen, grosszügige Einlagen — Rind, gebratenes Huhn, Scampi oder Tofu. Hongkonger Tradition auf dem Tisch.",
+      menu_h2: "Die <em>Karte</em>",
+      menu_intro: "Dim Sum, Tonpfannenreis, Nudelsuppen und Hauptgerichte. Eine Auswahl — die vollständige Karte vor Ort.",
+      d_slp: "Suppenravioli, gedämpft",
+      d_hakao: "Garnelenravioli, gedämpft",
+      d_wodit: "Gebratene Teigtaschen, hausgemacht",
+      d_fankoh: "Kristallravioli mit Gemüse &amp; Garnelen",
+      d_sieuwmai: "Gedämpfte Bällchen Schwein &amp; Garnelen",
+      d_assort: "Chefauswahl",
+      pil_10p: "10 Stück",
+      pil_vg: "vegetarisch",
+      d_kaifan: "Huhn &amp; Chinesische Wurst auf Tonpfannenreis",
+      d_paigufan: "Rippchen &amp; Chinesische Wurst auf Tonpfannenreis",
+      d_ngauyukfan: "Rind &amp; Chinesische Wurst auf Tonpfannenreis",
+      d_manyufan: "Unagi &amp; Chinesische Wurst auf Tonpfannenreis",
+      d_tofufan: "Tofu &amp; Gemüse auf Tonpfannenreis",
+      d_noodboeuf: "Tiefe Brühe, zartes Rindfleisch",
+      d_noodpoulet: "Knuspriges Hühnchen, klare Brühe",
+      d_noodscampi: "Scampi, aromatische Brühe",
+      d_noodtofu: "Tofu &amp; Gemüse, vegetarische Brühe",
+      d_canard: "Ingwer-Essig-Sauce",
+      d_scampis: "Knoblauch, schwarzer Pfeffer",
+      d_dorade: "Soja-Ingwer-Sauce, Gemüse",
+      menu_note: "<b>Eine Auswahl.</b> Vollständige Karte vor Ort. Preise von der Lieferplattform Wedely — <em>bitte beim Restaurant bestätigen.</em>",
+      band_h2: "Hongkong, <em>auf Ihrem Tisch.</em>",
+      band_p: "Handgemachte Dim Sum, knuspriger Tonpfannenreis, tiefe Brühen. Reservieren Sie Ihren Tisch im Herzen von Limpertsberg.",
+      tag1: "Handgemachte Dim Sum", tag2: "Clay Pot Rice", tag3: "Gault&Millau 12/20", tag4: "HK Nudelsuppen",
+      gal_h2: "Am <em>Tisch.</em>",
+      gal_intro: "Einige Bilder vom Lokal und vom Teller.",
+      visit_h2: "So <em>finden Sie uns.</em>",
+      visit_intro: "Im Herzen von Limpertsberg. Reservierung per Telefon.",
+      lbl_where: "Adresse", lbl_hours: "Öffnungszeiten", lbl_book: "Reservieren", lbl_contact: "Kontakt",
+      where_small: "L-1510 Luxemburg · Limpertsberg",
+      hours_val: "Di–Sa: Mittag 11:30–14 · Abend 18–22 Uhr",
+      hours_small: "Mo &amp; So: geschlossen — <em>bitte beim Restaurant bestätigen</em>",
+      book_small: "Per Telefon, Dienstag bis Samstag",
+      foot_tag: "Hongkonger Streetfood"
+    },
+    en: {
+      brand_tag: "Limpertsberg · Luxembourg",
+      nav_story: "Our Story", nav_menu: "Menu", nav_visit: "Visit",
+      btn_book: "Book", btn_book_table: "Reserve a table", btn_seemenu: "See the menu",
+      hero_eyebrow: "Limpertsberg · Luxembourg",
+      hero_h1: "Hong Kong, <em>in the heart of Limpertsberg.</em>",
+      hero_lead: "Hand-crafted dim sum, crispy-bottomed clay pot rice, Hong Kong-style noodle soups — and a Gault&Millau score of 12/20.",
+      hero_addr: "48 Avenue de la Faïencerie, L-1510 Luxembourg",
+      story_eyebrow: "Our Story",
+      story_h2: "The soul of Hong Kong, <em>in Limpertsberg.</em>",
+      story_body: "Bo Zai Fan brings the street food soul of Hong Kong to the heart of Limpertsberg. Named after the Cantonese clay pot rice dish, the restaurant offers hand-crafted dim sum, crispy-bottomed clay pot rice, and Hong Kong-style noodle soups. Recognised by Gault&Millau Luxembourg with a score of 12/20, it has earned a loyal following for the precision and warmth of its homemade preparations.",
+      p1_h: "Hand-crafted dim sum",
+      p1_p: "Every piece folded and steamed to order — Siu Long Pau, Ha Kao, Fan Koh and many more.",
+      p2_h: "Clay pot rice",
+      p2_p: "Rice cooked in a clay pot over live heat, crispy bottom, toppings of your choice — the signature dish that names the house.",
+      p3_h: "HK-style noodle soups",
+      p3_p: "Deep broths, generous toppings — beef, crispy chicken, shrimp or tofu. Hong Kong tradition at the table.",
+      menu_h2: "The <em>menu</em>",
+      menu_intro: "Dim sum, clay pot rice, noodle soups and main dishes. A selection — full menu available in-house.",
+      d_slp: "Soup dumplings, steamed",
+      d_hakao: "Shrimp dumplings, steamed",
+      d_wodit: "Pan-fried dumplings, house-made",
+      d_fankoh: "Crystal dumplings with vegetable &amp; shrimp",
+      d_sieuwmai: "Steamed pork &amp; shrimp dumplings",
+      d_assort: "Chef's selection",
+      pil_10p: "10 pieces",
+      pil_vg: "vegetarian",
+      d_kaifan: "Chicken &amp; Chinese sausage on clay pot rice",
+      d_paigufan: "Spare ribs &amp; Chinese sausage on clay pot rice",
+      d_ngauyukfan: "Beef &amp; Chinese sausage on clay pot rice",
+      d_manyufan: "Unagi &amp; Chinese sausage on clay pot rice",
+      d_tofufan: "Tofu &amp; vegetables on clay pot rice",
+      d_noodboeuf: "Deep broth, tender beef",
+      d_noodpoulet: "Crispy chicken, clear broth",
+      d_noodscampi: "Shrimp, aromatic broth",
+      d_noodtofu: "Tofu &amp; vegetables, vegetarian broth",
+      d_canard: "Ginger &amp; vinegar sauce",
+      d_scampis: "Garlic, black pepper",
+      d_dorade: "Soy-ginger sauce, vegetables",
+      menu_note: "<b>A selection.</b> Full menu available in-house. Prices from Wedely delivery platform — <em>confirm with the restaurant.</em>",
+      band_h2: "Hong Kong, <em>at your table.</em>",
+      band_p: "Hand-crafted dim sum, crispy clay pot rice, deep broths. Reserve your table in the heart of Limpertsberg.",
+      tag1: "Hand-crafted dim sum", tag2: "Clay Pot Rice", tag3: "Gault&Millau 12/20", tag4: "HK Noodle Soups",
+      gal_h2: "At <em>the table.</em>",
+      gal_intro: "A few images of the house and the plate.",
+      visit_h2: "Find <em>us.</em>",
+      visit_intro: "In the heart of Limpertsberg. Reserve by phone.",
+      lbl_where: "Address", lbl_hours: "Hours", lbl_book: "Book", lbl_contact: "Contact",
+      where_small: "L-1510 Luxembourg · Limpertsberg",
+      hours_val: "Tue–Sat: lunch 11:30–14 · dinner 18–22h",
+      hours_small: "Mon &amp; Sun: closed — <em>please confirm with the restaurant</em>",
+      book_small: "By phone, Tuesday to Saturday",
+      foot_tag: "Hong Kong street food"
+    }
+  };
+
+  // Capture FR defaults from the DOM at page load
+  const FR = {};
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    FR[el.getAttribute('data-i18n')] = el.textContent;
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    FR['__h_' + el.getAttribute('data-i18n-html')] = el.innerHTML;
+  });
+
+  function setLang(l) {
+    const d = l === 'fr' ? null : I18N[l];
+    document.documentElement.lang = l;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      const v = d ? d[k] : FR[k];
+      if (v != null) el.textContent = v;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const k = el.getAttribute('data-i18n-html');
+      const v = d ? d[k] : FR['__h_' + k];
+      if (v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll('.lang-switch button').forEach(b =>
+      b.classList.toggle('active', b.dataset.lang === l)
+    );
+    try { localStorage.setItem('bo-zai-fan_lang', l); } catch (e) {}
+  }
+
+  document.querySelectorAll('.lang-switch button').forEach(b =>
+    b.addEventListener('click', () => setLang(b.dataset.lang))
+  );
+
+  // Restore saved language preference
+  let saved = 'fr';
+  try { saved = localStorage.getItem('bo-zai-fan_lang') || 'fr'; } catch (e) {}
+  if (saved !== 'fr') setLang(saved);
+</script>
+</body>
+</html>
