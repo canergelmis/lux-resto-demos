@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- Private demo index — restaurant website mockups for sales. noindex. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Restaurant website demos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#1e1b18;--paper:#faf7f1;--muted:#7a7263;--line:#e7dfd2;--accent:#b5482f}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding:64px 28px 80px}
+  h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.05;margin-bottom:.3em}
+  .lead{color:var(--muted);font-size:1.1rem;max-width:60ch;margin-bottom:8px}
+  .note{color:var(--muted);font-size:.86rem;max-width:64ch;margin-bottom:44px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  a.card{display:block;border:1px solid var(--line);border-radius:14px;padding:26px 28px;background:#fff;text-decoration:none;color:inherit;transition:.2s;box-shadow:0 10px 30px -24px rgba(30,27,24,.5)}
+  a.card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 18px 40px -24px rgba(30,27,24,.5)}
+  .card h2{font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem;margin-bottom:4px}
+  .card .meta{color:var(--muted);font-size:.92rem}
+  .card .go{color:var(--accent);font-weight:600;font-size:.92rem;margin-top:12px;display:inline-block}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  footer{color:var(--muted);font-size:.82rem;margin-top:44px;border-top:1px solid var(--line);padding-top:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Restaurant website demos</h1>
+  <p class="lead">Trilingual (FR / DE / EN) single-page mockups, built from each venue's public branding.</p>
+  <p class="note">Private preview for outreach. Menus, prices and hours are illustrative and must be confirmed with each owner before publishing. Photos sourced from public listings.</p>
+  <div class="grid">
+    <a class="card" href="bella-napoli/"><h2>Bella Napoli</h2><div class="meta">Pizzeria napolitaine · Luxembourg, depuis 1976</div><span class="go">View demo →</span></a>
+    <a class="card" href="lannexe/"><h2>L'Annexe</h2><div class="meta">Brasserie gastronomique · Luxembourg-Ville</div><span class="go">View demo →</span></a>
+    <a class="card" href="il-fragolino/"><h2>Il Fragolino</h2><div class="meta">Cuisine italienne · depuis 1999</div><span class="go">View demo →</span></a>
+    <a class="card" href="luxburgers/"><h2>Lux'Burgers</h2><div class="meta">La maison du burger · Bonnevoie</div><span class="go">View demo →</span></a>
+  </div>
+  <footer>Built for outreach — not affiliated with the venues. Content pending owner confirmation.</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<!--
+  IL FRAGOLINO — closing-grade teaser (sales demo) — ON-BRAND, TRILINGUAL (FR default · DE · EN).
+  Classic Italian, retro-modern, cliffside-terrace character. Est. 1999.
+  OVERHAUL PITCH: venue currently runs a generic Zenchef template (il-fragolino.lu). This demo
+  positions a custom, characterful site as an upgrade over that cookie-cutter template.
+  Real photos from their website + TripAdvisor (assets/). Story (FR) sourced verbatim from il-fragolino.lu.
+  Menu/prices from miammiam.lu + gastronomie.lu — CONFIRM WITH OWNER before publishing.
+  Tagline + brand palette are PROPOSED (no official logo/palette found) — confirm with owner.
+  No logo asset exists → typographic wordmark used.
+-->
+<html lang="fr">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Il Fragolino — Cuisine italienne · Luxembourg, depuis 1999</title>
+<meta name="description" content="Restaurant Il Fragolino — cuisine italienne et saveurs méditerranéennes depuis 1999, dans un cadre rétro-moderne avec terrasse dans les falaises de la Pétrusse. 56–58 Montée de la Pétrusse, Luxembourg." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#2c2020; --paper:#fffdf8; --cream:#f7f1e3; --cream2:#efe6d2;
+    --wine:#7b1a2e; --wine-deep:#5e1322; --gold:#c49a3c; --gold-deep:#a87f28; --basil:#4a7040;
+    --line:#e6dcc8; --muted:#7d6f63; --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;
+    font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:'Playfair Display',Georgia,serif}
+  .eyebrow{font-size:.76rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);font-weight:600}
+
+  .btn{display:inline-flex;align-items:center;gap:.5em;font-family:'Inter',sans-serif;font-weight:600;
+    font-size:.96rem;letter-spacing:.01em;padding:.78em 1.7em;border-radius:2px;border:1.5px solid transparent;transition:.22s;cursor:pointer;white-space:nowrap}
+  .btn-wine{background:var(--wine);color:#fff}
+  .btn-wine:hover{background:var(--wine-deep);transform:translateY(-2px);box-shadow:0 14px 28px -12px var(--wine)}
+  .btn-ghost{border-color:var(--gold);color:var(--ink)}
+  .btn-ghost:hover{background:var(--gold);color:#fff}
+  .btn-white{background:#fff;color:var(--wine)}
+  .btn-white:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(0,0,0,.4)}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,253,248,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:80px;gap:14px}
+  .brand{display:flex;flex-direction:column;line-height:1}
+  .brand .wm{font-family:'Playfair Display',serif;font-weight:800;font-size:1.5rem;letter-spacing:.01em;color:var(--wine)}
+  .brand small{font-family:'Inter';font-weight:600;font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links a{font-weight:500;font-size:.96rem;color:#5a4d44;transition:.2s}
+  .nav-links a:hover{color:var(--wine)}
+  .nav-cta{display:flex;gap:14px;align-items:center}
+  .lang-switch{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden;flex:none}
+  .lang-switch button{font-family:'Inter',sans-serif;font-weight:600;font-size:.76rem;letter-spacing:.04em;
+    padding:.46em .68em;background:none;border:0;cursor:pointer;color:var(--muted);transition:.18s}
+  .lang-switch button.active{background:var(--wine);color:#fff}
+  .lang-switch button:not(.active):hover{color:var(--wine)}
+  .burger-ico{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer}
+  .burger-ico span{width:26px;height:2.5px;background:var(--ink);border-radius:2px}
+
+  /* hero */
+  .hero{position:relative;min-height:86vh;display:flex;align-items:flex-end;
+    background:linear-gradient(180deg,rgba(44,32,32,.18),rgba(44,32,32,.78)),url('assets/exterior_night.jpg') center/cover no-repeat;color:#fff}
+  .hero .wrap{padding-top:90px;padding-bottom:64px;width:100%}
+  .hero .eyebrow{color:var(--gold)}
+  .hero h1{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2.8rem,6.6vw,5.4rem);line-height:1.0;letter-spacing:-.01em;margin:.2em 0 .26em}
+  .hero h1 em{font-style:italic;color:var(--gold)}
+  .hero p.lead{font-size:clamp(1.05rem,1.9vw,1.3rem);color:#f3e8df;max-width:46ch;margin-bottom:1.7em}
+  .hero-cta{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:24px}
+  .addr{display:flex;align-items:center;gap:10px;color:#e8d9c8;font-size:.95rem;font-weight:500}
+  .addr .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(196,154,60,.28);flex:none}
+
+  section{padding:clamp(56px,7.5vw,104px) 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:46px;flex-wrap:wrap}
+  .sec-head h2{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2.1rem,5vw,3.6rem)}
+  .sec-head h2 em{font-style:italic;color:var(--wine)}
+  .sec-head p{color:var(--muted);max-width:38ch}
+
+  /* story */
+  .story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+  .story-photo{width:100%;border-radius:4px;aspect-ratio:4/4.6;object-fit:cover;box-shadow:0 30px 64px -32px rgba(44,32,32,.55)}
+  .story h2{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2rem,4.6vw,3.2rem);margin:.12em 0 .55em;line-height:1.05}
+  .story h2 em{font-style:italic;color:var(--wine)}
+  .story p.body{color:#5a4d44;font-size:1.08rem;margin-bottom:1.5em}
+  .pillars{display:grid;gap:14px;margin-top:8px}
+  .pillar{display:flex;gap:16px;align-items:flex-start}
+  .pillar .ico{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;color:#fff;background:var(--wine);
+    width:46px;height:46px;display:grid;place-items:center;border-radius:50%;flex:none;font-size:1.15rem}
+  .pillar h3{font-family:'Playfair Display',serif;font-weight:700;font-size:1.18rem;margin-bottom:2px}
+  .pillar p{color:var(--muted);font-size:.97rem}
+
+  /* menu */
+  .menu{background:var(--cream)}
+  .mcat{margin-bottom:42px}
+  .mcat:last-child{margin-bottom:0}
+  .mcat-head{display:flex;align-items:baseline;gap:16px;margin-bottom:16px}
+  .mcat-head h3{font-family:'Playfair Display',serif;font-weight:700;font-style:italic;font-size:1.55rem;color:var(--wine)}
+  .mcat-head .ln{flex:1;height:1px;background:var(--line)}
+  .mitems{display:grid;grid-template-columns:1fr 1fr;gap:4px 44px}
+  .mitem{display:flex;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+  .mitem .ml{flex:1}
+  .mitem .nm{font-family:'Playfair Display',serif;font-weight:600;font-size:1.12rem}
+  .mitem .ds{color:var(--muted);font-size:.9rem;margin-top:1px}
+  .mitem .mp{font-family:'Playfair Display',serif;font-weight:700;font-size:1.08rem;white-space:nowrap;color:var(--gold-deep)}
+  .pill{font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.2em .5em;border-radius:100px;margin-left:7px;vertical-align:middle;background:#e7efe0;color:var(--basil);border:1px solid #cfe0c2}
+  .menu-note{margin-top:6px;color:var(--muted);font-size:.92rem}
+  .menu-note b{color:var(--ink)}
+  @media(max-width:760px){.mitems{grid-template-columns:1fr;gap:0}}
+
+  /* band */
+  .band{background:linear-gradient(150deg,var(--wine),var(--wine-deep));color:#fff;text-align:center}
+  .band .inner{max-width:760px;margin:0 auto}
+  .band h2{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2rem,5.2vw,3.7rem);margin-bottom:.32em}
+  .band h2 em{font-style:italic;color:var(--gold)}
+  .band p{color:#f1e2d6;font-size:1.1rem;max-width:48ch;margin:0 auto 1.6em}
+  .taglist{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
+  .tag{font-size:.76rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.55em .95em;border:1.5px solid rgba(255,255,255,.4);border-radius:100px}
+
+  /* gallery */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .gallery img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;border-radius:4px;border:1px solid var(--line)}
+
+  /* visit */
+  .visit{background:var(--cream)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:stretch}
+  .info{display:flex;flex-direction:column;gap:18px}
+  .info-row{display:flex;gap:16px;align-items:flex-start;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .info-row .k{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;min-width:94px;padding-top:5px}
+  .info-row .val{font-size:1.04rem}
+  .info-row .val a{color:var(--wine);font-weight:600}
+  .info-row .val .small{color:var(--muted);font-size:.9rem;display:block;margin-top:3px}
+  .map{border-radius:4px;overflow:hidden;border:1px solid var(--line);min-height:360px}
+  .map iframe{width:100%;height:100%;min-height:360px;border:0}
+
+  footer{background:#241616;color:#c9b6a6;padding:50px 0 38px}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .foot .fb .wm{font-family:'Playfair Display',serif;color:#fff;font-size:1.3rem;font-weight:800}
+  .foot .fb small{display:block;font-size:.82rem;color:#c9b6a6;margin-top:4px}
+  .foot p{font-size:.9rem;text-align:right}
+  .foot a{color:var(--gold)}
+
+  .js .reveal{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .js .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:880px){
+    .nav-links{display:none}.nav-cta .btn-ghost{display:none}.burger-ico{display:flex}
+    .story-grid{grid-template-columns:1fr;gap:30px}.story-photo{aspect-ratio:16/11;order:-1}
+    .gallery{grid-template-columns:1fr 1fr}.visit-grid{grid-template-columns:1fr}
+    .mobile-open .nav-links{display:flex;position:absolute;top:80px;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:8px 28px 20px}
+    .mobile-open .nav-links a{padding:14px 0;border-bottom:1px solid var(--line)}
+  }
+  @media(max-width:480px){ .nav-cta .btn-wine{display:none} .foot{flex-direction:column;text-align:center}.foot p{text-align:center} }
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#top" class="brand" aria-label="Il Fragolino">
+      <span class="wm serif">Il Fragolino</span>
+      <small data-i18n="brand_tag">Cucina Italiana · depuis 1999</small>
+    </a>
+    <nav class="nav-links">
+      <a href="#story" data-i18n="nav_story">La Maison</a>
+      <a href="#menu" data-i18n="nav_menu">La Carte</a>
+      <a href="#visit" data-i18n="nav_visit">Nous Trouver</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang-switch" role="group" aria-label="Langue">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="tel:+35226480267" class="btn btn-wine" data-i18n="btn_book">Réserver</a>
+      <button class="burger-ico" aria-label="Menu" onclick="document.body.classList.toggle('mobile-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow reveal" data-i18n="hero_eyebrow">Luxembourg · Vallée de la Pétrusse</p>
+    <h1 class="reveal" data-i18n-html="hero_h1">L'Italie, <em>au cœur des falaises.</em></h1>
+    <p class="lead reveal" data-i18n="hero_lead">Depuis 1999, une cuisine italienne aux parfums méditerranéens — pâtes maison, pizzas au feu de bois et la plus belle terrasse de la ville.</p>
+    <div class="hero-cta reveal">
+      <a href="tel:+35226480267" class="btn btn-wine" data-i18n="btn_book_table">Réserver une table</a>
+      <a href="#menu" class="btn btn-ghost" data-i18n="btn_seemenu">Voir la carte</a>
+    </div>
+    <p class="addr reveal"><span class="dot"></span> <span data-i18n="hero_addr">56–58 Montée de la Pétrusse, L-2327 Luxembourg</span></p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <img class="story-photo reveal" src="assets/interior.jpg" alt="Salle intérieure du restaurant Il Fragolino" />
+    <div>
+      <p class="eyebrow reveal" data-i18n="story_eyebrow">La Maison</p>
+      <h2 class="serif reveal" data-i18n-html="story_h2">Une adresse italienne <em>depuis 1999.</em></h2>
+      <p class="body reveal" data-i18n="story_body">Depuis 1999, nous sommes une adresse où savourer une cuisine italienne aux parfums et saveurs méditerranéens, dans un cadre rétro-moderne sur deux étages — quatre salles, une véranda lumineuse et notre terrasse nichée dans les falaises de la Pétrusse.</p>
+      <div class="pillars">
+        <div class="pillar reveal"><div class="ico serif">a</div><div><h3 data-i18n="p1_h">Pâtes &amp; pizzas maison</h3><p data-i18n="p1_p">Pâtes fraîches faites maison et pizzas cuites au feu de bois, dans la pure tradition italienne.</p></div></div>
+        <div class="pillar reveal"><div class="ico serif">b</div><div><h3 data-i18n="p2_h">La terrasse des falaises</h3><p data-i18n="p2_p">« La plus belle terrasse de Luxembourg » — guirlandes lumineuses et verdure contre la roche.</p></div></div>
+        <div class="pillar reveal"><div class="ico serif">c</div><div><h3 data-i18n="p3_h">Quatre salles, un cadre</h3><p data-i18n="p3_p">Deux étages, une véranda et un salon privé — pour un dîner à deux comme pour une réception.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="menu_h2">La <em>carte</em></h2>
+      <p data-i18n="menu_intro">Antipasti, pâtes &amp; risotti maison, pizzas au feu de bois, viandes et poissons. Une sélection — la carte complète vous attend à table.</p>
+    </div>
+
+    <div class="mcat reveal">
+      <div class="mcat-head"><h3 class="serif">Antipasti</h3><span class="ln"></span></div>
+      <div class="mitems">
+        <div class="mitem"><div class="ml"><div class="nm serif">Antipasto Fragolino</div><div class="ds" data-i18n="d_antipasto">Notre plateau d'antipasti — pour deux</div></div><div class="mp">€40.00</div></div>
+        <div class="mitem"><div class="ml"><div class="nm serif">Mozzarella Caprese</div><div class="ds" data-i18n="d_caprese">Mozzarella, tomates, basilic</div></div><div class="mp">€17.50</div></div>
+        <div class="mitem"><div class="ml"><div class="nm serif">Carpaccio di Manzo</div><div class="ds" data-i18n="d_carpaccio">Carpaccio de bœuf, copeaux &amp; roquette</div></div><div class="mp">€21.50</div></div>
+        <div class="mitem"><div class="ml"><div class="nm serif">Bruschetta del Chef</div><div class="ds" data-i18n="d_bruschetta">Bruschetta du chef</div></div><div class="mp">€12.90</div></div>
+      </div>
+    </div>
+
+    <div class="mcat reveal">
+      <div class="mcat-head"><h3 class="serif">Pasta &amp; Risotti</h3><span class="ln"></span></div>
+      <div class="mitems">
+        <div class="mitem"><div class="ml"><div class="nm serif">Raviolis Truffes &amp; Cèpes</div><div class="ds" data-i18n="d_ravioli">Raviolis aux truffes et cèpes</div></div><div class="mp">€24.90</div></div>
+        <div class="mitem"><div class="ml"><div class="nm serif">Tortellini della Casa</div><div class="ds" data-i18n="d_tortellini">Tortellini maison</div></div><div class="mp">€20.50</div></div>
+        <div class="mitem"><div class="ml"><div class="nm serif">Gnocchi alla Sorrentina</div><div class="ds" data-i18n="d_gnocchi">Gnocchi tomate &amp; mozzarella</div></div><div class="mp">€19.90</div></div>
+        <div class="mitem"><div class="ml"><div class="nm serif">Risotto ai Frutti di Mare</div><div class="ds" data-i18n="d_risotto">Risotto aux fruits de mer</div></div><div class="mp">€23.90</div></div>
+      </div>
+    </div>
+
+    <div class="mcat reveal">
+      <div class="mcat-head"><h3 class="serif">Carni &amp; Pesce</h3><span class="ln"></span></div>
+      <div class="mitems">
+        <div class="mitem"><div class="ml"><div class="nm serif">Saltimbocca alla Romana</div><div class="ds" data-i18n="d_saltimbocca">Veau, sauge &amp; jambon cru</div></div><div class="mp">€26.90</div></div>
+        <div class="mitem"><div class="ml"><div class="nm serif">Côtes d'Agneau Grillées</div><div class="ds" data-i18n="d_agneau">Côtes d'agneau grillées</div></div><div class="mp">€28.50</div></div>
+        <div class="mitem"><div class="ml"><div class="nm serif">Pavé de Saumon</div><div class="ds" data-i18n="d_saumon">Pavé de saumon poêlé</div></div><div class="mp">€27.90</div></div>
+        <div class="mitem"><div class="ml"><div class="nm serif">Polpo alla Griglia</div><div class="ds" data-i18n="d_poulpe">Poulpe grillé</div></div><div class="mp">€27.90</div></div>
+      </div>
+    </div>
+
+    <div class="mcat reveal" style="margin-bottom:0">
+      <div class="mcat-head"><h3 class="serif">Pizze &amp; Dolci</h3><span class="ln"></span></div>
+      <div class="mitems">
+        <div class="mitem"><div class="ml"><div class="nm serif">Pizze al forno a legna</div><div class="ds" data-i18n="d_pizze">Plus de 25 pizzas au feu de bois</div></div><div class="mp" data-i18n="from_1450">dès €14.50</div></div>
+        <div class="mitem"><div class="ml"><div class="nm serif">Tiramisù della Casa</div><div class="ds" data-i18n="d_tiramisu">Tiramisu maison</div></div><div class="mp">€8.00</div></div>
+      </div>
+    </div>
+
+    <p class="menu-note reveal" style="margin-top:28px" data-i18n-html="menu_note"><b>Une sélection.</b> Carte complète, pizzas et desserts du jour à découvrir sur place — prix à confirmer avec le restaurant.</p>
+  </div>
+</section>
+
+<!-- BAND -->
+<section class="band">
+  <div class="wrap inner reveal">
+    <h2 class="serif" data-i18n-html="band_h2">La <em>dolce vita</em>, à deux pas de la ville.</h2>
+    <p data-i18n="band_p">Une terrasse dans les falaises, des guirlandes au-dessus des tables, une cuisine italienne sincère. Réservez votre table — surtout aux beaux jours.</p>
+    <div class="taglist">
+      <span class="tag" data-i18n="tag1">Pâtes maison</span>
+      <span class="tag" data-i18n="tag2">Feu de bois</span>
+      <span class="tag" data-i18n="tag3">Terrasse des falaises</span>
+    </div>
+    <a href="tel:+35226480267" class="btn btn-white" data-i18n="btn_book_table">Réserver une table</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section style="padding-bottom:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="gal_h2">À <em>table.</em></h2>
+      <p data-i18n="gal_intro">Quelques images de la maison et de l'assiette.</p>
+    </div>
+    <div class="gallery">
+      <img class="reveal" src="assets/food1.jpg" alt="Osso bucco et tagliatelle, Il Fragolino" />
+      <img class="reveal" src="assets/food2_antipasti.jpg" alt="Antipasti Fragolino" />
+      <img class="reveal" src="assets/hero.jpg" alt="Devanture du restaurant Il Fragolino" />
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="serif" data-i18n-html="visit_h2">Nous <em>trouver.</em></h2>
+      <p data-i18n="visit_intro">Dans la vallée de la Pétrusse, au pied des falaises. Réservez par téléphone.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="info reveal">
+        <div class="info-row"><div class="k" data-i18n="lbl_where">Adresse</div><div class="val">56–58 Montée de la Pétrusse<span class="small" data-i18n="where_small">L-2327 Luxembourg · vallée de la Pétrusse</span></div></div>
+        <div class="info-row"><div class="k" data-i18n="lbl_hours">Horaires</div><div class="val"><span data-i18n="hours_val">Déj. 11h45–14h · dîner 18h–22h</span><span class="small" data-i18n-html="hours_small">Ven &amp; sam jusqu'à 22h30 · dim midi · sam midi fermé — <em>à confirmer avec le restaurant</em></span></div></div>
+        <div class="info-row"><div class="k" data-i18n="lbl_book">Réserver</div><div class="val"><a href="tel:+35226480267">+352 26 48 02 67</a><span class="small" data-i18n="book_small">Terrasse très demandée aux beaux jours — réservez</span></div></div>
+        <div class="info-row" style="border-bottom:0"><div class="k" data-i18n="lbl_contact">Contact</div><div class="val"><a href="mailto:info@il-fragolino.lu">info@il-fragolino.lu</a><span class="small"><a href="https://www.facebook.com/ILFRAGOLINO1/" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/restaurant_il_fragolino/" target="_blank" rel="noopener">Instagram</a></span></div></div>
+        <a href="tel:+35226480267" class="btn btn-wine" style="align-self:flex-start;margin-top:4px" data-i18n="btn_book_table">Réserver une table</a>
+      </div>
+      <div class="map reveal">
+        <iframe title="Plan vers Il Fragolino" loading="lazy" src="https://www.google.com/maps?q=56+Montée+de+la+Pétrusse+Luxembourg&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div class="fb">
+      <span class="wm serif">Il Fragolino</span>
+      <small>56–58 Montée de la Pétrusse · L-2327 Luxembourg · +352 26 48 02 67</small>
+    </div>
+    <p>© Il Fragolino · <span data-i18n="foot_since">cuisine italienne depuis 1999</span><br>
+      <a href="https://www.facebook.com/ILFRAGOLINO1/" target="_blank" rel="noopener">Facebook</a> ·
+      <a href="https://www.instagram.com/restaurant_il_fragolino/" target="_blank" rel="noopener">Instagram</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // reveal on scroll
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%6*70)+'ms';io.observe(el);});
+  document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('mobile-open')));
+
+  // ---------- i18n (FR default · DE · EN) ----------
+  const I18N={
+    fr:{},
+    de:{
+      brand_tag:"Cucina Italiana · seit 1999",
+      nav_story:"Das Haus", nav_menu:"Speisekarte", nav_visit:"Finden",
+      btn_book:"Reservieren", btn_book_table:"Tisch reservieren", btn_seemenu:"Zur Karte",
+      hero_eyebrow:"Luxemburg · Pétrusse-Tal",
+      hero_h1:"Italien, <em>im Herzen der Felsen.</em>",
+      hero_lead:"Seit 1999 italienische Küche mit mediterranen Aromen — hausgemachte Pasta, Pizza aus dem Holzofen und die schönste Terrasse der Stadt.",
+      hero_addr:"56–58 Montée de la Pétrusse, L-2327 Luxemburg",
+      story_eyebrow:"Das Haus", story_h2:"Eine italienische Adresse <em>seit 1999.</em>",
+      story_body:"Seit 1999 sind wir eine Adresse, an der man italienische Küche mit mediterranen Aromen genießt — in einem rétro-modernen Ambiente über zwei Etagen mit vier Räumen, einem hellen Wintergarten und unserer Terrasse in den Felsen der Pétrusse.",
+      p1_h:"Pasta &amp; Pizza hausgemacht", p1_p:"Frische hausgemachte Pasta und Pizza aus dem Holzofen, ganz in italienischer Tradition.",
+      p2_h:"Die Felsenterrasse", p2_p:"„Die schönste Terrasse Luxemburgs“ — Lichterketten und Grün vor dem Fels.",
+      p3_h:"Vier Räume, ein Rahmen", p3_p:"Zwei Etagen, ein Wintergarten und ein privater Salon — vom Dinner zu zweit bis zum Empfang.",
+      menu_h2:"Die <em>Karte</em>",
+      menu_intro:"Antipasti, hausgemachte Pasta &amp; Risotto, Pizza aus dem Holzofen, Fleisch und Fisch. Eine Auswahl — die ganze Karte erwartet Sie am Tisch.",
+      d_antipasto:"Unsere Antipasti-Platte — für zwei", d_caprese:"Mozzarella, Tomaten, Basilikum",
+      d_carpaccio:"Rindercarpaccio, Hobel &amp; Rucola", d_bruschetta:"Bruschetta des Küchenchefs",
+      d_ravioli:"Ravioli mit Trüffel und Steinpilzen", d_tortellini:"Hausgemachte Tortellini",
+      d_gnocchi:"Gnocchi Tomate &amp; Mozzarella", d_risotto:"Meeresfrüchte-Risotto",
+      d_saltimbocca:"Kalb, Salbei &amp; Rohschinken", d_agneau:"Gegrillte Lammkoteletts",
+      d_saumon:"Gebratenes Lachsfilet", d_poulpe:"Gegrillter Oktopus",
+      d_pizze:"Über 25 Pizzen aus dem Holzofen", from_1450:"ab €14.50", d_tiramisu:"Hausgemachtes Tiramisu",
+      menu_note:"<b>Eine Auswahl.</b> Vollständige Karte, Pizzen und Tagesdesserts vor Ort — Preise bitte beim Restaurant bestätigen.",
+      band_h2:"<em>Dolce Vita</em>, nur einen Schritt von der Stadt.",
+      band_p:"Eine Terrasse in den Felsen, Lichterketten über den Tischen, ehrliche italienische Küche. Reservieren Sie Ihren Tisch — besonders an schönen Tagen.",
+      tag1:"Hausgemachte Pasta", tag2:"Holzofen", tag3:"Felsenterrasse",
+      gal_h2:"Zu <em>Tisch.</em>", gal_intro:"Ein paar Bilder vom Haus und vom Teller.",
+      visit_h2:"So <em>finden Sie uns.</em>", visit_intro:"Im Pétrusse-Tal, am Fuß der Felsen. Reservierung per Telefon.",
+      lbl_where:"Adresse", lbl_hours:"Öffnungszeiten", lbl_book:"Reservieren", lbl_contact:"Kontakt",
+      where_small:"L-2327 Luxemburg · Pétrusse-Tal",
+      hours_val:"Mittag 11:45–14 · Abend 18–22 Uhr",
+      hours_small:"Fr &amp; Sa bis 22:30 · So mittags · Sa mittags geschlossen — <em>bitte beim Restaurant bestätigen</em>",
+      book_small:"Terrasse an schönen Tagen sehr gefragt — reservieren", foot_since:"italienische Küche seit 1999"
+    },
+    en:{
+      brand_tag:"Cucina Italiana · since 1999",
+      nav_story:"The House", nav_menu:"Menu", nav_visit:"Visit",
+      btn_book:"Book", btn_book_table:"Reserve a table", btn_seemenu:"See the menu",
+      hero_eyebrow:"Luxembourg · Pétrusse Valley",
+      hero_h1:"Italy, <em>at the heart of the cliffs.</em>",
+      hero_lead:"Since 1999, Italian cooking with Mediterranean aromas — homemade pasta, wood-fired pizza, and the loveliest terrace in town.",
+      hero_addr:"56–58 Montée de la Pétrusse, L-2327 Luxembourg",
+      story_eyebrow:"The House", story_h2:"An Italian address <em>since 1999.</em>",
+      story_body:"Since 1999 we have been a place to savour Italian cooking with its Mediterranean aromas and flavours — in a retro-modern setting across two floors, with four rooms, a sun-lit veranda, and our terrace nestled in the cliffs of the Pétrusse.",
+      p1_h:"Pasta &amp; pizza, house-made", p1_p:"Fresh homemade pasta and wood-fired pizza, in the pure Italian tradition.",
+      p2_h:"The cliffside terrace", p2_p:"“The most beautiful terrace in Luxembourg” — string lights and greenery against the rock.",
+      p3_h:"Four rooms, one setting", p3_p:"Two floors, a veranda and a private salon — for a dinner for two or a reception.",
+      menu_h2:"The <em>menu</em>",
+      menu_intro:"Antipasti, house-made pasta &amp; risotto, wood-fired pizza, meat and fish. A selection — the full menu awaits you at the table.",
+      d_antipasto:"Our antipasti board — for two", d_caprese:"Mozzarella, tomatoes, basil",
+      d_carpaccio:"Beef carpaccio, shavings &amp; rocket", d_bruschetta:"The chef's bruschetta",
+      d_ravioli:"Truffle &amp; porcini ravioli", d_tortellini:"House-made tortellini",
+      d_gnocchi:"Gnocchi, tomato &amp; mozzarella", d_risotto:"Seafood risotto",
+      d_saltimbocca:"Veal, sage &amp; cured ham", d_agneau:"Grilled lamb chops",
+      d_saumon:"Pan-seared salmon fillet", d_poulpe:"Grilled octopus",
+      d_pizze:"Over 25 wood-fired pizzas", from_1450:"from €14.50", d_tiramisu:"House-made tiramisù",
+      menu_note:"<b>A selection.</b> Full menu, pizzas and daily desserts in-house — prices to be confirmed with the restaurant.",
+      band_h2:"<em>La dolce vita</em>, a step from the city.",
+      band_p:"A terrace in the cliffs, lights above the tables, honest Italian cooking. Reserve your table — especially on fine days.",
+      tag1:"Homemade pasta", tag2:"Wood-fired", tag3:"Cliffside terrace",
+      gal_h2:"To <em>the table.</em>", gal_intro:"A few images of the house and the plate.",
+      visit_h2:"Find <em>us.</em>", visit_intro:"In the Pétrusse valley, at the foot of the cliffs. Reserve by phone.",
+      lbl_where:"Address", lbl_hours:"Hours", lbl_book:"Book", lbl_contact:"Contact",
+      where_small:"L-2327 Luxembourg · Pétrusse valley",
+      hours_val:"Lunch 11:45–14 · dinner 18–22h",
+      hours_small:"Fri &amp; Sat to 22:30 · Sun lunch · Sat lunch closed — <em>please confirm with the restaurant</em>",
+      book_small:"Terrace in high demand on fine days — please book", foot_since:"Italian cuisine since 1999"
+    }
+  };
+  const FR={};
+  document.querySelectorAll('[data-i18n]').forEach(el=>{FR[el.getAttribute('data-i18n')]=el.textContent;});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{FR['__h_'+el.getAttribute('data-i18n-html')]=el.innerHTML;});
+  function setLang(l){
+    const d = l==='fr' ? null : I18N[l];
+    document.documentElement.lang=l;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');const v=d?d[k]:FR[k];if(v!=null)el.textContent=v;});
+    document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');const v=d?d[k]:FR['__h_'+k];if(v!=null)el.innerHTML=v;});
+    document.querySelectorAll('.lang-switch button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+    try{localStorage.setItem('frag_lang',l);}catch(e){}
+  }
+  document.querySelectorAll('.lang-switch button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+  let saved='fr'; try{saved=localStorage.getItem('frag_lang')||'fr';}catch(e){}
+  if(saved!=='fr') setLang(saved);
+</script>
+</body>
+</html>

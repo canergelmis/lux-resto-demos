@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<!--
+  LUX'BURGERS — closing-grade teaser (demo for sales) — ON-BRAND, TRILINGUAL.
+  Brand from their real Facebook (LuxBurgersLaMaisonduBurger): light/sky BLUE +
+  black + white, cloche-over-burger logo, "la maison du burger". Real logo + photos.
+  FR / DE / EN switcher (default FR). Menu/prices from public listings (Wolt) — confirm with owner.
+-->
+<html lang="fr">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Lux'Burgers — La maison du burger · Luxembourg</title>
+<meta name="description" content="La maison du burger à Luxembourg. Burgers faits main baptisés du nom de légendes, bœuf luxembourgeois, frites belges. 17 Rue de Bonnevoie, Luxembourg-Ville." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#1c1d1f; --paper:#ffffff; --soft:#edf7fb; --soft2:#e2f1f8;
+    --blue:#159fcb; --blue-deep:#0f86ac; --sky:#8fcfe6; --line:#e4eaee; --muted:#6d767c;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:'Hanken Grotesk',system-ui,sans-serif;
+    font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+  .round{font-family:'Baloo 2',system-ui,sans-serif;line-height:1.02}
+  .eyebrow{font-size:.78rem;letter-spacing:.26em;text-transform:uppercase;color:var(--blue);font-weight:700}
+
+  .btn{display:inline-flex;align-items:center;gap:.5em;font-family:'Baloo 2',sans-serif;font-weight:700;
+    font-size:.98rem;letter-spacing:.01em;padding:.7em 1.6em;border-radius:100px;border:2px solid transparent;transition:.22s;cursor:pointer;white-space:nowrap}
+  .btn-blue{background:var(--blue);color:#fff}
+  .btn-blue:hover{background:var(--blue-deep);transform:translateY(-2px);box-shadow:0 12px 26px -10px var(--blue)}
+  .btn-ghost{border-color:#cfd8dd;color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:80px;gap:14px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{height:56px;width:56px;border-radius:14px;display:block;box-shadow:0 4px 14px -6px rgba(21,159,203,.5)}
+  .brand .wm{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.35rem;letter-spacing:.01em;line-height:.9}
+  .brand .wm small{display:block;font-family:'Hanken Grotesk';font-weight:600;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links a{font-weight:600;font-size:.96rem;color:#46505a;transition:.2s}
+  .nav-links a:hover{color:var(--blue)}
+  .nav-cta{display:flex;gap:12px;align-items:center}
+  .lang-switch{display:flex;border:1px solid var(--line);border-radius:100px;overflow:hidden;flex:none}
+  .lang-switch button{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:.76rem;letter-spacing:.03em;
+    padding:.42em .66em;background:none;border:0;cursor:pointer;color:var(--muted);transition:.18s}
+  .lang-switch button.active{background:var(--blue);color:#fff}
+  .lang-switch button:not(.active):hover{color:var(--blue)}
+  .burger-ico{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer}
+  .burger-ico span{width:26px;height:2.5px;background:var(--ink);border-radius:2px}
+
+  /* hero */
+  .hero{position:relative;padding:clamp(50px,7vw,86px) 0 clamp(46px,6vw,80px);
+    background:radial-gradient(70% 90% at 85% 0%,var(--soft),transparent 60%),var(--paper)}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .hero h1{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(3rem,7vw,5.8rem);line-height:.98;letter-spacing:-.01em;margin:.18em 0 .3em}
+  .hero h1 em{font-style:normal;color:var(--blue)}
+  .hero p.lead{font-size:clamp(1.05rem,1.9vw,1.28rem);color:#444c52;max-width:34ch;margin-bottom:1.6em}
+  .hero p.lead b{color:var(--ink)}
+  .hero-cta{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:26px}
+  .addr{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:.95rem;font-weight:600}
+  .addr .dot{width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px rgba(21,159,203,.18);flex:none}
+  .hero-media{position:relative}
+  .hero-media img{width:100%;aspect-ratio:4/3.2;object-fit:cover;border-radius:24px;display:block;box-shadow:0 36px 70px -32px rgba(20,40,55,.5)}
+  .hero-badge{position:absolute;left:-16px;bottom:-18px;background:#fff;border:1px solid var(--line);border-radius:18px;
+    padding:14px 20px;box-shadow:0 22px 44px -20px rgba(20,40,55,.4);display:flex;align-items:center;gap:14px}
+  .hero-badge .rank{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:2.7rem;line-height:.8;color:var(--blue)}
+  .hero-badge .meta{font-size:.85rem;line-height:1.3}
+  .hero-badge .meta b{color:var(--ink)}
+  .hero-badge .stars{color:#f4b400;letter-spacing:1px}
+  .hero-badge .meta small{color:var(--muted);display:block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+
+  section{padding:clamp(56px,7.5vw,100px) 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:42px;flex-wrap:wrap}
+  .sec-head h2{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(2.1rem,5vw,3.7rem)}
+  .sec-head h2 em{font-style:normal;color:var(--blue)}
+  .sec-head p{color:var(--muted);max-width:34ch}
+
+  /* menu */
+  .menu{background:var(--soft)}
+  .mcat{margin-bottom:40px}
+  .mcat-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+  .mcat-head h3{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.5rem;color:var(--blue-deep)}
+  .mcat-head .ln{flex:1;height:2px;background:var(--line)}
+  .mitems{display:grid;grid-template-columns:1fr 1fr;gap:6px 40px}
+  .mitem{display:flex;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+  .mitem .ml{flex:1}
+  .mitem .nm{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1.06rem}
+  .mitem .nm .flag{margin-left:5px;font-size:.95em}
+  .mitem .ds{color:var(--muted);font-size:.92rem;margin-top:1px}
+  .mitem .mp{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.08rem;white-space:nowrap}
+  .mitem .pill{font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.2em .5em;border-radius:100px;margin-left:7px;vertical-align:middle}
+  .pill.v{background:#e7f4e0;color:#558b33;border:1px solid #bfe0ad}
+  .menu-note{margin-top:8px;color:var(--muted);font-size:.92rem}
+  .menu-note b{color:var(--ink)}
+  @media(max-width:760px){.mitems{grid-template-columns:1fr;gap:0}}
+
+  /* blue band */
+  .band{background:linear-gradient(150deg,var(--blue),var(--blue-deep));color:#fff;text-align:center}
+  .band .inner{max-width:760px;margin:0 auto}
+  .band h2{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:clamp(2.1rem,5.4vw,4rem);margin-bottom:.35em}
+  .band p{color:#e7f6fc;font-size:1.1rem;max-width:46ch;margin:0 auto 1.5em}
+  .taglist{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
+  .tag{font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:.55em .95em;border:1.5px solid rgba(255,255,255,.45);border-radius:100px}
+  .band .btn-white{background:#fff;color:var(--blue-deep)}
+  .band .btn-white:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(0,0,0,.4)}
+
+  /* story */
+  .story-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:48px;align-items:center}
+  .story-photo{width:100%;border-radius:24px;aspect-ratio:4/4.4;object-fit:cover;box-shadow:0 30px 60px -30px rgba(20,40,55,.5)}
+  .pillars{display:grid;gap:14px}
+  .pillar{padding:22px 24px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 8px 24px -20px rgba(20,40,55,.4)}
+  .pillar .n{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.05rem;color:#fff;background:var(--blue);width:42px;height:42px;display:grid;place-items:center;border-radius:50%;margin-bottom:13px}
+  .pillar h3{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1.2rem;margin-bottom:5px}
+  .pillar p{color:var(--muted);font-size:.96rem}
+
+  /* gallery */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .gallery img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;border-radius:18px;border:1px solid var(--line)}
+
+  /* visit */
+  .visit{background:var(--soft)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:stretch}
+  .info{display:flex;flex-direction:column;gap:20px}
+  .info-row{display:flex;gap:16px;align-items:flex-start;padding-bottom:20px;border-bottom:1px solid var(--line)}
+  .info-row .k{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);font-weight:700;min-width:92px;padding-top:4px}
+  .info-row .val{font-size:1.05rem}
+  .info-row .val .small{color:var(--muted);font-size:.92rem;display:block;margin-top:3px}
+  .map{border-radius:20px;overflow:hidden;border:1px solid var(--line);min-height:340px}
+  .map iframe{width:100%;height:100%;min-height:340px;border:0}
+
+  footer{background:#142b35;color:#aebfc8;padding:48px 0 36px}
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  .foot .fb{display:flex;align-items:center;gap:12px}
+  .foot .fb img{height:44px;width:44px;border-radius:11px}
+  .foot .fb b{font-family:'Baloo 2',sans-serif;color:#fff;font-size:1.1rem}
+  .foot p{font-size:.9rem}
+  .foot a{color:#cfe6f0}
+
+  .js .reveal{opacity:0;transform:translateY(24px);transition:.65s cubic-bezier(.2,.7,.2,1)}
+  .js .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:880px){
+    .nav-links{display:none}.nav-cta .btn-ghost{display:none}.burger-ico{display:flex}
+    .brand .wm{display:none}
+    .hero-grid{grid-template-columns:1fr;gap:46px}.hero-media{order:-1}
+    .story-grid{grid-template-columns:1fr;gap:26px}.story-photo{aspect-ratio:16/11}
+    .gallery{grid-template-columns:1fr 1fr}.visit-grid{grid-template-columns:1fr}
+    .mobile-open .nav-links{display:flex;position:absolute;top:80px;left:0;right:0;flex-direction:column;gap:0;background:#fff;border-bottom:1px solid var(--line);padding:8px 28px 20px}
+    .mobile-open .nav-links a{padding:14px 0;border-bottom:1px solid var(--line)}
+  }
+  @media(max-width:480px){ .nav-cta .btn-blue{display:none} }
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#top" class="brand" aria-label="Lux'Burgers — la maison du burger">
+      <img src="assets/real_logo2.jpg" alt="Lux'Burgers logo" />
+      <span class="wm">LUX'BURGERS<small>la maison du burger</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#menu" data-i18n="nav_menu">La Carte</a>
+      <a href="#story" data-i18n="nav_story">Notre Histoire</a>
+      <a href="#visit" data-i18n="nav_visit">Nous Trouver</a>
+    </nav>
+    <div class="nav-cta">
+      <div class="lang-switch" role="group" aria-label="Langue">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="https://wolt.com/en/lux/luxembourg/restaurant/luxburgers-luxembourg" target="_blank" rel="noopener" class="btn btn-blue" data-i18n="btn_order">Commander sur Wolt</a>
+      <button class="burger-ico" aria-label="Menu" onclick="document.body.classList.toggle('mobile-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow reveal">Luxembourg · Rue de Bonnevoie</p>
+      <h1 class="reveal">La maison<em> du burger.</em></h1>
+      <p class="lead reveal" data-i18n-html="hero_lead">Des burgers faits main, baptisés du nom de légendes. Bœuf luxembourgeois, frites belges. <b>Depuis Bonnevoie.</b></p>
+      <div class="hero-cta reveal">
+        <a href="https://wolt.com/en/lux/luxembourg/restaurant/luxburgers-luxembourg" target="_blank" rel="noopener" class="btn btn-blue" data-i18n="btn_order_arrow">Commander sur Wolt →</a>
+        <a href="#menu" class="btn btn-ghost" data-i18n="btn_seemenu">Voir la carte</a>
+      </div>
+      <p class="addr reveal"><span class="dot"></span> <span data-i18n="hero_addr">17 Rue de Bonnevoie, L-1260 · ouvert le midi, lun–ven</span></p>
+    </div>
+    <div class="hero-media reveal">
+      <img src="assets/real_cover2.jpg" alt="Burger signature Lux'Burgers avec frites belges" />
+      <div class="hero-badge">
+        <div class="rank">#1</div>
+        <div class="meta"><span class="stars">★★★★★</span> <b>4.8</b><br><b>1&nbsp;100+</b> <span data-i18n="badge_reviews">avis</span><small>Tripadvisor · Lux City</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="round" data-i18n-html="menu_h2">La <em>carte</em></h2>
+      <p data-i18n="menu_intro">Des burgers baptisés du nom de légendes — un tour d'Europe dans un pain. Faits main au bœuf luxembourgeois, servis avec frites &amp; sauces maison.</p>
+    </div>
+
+    <div class="mcat reveal">
+      <div class="mcat-head"><h3 data-i18n="cat_us">Les Américains</h3><span class="ln"></span></div>
+      <div class="mitems">
+        <div class="mitem"><div class="ml"><div class="nm">Trump <span class="flag">🇺🇸</span></div><div class="ds" data-i18n="d_trump">Cheddar affiné, bacon fumé, oignons caramélisés</div></div><div class="mp">€22.90</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">JFK <span class="flag">🇺🇸</span></div><div class="ds" data-i18n="d_jfk">Cheddar, bacon fumé, cornichons</div></div><div class="mp">€22.50</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">O'Bama <span class="flag">🇺🇸</span></div><div class="ds" data-i18n="d_obama">Cheddar, bacon fumé, oignons rouges</div></div><div class="mp">€22.50</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">James <span class="flag">🇬🇧</span></div><div class="ds" data-i18n="d_james">Poulet, cheddar, pickles</div></div><div class="mp">€22.50</div></div>
+      </div>
+    </div>
+
+    <div class="mcat reveal">
+      <div class="mcat-head"><h3 data-i18n="cat_fr">Les Français &amp; voisins</h3><span class="ln"></span></div>
+      <div class="mitems">
+        <div class="mitem"><div class="ml"><div class="nm">Louis <span class="flag">🇫🇷</span></div><div class="ds" data-i18n="d_louis">Comté, bacon, oignons frits &amp; caramélisés — Jura</div></div><div class="mp">€23.90</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Gust <span class="flag">🇫🇷</span></div><div class="ds" data-i18n="d_gust">Reblochon, bacon fumé, chutney de mangue — Savoie</div></div><div class="mp">€23.90</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Mycophile <span class="flag">🇫🇷</span></div><div class="ds" data-i18n="d_myco">Beaufort, champignons poêlés</div></div><div class="mp">€23.90</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Karl <span class="flag">🇩🇪</span></div><div class="ds" data-i18n="d_karl">Tomme de Savoie, magret fumé, oignons caramélisés</div></div><div class="mp">€23.90</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Henri <span class="flag">🇱🇺</span></div><div class="ds" data-i18n="d_henri">Raclette, jambon sec luxembourgeois, oignons rouges</div></div><div class="mp">€23.90</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Dominique <span class="flag">🇫🇷</span> <span class="pill v">Veggie</span></div><div class="ds" data-i18n="d_dominique">Galette de légumes maison, Mimolette</div></div><div class="mp">€20.90</div></div>
+      </div>
+    </div>
+
+    <div class="mcat reveal">
+      <div class="mcat-head"><h3 data-i18n="cat_it">L'Italie &amp; au-delà</h3><span class="ln"></span></div>
+      <div class="mitems">
+        <div class="mitem"><div class="ml"><div class="nm">Gianni <span class="flag">🇮🇹</span></div><div class="ds" data-i18n="d_gianni">Taleggio, guanciale épicé, tomates confites, épinards</div></div><div class="mp">€23.90</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Pablo <span class="flag">🇲🇽</span></div><div class="ds" data-i18n="d_pablo">Tomme de Savoie, chorizo</div></div><div class="mp">€23.90</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Javier <span class="flag">🇲🇽</span></div><div class="ds" data-i18n="d_javier">Bœuf, emmental, onion rings</div></div><div class="mp">€22.90</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Javier — <span data-i18n="v_chicken">Poulet</span> <span class="flag">🇲🇽</span></div><div class="ds" data-i18n="d_javier2">Emmental, onion rings</div></div><div class="mp">€22.50</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Javier — Veggie <span class="flag">🇲🇽</span> <span class="pill v">Veggie</span></div><div class="ds" data-i18n="d_javier2">Emmental, onion rings</div></div><div class="mp">€21.90</div></div>
+      </div>
+    </div>
+
+    <p class="menu-note reveal" style="margin-bottom:32px" data-i18n-html="menu_note"><b>Chaque burger</b> est servi avec frites, sauces maison, ketchup &amp; mayo. Bœuf luxembourgeois.</p>
+
+    <div class="mcat reveal">
+      <div class="mcat-head"><h3 data-i18n="cat_salads">Salades</h3><span class="ln"></span></div>
+      <div class="mitems">
+        <div class="mitem"><div class="ml"><div class="nm">Agathe</div><div class="ds" data-i18n="d_agathe">Pastèque, feta, olives, raisins, tomate, basilic</div></div><div class="mp">€19.00</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Germaine</div><div class="ds" data-i18n="d_germaine">Œuf, blanc de poulet, éclats de bacon, tomate, croûtons</div></div><div class="mp">€19.00</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Monique</div><div class="ds" data-i18n="d_monique">Tomme Grise, pamplemousse, concombre, poulet grillé, olives</div></div><div class="mp">€19.00</div></div>
+      </div>
+    </div>
+
+    <div class="mcat reveal">
+      <div class="mcat-head"><h3 data-i18n="cat_sides">À côté &amp; desserts</h3><span class="ln"></span></div>
+      <div class="mitems">
+        <div class="mitem"><div class="ml"><div class="nm" data-i18n="n_frites">Frites maison</div><div class="ds" data-i18n="d_frites">150g, à la belge</div></div><div class="mp">€4.90</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Onion rings</div><div class="ds" data-i18n="d_onion">6 ou 10 pièces</div></div><div class="mp">€4.50</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Mousse Nutella maison</div><div class="ds" data-i18n="d_nutella">Maison</div></div><div class="mp">€5.00</div></div>
+        <div class="mitem"><div class="ml"><div class="nm" data-i18n="n_fb1">Fromage blanc, coulis fruits rouges</div></div><div class="mp">€4.80</div></div>
+        <div class="mitem"><div class="ml"><div class="nm" data-i18n="n_fb2">Fromage blanc, miel, muesli, choco</div></div><div class="mp">€4.80</div></div>
+      </div>
+    </div>
+
+    <div class="mcat reveal" style="margin-bottom:0">
+      <div class="mcat-head"><h3 data-i18n="cat_drinks">Boissons</h3><span class="ln"></span></div>
+      <div class="mitems">
+        <div class="mitem"><div class="ml"><div class="nm">Coca-Cola / Zero</div><div class="ds">50cl</div></div><div class="mp">€3.90</div></div>
+        <div class="mitem"><div class="ml"><div class="nm" data-i18n="n_sanben">San Benedetto — plate / pétillante</div><div class="ds">50cl</div></div><div class="mp">€3.60</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Diekirch Premium</div><div class="ds">33cl</div></div><div class="mp">€4.10</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Chimay Bleue / Triple</div><div class="ds">33cl</div></div><div class="mp">€5.60</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Lupulus — Blanche</div><div class="ds">33cl</div></div><div class="mp">€5.10</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Lupulus — Hopera IPA / Organicus</div><div class="ds">33cl</div></div><div class="mp">€5.60</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Negroamaro del Salento 2018</div><div class="ds">75cl</div></div><div class="mp">€31.00</div></div>
+        <div class="mitem"><div class="ml"><div class="nm">Malvasia del Salento 2019</div><div class="ds">75cl</div></div><div class="mp">€29.50</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLUE BAND -->
+<section class="band">
+  <div class="wrap inner reveal">
+    <h2 class="round" data-i18n-html="band_h2">Aucun compromis. <span style="color:#cdeefb">Jamais.</span></h2>
+    <p data-i18n="band_p">Bœuf luxembourgeois haché maison. Frites belges cuites deux fois au gras de bœuf. Toutes les sauces faites ici. Voilà tout le secret — et la raison de la file d'attente.</p>
+    <div class="taglist">
+      <span class="tag" data-i18n="tag1">Bœuf luxembourgeois</span>
+      <span class="tag" data-i18n="tag2">Frites belges · gras de bœuf</span>
+      <span class="tag" data-i18n="tag3">Sauces maison</span>
+    </div>
+    <a href="https://wolt.com/en/lux/luxembourg/restaurant/luxburgers-luxembourg" target="_blank" rel="noopener" class="btn btn-white" data-i18n="btn_order_arrow">Commander sur Wolt →</a>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <div class="wrap story-grid">
+    <img class="story-photo reveal" src="assets/real_logo.jpg" alt="Gros plan d'un burger Lux'Burgers" />
+    <div>
+      <p class="eyebrow reveal" data-i18n="story_eyebrow">Notre Histoire</p>
+      <h2 class="round reveal" style="font-weight:800;font-size:clamp(2rem,4.6vw,3.2rem);margin:.1em 0 .7em" data-i18n-html="story_h2">Faits main,<em style="font-style:normal;color:var(--blue)"> épuisés au déjeuner.</em></h2>
+      <div class="pillars">
+        <div class="pillar reveal"><div class="n">1</div><h3 data-i18n="p1_h">Bœuf luxembourgeois</h3><p data-i18n="p1_p">Issu de fermes luxembourgeoises et haché pour nos steaks — jamais congelé, jamais anonyme.</p></div>
+        <div class="pillar reveal"><div class="n">2</div><h3 data-i18n="p2_h">Frites belges, gras de bœuf</h3><p data-i18n="p2_p">Cuites deux fois, à la belge. L'accompagnement que personne ne laisse.</p></div>
+        <div class="pillar reveal"><div class="n">3</div><h3 data-i18n="p3_h">Sauces faites ici</h3><p data-i18n="p3_p">Toutes nos sauces sont faites en cuisine. La sauce maison vaut à elle seule le détour.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:48px">
+    <div class="gallery">
+      <img class="reveal" src="assets/real_cover2.jpg" alt="Burger et frites Lux'Burgers" />
+      <img class="reveal" src="assets/real_cover.jpg" alt="Devanture Lux'Burgers, Rue de Bonnevoie" />
+      <img class="reveal" src="assets/b1.jpg" alt="Burger gourmet Lux'Burgers" />
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2 class="round" data-i18n-html="visit_h2">Venez <em>affamés.</em></h2>
+      <p data-i18n="visit_intro">Petite salle, grande réputation — mieux vaut réserver. Ou faites-vous livrer.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="info reveal">
+        <div class="info-row"><div class="k" data-i18n="lbl_where">Adresse</div><div class="val">17 Rue de Bonnevoie<span class="small" data-i18n="where_small">L-1260 Luxembourg-Ville</span></div></div>
+        <div class="info-row"><div class="k" data-i18n="lbl_hours">Horaires</div><div class="val"><span data-i18n="hours_val">Midi · lun, mer–ven 11h45–14h15</span><span class="small" data-i18n-html="hours_small">Soir ven 18h30–21h15 · fermé mar, sam &amp; dim — <em>à confirmer avec le restaurant</em></span></div></div>
+        <div class="info-row"><div class="k" data-i18n="lbl_book">Réserver</div><div class="val"><a href="tel:+35226190070" style="color:var(--blue);font-weight:700">+352 26 19 00 70</a><span class="small" data-i18n="book_small">Réservez une table — petite salle, mieux vaut anticiper</span></div></div>
+        <div class="info-row" style="border-bottom:0"><div class="k" data-i18n="lbl_delivery">Livraison</div><div class="val"><a href="https://wolt.com/en/lux/luxembourg/restaurant/luxburgers-luxembourg" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700" data-i18n="btn_order_arrow">Commander sur Wolt →</a><span class="small" data-i18n="delivery_small">Les mêmes burgers, livrés chez vous</span></div></div>
+        <a href="tel:+35226190070" class="btn btn-blue" style="align-self:flex-start;margin-top:4px" data-i18n="btn_reserve_table">Réserver une table</a>
+      </div>
+      <div class="map reveal">
+        <iframe title="Plan vers Lux'Burgers" loading="lazy" src="https://www.google.com/maps?q=17+Rue+de+Bonnevoie+Luxembourg&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div class="fb">
+      <img src="assets/real_logo2.jpg" alt="Lux'Burgers logo" />
+      <div><b>Lux'Burgers</b><br><span style="font-size:.85rem">17 Rue de Bonnevoie · L-1260 · +352 26 19 00 70</span></div>
+    </div>
+    <p>© Lux'Burgers · la maison du burger.<br>
+      <a href="https://wolt.com/en/lux/luxembourg/restaurant/luxburgers-luxembourg" target="_blank" rel="noopener" data-i18n="btn_order">Commander sur Wolt</a> ·
+      <a href="https://www.facebook.com/LuxBurgersLaMaisonduBurger/" target="_blank" rel="noopener">Facebook</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // reveal on scroll
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%6*70)+'ms';io.observe(el);});
+  document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('mobile-open')));
+
+  // ---------- i18n (FR default · DE · EN) ----------
+  const I18N={
+    fr:{}, // FR is the in-HTML default — empty dict keeps it
+    de:{
+      nav_menu:"Karte", nav_story:"Geschichte", nav_visit:"Finden",
+      btn_order:"Auf Wolt bestellen", btn_order_arrow:"Auf Wolt bestellen →", btn_seemenu:"Zur Karte",
+      hero_lead:"Handgemachte Burger, benannt nach Legenden. Luxemburger Rind, belgische Pommes. <b>Aus Bonnevoie.</b>",
+      hero_addr:"17 Rue de Bonnevoie, L-1260 · mittags geöffnet, Mo–Fr", badge_reviews:"Bewertungen",
+      menu_h2:"Die <em>Karte</em>",
+      menu_intro:"Burger, benannt nach Legenden — eine Europareise im Brötchen. Handgemacht aus Luxemburger Rind, mit Pommes & hausgemachten Saucen.",
+      cat_us:"Die Amerikaner", cat_fr:"Frankreich & Nachbarn", cat_it:"Italien & mehr", cat_salads:"Salate", cat_sides:"Beilagen & Desserts", cat_drinks:"Getränke",
+      d_trump:"Gereifter Cheddar, geräucherter Speck, karamellisierte Zwiebeln",
+      d_jfk:"Cheddar, geräucherter Speck, Cornichons",
+      d_obama:"Cheddar, geräucherter Speck, rote Zwiebeln",
+      d_james:"Hähnchen, Cheddar, Pickles",
+      d_louis:"Comté, Speck, geröstete & karamellisierte Zwiebeln — Jura",
+      d_gust:"Reblochon, geräucherter Speck, Mango-Chutney — Savoyen",
+      d_myco:"Beaufort, gebratene Champignons",
+      d_karl:"Tomme de Savoie, geräucherte Brust, karamellisierte Zwiebeln",
+      d_henri:"Raclette, luxemburgischer Rohschinken, rote Zwiebeln",
+      d_dominique:"Hausgemachter Gemüse-Patty, Mimolette",
+      d_gianni:"Taleggio, würziger Guanciale, kandierte Tomaten, Spinat",
+      d_pablo:"Tomme de Savoie, Chorizo",
+      d_javier:"Rind, Emmentaler, Zwiebelringe", d_javier2:"Emmentaler, Zwiebelringe", v_chicken:"Hähnchen",
+      d_agathe:"Wassermelone, Feta, Oliven, Trauben, Tomate, Basilikum",
+      d_germaine:"Ei, Hähnchenbrust, Speckchips, Tomate, Croutons",
+      d_monique:"Tomme Grise, Grapefruit, Gurke, gegrilltes Hähnchen, Oliven",
+      n_frites:"Hausgemachte Pommes", d_frites:"150g, belgische Art", d_onion:"6 oder 10 Stück", d_nutella:"Hausgemacht",
+      n_fb1:"Quark, Rote-Früchte-Coulis", n_fb2:"Quark, Honig, Müsli, Schoko", n_sanben:"San Benedetto — still / sprudelnd",
+      menu_note:"<b>Jeder Burger</b> wird mit Pommes, hausgemachten Saucen, Ketchup & Mayo serviert. Luxemburger Rind.",
+      band_h2:"Keine Kompromisse. <span style=\"color:#cdeefb\">Niemals.</span>",
+      band_p:"Luxemburger Rind, im Haus gewolft. Belgische Pommes, zweifach im Rinderfett frittiert. Alle Saucen hier gemacht. Das ist das ganze Geheimnis — und der Grund für die Schlange.",
+      tag1:"Luxemburger Rind", tag2:"Belgische Pommes · Rinderfett", tag3:"Hausgemachte Saucen",
+      story_eyebrow:"Unsere Geschichte", story_h2:"Von Hand gemacht,<em style=\"font-style:normal;color:var(--blue)\"> mittags ausverkauft.</em>",
+      p1_h:"Luxemburger Rind", p1_p:"Von luxemburgischen Höfen, für unsere Patties gewolft — nie gefroren, nie anonym.",
+      p2_h:"Belgische Pommes, Rinderfett", p2_p:"Zweifach frittiert, echt belgisch. Die Beilage, die keiner übrig lässt.",
+      p3_h:"Saucen aus eigener Küche", p3_p:"Alle Saucen aus unserer Küche. Allein die Haussauce ist die Reise wert.",
+      visit_h2:"Kommt <em>hungrig.</em>", visit_intro:"Kleiner Raum, großer Ruf — Reservieren lohnt sich. Oder lasst liefern.",
+      lbl_where:"Adresse", lbl_hours:"Öffnungszeiten", lbl_book:"Reservieren", lbl_delivery:"Lieferung",
+      where_small:"L-1260 Luxemburg-Stadt",
+      hours_val:"Mittags · Mo, Mi–Fr 11:45–14:15", hours_small:"Abends Fr 18:30–21:15 · Di, Sa & So geschlossen — <em>bitte beim Lokal bestätigen</em>",
+      book_small:"Tisch reservieren — kleiner Raum, früh buchen lohnt sich",
+      delivery_small:"Dieselben Burger, zu euch geliefert", btn_reserve_table:"Tisch reservieren"
+    },
+    en:{
+      nav_menu:"Menu", nav_story:"Our Story", nav_visit:"Visit",
+      btn_order:"Order on Wolt", btn_order_arrow:"Order on Wolt →", btn_seemenu:"See the menu",
+      hero_lead:"Hand-made burgers named after legends, Luxembourg beef, Belgian fries. <b>Since Bonnevoie.</b>",
+      hero_addr:"17 Rue de Bonnevoie, L-1260 · open for lunch, Mon–Fri", badge_reviews:"reviews",
+      menu_h2:"The <em>menu</em>",
+      menu_intro:"Burgers named after legends — a tour of Europe on a bun. Hand-made from Luxembourg beef, served with fries & homemade sauces.",
+      cat_us:"The Americans", cat_fr:"France & neighbours", cat_it:"Italy & beyond", cat_salads:"Salads", cat_sides:"Sides & desserts", cat_drinks:"Drinks",
+      d_trump:"Vintage cheddar, smoked bacon, caramelised onions",
+      d_jfk:"Cheddar, smoked bacon, pickled cornichons",
+      d_obama:"Cheddar, smoked bacon, red onions",
+      d_james:"Chicken, cheddar, pickles",
+      d_louis:"Comté, bacon, fried & caramelised onions — Jura",
+      d_gust:"Reblochon, smoked bacon, mango chutney — Savoie",
+      d_myco:"Beaufort, sautéed mushrooms",
+      d_karl:"Tomme de Savoie, smoked breast, caramelised onions",
+      d_henri:"Raclette, Luxembourg cured ham, red onions",
+      d_dominique:"Homemade vegetable patty, Mimolette",
+      d_gianni:"Taleggio, spiced guanciale, candied tomatoes, spinach",
+      d_pablo:"Tomme de Savoie, chorizo",
+      d_javier:"Beef, emmental, onion rings", d_javier2:"Emmental, onion rings", v_chicken:"Chicken",
+      d_agathe:"Watermelon, feta, olives, grapes, tomato, basil",
+      d_germaine:"Egg, chicken breast, bacon chips, tomato, croutons",
+      d_monique:"Tomme Grise, grapefruit, cucumber, grilled chicken, olives",
+      n_frites:"Homemade fries", d_frites:"150g, Belgian-style", d_onion:"6 or 10 pieces", d_nutella:"Homemade",
+      n_fb1:"Fromage blanc, red-fruit coulis", n_fb2:"Fromage blanc, honey, muesli, choc", n_sanben:"San Benedetto — flat / sparkling",
+      menu_note:"<b>Every burger</b> comes with fries, homemade sauces, ketchup & mayo. Luxembourg beef.",
+      band_h2:"No shortcuts. <span style=\"color:#cdeefb\">Ever.</span>",
+      band_p:"Luxembourg beef, ground in-house. Belgian fries twice-cooked in beef fat. Every sauce made right here. That's the whole secret — and the reason there's a queue.",
+      tag1:"Luxembourg beef", tag2:"Belgian fries · beef fat", tag3:"Homemade sauces",
+      story_eyebrow:"Our Story", story_h2:"Built by hand,<em style=\"font-style:normal;color:var(--blue)\"> gone by lunch.</em>",
+      p1_h:"Luxembourg beef", p1_p:"Sourced from Luxembourg farms and ground for our patties — never frozen, never anonymous.",
+      p2_h:"Belgian fries, beef fat", p2_p:"Twice-cooked the proper Belgian way. The side nobody leaves on the plate.",
+      p3_h:"Sauces made here", p3_p:"Every sauce made in our kitchen. The house sauce alone is worth the trip.",
+      visit_h2:"Come <em>hungry.</em>", visit_intro:"Small room, big reputation — booking ahead is wise. Or have it brought to you.",
+      lbl_where:"Where", lbl_hours:"Hours", lbl_book:"Book", lbl_delivery:"Delivery",
+      where_small:"L-1260 Luxembourg City",
+      hours_val:"Lunch · Mon, Wed–Fri 11:45–14:15", hours_small:"Dinner Fri 18:30–21:15 · closed Tue, Sat & Sun — <em>please confirm with venue</em>",
+      book_small:"Reserve a table — small room, booking ahead is wise",
+      delivery_small:"Same burgers, brought to your door", btn_reserve_table:"Reserve a table"
+    }
+  };
+  // capture the FR (in-HTML) defaults so we can switch back to them
+  const FR={};
+  document.querySelectorAll('[data-i18n]').forEach(el=>{FR[el.getAttribute('data-i18n')]=el.textContent;});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{FR['__h_'+el.getAttribute('data-i18n-html')]=el.innerHTML;});
+  function setLang(l){
+    const d = l==='fr' ? null : I18N[l];
+    document.documentElement.lang=l;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');const v=d?d[k]:FR[k];if(v!=null)el.textContent=v;});
+    document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');const v=d?d[k]:FR['__h_'+k];if(v!=null)el.innerHTML=v;});
+    document.querySelectorAll('.lang-switch button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+    try{localStorage.setItem('lux_lang',l);}catch(e){}
+  }
+  document.querySelectorAll('.lang-switch button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+  let saved='fr'; try{saved=localStorage.getItem('lux_lang')||'fr';}catch(e){}
+  if(saved!=='fr') setLang(saved);
+</script>
+</body>
+</html>
