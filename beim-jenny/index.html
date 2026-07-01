@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Brasserie Beim Jenny — Ettelbruck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --mauve:#7c5a73;
+    --mauve-deep:#59394f;
+    --mauve-soft:#9b7c92;
+    --plum-ink:#39283536;
+    --ink:#392835;
+    --pink:#d24b93;
+    --pink-soft:#e88bbc;
+    --cream:#f8f2ee;
+    --cream-2:#efe4de;
+    --paper:#fbf7f4;
+    --oak:#a6714a;
+    --oak-deep:#8a5a37;
+    --red:#c4402c;
+    --line:#e3d3cd;
+    --shadow:0 24px 60px -30px rgba(57,40,53,.55);
+    --sans:'Jost',system-ui,sans-serif;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --script:'Great Vibes',cursive;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1460px;margin:0 auto;padding:0 44px}
+  .kicker{
+    font-family:var(--sans);
+    text-transform:uppercase;
+    letter-spacing:.42em;
+    font-size:.7rem;
+    font-weight:500;
+    color:var(--pink);
+  }
+  .serif{font-family:var(--serif)}
+  .script{font-family:var(--script)}
+
+  /* ---------- butterfly motif ---------- */
+  .bf{display:inline-block;vertical-align:middle}
+  .flutter{animation:flutter 6s ease-in-out infinite;transform-origin:center}
+  .flutter.d2{animation-delay:-2s;animation-duration:7.5s}
+  .flutter.d3{animation-delay:-4s;animation-duration:8.5s}
+  @keyframes flutter{
+    0%,100%{transform:translateY(0) rotate(-4deg)}
+    50%{transform:translateY(-12px) rotate(5deg)}
+  }
+  @media (prefers-reduced-motion:reduce){.flutter{animation:none}}
+
+  /* ---------- ribbon ---------- */
+  .ribbon{
+    position:sticky;top:0;z-index:60;
+    background:rgba(89,57,79,.94);
+    backdrop-filter:blur(8px);
+    color:#f4e7ef;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .ribbon .row{
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+    gap:20px;padding:11px 44px;max-width:1460px;margin:0 auto;
+  }
+  .ribbon .place{font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;opacity:.85;display:flex;gap:10px;align-items:center}
+  .nav{display:flex;gap:26px;justify-content:center;font-size:.82rem;letter-spacing:.08em}
+  .nav a{opacity:.82;transition:opacity .2s,color .2s;white-space:nowrap}
+  .nav a:hover{opacity:1;color:var(--pink-soft)}
+  .r-right{display:flex;gap:16px;justify-content:flex-end;align-items:center}
+  .tel{font-size:.82rem;letter-spacing:.05em;opacity:.9;white-space:nowrap}
+  .langs{display:flex;gap:2px;background:rgba(255,255,255,.1);border-radius:40px;padding:3px}
+  .langs button{
+    font-family:var(--sans);font-size:.72rem;font-weight:500;letter-spacing:.08em;
+    background:none;border:none;color:#f4e7ef;cursor:pointer;
+    padding:4px 11px;border-radius:40px;transition:.2s;
+  }
+  .langs button.on{background:var(--pink);color:#fff}
+  .burger{display:none}
+
+  /* ---------- hero ---------- */
+  .hero{
+    display:grid;grid-template-columns:1.02fr 1.15fr;
+    min-height:calc(100vh - 47px);
+    background:
+      radial-gradient(circle at 12% 18%, rgba(210,75,147,.10), transparent 45%),
+      linear-gradient(150deg,var(--mauve-deep),var(--mauve) 60%,#6c4c63);
+  }
+  .hero-copy{
+    color:#f6e9f0;
+    padding:76px clamp(44px,5vw,90px) 60px;
+    display:flex;flex-direction:column;justify-content:center;
+    position:relative;
+  }
+  .hero-copy .kicker{color:var(--pink-soft)}
+  .wordmark{
+    font-family:var(--script);
+    line-height:.86;
+    margin:14px 0 6px;
+    position:relative;
+  }
+  .wordmark .wm-brasserie{
+    font-family:var(--sans);
+    display:block;font-size:.9rem;letter-spacing:.5em;text-transform:uppercase;
+    color:var(--pink-soft);margin-bottom:2px;font-weight:400;padding-left:8px;
+  }
+  .wordmark .wm-name{
+    display:block;font-size:clamp(4.6rem,8.4vw,8.6rem);color:#fff;
+    text-shadow:0 12px 40px rgba(0,0,0,.28);
+  }
+  .wordmark .bf{position:absolute}
+  .wordmark .bf.a{top:8%;right:6%}
+  .wordmark .bf.b{bottom:2%;left:34%}
+  .hero-tag{
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(1.35rem,2vw,1.75rem);
+    color:#f3dbe8;max-width:30ch;margin:22px 0 8px;line-height:1.35;
+  }
+  .hero-note{max-width:40ch;color:#e7d3e0;font-weight:300;font-size:1.02rem;margin-bottom:30px}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-bottom:34px}
+  .btn{
+    font-family:var(--sans);font-weight:500;letter-spacing:.06em;font-size:.9rem;
+    padding:15px 30px;border-radius:40px;cursor:pointer;transition:.22s;
+    display:inline-flex;align-items:center;gap:10px;border:1.5px solid transparent;
+  }
+  .btn-pink{background:var(--pink);color:#fff}
+  .btn-pink:hover{background:#e35ba3;transform:translateY(-2px)}
+  .btn-ghost{border-color:rgba(255,255,255,.4);color:#f6e9f0}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+  .hero-meta{
+    display:flex;gap:30px;flex-wrap:wrap;font-size:.82rem;letter-spacing:.04em;
+    color:#e2cdda;border-top:1px solid rgba(255,255,255,.16);padding-top:22px;
+  }
+  .hero-meta b{display:block;color:var(--pink-soft);font-weight:500;letter-spacing:.16em;text-transform:uppercase;font-size:.68rem;margin-bottom:4px}
+  .hero-photo{position:relative;overflow:hidden}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 62%}
+  .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(89,57,79,.42),transparent 22%)}
+  .photo-card{
+    position:absolute;left:34px;bottom:34px;z-index:2;
+    background:rgba(251,247,244,.94);backdrop-filter:blur(4px);
+    padding:18px 22px;border-radius:14px;max-width:300px;
+    box-shadow:var(--shadow);border-left:4px solid var(--pink);
+  }
+  .photo-card .pc-t{font-family:var(--serif);font-size:1.28rem;color:var(--mauve-deep);line-height:1.15;font-weight:600}
+  .photo-card .pc-s{font-size:.78rem;color:#6a5563;margin-top:5px;letter-spacing:.02em}
+
+  /* ---------- section shell ---------- */
+  section{position:relative}
+  .sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:8px}
+  .sec-head h2{font-family:var(--serif);font-weight:600;color:var(--mauve-deep);font-size:clamp(2.1rem,3.4vw,3.1rem);line-height:1;letter-spacing:-.01em}
+  .sec-head .num{font-family:var(--script);color:var(--pink);font-size:2.4rem;line-height:.7}
+
+  /* ---------- le mot de Jenny ---------- */
+  .mot{padding:96px 0;background:var(--paper)}
+  .mot-grid{display:grid;grid-template-columns:0.9fr 1.1fr 0.7fr;gap:34px;align-items:stretch}
+  .mot-photo{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);min-height:440px;position:relative}
+  .mot-photo img{width:100%;height:100%;object-fit:cover}
+  .mot-photo .tagpill{position:absolute;top:18px;left:18px;background:rgba(89,57,79,.86);color:#f6e9f0;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;padding:7px 14px;border-radius:30px}
+  .mot-note{
+    background:linear-gradient(160deg,#fff,#faf1f6);
+    border:1px solid var(--line);border-radius:18px;
+    padding:44px clamp(28px,3vw,50px);display:flex;flex-direction:column;justify-content:center;
+    box-shadow:var(--shadow);position:relative;
+  }
+  .mot-note .quote{font-family:var(--script);color:var(--pink-soft);font-size:5rem;line-height:.4;height:38px}
+  .mot-note p{font-family:var(--serif);font-size:clamp(1.28rem,1.7vw,1.6rem);line-height:1.5;color:#4b3646;font-style:italic}
+  .mot-note .sign{font-family:var(--script);font-size:2.9rem;color:var(--mauve-deep);margin-top:20px;line-height:1}
+  .mot-note .sign small{display:block;font-family:var(--sans);font-style:normal;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--pink);margin-top:2px}
+  .mot-vals{display:flex;flex-direction:column;gap:16px}
+  .val{background:var(--mauve-deep);color:#f6e9f0;border-radius:16px;padding:24px 22px;flex:1;display:flex;flex-direction:column;justify-content:center;box-shadow:var(--shadow)}
+  .val:nth-child(2){background:var(--pink)}
+  .val:nth-child(3){background:var(--oak-deep)}
+  .val .v-k{font-family:var(--script);font-size:2.5rem;line-height:.9;color:#fff}
+  .val .v-t{font-family:var(--sans);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:500;margin-top:8px;color:rgba(255,255,255,.92)}
+  .val .v-d{font-size:.82rem;font-weight:300;margin-top:6px;color:rgba(255,255,255,.78)}
+
+  /* ---------- menu / l'ardoise ---------- */
+  .carte{padding:98px 0;background:linear-gradient(180deg,var(--mauve-deep),#4d3345);color:#f4e7ef;position:relative;overflow:hidden}
+  .carte .sec-head h2{color:#fff}
+  .carte .sec-head .num{color:var(--pink-soft)}
+  .carte-intro{max-width:52ch;color:#e2cdda;font-weight:300;margin:14px 0 40px;font-size:1.02rem}
+  .menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;grid-auto-rows:1fr}
+  .dish{
+    background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);
+    border-radius:16px;padding:26px 24px;display:flex;flex-direction:column;
+    transition:.25s;position:relative;overflow:hidden;
+  }
+  .dish:hover{background:rgba(210,75,147,.16);border-color:var(--pink-soft);transform:translateY(-4px)}
+  .dish .d-cat{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--pink-soft)}
+  .dish h3{font-family:var(--serif);font-size:1.55rem;font-weight:600;color:#fff;margin:8px 0;line-height:1.1}
+  .dish p{font-size:.86rem;font-weight:300;color:#dcc7d6;flex:1}
+  .dish .price{margin-top:16px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#c9a9be;border-top:1px dashed rgba(255,255,255,.2);padding-top:12px}
+  .dish-photo{padding:0;border:none;min-height:230px}
+  .dish-photo img{width:100%;height:100%;object-fit:cover;border-radius:16px}
+  .dish-photo figcaption{
+    position:absolute;left:0;right:0;bottom:0;padding:16px 18px;
+    background:linear-gradient(0deg,rgba(45,28,40,.9),transparent);
+    font-family:var(--serif);font-size:1.15rem;color:#fff;font-weight:600;
+  }
+  .signature{
+    grid-column:span 2;
+    background:linear-gradient(120deg,var(--pink),#a8397a);
+    border:none;justify-content:center;
+  }
+  .signature .d-cat{color:#ffe1f0}
+  .signature h3{font-size:1.9rem}
+  .signature p{color:#ffe7f4;font-weight:400}
+  .signature .price{color:#ffdff0;border-color:rgba(255,255,255,.35)}
+  .diekirch{
+    grid-column:span 2;background:rgba(255,255,255,.06);
+    display:flex;flex-direction:row;align-items:center;gap:22px;
+  }
+  .diekirch .roundel{
+    flex:0 0 auto;width:78px;height:78px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#2f6fb0,#173d6b);
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    color:#fff;font-family:var(--serif);font-weight:600;font-size:.82rem;line-height:1;
+    box-shadow:inset 0 0 0 3px rgba(255,255,255,.25);
+  }
+  .carte-foot{margin-top:32px;font-size:.8rem;color:#c9a9be;letter-spacing:.03em}
+
+  /* ---------- sur la place ---------- */
+  .place-sec{padding:100px 0;background:var(--cream)}
+  .place-grid{display:grid;grid-template-columns:0.95fr 1.05fr;gap:48px;align-items:stretch}
+  .place-copy{display:flex;flex-direction:column;justify-content:center}
+  .place-copy p{color:#5c4855;margin:16px 0;max-width:46ch;font-size:1.03rem}
+  .fountain-line{
+    display:flex;gap:14px;align-items:flex-start;margin-top:8px;
+    padding:18px 20px;background:#fff;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow);
+  }
+  .fountain-line .bf{flex:0 0 auto;margin-top:2px}
+  .fountain-line b{color:var(--mauve-deep);font-family:var(--serif);font-size:1.15rem;font-weight:600}
+  .fountain-line span{display:block;font-size:.88rem;color:#6a5563}
+  .visit-cards{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+  .vcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;flex:1;min-width:150px}
+  .vcard .vk{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pink);font-weight:500}
+  .vcard .vv{font-family:var(--serif);font-size:1.2rem;color:var(--mauve-deep);margin-top:4px;font-weight:600}
+  .vcard .vs{font-size:.78rem;color:#7a6470;margin-top:2px}
+  .map-wrap{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);min-height:460px}
+  .map-wrap iframe{width:100%;height:100%;min-height:460px;border:0;display:block;filter:saturate(.9)}
+  .confirm-note{margin-top:22px;font-size:.82rem;color:#8a7280;background:#f3e7ef;border-left:3px solid var(--pink);padding:12px 16px;border-radius:8px}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--mauve-deep);color:#e7d3e0;padding:70px 0 34px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;align-items:start}
+  .foot-brand .fw{font-family:var(--script);font-size:3.4rem;color:#fff;line-height:.9}
+  .foot-brand .fk{font-family:var(--sans);letter-spacing:.42em;text-transform:uppercase;font-size:.68rem;color:var(--pink-soft);padding-left:6px}
+  .foot-brand p{margin-top:16px;font-weight:300;font-size:.92rem;color:#d3bccb;max-width:34ch}
+  .foot-col h4{font-family:var(--sans);text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;color:var(--pink-soft);margin-bottom:14px;font-weight:500}
+  .foot-col a,.foot-col p{display:block;font-size:.92rem;color:#e7d3e0;margin-bottom:9px;font-weight:300;transition:color .2s}
+  .foot-col a:hover{color:#fff}
+  .foot-tag{font-size:.72rem;color:#c9a9be}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:44px;padding-top:22px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.76rem;color:#bfa2b6}
+  .disclaimer{background:rgba(210,75,147,.16);border:1px solid rgba(232,139,188,.3);border-radius:8px;padding:8px 14px;color:#f3dbe8}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1080px){
+    .hero{grid-template-columns:1fr;min-height:auto}
+    .hero-photo{min-height:52vh;order:-1}
+    .menu-grid{grid-template-columns:repeat(2,1fr)}
+    .mot-grid{grid-template-columns:1fr 1fr}
+    .mot-vals{grid-column:1/-1;flex-direction:row}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:760px){
+    .wrap{padding:0 22px}
+    .ribbon .row{grid-template-columns:1fr auto;padding:10px 22px}
+    .nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--mauve-deep);flex-direction:column;gap:0;padding:8px 22px 18px}
+    .nav.open{display:flex}
+    .nav a{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+    .r-right{display:none}
+    .r-right.showlang{display:flex;position:absolute;top:100%;right:22px}
+    .burger{display:inline-flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+    .burger span{width:24px;height:2px;background:#f4e7ef;display:block}
+    .ribbon .place{display:none}
+    .langs{display:flex}
+    .r-mobile-langs{display:flex}
+    .hero-copy{padding:56px 24px 48px}
+    .menu-grid{grid-template-columns:1fr}
+    .signature,.diekirch{grid-column:span 1}
+    .mot-grid{grid-template-columns:1fr}
+    .mot-vals{flex-direction:column}
+    .place-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .photo-card{left:20px;right:20px;bottom:20px;max-width:none}
+  }
+  .r-mobile-langs{display:none}
+</style>
+</head>
+<body>
+
+<!-- butterfly svg template -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="butterfly" viewBox="0 0 64 64">
+      <g>
+        <path d="M31 32c-3-11-13-19-22-16-6 2-8 9-4 14 4 6 16 10 26 6z" fill="currentColor" opacity=".92"/>
+        <path d="M33 32c3-11 13-19 22-16 6 2 8 9 4 14-4 6-16 10-26 6z" fill="currentColor" opacity=".92"/>
+        <path d="M31 32c-2 8-9 15-16 15-4 0-6-4-4-8 2-5 11-9 20-9z" fill="currentColor" opacity=".7"/>
+        <path d="M33 32c2 8 9 15 16 15 4 0 6-4 4-8-2-5-11-9-20-9z" fill="currentColor" opacity=".7"/>
+        <rect x="31" y="16" width="2" height="34" rx="1" fill="currentColor"/>
+        <path d="M32 16c-2-4-6-6-9-5M32 16c2-4 6-6 9-5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============ RIBBON ============ -->
+<header class="ribbon">
+  <div class="row">
+    <div class="place">
+      <svg class="bf" width="16" height="16" style="color:var(--pink-soft)"><use href="#butterfly"/></svg>
+      <span data-i18n="place">Place de la Résistance · Ettelbruck</span>
+    </div>
+    <nav class="nav" id="nav">
+      <a href="#mot" data-i18n="nav_mot">Le mot de Jenny</a>
+      <a href="#carte" data-i18n="nav_carte">À la carte</a>
+      <a href="#place" data-i18n="nav_place">Sur la Place</a>
+      <a href="#contact" data-i18n="nav_contact">Nous trouver</a>
+    </nav>
+    <div class="r-right" id="rright">
+      <a class="tel" href="tel:+352661808040">+352 661 808 040</a>
+      <div class="langs" role="group" aria-label="Langue">
+        <button data-lang="fr" class="on">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-copy">
+    <span class="kicker" data-i18n="hero_kicker">Brasserie de quartier · Cuisine maison</span>
+    <div class="wordmark">
+      <span class="wm-brasserie">Brasserie</span>
+      <span class="wm-name">Beim Jenny</span>
+      <svg class="bf a flutter" width="42" height="42" style="color:var(--pink)"><use href="#butterfly"/></svg>
+      <svg class="bf b flutter d2" width="26" height="26" style="color:var(--pink-soft)"><use href="#butterfly"/></svg>
+    </div>
+    <p class="hero-tag" data-i18n="hero_tag">Chez Jenny, à Ettelbruck : la cuisine maison et la plus jolie terrasse de la ville.</p>
+    <p class="hero-note" data-i18n="hero_note">Une adresse familiale sur la Place de la Résistance, autour de la fontaine de la marchande de beurre. Généreux, convivial, sans chichis.</p>
+    <div class="hero-actions">
+      <a class="btn btn-pink" href="tel:+352661808040" data-i18n="hero_cta1">Réserver par téléphone</a>
+      <a class="btn btn-ghost" href="#carte" data-i18n="hero_cta2">Voir la carte</a>
+    </div>
+    <div class="hero-meta">
+      <div><b data-i18n="meta_a">Adresse</b>5, Place de la Résistance<br>L-9070 Ettelbruck</div>
+      <div><b data-i18n="meta_h">Horaires</b><span data-i18n="meta_h_v">Lun – Sam · Dim fermé<br><em>(à confirmer)</em></span></div>
+      <div><b data-i18n="meta_c">Contact</b>+352 661 808 040<br>brasseriebeimjenny@gmail.com</div>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="assets/hero.jpg" alt="Terrasse de la Brasserie Beim Jenny sur la Place de la Résistance à Ettelbruck">
+    <div class="photo-card">
+      <div class="pc-t serif" data-i18n="pc_t">La terrasse, autour de la fontaine</div>
+      <div class="pc-s" data-i18n="pc_s">Parasols rouge et blanc, pavés, et la « Buttbegfra » qui veille sur la Place.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LE MOT DE JENNY ============ -->
+<section class="mot" id="mot">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">01</span>
+      <h2 data-i18n="mot_h">Le mot de Jenny</h2>
+      <svg class="bf flutter d3" width="30" height="30" style="color:var(--pink)"><use href="#butterfly"/></svg>
+    </div>
+    <div class="mot-grid">
+      <figure class="mot-photo">
+        <img src="assets/interior-1.jpg" alt="Salle intérieure aux murs mauves, tables en chêne et chaises crème">
+        <figcaption class="tagpill" data-i18n="mot_pill">La salle · murs mauves &amp; chêne clair</figcaption>
+      </figure>
+      <div class="mot-note">
+        <span class="quote">“</span>
+        <p data-i18n="mot_note">Ici, on cuisine tout maison et on accueille chacun comme à la maison. On y vient pour la Salade Mozza, pour un Cordon Bleu, pour un verre de Pinot Gris sur la Place — et on repart avec l'envie de revenir.</p>
+        <div class="sign">Jenny<small data-i18n="mot_sign">Votre hôte</small></div>
+      </div>
+      <div class="mot-vals">
+        <div class="val">
+          <span class="v-k">Maison</span>
+          <span class="v-t" data-i18n="v1_t">Fait maison</span>
+          <span class="v-d" data-i18n="v1_d">Cuisine préparée sur place, chaque jour.</span>
+        </div>
+        <div class="val">
+          <span class="v-k">Généreux</span>
+          <span class="v-t" data-i18n="v2_t">Le bon rapport</span>
+          <span class="v-d" data-i18n="v2_d">Assiettes copieuses, prix justes — la fierté de la maison.</span>
+        </div>
+        <div class="val">
+          <span class="v-k">Convivial</span>
+          <span class="v-t" data-i18n="v3_t">Comme en famille</span>
+          <span class="v-d" data-i18n="v3_d">Un accueil chaleureux et personnel, pour tous.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ À LA CARTE ============ -->
+<section class="carte" id="carte">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">02</span>
+      <h2 data-i18n="carte_h">Sur l'ardoise</h2>
+      <svg class="bf flutter" width="30" height="30" style="color:var(--pink-soft)"><use href="#butterfly"/></svg>
+    </div>
+    <p class="carte-intro" data-i18n="carte_intro">Une carte de brasserie franche et généreuse, entre spécialités maison et incontournables. Plats et tarifs à confirmer avec l'établissement.</p>
+    <div class="menu-grid">
+
+      <figure class="dish dish-photo">
+        <img src="assets/food-charcuterie.jpg" alt="Assiette de charcuterie et fromages avec saumon fumé">
+        <figcaption data-i18n="d_photo1">Assiette charcuterie &amp; fromages</figcaption>
+      </figure>
+
+      <article class="dish">
+        <span class="d-cat" data-i18n="d1_c">Pour commencer</span>
+        <h3 data-i18n="d1_h">Tartinades maison</h3>
+        <p data-i18n="d1_p">Trio de tartinades faites maison — guacamole, betterave, tomate — et baguette toastée.</p>
+        <span class="price" data-i18n="price_tc">Prix à confirmer</span>
+      </article>
+
+      <article class="dish">
+        <span class="d-cat" data-i18n="d2_c">Salade</span>
+        <h3 data-i18n="d2_h">Salade Mozza</h3>
+        <p data-i18n="d2_p">La salade que les habitués recommandent — fraîche, généreuse, tout en simplicité.</p>
+        <span class="price" data-i18n="price_tc">Prix à confirmer</span>
+      </article>
+
+      <article class="dish">
+        <span class="d-cat" data-i18n="d3_c">Le classique</span>
+        <h3 data-i18n="d3_h">Cordon Bleu</h3>
+        <p data-i18n="d3_p">Le favori de la maison, servi bien doré — une valeur sûre de la brasserie.</p>
+        <span class="price" data-i18n="price_tc">Prix à confirmer</span>
+      </article>
+
+      <figure class="dish dish-photo">
+        <img src="assets/food-tartinades.jpg" alt="Trio de tartinades maison avec toasts">
+        <figcaption data-i18n="d_photo2">Le trio de tartinades</figcaption>
+      </figure>
+
+      <article class="dish">
+        <span class="d-cat" data-i18n="d4_c">Assiette froide</span>
+        <h3 data-i18n="d4_h">Charcuterie &amp; fromages</h3>
+        <p data-i18n="d4_p">Charcuteries, fromages, saumon fumé, câpres et cornichons — un incontournable.</p>
+        <span class="price" data-i18n="price_tc">Prix à confirmer</span>
+      </article>
+
+      <article class="dish">
+        <span class="d-cat" data-i18n="d5_c">Évènement</span>
+        <h3 data-i18n="d5_h">Scampis à volonté</h3>
+        <p data-i18n="d5_p">Soirées scampis à volonté organisées ponctuellement — dates à confirmer.</p>
+        <span class="price" data-i18n="price_tc">Prix à confirmer</span>
+      </article>
+
+      <article class="dish">
+        <span class="d-cat" data-i18n="d6_c">Aussi</span>
+        <h3 data-i18n="d6_h">Options végétariennes</h3>
+        <p data-i18n="d6_p">Des plats pensés aussi pour les végétariens — demandez à Jenny ce qui mijote.</p>
+        <span class="price" data-i18n="price_tc">À confirmer</span>
+      </article>
+
+      <article class="dish signature">
+        <span class="d-cat" data-i18n="sig_c">La signature de la maison</span>
+        <h3 data-i18n="sig_h">Pinot Gris en petite bouteille</h3>
+        <p data-i18n="sig_p">Servi en petites bouteilles individuelles — pour le prix d'un simple verre ailleurs. La fierté « bon rapport » de Beim Jenny.</p>
+        <span class="price" data-i18n="price_tc">Prix à confirmer</span>
+      </article>
+
+      <article class="dish diekirch">
+        <div class="roundel">Diekirch</div>
+        <div>
+          <span class="d-cat" data-i18n="die_c">À la pression</span>
+          <h3 style="margin-top:4px" data-i18n="die_h">Bière Diekirch</h3>
+          <p data-i18n="die_p">La brasserie locale, à l'enseigne de la maison — fraîche, sur la terrasse.</p>
+        </div>
+      </article>
+
+    </div>
+    <p class="carte-foot" data-i18n="carte_foot">Carte indicative reconstituée d'après les avis et les listings publics. Tous les plats, disponibilités et tarifs sont à confirmer avec l'établissement.</p>
+  </div>
+</section>
+
+<!-- ============ SUR LA PLACE ============ -->
+<section class="place-sec" id="place">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="num">03</span>
+      <h2 data-i18n="place_h">Sur la Place</h2>
+    </div>
+    <div class="place-grid" id="contact">
+      <div class="place-copy">
+        <p data-i18n="place_p1">La Brasserie Beim Jenny occupe l'angle de la Place de la Résistance, en plein cœur d'Ettelbruck — la ville principale du nord du Luxembourg.</p>
+        <p data-i18n="place_p2">La terrasse s'étend sous les parasols rouge et blanc, sur les pavés, tout autour de la fontaine de bronze du quartier.</p>
+        <div class="fountain-line">
+          <svg class="bf" width="30" height="30" style="color:var(--pink)"><use href="#butterfly"/></svg>
+          <div>
+            <b data-i18n="fountain_t">La « Buttbegfra »</b>
+            <span data-i18n="fountain_s">La marchande de beurre et son petit garçon — la fontaine emblématique de la Place, juste devant la terrasse.</span>
+          </div>
+        </div>
+        <div class="visit-cards">
+          <div class="vcard">
+            <div class="vk" data-i18n="vc1_k">Horaires</div>
+            <div class="vv" data-i18n="vc1_v">Lun – Sam</div>
+            <div class="vs" data-i18n="vc1_s">Dimanche fermé · à confirmer</div>
+          </div>
+          <div class="vcard">
+            <div class="vk" data-i18n="vc2_k">À emporter</div>
+            <div class="vv" data-i18n="vc2_v">Par téléphone</div>
+            <div class="vs">+352 661 808 040</div>
+          </div>
+          <div class="vcard">
+            <div class="vk" data-i18n="vc3_k">Parking</div>
+            <div class="vv" data-i18n="vc3_v">Sur la Place</div>
+            <div class="vs" data-i18n="vc3_s">Centre d'Ettelbruck</div>
+          </div>
+        </div>
+        <p class="confirm-note" data-i18n="place_confirm">⚑ Horaires susceptibles de varier — merci de confirmer les heures de service auprès de la brasserie avant votre visite.</p>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=Brasserie+Beim+Jenny,+Place+de+la+Résistance,+Ettelbruck,+Luxembourg&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Brasserie Beim Jenny — Place de la Résistance, Ettelbruck"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="fk">Brasserie</div>
+        <div class="fw">Beim Jenny</div>
+        <p data-i18n="foot_about">Brasserie de quartier, cuisine maison et terrasse sur la Place de la Résistance, à Ettelbruck.</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot_visit">Nous trouver</h4>
+        <p>5, Place de la Résistance<br>L-9070 Ettelbruck</p>
+        <p class="foot-tag" data-i18n="foot_addr_note">Adresse exacte à confirmer</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot_contact">Contact</h4>
+        <a href="tel:+352661808040">+352 661 808 040</a>
+        <a href="mailto:brasseriebeimjenny@gmail.com">brasseriebeimjenny@gmail.com</a>
+        <a href="https://www.facebook.com/brasseriebeimjenny" target="_blank" rel="noopener">Facebook</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot_hours">Horaires</h4>
+        <p data-i18n="foot_hours_v">Lundi – Samedi</p>
+        <p data-i18n="foot_hours_v2">Dimanche fermé</p>
+        <p class="foot-tag" data-i18n="foot_hours_note">Horaires à confirmer</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Brasserie Beim Jenny · Ettelbruck</span>
+      <span class="disclaimer" data-i18n="disclaimer">Site de démonstration — contenu indicatif, à confirmer avec l'établissement.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------------- i18n ---------------- */
+const I18N = {
+  fr:{
+    place:"Place de la Résistance · Ettelbruck",
+    nav_mot:"Le mot de Jenny", nav_carte:"À la carte", nav_place:"Sur la Place", nav_contact:"Nous trouver",
+    hero_kicker:"Brasserie de quartier · Cuisine maison",
+    hero_tag:"Chez Jenny, à Ettelbruck : la cuisine maison et la plus jolie terrasse de la ville.",
+    hero_note:"Une adresse familiale sur la Place de la Résistance, autour de la fontaine de la marchande de beurre. Généreux, convivial, sans chichis.",
+    hero_cta1:"Réserver par téléphone", hero_cta2:"Voir la carte",
+    meta_a:"Adresse", meta_h:"Horaires", meta_h_v:"Lun – Sam · Dim fermé<br><em>(à confirmer)</em>", meta_c:"Contact",
+    pc_t:"La terrasse, autour de la fontaine",
+    pc_s:"Parasols rouge et blanc, pavés, et la « Buttbegfra » qui veille sur la Place.",
+    mot_h:"Le mot de Jenny", mot_pill:"La salle · murs mauves & chêne clair",
+    mot_note:"Ici, on cuisine tout maison et on accueille chacun comme à la maison. On y vient pour la Salade Mozza, pour un Cordon Bleu, pour un verre de Pinot Gris sur la Place — et on repart avec l'envie de revenir.",
+    mot_sign:"Votre hôte",
+    v1_t:"Fait maison", v1_d:"Cuisine préparée sur place, chaque jour.",
+    v2_t:"Le bon rapport", v2_d:"Assiettes copieuses, prix justes — la fierté de la maison.",
+    v3_t:"Comme en famille", v3_d:"Un accueil chaleureux et personnel, pour tous.",
+    carte_h:"Sur l'ardoise",
+    carte_intro:"Une carte de brasserie franche et généreuse, entre spécialités maison et incontournables. Plats et tarifs à confirmer avec l'établissement.",
+    d_photo1:"Assiette charcuterie & fromages", d_photo2:"Le trio de tartinades",
+    d1_c:"Pour commencer", d1_h:"Tartinades maison", d1_p:"Trio de tartinades faites maison — guacamole, betterave, tomate — et baguette toastée.",
+    d2_c:"Salade", d2_h:"Salade Mozza", d2_p:"La salade que les habitués recommandent — fraîche, généreuse, tout en simplicité.",
+    d3_c:"Le classique", d3_h:"Cordon Bleu", d3_p:"Le favori de la maison, servi bien doré — une valeur sûre de la brasserie.",
+    d4_c:"Assiette froide", d4_h:"Charcuterie & fromages", d4_p:"Charcuteries, fromages, saumon fumé, câpres et cornichons — un incontournable.",
+    d5_c:"Évènement", d5_h:"Scampis à volonté", d5_p:"Soirées scampis à volonté organisées ponctuellement — dates à confirmer.",
+    d6_c:"Aussi", d6_h:"Options végétariennes", d6_p:"Des plats pensés aussi pour les végétariens — demandez à Jenny ce qui mijote.",
+    sig_c:"La signature de la maison", sig_h:"Pinot Gris en petite bouteille", sig_p:"Servi en petites bouteilles individuelles — pour le prix d'un simple verre ailleurs. La fierté « bon rapport » de Beim Jenny.",
+    die_c:"À la pression", die_h:"Bière Diekirch", die_p:"La brasserie locale, à l'enseigne de la maison — fraîche, sur la terrasse.",
+    price_tc:"Prix à confirmer",
+    carte_foot:"Carte indicative reconstituée d'après les avis et les listings publics. Tous les plats, disponibilités et tarifs sont à confirmer avec l'établissement.",
+    place_h:"Sur la Place",
+    place_p1:"La Brasserie Beim Jenny occupe l'angle de la Place de la Résistance, en plein cœur d'Ettelbruck — la ville principale du nord du Luxembourg.",
+    place_p2:"La terrasse s'étend sous les parasols rouge et blanc, sur les pavés, tout autour de la fontaine de bronze du quartier.",
+    fountain_t:"La « Buttbegfra »", fountain_s:"La marchande de beurre et son petit garçon — la fontaine emblématique de la Place, juste devant la terrasse.",
+    vc1_k:"Horaires", vc1_v:"Lun – Sam", vc1_s:"Dimanche fermé · à confirmer",
+    vc2_k:"À emporter", vc2_v:"Par téléphone",
+    vc3_k:"Parking", vc3_v:"Sur la Place", vc3_s:"Centre d'Ettelbruck",
+    place_confirm:"⚑ Horaires susceptibles de varier — merci de confirmer les heures de service auprès de la brasserie avant votre visite.",
+    foot_about:"Brasserie de quartier, cuisine maison et terrasse sur la Place de la Résistance, à Ettelbruck.",
+    foot_visit:"Nous trouver", foot_addr_note:"Adresse exacte à confirmer",
+    foot_contact:"Contact", foot_hours:"Horaires", foot_hours_v:"Lundi – Samedi", foot_hours_v2:"Dimanche fermé", foot_hours_note:"Horaires à confirmer",
+    disclaimer:"Site de démonstration — contenu indicatif, à confirmer avec l'établissement."
+  },
+  de:{
+    place:"Place de la Résistance · Ettelbruck",
+    nav_mot:"Jennys Wort", nav_carte:"Die Karte", nav_place:"Am Platz", nav_contact:"Anfahrt",
+    hero_kicker:"Quartier-Brasserie · Hausgemachte Küche",
+    hero_tag:"Bei Jenny in Ettelbruck: hausgemachte Küche und die schönste Terrasse der Stadt.",
+    hero_note:"Eine familiäre Adresse an der Place de la Résistance, rund um den Brunnen der Butterfrau. Großzügig, gesellig, ohne Schnickschnack.",
+    hero_cta1:"Telefonisch reservieren", hero_cta2:"Zur Karte",
+    meta_a:"Adresse", meta_h:"Öffnungszeiten", meta_h_v:"Mo – Sa · So geschlossen<br><em>(unter Vorbehalt)</em>", meta_c:"Kontakt",
+    pc_t:"Die Terrasse rund um den Brunnen",
+    pc_s:"Rot-weiße Sonnenschirme, Kopfsteinpflaster und die „Buttbegfra“, die über den Platz wacht.",
+    mot_h:"Jennys Wort", mot_pill:"Der Saal · mauvefarbene Wände & helle Eiche",
+    mot_note:"Hier kochen wir alles hausgemacht und empfangen jeden wie zu Hause. Man kommt für den Salade Mozza, für ein Cordon Bleu, für ein Glas Pinot Gris am Platz – und geht mit dem Wunsch, wiederzukommen.",
+    mot_sign:"Ihre Gastgeberin",
+    v1_t:"Hausgemacht", v1_d:"Täglich frisch vor Ort zubereitet.",
+    v2_t:"Faires Verhältnis", v2_d:"Großzügige Teller, faire Preise – der Stolz des Hauses.",
+    v3_t:"Wie in der Familie", v3_d:"Ein herzlicher, persönlicher Empfang für alle.",
+    carte_h:"Auf der Tafel",
+    carte_intro:"Eine ehrliche, großzügige Brasserie-Karte zwischen hausgemachten Spezialitäten und Klassikern. Gerichte und Preise sind mit dem Haus zu bestätigen.",
+    d_photo1:"Wurst- & Käseplatte", d_photo2:"Das Aufstrich-Trio",
+    d1_c:"Zum Anfang", d1_h:"Hausgemachte Aufstriche", d1_p:"Trio hausgemachter Aufstriche – Guacamole, Rote Bete, Tomate – mit geröstetem Baguette.",
+    d2_c:"Salat", d2_h:"Salade Mozza", d2_p:"Der Salat, den Stammgäste empfehlen – frisch, großzügig, ganz einfach.",
+    d3_c:"Der Klassiker", d3_h:"Cordon Bleu", d3_p:"Der Favorit des Hauses, goldbraun serviert – ein sicherer Wert der Brasserie.",
+    d4_c:"Kalte Platte", d4_h:"Wurst & Käse", d4_p:"Aufschnitt, Käse, Räucherlachs, Kapern und Cornichons – ein Muss.",
+    d5_c:"Event", d5_h:"Scampi à volonté", d5_p:"Gelegentliche Scampi-Abende „so viel Sie möchten“ – Termine unter Vorbehalt.",
+    d6_c:"Auch", d6_h:"Vegetarische Gerichte", d6_p:"Auch für Vegetarier gedacht – fragen Sie Jenny, was heute köchelt.",
+    sig_c:"Die Signatur des Hauses", sig_h:"Pinot Gris in der kleinen Flasche", sig_p:"Serviert in kleinen Einzelflaschen – zum Preis eines einfachen Glases anderswo. Der „faire“ Stolz von Beim Jenny.",
+    die_c:"Vom Fass", die_h:"Diekirch Bier", die_p:"Die lokale Brauerei, am Schild des Hauses – frisch, auf der Terrasse.",
+    price_tc:"Preis unter Vorbehalt",
+    carte_foot:"Indikative Karte, rekonstruiert aus Bewertungen und öffentlichen Einträgen. Alle Gerichte, Verfügbarkeiten und Preise sind mit dem Haus zu bestätigen.",
+    place_h:"Am Platz",
+    place_p1:"Die Brasserie Beim Jenny liegt an der Ecke der Place de la Résistance, mitten im Herzen von Ettelbruck – der Hauptstadt des Nordens Luxemburgs.",
+    place_p2:"Die Terrasse erstreckt sich unter rot-weißen Sonnenschirmen auf dem Kopfsteinpflaster, rund um den bronzenen Brunnen des Viertels.",
+    fountain_t:"Die „Buttbegfra“", fountain_s:"Die Butterfrau und ihr kleiner Junge – der Wahrzeichen-Brunnen des Platzes, direkt vor der Terrasse.",
+    vc1_k:"Öffnungszeiten", vc1_v:"Mo – Sa", vc1_s:"Sonntag geschlossen · unter Vorbehalt",
+    vc2_k:"Zum Mitnehmen", vc2_v:"Per Telefon",
+    vc3_k:"Parken", vc3_v:"Am Platz", vc3_s:"Zentrum Ettelbruck",
+    place_confirm:"⚑ Öffnungszeiten können variieren – bitte bestätigen Sie die Servicezeiten vor Ihrem Besuch bei der Brasserie.",
+    foot_about:"Quartier-Brasserie, hausgemachte Küche und Terrasse an der Place de la Résistance in Ettelbruck.",
+    foot_visit:"Anfahrt", foot_addr_note:"Genaue Adresse unter Vorbehalt",
+    foot_contact:"Kontakt", foot_hours:"Öffnungszeiten", foot_hours_v:"Montag – Samstag", foot_hours_v2:"Sonntag geschlossen", foot_hours_note:"Zeiten unter Vorbehalt",
+    disclaimer:"Demo-Website — Inhalt ist indikativ und mit dem Haus zu bestätigen."
+  },
+  en:{
+    place:"Place de la Résistance · Ettelbruck",
+    nav_mot:"A word from Jenny", nav_carte:"The menu", nav_place:"On the Square", nav_contact:"Find us",
+    hero_kicker:"Neighbourhood brasserie · Homemade cooking",
+    hero_tag:"At Jenny's, in Ettelbruck: homemade cooking and the prettiest terrace in town.",
+    hero_note:"A family address on the Place de la Résistance, around the butter-woman fountain. Generous, warm, no fuss.",
+    hero_cta1:"Book by phone", hero_cta2:"See the menu",
+    meta_a:"Address", meta_h:"Hours", meta_h_v:"Mon – Sat · Sun closed<br><em>(to be confirmed)</em>", meta_c:"Contact",
+    pc_t:"The terrace, around the fountain",
+    pc_s:"Red-and-white parasols, cobblestones, and the “Buttbegfra” watching over the Square.",
+    mot_h:"A word from Jenny", mot_pill:"The dining room · mauve walls & pale oak",
+    mot_note:"Here we cook everything from scratch and welcome everyone like family. People come for the Salade Mozza, for a Cordon Bleu, for a glass of Pinot Gris on the Square — and leave wanting to return.",
+    mot_sign:"Your host",
+    v1_t:"Homemade", v1_d:"Cooked fresh on site, every day.",
+    v2_t:"Great value", v2_d:"Generous plates, fair prices — the house's pride.",
+    v3_t:"Like family", v3_d:"A warm, personal welcome for everyone.",
+    carte_h:"On the board",
+    carte_intro:"An honest, generous brasserie menu — homemade specialities and the classics. Dishes and prices to be confirmed with the venue.",
+    d_photo1:"Charcuterie & cheese platter", d_photo2:"The spreads trio",
+    d1_c:"To start", d1_h:"Homemade spreads", d1_p:"A trio of homemade spreads — guacamole, beetroot, tomato — with toasted baguette.",
+    d2_c:"Salad", d2_h:"Salade Mozza", d2_p:"The salad the regulars recommend — fresh, generous, beautifully simple.",
+    d3_c:"The classic", d3_h:"Cordon Bleu", d3_p:"The house favourite, served golden — a brasserie sure bet.",
+    d4_c:"Cold platter", d4_h:"Charcuterie & cheese", d4_p:"Cold cuts, cheese, smoked salmon, capers and cornichons — a staple.",
+    d5_c:"Event", d5_h:"All-you-can-eat scampi", d5_p:"Occasional all-you-can-eat scampi evenings — dates to be confirmed.",
+    d6_c:"Also", d6_h:"Vegetarian options", d6_p:"Dishes for vegetarians too — ask Jenny what's cooking today.",
+    sig_c:"The house signature", sig_h:"Pinot Gris by the small bottle", sig_p:"Served in small individual bottles — for the price of a single glass elsewhere. Beim Jenny's great-value pride.",
+    die_c:"On tap", die_h:"Diekirch beer", die_p:"The local brewery, on the house sign — fresh, on the terrace.",
+    price_tc:"Price to be confirmed",
+    carte_foot:"Indicative menu reconstructed from reviews and public listings. All dishes, availability and prices are to be confirmed with the venue.",
+    place_h:"On the Square",
+    place_p1:"Brasserie Beim Jenny sits on the corner of the Place de la Résistance, right in the heart of Ettelbruck — the main town of northern Luxembourg.",
+    place_p2:"The terrace spreads out under red-and-white parasols on the cobblestones, all around the neighbourhood's bronze fountain.",
+    fountain_t:"The “Buttbegfra”", fountain_s:"The butter-woman and her little boy — the Square's landmark fountain, right in front of the terrace.",
+    vc1_k:"Hours", vc1_v:"Mon – Sat", vc1_s:"Sunday closed · to be confirmed",
+    vc2_k:"Takeaway", vc2_v:"By phone",
+    vc3_k:"Parking", vc3_v:"On the Square", vc3_s:"Ettelbruck centre",
+    place_confirm:"⚑ Hours may vary — please confirm service times with the brasserie before your visit.",
+    foot_about:"Neighbourhood brasserie, homemade cooking and a terrace on the Place de la Résistance, in Ettelbruck.",
+    foot_visit:"Find us", foot_addr_note:"Exact address to be confirmed",
+    foot_contact:"Contact", foot_hours:"Hours", foot_hours_v:"Monday – Saturday", foot_hours_v2:"Sunday closed", foot_hours_note:"Hours to be confirmed",
+    disclaimer:"Demonstration site — indicative content, to be confirmed with the venue."
+  }
+};
+
+function setLang(lang){
+  const dict = I18N[lang] || I18N.fr;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[k]!==undefined) el.innerHTML = dict[k];
+  });
+  document.querySelectorAll('.langs button').forEach(b=>{
+    b.classList.toggle('on', b.dataset.lang===lang);
+  });
+  try{ localStorage.setItem('bj_lang', lang); }catch(e){}
+}
+document.querySelectorAll('.langs button').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.dataset.lang));
+});
+
+/* mobile nav */
+const burger=document.getElementById('burger');
+const nav=document.getElementById('nav');
+const rright=document.getElementById('rright');
+burger.addEventListener('click',()=>{
+  nav.classList.toggle('open');
+  rright.classList.toggle('showlang');
+});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  nav.classList.remove('open');
+}));
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* restore saved language (default stays FR for first paint) */
+try{
+  const saved=localStorage.getItem('bj_lang');
+  if(saved && saved!=='fr') setLang(saved);
+}catch(e){}
+</script>
+</body>
+</html>

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Bivius — Cuisine italienne, faite maison · Strassen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2A241F; --ink-2:#17130F; --paper:#F2E9DA; --paper-2:#FBF6EC; --card:#FFFFFF;
+  --terra:#B4502E; --terra-2:#C96A44; --olive:#6E7444; --olive-d:#565B33;
+  --gold:#C09843; --gold-l:#D9BB6E; --muted:#8B7F6E;
+  --line:rgba(42,36,31,.16); --line-2:rgba(42,36,31,.28);
+  --serif:"Cormorant Garamond","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+  --sign:"Barlow Condensed","Arial Narrow",system-ui,sans-serif;
+  --sans:"Barlow","Segoe UI",system-ui,-apple-system,sans-serif;
+  --pad:clamp(20px,4.5vw,88px);
+  --spine:132px;
+  --maxw:1440px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans); color:var(--ink); background:var(--paper);
+  font-weight:400; line-height:1.6; -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.02;letter-spacing:.005em}
+
+/* ---------- shared bits ---------- */
+.eyebrow{
+  font-family:var(--sign); text-transform:uppercase; letter-spacing:.28em;
+  font-size:.72rem; font-weight:600; color:var(--terra);
+  display:inline-flex; align-items:center; gap:.7em;
+}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--terra);opacity:.7}
+.coord{font-family:var(--sign);letter-spacing:.14em;text-transform:uppercase;font-size:.74rem;color:var(--muted)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+/* fork glyph */
+.fork{width:1em;height:1em;display:inline-block;vertical-align:-.12em}
+
+/* ---------- top signpost bar ---------- */
+header{position:sticky;top:0;z-index:60;background:rgba(23,19,15,.94);
+  backdrop-filter:blur(9px);border-bottom:1px solid rgba(217,187,110,.22);color:var(--paper-2)}
+.topbar{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:clamp(14px,2.4vw,40px);
+  padding:12px var(--pad)}
+.brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.brand img{width:34px;height:auto;filter:invert(1) brightness(1.6)}
+.brand .wm{font-family:var(--serif);font-size:1.5rem;letter-spacing:.14em;line-height:1}
+.brand .wm b{font-weight:600}
+.brand .tl{font-family:var(--sign);font-size:.58rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-l);display:block;margin-top:2px}
+nav.mainnav{display:flex;align-items:center;gap:2px;margin-left:auto;flex-wrap:wrap}
+nav.mainnav a{font-family:var(--sign);text-transform:uppercase;letter-spacing:.16em;font-size:.82rem;
+  font-weight:500;padding:8px 14px;color:var(--paper);opacity:.82;position:relative;transition:.2s}
+nav.mainnav a::before{content:"→";margin-right:.5em;color:var(--gold);opacity:0;transform:translateX(-4px);transition:.2s;display:inline-block}
+nav.mainnav a:hover{opacity:1}
+nav.mainnav a:hover::before{opacity:1;transform:translateX(0)}
+.langsw{display:flex;border:1px solid rgba(217,187,110,.35);border-radius:2px;overflow:hidden;margin-left:8px}
+.langsw button{font-family:var(--sign);font-size:.76rem;letter-spacing:.12em;font-weight:600;
+  background:none;border:0;color:var(--paper);padding:7px 10px;cursor:pointer;opacity:.6;transition:.15s}
+.langsw button.on{background:var(--gold);color:var(--ink-2);opacity:1}
+.reserve{background:var(--terra);color:#fff!important;border-radius:2px;font-family:var(--sign);
+  text-transform:uppercase;letter-spacing:.14em;font-size:.82rem;font-weight:600;padding:9px 16px!important;opacity:1!important}
+.reserve::before{display:none!important}
+.reserve:hover{background:var(--terra-2)}
+.burger{display:none}
+
+/* ---------- HERO / le carrefour ---------- */
+.hero{background:var(--ink-2);color:var(--paper-2);position:relative;overflow:hidden}
+.hero-grid{max-width:var(--maxw);margin:0 auto;display:grid;
+  grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);min-height:min(84vh,760px)}
+.hero-left{padding:clamp(40px,5.5vw,86px) clamp(28px,4vw,70px) clamp(40px,5vw,70px) var(--pad);
+  display:flex;flex-direction:column;justify-content:center;position:relative}
+.hero-left::before{content:"";position:absolute;top:0;bottom:0;right:0;width:1px;
+  background:linear-gradient(rgba(217,187,110,0),rgba(217,187,110,.4),rgba(217,187,110,0))}
+.hero-kicker{font-family:var(--sign);text-transform:uppercase;letter-spacing:.4em;font-size:.72rem;
+  color:var(--gold-l);margin-bottom:22px}
+.hero h1{font-size:clamp(3.4rem,7vw,6.4rem);line-height:.92;color:var(--paper-2)}
+.hero h1 em{font-style:italic;color:var(--gold-l)}
+.hero .latin{font-family:var(--serif);font-style:italic;font-size:clamp(1.05rem,1.5vw,1.35rem);
+  color:rgba(242,233,218,.72);margin:22px 0 8px;max-width:34ch}
+.hero .lead{font-size:clamp(1rem,1.15vw,1.12rem);color:rgba(242,233,218,.9);max-width:40ch;margin-top:14px}
+.hero .note{font-size:.78rem;color:rgba(242,233,218,.5);margin-top:6px}
+.hero-addr{margin-top:auto;padding-top:34px;display:flex;gap:26px;flex-wrap:wrap;align-items:center}
+.hero-addr .coord{color:rgba(217,187,110,.85)}
+/* signpost fingerboards */
+.signpost{position:relative;margin-top:30px;display:flex;flex-direction:column;gap:10px;max-width:430px}
+.finger{display:flex;align-items:center;gap:16px;background:linear-gradient(90deg,rgba(180,80,46,.14),rgba(180,80,46,0));
+  border:1px solid rgba(217,187,110,.28);padding:13px 22px;clip-path:polygon(0 0,calc(100% - 20px) 0,100% 50%,calc(100% - 20px) 100%,0 100%);
+  transition:.22s;cursor:pointer}
+.finger:hover{background:linear-gradient(90deg,rgba(180,80,46,.34),rgba(180,80,46,.05));transform:translateX(6px)}
+.finger .rn{font-family:var(--sign);font-weight:700;color:var(--gold-l);font-size:.9rem;letter-spacing:.1em;width:22px}
+.finger .lb{font-family:var(--serif);font-size:1.5rem;line-height:1}
+.finger .sub{font-family:var(--sign);text-transform:uppercase;letter-spacing:.2em;font-size:.62rem;color:rgba(242,233,218,.6);display:block;margin-top:3px}
+.finger .arrow{margin-left:auto;color:var(--gold);font-size:1.1rem}
+.hero-right{position:relative}
+.hero-right img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-right::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(23,19,15,.55),rgba(23,19,15,0) 32%),linear-gradient(0deg,rgba(23,19,15,.35),transparent 40%)}
+.eco-stamp{position:absolute;right:26px;top:26px;z-index:3;width:118px;height:118px;border-radius:50%;
+  border:1px solid rgba(242,233,218,.55);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;color:var(--paper-2);background:rgba(23,19,15,.34);backdrop-filter:blur(3px)}
+.eco-stamp .top{font-family:var(--sign);text-transform:uppercase;letter-spacing:.22em;font-size:.56rem;color:var(--gold-l)}
+.eco-stamp .mid{font-family:var(--serif);font-size:1.35rem;line-height:.95;margin:4px 0}
+.eco-stamp .bot{font-family:var(--sign);text-transform:uppercase;letter-spacing:.18em;font-size:.52rem;opacity:.8}
+
+/* ---------- waypoint / route spine layout ---------- */
+.route{background:var(--paper)}
+.waypoint{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:var(--spine) 1fr;
+  padding:0 var(--pad)}
+.spine{position:relative;padding:clamp(48px,6vw,96px) 0}
+.spine::before{content:"";position:absolute;left:26px;top:0;bottom:0;width:1px;
+  background:repeating-linear-gradient(var(--line-2) 0 6px,transparent 6px 14px)}
+.spine .marker{position:absolute;left:20px;top:clamp(52px,6vw,100px);width:14px;height:14px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--terra);box-shadow:0 0 0 5px var(--paper)}
+.spine .rnum{position:absolute;left:56px;top:clamp(46px,6vw,94px);font-family:var(--sign);font-weight:700;
+  color:var(--terra);font-size:1.05rem;letter-spacing:.06em}
+.spine .vlabel{position:absolute;left:20px;top:50%;transform:rotate(-90deg) translateX(50%);transform-origin:left center;
+  font-family:var(--sign);text-transform:uppercase;letter-spacing:.34em;font-size:.72rem;color:var(--muted);white-space:nowrap}
+.wp-body{padding:clamp(48px,6vw,96px) 0 clamp(48px,6vw,96px) clamp(20px,3vw,48px);min-width:0}
+.wp-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:34px;border-bottom:1px solid var(--line);padding-bottom:22px}
+.wp-head h2{font-size:clamp(2.2rem,3.6vw,3.4rem)}
+.wp-head .ital{font-style:italic;color:var(--terra)}
+.wp-head p{max-width:46ch;color:#5c5347;font-size:1rem}
+
+/* ---------- LA TABLE / menu ---------- */
+.carte{display:grid;grid-template-columns:200px 1fr;gap:clamp(24px,3vw,54px);align-items:start}
+.carte-index{position:sticky;top:96px}
+.carte-index ol{list-style:none}
+.carte-index li{position:relative;padding:11px 0 11px 28px;border-bottom:1px dashed var(--line);cursor:pointer}
+.carte-index li::before{content:"";position:absolute;left:0;top:50%;width:8px;height:8px;border-radius:50%;
+  border:1.5px solid var(--terra);transform:translateY(-50%);background:var(--paper)}
+.carte-index li .nm{font-family:var(--serif);font-size:1.28rem;line-height:1.1;display:block}
+.carte-index li .it{font-family:var(--sign);text-transform:uppercase;letter-spacing:.18em;font-size:.6rem;color:var(--muted)}
+.carte-index li:hover .nm{color:var(--terra)}
+.carte-index .km{margin-top:22px;font-family:var(--sign);text-transform:uppercase;letter-spacing:.16em;font-size:.66rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+
+.courses{display:flex;flex-direction:column;gap:clamp(30px,3.4vw,58px);min-width:0}
+.course{display:grid;grid-template-columns:1.25fr .9fr;gap:clamp(20px,2.6vw,44px);align-items:stretch}
+.course.rev .course-photo{order:-1}
+.course-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px}
+.course-head h3{font-size:1.9rem}
+.course-head .ct{font-family:var(--sign);text-transform:uppercase;letter-spacing:.2em;font-size:.64rem;color:var(--terra)}
+.dishes{display:grid;grid-template-columns:1fr;gap:2px}
+.dishes.two{grid-template-columns:1fr 1fr;gap:2px 34px}
+.dish{padding:11px 0;border-bottom:1px dotted var(--line)}
+.dish .dt{font-family:var(--serif);font-size:1.24rem;line-height:1.15;display:flex;align-items:center;gap:8px}
+.dish .star{color:var(--gold);font-size:.85rem}
+.dish .dd{font-size:.86rem;color:#6a6154;margin-top:2px}
+.dish .tag{font-family:var(--sign);text-transform:uppercase;letter-spacing:.14em;font-size:.56rem;
+  color:var(--olive);border:1px solid rgba(110,116,68,.4);padding:1px 6px;border-radius:2px;margin-left:6px;white-space:nowrap}
+.course-photo{position:relative;min-height:300px;border-radius:3px;overflow:hidden;background:var(--ink-2)}
+.course-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.course-photo figcaption{position:absolute;left:0;bottom:0;right:0;padding:20px 16px 12px;
+  font-family:var(--sign);text-transform:uppercase;letter-spacing:.2em;font-size:.62rem;color:var(--paper-2);
+  background:linear-gradient(0deg,rgba(23,19,15,.8),transparent)}
+.menu-note{margin-top:30px;font-size:.82rem;color:var(--muted);font-style:italic}
+
+/* ---------- BOIRE / dark band ---------- */
+.boire{background:var(--ink-2);color:var(--paper-2)}
+.boire .waypoint{grid-template-columns:var(--spine) 1fr}
+.boire .spine::before{background:repeating-linear-gradient(rgba(217,187,110,.35) 0 6px,transparent 6px 14px)}
+.boire .spine .marker{background:var(--ink-2);border-color:var(--gold);box-shadow:0 0 0 5px var(--ink-2)}
+.boire .spine .rnum{color:var(--gold-l)}
+.boire .spine .vlabel{color:rgba(242,233,218,.55)}
+.boire .wp-head{border-color:rgba(217,187,110,.22)}
+.boire .wp-head h2{color:var(--paper-2)}
+.boire .wp-head .ital{color:var(--gold-l)}
+.boire .wp-head p{color:rgba(242,233,218,.72)}
+.drinks{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,34px)}
+.drink{border-top:2px solid var(--gold);padding-top:16px}
+.drink h4{font-family:var(--serif);font-size:1.5rem;font-weight:500;line-height:1.05}
+.drink .dk{font-family:var(--sign);text-transform:uppercase;letter-spacing:.2em;font-size:.6rem;color:var(--gold-l);display:block;margin-bottom:8px}
+.drink p{font-size:.9rem;color:rgba(242,233,218,.78);margin-top:6px}
+
+/* ---------- LA CAVE + CHAMBRE split ---------- */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,56px);align-items:stretch}
+.split .media{position:relative;min-height:420px;border-radius:3px;overflow:hidden;background:var(--ink-2)}
+.split .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.split .panel{display:flex;flex-direction:column;justify-content:center}
+.split .panel h3{font-size:clamp(1.9rem,2.6vw,2.6rem);margin-bottom:14px}
+.split .panel p{color:#5c5347;margin-bottom:14px;max-width:48ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chip{font-family:var(--sign);text-transform:uppercase;letter-spacing:.14em;font-size:.66rem;
+  border:1px solid var(--line-2);color:var(--ink);padding:6px 12px;border-radius:2px;background:var(--paper-2)}
+.btn-ghost{align-self:flex-start;margin-top:22px;font-family:var(--sign);text-transform:uppercase;letter-spacing:.18em;
+  font-size:.8rem;font-weight:600;color:var(--terra);border-bottom:2px solid var(--terra);padding-bottom:3px}
+/* photo-light placeholder */
+.placeholder{position:relative;min-height:420px;border-radius:3px;overflow:hidden;
+  background:linear-gradient(135deg,#3a3226,#221c16);color:var(--paper-2);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:36px}
+.placeholder::before{content:"";position:absolute;inset:0;opacity:.14;
+  background:repeating-linear-gradient(45deg,transparent 0 18px,rgba(217,187,110,.5) 18px 19px)}
+.placeholder .ph-ic{font-size:2rem;color:var(--gold-l);position:relative}
+.placeholder .ph-t{font-family:var(--serif);font-size:1.5rem;margin:12px 0 6px;position:relative}
+.placeholder .ph-s{font-family:var(--sign);text-transform:uppercase;letter-spacing:.16em;font-size:.66rem;color:rgba(242,233,218,.7);position:relative;max-width:30ch}
+
+/* ---------- ECO manifesto ---------- */
+.eco{background:var(--olive-d);color:var(--paper-2)}
+.eco .inner{max-width:var(--maxw);margin:0 auto;padding:clamp(46px,5vw,80px) var(--pad);
+  display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4vw,64px);align-items:center}
+.eco h2{font-size:clamp(2rem,3.2vw,3rem);color:var(--paper-2)}
+.eco h2 em{font-style:italic;color:var(--gold-l)}
+.eco-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.eco-cols .c{border-left:2px solid rgba(217,187,110,.5);padding-left:16px}
+.eco-cols h4{font-family:var(--sign);text-transform:uppercase;letter-spacing:.18em;font-size:.78rem;color:var(--gold-l);margin-bottom:6px}
+.eco-cols p{font-size:.92rem;color:rgba(242,233,218,.85)}
+
+/* ---------- VISITER ---------- */
+.visit .split{grid-template-columns:.9fr 1.1fr}
+.visit .media{min-height:460px;padding:0}
+.visit iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.25) sepia(.12)}
+.hours-row{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px dotted var(--line)}
+.hours-row .d{font-family:var(--sign);text-transform:uppercase;letter-spacing:.14em;font-size:.82rem}
+.hours-row .h{font-family:var(--serif);font-size:1.08rem}
+.hours-row .cl{color:var(--terra);font-style:italic}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 30px;margin-top:26px}
+.contact-grid .k{font-family:var(--sign);text-transform:uppercase;letter-spacing:.16em;font-size:.64rem;color:var(--muted);display:block;margin-bottom:3px}
+.contact-grid .v{font-family:var(--serif);font-size:1.2rem}
+.contact-grid a.v:hover{color:var(--terra)}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink-2);color:rgba(242,233,218,.72)}
+.foot{max-width:var(--maxw);margin:0 auto;padding:clamp(40px,5vw,72px) var(--pad) 30px;
+  display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px}
+.foot .brand .wm{color:var(--paper-2)}
+.foot p{font-size:.9rem;margin-top:16px;max-width:38ch}
+.foot h5{font-family:var(--sign);text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;color:var(--gold-l);margin-bottom:14px}
+.foot a{display:block;padding:5px 0;font-size:.92rem}
+.foot a:hover{color:var(--paper-2)}
+.foot-bottom{border-top:1px solid rgba(242,233,218,.14);margin-top:20px}
+.foot-bottom .inner{max-width:var(--maxw);margin:0 auto;padding:18px var(--pad);display:flex;justify-content:space-between;
+  gap:16px;flex-wrap:wrap;font-size:.76rem;color:rgba(242,233,218,.5)}
+.demo-badge{font-family:var(--sign);text-transform:uppercase;letter-spacing:.16em;color:var(--gold-l)}
+
+/* reveal */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rev.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media(max-width:1080px){
+  .drinks{grid-template-columns:1fr 1fr}
+  .carte{grid-template-columns:1fr}
+  .carte-index{position:static;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0 20px;margin-bottom:20px}
+  .carte-index .km{grid-column:1/-1}
+}
+@media(max-width:900px){
+  nav.mainnav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--ink-2);flex-direction:column;
+    align-items:stretch;padding:10px var(--pad) 22px;gap:0;border-bottom:1px solid rgba(217,187,110,.2)}
+  nav.mainnav.open{display:flex}
+  nav.mainnav a{padding:13px 4px;border-bottom:1px solid rgba(242,233,218,.08)}
+  .burger{display:inline-flex;margin-left:auto;background:none;border:1px solid rgba(217,187,110,.4);
+    color:var(--paper-2);border-radius:2px;padding:8px 11px;cursor:pointer;font-size:1rem}
+  .langsw{margin-left:8px}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-right{min-height:340px}
+  .hero-right img{position:absolute}
+  .hero-left::before{display:none}
+  .waypoint,.boire .waypoint{grid-template-columns:1fr}
+  .spine{display:none}
+  .wp-body{padding:clamp(40px,8vw,60px) 0}
+  .course,.course.rev .course-photo{grid-template-columns:1fr;order:0}
+  .course.rev .course-photo{order:0}
+  .course-photo{min-height:240px}
+  .split,.visit .split,.eco .inner{grid-template-columns:1fr}
+  .eco-cols{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .dishes.two{grid-template-columns:1fr}
+  .drinks{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .foot{grid-template-columns:1fr}
+  .hero h1{font-size:clamp(3rem,13vw,4.2rem)}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ SIGNPOST HEADER ============ -->
+<header>
+  <div class="topbar">
+    <a href="#top" class="brand" aria-label="Bivius">
+      <img src="assets/logo.png" alt="Bivius">
+      <span>
+        <span class="wm"><b>BIVIVS</b></span>
+        <span class="tl" data-i18n="brand.tag">eat · sleep · cave à vin</span>
+      </span>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+    <nav class="mainnav" id="mainnav">
+      <a href="#table" data-i18n="nav.table">La Table</a>
+      <a href="#boire" data-i18n="nav.boire">Boire</a>
+      <a href="#cave" data-i18n="nav.cave">La Cave</a>
+      <a href="#chambre" data-i18n="nav.chambre">La Chambre</a>
+      <a href="#eco" data-i18n="nav.eco">Écoresponsable</a>
+      <a href="#visiter" data-i18n="nav.visit">Nous trouver</a>
+      <div class="langsw" role="group" aria-label="Langue">
+        <button data-lang="fr" class="on">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="tel:+352450881" class="reserve" data-i18n="nav.reserve">Réserver</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO — LE CARREFOUR ============ -->
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-kicker" data-i18n="hero.kicker">72, route d'Arlon · Strassen · Luxembourg</div>
+      <h1><span data-i18n="hero.h1a">Au</span> <em data-i18n="hero.h1b">carrefour</em><br><span data-i18n="hero.h1c">de la table italienne.</span></h1>
+      <p class="latin" data-i18n="hero.latin">« Bivius » — du latin <i>bivium</i>, la fourche où deux routes se rejoignent. La nôtre relie la cuisine, la cave et le repos.</p>
+      <p class="lead" data-i18n="hero.lead">Une cuisine italienne et méditerranéenne faite maison, une carte qui évolue chaque semaine, et une maison éco-responsable au bord de la route d'Arlon.</p>
+      <p class="note" data-i18n="hero.note">Ligne d'accroche proposée — à confirmer avec l'établissement.</p>
+
+      <div class="signpost">
+        <a class="finger" href="#table"><span class="rn">I</span><span><span class="lb" data-i18n="hero.f1">La Table</span><span class="sub" data-i18n="hero.f1s">Restaurant · midi & soir</span></span><span class="arrow">→</span></a>
+        <a class="finger" href="#cave"><span class="rn">II</span><span><span class="lb" data-i18n="hero.f2">La Cave</span><span class="sub" data-i18n="hero.f2s">Boutique de vins</span></span><span class="arrow">→</span></a>
+        <a class="finger" href="#chambre"><span class="rn">III</span><span><span class="lb" data-i18n="hero.f3">La Chambre</span><span class="sub" data-i18n="hero.f3s">Hôtel · 21 chambres</span></span><span class="arrow">→</span></a>
+      </div>
+
+      <div class="hero-addr">
+        <span class="coord">≈ 49.617° N · 6.078° E</span>
+        <a href="tel:+352450881" class="coord" style="color:var(--gold-l)">Tél. +352 45 08 81</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="assets/interior-2.webp" alt="Salle du restaurant Bivius">
+      <div class="eco-stamp">
+        <span class="top" data-i18n="hero.stampT">charte</span>
+        <span class="mid">Hausge-<br>maach</span>
+        <span class="bot" data-i18n="hero.stampB">fait maison</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ I · LA TABLE ============ -->
+<section class="route" id="table">
+  <div class="waypoint">
+    <div class="spine">
+      <div class="marker"></div><div class="rnum">I</div>
+      <div class="vlabel" data-i18n="sp.table">La Table</div>
+    </div>
+    <div class="wp-body rev">
+      <div class="wp-head">
+        <div>
+          <span class="eyebrow" data-i18n="table.eyebrow">La carte</span>
+          <h2 style="margin-top:12px"><span data-i18n="table.h2a">Cucina</span> <span class="ital" data-i18n="table.h2b">italiana</span>, <span data-i18n="table.h2c">faite maison</span></h2>
+        </div>
+        <p data-i18n="table.intro">Produits frais et de saison, pâtes et desserts maison, pizza à la pâte finement levée. La carte change au fil des semaines — voici un aperçu.</p>
+      </div>
+
+      <div class="carte">
+        <aside class="carte-index">
+          <ol>
+            <li onclick="go('c1')"><span class="nm" data-i18n="cat.1">Antipasti & à partager</span><span class="it">— Per iniziare</span></li>
+            <li onclick="go('c2')"><span class="nm" data-i18n="cat.2">Le Pizze</span><span class="it">— Pasta madre</span></li>
+            <li onclick="go('c3')"><span class="nm" data-i18n="cat.3">Paste fresche</span><span class="it">— Fatte in casa</span></li>
+            <li onclick="go('c4')"><span class="nm" data-i18n="cat.4">Pesce & Carne</span><span class="it">— Il secondo</span></li>
+            <li onclick="go('c5')"><span class="nm" data-i18n="cat.5">Dolci & Formaggi</span><span class="it">— Per finire</span></li>
+          </ol>
+          <div class="km" data-i18n="carte.km">Suggestions du jour à l'ardoise · options végétariennes & sans gluten</div>
+        </aside>
+
+        <div class="courses">
+          <!-- Antipasti -->
+          <article class="course" id="c1">
+            <div>
+              <div class="course-head"><h3 data-i18n="cat.1">Antipasti & à partager</h3><span class="ct">I</span></div>
+              <div class="dishes two">
+                <div class="dish"><div class="dt">Olives marinées maison</div><div class="dd" data-i18n="d.olives">Sélection méditerranéenne, herbes fraîches</div></div>
+                <div class="dish"><div class="dt">Prosciutto crudo</div><div class="dd" data-i18n="d.prosc">Jambon cru finement tranché</div></div>
+                <div class="dish"><div class="dt">Planche d'antipasti<span class="tag" data-i18n="tag.share">à partager</span></div><div class="dd" data-i18n="d.board">Charcuteries, fromages & légumes</div></div>
+                <div class="dish"><div class="dt">Artichauts & romarin</div><div class="dd" data-i18n="d.arti">Confits, ricotta, huile d'olive</div></div>
+                <div class="dish"><div class="dt">Carpaccio de daurade<span class="star">★</span></div><div class="dd" data-i18n="d.crudo">Crudo, agrumes, roquette</div></div>
+                <div class="dish"><div class="dt">Burrata di Puglia</div><div class="dd" data-i18n="d.burr">Tomates de saison, basilic</div></div>
+              </div>
+            </div>
+            <figure class="course-photo"><img src="assets/terrace.webp" alt="Planche de charcuterie"><figcaption data-i18n="cap.board">Planche à partager</figcaption></figure>
+          </article>
+
+          <!-- Pizze -->
+          <article class="course rev" id="c2">
+            <div>
+              <div class="course-head"><h3 data-i18n="cat.2">Le Pizze</h3><span class="ct">II</span></div>
+              <div class="dishes">
+                <div class="dish"><div class="dt">Margherita D.O.P.<span class="star">★</span></div><div class="dd" data-i18n="d.marg">Pâte finement levée, tomate San Marzano, mozzarella, basilic</div></div>
+                <div class="dish"><div class="dt">Diavola</div><div class="dd" data-i18n="d.diavola">Salame piccante, mozzarella</div></div>
+                <div class="dish"><div class="dt">Verdure di stagione</div><div class="dd" data-i18n="d.verdure">Légumes grillés de saison, pesto</div></div>
+                <div class="dish"><div class="dt">Bianca al tartufo</div><div class="dd" data-i18n="d.bianca">Crème, champignons, huile de truffe</div></div>
+              </div>
+            </div>
+            <figure class="course-photo"><img src="assets/food-3.webp" alt="Antipasti — jambon cru"><figcaption data-i18n="cap.prosc">Prosciutto crudo</figcaption></figure>
+          </article>
+
+          <!-- Paste -->
+          <article class="course" id="c3">
+            <div>
+              <div class="course-head"><h3 data-i18n="cat.3">Paste fresche</h3><span class="ct">III</span></div>
+              <div class="dishes two">
+                <div class="dish"><div class="dt">Orecchiette salsiccia & broccoli<span class="star">★</span></div><div class="dd" data-i18n="d.orec">Saucisse italienne, brocolis, pecorino</div></div>
+                <div class="dish"><div class="dt">Pâte fraîche de la semaine</div><div class="dd" data-i18n="d.weekly">Suggestion du chef, rotation hebdomadaire</div></div>
+                <div class="dish"><div class="dt">Tagliatelle al ragù</div><div class="dd" data-i18n="d.ragu">Ragù mijoté, parmesan</div></div>
+                <div class="dish"><div class="dt">Risotto aux crevettes<span class="star">★</span></div><div class="dd" data-i18n="d.risotto">Crevettes, portion généreuse</div></div>
+              </div>
+            </div>
+            <figure class="course-photo"><img src="assets/food-2.webp" alt="Carpaccio de daurade"><figcaption data-i18n="cap.crudo">Carpaccio de daurade</figcaption></figure>
+          </article>
+
+          <!-- Pesce & Carne -->
+          <article class="course rev" id="c4">
+            <div>
+              <div class="course-head"><h3 data-i18n="cat.4">Pesce & Carne</h3><span class="ct">IV</span></div>
+              <div class="dishes">
+                <div class="dish"><div class="dt">Poisson du jour</div><div class="dd" data-i18n="d.fish">Selon la pêche, légumes de saison</div></div>
+                <div class="dish"><div class="dt">Filet de bœuf</div><div class="dd" data-i18n="d.beef">Sauce au choix, garniture maison</div></div>
+                <div class="dish"><div class="dt">Escalope milanaise</div><div class="dd" data-i18n="d.milan">Panée, roquette, tomates cerises</div></div>
+              </div>
+            </div>
+            <figure class="course-photo"><img src="assets/food-1.webp" alt="Olives marinées"><figcaption data-i18n="cap.olives">Olives marinées maison</figcaption></figure>
+          </article>
+
+          <!-- Dolci -->
+          <article class="course" id="c5">
+            <div>
+              <div class="course-head"><h3 data-i18n="cat.5">Dolci & Formaggi</h3><span class="ct">V</span></div>
+              <div class="dishes two">
+                <div class="dish"><div class="dt">Dessert maison du jour<span class="star">★</span></div><div class="dd" data-i18n="d.dessert">Préparé sur place, sauce caramel</div></div>
+                <div class="dish"><div class="dt">Tiramisù</div><div class="dd" data-i18n="d.tira">Recette de la maison</div></div>
+                <div class="dish"><div class="dt">Plateau de fromages</div><div class="dd" data-i18n="d.cheese">Affinés, sélection du moment</div></div>
+                <div class="dish"><div class="dt">Café gourmand</div><div class="dd" data-i18n="d.cafe">Café de qualité & mignardises</div></div>
+              </div>
+            </div>
+            <figure class="course-photo"><img src="assets/food-4.webp" alt="Dessert maison"><figcaption data-i18n="cap.dessert">Dessert maison</figcaption></figure>
+          </article>
+        </div>
+      </div>
+      <p class="menu-note" data-i18n="table.disclaimer">Plats et prix donnés à titre indicatif — la carte évolue chaque semaine. Tous les plats et tarifs sont à confirmer avec l'établissement. ★ = spécialités souvent citées.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOIRE (dark) ============ -->
+<section class="boire" id="boire">
+  <div class="waypoint">
+    <div class="spine">
+      <div class="marker"></div><div class="rnum">✦</div>
+      <div class="vlabel" data-i18n="sp.boire">Boire</div>
+    </div>
+    <div class="wp-body">
+      <div class="wp-head">
+        <div>
+          <span class="eyebrow" style="color:var(--gold-l)"><span data-i18n="boire.eyebrow">Au verre & à la pression</span></span>
+          <h2 style="margin-top:12px"><span data-i18n="boire.h2a">De la</span> <span class="ital" data-i18n="boire.h2b">source</span> <span data-i18n="boire.h2c">au verre</span></h2>
+        </div>
+        <p data-i18n="boire.intro">Une bière luxembourgeoise à la pression, notre propre crémant, des vins qui tournent chaque semaine et des cocktails classiques.</p>
+      </div>
+      <div class="drinks">
+        <div class="drink"><span class="dk" data-i18n="dk.beer">Pression</span><h4>Clausel</h4><p data-i18n="p.beer">Bière de la Lëtzebuerger Stad Brauerei, servie fraîche.</p></div>
+        <div class="drink"><span class="dk" data-i18n="dk.cremant">Bulles maison</span><h4>Sélection Bivius</h4><p data-i18n="p.cremant">Crémant du Luxembourg, en collaboration avec le Domaine Mathes.</p></div>
+        <div class="drink"><span class="dk" data-i18n="dk.wine">Au verre</span><h4 data-i18n="w.wine">Vins de la semaine</h4><p data-i18n="p.wine">Carte de vins choisie, sélection au verre renouvelée chaque semaine.</p></div>
+        <div class="drink"><span class="dk" data-i18n="dk.cocktail">Bar</span><h4 data-i18n="w.cocktail">Cocktails & sans alcool</h4><p data-i18n="p.cocktail">Negroni, Mojito & mocktails ; café de qualité, thés & infusions bio.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ II · LA CAVE ============ -->
+<section class="route" id="cave">
+  <div class="waypoint">
+    <div class="spine">
+      <div class="marker"></div><div class="rnum">II</div>
+      <div class="vlabel" data-i18n="sp.cave">La Cave</div>
+    </div>
+    <div class="wp-body">
+      <div class="split">
+        <figure class="media"><img src="assets/interior-1.webp" alt="Sélection Bivius — crémant"></figure>
+        <div class="panel">
+          <span class="eyebrow" data-i18n="cave.eyebrow">Boutique de vins</span>
+          <h3 style="margin-top:12px"><span data-i18n="cave.h3a">Une cave</span> <span style="font-style:italic;color:var(--terra)" data-i18n="cave.h3b">à emporter</span></h3>
+          <p data-i18n="cave.p1">Notre boutique de vins sur place prolonge la table : retrouvez les bouteilles goûtées au restaurant, dont notre crémant « Sélection Bivius » né d'une collaboration avec le Domaine Mathes.</p>
+          <p data-i18n="cave.p2">Conseils au comptoir, sélection renouvelée, et vente également en ligne via la plateforme Letzshop.</p>
+          <div class="chips">
+            <span class="chip" data-i18n="cave.c1">Crémant Sélection Bivius</span>
+            <span class="chip" data-i18n="cave.c2">Domaine Mathes</span>
+            <span class="chip" data-i18n="cave.c3">Vente sur Letzshop</span>
+            <span class="chip" data-i18n="cave.c4">Conseil personnalisé</span>
+          </div>
+          <a href="#visiter" class="btn-ghost" data-i18n="cave.cta">Passer à la boutique →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ III · LA CHAMBRE (photo-light) ============ -->
+<section class="route" id="chambre" style="background:var(--paper-2)">
+  <div class="waypoint">
+    <div class="spine">
+      <div class="marker"></div><div class="rnum">III</div>
+      <div class="vlabel" data-i18n="sp.chambre">La Chambre</div>
+    </div>
+    <div class="wp-body">
+      <div class="split">
+        <div class="panel">
+          <span class="eyebrow" data-i18n="cham.eyebrow">Hôtel 3 étoiles · 21 chambres</span>
+          <h3 style="margin-top:12px"><span data-i18n="cham.h3a">Dormir</span> <span style="font-style:italic;color:var(--terra)" data-i18n="cham.h3b">au carrefour</span></h3>
+          <p data-i18n="cham.p1">Vingt-et-une chambres pour le voyageur d'affaires comme pour le week-end : accès facile à la route d'Arlon, parking privé, et le confort d'une maison familiale.</p>
+          <p data-i18n="cham.p2">Petit-déjeuner sur place, terrasse d'été, salon privé pour réunions et présentations, et notre restaurant au rez-de-chaussée.</p>
+          <div class="chips">
+            <span class="chip" data-i18n="cham.c1">21 chambres</span>
+            <span class="chip" data-i18n="cham.c2">Wi-Fi gratuit</span>
+            <span class="chip" data-i18n="cham.c3">Parking privé</span>
+            <span class="chip" data-i18n="cham.c4">Petit-déjeuner</span>
+            <span class="chip" data-i18n="cham.c5">Terrasse d'été</span>
+            <span class="chip" data-i18n="cham.c6">Salon privé</span>
+          </div>
+          <a href="tel:+352450881" class="btn-ghost" data-i18n="cham.cta">Réserver une chambre →</a>
+        </div>
+        <div class="placeholder">
+          <span class="ph-ic">✦</span>
+          <span class="ph-t" data-i18n="cham.phT">Bivius · eat &amp; sleep</span>
+          <span class="ph-s" data-i18n="cham.phS">Photos des chambres en haute résolution à fournir par l'établissement</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ÉCORESPONSABLE ============ -->
+<section class="eco" id="eco">
+  <div class="inner">
+    <div>
+      <span class="eyebrow" style="color:var(--gold-l)"><span data-i18n="eco.eyebrow">Notre charte</span></span>
+      <h2 style="margin-top:14px"><span data-i18n="eco.h2a">Une maison</span> <em data-i18n="eco.h2b">écoresponsable</em></h2>
+    </div>
+    <div class="eco-cols">
+      <div class="c"><h4 data-i18n="eco.k1">Fait maison</h4><p data-i18n="eco.p1">Label « Hausgemaach » : pâtes, desserts et préparations réalisés sur place, à partir de produits frais.</p></div>
+      <div class="c"><h4 data-i18n="eco.k2">De saison</h4><p data-i18n="eco.p2">Une carte qui suit les saisons et évolue chaque semaine selon le marché.</p></div>
+      <div class="c"><h4 data-i18n="eco.k3">Circuit court</h4><p data-i18n="eco.p3">Producteurs et partenaires locaux privilégiés — du crémant luxembourgeois à la bière de la ville.</p></div>
+      <div class="c"><h4 data-i18n="eco.k4">Famille</h4><p data-i18n="eco.p4">Une maison familiale : restaurant, cave et hôtel réunis au même carrefour.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISITER ============ -->
+<section class="route visit" id="visiter" style="background:var(--paper)">
+  <div class="waypoint">
+    <div class="spine">
+      <div class="marker"></div><div class="rnum">✦</div>
+      <div class="vlabel" data-i18n="sp.visit">Le carrefour</div>
+    </div>
+    <div class="wp-body">
+      <div class="wp-head">
+        <div>
+          <span class="eyebrow" data-i18n="visit.eyebrow">Nous trouver</span>
+          <h2 style="margin-top:12px"><span data-i18n="visit.h2a">Au</span> <span class="ital" data-i18n="visit.h2b">72, route d'Arlon</span></h2>
+        </div>
+        <p data-i18n="visit.intro">À l'entrée de Strassen, sur l'axe Luxembourg–Arlon. Parking privé sur place.</p>
+      </div>
+      <div class="split">
+        <div class="panel">
+          <span class="eyebrow" data-i18n="visit.hoursT">Cuisine · horaires</span>
+          <div style="margin-top:16px">
+            <div class="hours-row"><span class="d" data-i18n="visit.lunch">Déjeuner</span><span class="h">11:45 – 14:00</span></div>
+            <div class="hours-row"><span class="d" data-i18n="visit.dinner">Dîner</span><span class="h">18:45 – 21:30</span></div>
+            <div class="hours-row"><span class="d" data-i18n="visit.satlunch">Samedi midi</span><span class="h cl" data-i18n="visit.closed">Fermé*</span></div>
+            <div class="hours-row"><span class="d" data-i18n="visit.sun">Dimanche & jours fériés</span><span class="h cl" data-i18n="visit.closed2">Fermé*</span></div>
+          </div>
+          <p style="font-size:.78rem;color:var(--muted);font-style:italic;margin-top:12px" data-i18n="visit.hoursNote">* Jours de fermeture et menu tapas hors service à confirmer avec l'établissement.</p>
+
+          <div class="contact-grid">
+            <div><span class="k" data-i18n="visit.addr">Adresse</span><span class="v">72, route d'Arlon<br>L-8008 Strassen</span></div>
+            <div><span class="k" data-i18n="visit.phone">Téléphone</span><a class="v" href="tel:+352450881">+352 45 08 81</a></div>
+            <div><span class="k" data-i18n="visit.email">E-mail</span><a class="v" href="mailto:info@bivius.lu">info@bivius.lu</a></div>
+            <div><span class="k" data-i18n="visit.parking">Sur place</span><span class="v" data-i18n="visit.parkingV">Parking privé</span></div>
+          </div>
+        </div>
+        <figure class="media">
+          <iframe title="Carte — Bivius, 72 route d'Arlon, Strassen" loading="lazy"
+            src="https://www.google.com/maps?q=72%20route%20d'Arlon,%20L-8008%20Strassen,%20Luxembourg&output=embed"></iframe>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot">
+    <div>
+      <div class="brand"><span class="wm" style="font-family:var(--serif);font-size:1.6rem;letter-spacing:.14em"><b>BIVIVS</b></span></div>
+      <p data-i18n="foot.about">Hôtel-restaurant écoresponsable au carrefour de Strassen. Cuisine italienne faite maison, cave à vins et 21 chambres — une maison familiale.</p>
+      <p class="coord" style="margin-top:14px;color:var(--gold-l)">≈ 49.617° N · 6.078° E</p>
+    </div>
+    <div>
+      <h5 data-i18n="foot.explore">Explorer</h5>
+      <a href="#table" data-i18n="nav.table">La Table</a>
+      <a href="#boire" data-i18n="nav.boire">Boire</a>
+      <a href="#cave" data-i18n="nav.cave">La Cave</a>
+      <a href="#chambre" data-i18n="nav.chambre">La Chambre</a>
+      <a href="#eco" data-i18n="nav.eco">Écoresponsable</a>
+    </div>
+    <div>
+      <h5 data-i18n="foot.contact">Contact</h5>
+      <a href="tel:+352450881">+352 45 08 81</a>
+      <a href="mailto:info@bivius.lu">info@bivius.lu</a>
+      <a href="#visiter">72, route d'Arlon · L-8008 Strassen</a>
+      <a href="#top" data-i18n="foot.top">↑ Haut de page</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="inner">
+      <span class="demo-badge" data-i18n="foot.demo">Site de démonstration — Webwerk · maquette non officielle</span>
+      <span data-i18n="foot.rights">© Bivius · contenus & tarifs à confirmer avec l'établissement</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- i18n dictionary ---------- */
+const I18N={
+ fr:{}, // French is the in-HTML default; keys resolved from live DOM below
+ de:{
+  "brand.tag":"essen · schlafen · weinhandlung",
+  "nav.table":"Der Tisch","nav.boire":"Trinken","nav.cave":"Weinkeller","nav.chambre":"Das Zimmer","nav.eco":"Nachhaltig","nav.visit":"Anfahrt","nav.reserve":"Reservieren",
+  "hero.kicker":"72, route d'Arlon · Strassen · Luxemburg",
+  "hero.h1a":"Am","hero.h1b":"Scheideweg","hero.h1c":"der italienischen Küche.",
+  "hero.latin":"« Bivius » — vom lateinischen bivium, die Gabelung, an der zwei Wege zusammentreffen. Unsere verbindet Küche, Weinkeller und Ruhe.",
+  "hero.lead":"Hausgemachte italienische und mediterrane Küche, eine wöchentlich wechselnde Karte und ein nachhaltiges Haus an der route d'Arlon.",
+  "hero.note":"Vorgeschlagener Slogan — mit dem Haus zu bestätigen.",
+  "hero.f1":"Der Tisch","hero.f1s":"Restaurant · mittags & abends","hero.f2":"Der Keller","hero.f2s":"Weinhandlung","hero.f3":"Das Zimmer","hero.f3s":"Hotel · 21 Zimmer",
+  "hero.stampT":"charta","hero.stampB":"hausgemacht",
+  "sp.table":"Der Tisch","sp.boire":"Trinken","sp.cave":"Der Keller","sp.chambre":"Das Zimmer","sp.visit":"Der Scheideweg",
+  "table.eyebrow":"Die Karte","table.h2a":"Cucina","table.h2b":"italiana","table.h2c":", hausgemacht",
+  "table.intro":"Frische, saisonale Produkte, hausgemachte Pasta und Desserts, Pizza mit fein aufgegangenem Teig. Die Karte wechselt wöchentlich — hier eine Auswahl.",
+  "cat.1":"Antipasti & zum Teilen","cat.2":"Die Pizze","cat.3":"Frische Pasta","cat.4":"Fisch & Fleisch","cat.5":"Dolci & Käse",
+  "carte.km":"Tagesempfehlungen auf der Tafel · vegetarische & glutenfreie Optionen",
+  "d.olives":"Mediterrane Auswahl, frische Kräuter","d.prosc":"Fein geschnittener Rohschinken","d.board":"Aufschnitt, Käse & Gemüse","d.arti":"Confiert, Ricotta, Olivenöl","d.crudo":"Crudo, Zitrusfrüchte, Rucola","d.burr":"Saisontomaten, Basilikum",
+  "tag.share":"zum teilen",
+  "d.marg":"Fein aufgegangener Teig, San-Marzano-Tomate, Mozzarella, Basilikum","d.diavola":"Scharfe Salami, Mozzarella","d.verdure":"Gegrilltes Saisongemüse, Pesto","d.bianca":"Sahne, Champignons, Trüffelöl",
+  "d.orec":"Italienische Wurst, Broccoli, Pecorino","d.weekly":"Empfehlung des Küchenchefs, wöchentlich","d.ragu":"Geschmortes Ragù, Parmesan","d.risotto":"Garnelen, großzügige Portion",
+  "d.fish":"Je nach Fang, Saisongemüse","d.beef":"Sauce nach Wahl, hausgemachte Beilage","d.milan":"Paniert, Rucola, Kirschtomaten",
+  "d.dessert":"Vor Ort zubereitet, Karamellsauce","d.tira":"Rezept des Hauses","d.cheese":"Gereift, aktuelle Auswahl","d.cafe":"Guter Kaffee & Naschereien",
+  "cap.board":"Platte zum Teilen","cap.prosc":"Prosciutto crudo","cap.crudo":"Doraden-Carpaccio","cap.olives":"Hausgemachte Oliven","cap.dessert":"Hausgemachtes Dessert",
+  "table.disclaimer":"Gerichte und Preise als Richtwert — die Karte wechselt wöchentlich. Alle Gerichte und Preise mit dem Haus zu bestätigen. ★ = häufig erwähnte Spezialitäten.",
+  "boire.eyebrow":"Offen & vom Fass","boire.h2a":"Von der","boire.h2b":"Quelle","boire.h2c":"ins Glas",
+  "boire.intro":"Ein luxemburgisches Bier vom Fass, unser eigener Crémant, wöchentlich wechselnde Weine und klassische Cocktails.",
+  "dk.beer":"Vom Fass","p.beer":"Bier der Lëtzebuerger Stad Brauerei, frisch serviert.",
+  "dk.cremant":"Eigene Perlen","p.cremant":"Crémant aus Luxemburg, in Zusammenarbeit mit dem Domaine Mathes.",
+  "dk.wine":"Offen","w.wine":"Weine der Woche","p.wine":"Ausgewählte Weinkarte, offene Auswahl wöchentlich erneuert.",
+  "dk.cocktail":"Bar","w.cocktail":"Cocktails & alkoholfrei","p.cocktail":"Negroni, Mojito & Mocktails; guter Kaffee, Bio-Tees & Aufgüsse.",
+  "cave.eyebrow":"Weinhandlung","cave.h3a":"Ein Keller","cave.h3b":"zum Mitnehmen",
+  "cave.p1":"Unsere Weinhandlung vor Ort verlängert den Tisch: Finden Sie die im Restaurant verkosteten Flaschen, darunter unseren Crémant « Sélection Bivius » aus der Zusammenarbeit mit dem Domaine Mathes.",
+  "cave.p2":"Beratung am Tresen, wechselnde Auswahl und Verkauf auch online über die Plattform Letzshop.",
+  "cave.c1":"Crémant Sélection Bivius","cave.c2":"Domaine Mathes","cave.c3":"Verkauf auf Letzshop","cave.c4":"Persönliche Beratung","cave.cta":"Zur Weinhandlung →",
+  "cham.eyebrow":"3-Sterne-Hotel · 21 Zimmer","cham.h3a":"Schlafen","cham.h3b":"am Scheideweg",
+  "cham.p1":"Einundzwanzig Zimmer für Geschäftsreisende wie fürs Wochenende: leichter Zugang zur route d'Arlon, privater Parkplatz und der Komfort eines Familienhauses.",
+  "cham.p2":"Frühstück vor Ort, Sommerterrasse, privater Salon für Besprechungen und Präsentationen und unser Restaurant im Erdgeschoss.",
+  "cham.c1":"21 Zimmer","cham.c2":"Gratis WLAN","cham.c3":"Privater Parkplatz","cham.c4":"Frühstück","cham.c5":"Sommerterrasse","cham.c6":"Privater Salon","cham.cta":"Zimmer reservieren →",
+  "cham.phT":"Bivius · eat & sleep","cham.phS":"Hochauflösende Zimmerfotos vom Haus bereitzustellen",
+  "eco.eyebrow":"Unsere Charta","eco.h2a":"Ein","eco.h2b":"nachhaltiges Haus",
+  "eco.k1":"Hausgemacht","eco.p1":"Label « Hausgemaach »: Pasta, Desserts und Zubereitungen vor Ort aus frischen Produkten.",
+  "eco.k2":"Saisonal","eco.p2":"Eine Karte, die den Jahreszeiten folgt und wöchentlich nach dem Markt wechselt.",
+  "eco.k3":"Kurze Wege","eco.p3":"Bevorzugt lokale Erzeuger und Partner — vom luxemburgischen Crémant bis zum Bier der Stadt.",
+  "eco.k4":"Familie","eco.p4":"Ein Familienhaus: Restaurant, Keller und Hotel an einem Scheideweg vereint.",
+  "visit.eyebrow":"Anfahrt","visit.h2a":"In der","visit.h2b":"72, route d'Arlon","visit.intro":"Am Eingang von Strassen, an der Achse Luxemburg–Arlon. Privater Parkplatz vor Ort.",
+  "visit.hoursT":"Küche · Öffnungszeiten","visit.lunch":"Mittagessen","visit.dinner":"Abendessen","visit.satlunch":"Samstagmittag","visit.closed":"Geschlossen*","visit.sun":"Sonntag & Feiertage","visit.closed2":"Geschlossen*",
+  "visit.hoursNote":"* Schließtage und Tapas-Karte außerhalb der Servicezeiten mit dem Haus zu bestätigen.",
+  "visit.addr":"Adresse","visit.phone":"Telefon","visit.email":"E-Mail","visit.parking":"Vor Ort","visit.parkingV":"Privater Parkplatz",
+  "foot.about":"Nachhaltiges Hotel-Restaurant am Scheideweg von Strassen. Hausgemachte italienische Küche, Weinhandlung und 21 Zimmer — ein Familienhaus.",
+  "foot.explore":"Entdecken","foot.contact":"Kontakt","foot.top":"↑ Nach oben",
+  "foot.demo":"Demo-Website — Webwerk · inoffizielles Mockup","foot.rights":"© Bivius · Inhalte & Preise mit dem Haus zu bestätigen"
+ },
+ en:{
+  "brand.tag":"eat · sleep · wine shop",
+  "nav.table":"The Table","nav.boire":"Drink","nav.cave":"The Cellar","nav.chambre":"The Room","nav.eco":"Eco-friendly","nav.visit":"Find us","nav.reserve":"Book",
+  "hero.kicker":"72, route d'Arlon · Strassen · Luxembourg",
+  "hero.h1a":"At the","hero.h1b":"crossroads","hero.h1c":"of the Italian table.",
+  "hero.latin":"« Bivius » — from the Latin bivium, the fork where two roads meet. Ours brings together kitchen, cellar and rest.",
+  "hero.lead":"Home-made Italian and Mediterranean cooking, a menu that changes every week, and an eco-friendly house on the route d'Arlon.",
+  "hero.note":"Proposed tagline — to be confirmed with the establishment.",
+  "hero.f1":"The Table","hero.f1s":"Restaurant · lunch & dinner","hero.f2":"The Cellar","hero.f2s":"Wine shop","hero.f3":"The Room","hero.f3s":"Hotel · 21 rooms",
+  "hero.stampT":"charter","hero.stampB":"home-made",
+  "sp.table":"The Table","sp.boire":"Drink","sp.cave":"The Cellar","sp.chambre":"The Room","sp.visit":"The crossroads",
+  "table.eyebrow":"The menu","table.h2a":"Cucina","table.h2b":"italiana","table.h2c":", home-made",
+  "table.intro":"Fresh, seasonal produce, home-made pasta and desserts, pizza on a finely-risen dough. The menu changes weekly — here is a taste.",
+  "cat.1":"Antipasti & to share","cat.2":"The Pizze","cat.3":"Fresh pasta","cat.4":"Fish & Meat","cat.5":"Dolci & Cheese",
+  "carte.km":"Daily specials on the board · vegetarian & gluten-free options",
+  "d.olives":"Mediterranean selection, fresh herbs","d.prosc":"Finely sliced cured ham","d.board":"Charcuterie, cheese & vegetables","d.arti":"Confit, ricotta, olive oil","d.crudo":"Crudo, citrus, rocket","d.burr":"Seasonal tomatoes, basil",
+  "tag.share":"to share",
+  "d.marg":"Finely-risen dough, San Marzano tomato, mozzarella, basil","d.diavola":"Spicy salami, mozzarella","d.verdure":"Grilled seasonal vegetables, pesto","d.bianca":"Cream, mushrooms, truffle oil",
+  "d.orec":"Italian sausage, broccoli, pecorino","d.weekly":"Chef's suggestion, weekly rotation","d.ragu":"Slow-cooked ragù, parmesan","d.risotto":"Prawns, generous portion",
+  "d.fish":"Depending on the catch, seasonal vegetables","d.beef":"Sauce of your choice, home-made garnish","d.milan":"Breaded, rocket, cherry tomatoes",
+  "d.dessert":"Made on site, caramel sauce","d.tira":"House recipe","d.cheese":"Aged, selection of the moment","d.cafe":"Quality coffee & petits fours",
+  "cap.board":"Sharing board","cap.prosc":"Prosciutto crudo","cap.crudo":"Sea bream carpaccio","cap.olives":"House-marinated olives","cap.dessert":"Home-made dessert",
+  "table.disclaimer":"Dishes and prices are indicative — the menu changes weekly. All dishes and prices to be confirmed with the establishment. ★ = frequently mentioned specialities.",
+  "boire.eyebrow":"By the glass & on tap","boire.h2a":"From the","boire.h2b":"source","boire.h2c":"to the glass",
+  "boire.intro":"A Luxembourg beer on tap, our own crémant, wines that rotate every week, and classic cocktails.",
+  "dk.beer":"On tap","p.beer":"Beer from the Lëtzebuerger Stad Brauerei, served fresh.",
+  "dk.cremant":"House bubbles","p.cremant":"Crémant of Luxembourg, in collaboration with Domaine Mathes.",
+  "dk.wine":"By the glass","w.wine":"Wines of the week","p.wine":"A curated wine list, by-the-glass selection renewed each week.",
+  "dk.cocktail":"Bar","w.cocktail":"Cocktails & alcohol-free","p.cocktail":"Negroni, Mojito & mocktails; quality coffee, organic teas & infusions.",
+  "cave.eyebrow":"Wine shop","cave.h3a":"A cellar","cave.h3b":"to take home",
+  "cave.p1":"Our on-site wine shop extends the table: find the bottles tasted at the restaurant, including our « Sélection Bivius » crémant born of a collaboration with Domaine Mathes.",
+  "cave.p2":"Advice at the counter, a rotating selection, and retail also online via the Letzshop platform.",
+  "cave.c1":"Crémant Sélection Bivius","cave.c2":"Domaine Mathes","cave.c3":"Retail on Letzshop","cave.c4":"Personal advice","cave.cta":"Visit the shop →",
+  "cham.eyebrow":"3-star hotel · 21 rooms","cham.h3a":"Sleep","cham.h3b":"at the crossroads",
+  "cham.p1":"Twenty-one rooms for the business traveller and the weekend alike: easy access to the route d'Arlon, private parking, and the comfort of a family house.",
+  "cham.p2":"Breakfast on site, summer terrace, private lounge for meetings and presentations, and our restaurant on the ground floor.",
+  "cham.c1":"21 rooms","cham.c2":"Free Wi-Fi","cham.c3":"Private parking","cham.c4":"Breakfast","cham.c5":"Summer terrace","cham.c6":"Private lounge","cham.cta":"Book a room →",
+  "cham.phT":"Bivius · eat & sleep","cham.phS":"High-resolution room photos to be supplied by the establishment",
+  "eco.eyebrow":"Our charter","eco.h2a":"An","eco.h2b":"eco-friendly house",
+  "eco.k1":"Home-made","eco.p1":"« Hausgemaach » label: pasta, desserts and preparations made on site from fresh produce.",
+  "eco.k2":"Seasonal","eco.p2":"A menu that follows the seasons and changes weekly with the market.",
+  "eco.k3":"Short supply chains","eco.p3":"Local producers and partners favoured — from Luxembourg crémant to the city's beer.",
+  "eco.k4":"Family","eco.p4":"A family house: restaurant, cellar and hotel gathered at the same crossroads.",
+  "visit.eyebrow":"Find us","visit.h2a":"At","visit.h2b":"72, route d'Arlon","visit.intro":"At the entrance to Strassen, on the Luxembourg–Arlon axis. Private parking on site.",
+  "visit.hoursT":"Kitchen · hours","visit.lunch":"Lunch","visit.dinner":"Dinner","visit.satlunch":"Saturday lunch","visit.closed":"Closed*","visit.sun":"Sunday & public holidays","visit.closed2":"Closed*",
+  "visit.hoursNote":"* Closing days and the out-of-service tapas menu to be confirmed with the establishment.",
+  "visit.addr":"Address","visit.phone":"Phone","visit.email":"E-mail","visit.parking":"On site","visit.parkingV":"Private parking",
+  "foot.about":"Eco-friendly hotel-restaurant at the crossroads of Strassen. Home-made Italian cooking, a wine shop and 21 rooms — a family house.",
+  "foot.explore":"Explore","foot.contact":"Contact","foot.top":"↑ Back to top",
+  "foot.demo":"Demonstration site — Webwerk · unofficial mockup","foot.rights":"© Bivius · content & prices to be confirmed with the establishment"
+ }
+};
+
+/* capture French defaults from the DOM so switching back restores them */
+const FR={};
+document.querySelectorAll('[data-i18n]').forEach(el=>{FR[el.getAttribute('data-i18n')]=el.innerHTML;});
+I18N.fr=FR;
+
+function setLang(lang){
+  const dict=I18N[lang]||I18N.fr;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(dict[k]!==undefined) el.innerHTML=dict[k];
+    else if(I18N.fr[k]!==undefined) el.innerHTML=I18N.fr[k];
+  });
+  document.documentElement.lang=lang;
+  document.querySelectorAll('.langsw button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+}
+document.querySelectorAll('.langsw button').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.dataset.lang));
+});
+
+/* mobile nav */
+const burger=document.getElementById('burger'),mn=document.getElementById('mainnav');
+burger.addEventListener('click',()=>mn.classList.toggle('open'));
+mn.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mn.classList.remove('open')));
+
+/* smooth anchor to a course */
+function go(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+
+/* reveal on scroll */
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.wp-body,.eco .inner,.hero-left,.hero-right').forEach(el=>{el.classList.add('rev');io.observe(el);});
+</script>
+</body>
+</html>

@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Restaurant Hot Stone Chalet — Vianden · Pierre chaude & fondues</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --char:#17120e;        /* near-black charcoal */
+    --stone:#3a352f;       /* warm stone grey */
+    --stone-lt:#6b6259;
+    --cream:#f4ecdd;       /* warm cream */
+    --cream-2:#ece1cd;
+    --paper:#fbf6ec;
+    --red:#b5322e;         /* alpine red */
+    --red-dk:#8f2723;
+    --ember:#e8862e;       /* heat glow */
+    --ember-lt:#f5b34a;
+    --bav:#3e6fa8;         /* bavarian blue */
+    --wood:#7a5433;
+    --ink:#241d17;
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Inter",system-ui,sans-serif;
+    --mono:"Space Mono",monospace;
+    --maxw:1440px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.03;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,4vw,64px)}
+  .mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.18em;font-size:.72rem}
+
+  /* ---------- Bavarian check strip (secondary motif) ---------- */
+  .check{
+    height:10px;width:100%;
+    background:
+      repeating-linear-gradient(45deg, #fff 0 8px, var(--bav) 8px 16px),
+      repeating-linear-gradient(-45deg, rgba(255,255,255,.5) 0 8px, transparent 8px 16px);
+    background-blend-mode:screen;
+    opacity:.9;
+  }
+
+  /* ---------- Top ribbon ---------- */
+  .ribbon{
+    position:sticky;top:0;z-index:60;
+    background:rgba(23,18,14,.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(244,236,221,.12);
+  }
+  .ribbon-in{display:flex;align-items:center;gap:28px;height:66px}
+  .brand-mini{display:flex;align-items:center;gap:12px;color:var(--cream)}
+  .brand-mini img{height:40px;filter:invert(1) brightness(1.6)}
+  .brand-mini b{font-family:var(--serif);font-weight:600;font-size:1.02rem;letter-spacing:.02em}
+  .brand-mini span{display:block;font-family:var(--mono);font-size:.56rem;letter-spacing:.24em;color:var(--ember-lt);text-transform:uppercase}
+  .nav{display:flex;gap:26px;margin-left:auto;align-items:center}
+  .nav a{color:var(--cream);font-size:.82rem;font-weight:500;opacity:.82;position:relative;padding:4px 0;transition:opacity .2s}
+  .nav a:hover{opacity:1}
+  .nav a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--red);transition:width .25s}
+  .nav a:hover::after{width:100%}
+  .lang{display:flex;gap:2px;background:rgba(244,236,221,.1);border-radius:40px;padding:3px}
+  .lang button{
+    font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;
+    border:0;background:transparent;color:var(--cream);opacity:.6;
+    padding:5px 9px;border-radius:40px;cursor:pointer;transition:.2s;font-weight:700;
+  }
+  .lang button.on{background:var(--red);opacity:1;color:#fff}
+  .btn-book{
+    background:var(--ember);color:var(--char);font-weight:700;font-size:.8rem;
+    padding:10px 18px;border-radius:2px;letter-spacing:.02em;
+    box-shadow:0 0 0 0 rgba(232,134,46,.5);transition:.25s;
+  }
+  .btn-book:hover{background:var(--ember-lt);box-shadow:0 6px 22px -6px rgba(232,134,46,.7)}
+  .nav-toggle{display:none}
+
+  /* ---------- FOYER (split hero) ---------- */
+  .foyer{
+    display:grid;grid-template-columns:1.02fr 1.15fr;
+    min-height:calc(100vh - 76px);
+    background:var(--char);
+  }
+  .foyer-brand{
+    position:relative;color:var(--cream);
+    padding:clamp(36px,5vw,84px) clamp(28px,4.5vw,80px);
+    display:flex;flex-direction:column;justify-content:center;
+    background:
+      radial-gradient(120% 90% at 8% 12%, rgba(232,134,46,.16), transparent 55%),
+      radial-gradient(90% 70% at 90% 100%, rgba(181,50,46,.22), transparent 60%),
+      var(--char);
+    overflow:hidden;
+  }
+  .foyer-brand::before{ /* faint stone texture rows */
+    content:"";position:absolute;inset:0;
+    background-image:repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 42px);
+    pointer-events:none;
+  }
+  .kicker{
+    display:inline-flex;align-items:center;gap:10px;color:var(--ember-lt);
+    margin-bottom:26px;
+  }
+  .kicker::before{content:"";width:38px;height:1px;background:var(--ember)}
+  .foyer h1{
+    font-size:clamp(3rem,6.2vw,6.4rem);font-weight:900;line-height:.92;letter-spacing:-.02em;
+    color:var(--cream);
+  }
+  .foyer h1 em{font-style:italic;font-weight:500;color:var(--ember-lt);display:block}
+  .foyer .lede{
+    max-width:34ch;margin:26px 0 8px;font-size:1.08rem;color:rgba(244,236,221,.82);line-height:1.6;
+  }
+  .foyer-loc{
+    margin-top:14px;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;
+    color:rgba(244,236,221,.6);text-transform:uppercase;
+  }
+  .foyer-cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:38px;align-items:center}
+  .cta-primary{
+    background:var(--red);color:#fff;font-weight:700;padding:15px 30px;border-radius:2px;
+    font-size:.92rem;letter-spacing:.02em;transition:.25s;
+  }
+  .cta-primary:hover{background:var(--red-dk);transform:translateY(-2px)}
+  .cta-ghost{
+    color:var(--cream);border:1px solid rgba(244,236,221,.35);padding:14px 26px;border-radius:2px;
+    font-size:.9rem;font-weight:600;transition:.25s;
+  }
+  .cta-ghost:hover{border-color:var(--ember);color:var(--ember-lt)}
+
+  /* heat dial */
+  .dial{
+    position:absolute;right:clamp(20px,3vw,54px);top:clamp(24px,4vw,54px);
+    width:132px;height:132px;border-radius:50%;
+    display:grid;place-items:center;text-align:center;color:var(--cream);
+    background:radial-gradient(circle at 50% 45%, rgba(245,179,74,.9), rgba(232,134,46,.35) 45%, transparent 70%);
+    border:1px solid rgba(245,179,74,.4);
+  }
+  .dial .glow{position:absolute;inset:-14px;border-radius:50%;background:radial-gradient(circle,rgba(232,134,46,.5),transparent 65%);filter:blur(6px);animation:pulse 3.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.5;transform:scale(.96)}50%{opacity:.95;transform:scale(1.04)}}
+  .dial b{position:relative;font-family:var(--serif);font-size:2.1rem;font-weight:900;line-height:1;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+  .dial small{position:relative;display:block;font-family:var(--mono);font-size:.52rem;letter-spacing:.2em;margin-top:5px;color:#fff}
+
+  .foyer-photo{position:relative;background:#000}
+  .foyer-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .foyer-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(23,18,14,.55),transparent 30%)}
+  .photo-cap{
+    position:absolute;left:24px;bottom:24px;z-index:2;color:#fff;
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+    background:rgba(23,18,14,.55);padding:8px 12px;backdrop-filter:blur(3px);border-left:2px solid var(--ember);
+  }
+
+  /* ---------- LE RITUEL ---------- */
+  .rituel{background:linear-gradient(180deg,var(--stone),#2b2620);color:var(--cream);padding:clamp(52px,7vw,96px) 0;position:relative}
+  .rituel .head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:48px}
+  .rituel h2{font-size:clamp(2rem,3.6vw,3.4rem);color:var(--cream)}
+  .rituel h2 em{color:var(--ember-lt);font-style:italic;font-weight:500}
+  .rituel .head p{max-width:38ch;color:rgba(244,236,221,.72);font-size:1rem}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.5vw,40px)}
+  .step{position:relative;padding:30px 26px 32px;background:rgba(244,236,221,.04);border:1px solid rgba(244,236,221,.1);border-radius:3px;overflow:hidden}
+  .step::before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--ember),var(--red))}
+  .step .num{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;color:var(--ember-lt)}
+  .step .big{font-family:var(--serif);font-size:3.4rem;font-weight:900;color:rgba(244,236,221,.12);line-height:1;position:absolute;right:18px;top:14px}
+  .step h3{font-size:1.5rem;margin:14px 0 10px;color:var(--cream)}
+  .step p{color:rgba(244,236,221,.74);font-size:.95rem}
+
+  /* ---------- LA CARTE ---------- */
+  .carte{padding:clamp(56px,7vw,104px) 0;background:var(--paper)}
+  .sec-label{display:flex;align-items:center;gap:14px;color:var(--red);margin-bottom:18px}
+  .sec-label::before,.sec-label::after{content:"";height:1px;flex:0 0 auto;width:34px;background:var(--red);opacity:.5}
+  .sec-label span{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
+  .carte-head{text-align:center;margin-bottom:52px}
+  .carte-head h2{font-size:clamp(2.2rem,4.4vw,4rem);color:var(--ink)}
+  .carte-head h2 em{font-style:italic;color:var(--red);font-weight:500}
+  .carte-head .sub{color:var(--stone-lt);max-width:52ch;margin:14px auto 0;font-size:1.02rem}
+
+  .menu-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:clamp(24px,3vw,52px);align-items:start}
+  .cat h3{
+    font-size:1.5rem;color:var(--ink);padding-bottom:10px;margin-bottom:6px;
+    border-bottom:2px solid var(--ink);display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+  }
+  .cat h3 .tag{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;color:var(--red);border:1px solid var(--red);padding:3px 6px;border-radius:2px;white-space:nowrap;text-transform:uppercase}
+  .cat + .cat{margin-top:40px}
+  .dish{display:grid;grid-template-columns:1fr auto;gap:6px 16px;padding:13px 0;border-bottom:1px dashed rgba(36,29,23,.16)}
+  .dish:last-child{border-bottom:0}
+  .dish .nm{font-family:var(--serif);font-size:1.08rem;font-weight:600;color:var(--ink)}
+  .dish .pr{font-family:var(--mono);font-weight:700;font-size:.9rem;color:var(--red);white-space:nowrap}
+  .dish .ds{grid-column:1/2;color:var(--stone-lt);font-size:.86rem;margin-top:1px}
+
+  /* signature feature card in col 1 */
+  .signature{
+    background:var(--char);color:var(--cream);border-radius:4px;overflow:hidden;margin-bottom:34px;
+    box-shadow:0 24px 50px -30px rgba(0,0,0,.6);
+  }
+  .signature .img{height:210px;position:relative}
+  .signature .img img{width:100%;height:100%;object-fit:cover}
+  .signature .img .badge{position:absolute;left:14px;top:14px;background:var(--red);color:#fff;font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;padding:5px 9px;text-transform:uppercase}
+  .signature .body{padding:24px 26px 28px}
+  .signature h3{color:var(--cream);font-size:1.7rem;border:0;padding:0}
+  .signature p{color:rgba(244,236,221,.78);font-size:.94rem;margin:10px 0 14px}
+  .signature .price-note{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--ember-lt)}
+
+  .carte-note{text-align:center;margin-top:46px;font-size:.82rem;color:var(--stone-lt);font-style:italic}
+
+  /* ---------- LE CHALET (ambiance) ---------- */
+  .chalet{background:var(--char);color:var(--cream);position:relative}
+  .chalet-grid{display:grid;grid-template-columns:1.25fr .95fr;align-items:stretch;min-height:560px}
+  .chalet-photo{position:relative}
+  .chalet-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .chalet-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,rgba(23,18,14,.9))}
+  .chalet-txt{
+    padding:clamp(44px,5vw,86px) clamp(32px,4vw,72px);display:flex;flex-direction:column;justify-content:center;
+    background:radial-gradient(120% 100% at 100% 0%,rgba(181,50,46,.16),transparent 60%),var(--char);
+  }
+  .chalet-txt h2{font-size:clamp(2rem,3.4vw,3.3rem);color:var(--cream);margin:16px 0 18px}
+  .chalet-txt h2 em{font-style:italic;color:var(--ember-lt);font-weight:500}
+  .chalet-txt p{color:rgba(244,236,221,.8);font-size:1.02rem;margin-bottom:16px;max-width:40ch}
+  .facts{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:22px;background:rgba(244,236,221,.12)}
+  .fact{background:var(--char);padding:18px 16px}
+  .fact b{display:block;font-family:var(--serif);font-size:1.9rem;font-weight:900;color:var(--ember-lt);line-height:1}
+  .fact span{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,236,221,.6)}
+
+  /* ---------- LES HÔTES ---------- */
+  .hotes{padding:clamp(56px,7vw,100px) 0;background:var(--cream)}
+  .hotes-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,4vw,68px);align-items:center}
+  .hotes-photo{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:16/10;box-shadow:0 30px 60px -34px rgba(0,0,0,.5)}
+  .hotes-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+  .hotes-photo .frame{position:absolute;inset:10px;border:1px solid rgba(255,255,255,.5);pointer-events:none}
+  .hotes-txt h2{font-size:clamp(2rem,3.6vw,3.3rem);color:var(--ink);margin:14px 0 18px}
+  .hotes-txt h2 em{font-style:italic;color:var(--red);font-weight:500}
+  .hotes-txt p{color:var(--stone);font-size:1.05rem;margin-bottom:16px;max-width:46ch}
+  .quote{border-left:3px solid var(--red);padding:6px 0 6px 20px;font-family:var(--serif);font-style:italic;font-size:1.25rem;color:var(--ink);margin:24px 0}
+
+  /* ---------- RÉSERVER / PRATIQUE ---------- */
+  .visite{background:var(--stone);color:var(--cream);padding:clamp(52px,7vw,96px) 0}
+  .visite h2{font-size:clamp(2rem,3.6vw,3.3rem);color:var(--cream);margin-bottom:8px}
+  .visite h2 em{font-style:italic;color:var(--ember-lt);font-weight:500}
+  .visite .intro{color:rgba(244,236,221,.72);max-width:46ch;margin-bottom:40px}
+  .visite-grid{display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:clamp(22px,2.6vw,44px);align-items:start}
+  .panel{background:rgba(244,236,221,.05);border:1px solid rgba(244,236,221,.12);border-radius:3px;padding:26px 24px}
+  .panel h3{font-size:1.3rem;color:var(--cream);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+  .panel h3::before{content:"";width:20px;height:2px;background:var(--ember)}
+  .hours-row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed rgba(244,236,221,.14);font-size:.92rem}
+  .hours-row:last-of-type{border-bottom:0}
+  .hours-row .d{color:rgba(244,236,221,.85)}
+  .hours-row .h{font-family:var(--mono);font-size:.78rem;color:rgba(244,236,221,.7)}
+  .hours-row.closed .h{color:var(--red);opacity:.85}
+  .summer{margin-top:16px;background:linear-gradient(90deg,var(--red),var(--red-dk));padding:14px 16px;border-radius:3px}
+  .summer b{display:block;font-family:var(--serif);font-size:1.05rem;color:#fff}
+  .summer span{font-size:.82rem;color:rgba(255,255,255,.85)}
+  .contact-line{display:flex;gap:10px;padding:9px 0;font-size:.95rem;align-items:baseline;border-bottom:1px dashed rgba(244,236,221,.14)}
+  .contact-line:last-child{border-bottom:0}
+  .contact-line .k{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;color:var(--ember-lt);text-transform:uppercase;min-width:74px}
+  .contact-line a,.contact-line span{color:rgba(244,236,221,.9)}
+  .contact-line a:hover{color:var(--ember-lt)}
+  .map-wrap{border-radius:3px;overflow:hidden;border:1px solid rgba(244,236,221,.14);height:100%;min-height:300px}
+  .map-wrap iframe{width:100%;height:100%;min-height:300px;border:0;filter:grayscale(.3) contrast(1.05)}
+  .abadge{margin-top:12px;display:inline-block;font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;color:var(--ember-lt);opacity:.85;text-transform:uppercase}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--char);color:var(--cream);padding:clamp(44px,5vw,72px) 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start}
+  .foot-brand img{height:66px;filter:invert(1) brightness(1.6);margin-bottom:16px}
+  .foot-brand p{color:rgba(244,236,221,.6);font-size:.9rem;max-width:38ch}
+  .foot-col h4{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:var(--ember-lt);text-transform:uppercase;margin-bottom:14px}
+  .foot-col a,.foot-col p{display:block;color:rgba(244,236,221,.78);font-size:.92rem;padding:4px 0}
+  .foot-col a:hover{color:var(--ember-lt)}
+  .foot-bottom{margin-top:44px;padding-top:22px;border-top:1px solid rgba(244,236,221,.12);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+  .foot-bottom p{font-size:.78rem;color:rgba(244,236,221,.5)}
+  .demo{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--ember-lt);border:1px solid rgba(232,134,46,.4);padding:6px 12px;border-radius:2px}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1080px){
+    .menu-grid{grid-template-columns:1fr 1fr}
+    .visite-grid{grid-template-columns:1fr 1fr}
+    .map-wrap{grid-column:1/3;min-height:340px}
+  }
+  @media (max-width:880px){
+    .nav{display:none;position:absolute;top:66px;left:0;right:0;flex-direction:column;background:rgba(23,18,14,.98);padding:20px 24px;gap:16px;border-bottom:2px solid var(--red)}
+    .nav.open{display:flex}
+    .nav .btn-book{align-self:flex-start}
+    .nav-toggle{display:block;margin-left:auto;background:transparent;border:1px solid rgba(244,236,221,.4);color:var(--cream);width:42px;height:38px;border-radius:3px;cursor:pointer;font-size:1.1rem}
+    .ribbon-in .lang{margin-left:auto}
+    .foyer{grid-template-columns:1fr}
+    .foyer-photo{min-height:44vh;order:-1}
+    .foyer-photo img{position:absolute}
+    .dial{width:104px;height:104px}
+    .dial b{font-size:1.6rem}
+    .steps{grid-template-columns:1fr}
+    .chalet-grid{grid-template-columns:1fr}
+    .chalet-photo{min-height:320px}
+    .hotes-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:600px){
+    .menu-grid{grid-template-columns:1fr}
+    .visite-grid{grid-template-columns:1fr}
+    .map-wrap{grid-column:auto}
+    .facts{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .foyer h1{font-size:clamp(2.6rem,11vw,3.6rem)}
+  }
+  @media (prefers-reduced-motion:reduce){.dial .glow{animation:none}}
+</style>
+</head>
+<body>
+
+<!-- ===== TOP RIBBON ===== -->
+<header class="ribbon">
+  <div class="wrap ribbon-in">
+    <a class="brand-mini" href="#top">
+      <img src="assets/logo.png" alt="Hot Stone Chalet">
+      <span style="display:flex;flex-direction:column;gap:1px">
+        <b>Hot Stone Chalet</b>
+        <span data-i18n="brand.sub">Spécialités tyroliennes · Vianden</span>
+      </span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    <nav class="nav" id="nav">
+      <a href="#rituel" data-i18n="nav.ritual">Le rituel</a>
+      <a href="#carte" data-i18n="nav.menu">La carte</a>
+      <a href="#chalet" data-i18n="nav.chalet">Le chalet</a>
+      <a href="#visite" data-i18n="nav.visit">Nous trouver</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button data-lang="fr" class="on">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="#visite" class="btn-book" data-i18n="nav.book">Réserver</a>
+    </nav>
+  </div>
+</header>
+<div class="check"></div>
+
+<!-- ===== FOYER (split hero) ===== -->
+<section class="foyer" id="top">
+  <div class="foyer-brand">
+    <div class="dial" aria-hidden="true"><div class="glow"></div><b>≈300°</b><small data-i18n="dial">la pierre chaude</small></div>
+    <span class="kicker mono" data-i18n="foyer.kicker">Au pied du télésiège de Vianden</span>
+    <h1 data-i18n-html="foyer.h1">Ça grille<br>à votre table<em>sur la pierre.</em></h1>
+    <p class="lede" data-i18n="foyer.lede">Un chalet tyrolien dans les Ardennes luxembourgeoises : pierre chaude saisie à table, fondues à partager et grillades, au coin du feu.</p>
+    <p class="foyer-loc" data-i18n="foyer.loc">37, rue du Sanatorium · L-9425 Vianden</p>
+    <div class="foyer-cta">
+      <a href="#visite" class="cta-primary" data-i18n="foyer.reserve">Réserver une table</a>
+      <a href="#carte" class="cta-ghost" data-i18n="foyer.discover">Découvrir la carte</a>
+    </div>
+  </div>
+  <div class="foyer-photo">
+    <img src="assets/hero.jpg" alt="Brochette de viande grillée sur la pierre chaude, avec ses sauces">
+    <div class="photo-cap" data-i18n="foyer.cap">La brochette sur pierre · saisie devant vous</div>
+  </div>
+</section>
+
+<!-- ===== LE RITUEL ===== -->
+<section class="rituel" id="rituel">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <div class="sec-label" style="color:var(--ember-lt)"><span data-i18n="ritual.label">L'expérience</span></div>
+        <h2 data-i18n-html="ritual.h2">La pierre chaude,<em>c'est vous le chef.</em></h2>
+      </div>
+      <p data-i18n="ritual.p">La pierre volcanique arrive brûlante à votre table. Vous saisissez vous-même vos viandes et légumes, à votre goût, à votre rythme — le repas devient un moment.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="big">01</span>
+        <span class="num" data-i18n="ritual.s1.num">Étape 01</span>
+        <h3 data-i18n="ritual.s1.t">On saisit</h3>
+        <p data-i18n="ritual.s1.p">Posez viandes et légumes sur la pierre à ≈300°C. Ça grésille aussitôt — l'odeur envahit la table.</p>
+      </div>
+      <div class="step">
+        <span class="big">02</span>
+        <span class="num" data-i18n="ritual.s2.num">Étape 02</span>
+        <h3 data-i18n="ritual.s2.t">On compte</h3>
+        <p data-i18n="ritual.s2.p">Quelques secondes de chaque côté, selon votre cuisson préférée. Bleu, saignant, à point : vous décidez.</p>
+      </div>
+      <div class="step">
+        <span class="big">03</span>
+        <span class="num" data-i18n="ritual.s3.num">Étape 03</span>
+        <h3 data-i18n="ritual.s3.t">On trempe</h3>
+        <p data-i18n="ritual.s3.p">Un tour dans nos sauces maison, et on recommence. Le repas dure aussi longtemps que la soirée.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LA CARTE ===== -->
+<section class="carte" id="carte">
+  <div class="wrap">
+    <div class="carte-head">
+      <div class="sec-label" style="justify-content:center"><span data-i18n="menu.label">La carte</span></div>
+      <h2 data-i18n-html="menu.h2">De la pierre à la <em>fondue</em></h2>
+      <p class="sub" data-i18n="menu.sub">Une cuisine généreuse de chalet : les deux grands rituels à partager, puis grillades, poissons de rivière et douceurs tyroliennes.</p>
+    </div>
+
+    <div class="menu-grid">
+      <!-- COL 1 : signature + fondues -->
+      <div>
+        <div class="signature">
+          <div class="img">
+            <img src="assets/food-1.jpg" alt="Assiette gratinée avec sa généreuse planche de charcuterie et crudités">
+            <span class="badge" data-i18n="menu.sigbadge">Le signature</span>
+          </div>
+          <div class="body">
+            <h3 data-i18n="menu.sig.t">La pierre chaude</h3>
+            <p data-i18n="menu.sig.p">Notre spécialité : un assortiment de viandes et de légumes que vous grillez vous-même à table, servi avec ses sauces maison et ses accompagnements.</p>
+            <span class="price-note" data-i18n="menu.sig.price">Prix selon l'assortiment · à confirmer</span>
+          </div>
+        </div>
+
+        <div class="cat">
+          <h3><span data-i18n="menu.fondue.t">Fondues</span> <span class="tag" data-i18n="menu.fondue.tag">à partager</span></h3>
+          <div class="dish"><span class="nm">Fondue Bourguignonne · 250 g</span><span class="pr">32,80 €</span><span class="ds" data-i18n="menu.d.bourg">Bœuf, dinde, agneau — min. 2 pers.</span></div>
+          <div class="dish"><span class="nm">Fondue au fromage suisse</span><span class="pr">27,90 €</span><span class="ds" data-i18n="menu.d.fromage">La traditionnelle, croûtons de pain</span></div>
+          <div class="dish"><span class="nm">Fondue façon provençale</span><span class="pr">27,90 €</span><span class="ds" data-i18n="menu.d.prov">Tomates & poivrons — version végé possible</span></div>
+        </div>
+      </div>
+
+      <!-- COL 2 : grillades + poisson -->
+      <div>
+        <div class="cat">
+          <h3><span data-i18n="menu.grill.t">Grillades</span></h3>
+          <div class="dish"><span class="nm">Grillades mixtes</span><span class="pr">29,80 €</span><span class="ds" data-i18n="menu.d.mixte">Bœuf, agneau, dinde, saucisson · beurre maître d'hôtel, gratin dauphinois</span></div>
+          <div class="dish"><span class="nm">Steak d'agneau aux herbes</span><span class="pr">29,80 €</span><span class="ds" data-i18n="menu.d.agneau">Sauce méditerranéenne</span></div>
+          <div class="dish"><span class="nm">Steak « Lady »</span><span class="pr">29,60 €</span><span class="ds" data-i18n="menu.d.lady">Filet de bœuf 200 g</span></div>
+        </div>
+        <div class="cat">
+          <h3><span data-i18n="menu.fish.t">Poisson</span></h3>
+          <div class="dish"><span class="nm">Duo de poisson</span><span class="pr">29,90 €</span><span class="ds" data-i18n="menu.d.duo">Cabillaud & saumon · sauce vin blanc & crevettes</span></div>
+          <div class="dish"><span class="nm">Truite meunière</span><span class="pr">27,90 €</span></div>
+          <div class="dish"><span class="nm">Truite aux amandes</span><span class="pr">28,90 €</span></div>
+        </div>
+        <div class="cat">
+          <h3><span data-i18n="menu.veg.t">Végétarien</span></h3>
+          <div class="dish"><span class="nm">Tagliatelles au brocoli</span><span class="pr">23,90 €</span></div>
+          <div class="dish"><span class="nm">« Gröstl » aux légumes</span><span class="pr">23,90 €</span><span class="ds" data-i18n="menu.d.grostl">Poêlée tyrolienne de légumes</span></div>
+        </div>
+      </div>
+
+      <!-- COL 3 : entrées + douceurs + digestifs -->
+      <div>
+        <div class="cat">
+          <h3><span data-i18n="menu.start.t">Entrées & salades</span></h3>
+          <div class="dish"><span class="nm">Carpaccio de bœuf</span><span class="pr">17,50 €</span></div>
+          <div class="dish"><span class="nm">Cocktail de crevettes</span><span class="pr">17,80 €</span></div>
+          <div class="dish"><span class="nm">Feierstengszalot</span><span class="pr">16,90 €</span><span class="ds" data-i18n="menu.d.feier">Salade luxembourgeoise traditionnelle</span></div>
+          <div class="dish"><span class="nm">Salade au chèvre chaud</span><span class="pr">17,90 / 23,90 €</span><span class="ds" data-i18n="menu.d.chevre">Demi-portion / entière</span></div>
+          <div class="dish"><span class="nm">Soupe à l'ail</span><span class="pr">10,90 €</span></div>
+        </div>
+        <div class="cat">
+          <h3><span data-i18n="menu.dess.t">Douceurs tyroliennes</span></h3>
+          <div class="dish"><span class="nm">Kaiserschmarren</span><span class="pr">10,80 €</span><span class="ds" data-i18n="menu.d.kaiser">Crêpe façon tyrolienne, caramélisée</span></div>
+          <div class="dish"><span class="nm">Apfelstrudel tiède</span><span class="pr">8,90 €</span></div>
+          <div class="dish"><span class="nm">Coupe « Hot Stone »</span><span class="pr">9,90 €</span><span class="ds" data-i18n="menu.d.coupe">Glace, noix & liqueur de noix</span></div>
+          <div class="dish"><span class="nm">Parfait Grand Marnier maison</span><span class="pr">10,80 €</span></div>
+        </div>
+        <div class="cat">
+          <h3><span data-i18n="menu.dig.t">Digestifs du chalet</span></h3>
+          <div class="dish"><span class="nm">Obstler · Marillenschnaps · Zirbenschnaps</span></div>
+          <div class="dish"><span class="nm">BUFF (Luxembourg)</span><span class="ds" data-i18n="menu.d.buff">L'apéritif luxembourgeois</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="carte-note" data-i18n="menu.note">Carte indicative transcrite des menus 2025/2026 · prix, plats et disponibilités à confirmer avec l'établissement.</p>
+  </div>
+</section>
+
+<!-- ===== LE CHALET ===== -->
+<section class="chalet" id="chalet">
+  <div class="chalet-grid">
+    <div class="chalet-photo">
+      <img src="assets/interior-1.jpg" alt="Salle du chalet : murs de pierre, poutres, cheminée et linge alpin rouge">
+    </div>
+    <div class="chalet-txt">
+      <div class="sec-label" style="color:var(--ember-lt)"><span data-i18n="chalet.label">L'esprit du lieu</span></div>
+      <h2 data-i18n-html="chalet.h2">Une cabane de montagne<em>dans l'Éislek.</em></h2>
+      <p data-i18n="chalet.p1">Murs de pierre, poutres de bois brut, feu de cheminée et linge rouge à carreaux : le Hot Stone Chalet a l'âme d'un refuge alpin, planté au pied du télésiège de Vianden.</p>
+      <p data-i18n="chalet.p2">On y vient en famille, en couple ou entre amis pour le plaisir simple d'un repas qui se partage et se prépare ensemble.</p>
+      <div class="facts">
+        <div class="fact"><b>≈75</b><span data-i18n="chalet.f1">Places en salle</span></div>
+        <div class="fact"><b>≈110</b><span data-i18n="chalet.f2">Places en terrasse</span></div>
+        <div class="fact"><b>~323</b><span data-i18n="chalet.f3">Avis TripAdvisor</span></div>
+        <div class="fact"><b>Éislek</b><span data-i18n="chalet.f4">Nord Luxembourg</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LES HÔTES ===== -->
+<section class="hotes">
+  <div class="wrap hotes-grid">
+    <div class="hotes-photo">
+      <img src="assets/people-1.jpg" alt="Les hôtes du chalet en tenue tyrolienne traditionnelle">
+      <div class="frame"></div>
+    </div>
+    <div class="hotes-txt">
+      <div class="sec-label"><span data-i18n="hosts.label">Vos hôtes</span></div>
+      <h2 data-i18n-html="hosts.h2">L'accueil, <em>en dirndl et chemise à carreaux</em></h2>
+      <p data-i18n="hosts.p1">Ici, la tradition tyrolienne ne s'arrête pas à l'assiette. Les hôtes vous reçoivent en tenue alpine, dans la bonne humeur d'une soirée de chalet.</p>
+      <div class="quote" data-i18n="hosts.quote">« On ne sert pas seulement un repas — on partage un moment. »</div>
+      <p data-i18n="hosts.p2">Un accueil chaleureux et multilingue, à deux pas du château et du télésiège de Vianden.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RÉSERVER / PRATIQUE ===== -->
+<section class="visite" id="visite">
+  <div class="wrap">
+    <div class="sec-label" style="color:var(--ember-lt)"><span data-i18n="visit.label">Nous trouver & réserver</span></div>
+    <h2 data-i18n-html="visit.h2">Réservez votre <em>soirée au chalet</em></h2>
+    <p class="intro" data-i18n="visit.intro">Groupes et fondues sur réservation. Un simple appel suffit — nous confirmons votre table avec plaisir.</p>
+
+    <div class="visite-grid">
+      <!-- Hours -->
+      <div class="panel">
+        <h3 data-i18n="visit.hours">Horaires</h3>
+        <div class="hours-row closed"><span class="d" data-i18n="day.mon">Lundi</span><span class="h" data-i18n="visit.closed">Fermé</span></div>
+        <div class="hours-row"><span class="d" data-i18n="day.tue">Mardi</span><span class="h">10:00–15:00 · 18:00–21:30</span></div>
+        <div class="hours-row"><span class="d" data-i18n="day.wed">Mercredi</span><span class="h">10:00–15:00 · 18:00–21:30</span></div>
+        <div class="hours-row closed"><span class="d" data-i18n="day.thu">Jeudi</span><span class="h" data-i18n="visit.closed">Fermé</span></div>
+        <div class="hours-row"><span class="d" data-i18n="day.fri">Vendredi</span><span class="h">10:00–15:00 · 18:00–21:30</span></div>
+        <div class="hours-row"><span class="d" data-i18n="day.sat">Samedi</span><span class="h">10:00–15:00 · 18:00–21:30</span></div>
+        <div class="hours-row"><span class="d" data-i18n="day.sun">Dimanche</span><span class="h">10:00–15:00 · 18:00–21:30</span></div>
+        <div class="summer">
+          <b data-i18n="visit.summer.t">Été 2026 · ouvert 7j/7</b>
+          <span data-i18n="visit.summer.s">Du 18 juillet au 30 août 2026, dès 18:00</span>
+        </div>
+        <span class="abadge" data-i18n="visit.hours.note">Horaires à confirmer avec l'établissement</span>
+      </div>
+
+      <!-- Contact -->
+      <div class="panel">
+        <h3 data-i18n="visit.contact">Contact</h3>
+        <div class="contact-line"><span class="k" data-i18n="visit.addr">Adresse</span><span>37, rue du Sanatorium<br>L-9425 Vianden</span></div>
+        <div class="contact-line"><span class="k" data-i18n="visit.phone">Tél.</span><a href="tel:+352834269">+352 83 42 69</a></div>
+        <div class="contact-line"><span class="k" data-i18n="visit.mobile">Mobile</span><a href="tel:+352621233840">+352 621 233 840</a></div>
+        <div class="contact-line"><span class="k">Email</span><a href="mailto:petryjac@pt.lu">petryjac@pt.lu</a></div>
+        <div class="contact-line"><span class="k" data-i18n="visit.pay">Paiement</span><span data-i18n="visit.pay.v">Cartes de crédit & espèces</span></div>
+        <a href="tel:+352834269" class="cta-primary" style="margin-top:18px;display:inline-block" data-i18n="visit.call">Appeler pour réserver</a>
+      </div>
+
+      <!-- Map -->
+      <div class="map-wrap">
+        <iframe title="Carte — Restaurant Hot Stone Chalet, Vianden" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=37%20rue%20du%20Sanatorium%2C%209425%20Vianden%2C%20Luxembourg&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="assets/logo.png" alt="Hot Stone Chalet">
+      <p data-i18n="foot.tag">Grillades sur pierre chaude & fondues, dans l'esprit d'un chalet alpin — au pied du télésiège de Vianden.</p>
+    </div>
+    <div class="foot-col">
+      <h4 data-i18n="foot.nav">Naviguer</h4>
+      <a href="#rituel" data-i18n="nav.ritual">Le rituel</a>
+      <a href="#carte" data-i18n="nav.menu">La carte</a>
+      <a href="#chalet" data-i18n="nav.chalet">Le chalet</a>
+      <a href="#visite" data-i18n="nav.visit">Nous trouver</a>
+    </div>
+    <div class="foot-col">
+      <h4 data-i18n="foot.contact">Contact</h4>
+      <a href="tel:+352834269">+352 83 42 69</a>
+      <a href="mailto:petryjac@pt.lu">petryjac@pt.lu</a>
+      <p>37, rue du Sanatorium<br>L-9425 Vianden</p>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <p>© <span id="yr"></span> Restaurant Hot Stone Chalet · Vianden, Luxembourg</p>
+    <span class="demo" data-i18n="foot.demo">Site de démonstration — contenus & horaires à confirmer</span>
+  </div>
+</footer>
+
+<script>
+/* ---------------- i18n ---------------- */
+const I18N = {
+  fr:{
+    "brand.sub":"Spécialités tyroliennes · Vianden",
+    "nav.ritual":"Le rituel","nav.menu":"La carte","nav.chalet":"Le chalet","nav.visit":"Nous trouver","nav.book":"Réserver",
+    "dial":"la pierre chaude",
+    "foyer.kicker":"Au pied du télésiège de Vianden",
+    "foyer.h1":"Ça grille<br>à votre table<em>sur la pierre.</em>",
+    "foyer.lede":"Un chalet tyrolien dans les Ardennes luxembourgeoises : pierre chaude saisie à table, fondues à partager et grillades, au coin du feu.",
+    "foyer.loc":"37, rue du Sanatorium · L-9425 Vianden",
+    "foyer.reserve":"Réserver une table","foyer.discover":"Découvrir la carte",
+    "foyer.cap":"La brochette sur pierre · saisie devant vous",
+    "ritual.label":"L'expérience",
+    "ritual.h2":"La pierre chaude,<em>c'est vous le chef.</em>",
+    "ritual.p":"La pierre volcanique arrive brûlante à votre table. Vous saisissez vous-même vos viandes et légumes, à votre goût, à votre rythme — le repas devient un moment.",
+    "ritual.s1.num":"Étape 01","ritual.s1.t":"On saisit","ritual.s1.p":"Posez viandes et légumes sur la pierre à ≈300°C. Ça grésille aussitôt — l'odeur envahit la table.",
+    "ritual.s2.num":"Étape 02","ritual.s2.t":"On compte","ritual.s2.p":"Quelques secondes de chaque côté, selon votre cuisson préférée. Bleu, saignant, à point : vous décidez.",
+    "ritual.s3.num":"Étape 03","ritual.s3.t":"On trempe","ritual.s3.p":"Un tour dans nos sauces maison, et on recommence. Le repas dure aussi longtemps que la soirée.",
+    "menu.label":"La carte","menu.h2":"De la pierre à la <em>fondue</em>",
+    "menu.sub":"Une cuisine généreuse de chalet : les deux grands rituels à partager, puis grillades, poissons de rivière et douceurs tyroliennes.",
+    "menu.sigbadge":"Le signature","menu.sig.t":"La pierre chaude",
+    "menu.sig.p":"Notre spécialité : un assortiment de viandes et de légumes que vous grillez vous-même à table, servi avec ses sauces maison et ses accompagnements.",
+    "menu.sig.price":"Prix selon l'assortiment · à confirmer",
+    "menu.fondue.t":"Fondues","menu.fondue.tag":"à partager",
+    "menu.d.bourg":"Bœuf, dinde, agneau — min. 2 pers.","menu.d.fromage":"La traditionnelle, croûtons de pain","menu.d.prov":"Tomates & poivrons — version végé possible",
+    "menu.grill.t":"Grillades","menu.d.mixte":"Bœuf, agneau, dinde, saucisson · beurre maître d'hôtel, gratin dauphinois","menu.d.agneau":"Sauce méditerranéenne","menu.d.lady":"Filet de bœuf 200 g",
+    "menu.fish.t":"Poisson","menu.d.duo":"Cabillaud & saumon · sauce vin blanc & crevettes",
+    "menu.veg.t":"Végétarien","menu.d.grostl":"Poêlée tyrolienne de légumes",
+    "menu.start.t":"Entrées & salades","menu.d.feier":"Salade luxembourgeoise traditionnelle","menu.d.chevre":"Demi-portion / entière",
+    "menu.dess.t":"Douceurs tyroliennes","menu.d.kaiser":"Crêpe façon tyrolienne, caramélisée","menu.d.coupe":"Glace, noix & liqueur de noix",
+    "menu.dig.t":"Digestifs du chalet","menu.d.buff":"L'apéritif luxembourgeois",
+    "menu.note":"Carte indicative transcrite des menus 2025/2026 · prix, plats et disponibilités à confirmer avec l'établissement.",
+    "chalet.label":"L'esprit du lieu","chalet.h2":"Une cabane de montagne<em>dans l'Éislek.</em>",
+    "chalet.p1":"Murs de pierre, poutres de bois brut, feu de cheminée et linge rouge à carreaux : le Hot Stone Chalet a l'âme d'un refuge alpin, planté au pied du télésiège de Vianden.",
+    "chalet.p2":"On y vient en famille, en couple ou entre amis pour le plaisir simple d'un repas qui se partage et se prépare ensemble.",
+    "chalet.f1":"Places en salle","chalet.f2":"Places en terrasse","chalet.f3":"Avis TripAdvisor","chalet.f4":"Nord Luxembourg",
+    "hosts.label":"Vos hôtes","hosts.h2":"L'accueil, <em>en dirndl et chemise à carreaux</em>",
+    "hosts.p1":"Ici, la tradition tyrolienne ne s'arrête pas à l'assiette. Les hôtes vous reçoivent en tenue alpine, dans la bonne humeur d'une soirée de chalet.",
+    "hosts.quote":"« On ne sert pas seulement un repas — on partage un moment. »",
+    "hosts.p2":"Un accueil chaleureux et multilingue, à deux pas du château et du télésiège de Vianden.",
+    "visit.label":"Nous trouver & réserver","visit.h2":"Réservez votre <em>soirée au chalet</em>",
+    "visit.intro":"Groupes et fondues sur réservation. Un simple appel suffit — nous confirmons votre table avec plaisir.",
+    "visit.hours":"Horaires","visit.closed":"Fermé",
+    "day.mon":"Lundi","day.tue":"Mardi","day.wed":"Mercredi","day.thu":"Jeudi","day.fri":"Vendredi","day.sat":"Samedi","day.sun":"Dimanche",
+    "visit.summer.t":"Été 2026 · ouvert 7j/7","visit.summer.s":"Du 18 juillet au 30 août 2026, dès 18:00",
+    "visit.hours.note":"Horaires à confirmer avec l'établissement",
+    "visit.contact":"Contact","visit.addr":"Adresse","visit.phone":"Tél.","visit.mobile":"Mobile","visit.pay":"Paiement","visit.pay.v":"Cartes de crédit & espèces","visit.call":"Appeler pour réserver",
+    "foot.tag":"Grillades sur pierre chaude & fondues, dans l'esprit d'un chalet alpin — au pied du télésiège de Vianden.",
+    "foot.nav":"Naviguer","foot.contact":"Contact","foot.demo":"Site de démonstration — contenus & horaires à confirmer"
+  },
+  de:{
+    "brand.sub":"Tiroler Spezialitäten · Vianden",
+    "nav.ritual":"Das Ritual","nav.menu":"Die Karte","nav.chalet":"Das Chalet","nav.visit":"Anfahrt","nav.book":"Reservieren",
+    "dial":"der heiße Stein",
+    "foyer.kicker":"Am Fuße des Sesselliftes von Vianden",
+    "foyer.h1":"Es brutzelt<br>an Ihrem Tisch<em>auf dem Stein.</em>",
+    "foyer.lede":"Ein Tiroler Chalet in den Luxemburger Ardennen: am Tisch gebratener heißer Stein, Fondues zum Teilen und Grillspezialitäten am Kaminfeuer.",
+    "foyer.loc":"37, rue du Sanatorium · L-9425 Vianden",
+    "foyer.reserve":"Tisch reservieren","foyer.discover":"Zur Karte",
+    "foyer.cap":"Der Spieß auf dem Stein · vor Ihnen angebraten",
+    "ritual.label":"Das Erlebnis",
+    "ritual.h2":"Am heißen Stein<em>sind Sie der Koch.</em>",
+    "ritual.p":"Der Vulkanstein kommt glühend heiß an Ihren Tisch. Sie braten Fleisch und Gemüse selbst — nach Ihrem Geschmack, in Ihrem Tempo. Das Essen wird zum Erlebnis.",
+    "ritual.s1.num":"Schritt 01","ritual.s1.t":"Anbraten","ritual.s1.p":"Fleisch und Gemüse auf den ≈300°C heißen Stein legen. Es brutzelt sofort — der Duft erfüllt den Tisch.",
+    "ritual.s2.num":"Schritt 02","ritual.s2.t":"Abwarten","ritual.s2.p":"Ein paar Sekunden pro Seite, ganz nach Ihrer Wunschgarung. Blutig, medium, durch: Sie entscheiden.",
+    "ritual.s3.num":"Schritt 03","ritual.s3.t":"Eintauchen","ritual.s3.p":"Kurz in unsere hausgemachten Saucen — und wieder von vorn. Der Abend darf ruhig lang werden.",
+    "menu.label":"Die Karte","menu.h2":"Vom Stein zum <em>Fondue</em>",
+    "menu.sub":"Großzügige Chalet-Küche: die beiden großen Rituale zum Teilen, dazu Grillspezialitäten, Flussfisch und Tiroler Süßspeisen.",
+    "menu.sigbadge":"Die Spezialität","menu.sig.t":"Der heiße Stein",
+    "menu.sig.p":"Unsere Spezialität: eine Auswahl an Fleisch und Gemüse, das Sie selbst am Tisch braten — mit hausgemachten Saucen und Beilagen serviert.",
+    "menu.sig.price":"Preis je nach Auswahl · zu bestätigen",
+    "menu.fondue.t":"Fondues","menu.fondue.tag":"zum Teilen",
+    "menu.d.bourg":"Rind, Pute, Lamm — min. 2 Pers.","menu.d.fromage":"Das klassische, mit Brotwürfeln","menu.d.prov":"Tomaten & Paprika — vegetarisch möglich",
+    "menu.grill.t":"Grillspezialitäten","menu.d.mixte":"Rind, Lamm, Pute, Bratwurst · Kräuterbutter, Gratin dauphinois","menu.d.agneau":"Mediterrane Sauce","menu.d.lady":"Rinderfilet 200 g",
+    "menu.fish.t":"Fisch","menu.d.duo":"Kabeljau & Lachs · Weißweinsauce & Garnelen",
+    "menu.veg.t":"Vegetarisch","menu.d.grostl":"Tiroler Gemüsepfanne",
+    "menu.start.t":"Vorspeisen & Salate","menu.d.feier":"Traditioneller Luxemburger Salat","menu.d.chevre":"Halbe / ganze Portion",
+    "menu.dess.t":"Tiroler Süßspeisen","menu.d.kaiser":"Kaiserschmarren, karamellisiert","menu.d.coupe":"Eis, Nüsse & Nusslikör",
+    "menu.dig.t":"Digestifs aus dem Chalet","menu.d.buff":"Der Luxemburger Aperitif",
+    "menu.note":"Richtwert-Karte, übertragen aus den Menüs 2025/2026 · Preise, Gerichte und Verfügbarkeit mit dem Haus zu bestätigen.",
+    "chalet.label":"Der Geist des Ortes","chalet.h2":"Eine Berghütte<em>im Éislek.</em>",
+    "chalet.p1":"Steinmauern, rohe Holzbalken, Kaminfeuer und rot-karierte Wäsche: Das Hot Stone Chalet hat die Seele einer Berghütte — direkt am Fuße des Sesselliftes von Vianden.",
+    "chalet.p2":"Man kommt mit der Familie, zu zweit oder mit Freunden — für das einfache Vergnügen eines Essens, das man gemeinsam teilt und zubereitet.",
+    "chalet.f1":"Plätze im Saal","chalet.f2":"Plätze auf der Terrasse","chalet.f3":"TripAdvisor-Bewertungen","chalet.f4":"Nordluxemburg",
+    "hosts.label":"Ihre Gastgeber","hosts.h2":"Empfang <em>im Dirndl und Karohemd</em>",
+    "hosts.p1":"Hier hört die Tiroler Tradition nicht auf dem Teller auf. Die Gastgeber empfangen Sie in alpiner Tracht — mit der guten Laune eines Chalet-Abends.",
+    "hosts.quote":"„Wir servieren nicht nur ein Essen — wir teilen einen Moment.“",
+    "hosts.p2":"Ein herzlicher, mehrsprachiger Empfang, nur wenige Schritte von Burg und Sessellift Vianden entfernt.",
+    "visit.label":"Anfahrt & Reservierung","visit.h2":"Reservieren Sie Ihren <em>Chalet-Abend</em>",
+    "visit.intro":"Gruppen und Fondues auf Reservierung. Ein Anruf genügt — wir bestätigen Ihren Tisch gerne.",
+    "visit.hours":"Öffnungszeiten","visit.closed":"Geschlossen",
+    "day.mon":"Montag","day.tue":"Dienstag","day.wed":"Mittwoch","day.thu":"Donnerstag","day.fri":"Freitag","day.sat":"Samstag","day.sun":"Sonntag",
+    "visit.summer.t":"Sommer 2026 · 7 Tage/Woche","visit.summer.s":"Vom 18. Juli bis 30. August 2026, ab 18:00",
+    "visit.hours.note":"Öffnungszeiten mit dem Haus zu bestätigen",
+    "visit.contact":"Kontakt","visit.addr":"Adresse","visit.phone":"Tel.","visit.mobile":"Mobil","visit.pay":"Zahlung","visit.pay.v":"Kreditkarten & Bargeld","visit.call":"Zum Reservieren anrufen",
+    "foot.tag":"Grillspezialitäten auf dem heißen Stein & Fondues im Geist eines alpinen Chalets — am Fuße des Sesselliftes von Vianden.",
+    "foot.nav":"Navigation","foot.contact":"Kontakt","foot.demo":"Demo-Website — Inhalte & Öffnungszeiten zu bestätigen"
+  },
+  en:{
+    "brand.sub":"Tyrolean specialities · Vianden",
+    "nav.ritual":"The Ritual","nav.menu":"The Menu","nav.chalet":"The Chalet","nav.visit":"Find Us","nav.book":"Reserve",
+    "dial":"the hot stone",
+    "foyer.kicker":"At the foot of the Vianden chairlift",
+    "foyer.h1":"It sizzles<br>at your table<em>on the stone.</em>",
+    "foyer.lede":"A Tyrolean chalet in the Luxembourg Ardennes: hot-stone grilling right at your table, fondues to share and grills by the fireside.",
+    "foyer.loc":"37, rue du Sanatorium · L-9425 Vianden",
+    "foyer.reserve":"Reserve a table","foyer.discover":"See the menu",
+    "foyer.cap":"The stone-grilled skewer · seared before you",
+    "ritual.label":"The experience",
+    "ritual.h2":"On the hot stone,<em>you are the chef.</em>",
+    "ritual.p":"The volcanic stone arrives scorching hot at your table. You sear your own meats and vegetables — to your taste, at your pace. The meal becomes a moment.",
+    "ritual.s1.num":"Step 01","ritual.s1.t":"You sear","ritual.s1.p":"Lay meats and vegetables on the ≈300°C stone. It sizzles at once — the aroma fills the table.",
+    "ritual.s2.num":"Step 02","ritual.s2.t":"You wait","ritual.s2.p":"A few seconds each side, cooked just how you like it. Rare, medium, well done: you decide.",
+    "ritual.s3.num":"Step 03","ritual.s3.t":"You dip","ritual.s3.p":"A turn in our house-made sauces, then start again. The meal lasts as long as the evening does.",
+    "menu.label":"The menu","menu.h2":"From the stone to the <em>fondue</em>",
+    "menu.sub":"Generous chalet cooking: the two great sharing rituals, plus grills, river fish and Tyrolean sweets.",
+    "menu.sigbadge":"The signature","menu.sig.t":"The hot stone",
+    "menu.sig.p":"Our speciality: an assortment of meats and vegetables you grill yourself at the table, served with house-made sauces and sides.",
+    "menu.sig.price":"Price by assortment · to be confirmed",
+    "menu.fondue.t":"Fondues","menu.fondue.tag":"to share",
+    "menu.d.bourg":"Beef, turkey, lamb — min. 2 people","menu.d.fromage":"The traditional one, with bread cubes","menu.d.prov":"Tomato & pepper — vegetarian option available",
+    "menu.grill.t":"Grills","menu.d.mixte":"Beef, lamb, turkey, sausage · maître d'hôtel butter, gratin dauphinois","menu.d.agneau":"Mediterranean sauce","menu.d.lady":"Beef fillet 200 g",
+    "menu.fish.t":"Fish","menu.d.duo":"Cod & salmon · white-wine & prawn sauce",
+    "menu.veg.t":"Vegetarian","menu.d.grostl":"Tyrolean vegetable pan",
+    "menu.start.t":"Starters & salads","menu.d.feier":"Traditional Luxembourgish salad","menu.d.chevre":"Half / full portion",
+    "menu.dess.t":"Tyrolean sweets","menu.d.kaiser":"Tyrolean-style caramelised pancake","menu.d.coupe":"Ice cream, walnuts & walnut liqueur",
+    "menu.dig.t":"Chalet digestifs","menu.d.buff":"The Luxembourg aperitif",
+    "menu.note":"Indicative menu transcribed from the 2025/2026 cards · prices, dishes and availability to be confirmed with the venue.",
+    "chalet.label":"The spirit of the place","chalet.h2":"A mountain hut<em>in the Éislek.</em>",
+    "chalet.p1":"Stone walls, raw timber beams, an open fire and red checked linens: the Hot Stone Chalet has the soul of an alpine refuge — right at the foot of the Vianden chairlift.",
+    "chalet.p2":"People come as families, couples or groups for the simple pleasure of a meal shared and cooked together.",
+    "chalet.f1":"Seats indoors","chalet.f2":"Seats on the terrace","chalet.f3":"TripAdvisor reviews","chalet.f4":"North Luxembourg",
+    "hosts.label":"Your hosts","hosts.h2":"A welcome <em>in dirndl and checked shirt</em>",
+    "hosts.p1":"Here, Tyrolean tradition doesn't stop at the plate. Your hosts greet you in alpine dress, with the good cheer of a chalet evening.",
+    "hosts.quote":"“We don't just serve a meal — we share a moment.”",
+    "hosts.p2":"A warm, multilingual welcome, a stone's throw from Vianden's castle and chairlift.",
+    "visit.label":"Find us & reserve","visit.h2":"Book your <em>evening at the chalet</em>",
+    "visit.intro":"Groups and fondues by reservation. A single call is enough — we'll gladly confirm your table.",
+    "visit.hours":"Opening hours","visit.closed":"Closed",
+    "day.mon":"Monday","day.tue":"Tuesday","day.wed":"Wednesday","day.thu":"Thursday","day.fri":"Friday","day.sat":"Saturday","day.sun":"Sunday",
+    "visit.summer.t":"Summer 2026 · open 7/7","visit.summer.s":"From 18 July to 30 August 2026, from 18:00",
+    "visit.hours.note":"Opening hours to be confirmed with the venue",
+    "visit.contact":"Contact","visit.addr":"Address","visit.phone":"Phone","visit.mobile":"Mobile","visit.pay":"Payment","visit.pay.v":"Credit cards & cash","visit.call":"Call to reserve",
+    "foot.tag":"Hot-stone grilling & fondues in the spirit of an alpine chalet — at the foot of the Vianden chairlift.",
+    "foot.nav":"Navigate","foot.contact":"Contact","foot.demo":"Demonstration site — content & hours to be confirmed"
+  }
+};
+
+function setLang(lang){
+  const dict = I18N[lang] || I18N.fr;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[k]!=null) el.textContent = dict[k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const k = el.getAttribute('data-i18n-html');
+    if(dict[k]!=null) el.innerHTML = dict[k];
+  });
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+  try{ localStorage.setItem('hsc_lang', lang); }catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.dataset.lang));
+});
+
+/* mobile nav */
+const nav = document.getElementById('nav'), toggle = document.getElementById('navToggle');
+toggle.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+/* year + persisted lang */
+document.getElementById('yr').textContent = new Date().getFullYear();
+try{ const saved = localStorage.getItem('hsc_lang'); if(saved && I18N[saved]) setLang(saved); }catch(e){}
+</script>
+</body>
+</html>

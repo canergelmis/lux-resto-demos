@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Ambiente — Restaurant Pizzeria & Grillades · Belair, Luxembourg</title>
+<meta name="description" content="Ambiente — cucina italiana généreuse au coin de Belair. Pizza maison, pâtes fraîches et grillades, servies dans une collection de salles inspirées des régions d'Italie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C1B19;
+    --ink-soft:#332f29;
+    --cream:#F6F0E4;
+    --paper:#FBF7EF;
+    --paper-2:#F0E7D5;
+    --gold:#C9992E;
+    --gold-lt:#D4AF37;
+    --tan:#B98A4B;
+    --terra:#B5533A;
+    --board:#131210;
+    --board-2:#1b1916;
+    --board-line:#2a2721;
+    --serif:'Cormorant Garamond', Garamond, 'Times New Roman', serif;
+    --mono:'Space Mono','Courier New',monospace;
+    --sans:'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    --maxw:1440px;
+    --pad:clamp(20px,4vw,72px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+  .mono{font-family:var(--mono)}
+  .serif{font-family:var(--serif)}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--tan);
+  }
+
+  /* ---------- BOARDING STRIP (header) ---------- */
+  header.boarding{
+    position:sticky;top:0;z-index:50;
+    background:var(--board);
+    color:var(--cream);
+    border-bottom:1px solid var(--board-line);
+  }
+  .boarding-inner{
+    max-width:var(--maxw);margin:0 auto;
+    display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;
+    padding:12px var(--pad);
+  }
+  .brand{display:flex;align-items:baseline;gap:12px;white-space:nowrap}
+  .brand .name{font-family:var(--serif);font-style:italic;font-size:1.7rem;font-weight:600;color:var(--gold-lt);line-height:1}
+  .brand .sub{font-family:var(--mono);font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--tan)}
+  .ticker{
+    overflow:hidden;position:relative;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  }
+  .ticker ul{display:flex;gap:0;list-style:none;width:max-content;animation:scroll 34s linear infinite}
+  .ticker li{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#cdbf9a;padding:0 26px;display:flex;align-items:center;gap:26px}
+  .ticker li::after{content:"◆";color:var(--gold);font-size:.55rem}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  .boarding-actions{display:flex;align-items:center;gap:18px}
+  .lang{display:flex;border:1px solid var(--board-line);border-radius:2px;overflow:hidden}
+  .lang button{
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;
+    background:transparent;color:#a89b7c;border:0;padding:6px 9px;cursor:pointer;transition:.2s;
+  }
+  .lang button+button{border-left:1px solid var(--board-line)}
+  .lang button.active{background:var(--gold);color:var(--board)}
+  .lang button:hover:not(.active){color:var(--cream)}
+  .btn-book{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+    background:var(--terra);color:#fff;padding:9px 16px;border-radius:2px;white-space:nowrap;transition:.2s;
+  }
+  .btn-book:hover{background:#9c4530}
+  .tel-inline{font-family:var(--mono);font-size:.72rem;color:#cdbf9a;white-space:nowrap}
+  .tel-inline:hover{color:var(--gold-lt)}
+
+  /* ---------- HERO / LE BILLET ---------- */
+  .billet{
+    background:
+      radial-gradient(1200px 500px at 85% -10%, rgba(201,153,46,.10), transparent 60%),
+      var(--paper);
+    padding:clamp(28px,4vw,56px) 0 0;
+  }
+  .billet-grid{
+    display:grid;grid-template-columns:1.32fr .9fr;gap:0;
+    border:1px solid rgba(28,27,25,.16);
+    background:var(--paper-2);
+    box-shadow:0 30px 60px -40px rgba(28,27,25,.6);
+  }
+  .billet-photo{position:relative;min-height:520px;overflow:hidden}
+  .billet-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .billet-photo .tag{
+    position:absolute;left:20px;top:20px;z-index:2;
+    background:rgba(19,18,16,.82);color:var(--cream);
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;
+    padding:7px 12px;border-left:3px solid var(--gold);
+  }
+  .billet-photo .stamp{
+    position:absolute;right:22px;bottom:22px;z-index:2;
+    width:104px;height:104px;border:2px solid rgba(246,240,228,.85);border-radius:50%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    color:var(--cream);font-family:var(--mono);letter-spacing:.12em;transform:rotate(-8deg);
+    background:rgba(19,18,16,.28);backdrop-filter:blur(1px);
+  }
+  .billet-photo .stamp b{font-size:1.1rem;letter-spacing:.06em}
+  .billet-photo .stamp span{font-size:.5rem;text-transform:uppercase;letter-spacing:.2em;margin-top:2px}
+  /* perforation between stub and photo */
+  .billet-stub{
+    position:relative;padding:clamp(28px,3vw,46px) clamp(26px,2.6vw,44px);
+    display:flex;flex-direction:column;justify-content:center;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 26px, rgba(28,27,25,.05) 26px 27px),
+      var(--paper);
+  }
+  .billet-stub::before{
+    content:"";position:absolute;left:0;top:6%;bottom:6%;width:0;
+    border-left:2px dashed rgba(28,27,25,.28);
+  }
+  .stub-logo{width:210px;max-width:60%;margin-bottom:18px}
+  .stub-tag{font-family:var(--serif);font-style:italic;font-size:clamp(1.6rem,2.4vw,2.35rem);line-height:1.15;color:var(--ink);font-weight:500}
+  .stub-lead{margin-top:16px;font-size:.98rem;color:#4a453d;max-width:38ch}
+  .stub-route{
+    margin-top:26px;padding-top:18px;border-top:1px solid rgba(28,27,25,.16);
+    display:flex;flex-wrap:wrap;gap:22px 34px;
+  }
+  .route-item .k{font-family:var(--mono);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--tan)}
+  .route-item .v{font-family:var(--serif);font-size:1.18rem;color:var(--ink);font-weight:600;margin-top:2px}
+  .stub-cta{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
+  .cta-primary,.cta-ghost{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+    padding:12px 20px;border-radius:2px;transition:.2s;
+  }
+  .cta-primary{background:var(--ink);color:var(--cream)}
+  .cta-primary:hover{background:var(--terra)}
+  .cta-ghost{border:1px solid rgba(28,27,25,.4);color:var(--ink)}
+  .cta-ghost:hover{border-color:var(--terra);color:var(--terra)}
+
+  /* facts rail full width under hero */
+  .facts{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border:1px solid rgba(28,27,25,.16);border-top:0;background:var(--ink);color:var(--cream);
+  }
+  .fact{padding:20px 26px;border-right:1px solid var(--board-line);display:flex;flex-direction:column;gap:4px}
+  .fact:last-child{border-right:0}
+  .fact .n{font-family:var(--serif);font-size:2rem;font-weight:600;color:var(--gold-lt);line-height:1}
+  .fact .l{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#a89b7c}
+
+  /* ---------- SECTION HEADS ---------- */
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+  .sec-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,3.4vw,3.1rem);line-height:1.02}
+  .sec-head .idx{font-family:var(--mono);font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--tan)}
+  .sec-note{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:#8a8272;max-width:34ch;text-align:right}
+
+  /* ---------- LE TABELLONE (menu) ---------- */
+  .tabellone{background:var(--board);color:var(--cream);padding:clamp(56px,7vw,104px) 0;position:relative}
+  .tabellone::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.22) 3px 4px);pointer-events:none;opacity:.5}
+  .tabellone .wrap{position:relative}
+  .tabellone .sec-head h2{color:var(--cream)}
+  .tabellone .sec-head .idx{color:var(--gold)}
+  .board{border-top:1px solid var(--board-line)}
+  .board-row{
+    display:grid;grid-template-columns:96px 1fr auto;align-items:center;gap:24px;
+    padding:22px 8px;border-bottom:1px solid var(--board-line);
+    transition:background .25s;cursor:default;position:relative;
+  }
+  .board-row:hover{background:var(--board-2)}
+  .voie{
+    font-family:var(--mono);font-weight:700;font-size:1.05rem;color:var(--board);
+    background:var(--gold);border-radius:2px;text-align:center;padding:6px 0;letter-spacing:.05em;
+    box-shadow:inset 0 -2px 0 rgba(0,0,0,.25);
+  }
+  .board-main{min-width:0}
+  .board-main .cat{
+    font-family:var(--serif);font-size:clamp(1.5rem,2.4vw,2.15rem);font-weight:600;line-height:1.05;
+    color:var(--cream);display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+  }
+  .board-main .cat em{font-family:var(--mono);font-style:normal;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt)}
+  .board-main .desc{font-size:.92rem;color:#b9ad92;margin-top:5px;max-width:66ch}
+  .board-status{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--tan);white-space:nowrap;text-align:right}
+  .board-status b{color:var(--gold-lt);font-weight:400}
+  /* signature dishes strip */
+  .vedette{margin-top:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .vcard{
+    border:1px solid var(--board-line);background:linear-gradient(180deg,var(--board-2),var(--board));
+    padding:26px 24px;position:relative;overflow:hidden;
+  }
+  .vcard::after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(201,153,46,.20),transparent 70%)}
+  .vcard .vk{font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--terra)}
+  .vcard h3{font-family:var(--serif);font-weight:600;font-size:1.55rem;margin-top:8px;color:var(--cream)}
+  .vcard p{font-size:.88rem;color:#b0a488;margin-top:8px}
+  .vcard .price{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;color:var(--tan);margin-top:14px;display:inline-block}
+
+  /* ---------- LES ESCALES (rooms) ---------- */
+  .escales{padding:clamp(56px,7vw,104px) 0;background:var(--paper)}
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-auto-rows:200px;
+    gap:16px;
+  }
+  figure.room{position:relative;overflow:hidden;border:1px solid rgba(28,27,25,.14);background:var(--ink)}
+  figure.room img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  figure.room:hover img{transform:scale(1.06)}
+  figure.room figcaption{
+    position:absolute;left:0;right:0;bottom:0;z-index:2;
+    padding:20px 20px 18px;color:var(--cream);
+    background:linear-gradient(0deg,rgba(15,14,12,.92),rgba(15,14,12,.35) 55%,transparent);
+  }
+  figure.room .region{font-family:var(--mono);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-lt)}
+  figure.room .rname{font-family:var(--serif);font-size:1.5rem;font-weight:600;line-height:1.05;margin-top:3px}
+  figure.room .rline{font-size:.82rem;color:#d9cfba;margin-top:4px;opacity:0;max-height:0;transition:.4s;overflow:hidden}
+  figure.room:hover .rline{opacity:1;max-height:60px}
+  figure.room .coord{position:absolute;top:14px;right:16px;z-index:2;font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;color:rgba(246,240,228,.85);background:rgba(19,18,16,.45);padding:4px 8px;border-radius:2px}
+  /* explicit spans for a composed, gap-free grid */
+  .r-terrace{grid-column:span 2;grid-row:span 2}
+  .r-venezia{grid-column:span 2;grid-row:span 1}
+  .r-cinema {grid-column:span 1;grid-row:span 2}
+  .r-veranda{grid-column:span 1;grid-row:span 2}
+  .r-clock  {grid-column:span 2;grid-row:span 1}
+  .r-bar    {grid-column:span 2;grid-row:span 1}
+  .escale-note{margin-top:22px;font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;color:#8a8272}
+
+  /* ---------- LE QUAI (visit) ---------- */
+  .quai{background:var(--ink);color:var(--cream);padding:clamp(56px,7vw,104px) 0}
+  .quai .sec-head h2{color:var(--cream)}
+  .quai .sec-head .idx{color:var(--gold)}
+  .quai-grid{display:grid;grid-template-columns:1.25fr .95fr;gap:0;border:1px solid var(--board-line)}
+  .map-box{position:relative;min-height:460px;background:var(--board-2)}
+  .map-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.25) contrast(1.02)}
+  .info-panel{
+    padding:clamp(28px,3vw,48px);background:var(--board);
+    display:flex;flex-direction:column;gap:26px;position:relative;
+  }
+  .info-panel::before{content:"";position:absolute;left:0;top:8%;bottom:8%;border-left:2px dashed var(--board-line)}
+  .info-block .h{font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:10px}
+  .hours-row{display:flex;justify-content:space-between;gap:16px;font-size:.92rem;padding:6px 0;border-bottom:1px dotted var(--board-line)}
+  .hours-row:last-child{border-bottom:0}
+  .hours-row .d{color:#cdbf9a}
+  .hours-row .t{font-family:var(--mono);font-size:.78rem;color:var(--cream);text-align:right}
+  .hours-row.closed .t{color:var(--terra)}
+  .info-block .line{font-size:.98rem;color:#ddd3bd;margin:2px 0}
+  .info-block a.line:hover{color:var(--gold-lt)}
+  .aconf{font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;color:var(--tan);margin-top:8px;display:inline-block}
+  .info-cta{margin-top:auto;display:flex;flex-wrap:wrap;gap:12px}
+  .info-cta a{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:11px 16px;border-radius:2px}
+  .ic-1{background:var(--terra);color:#fff}
+  .ic-2{background:transparent;border:1px solid var(--board-line);color:var(--cream)}
+  .ic-1:hover{background:#9c4530}
+  .ic-2:hover{border-color:var(--gold)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--board);color:var(--cream);padding:0 0 40px;border-top:1px solid var(--board-line)}
+  .foot-edge{height:22px;background:radial-gradient(circle at 12px -2px, transparent 11px, var(--paper) 11px) 0 0/24px 22px repeat-x}
+  .foot-inner{max-width:var(--maxw);margin:0 auto;padding:44px var(--pad) 0;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px}
+  .foot-brand .name{font-family:var(--serif);font-style:italic;font-size:2rem;color:var(--gold-lt);font-weight:600}
+  .foot-brand p{font-size:.9rem;color:#b0a488;margin-top:10px;max-width:40ch}
+  .foot-col h4{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--tan);margin-bottom:14px}
+  .foot-col a,.foot-col p{display:block;font-size:.9rem;color:#cdbf9a;margin:6px 0}
+  .foot-col a:hover{color:var(--gold-lt)}
+  .aura{display:flex;align-items:center;gap:12px;margin-top:16px}
+  .aura img{height:38px;width:auto;opacity:.9;filter:brightness(1.6)}
+  .aura span{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;color:#8a8272}
+  .foot-bottom{max-width:var(--maxw);margin:34px auto 0;padding:20px var(--pad) 0;border-top:1px solid var(--board-line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .foot-bottom p{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;color:#7d7565}
+  .demo-badge{color:var(--terra)!important}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1080px){
+    .billet-grid{grid-template-columns:1fr}
+    .billet-photo{min-height:360px}
+    .billet-stub::before{display:none}
+    .quai-grid{grid-template-columns:1fr}
+    .map-box{min-height:340px}
+    .info-panel::before{display:none}
+    .vedette{grid-template-columns:1fr 1fr}
+    .foot-inner{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:860px){
+    .boarding-inner{grid-template-columns:auto auto;gap:12px 16px}
+    .ticker{grid-column:1 / -1;order:3}
+    .facts{grid-template-columns:1fr 1fr}
+    .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}
+    .r-terrace{grid-column:span 2;grid-row:span 2}
+    .r-venezia,.r-clock,.r-bar{grid-column:span 2;grid-row:span 1}
+    .r-cinema,.r-veranda{grid-column:span 1;grid-row:span 2}
+  }
+  @media (max-width:640px){
+    .boarding-actions{gap:10px}
+    .tel-inline{display:none}
+    .board-row{grid-template-columns:64px 1fr;gap:14px}
+    .board-status{grid-column:2;text-align:left;margin-top:-6px}
+    .vedette{grid-template-columns:1fr}
+    .facts{grid-template-columns:1fr 1fr}
+    .foot-inner{grid-template-columns:1fr}
+    .sec-note{text-align:left}
+    .gallery{grid-template-columns:1fr;grid-auto-rows:220px}
+    .r-terrace,.r-venezia,.r-cinema,.r-veranda,.r-clock,.r-bar{grid-column:span 1;grid-row:span 1}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .ticker ul{animation:none}
+    figure.room img{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ BOARDING STRIP ============ -->
+<header class="boarding">
+  <div class="boarding-inner">
+    <a class="brand" href="#top" aria-label="Ambiente">
+      <span class="name">Ambiente</span>
+      <span class="sub">Restaurant · Pizzeria · Grill</span>
+    </a>
+    <div class="ticker" aria-hidden="true">
+      <ul>
+        <li data-i18n="tick1">Belair · Route d'Arlon</li>
+        <li data-i18n="tick2">Service midi &amp; soir</li>
+        <li data-i18n="tick3">Pizza maison · Pâtes fraîches</li>
+        <li data-i18n="tick4">Grillades · Suggestions du jour</li>
+        <li data-i18n="tick5">Terrasse · ~100 couverts</li>
+        <li data-i18n="tick1b">Belair · Route d'Arlon</li>
+        <li data-i18n="tick2b">Service midi &amp; soir</li>
+        <li data-i18n="tick3b">Pizza maison · Pâtes fraîches</li>
+        <li data-i18n="tick4b">Grillades · Suggestions du jour</li>
+        <li data-i18n="tick5b">Terrasse · ~100 couverts</li>
+      </ul>
+    </div>
+    <div class="boarding-actions">
+      <a class="tel-inline" href="tel:+35226389767">+352 26 38 97 67</a>
+      <div class="lang" role="group" aria-label="Langue">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a class="btn-book" href="#quai" data-i18n="nav_book">Réserver</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO / LE BILLET ============ -->
+<section class="billet">
+  <div class="wrap">
+    <div class="billet-grid">
+      <div class="billet-photo">
+        <img src="assets/terrace-1.jpg" alt="La terrasse d'Ambiente, parasols et mur de lierre">
+        <span class="tag" data-i18n="hero_tag">Escale 00 · La Terrasse</span>
+        <div class="stamp">
+          <b>1150</b>
+          <span data-i18n="hero_stamp">Belair · Lux</span>
+        </div>
+      </div>
+      <div class="billet-stub">
+        <img class="stub-logo" src="assets/logo.png" alt="Ambiente restaurant-pizzeria">
+        <p class="stub-tag" data-i18n="hero_title">Envie d'un bon plat généreux dans un cadre chaleureux&nbsp;?</p>
+        <p class="stub-lead" data-i18n="hero_lead">Une cucina italiana généreuse au coin de Belair — pizza maison, pâtes fraîches et grillades, servies dans une collection de salles qui font le tour de l'Italie.</p>
+        <div class="stub-route">
+          <div class="route-item">
+            <div class="k" data-i18n="route_k1">Escale</div>
+            <div class="v">Belair · Merl</div>
+          </div>
+          <div class="route-item">
+            <div class="k" data-i18n="route_k2">Cuisine</div>
+            <div class="v" data-i18n="route_v2">Italienne · Grill</div>
+          </div>
+          <div class="route-item">
+            <div class="k" data-i18n="route_k3">Réseau</div>
+            <div class="v">Groupe Aura</div>
+          </div>
+        </div>
+        <div class="stub-cta">
+          <a class="cta-primary" href="#tabellone" data-i18n="hero_cta1">Voir la carte</a>
+          <a class="cta-ghost" href="#escales" data-i18n="hero_cta2">Nos salles</a>
+        </div>
+      </div>
+    </div>
+    <div class="facts">
+      <div class="fact"><span class="n">6</span><span class="l" data-i18n="fact1">Salles à thème</span></div>
+      <div class="fact"><span class="n">~100</span><span class="l" data-i18n="fact2">Couverts en terrasse</span></div>
+      <div class="fact"><span class="n">7/7</span><span class="l" data-i18n="fact3">À emporter · Uber Eats</span></div>
+      <div class="fact"><span class="n">P</span><span class="l" data-i18n="fact4">Parking gratuit</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LE TABELLONE (menu board) ============ -->
+<section class="tabellone" id="tabellone">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="idx" data-i18n="menu_idx">Partie I · Le Tabellone</div>
+        <h2 data-i18n="menu_h">Départs du jour — la carte</h2>
+      </div>
+      <p class="sec-note" data-i18n="menu_note">Plats et prix indicatifs — carte complète à confirmer avec l'établissement.</p>
+    </div>
+
+    <div class="board">
+      <div class="board-row">
+        <div class="voie">V.01</div>
+        <div class="board-main">
+          <div class="cat">Pizze maison <em data-i18n="menu_c1t">Au feu de bois</em></div>
+          <div class="desc" data-i18n="menu_c1d">Pâte du jour, mozzarella fondante et garnitures classiques — la signature de la maison.</div>
+        </div>
+        <div class="board-status"><b data-i18n="status_service">À la carte</b><br><span data-i18n="aconf_s">prix à confirmer</span></div>
+      </div>
+      <div class="board-row">
+        <div class="voie">V.02</div>
+        <div class="board-main">
+          <div class="cat">Paste fresche <em data-i18n="menu_c2t">Pâtes fraîches</em></div>
+          <div class="desc" data-i18n="menu_c2d">Pâtes maison et sauces italiennes généreuses, préparées minute.</div>
+        </div>
+        <div class="board-status"><b data-i18n="status_service">À la carte</b><br><span data-i18n="aconf_s">prix à confirmer</span></div>
+      </div>
+      <div class="board-row">
+        <div class="voie">V.03</div>
+        <div class="board-main">
+          <div class="cat">Insalate &amp; antipasti <em data-i18n="menu_c3t">Salades &amp; entrées</em></div>
+          <div class="desc" data-i18n="menu_c3d">Salades composées et antipasti pour ouvrir le repas, ou en plat léger le midi.</div>
+        </div>
+        <div class="board-status"><b data-i18n="status_service">À la carte</b><br><span data-i18n="aconf_s">prix à confirmer</span></div>
+      </div>
+      <div class="board-row">
+        <div class="voie">V.04</div>
+        <div class="board-main">
+          <div class="cat">Grigliate <em data-i18n="menu_c4t">Grillades — viandes &amp; poissons</em></div>
+          <div class="desc" data-i18n="menu_c4d">Viandes et poissons grillés, dont le filet de dorade — « a real eye-catcher ».</div>
+        </div>
+        <div class="board-status"><b data-i18n="status_service">À la carte</b><br><span data-i18n="aconf_s">prix à confirmer</span></div>
+      </div>
+      <div class="board-row">
+        <div class="voie">V.05</div>
+        <div class="board-main">
+          <div class="cat">Suggestions del giorno <em data-i18n="menu_c5t">Suggestions du jour</em></div>
+          <div class="desc" data-i18n="menu_c5d">L'ardoise change au fil du marché — demandez les suggestions du jour à votre arrivée.</div>
+        </div>
+        <div class="board-status"><b data-i18n="status_daily">Ardoise</b><br><span data-i18n="aconf_s">prix à confirmer</span></div>
+      </div>
+    </div>
+
+    <div class="vedette">
+      <div class="vcard">
+        <div class="vk" data-i18n="ved_k">En vedette</div>
+        <h3>Berg-Burger de la Casa</h3>
+        <p data-i18n="ved_1">Le burger maison, régulièrement cité comme l'un des favoris des habitués.</p>
+        <span class="price" data-i18n="ved_price">à partir de … · à confirmer</span>
+      </div>
+      <div class="vcard">
+        <div class="vk" data-i18n="ved_k">En vedette</div>
+        <h3 data-i18n="ved_2h">Filet de dorade</h3>
+        <p data-i18n="ved_2">Dorade grillée, décrite par les clients comme la vraie vedette de la carte grill.</p>
+        <span class="price" data-i18n="ved_price">à partir de … · à confirmer</span>
+      </div>
+      <div class="vcard">
+        <div class="vk" data-i18n="ved_k">En vedette</div>
+        <h3 data-i18n="ved_3h">Pizza maison</h3>
+        <p data-i18n="ved_3">La catégorie signature — pâte préparée maison et cuisson soignée.</p>
+        <span class="price" data-i18n="ved_price">à partir de … · à confirmer</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LES ESCALES (rooms) ============ -->
+<section class="escales" id="escales">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="idx" data-i18n="rooms_idx">Partie II · Les Escales</div>
+        <h2 data-i18n="rooms_h">Un tour d'Italie, salle par salle</h2>
+      </div>
+      <p class="sec-note" data-i18n="rooms_note">Chaque salle a son décor et son ambiance — choisissez votre escale à la réservation.</p>
+    </div>
+
+    <div class="gallery">
+      <figure class="room r-terrace">
+        <img src="assets/terrace-1.jpg" alt="La terrasse verdoyante d'Ambiente">
+        <span class="coord">44°N · 6°E</span>
+        <figcaption>
+          <div class="region" data-i18n="room_r_terrace">En plein air</div>
+          <div class="rname" data-i18n="room_n_terrace">La Terrasse</div>
+          <div class="rline" data-i18n="room_l_terrace">Environ 100 couverts sous les parasols, entre lierre et lavande. Parking gratuit.</div>
+        </figcaption>
+      </figure>
+      <figure class="room r-venezia">
+        <img src="assets/interior-venezia.jpg" alt="Salle Venezia, masques et miroirs vénitiens">
+        <span class="coord">Veneto</span>
+        <figcaption>
+          <div class="region" data-i18n="room_r_venezia">Veneto · Venise</div>
+          <div class="rname" data-i18n="room_n_venezia">Salle Venezia</div>
+          <div class="rline" data-i18n="room_l_venezia">Masques de carnaval et miroirs — la salle romantique, idéale en tête-à-tête.</div>
+        </figcaption>
+      </figure>
+      <figure class="room r-cinema">
+        <img src="assets/interior-cinema.jpg" alt="Salle Cinema, mur de photos du cinéma italien en noir et blanc">
+        <span class="coord">Cinecittà</span>
+        <figcaption>
+          <div class="region" data-i18n="room_r_cinema">Roma · Cinéma</div>
+          <div class="rname" data-i18n="room_n_cinema">Il Cinema</div>
+          <div class="rline" data-i18n="room_l_cinema">Un mur de portraits du cinéma italien en noir et blanc.</div>
+        </figcaption>
+      </figure>
+      <figure class="room r-veranda">
+        <img src="assets/interior-veranda.jpg" alt="Véranda à fresque toscane et banquette capitonnée">
+        <span class="coord">Toscana</span>
+        <figcaption>
+          <div class="region" data-i18n="room_r_veranda">Toscana · Véranda</div>
+          <div class="rname" data-i18n="room_n_veranda">La Veranda</div>
+          <div class="rline" data-i18n="room_l_veranda">Fresque de collines toscanes et banquette capitonnée, baignée de lumière.</div>
+        </figcaption>
+      </figure>
+      <figure class="room r-clock">
+        <img src="assets/interior-clockroom.jpg" alt="Salle bistro avec mur en bois blanchi et grande horloge en fer">
+        <span class="coord">Rustico</span>
+        <figcaption>
+          <div class="region" data-i18n="room_r_clock">Bistro · Rustique</div>
+          <div class="rname" data-i18n="room_n_clock">La Salle de l'Horloge</div>
+          <div class="rline" data-i18n="room_l_clock">Bois blanchi et grande horloge en fer — l'ardoise des suggestions y est affichée.</div>
+        </figcaption>
+      </figure>
+      <figure class="room r-bar">
+        <img src="assets/interior-bar.jpg" alt="Le bar d'Ambiente, étagère à bouteilles">
+        <span class="coord">Bar</span>
+        <figcaption>
+          <div class="region" data-i18n="room_r_bar">Aperitivo</div>
+          <div class="rname" data-i18n="room_n_bar">Le Bar</div>
+          <div class="rline" data-i18n="room_l_bar">Pour un aperitivo avant de passer à table.</div>
+        </figcaption>
+      </figure>
+    </div>
+    <p class="escale-note" data-i18n="rooms_extra">Autres salles : Roma, Alto-Adige (à l'étage, groupes ~20). Photos supplémentaires à fournir par l'établissement.</p>
+  </div>
+</section>
+
+<!-- ============ LE QUAI (visit) ============ -->
+<section class="quai" id="quai">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="idx" data-i18n="visit_idx">Partie III · Le Quai</div>
+        <h2 data-i18n="visit_h">Horaires, accès &amp; réservation</h2>
+      </div>
+      <p class="sec-note" data-i18n="visit_note">Tous les horaires sont à confirmer avec l'établissement.</p>
+    </div>
+    <div class="quai-grid">
+      <div class="map-box">
+        <iframe title="Carte — 285 Route d'Arlon, Luxembourg" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=285+Route+d'Arlon+L-1150+Luxembourg&output=embed"></iframe>
+      </div>
+      <div class="info-panel">
+        <div class="info-block">
+          <div class="h" data-i18n="visit_hours_h">Horaires de service</div>
+          <div class="hours-row"><span class="d" data-i18n="day_monthu">Lun – Jeu</span><span class="t">11:30–14:30 · 18:00–22:30</span></div>
+          <div class="hours-row"><span class="d" data-i18n="day_fri">Vendredi</span><span class="t">11:30–14:30 · 18:00–23:00</span></div>
+          <div class="hours-row"><span class="d" data-i18n="day_sat">Samedi</span><span class="t" data-i18n="sat_t">Soir · 18:00–23:00</span></div>
+          <div class="hours-row closed"><span class="d" data-i18n="day_sun">Dimanche</span><span class="t" data-i18n="closed">Fermé</span></div>
+          <span class="aconf" data-i18n="aconf_hours">Horaires à confirmer avec l'établissement</span>
+        </div>
+        <div class="info-block">
+          <div class="h" data-i18n="visit_addr_h">Adresse &amp; contact</div>
+          <p class="line">285, Route d'Arlon · L-1150 Luxembourg</p>
+          <a class="line" href="tel:+35226389767">+352 26 38 97 67</a>
+          <a class="line" href="mailto:ambiente@groupeaura.lu">ambiente@groupeaura.lu</a>
+          <a class="line" href="https://www.instagram.com/restaurant_.ambiente/" target="_blank" rel="noopener">Instagram · @restaurant_.ambiente</a>
+        </div>
+        <div class="info-cta">
+          <a class="ic-1" href="tel:+35226389767" data-i18n="visit_cta1">Réserver par téléphone</a>
+          <a class="ic-2" href="https://www.ubereats.com/lu/search?q=Ambiente" target="_blank" rel="noopener" data-i18n="visit_cta2">Commander · Uber Eats</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot-edge" aria-hidden="true"></div>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="name">Ambiente</div>
+      <p data-i18n="foot_tag">Restaurant · Pizzeria · Grillades — un tour d'Italie au coin de Belair, à Luxembourg-Ville.</p>
+      <div class="aura">
+        <img src="assets/logo-groupeaura.png" alt="Groupe Aura">
+        <span data-i18n="foot_aura">Membre du Groupe Aura</span>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h4 data-i18n="foot_nav">Itinéraire</h4>
+      <a href="#tabellone" data-i18n="foot_menu">La carte</a>
+      <a href="#escales" data-i18n="foot_rooms">Les salles</a>
+      <a href="#quai" data-i18n="foot_visit">Nous rendre visite</a>
+    </div>
+    <div class="foot-col">
+      <h4 data-i18n="foot_contact">Contact</h4>
+      <p>285, Route d'Arlon<br>L-1150 Luxembourg</p>
+      <a href="tel:+35226389767">+352 26 38 97 67</a>
+      <a href="mailto:ambiente@groupeaura.lu">ambiente@groupeaura.lu</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© 2026 Ambiente · Groupe Aura — <span data-i18n="foot_rights">tous droits réservés.</span></p>
+    <p class="demo-badge" data-i18n="foot_demo">Site de démonstration — contenus, horaires et prix à confirmer avec l'établissement.</p>
+  </div>
+</footer>
+
+<script>
+  const I18N = {
+    fr:{
+      nav_book:"Réserver",
+      tick1:"Belair · Route d'Arlon", tick2:"Service midi & soir", tick3:"Pizza maison · Pâtes fraîches", tick4:"Grillades · Suggestions du jour", tick5:"Terrasse · ~100 couverts",
+      tick1b:"Belair · Route d'Arlon", tick2b:"Service midi & soir", tick3b:"Pizza maison · Pâtes fraîches", tick4b:"Grillades · Suggestions du jour", tick5b:"Terrasse · ~100 couverts",
+      hero_tag:"Escale 00 · La Terrasse", hero_stamp:"Belair · Lux",
+      hero_title:"Envie d'un bon plat généreux dans un cadre chaleureux ?",
+      hero_lead:"Une cucina italiana généreuse au coin de Belair — pizza maison, pâtes fraîches et grillades, servies dans une collection de salles qui font le tour de l'Italie.",
+      route_k1:"Escale", route_k2:"Cuisine", route_v2:"Italienne · Grill", route_k3:"Réseau",
+      hero_cta1:"Voir la carte", hero_cta2:"Nos salles",
+      fact1:"Salles à thème", fact2:"Couverts en terrasse", fact3:"À emporter · Uber Eats", fact4:"Parking gratuit",
+      menu_idx:"Partie I · Le Tabellone", menu_h:"Départs du jour — la carte",
+      menu_note:"Plats et prix indicatifs — carte complète à confirmer avec l'établissement.",
+      menu_c1t:"Au feu de bois", menu_c1d:"Pâte du jour, mozzarella fondante et garnitures classiques — la signature de la maison.",
+      menu_c2t:"Pâtes fraîches", menu_c2d:"Pâtes maison et sauces italiennes généreuses, préparées minute.",
+      menu_c3t:"Salades & entrées", menu_c3d:"Salades composées et antipasti pour ouvrir le repas, ou en plat léger le midi.",
+      menu_c4t:"Grillades — viandes & poissons", menu_c4d:"Viandes et poissons grillés, dont le filet de dorade — « a real eye-catcher ».",
+      menu_c5t:"Suggestions du jour", menu_c5d:"L'ardoise change au fil du marché — demandez les suggestions du jour à votre arrivée.",
+      status_service:"À la carte", status_daily:"Ardoise", aconf_s:"prix à confirmer",
+      ved_k:"En vedette", ved_price:"à partir de … · à confirmer",
+      ved_1:"Le burger maison, régulièrement cité comme l'un des favoris des habitués.",
+      ved_2h:"Filet de dorade", ved_2:"Dorade grillée, décrite par les clients comme la vraie vedette de la carte grill.",
+      ved_3h:"Pizza maison", ved_3:"La catégorie signature — pâte préparée maison et cuisson soignée.",
+      rooms_idx:"Partie II · Les Escales", rooms_h:"Un tour d'Italie, salle par salle",
+      rooms_note:"Chaque salle a son décor et son ambiance — choisissez votre escale à la réservation.",
+      room_r_terrace:"En plein air", room_n_terrace:"La Terrasse", room_l_terrace:"Environ 100 couverts sous les parasols, entre lierre et lavande. Parking gratuit.",
+      room_r_venezia:"Veneto · Venise", room_n_venezia:"Salle Venezia", room_l_venezia:"Masques de carnaval et miroirs — la salle romantique, idéale en tête-à-tête.",
+      room_r_cinema:"Roma · Cinéma", room_n_cinema:"Il Cinema", room_l_cinema:"Un mur de portraits du cinéma italien en noir et blanc.",
+      room_r_veranda:"Toscana · Véranda", room_n_veranda:"La Veranda", room_l_veranda:"Fresque de collines toscanes et banquette capitonnée, baignée de lumière.",
+      room_r_clock:"Bistro · Rustique", room_n_clock:"La Salle de l'Horloge", room_l_clock:"Bois blanchi et grande horloge en fer — l'ardoise des suggestions y est affichée.",
+      room_r_bar:"Aperitivo", room_n_bar:"Le Bar", room_l_bar:"Pour un aperitivo avant de passer à table.",
+      rooms_extra:"Autres salles : Roma, Alto-Adige (à l'étage, groupes ~20). Photos supplémentaires à fournir par l'établissement.",
+      visit_idx:"Partie III · Le Quai", visit_h:"Horaires, accès & réservation",
+      visit_note:"Tous les horaires sont à confirmer avec l'établissement.",
+      visit_hours_h:"Horaires de service", day_monthu:"Lun – Jeu", day_fri:"Vendredi", day_sat:"Samedi", sat_t:"Soir · 18:00–23:00", day_sun:"Dimanche", closed:"Fermé",
+      aconf_hours:"Horaires à confirmer avec l'établissement",
+      visit_addr_h:"Adresse & contact", visit_cta1:"Réserver par téléphone", visit_cta2:"Commander · Uber Eats",
+      foot_tag:"Restaurant · Pizzeria · Grillades — un tour d'Italie au coin de Belair, à Luxembourg-Ville.",
+      foot_aura:"Membre du Groupe Aura", foot_nav:"Itinéraire", foot_menu:"La carte", foot_rooms:"Les salles", foot_visit:"Nous rendre visite",
+      foot_contact:"Contact", foot_rights:"tous droits réservés.",
+      foot_demo:"Site de démonstration — contenus, horaires et prix à confirmer avec l'établissement."
+    },
+    de:{
+      nav_book:"Reservieren",
+      tick1:"Belair · Route d'Arlon", tick2:"Mittags- & Abendservice", tick3:"Hausgemachte Pizza · Frische Pasta", tick4:"Grillgerichte · Tagesempfehlungen", tick5:"Terrasse · ~100 Plätze",
+      tick1b:"Belair · Route d'Arlon", tick2b:"Mittags- & Abendservice", tick3b:"Hausgemachte Pizza · Frische Pasta", tick4b:"Grillgerichte · Tagesempfehlungen", tick5b:"Terrasse · ~100 Plätze",
+      hero_tag:"Halt 00 · Die Terrasse", hero_stamp:"Belair · Lux",
+      hero_title:"Lust auf ein großzügiges Gericht in warmer Atmosphäre?",
+      hero_lead:"Großzügige italienische Küche in Belair — hausgemachte Pizza, frische Pasta und Grillgerichte, serviert in Räumen, die eine Reise durch Italien erzählen.",
+      route_k1:"Halt", route_k2:"Küche", route_v2:"Italienisch · Grill", route_k3:"Gruppe",
+      hero_cta1:"Zur Karte", hero_cta2:"Unsere Räume",
+      fact1:"Themenräume", fact2:"Plätze auf der Terrasse", fact3:"Take-away · Uber Eats", fact4:"Kostenlose Parkplätze",
+      menu_idx:"Teil I · Die Anzeigetafel", menu_h:"Abfahrten des Tages — die Karte",
+      menu_note:"Gerichte und Preise als Richtwert — vollständige Karte beim Restaurant zu bestätigen.",
+      menu_c1t:"Aus dem Holzofen", menu_c1d:"Frischer Teig, geschmolzener Mozzarella und klassische Beläge — die Signatur des Hauses.",
+      menu_c2t:"Frische Pasta", menu_c2d:"Hausgemachte Pasta mit großzügigen italienischen Saucen, frisch zubereitet.",
+      menu_c3t:"Salate & Vorspeisen", menu_c3d:"Bunte Salate und Antipasti zum Auftakt — oder mittags als leichtes Gericht.",
+      menu_c4t:"Grill — Fleisch & Fisch", menu_c4d:"Gegrilltes Fleisch und Fisch, darunter das Doradenfilet — „ein echter Hingucker“.",
+      menu_c5t:"Tagesempfehlungen", menu_c5d:"Die Tafel wechselt je nach Markt — fragen Sie bei Ihrer Ankunft nach den Empfehlungen.",
+      status_service:"À la carte", status_daily:"Tafel", aconf_s:"Preis zu bestätigen",
+      ved_k:"Im Rampenlicht", ved_price:"ab … · zu bestätigen",
+      ved_1:"Der hausgemachte Burger — von Stammgästen immer wieder als Favorit genannt.",
+      ved_2h:"Doradenfilet", ved_2:"Gegrillte Dorade, von Gästen als der eigentliche Star der Grillkarte beschrieben.",
+      ved_3h:"Hausgemachte Pizza", ved_3:"Die Signatur-Kategorie — hausgemachter Teig, sorgfältig gebacken.",
+      rooms_idx:"Teil II · Die Halte", rooms_h:"Eine Reise durch Italien, Raum für Raum",
+      rooms_note:"Jeder Raum hat sein eigenes Dekor und seine Stimmung — wählen Sie Ihren Halt bei der Reservierung.",
+      room_r_terrace:"Im Freien", room_n_terrace:"Die Terrasse", room_l_terrace:"Rund 100 Plätze unter Sonnenschirmen, zwischen Efeu und Lavendel. Kostenlose Parkplätze.",
+      room_r_venezia:"Veneto · Venedig", room_n_venezia:"Saal Venezia", room_l_venezia:"Karnevalsmasken und Spiegel — der romantische Raum, ideal zu zweit.",
+      room_r_cinema:"Roma · Kino", room_n_cinema:"Il Cinema", room_l_cinema:"Eine Wand mit Porträts des italienischen Kinos in Schwarz-Weiß.",
+      room_r_veranda:"Toscana · Veranda", room_n_veranda:"Die Veranda", room_l_veranda:"Fresko toskanischer Hügel und getuftete Bank, in Licht getaucht.",
+      room_r_clock:"Bistro · Rustikal", room_n_clock:"Der Uhrensaal", room_l_clock:"Gekalktes Holz und eine große Eisenuhr — hier hängt die Empfehlungstafel.",
+      room_r_bar:"Aperitivo", room_n_bar:"Die Bar", room_l_bar:"Für einen Aperitivo, bevor es an den Tisch geht.",
+      rooms_extra:"Weitere Räume: Roma, Alto-Adige (im Obergeschoss, Gruppen ~20). Zusätzliche Fotos vom Restaurant bereitzustellen.",
+      visit_idx:"Teil III · Der Bahnsteig", visit_h:"Öffnungszeiten, Anfahrt & Reservierung",
+      visit_note:"Alle Öffnungszeiten sind beim Restaurant zu bestätigen.",
+      visit_hours_h:"Servicezeiten", day_monthu:"Mo – Do", day_fri:"Freitag", day_sat:"Samstag", sat_t:"Abend · 18:00–23:00", day_sun:"Sonntag", closed:"Geschlossen",
+      aconf_hours:"Öffnungszeiten beim Restaurant zu bestätigen",
+      visit_addr_h:"Adresse & Kontakt", visit_cta1:"Telefonisch reservieren", visit_cta2:"Bestellen · Uber Eats",
+      foot_tag:"Restaurant · Pizzeria · Grill — eine Reise durch Italien in Belair, Luxemburg-Stadt.",
+      foot_aura:"Teil der Groupe Aura", foot_nav:"Route", foot_menu:"Die Karte", foot_rooms:"Die Räume", foot_visit:"Besuchen Sie uns",
+      foot_contact:"Kontakt", foot_rights:"alle Rechte vorbehalten.",
+      foot_demo:"Demo-Website — Inhalte, Öffnungszeiten und Preise beim Restaurant zu bestätigen."
+    },
+    en:{
+      nav_book:"Book a table",
+      tick1:"Belair · Route d'Arlon", tick2:"Lunch & dinner service", tick3:"House pizza · Fresh pasta", tick4:"Grill · Daily specials", tick5:"Terrace · ~100 seats",
+      tick1b:"Belair · Route d'Arlon", tick2b:"Lunch & dinner service", tick3b:"House pizza · Fresh pasta", tick4b:"Grill · Daily specials", tick5b:"Terrace · ~100 seats",
+      hero_tag:"Stop 00 · The Terrace", hero_stamp:"Belair · Lux",
+      hero_title:"In the mood for a generous plate in a warm setting?",
+      hero_lead:"Generous Italian cooking on the edge of Belair — house pizza, fresh pasta and grilled dishes, served across a collection of rooms that tour the whole of Italy.",
+      route_k1:"Stop", route_k2:"Cuisine", route_v2:"Italian · Grill", route_k3:"Group",
+      hero_cta1:"See the menu", hero_cta2:"Our rooms",
+      fact1:"Themed rooms", fact2:"Seats on the terrace", fact3:"Takeaway · Uber Eats", fact4:"Free parking",
+      menu_idx:"Part I · The Board", menu_h:"Today's departures — the menu",
+      menu_note:"Dishes and prices indicative — full menu to be confirmed with the venue.",
+      menu_c1t:"Wood-fired", menu_c1d:"Fresh dough, melting mozzarella and classic toppings — the house signature.",
+      menu_c2t:"Fresh pasta", menu_c2d:"House-made pasta with generous Italian sauces, cooked to order.",
+      menu_c3t:"Salads & starters", menu_c3d:"Composed salads and antipasti to open the meal — or a light lunch dish.",
+      menu_c4t:"Grill — meat & fish", menu_c4d:"Grilled meats and fish, including the sea-bream fillet — “a real eye-catcher”.",
+      menu_c5t:"Daily specials", menu_c5d:"The board changes with the market — ask for today's specials when you arrive.",
+      status_service:"À la carte", status_daily:"On the board", aconf_s:"price to confirm",
+      ved_k:"Signature", ved_price:"from … · to confirm",
+      ved_1:"The house burger — regularly named a regulars' favourite.",
+      ved_2h:"Sea-bream fillet", ved_2:"Grilled sea bream, described by guests as the real star of the grill menu.",
+      ved_3h:"House pizza", ved_3:"The signature category — dough made in house, carefully baked.",
+      rooms_idx:"Part II · The Stops", rooms_h:"A tour of Italy, room by room",
+      rooms_note:"Every room has its own décor and mood — choose your stop when you book.",
+      room_r_terrace:"Open air", room_n_terrace:"The Terrace", room_l_terrace:"Around 100 seats under parasols, among ivy and lavender. Free parking.",
+      room_r_venezia:"Veneto · Venice", room_n_venezia:"The Venezia Room", room_l_venezia:"Carnival masks and mirrors — the romantic room, perfect for two.",
+      room_r_cinema:"Roma · Cinema", room_n_cinema:"Il Cinema", room_l_cinema:"A wall of black-and-white Italian cinema portraits.",
+      room_r_veranda:"Toscana · Veranda", room_n_veranda:"The Veranda", room_l_veranda:"A Tuscan-hills mural and tufted banquette, bathed in light.",
+      room_r_clock:"Bistro · Rustic", room_n_clock:"The Clock Room", room_l_clock:"Whitewashed wood and a big iron clock — where the specials board hangs.",
+      room_r_bar:"Aperitivo", room_n_bar:"The Bar", room_l_bar:"For an aperitivo before sitting down to dinner.",
+      rooms_extra:"Other rooms: Roma, Alto-Adige (upstairs, groups ~20). Additional photos to be supplied by the venue.",
+      visit_idx:"Part III · The Platform", visit_h:"Hours, access & booking",
+      visit_note:"All opening hours to be confirmed with the venue.",
+      visit_hours_h:"Service hours", day_monthu:"Mon – Thu", day_fri:"Friday", day_sat:"Saturday", sat_t:"Evening · 18:00–23:00", day_sun:"Sunday", closed:"Closed",
+      aconf_hours:"Opening hours to be confirmed with the venue",
+      visit_addr_h:"Address & contact", visit_cta1:"Book by phone", visit_cta2:"Order · Uber Eats",
+      foot_tag:"Restaurant · Pizzeria · Grill — a tour of Italy on the edge of Belair, Luxembourg City.",
+      foot_aura:"Part of Groupe Aura", foot_nav:"Itinerary", foot_menu:"The menu", foot_rooms:"The rooms", foot_visit:"Visit us",
+      foot_contact:"Contact", foot_rights:"all rights reserved.",
+      foot_demo:"Demonstration site — content, hours and prices to be confirmed with the venue."
+    }
+  };
+
+  function setLang(lang){
+    const dict = I18N[lang] || I18N.fr;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const k = el.getAttribute('data-i18n');
+      if(dict[k] !== undefined) el.textContent = dict[k];
+    });
+    document.querySelectorAll('.lang button').forEach(b=>{
+      b.classList.toggle('active', b.dataset.lang===lang);
+    });
+  }
+  document.querySelectorAll('.lang button').forEach(btn=>{
+    btn.addEventListener('click', ()=>setLang(btn.dataset.lang));
+  });
+  // default paint is FR (already in HTML); no auto-switch on load.
+</script>
+</body>
+</html>

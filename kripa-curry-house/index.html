@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Kripa Curry House — Saveurs indiennes authentiques · Esch-sur-Alzette</title>
+<meta name="description" content="Kripa Curry House — cuisine indienne et spécialités himalayennes au cœur d'Esch-sur-Alzette. Site de démonstration." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cream:#FBF4E8;
+    --cream-2:#F4E7CF;
+    --paper:#FFFDF8;
+    --saffron:#E8A33D;
+    --turmeric:#D98A1F;
+    --paprika:#B23A2E;
+    --chili:#9C2B1F;
+    --cardamom:#5B7D3A;
+    --fennel:#3A7D6E;
+    --cumin:#8A5A2B;
+    --cinnamon:#A3612E;
+    --ink:#241A16;
+    --ink-soft:#5b4a3f;
+    --brass:#C9902F;
+    --brass-deep:#9a6a18;
+    --line:rgba(36,26,22,.14);
+    --pad:clamp(20px,5vw,84px);
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Instrument Sans",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.02;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .label{
+    font-family:var(--sans);
+    text-transform:uppercase;
+    letter-spacing:.28em;
+    font-size:11px;
+    font-weight:600;
+    color:var(--brass-deep);
+  }
+
+  /* ---------- decorative spice grain ---------- */
+  .grain{
+    position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(232,163,61,.10), transparent 22%),
+      radial-gradient(circle at 88% 8%, rgba(178,58,46,.08), transparent 24%),
+      radial-gradient(circle at 78% 92%, rgba(91,125,58,.07), transparent 26%);
+  }
+
+  /* ---------- brass rail (rim of the tin) ---------- */
+  .rail{
+    position:sticky;top:0;z-index:50;
+    display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;
+    padding:0 var(--pad);height:64px;
+    background:linear-gradient(180deg,#241A16, #2c1f18);
+    color:var(--cream);
+    border-bottom:2px solid var(--brass);
+    box-shadow:0 8px 30px rgba(36,26,22,.18);
+  }
+  .rail .mono{
+    display:flex;align-items:center;gap:12px;font-family:var(--serif);
+    font-weight:700;font-size:20px;letter-spacing:.02em;
+  }
+  .seal{
+    width:34px;height:34px;border-radius:50%;flex:none;
+    background:radial-gradient(circle at 35% 30%,#f0c368,var(--brass) 55%,var(--brass-deep));
+    display:grid;place-items:center;color:#3a2a12;font-family:var(--serif);
+    font-weight:900;font-size:16px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.35);
+  }
+  .rail nav{display:flex;gap:26px;justify-content:center}
+  .rail nav a{
+    font-size:12.5px;text-transform:uppercase;letter-spacing:.14em;color:rgba(251,244,232,.82);
+    padding:4px 0;border-bottom:2px solid transparent;transition:.2s;
+  }
+  .rail nav a:hover{color:#fff;border-color:var(--saffron)}
+  .rail .right{display:flex;align-items:center;gap:14px}
+  .langs{display:flex;gap:2px;background:rgba(255,255,255,.08);border-radius:30px;padding:3px}
+  .langs button{
+    font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.08em;
+    color:rgba(251,244,232,.7);background:none;border:0;cursor:pointer;
+    padding:5px 10px;border-radius:30px;text-transform:uppercase;transition:.18s;
+  }
+  .langs button.on{background:var(--saffron);color:#2a1c0c}
+  .rail .call{
+    font-size:12.5px;font-weight:600;letter-spacing:.04em;color:#2a1c0c;
+    background:var(--saffron);padding:8px 16px;border-radius:30px;white-space:nowrap;
+  }
+  .rail .call:hover{background:#f0b552}
+  .burger{display:none;background:none;border:0;color:var(--cream);cursor:pointer;font-size:22px}
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    position:relative;z-index:1;
+    display:grid;grid-template-columns:1.05fr .95fr;
+    gap:clamp(30px,4vw,64px);align-items:center;
+    padding:clamp(40px,6vw,84px) var(--pad) clamp(30px,4vw,60px);
+  }
+  .mh-copy .eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+  .mh-copy .eyebrow .rule{height:1px;width:54px;background:var(--brass)}
+  .mh-copy h1{
+    font-size:clamp(46px,7vw,104px);font-weight:900;line-height:.92;letter-spacing:-.02em;
+  }
+  .mh-copy h1 em{font-style:italic;font-weight:500;color:var(--paprika);display:block}
+  .mh-copy .strap{
+    font-family:var(--serif);font-style:italic;font-size:clamp(19px,2vw,26px);
+    color:var(--ink-soft);margin:20px 0 8px;max-width:30ch;
+  }
+  .mh-copy .heritage{max-width:42ch;color:var(--ink-soft);font-size:16px;margin-top:14px}
+  .mh-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .btn{
+    font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.03em;
+    padding:14px 26px;border-radius:40px;cursor:pointer;border:2px solid var(--ink);transition:.2s;
+    display:inline-flex;align-items:center;gap:9px;
+  }
+  .btn.primary{background:var(--paprika);border-color:var(--paprika);color:#fff}
+  .btn.primary:hover{background:var(--chili);border-color:var(--chili)}
+  .btn.ghost:hover{background:var(--ink);color:var(--cream)}
+  .mh-stats{display:flex;gap:34px;margin-top:38px;flex-wrap:wrap}
+  .mh-stats .s b{font-family:var(--serif);font-size:34px;font-weight:900;color:var(--paprika);display:block;line-height:1}
+  .mh-stats .s span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+
+  /* thali collage of round plates */
+  .mh-art{position:relative;height:min(60vw,560px);min-height:400px}
+  .plate{
+    position:absolute;border-radius:50%;background:#fff;overflow:hidden;
+    box-shadow:0 22px 50px -18px rgba(36,26,22,.45), inset 0 0 0 8px #fff, inset 0 0 0 10px rgba(201,144,47,.35);
+  }
+  .plate img{width:100%;height:100%;object-fit:cover}
+  .plate.p1{width:56%;aspect-ratio:1;left:20%;top:2%;z-index:3}
+  .plate.p2{width:38%;aspect-ratio:1;left:0;top:44%;z-index:4}
+  .plate.p3{width:34%;aspect-ratio:1;right:1%;top:52%;z-index:2}
+  .ring{
+    position:absolute;border-radius:50%;border:1.5px dashed rgba(201,144,47,.55);
+  }
+  .ring.r1{inset:-4% 8% 12% -2%}
+  .badge-rating{
+    position:absolute;right:2%;top:6%;z-index:5;
+    background:var(--ink);color:var(--cream);border-radius:50%;
+    width:96px;height:96px;display:grid;place-content:center;text-align:center;
+    box-shadow:0 12px 30px rgba(36,26,22,.35);border:2px solid var(--saffron);
+  }
+  .badge-rating b{font-family:var(--serif);font-size:28px;font-weight:900;color:var(--saffron);line-height:1}
+  .badge-rating span{font-size:9px;letter-spacing:.16em;text-transform:uppercase;margin-top:3px}
+
+  /* ---------- marquee spice strip ---------- */
+  .strip{
+    position:relative;z-index:1;background:var(--ink);color:var(--cream);overflow:hidden;
+    border-top:2px solid var(--brass);border-bottom:2px solid var(--brass);
+  }
+  .strip .track{display:flex;gap:40px;white-space:nowrap;padding:13px 0;animation:scroll 34s linear infinite;width:max-content}
+  .strip .track span{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--cream);opacity:.9}
+  .strip .track span::before{content:"◆";color:var(--saffron);margin-right:40px;font-style:normal;font-size:11px;vertical-align:middle}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- section frame ---------- */
+  section{position:relative;z-index:1}
+  .wrap{padding:clamp(52px,6vw,96px) var(--pad)}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+  .sec-head h2{font-size:clamp(30px,4vw,52px);font-weight:900}
+  .sec-head p{max-width:46ch;color:var(--ink-soft);font-size:15px}
+
+  /* ---------- masala dabba (the spice tin) ---------- */
+  .dabba-sec{background:linear-gradient(180deg,var(--cream),var(--cream-2))}
+  .tin{
+    max-width:1120px;margin:0 auto;position:relative;
+    border-radius:36px;padding:clamp(18px,2.4vw,34px);
+    background:
+      radial-gradient(circle at 50% 0%, rgba(255,255,255,.7), transparent 60%),
+      linear-gradient(150deg,#e9d8b0,#d8bf88);
+    box-shadow:
+      0 30px 70px -30px rgba(36,26,22,.5),
+      inset 0 0 0 3px var(--brass),
+      inset 0 0 0 12px rgba(255,255,255,.35),
+      inset 0 0 0 14px var(--brass-deep);
+  }
+  .tin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.4vw,18px)}
+  .well{
+    background:var(--paper);border-radius:22px;padding:22px 20px 20px;position:relative;
+    border:1px solid rgba(201,144,47,.3);min-height:150px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    transition:transform .2s, box-shadow .2s;cursor:pointer;overflow:hidden;
+  }
+  .well:hover{transform:translateY(-4px);box-shadow:0 16px 34px -18px rgba(36,26,22,.45)}
+  .well .dot{width:16px;height:16px;border-radius:50%;box-shadow:inset 0 -3px 5px rgba(0,0,0,.2);margin-bottom:14px}
+  .well h3{font-size:22px;font-weight:600}
+  .well .cat-fr{font-family:var(--sans);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);margin-top:4px}
+  .well .from{margin-top:14px;font-size:13px;color:var(--ink-soft)}
+  .well .from b{font-family:var(--serif);color:var(--paprika);font-size:17px}
+  .well.feature{
+    background:linear-gradient(160deg,var(--paprika),var(--chili));color:#fff;
+    grid-column:2;grid-row:2;text-align:left;overflow:hidden;
+  }
+  .well.feature .cat-fr,.well.feature .from{color:rgba(255,255,255,.85)}
+  .well.feature .from b{color:#ffd98a}
+  .well.feature h3{font-size:24px;color:#fff}
+  .well.feature .tag{
+    position:absolute;top:14px;right:14px;background:var(--saffron);color:#2a1c0c;
+    font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border-radius:20px;
+  }
+  .well.feature .peak{
+    position:absolute;right:-30px;bottom:-30px;width:150px;height:150px;border-radius:50%;
+    background:#fff;overflow:hidden;box-shadow:inset 0 0 0 6px rgba(255,255,255,.6);opacity:.95;
+  }
+  .well.feature .peak img{width:100%;height:100%;object-fit:cover}
+  .well.feature h3,.well.feature .cat-fr,.well.feature .from{position:relative;z-index:2}
+  .tin-note{text-align:center;margin-top:26px;font-size:12.5px;color:var(--ink-soft);letter-spacing:.02em}
+
+  /* ---------- signatures (katori plates) ---------- */
+  .sig-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(18px,2vw,30px)}
+  .dish{position:relative;text-align:center}
+  .dish .disc{
+    aspect-ratio:1;border-radius:50%;background:#fff;overflow:hidden;position:relative;
+    box-shadow:0 18px 40px -20px rgba(36,26,22,.5), inset 0 0 0 7px #fff, inset 0 0 0 9px rgba(201,144,47,.4);
+    transition:transform .25s;
+  }
+  .dish:hover .disc{transform:translateY(-6px) rotate(-2deg)}
+  .dish .disc img{width:100%;height:100%;object-fit:cover}
+  .dish .heat{
+    position:absolute;top:6%;right:8%;z-index:3;background:var(--paper);border-radius:20px;
+    padding:5px 9px;font-size:11px;letter-spacing:.04em;box-shadow:0 4px 12px rgba(0,0,0,.15);
+    display:flex;gap:2px;align-items:center;
+  }
+  .dish h3{font-size:20px;margin-top:18px}
+  .dish .veg{color:var(--cardamom);font-weight:700;font-size:12px;letter-spacing:.1em}
+  .dish .desc{font-size:13px;color:var(--ink-soft);margin-top:4px;padding:0 6px}
+  .dish .price{font-family:var(--serif);font-weight:700;font-size:19px;color:var(--paprika);margin-top:8px}
+
+  .heat-legend{display:flex;gap:18px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--ink-soft)}
+  .heat-legend .k{display:inline-flex;gap:4px;align-items:center}
+  .flame{color:var(--chili)}
+  .flame.off{opacity:.22}
+
+  /* ---------- ledger / full carte ---------- */
+  .carte-sec{background:var(--ink);color:var(--cream)}
+  .carte-sec .sec-head h2{color:var(--cream)}
+  .carte-sec .sec-head p{color:rgba(251,244,232,.7)}
+  .ledger{columns:2;column-gap:clamp(40px,5vw,90px)}
+  .lg-block{break-inside:avoid;margin-bottom:34px}
+  .lg-block h4{
+    font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--saffron);
+    font-family:var(--sans);font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px;
+  }
+  .lg-block h4::after{content:"";flex:1;height:1px;background:rgba(201,144,47,.35)}
+  .lg-row{display:flex;align-items:baseline;gap:8px;padding:7px 0;border-bottom:1px dotted rgba(251,244,232,.18)}
+  .lg-row .n{font-family:var(--serif);font-size:17px}
+  .lg-row .n small{font-size:12px;color:rgba(251,244,232,.6);font-family:var(--sans);margin-left:6px}
+  .lg-row .leader{flex:1}
+  .lg-row .p{font-family:var(--serif);font-weight:600;color:var(--saffron)}
+  .carte-note{margin-top:20px;font-size:12px;color:rgba(251,244,232,.55);letter-spacing:.02em}
+
+  /* ---------- heritage band ---------- */
+  .heritage-sec{background:linear-gradient(160deg,var(--cream-2),var(--cream))}
+  .heri-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,4vw,70px);align-items:center}
+  .heri-copy h2{font-size:clamp(30px,3.6vw,48px);font-weight:900;margin-bottom:6px}
+  .heri-copy h2 em{color:var(--paprika);font-style:italic;font-weight:500}
+  .heri-copy p{color:var(--ink-soft);font-size:16px;margin-top:16px;max-width:48ch}
+  .heri-copy .chef{margin-top:24px;font-family:var(--serif);font-style:italic;font-size:19px;color:var(--ink)}
+  .timeline{display:flex;gap:0;margin-top:34px}
+  .tl{flex:1;position:relative;padding-top:22px}
+  .tl::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--brass)}
+  .tl::after{content:"";position:absolute;top:-5px;left:0;width:12px;height:12px;border-radius:50%;background:var(--paprika)}
+  .tl b{font-family:var(--serif);font-size:26px;font-weight:900;display:block;color:var(--paprika)}
+  .tl span{font-size:12.5px;color:var(--ink-soft)}
+  .heri-art{position:relative}
+  .heri-photo{
+    border-radius:20px;overflow:hidden;height:min(48vw,460px);
+    box-shadow:0 26px 60px -28px rgba(36,26,22,.55);border:8px solid #fff;
+  }
+  .heri-photo img{width:100%;height:100%;object-fit:cover;object-position:left top}
+  .heri-cap{
+    position:absolute;bottom:-18px;left:-18px;background:var(--saffron);color:#2a1c0c;
+    padding:14px 20px;border-radius:14px;font-family:var(--serif);font-style:italic;font-size:17px;
+    box-shadow:0 14px 30px -12px rgba(36,26,22,.4);max-width:230px;
+  }
+
+  /* ---------- visit ---------- */
+  .visit-grid{display:grid;grid-template-columns:.85fr .85fr 1.3fr;gap:clamp(24px,3vw,48px)}
+  .v-card h3{font-size:24px;margin-bottom:18px}
+  .hours-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
+  .hours-row.closed{color:var(--paprika)}
+  .hours-row b{font-weight:600}
+  .contact-line{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;font-size:15px}
+  .contact-line .ic{color:var(--paprika);font-size:18px;flex:none;line-height:1.4}
+  .contact-line a{border-bottom:1px solid var(--brass)}
+  .confirm{
+    display:inline-block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    background:rgba(178,58,46,.12);color:var(--paprika);padding:3px 8px;border-radius:20px;margin-left:6px;font-weight:600;
+  }
+  .map-frame{border-radius:18px;overflow:hidden;border:6px solid #fff;box-shadow:0 20px 46px -24px rgba(36,26,22,.45);height:100%;min-height:320px}
+  .map-frame iframe{width:100%;height:100%;border:0;display:block;filter:saturate(.9)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:var(--cream);position:relative;z-index:1}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding:clamp(44px,5vw,72px) var(--pad) 30px}
+  .foot-brand .seal{margin-bottom:16px}
+  .foot-brand p{color:rgba(251,244,232,.65);font-size:14px;max-width:36ch;margin-top:10px}
+  .foot-col h5{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--saffron);margin-bottom:16px}
+  .foot-col a,.foot-col p{display:block;color:rgba(251,244,232,.78);font-size:14px;margin-bottom:9px}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{
+    border-top:1px solid rgba(251,244,232,.15);padding:20px var(--pad);
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    font-size:12px;color:rgba(251,244,232,.55);
+  }
+  .demo-flag{background:var(--paprika);color:#fff;padding:3px 10px;border-radius:20px;font-weight:600;letter-spacing:.03em}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:960px){
+    .rail nav{display:none}
+    .burger{display:block}
+    .rail{grid-template-columns:auto 1fr auto}
+    .masthead{grid-template-columns:1fr;gap:40px}
+    .mh-art{height:78vw;max-height:520px}
+    .heri-grid{grid-template-columns:1fr}
+    .heri-art{order:-1}
+    .visit-grid{grid-template-columns:1fr 1fr}
+    .visit-grid .v-map{grid-column:1/-1}
+    .sig-grid{grid-template-columns:repeat(2,1fr)}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .ledger{columns:1}
+    #navdrawer.open{display:flex}
+  }
+  @media(max-width:600px){
+    .tin-grid{grid-template-columns:1fr 1fr}
+    .well.feature{grid-column:1/-1;grid-row:auto}
+    .sig-grid{grid-template-columns:1fr 1fr}
+    .visit-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .mh-stats{gap:22px}
+    .badge-rating{width:78px;height:78px}
+  }
+  /* mobile drawer */
+  #navdrawer{
+    display:none;position:fixed;inset:64px 0 auto 0;z-index:49;flex-direction:column;
+    background:#2c1f18;border-bottom:2px solid var(--brass);padding:16px var(--pad);gap:4px;
+  }
+  #navdrawer a{color:var(--cream);padding:12px 0;border-bottom:1px solid rgba(251,244,232,.1);letter-spacing:.06em;text-transform:uppercase;font-size:14px}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ============ BRASS RAIL ============ -->
+<header class="rail">
+  <a href="#top" class="mono"><span class="seal">K</span><span>Kripa</span></a>
+  <nav>
+    <a href="#dabba" data-i18n="nav_menu">La carte</a>
+    <a href="#signatures" data-i18n="nav_sig">Signatures</a>
+    <a href="#heritage" data-i18n="nav_story">Notre histoire</a>
+    <a href="#visit" data-i18n="nav_visit">Nous trouver</a>
+  </nav>
+  <div class="right">
+    <div class="langs" role="group" aria-label="Langue">
+      <button data-lang="fr" class="on">FR</button>
+      <button data-lang="de">DE</button>
+      <button data-lang="en">EN</button>
+    </div>
+    <a href="tel:+35226379140" class="call" data-i18n="cta_call">Réserver · 26 37 91 40</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+<div id="navdrawer">
+  <a href="#dabba" data-i18n="nav_menu">La carte</a>
+  <a href="#signatures" data-i18n="nav_sig">Signatures</a>
+  <a href="#heritage" data-i18n="nav_story">Notre histoire</a>
+  <a href="#visit" data-i18n="nav_visit">Nous trouver</a>
+</div>
+
+<!-- ============ MASTHEAD ============ -->
+<main id="top">
+<section class="masthead">
+  <div class="mh-copy">
+    <div class="eyebrow"><span class="rule"></span><span class="label" data-i18n="mh_eyebrow">Cuisine indienne & himalayenne · Esch-sur-Alzette</span></div>
+    <h1>Kripa<em data-i18n="mh_h1_em">Curry House</em></h1>
+    <p class="strap" data-i18n="mh_strap">Saveurs indiennes authentiques — de l'Inde jusqu'aux contreforts de l'Himalaya.</p>
+    <p class="heritage" data-i18n="mh_heritage">Quatorze ans de savoir-faire à Strassen, aujourd'hui au cœur d'Esch, sur la place de l'Hôtel de Ville. Curry, biryani et tandoori préparés par le chef Joel et son équipe.</p>
+    <div class="mh-cta">
+      <a href="#dabba" class="btn primary" data-i18n="mh_cta1">Découvrir la carte</a>
+      <a href="#visit" class="btn ghost" data-i18n="mh_cta2">Réserver une table</a>
+    </div>
+    <div class="mh-stats">
+      <div class="s"><b>4,8</b><span data-i18n="stat_rating">Note des convives</span></div>
+      <div class="s"><b>14</b><span data-i18n="stat_years">Ans de métier</span></div>
+      <div class="s"><b>100%</b><span data-i18n="stat_halal">Options halal & végé</span></div>
+    </div>
+  </div>
+  <div class="mh-art" aria-hidden="false">
+    <div class="ring r1"></div>
+    <div class="plate p1"><img src="assets/hero.jpg" alt="Plat signature Kripa Curry House" /></div>
+    <div class="plate p2"><img src="assets/food-biryani.jpg" alt="Biryani" /></div>
+    <div class="plate p3"><img src="assets/food-tandoori.jpg" alt="Tandoori" /></div>
+    <div class="badge-rating"><b>4,8★</b><span data-i18n="badge_reviews">avis</span></div>
+  </div>
+</section>
+</main>
+
+<!-- ============ SPICE STRIP ============ -->
+<div class="strip" aria-hidden="true">
+  <div class="track" id="track">
+    <span>Tikka Masala</span><span>Biryani d'agneau</span><span>Spécialités himalayennes</span><span>Tandoori</span><span>Rogan Josh</span><span>Palak Paneer</span><span>Naan au fromage</span><span>Vindaloo</span><span>Samosa</span><span>Korma</span>
+    <span>Tikka Masala</span><span>Biryani d'agneau</span><span>Spécialités himalayennes</span><span>Tandoori</span><span>Rogan Josh</span><span>Palak Paneer</span><span>Naan au fromage</span><span>Vindaloo</span><span>Samosa</span><span>Korma</span>
+  </div>
+</div>
+
+<!-- ============ MASALA DABBA ============ -->
+<section id="dabba" class="dabba-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="label" data-i18n="dabba_label">La boîte à épices</span>
+        <h2 data-i18n="dabba_h">Notre carte, comme un masala dabba</h2>
+      </div>
+      <p data-i18n="dabba_p">Chaque compartiment, une famille de saveurs. Ouvrez la boîte et composez votre repas — de l'entrée aux spécialités du Népal.</p>
+    </div>
+
+    <div class="tin">
+      <div class="tin-grid">
+        <div class="well">
+          <div><div class="dot" style="background:var(--cumin)"></div>
+          <h3>Entrées</h3><div class="cat-fr" data-i18n="cat_starters">Starters</div></div>
+          <div class="from"><span data-i18n="from">dès</span> <b>6,50 €</b></div>
+        </div>
+        <div class="well">
+          <div><div class="dot" style="background:var(--saffron)"></div>
+          <h3>Poulet</h3><div class="cat-fr" data-i18n="cat_chicken">Chicken</div></div>
+          <div class="from"><span data-i18n="from">dès</span> <b>17,95 €</b></div>
+        </div>
+        <div class="well">
+          <div><div class="dot" style="background:var(--paprika)"></div>
+          <h3>Agneau</h3><div class="cat-fr" data-i18n="cat_lamb">Lamb</div></div>
+          <div class="from"><span data-i18n="from">dès</span> <b>19,95 €</b></div>
+        </div>
+        <div class="well">
+          <div><div class="dot" style="background:var(--fennel)"></div>
+          <h3 data-i18n="cat_sea_h">Fruits de mer</h3><div class="cat-fr" data-i18n="cat_sea">Seafood</div></div>
+          <div class="from"><span data-i18n="from">dès</span> <b>21,95 €</b></div>
+        </div>
+
+        <div class="well feature">
+          <span class="tag" data-i18n="feature_tag">La spécialité</span>
+          <div class="peak"><img src="assets/food-lamb-curry.jpg" alt="Spécialité himalayenne" /></div>
+          <div><h3 data-i18n="cat_hima_h">Spécialités himalayennes</h3>
+          <div class="cat-fr" data-i18n="cat_hima">Himalayan · Nepalese</div></div>
+          <div class="from" data-i18n="feature_note">Le menu népalais, notre signature</div>
+        </div>
+
+        <div class="well">
+          <div><div class="dot" style="background:var(--chili)"></div>
+          <h3>Tandoori</h3><div class="cat-fr" data-i18n="cat_tandoori">Four à argile</div></div>
+          <div class="from"><span data-i18n="from">dès</span> <b>18,95 €</b></div>
+        </div>
+        <div class="well">
+          <div><div class="dot" style="background:var(--cardamom)"></div>
+          <h3 data-i18n="cat_veg_h">Végétarien</h3><div class="cat-fr" data-i18n="cat_veg">Veggie & vegan</div></div>
+          <div class="from"><span data-i18n="from">dès</span> <b>14,95 €</b></div>
+        </div>
+        <div class="well">
+          <div><div class="dot" style="background:var(--turmeric)"></div>
+          <h3>Biryani</h3><div class="cat-fr" data-i18n="cat_biryani">Riz basmati</div></div>
+          <div class="from"><span data-i18n="from">dès</span> <b>18,95 €</b></div>
+        </div>
+        <div class="well">
+          <div><div class="dot" style="background:var(--cinnamon)"></div>
+          <h3 data-i18n="cat_bread_h">Naans & Desserts</h3><div class="cat-fr" data-i18n="cat_bread">Breads & sweets</div></div>
+          <div class="from"><span data-i18n="from">dès</span> <b>4,95 €</b></div>
+        </div>
+      </div>
+    </div>
+    <p class="tin-note" data-i18n="tin_note">Prix indicatifs issus du menu de livraison — à confirmer avec l'établissement. Options doux · relevé · épicé sur demande.</p>
+  </div>
+</section>
+
+<!-- ============ SIGNATURES ============ -->
+<section id="signatures">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="label" data-i18n="sig_label">Les incontournables</span>
+        <h2 data-i18n="sig_h">Les plats qu'on revient chercher</h2>
+      </div>
+      <div class="heat-legend">
+        <span data-i18n="heat_label">Intensité :</span>
+        <span class="k"><span class="flame">●</span><span class="flame off">●</span><span class="flame off">●</span> <span data-i18n="heat_mild">doux</span></span>
+        <span class="k"><span class="flame">●</span><span class="flame">●</span><span class="flame off">●</span> <span data-i18n="heat_hot">relevé</span></span>
+        <span class="k"><span class="flame">●</span><span class="flame">●</span><span class="flame">●</span> <span data-i18n="heat_spicy">épicé</span></span>
+      </div>
+    </div>
+
+    <div class="sig-grid">
+      <div class="dish">
+        <div class="disc">
+          <div class="heat"><span class="flame">●</span><span class="flame">●</span><span class="flame off">●</span></div>
+          <img src="assets/food-butter-chicken.jpg" alt="Chicken Tikka Masala" />
+        </div>
+        <h3>Chicken Tikka Masala</h3>
+        <p class="desc" data-i18n="d_tikka">Sauce crémeuse aux épices douces, le grand classique.</p>
+        <div class="price">19,95 €</div>
+      </div>
+
+      <div class="dish">
+        <div class="disc">
+          <div class="heat"><span class="flame">●</span><span class="flame off">●</span><span class="flame off">●</span></div>
+          <img src="assets/food-paneer-makhani.jpg" alt="Paneer Tikka Butter Masala" />
+        </div>
+        <h3>Paneer Butter Masala <span class="veg">· VÉGÉ</span></h3>
+        <p class="desc" data-i18n="d_paneer">Fromage paneer fondant, sauce tomate-beurre. Le phare végétarien.</p>
+        <div class="price">20,95 €</div>
+      </div>
+
+      <div class="dish">
+        <div class="disc">
+          <div class="heat"><span class="flame">●</span><span class="flame">●</span><span class="flame off">●</span></div>
+          <img src="assets/food-biryani.jpg" alt="Biryani d'agneau" />
+        </div>
+        <h3>Lamb Biryani</h3>
+        <p class="desc" data-i18n="d_biryani">Basmati parfumé, agneau mijoté, oignons croustillants.</p>
+        <div class="price">20,95 €</div>
+      </div>
+
+      <div class="dish">
+        <div class="disc">
+          <div class="heat"><span class="flame">●</span><span class="flame">●</span><span class="flame">●</span></div>
+          <img src="assets/food-tandoori.jpg" alt="Tandoori" />
+        </div>
+        <h3>Tandoori</h3>
+        <p class="desc" data-i18n="d_tandoori">Grillé au four à argile, mariné au yaourt et aux épices.</p>
+        <div class="price">18,95 €</div>
+      </div>
+
+      <div class="dish">
+        <div class="disc">
+          <div class="heat"><span class="flame">●</span><span class="flame off">●</span><span class="flame off">●</span></div>
+          <img src="assets/food-korma.jpg" alt="Korma" />
+        </div>
+        <h3>Korma</h3>
+        <p class="desc" data-i18n="d_korma">Sauce onctueuse aux noix de cajou et à la crème.</p>
+        <div class="price">18,95 €</div>
+      </div>
+
+      <div class="dish">
+        <div class="disc">
+          <div class="heat"><span class="flame">●</span><span class="flame">●</span><span class="flame">●</span></div>
+          <img src="assets/food-rogan-josh.jpg" alt="Rogan Josh" />
+        </div>
+        <h3>Rogan Josh</h3>
+        <p class="desc" data-i18n="d_rogan">Curry cachemiri intense, riche en épices.</p>
+        <div class="price">19,95 €</div>
+      </div>
+
+      <div class="dish">
+        <div class="disc">
+          <div class="heat"><span class="flame">●</span><span class="flame off">●</span><span class="flame off">●</span></div>
+          <img src="assets/food-palak-paneer.jpg" alt="Palak Paneer" />
+        </div>
+        <h3>Palak Paneer <span class="veg">· VÉGÉ</span></h3>
+        <p class="desc" data-i18n="d_palak">Épinards crémeux et paneer, doux et réconfortant.</p>
+        <div class="price">17,95 €</div>
+      </div>
+
+      <div class="dish">
+        <div class="disc">
+          <div class="heat"><span class="flame off">●</span><span class="flame off">●</span><span class="flame off">●</span></div>
+          <img src="assets/food-samosa.jpg" alt="Samosa aux légumes" />
+        </div>
+        <h3>Samosa <span class="veg">· VÉGÉ</span></h3>
+        <p class="desc" data-i18n="d_samosa">Chaussons croustillants aux légumes épicés.</p>
+        <div class="price">6,50 €</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FULL LEDGER ============ -->
+<section class="carte-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="label" style="color:var(--saffron)" data-i18n="carte_label">La carte complète</span>
+        <h2 data-i18n="carte_h">Toute la boîte à épices</h2>
+      </div>
+      <p data-i18n="carte_p">Un aperçu des familles de plats. Menu et prix définitifs communiqués par l'établissement.</p>
+    </div>
+
+    <div class="ledger">
+      <div class="lg-block">
+        <h4 data-i18n="lg_starters">Entrées</h4>
+        <div class="lg-row"><span class="n">Samosa aux légumes <small data-i18n="veg_sm">végé</small></span><span class="leader"></span><span class="p">6,50 €</span></div>
+        <div class="lg-row"><span class="n">Paneer Pakora <small data-i18n="veg_sm">végé</small></span><span class="leader"></span><span class="p">7,50 €</span></div>
+        <div class="lg-row"><span class="n">Chilli Chicken</span><span class="leader"></span><span class="p">9,95 €</span></div>
+      </div>
+      <div class="lg-block">
+        <h4 data-i18n="lg_hima">Spécialités himalayennes</h4>
+        <div class="lg-row"><span class="n" data-i18n="lg_hima_row">Sélection népalaise du chef</span><span class="leader"></span><span class="p confirm-price" data-i18n="ac">à conf.</span></div>
+        <div class="carte-note" data-i18n="lg_hima_note">Noms des plats à confirmer — demandez la carte du jour.</div>
+      </div>
+      <div class="lg-block">
+        <h4 data-i18n="lg_chicken">Poulet & Agneau</h4>
+        <div class="lg-row"><span class="n">Chicken Tikka Masala</span><span class="leader"></span><span class="p">19,95 €</span></div>
+        <div class="lg-row"><span class="n">Chicken Vindaloo</span><span class="leader"></span><span class="p">19,95 €</span></div>
+        <div class="lg-row"><span class="n">Rogan Josh <small data-i18n="lamb_sm">agneau</small></span><span class="leader"></span><span class="p">19,95 €</span></div>
+        <div class="lg-row"><span class="n">Lamb Biryani</span><span class="leader"></span><span class="p">20,95 €</span></div>
+      </div>
+      <div class="lg-block">
+        <h4 data-i18n="lg_tandoori">Tandoori & Fruits de mer</h4>
+        <div class="lg-row"><span class="n">Chicken Tandoori</span><span class="leader"></span><span class="p">18,95 €</span></div>
+        <div class="lg-row"><span class="n">Tandoori Prawns <small data-i18n="prawn_sm">gambas</small></span><span class="leader"></span><span class="p">24,95 €</span></div>
+      </div>
+      <div class="lg-block">
+        <h4 data-i18n="lg_veg">Végétarien</h4>
+        <div class="lg-row"><span class="n">Paneer Butter Masala</span><span class="leader"></span><span class="p">20,95 €</span></div>
+        <div class="lg-row"><span class="n">Palak Paneer</span><span class="leader"></span><span class="p">17,95 €</span></div>
+        <div class="lg-row"><span class="n">Vegetable Korma</span><span class="leader"></span><span class="p">16,95 €</span></div>
+      </div>
+      <div class="lg-block">
+        <h4 data-i18n="lg_bread">Naans, boissons & desserts</h4>
+        <div class="lg-row"><span class="n" data-i18n="naan_plain">Naan nature</span><span class="leader"></span><span class="p">4,95 €</span></div>
+        <div class="lg-row"><span class="n" data-i18n="naan_garlic">Naan à l'ail</span><span class="leader"></span><span class="p">5,50 €</span></div>
+        <div class="lg-row"><span class="n" data-i18n="lassi">Lassi · bière indienne</span><span class="leader"></span><span class="p confirm-price" data-i18n="ac">à conf.</span></div>
+      </div>
+    </div>
+    <p class="carte-note" data-i18n="carte_note">⚠ Tous les prix proviennent du menu de livraison en ligne et sont donnés à titre indicatif. Carte et tarifs en salle à confirmer avec l'établissement.</p>
+  </div>
+</section>
+
+<!-- ============ HERITAGE ============ -->
+<section id="heritage" class="heritage-sec">
+  <div class="wrap">
+    <div class="heri-grid">
+      <div class="heri-copy">
+        <span class="label" data-i18n="heri_label">Notre histoire</span>
+        <h2 data-i18n="heri_h">Quatorze ans de curry,<em data-i18n="heri_h_em"> une nouvelle adresse.</em></h2>
+        <p data-i18n="heri_p1">Kripa Curry House, ce sont d'abord quatorze années passées à Strassen à perfectionner un même geste : une cuisine indienne franche, généreuse et fidèle à ses racines. Aujourd'hui, cette maison s'installe au cœur d'Esch-sur-Alzette, sur la place de l'Hôtel de Ville.</p>
+        <p data-i18n="heri_p2">Ici, on partage aussi bien un curry du continent qu'une spécialité venue des montagnes du Népal. Doux, relevé ou franchement épicé — vous choisissez, la cuisine s'adapte.</p>
+        <p class="chef" data-i18n="heri_chef">« Une cuisine faite avec soin, servie avec le sourire. » — Chef Joel & l'équipe</p>
+        <div class="timeline">
+          <div class="tl"><b>2011</b><span data-i18n="tl_1">Ouverture à Strassen</span></div>
+          <div class="tl"><b>14 <span data-i18n="tl_years">ans</span></b><span data-i18n="tl_2">de savoir-faire</span></div>
+          <div class="tl"><b>Esch</b><span data-i18n="tl_3">Place de l'Hôtel de Ville</span></div>
+        </div>
+      </div>
+      <div class="heri-art">
+        <div class="heri-photo"><img src="assets/interior-1.jpg" alt="Salle du restaurant Kripa Curry House" /></div>
+        <div class="heri-cap" data-i18n="heri_cap">Salle chaleureuse, service attentionné — un favori du quartier.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="label" data-i18n="visit_label">Nous trouver</span>
+        <h2 data-i18n="visit_h">Sur la place de l'Hôtel de Ville</h2>
+      </div>
+      <p data-i18n="visit_p">Au centre d'Esch, entre déjeuner de bureau, dîner en famille et livraison. Réservation conseillée le week-end.</p>
+    </div>
+
+    <div class="visit-grid">
+      <div class="v-card">
+        <h3 data-i18n="hours_h">Horaires <span class="confirm" data-i18n="ac">à confirmer</span></h3>
+        <div class="hours-row"><span data-i18n="day_monfri">Lun – Ven</span><b>11:45–14:00 · 18:00–21:45</b></div>
+        <div class="hours-row"><span data-i18n="day_sat">Samedi</span><b>12:00–14:00 · 18:00–21:45</b></div>
+        <div class="hours-row closed"><span data-i18n="day_sun">Dimanche</span><b data-i18n="closed">Fermé</b></div>
+        <p class="carte-note" style="color:var(--ink-soft);margin-top:14px" data-i18n="hours_note">Les horaires varient selon les sources — merci de confirmer par téléphone.</p>
+      </div>
+
+      <div class="v-card">
+        <h3 data-i18n="contact_h">Contact</h3>
+        <div class="contact-line"><span class="ic">◈</span><span>1, Place de l'Hôtel de Ville<br />L-4138 Esch-sur-Alzette</span></div>
+        <div class="contact-line"><span class="ic">☎</span><span><a href="tel:+35226379140">(+352) 26 37 91 40</a><span class="confirm" data-i18n="ac">à confirmer</span></span></div>
+        <div class="contact-line"><span class="ic">✆</span><span><a href="tel:+352661979779">661 97 97 79</a></span></div>
+        <div class="mh-cta" style="margin-top:22px">
+          <a href="tel:+35226379140" class="btn primary" data-i18n="cta_call2">Appeler pour réserver</a>
+        </div>
+      </div>
+
+      <div class="v-card v-map">
+        <div class="map-frame">
+          <iframe title="Carte — Kripa Curry House" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=1+Place+de+l'H%C3%B4tel+de+Ville,+L-4138+Esch-sur-Alzette,+Luxembourg&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="seal">K</div>
+      <h3 style="font-size:26px;color:var(--cream)">Kripa Curry House</h3>
+      <p data-i18n="foot_tag">Saveurs indiennes authentiques et spécialités himalayennes, au cœur d'Esch-sur-Alzette.</p>
+    </div>
+    <div class="foot-col">
+      <h5 data-i18n="foot_nav">Explorer</h5>
+      <a href="#dabba" data-i18n="nav_menu">La carte</a>
+      <a href="#signatures" data-i18n="nav_sig">Signatures</a>
+      <a href="#heritage" data-i18n="nav_story">Notre histoire</a>
+      <a href="#visit" data-i18n="nav_visit">Nous trouver</a>
+    </div>
+    <div class="foot-col">
+      <h5 data-i18n="foot_contact">Contact</h5>
+      <p>1, Place de l'Hôtel de Ville</p>
+      <p>L-4138 Esch-sur-Alzette</p>
+      <a href="tel:+35226379140">(+352) 26 37 91 40</a>
+      <p style="color:rgba(251,244,232,.5);font-size:12px" data-i18n="foot_confirm">Coordonnées à confirmer</p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span><span class="demo-flag" data-i18n="demo_flag">Site de démonstration</span> <span data-i18n="demo_txt">— maquette non officielle, non affiliée à l'établissement. Contenu et prix à confirmer.</span></span>
+    <span>© 2026 · Kripa Curry House</span>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  fr:{
+    nav_menu:"La carte", nav_sig:"Signatures", nav_story:"Notre histoire", nav_visit:"Nous trouver",
+    cta_call:"Réserver · 26 37 91 40",
+    mh_eyebrow:"Cuisine indienne & himalayenne · Esch-sur-Alzette",
+    mh_h1_em:"Curry House",
+    mh_strap:"Saveurs indiennes authentiques — de l'Inde jusqu'aux contreforts de l'Himalaya.",
+    mh_heritage:"Quatorze ans de savoir-faire à Strassen, aujourd'hui au cœur d'Esch, sur la place de l'Hôtel de Ville. Curry, biryani et tandoori préparés par le chef Joel et son équipe.",
+    mh_cta1:"Découvrir la carte", mh_cta2:"Réserver une table",
+    stat_rating:"Note des convives", stat_years:"Ans de métier", stat_halal:"Options halal & végé",
+    badge_reviews:"avis",
+    dabba_label:"La boîte à épices", dabba_h:"Notre carte, comme un masala dabba",
+    dabba_p:"Chaque compartiment, une famille de saveurs. Ouvrez la boîte et composez votre repas — de l'entrée aux spécialités du Népal.",
+    from:"dès",
+    cat_starters:"Starters", cat_chicken:"Chicken", cat_lamb:"Lamb", cat_sea_h:"Fruits de mer", cat_sea:"Seafood",
+    cat_hima_h:"Spécialités himalayennes", cat_hima:"Himalayan · Nepalese", feature_tag:"La spécialité",
+    feature_note:"Le menu népalais, notre signature",
+    cat_tandoori:"Four à argile", cat_veg_h:"Végétarien", cat_veg:"Veggie & vegan",
+    cat_biryani:"Riz basmati", cat_bread_h:"Naans & Desserts", cat_bread:"Breads & sweets",
+    tin_note:"Prix indicatifs issus du menu de livraison — à confirmer avec l'établissement. Options doux · relevé · épicé sur demande.",
+    sig_label:"Les incontournables", sig_h:"Les plats qu'on revient chercher",
+    heat_label:"Intensité :", heat_mild:"doux", heat_hot:"relevé", heat_spicy:"épicé",
+    d_tikka:"Sauce crémeuse aux épices douces, le grand classique.",
+    d_paneer:"Fromage paneer fondant, sauce tomate-beurre. Le phare végétarien.",
+    d_biryani:"Basmati parfumé, agneau mijoté, oignons croustillants.",
+    d_tandoori:"Grillé au four à argile, mariné au yaourt et aux épices.",
+    d_korma:"Sauce onctueuse aux noix de cajou et à la crème.",
+    d_rogan:"Curry cachemiri intense, riche en épices.",
+    d_palak:"Épinards crémeux et paneer, doux et réconfortant.",
+    d_samosa:"Chaussons croustillants aux légumes épicés.",
+    carte_label:"La carte complète", carte_h:"Toute la boîte à épices",
+    carte_p:"Un aperçu des familles de plats. Menu et prix définitifs communiqués par l'établissement.",
+    lg_starters:"Entrées", lg_hima:"Spécialités himalayennes", lg_hima_row:"Sélection népalaise du chef",
+    lg_hima_note:"Noms des plats à confirmer — demandez la carte du jour.",
+    lg_chicken:"Poulet & Agneau", lg_tandoori:"Tandoori & Fruits de mer", lg_veg:"Végétarien",
+    lg_bread:"Naans, boissons & desserts",
+    veg_sm:"végé", lamb_sm:"agneau", prawn_sm:"gambas", ac:"à confirmer",
+    naan_plain:"Naan nature", naan_garlic:"Naan à l'ail", lassi:"Lassi · bière indienne",
+    carte_note:"⚠ Tous les prix proviennent du menu de livraison en ligne et sont donnés à titre indicatif. Carte et tarifs en salle à confirmer avec l'établissement.",
+    heri_label:"Notre histoire", heri_h:"Quatorze ans de curry,", heri_h_em:" une nouvelle adresse.",
+    heri_p1:"Kripa Curry House, ce sont d'abord quatorze années passées à Strassen à perfectionner un même geste : une cuisine indienne franche, généreuse et fidèle à ses racines. Aujourd'hui, cette maison s'installe au cœur d'Esch-sur-Alzette, sur la place de l'Hôtel de Ville.",
+    heri_p2:"Ici, on partage aussi bien un curry du continent qu'une spécialité venue des montagnes du Népal. Doux, relevé ou franchement épicé — vous choisissez, la cuisine s'adapte.",
+    heri_chef:"« Une cuisine faite avec soin, servie avec le sourire. » — Chef Joel & l'équipe",
+    tl_1:"Ouverture à Strassen", tl_years:"ans", tl_2:"de savoir-faire", tl_3:"Place de l'Hôtel de Ville",
+    heri_cap:"Salle chaleureuse, service attentionné — un favori du quartier.",
+    visit_label:"Nous trouver", visit_h:"Sur la place de l'Hôtel de Ville",
+    visit_p:"Au centre d'Esch, entre déjeuner de bureau, dîner en famille et livraison. Réservation conseillée le week-end.",
+    hours_h:"Horaires", day_monfri:"Lun – Ven", day_sat:"Samedi", day_sun:"Dimanche", closed:"Fermé",
+    hours_note:"Les horaires varient selon les sources — merci de confirmer par téléphone.",
+    contact_h:"Contact", cta_call2:"Appeler pour réserver",
+    foot_tag:"Saveurs indiennes authentiques et spécialités himalayennes, au cœur d'Esch-sur-Alzette.",
+    foot_nav:"Explorer", foot_contact:"Contact", foot_confirm:"Coordonnées à confirmer",
+    demo_flag:"Site de démonstration", demo_txt:"— maquette non officielle, non affiliée à l'établissement. Contenu et prix à confirmer."
+  },
+  de:{
+    nav_menu:"Die Karte", nav_sig:"Signaturgerichte", nav_story:"Unsere Geschichte", nav_visit:"So finden Sie uns",
+    cta_call:"Reservieren · 26 37 91 40",
+    mh_eyebrow:"Indische & himalayische Küche · Esch-sur-Alzette",
+    mh_h1_em:"Curry House",
+    mh_strap:"Authentische indische Aromen — von Indien bis in die Ausläufer des Himalaya.",
+    mh_heritage:"Vierzehn Jahre Erfahrung in Strassen, jetzt mitten in Esch am Rathausplatz. Curry, Biryani und Tandoori von Chef Joel und seinem Team.",
+    mh_cta1:"Die Karte entdecken", mh_cta2:"Tisch reservieren",
+    stat_rating:"Gästebewertung", stat_years:"Jahre Erfahrung", stat_halal:"Halal & vegetarisch",
+    badge_reviews:"Bew.",
+    dabba_label:"Die Gewürzdose", dabba_h:"Unsere Karte wie eine Masala Dabba",
+    dabba_p:"Jedes Fach eine Geschmacksfamilie. Öffnen Sie die Dose und stellen Sie Ihr Menü zusammen — von der Vorspeise bis zu den nepalesischen Spezialitäten.",
+    from:"ab",
+    cat_starters:"Vorspeisen", cat_chicken:"Huhn", cat_lamb:"Lamm", cat_sea_h:"Meeresfrüchte", cat_sea:"Seafood",
+    cat_hima_h:"Himalaya-Spezialitäten", cat_hima:"Himalaya · Nepalesisch", feature_tag:"Die Spezialität",
+    feature_note:"Das nepalesische Menü, unsere Signatur",
+    cat_tandoori:"Tonofen", cat_veg_h:"Vegetarisch", cat_veg:"Veggie & vegan",
+    cat_biryani:"Basmatireis", cat_bread_h:"Naans & Desserts", cat_bread:"Brote & Süßes",
+    tin_note:"Richtpreise aus dem Liefermenü — beim Restaurant zu bestätigen. Mild · pikant · scharf auf Wunsch.",
+    sig_label:"Die Klassiker", sig_h:"Gerichte, für die man wiederkommt",
+    heat_label:"Schärfe:", heat_mild:"mild", heat_hot:"pikant", heat_spicy:"scharf",
+    d_tikka:"Cremige Sauce mit milden Gewürzen, der große Klassiker.",
+    d_paneer:"Zarter Paneer-Käse in Tomaten-Butter-Sauce. Das vegetarische Highlight.",
+    d_biryani:"Duftender Basmati, geschmortes Lamm, knusprige Zwiebeln.",
+    d_tandoori:"Im Tonofen gegrillt, in Joghurt und Gewürzen mariniert.",
+    d_korma:"Samtige Sauce mit Cashewnüssen und Sahne.",
+    d_rogan:"Intensives Curry aus Kaschmir, reich an Gewürzen.",
+    d_palak:"Cremiger Spinat mit Paneer, mild und wohltuend.",
+    d_samosa:"Knusprige Teigtaschen mit würzigem Gemüse.",
+    carte_label:"Die vollständige Karte", carte_h:"Die ganze Gewürzdose",
+    carte_p:"Ein Überblick der Gerichtefamilien. Endgültige Karte und Preise vom Restaurant.",
+    lg_starters:"Vorspeisen", lg_hima:"Himalaya-Spezialitäten", lg_hima_row:"Nepalesische Auswahl des Chefs",
+    lg_hima_note:"Gerichtenamen zu bestätigen — fragen Sie nach der Tageskarte.",
+    lg_chicken:"Huhn & Lamm", lg_tandoori:"Tandoori & Meeresfrüchte", lg_veg:"Vegetarisch",
+    lg_bread:"Naans, Getränke & Desserts",
+    veg_sm:"veg.", lamb_sm:"Lamm", prawn_sm:"Garnelen", ac:"zu bestätigen",
+    naan_plain:"Naan natur", naan_garlic:"Knoblauch-Naan", lassi:"Lassi · indisches Bier",
+    carte_note:"⚠ Alle Preise stammen aus dem Online-Liefermenü und dienen nur zur Orientierung. Karte und Preise im Restaurant zu bestätigen.",
+    heri_label:"Unsere Geschichte", heri_h:"Vierzehn Jahre Curry,", heri_h_em:" eine neue Adresse.",
+    heri_p1:"Kripa Curry House, das sind zunächst vierzehn Jahre in Strassen, in denen ein und dieselbe Handschrift verfeinert wurde: eine ehrliche, großzügige indische Küche, treu ihren Wurzeln. Heute lässt sich dieses Haus mitten in Esch-sur-Alzette am Rathausplatz nieder.",
+    heri_p2:"Hier teilt man ebenso ein Curry vom Subkontinent wie eine Spezialität aus den Bergen Nepals. Mild, pikant oder richtig scharf — Sie wählen, die Küche passt sich an.",
+    heri_chef:"„Küche mit Sorgfalt zubereitet, mit einem Lächeln serviert.“ — Chef Joel & Team",
+    tl_1:"Eröffnung in Strassen", tl_years:"Jahre", tl_2:"Erfahrung", tl_3:"Rathausplatz",
+    heri_cap:"Warmer Speisesaal, aufmerksamer Service — ein Liebling des Viertels.",
+    visit_label:"So finden Sie uns", visit_h:"Am Rathausplatz",
+    visit_p:"Im Zentrum von Esch — zwischen Business-Lunch, Familienessen und Lieferung. Am Wochenende Reservierung empfohlen.",
+    hours_h:"Öffnungszeiten", day_monfri:"Mo – Fr", day_sat:"Samstag", day_sun:"Sonntag", closed:"Geschlossen",
+    hours_note:"Die Zeiten variieren je nach Quelle — bitte telefonisch bestätigen.",
+    contact_h:"Kontakt", cta_call2:"Zum Reservieren anrufen",
+    foot_tag:"Authentische indische Aromen und Himalaya-Spezialitäten, mitten in Esch-sur-Alzette.",
+    foot_nav:"Entdecken", foot_contact:"Kontakt", foot_confirm:"Kontaktdaten zu bestätigen",
+    demo_flag:"Demo-Website", demo_txt:"— inoffizielles Muster, nicht mit dem Restaurant verbunden. Inhalte und Preise zu bestätigen."
+  },
+  en:{
+    nav_menu:"The Menu", nav_sig:"Signatures", nav_story:"Our Story", nav_visit:"Find Us",
+    cta_call:"Book · 26 37 91 40",
+    mh_eyebrow:"Indian & Himalayan cuisine · Esch-sur-Alzette",
+    mh_h1_em:"Curry House",
+    mh_strap:"Authentic Indian flavours — from India to the foothills of the Himalayas.",
+    mh_heritage:"Fourteen years of craft in Strassen, now in the heart of Esch on the Town Hall square. Curry, biryani and tandoori by Chef Joel and his team.",
+    mh_cta1:"Explore the menu", mh_cta2:"Book a table",
+    stat_rating:"Diner rating", stat_years:"Years of craft", stat_halal:"Halal & veggie options",
+    badge_reviews:"reviews",
+    dabba_label:"The spice box", dabba_h:"Our menu, like a masala dabba",
+    dabba_p:"Each compartment, a family of flavours. Open the box and build your meal — from starters to the specialities of Nepal.",
+    from:"from",
+    cat_starters:"Starters", cat_chicken:"Chicken", cat_lamb:"Lamb", cat_sea_h:"Seafood", cat_sea:"Seafood",
+    cat_hima_h:"Himalayan Specialities", cat_hima:"Himalayan · Nepalese", feature_tag:"The speciality",
+    feature_note:"The Nepalese menu, our signature",
+    cat_tandoori:"Clay oven", cat_veg_h:"Vegetarian", cat_veg:"Veggie & vegan",
+    cat_biryani:"Basmati rice", cat_bread_h:"Naans & Desserts", cat_bread:"Breads & sweets",
+    tin_note:"Indicative prices from the delivery menu — to be confirmed with the restaurant. Mild · hot · spicy on request.",
+    sig_label:"The classics", sig_h:"The dishes people come back for",
+    heat_label:"Heat:", heat_mild:"mild", heat_hot:"hot", heat_spicy:"spicy",
+    d_tikka:"Creamy, mildly spiced sauce — the great classic.",
+    d_paneer:"Soft paneer cheese in a tomato-butter sauce. The vegetarian flagship.",
+    d_biryani:"Fragrant basmati, slow-cooked lamb, crispy onions.",
+    d_tandoori:"Clay-oven grilled, marinated in yoghurt and spices.",
+    d_korma:"Silky sauce with cashews and cream.",
+    d_rogan:"Intense Kashmiri curry, rich in spices.",
+    d_palak:"Creamy spinach and paneer, mild and comforting.",
+    d_samosa:"Crispy parcels of spiced vegetables.",
+    carte_label:"The full menu", carte_h:"The whole spice box",
+    carte_p:"A taste of the dish families. Final menu and prices provided by the restaurant.",
+    lg_starters:"Starters", lg_hima:"Himalayan Specialities", lg_hima_row:"Chef's Nepalese selection",
+    lg_hima_note:"Dish names to be confirmed — ask for today's menu.",
+    lg_chicken:"Chicken & Lamb", lg_tandoori:"Tandoori & Seafood", lg_veg:"Vegetarian",
+    lg_bread:"Naans, drinks & desserts",
+    veg_sm:"veg", lamb_sm:"lamb", prawn_sm:"prawns", ac:"to confirm",
+    naan_plain:"Plain naan", naan_garlic:"Garlic naan", lassi:"Lassi · Indian beer",
+    carte_note:"⚠ All prices are from the online delivery menu and shown for guidance only. Dine-in menu and prices to be confirmed with the restaurant.",
+    heri_label:"Our story", heri_h:"Fourteen years of curry,", heri_h_em:" a new address.",
+    heri_p1:"Kripa Curry House began with fourteen years in Strassen perfecting one thing: honest, generous Indian cooking, true to its roots. Today the house settles into the heart of Esch-sur-Alzette, on the Town Hall square.",
+    heri_p2:"Here you share a curry from the subcontinent as easily as a speciality from the mountains of Nepal. Mild, hot or properly spicy — you choose, the kitchen adapts.",
+    heri_chef:"“Food made with care, served with a smile.” — Chef Joel & the team",
+    tl_1:"Opened in Strassen", tl_years:"years", tl_2:"of craft", tl_3:"Town Hall square",
+    heri_cap:"A warm dining room, attentive service — a neighbourhood favourite.",
+    visit_label:"Find us", visit_h:"On the Town Hall square",
+    visit_p:"In central Esch — between office lunches, family dinners and delivery. Booking recommended at weekends.",
+    hours_h:"Opening hours", day_monfri:"Mon – Fri", day_sat:"Saturday", day_sun:"Sunday", closed:"Closed",
+    hours_note:"Hours differ across sources — please confirm by phone.",
+    contact_h:"Contact", cta_call2:"Call to book",
+    foot_tag:"Authentic Indian flavours and Himalayan specialities, in the heart of Esch-sur-Alzette.",
+    foot_nav:"Explore", foot_contact:"Contact", foot_confirm:"Details to be confirmed",
+    demo_flag:"Demo website", demo_txt:"— unofficial mockup, not affiliated with the restaurant. Content and prices to be confirmed."
+  }
+};
+
+function setLang(lang){
+  const dict = I18N[lang]; if(!dict) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[k] !== undefined) el.textContent = dict[k];
+  });
+  document.querySelectorAll('.langs button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+  try{ localStorage.setItem('kripa_lang', lang); }catch(e){}
+}
+document.querySelectorAll('.langs button').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.dataset.lang));
+});
+// keep default French on first paint; only re-apply if a non-fr choice was stored
+try{
+  const saved = localStorage.getItem('kripa_lang');
+  if(saved && saved!=='fr') setLang(saved);
+}catch(e){}
+
+// mobile drawer
+const burger = document.getElementById('burger');
+const drawer = document.getElementById('navdrawer');
+burger.addEventListener('click',()=>drawer.classList.toggle('open'));
+drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>drawer.classList.remove('open')));
+</script>
+</body>
+</html>

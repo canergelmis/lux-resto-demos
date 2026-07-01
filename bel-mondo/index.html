@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Bel Mondo — Restaurant · Bar · Lounge · Diekirch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --olive:#4b5540;        /* deep sage feature wall */
+    --olive-deep:#333c2c;
+    --sage:#8a9478;
+    --wine:#5f2530;         /* burgundy curtains / arch */
+    --wine-deep:#3c141c;
+    --cream:#f4eddd;        /* linen */
+    --cream-2:#faf5ea;
+    --walnut:#241f1a;       /* chairs / staircase */
+    --walnut-2:#171310;
+    --brass:#b28a4c;        /* clock hands, warm light */
+    --brass-lt:#cfae72;
+    --ink:#2a2420;
+    --line:rgba(40,34,28,.16);
+    --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+    --sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{font-family:var(--serif)}
+  a{color:inherit;text-decoration:none}
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  .wrap{max-width:1360px;margin:0 auto;padding:0 40px}
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
+    font-weight:600;color:var(--brass);
+  }
+
+  /* ---------- utility top bar ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:60;
+    background:rgba(23,19,16,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(178,138,76,.28);
+    color:var(--cream);
+  }
+  .topbar .inner{
+    max-width:1360px;margin:0 auto;padding:0 40px;
+    height:62px;display:flex;align-items:center;gap:28px;
+  }
+  .tb-brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:1.35rem;letter-spacing:.02em}
+  .tb-brand .dot{width:9px;height:9px;border-radius:50%;background:var(--brass);box-shadow:0 0 0 3px rgba(178,138,76,.25)}
+  .tb-nav{display:flex;gap:26px;margin-left:auto;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase}
+  .tb-nav a{opacity:.82;transition:opacity .2s,color .2s;position:relative;padding:4px 0}
+  .tb-nav a:hover{opacity:1;color:var(--brass-lt)}
+  .langs{display:flex;gap:2px;border:1px solid rgba(178,138,76,.4);border-radius:40px;padding:3px}
+  .langs button{
+    font:inherit;font-size:.68rem;letter-spacing:.12em;font-weight:600;
+    background:none;border:none;color:var(--cream);opacity:.6;
+    padding:5px 11px;border-radius:40px;cursor:pointer;transition:.2s;
+  }
+  .langs button.on{background:var(--brass);color:var(--walnut-2);opacity:1}
+  .tb-cta{
+    font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+    border:1px solid var(--brass);color:var(--brass-lt);padding:9px 16px;border-radius:40px;transition:.2s;
+  }
+  .tb-cta:hover{background:var(--brass);color:var(--walnut-2)}
+
+  /* ---------- masthead ---------- */
+  .mast{
+    display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr);
+    background:var(--walnut);
+  }
+  .mast-left{
+    color:var(--cream);padding:70px 56px 60px;
+    display:flex;flex-direction:column;justify-content:center;
+    position:relative;
+    background:
+      radial-gradient(120% 90% at 0% 0%,rgba(75,85,64,.35),transparent 60%),
+      var(--walnut);
+  }
+  .mast-left .eyebrow{margin-bottom:22px}
+  .wordmark{
+    font-family:var(--serif);font-weight:500;line-height:.92;
+    font-size:clamp(3.6rem,7vw,6.4rem);letter-spacing:.01em;
+  }
+  .wordmark em{display:block;font-style:italic;color:var(--brass-lt);font-weight:400;font-size:.42em;letter-spacing:.06em;margin-top:.35em}
+  .mast-tag{
+    font-family:var(--serif);font-style:italic;font-size:clamp(1.25rem,2vw,1.7rem);
+    color:var(--cream);opacity:.9;margin:26px 0 8px;max-width:30ch;
+  }
+  .mast-lede{font-size:.98rem;color:rgba(244,237,221,.72);max-width:44ch;margin-top:14px;font-weight:300}
+  .mast-cta{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap}
+  .btn{
+    font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+    padding:15px 26px;border-radius:2px;transition:.22s;cursor:pointer;display:inline-flex;align-items:center;gap:10px;
+  }
+  .btn-solid{background:var(--brass);color:var(--walnut-2);border:1px solid var(--brass)}
+  .btn-solid:hover{background:var(--brass-lt);border-color:var(--brass-lt)}
+  .btn-ghost{background:none;color:var(--cream);border:1px solid rgba(244,237,221,.35)}
+  .btn-ghost:hover{border-color:var(--brass);color:var(--brass-lt)}
+
+  .mast-right{position:relative;min-height:560px;overflow:hidden}
+  .mast-right img{filter:saturate(1.02) brightness(.98)}
+  .mast-right::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(36,31,26,.5),transparent 30%)}
+  .mast-badge{
+    position:absolute;left:0;bottom:34px;z-index:2;
+    background:rgba(23,19,16,.82);backdrop-filter:blur(4px);
+    color:var(--cream);padding:14px 22px 14px 24px;border-left:3px solid var(--brass);
+    font-size:.76rem;letter-spacing:.06em;
+  }
+  .mast-badge strong{font-family:var(--serif);font-size:1.05rem;letter-spacing:.02em}
+
+  /* ---------- the dial ---------- */
+  .dial-band{background:var(--walnut-2);color:var(--cream);padding:72px 0 78px;border-top:1px solid rgba(178,138,76,.18)}
+  .dial-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:48px}
+  .dial-head h2{font-size:clamp(2rem,3.4vw,2.9rem);font-weight:500;line-height:1.02}
+  .dial-head p{color:rgba(244,237,221,.6);max-width:40ch;font-weight:300;font-size:.95rem}
+  .dial-grid{display:grid;grid-template-columns:300px 1fr;gap:56px;align-items:center}
+  .clockwrap{display:flex;justify-content:center}
+  .clock{width:280px;height:280px}
+  .hours{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(178,138,76,.28)}
+  .hour{
+    background:var(--walnut-2);padding:30px 26px;cursor:pointer;transition:.25s;position:relative;overflow:hidden;
+    display:block;
+  }
+  .hour::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;transition:.25s}
+  .hour:nth-child(1)::before{background:var(--sage)}
+  .hour:nth-child(2)::before{background:var(--brass)}
+  .hour:nth-child(3)::before{background:var(--wine)}
+  .hour:hover{background:#211b16}
+  .hour .rn{font-family:var(--serif);font-size:2.4rem;color:var(--brass-lt);line-height:1}
+  .hour h3{font-size:1.5rem;font-weight:500;margin:10px 0 8px}
+  .hour p{font-size:.86rem;color:rgba(244,237,221,.62);font-weight:300}
+  .hour .go{margin-top:16px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);opacity:.9}
+
+  /* ---------- service bands ---------- */
+  .band{padding:96px 0}
+  .svc-label{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+  .svc-label .rn{font-family:var(--serif);font-size:2.6rem;line-height:.8}
+  .svc-label .k{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;font-weight:600}
+  .svc-h{font-family:var(--serif);font-weight:500;font-size:clamp(2.1rem,3.6vw,3.1rem);line-height:1.02;margin-bottom:18px}
+
+  /* MIDI */
+  .midi{background:var(--olive);color:var(--cream-2)}
+  .midi .rn,.midi .k{color:var(--brass-lt)}
+  .midi-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:54px;align-items:center}
+  .midi-copy p{color:rgba(244,237,221,.82);font-weight:300;max-width:52ch;margin-bottom:18px}
+  .price-tag{
+    display:inline-flex;align-items:baseline;gap:12px;margin:8px 0 26px;
+    border:1px solid rgba(207,174,114,.5);border-radius:3px;padding:14px 22px;background:rgba(23,19,16,.18);
+  }
+  .price-tag .n{font-family:var(--serif);font-size:2.4rem;color:var(--cream-2);line-height:1}
+  .price-tag .l{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-lt)}
+  .buffet-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  .buffet-tags span{font-size:.78rem;letter-spacing:.05em;border:1px solid rgba(244,237,221,.28);padding:7px 14px;border-radius:40px;color:rgba(244,237,221,.9)}
+  .midi-photo{height:520px;border-radius:3px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.35)}
+
+  /* SOIR */
+  .soir{background:var(--cream-2);color:var(--ink)}
+  .soir .rn{color:var(--wine)}
+  .soir .k{color:var(--wine)}
+  .soir-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:stretch}
+  .soir-menu p.intro{color:#5b524a;max-width:46ch;margin-bottom:28px;font-weight:300}
+  .menu-cols{display:grid;grid-template-columns:1fr;gap:0}
+  .dish{padding:16px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:14px;align-items:baseline}
+  .dish:last-child{border-bottom:1px solid var(--line)}
+  .dish .dn{font-family:var(--serif);font-size:1.32rem;font-weight:500}
+  .dish .dd{font-size:.83rem;color:#6a6158;font-weight:300;margin-top:2px;display:block;font-family:var(--sans)}
+  .dish .dp{font-family:var(--serif);font-size:1.15rem;color:var(--wine);white-space:nowrap}
+  .soir-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr;gap:14px}
+  .soir-photos figure{position:relative;overflow:hidden;border-radius:3px;min-height:520px}
+  .soir-photos figcaption{
+    position:absolute;left:0;right:0;bottom:0;padding:38px 20px 16px;color:#fff;
+    background:linear-gradient(transparent,rgba(20,10,10,.82));
+    font-family:var(--serif);font-size:1.1rem;letter-spacing:.02em;
+  }
+  .soir-photos .tag{position:absolute;top:14px;left:14px;background:var(--wine);color:var(--cream);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;padding:6px 11px;border-radius:2px}
+
+  /* NUIT */
+  .nuit{background:var(--wine-deep);color:var(--cream);position:relative}
+  .nuit::before{content:"";position:absolute;inset:0;background:radial-gradient(90% 120% at 80% 0%,rgba(95,37,48,.55),transparent 60%);pointer-events:none}
+  .nuit .rn,.nuit .k{color:var(--brass-lt)}
+  .nuit-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,4fr) minmax(0,4fr);gap:32px;align-items:stretch;position:relative}
+  .nuit-photo{min-height:540px;border-radius:3px;overflow:hidden}
+  .nuit-mid{display:flex;flex-direction:column;justify-content:center;padding:6px 4px}
+  .nuit-mid p{color:rgba(244,237,221,.8);font-weight:300;margin-bottom:16px;max-width:40ch}
+  .feature{border-top:1px solid rgba(207,174,114,.3);padding:18px 0;margin-top:4px}
+  .feature h4{font-family:var(--serif);font-size:1.35rem;font-weight:500;margin-bottom:4px}
+  .feature p{font-size:.88rem;margin-bottom:0}
+  .nuit .price-tag{border-color:rgba(207,174,114,.4)}
+
+  /* ---------- practical / l'horloge ---------- */
+  .visit{background:var(--walnut);color:var(--cream);padding:92px 0}
+  .visit-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:56px;align-items:start}
+  .visit h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.4vw,2.8rem);margin-bottom:8px}
+  .visit .sub{color:rgba(244,237,221,.6);font-weight:300;margin-bottom:32px;max-width:44ch}
+  .sched{width:100%;border-collapse:collapse;margin-bottom:14px}
+  .sched th,.sched td{text-align:left;padding:13px 6px;border-bottom:1px solid rgba(178,138,76,.2);font-size:.92rem}
+  .sched th{font-family:var(--serif);font-size:1.12rem;font-weight:500;width:42%}
+  .sched td{color:rgba(244,237,221,.82);font-weight:300}
+  .sched tr.closed td,.sched tr.closed th{opacity:.5}
+  .sched .lunch{color:var(--sage);font-weight:400}
+  .sched .dinner{color:var(--brass-lt);font-weight:400}
+  .info-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:30px}
+  .info-card{border:1px solid rgba(178,138,76,.24);border-radius:3px;padding:20px 22px}
+  .info-card .lab{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:8px}
+  .info-card .val{font-family:var(--serif);font-size:1.18rem;line-height:1.35}
+  .info-card a:hover{color:var(--brass-lt)}
+  .info-card .note{font-size:.78rem;color:rgba(244,237,221,.55);font-weight:300;margin-top:4px}
+  .mapbox{height:100%;min-height:520px;border-radius:3px;overflow:hidden;border:1px solid rgba(178,138,76,.24)}
+  .mapbox iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(.2) contrast(1.05)}
+
+  .confirm{font-size:.82rem;font-style:italic;color:var(--brass-lt);opacity:.85}
+  .tc{font-size:.72rem;letter-spacing:.06em;color:rgba(244,237,221,.5);font-style:italic}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--walnut-2);color:rgba(244,237,221,.7);padding:60px 0 40px;border-top:1px solid rgba(178,138,76,.18)}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;align-items:start}
+  .foot-brand .wm{font-family:var(--serif);font-size:2.2rem;color:var(--cream);letter-spacing:.02em}
+  .foot-brand .wm em{font-style:italic;color:var(--brass-lt);font-size:.9rem;display:block;letter-spacing:.16em;margin-top:6px}
+  .foot-col h5{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:14px}
+  .foot-col p,.foot-col a{font-size:.9rem;font-weight:300;display:block;margin-bottom:6px}
+  .foot-col a:hover{color:var(--brass-lt)}
+  .disclaimer{border-top:1px solid rgba(178,138,76,.16);margin-top:44px;padding-top:22px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .disclaimer p{font-size:.76rem;font-weight:300;color:rgba(244,237,221,.5)}
+  .disclaimer .demo{color:var(--brass-lt);font-style:italic}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:1080px){
+    .midi-grid,.soir-grid,.visit-grid{grid-template-columns:1fr;gap:40px}
+    .nuit-grid{grid-template-columns:1fr 1fr}
+    .nuit-mid{grid-column:1/-1;order:-1}
+    .midi-photo,.mapbox{min-height:420px;height:420px}
+  }
+  @media(max-width:880px){
+    .wrap{padding:0 24px}
+    .mast{grid-template-columns:1fr}
+    .mast-left{padding:54px 30px}
+    .mast-right{min-height:340px;order:2}
+    .dial-grid{grid-template-columns:1fr;gap:38px}
+    .hours{grid-template-columns:1fr}
+    .tb-nav{display:none}
+    .topbar .inner{padding:0 20px;gap:14px}
+    .soir-photos,.info-row{grid-template-columns:1fr}
+    .soir-photos figure{min-height:340px}
+    .nuit-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr;gap:28px}
+    .band{padding:64px 0}
+    .tb-cta{display:none}
+  }
+  @media(max-width:520px){
+    .mast-cta{flex-direction:column;align-items:stretch}
+    .btn{justify-content:center}
+    .info-row{gap:14px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar">
+  <div class="inner">
+    <a href="#top" class="tb-brand"><span class="dot"></span> Bel&nbsp;Mondo</a>
+    <nav class="tb-nav">
+      <a href="#midi" data-i18n="nav.midi">Le Midi</a>
+      <a href="#soir" data-i18n="nav.soir">Le Soir</a>
+      <a href="#nuit" data-i18n="nav.nuit">La Nuit</a>
+      <a href="#visit" data-i18n="nav.visit">Nous trouver</a>
+    </nav>
+    <div class="langs" role="group" aria-label="Language">
+      <button data-lang="fr" class="on">FR</button>
+      <button data-lang="de">DE</button>
+      <button data-lang="en">EN</button>
+    </div>
+    <a href="tel:+35226800296" class="tb-cta" data-i18n="nav.reserve">Réserver</a>
+  </div>
+</div>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="mast" id="top">
+  <div class="mast-left">
+    <p class="eyebrow" data-i18n="mast.eyebrow">Diekirch · Restaurant · Bar · Lounge</p>
+    <h1 class="wordmark">Bel Mondo<em data-i18n="mast.sub">La dolce vita, à toute heure</em></h1>
+    <p class="mast-tag" data-i18n="mast.tag">Un bel mondo au cœur de Diekirch — cuisine italienne, bar &amp; lounge.</p>
+    <p class="mast-lede" data-i18n="mast.lede">Le midi, un buffet italien à volonté. Le soir, la table à la carte et ses pizzas au feu de bois. La nuit, le lounge et vos fêtes. Suivez le cadran.</p>
+    <div class="mast-cta">
+      <a href="tel:+35226800296" class="btn btn-solid" data-i18n="mast.cta1">Réserver une table</a>
+      <a href="#midi" class="btn btn-ghost" data-i18n="mast.cta2">Découvrir la carte</a>
+    </div>
+  </div>
+  <div class="mast-right">
+    <img src="assets/hero.jpg" alt="Salle du restaurant Bel Mondo avec son escalier en colimaçon" />
+    <div class="mast-badge">
+      <span data-i18n="mast.badge.k">Au cœur de la salle</span><br>
+      <strong data-i18n="mast.badge.v">L'escalier en colimaçon, nappes blanches &amp; lumière du jour</strong>
+    </div>
+  </div>
+</header>
+
+<!-- ============ THE DIAL ============ -->
+<section class="dial-band">
+  <div class="wrap">
+    <div class="dial-head">
+      <h2 data-i18n="dial.h">Une maison, trois heures.</h2>
+      <p data-i18n="dial.p">Bel Mondo se lit comme un cadran. À chaque moment de la journée, une autre adresse — le même toit.</p>
+    </div>
+    <div class="dial-grid">
+      <div class="clockwrap">
+        <svg class="clock" viewBox="0 0 200 200" role="img" aria-label="Cadran Bel Mondo">
+          <circle cx="100" cy="100" r="94" fill="none" stroke="rgba(178,138,76,.25)" stroke-width="2"/>
+          <!-- three phase arcs -->
+          <path d="M100 12 A88 88 0 0 1 176.2 144" fill="none" stroke="#8a9478" stroke-width="6" stroke-linecap="round"/>
+          <path d="M176.2 144 A88 88 0 0 1 23.8 144" fill="none" stroke="#b28a4c" stroke-width="6" stroke-linecap="round"/>
+          <path d="M23.8 144 A88 88 0 0 1 100 12" fill="none" stroke="#5f2530" stroke-width="6" stroke-linecap="round"/>
+          <!-- numerals -->
+          <text x="100" y="42" text-anchor="middle" fill="#cfae72" font-family="Cormorant Garamond,serif" font-size="17">XII</text>
+          <text x="164" y="106" text-anchor="middle" fill="#cfae72" font-family="Cormorant Garamond,serif" font-size="15">III</text>
+          <text x="100" y="172" text-anchor="middle" fill="#cfae72" font-family="Cormorant Garamond,serif" font-size="15">VI</text>
+          <text x="38" y="106" text-anchor="middle" fill="#cfae72" font-family="Cormorant Garamond,serif" font-size="15">IX</text>
+          <!-- hands -->
+          <line x1="100" y1="100" x2="100" y2="52" stroke="#f4eddd" stroke-width="3" stroke-linecap="round"/>
+          <line x1="100" y1="100" x2="140" y2="118" stroke="#f4eddd" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="100" cy="100" r="5" fill="#b28a4c"/>
+        </svg>
+      </div>
+      <div class="hours">
+        <a class="hour" href="#midi">
+          <div class="rn">XII</div>
+          <h3 data-i18n="dial.midi.t">Le Midi</h3>
+          <p data-i18n="dial.midi.p">Le buffet italien à volonté — antipasti, salades &amp; spécialités, servis au comptoir.</p>
+          <div class="go" data-i18n="dial.more">Le buffet →</div>
+        </a>
+        <a class="hour" href="#soir">
+          <div class="rn">VII</div>
+          <h3 data-i18n="dial.soir.t">Le Soir</h3>
+          <p data-i18n="dial.soir.p">La carte : pizzas au feu de bois, pâtes fraîches &amp; poisson. Une table semi-gastronomique.</p>
+          <div class="go" data-i18n="dial.more2">La carte →</div>
+        </a>
+        <a class="hour" href="#nuit">
+          <div class="rn">X</div>
+          <h3 data-i18n="dial.nuit.t">La Nuit</h3>
+          <p data-i18n="dial.nuit.p">Le lounge-bar, ses soirées musicales et vos fêtes privées sous la grande horloge.</p>
+          <div class="go" data-i18n="dial.more3">Le lounge →</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MIDI ============ -->
+<section class="band midi" id="midi">
+  <div class="wrap">
+    <div class="midi-grid">
+      <div class="midi-copy">
+        <div class="svc-label"><span class="rn">XII</span><span class="k" data-i18n="midi.k">Le Midi · 11h30 – 14h30</span></div>
+        <h2 class="svc-h" data-i18n="midi.h">Le buffet italien, à volonté</h2>
+        <p data-i18n="midi.p1">À midi, Bel Mondo passe en formule buffet. On se sert au comptoir, sous la voûte de pierre : antipasti, salades composées, spécialités chaudes italiennes et pizzas du four. La formule des habitués et des familles de Diekirch.</p>
+        <div class="price-tag">
+          <span class="n">€&nbsp;15,90</span>
+          <span class="l" data-i18n="midi.price">Buffet à volonté · <em>prix à confirmer</em></span>
+        </div>
+        <div class="buffet-tags">
+          <span data-i18n="midi.t1">Antipasti</span>
+          <span data-i18n="midi.t2">Salades composées</span>
+          <span data-i18n="midi.t3">Spécialités chaudes</span>
+          <span data-i18n="midi.t4">Pizzas du four</span>
+          <span data-i18n="midi.t5">Comptoir en salle</span>
+        </div>
+        <p class="confirm" style="margin-top:22px" data-i18n="midi.note">Composition et prix du buffet à confirmer avec l'établissement.</p>
+      </div>
+      <div class="midi-photo">
+        <img src="assets/interior-2.jpg" alt="Salle à la voûte de pierre et comptoir de buffet" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOIR ============ -->
+<section class="band soir" id="soir">
+  <div class="wrap">
+    <div class="svc-label"><span class="rn">VII</span><span class="k" data-i18n="soir.k">Le Soir · à la carte</span></div>
+    <h2 class="svc-h" style="margin-bottom:36px" data-i18n="soir.h">La table du soir</h2>
+    <div class="soir-grid">
+      <div class="soir-menu">
+        <p class="intro" data-i18n="soir.p">Le soir, on dresse les nappes blanches. Pizzas à la pâte fine cuites au feu de bois, pâtes fraîches maison et poisson : une cuisine italienne généreuse, un cran au-dessus.</p>
+        <div class="menu-cols">
+          <div class="dish">
+            <div><span class="dn">Pizza Prosciutto e Burrata</span><span class="dd" data-i18n="soir.d1d">Jambon de Parme, burrata crémeuse, tomates cerises, roquette</span></div>
+            <span class="dp">€ 18</span>
+          </div>
+          <div class="dish">
+            <div><span class="dn">Pizza Frutti di Mare</span><span class="dd" data-i18n="soir.d2d">Moules, calamars, palourdes, fruits de mer, four à bois</span></div>
+            <span class="dp">€ 19</span>
+          </div>
+          <div class="dish">
+            <div><span class="dn">Pizza Margherita</span><span class="dd" data-i18n="soir.d3d">Tomate, mozzarella fior di latte, basilic frais</span></div>
+            <span class="dp">€ 12</span>
+          </div>
+          <div class="dish">
+            <div><span class="dn">Pâtes fraîches du jour</span><span class="dd" data-i18n="soir.d4d">Spécialités italiennes, préparées maison — à confirmer</span></div>
+            <span class="dp">€ 16</span>
+          </div>
+          <div class="dish">
+            <div><span class="dn">Poisson &amp; plats de la carte</span><span class="dd" data-i18n="soir.d5d">Suggestions du soir, semi-gastronomiques</span></div>
+            <span class="dp">€ 25–30</span>
+          </div>
+          <div class="dish">
+            <div><span class="dn">Tiramisù &amp; dolci</span><span class="dd" data-i18n="soir.d6d">Desserts italiens de la maison — à confirmer</span></div>
+            <span class="dp">€ 8</span>
+          </div>
+        </div>
+        <p class="confirm" style="margin-top:20px" data-i18n="soir.note">Carte et prix donnés à titre indicatif — à confirmer avec l'établissement.</p>
+      </div>
+      <div class="soir-photos">
+        <figure>
+          <span class="tag" data-i18n="soir.tag1">Signature</span>
+          <img src="assets/food-1.jpg" alt="Pizza prosciutto burrata et roquette" />
+          <figcaption data-i18n="soir.cap1">Prosciutto &amp; Burrata</figcaption>
+        </figure>
+        <figure>
+          <span class="tag" data-i18n="soir.tag2">Du four</span>
+          <img src="assets/food-2.jpg" alt="Pizza aux fruits de mer, moules et calamars" />
+          <figcaption data-i18n="soir.cap2">Frutti di Mare</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUIT ============ -->
+<section class="band nuit" id="nuit">
+  <div class="wrap">
+    <div class="nuit-grid">
+      <div class="nuit-photo"><img src="assets/interior-1.jpg" alt="Salle de banquet aux murs vert olive et grande horloge" /></div>
+      <div class="nuit-mid">
+        <div class="svc-label"><span class="rn">X</span><span class="k" data-i18n="nuit.k">La Nuit · lounge &amp; événements</span></div>
+        <h2 class="svc-h" data-i18n="nuit.h">Quand la salle devient lounge</h2>
+        <p data-i18n="nuit.p">Le soir venu, Bel Mondo prend son second visage : bar à cocktails, ambiance feutrée et, le week-end, ses soirées festives et musicales. C'est le vrai supplément d'âme de la maison.</p>
+        <div class="feature">
+          <h4 data-i18n="nuit.f1h">Soirées lounge &amp; musique</h4>
+          <p data-i18n="nuit.f1p">Cocktails, bar complet et programmation musicale les week-ends — à confirmer.</p>
+        </div>
+        <div class="feature">
+          <h4 data-i18n="nuit.f2h">Vos événements privés</h4>
+          <p data-i18n="nuit.f2p">Anniversaires, banquets et fêtes de famille dans la salle événementielle, sous la grande horloge romaine. Capacité à confirmer.</p>
+        </div>
+        <a href="tel:+35226800296" class="btn btn-solid" style="margin-top:22px" data-i18n="nuit.cta">Organiser un événement</a>
+      </div>
+      <div class="nuit-photo"><img src="assets/events-1.jpg" alt="Table de fête décorée pour un anniversaire chez Bel Mondo" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT / L'HORLOGE ============ -->
+<section class="band visit" id="visit">
+  <div class="wrap">
+    <div class="visit-grid">
+      <div>
+        <h2 data-i18n="visit.h">L'horloge de la maison</h2>
+        <p class="sub" data-i18n="visit.sub">Nos heures d'ouverture — service du midi et du soir. Fermé le lundi.</p>
+        <table class="sched">
+          <tr><th data-i18n="day.tue">Mardi</th><td><span class="lunch">11:00–14:30</span> · <span class="dinner">18:00–22:00</span></td></tr>
+          <tr><th data-i18n="day.wed">Mercredi</th><td><span class="lunch">11:00–14:30</span> · <span class="dinner">18:00–22:00</span></td></tr>
+          <tr><th data-i18n="day.thu">Jeudi</th><td><span class="lunch">11:00–14:30</span> · <span class="dinner">18:00–22:00</span></td></tr>
+          <tr><th data-i18n="day.fri">Vendredi</th><td><span class="lunch">11:00–14:30</span> · <span class="dinner">18:00–22:00</span></td></tr>
+          <tr><th data-i18n="day.sat">Samedi</th><td><span class="lunch">11:00–14:30</span> · <span class="dinner">18:00–22:00</span></td></tr>
+          <tr><th data-i18n="day.sun">Dimanche</th><td><span class="lunch">11:00–14:30</span></td></tr>
+          <tr class="closed"><th data-i18n="day.mon">Lundi</th><td data-i18n="visit.closed">Fermé</td></tr>
+        </table>
+        <p class="confirm" data-i18n="visit.hnote">Horaires indicatifs — à confirmer avec l'établissement.</p>
+        <div class="info-row">
+          <div class="info-card">
+            <div class="lab" data-i18n="visit.addr">Adresse</div>
+            <div class="val">18 rue Saint&nbsp;Antoine<br>L-9205 Diekirch</div>
+            <div class="note" data-i18n="visit.zone">Zone piétonne · centre-ville</div>
+          </div>
+          <div class="info-card">
+            <div class="lab" data-i18n="visit.contact">Réservations</div>
+            <div class="val"><a href="tel:+35226800296">+352 26 80 02 96</a></div>
+            <div class="note" data-i18n="visit.pay">Visa · Mastercard · Sodexo / Chèque-repas</div>
+          </div>
+        </div>
+      </div>
+      <div class="mapbox">
+        <iframe src="https://www.google.com/maps?q=18+rue+Saint+Antoine+L-9205+Diekirch+Luxembourg&output=embed" loading="lazy" title="Bel Mondo — 18 rue Saint Antoine, Diekirch" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="wm">Bel Mondo<em data-i18n="foot.tag">Restaurant · Bar · Lounge — Diekirch</em></div>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot.find">Nous trouver</h5>
+        <p>18 rue Saint Antoine</p>
+        <p>L-9205 Diekirch</p>
+        <a href="tel:+35226800296">+352 26 80 02 96</a>
+        <a href="https://de-de.facebook.com/pages/Bel-Mondo-Restaurant-Lounge-Bar/234581389931090" target="_blank" rel="noopener">Facebook</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot.hours">Horaires</h5>
+        <p data-i18n="foot.h1">Mar – Sam : 11:00–14:30 · 18:00–22:00</p>
+        <p data-i18n="foot.h2">Dim : 11:00–14:30</p>
+        <p data-i18n="foot.h3">Lun : fermé</p>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <p class="demo" data-i18n="foot.demo">Site de démonstration — contenus, horaires, prix et menus à confirmer avec l'établissement.</p>
+      <p class="tc" data-i18n="foot.tc">Photographies : véritables clichés du Bel Mondo, Diekirch.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  fr:{
+    "nav.midi":"Le Midi","nav.soir":"Le Soir","nav.nuit":"La Nuit","nav.visit":"Nous trouver","nav.reserve":"Réserver",
+    "mast.eyebrow":"Diekirch · Restaurant · Bar · Lounge",
+    "mast.sub":"La dolce vita, à toute heure",
+    "mast.tag":"Un bel mondo au cœur de Diekirch — cuisine italienne, bar &amp; lounge.",
+    "mast.lede":"Le midi, un buffet italien à volonté. Le soir, la table à la carte et ses pizzas au feu de bois. La nuit, le lounge et vos fêtes. Suivez le cadran.",
+    "mast.cta1":"Réserver une table","mast.cta2":"Découvrir la carte",
+    "mast.badge.k":"Au cœur de la salle","mast.badge.v":"L'escalier en colimaçon, nappes blanches &amp; lumière du jour",
+    "dial.h":"Une maison, trois heures.",
+    "dial.p":"Bel Mondo se lit comme un cadran. À chaque moment de la journée, une autre adresse — le même toit.",
+    "dial.midi.t":"Le Midi","dial.midi.p":"Le buffet italien à volonté — antipasti, salades &amp; spécialités, servis au comptoir.","dial.more":"Le buffet →",
+    "dial.soir.t":"Le Soir","dial.soir.p":"La carte : pizzas au feu de bois, pâtes fraîches &amp; poisson. Une table semi-gastronomique.","dial.more2":"La carte →",
+    "dial.nuit.t":"La Nuit","dial.nuit.p":"Le lounge-bar, ses soirées musicales et vos fêtes privées sous la grande horloge.","dial.more3":"Le lounge →",
+    "midi.k":"Le Midi · 11h30 – 14h30","midi.h":"Le buffet italien, à volonté",
+    "midi.p1":"À midi, Bel Mondo passe en formule buffet. On se sert au comptoir, sous la voûte de pierre : antipasti, salades composées, spécialités chaudes italiennes et pizzas du four. La formule des habitués et des familles de Diekirch.",
+    "midi.price":"Buffet à volonté · <em>prix à confirmer</em>",
+    "midi.t1":"Antipasti","midi.t2":"Salades composées","midi.t3":"Spécialités chaudes","midi.t4":"Pizzas du four","midi.t5":"Comptoir en salle",
+    "midi.note":"Composition et prix du buffet à confirmer avec l'établissement.",
+    "soir.k":"Le Soir · à la carte","soir.h":"La table du soir",
+    "soir.p":"Le soir, on dresse les nappes blanches. Pizzas à la pâte fine cuites au feu de bois, pâtes fraîches maison et poisson : une cuisine italienne généreuse, un cran au-dessus.",
+    "soir.d1d":"Jambon de Parme, burrata crémeuse, tomates cerises, roquette",
+    "soir.d2d":"Moules, calamars, palourdes, fruits de mer, four à bois",
+    "soir.d3d":"Tomate, mozzarella fior di latte, basilic frais",
+    "soir.d4d":"Spécialités italiennes, préparées maison — à confirmer",
+    "soir.d5d":"Suggestions du soir, semi-gastronomiques",
+    "soir.d6d":"Desserts italiens de la maison — à confirmer",
+    "soir.note":"Carte et prix donnés à titre indicatif — à confirmer avec l'établissement.",
+    "soir.tag1":"Signature","soir.tag2":"Du four","soir.cap1":"Prosciutto &amp; Burrata","soir.cap2":"Frutti di Mare",
+    "nuit.k":"La Nuit · lounge &amp; événements","nuit.h":"Quand la salle devient lounge",
+    "nuit.p":"Le soir venu, Bel Mondo prend son second visage : bar à cocktails, ambiance feutrée et, le week-end, ses soirées festives et musicales. C'est le vrai supplément d'âme de la maison.",
+    "nuit.f1h":"Soirées lounge &amp; musique","nuit.f1p":"Cocktails, bar complet et programmation musicale les week-ends — à confirmer.",
+    "nuit.f2h":"Vos événements privés","nuit.f2p":"Anniversaires, banquets et fêtes de famille dans la salle événementielle, sous la grande horloge romaine. Capacité à confirmer.",
+    "nuit.cta":"Organiser un événement",
+    "visit.h":"L'horloge de la maison","visit.sub":"Nos heures d'ouverture — service du midi et du soir. Fermé le lundi.",
+    "visit.closed":"Fermé","visit.hnote":"Horaires indicatifs — à confirmer avec l'établissement.",
+    "visit.addr":"Adresse","visit.zone":"Zone piétonne · centre-ville","visit.contact":"Réservations","visit.pay":"Visa · Mastercard · Sodexo / Chèque-repas",
+    "day.mon":"Lundi","day.tue":"Mardi","day.wed":"Mercredi","day.thu":"Jeudi","day.fri":"Vendredi","day.sat":"Samedi","day.sun":"Dimanche",
+    "foot.tag":"Restaurant · Bar · Lounge — Diekirch","foot.find":"Nous trouver","foot.hours":"Horaires",
+    "foot.h1":"Mar – Sam : 11:00–14:30 · 18:00–22:00","foot.h2":"Dim : 11:00–14:30","foot.h3":"Lun : fermé",
+    "foot.demo":"Site de démonstration — contenus, horaires, prix et menus à confirmer avec l'établissement.",
+    "foot.tc":"Photographies : véritables clichés du Bel Mondo, Diekirch."
+  },
+  de:{
+    "nav.midi":"Mittags","nav.soir":"Abends","nav.nuit":"Nachts","nav.visit":"Anfahrt","nav.reserve":"Reservieren",
+    "mast.eyebrow":"Diekirch · Restaurant · Bar · Lounge",
+    "mast.sub":"La dolce vita — zu jeder Stunde",
+    "mast.tag":"Ein Stück schöne Welt in Diekirch — italienische Küche, Bar &amp; Lounge.",
+    "mast.lede":"Mittags das italienische Buffet à volonté. Abends die Karte mit Pizza aus dem Holzofen. Nachts die Lounge und Ihre Feste. Folgen Sie dem Zifferblatt.",
+    "mast.cta1":"Tisch reservieren","mast.cta2":"Zur Speisekarte",
+    "mast.badge.k":"Mitten im Saal","mast.badge.v":"Die Wendeltreppe, weißes Leinen &amp; Tageslicht",
+    "dial.h":"Ein Haus, drei Stunden.",
+    "dial.p":"Bel Mondo liest sich wie ein Zifferblatt. Zu jeder Tageszeit eine andere Adresse — unter einem Dach.",
+    "dial.midi.t":"Mittags","dial.midi.p":"Das italienische Buffet à volonté — Antipasti, Salate &amp; Spezialitäten vom Buffet.","dial.more":"Zum Buffet →",
+    "dial.soir.t":"Abends","dial.soir.p":"Die Karte: Pizza aus dem Holzofen, frische Pasta &amp; Fisch. Eine halb-gastronomische Küche.","dial.more2":"Zur Karte →",
+    "dial.nuit.t":"Nachts","dial.nuit.p":"Die Lounge-Bar, Musikabende und Ihre privaten Feste unter der großen Uhr.","dial.more3":"Zur Lounge →",
+    "midi.k":"Mittags · 11:30 – 14:30","midi.h":"Das italienische Buffet, à volonté",
+    "midi.p1":"Mittags wird Bel Mondo zum Buffet. Man bedient sich am Tresen unter dem Steingewölbe: Antipasti, gemischte Salate, warme italienische Spezialitäten und Pizza aus dem Ofen. Der Klassiker für Stammgäste und Familien aus Diekirch.",
+    "midi.price":"Buffet à volonté · <em>Preis zu bestätigen</em>",
+    "midi.t1":"Antipasti","midi.t2":"Gemischte Salate","midi.t3":"Warme Spezialitäten","midi.t4":"Pizza aus dem Ofen","midi.t5":"Buffet im Saal",
+    "midi.note":"Zusammenstellung und Preis des Buffets mit dem Haus zu bestätigen.",
+    "soir.k":"Abends · à la carte","soir.h":"Die Tafel am Abend",
+    "soir.p":"Am Abend werden die weißen Tischdecken aufgelegt. Dünne Pizza aus dem Holzofen, hausgemachte frische Pasta und Fisch: eine großzügige italienische Küche, eine Stufe höher.",
+    "soir.d1d":"Parmaschinken, cremige Burrata, Kirschtomaten, Rucola",
+    "soir.d2d":"Muscheln, Calamari, Venusmuscheln, Meeresfrüchte, Holzofen",
+    "soir.d3d":"Tomate, Mozzarella Fior di Latte, frisches Basilikum",
+    "soir.d4d":"Italienische Spezialitäten, hausgemacht — zu bestätigen",
+    "soir.d5d":"Abend-Empfehlungen, halb-gastronomisch",
+    "soir.d6d":"Italienische Desserts des Hauses — zu bestätigen",
+    "soir.note":"Karte und Preise als Richtwert — mit dem Haus zu bestätigen.",
+    "soir.tag1":"Signature","soir.tag2":"Aus dem Ofen","soir.cap1":"Prosciutto &amp; Burrata","soir.cap2":"Frutti di Mare",
+    "nuit.k":"Nachts · Lounge &amp; Events","nuit.h":"Wenn der Saal zur Lounge wird",
+    "nuit.p":"Am Abend zeigt Bel Mondo sein zweites Gesicht: Cocktailbar, gedämpfte Atmosphäre und am Wochenende festliche Musikabende. Das ist die wahre Seele des Hauses.",
+    "nuit.f1h":"Lounge-Abende &amp; Musik","nuit.f1p":"Cocktails, volle Bar und Musikprogramm am Wochenende — zu bestätigen.",
+    "nuit.f2h":"Ihre privaten Feste","nuit.f2p":"Geburtstage, Bankette und Familienfeiern im Eventsaal, unter der großen römischen Uhr. Kapazität zu bestätigen.",
+    "nuit.cta":"Event anfragen",
+    "visit.h":"Die Uhr des Hauses","visit.sub":"Unsere Öffnungszeiten — Mittag- und Abendservice. Montags geschlossen.",
+    "visit.closed":"Geschlossen","visit.hnote":"Zeiten als Richtwert — mit dem Haus zu bestätigen.",
+    "visit.addr":"Adresse","visit.zone":"Fußgängerzone · Stadtzentrum","visit.contact":"Reservierungen","visit.pay":"Visa · Mastercard · Sodexo / Essensgutschein",
+    "day.mon":"Montag","day.tue":"Dienstag","day.wed":"Mittwoch","day.thu":"Donnerstag","day.fri":"Freitag","day.sat":"Samstag","day.sun":"Sonntag",
+    "foot.tag":"Restaurant · Bar · Lounge — Diekirch","foot.find":"Anfahrt","foot.hours":"Öffnungszeiten",
+    "foot.h1":"Di – Sa: 11:00–14:30 · 18:00–22:00","foot.h2":"So: 11:00–14:30","foot.h3":"Mo: geschlossen",
+    "foot.demo":"Demo-Website — Inhalte, Zeiten, Preise und Menüs mit dem Haus zu bestätigen.",
+    "foot.tc":"Fotos: echte Aufnahmen des Bel Mondo, Diekirch."
+  },
+  en:{
+    "nav.midi":"Midday","nav.soir":"Evening","nav.nuit":"Night","nav.visit":"Find us","nav.reserve":"Book",
+    "mast.eyebrow":"Diekirch · Restaurant · Bar · Lounge",
+    "mast.sub":"La dolce vita, around the clock",
+    "mast.tag":"A little of the beautiful world in Diekirch — Italian kitchen, bar &amp; lounge.",
+    "mast.lede":"At noon, an all-you-can-eat Italian buffet. In the evening, the à la carte table and its wood-fired pizzas. At night, the lounge and your celebrations. Follow the dial.",
+    "mast.cta1":"Book a table","mast.cta2":"See the menu",
+    "mast.badge.k":"At the heart of the room","mast.badge.v":"The spiral staircase, white linen &amp; daylight",
+    "dial.h":"One house, three hours.",
+    "dial.p":"Bel Mondo reads like a clock face. Every moment of the day, a different address — under one roof.",
+    "dial.midi.t":"Midday","dial.midi.p":"The all-you-can-eat Italian buffet — antipasti, salads &amp; specialities from the counter.","dial.more":"The buffet →",
+    "dial.soir.t":"Evening","dial.soir.p":"The menu: wood-fired pizza, fresh pasta &amp; seafood. A semi-gastronomic table.","dial.more2":"The menu →",
+    "dial.nuit.t":"Night","dial.nuit.p":"The lounge bar, its music nights and your private parties beneath the great clock.","dial.more3":"The lounge →",
+    "midi.k":"Midday · 11:30 – 14:30","midi.h":"The all-you-can-eat Italian buffet",
+    "midi.p1":"At lunchtime, Bel Mondo turns into a buffet. Help yourself at the counter, beneath the stone arch: antipasti, mixed salads, warm Italian specialities and pizza from the oven. The go-to for regulars and families of Diekirch.",
+    "midi.price":"All-you-can-eat buffet · <em>price to confirm</em>",
+    "midi.t1":"Antipasti","midi.t2":"Mixed salads","midi.t3":"Warm specialities","midi.t4":"Oven pizza","midi.t5":"In-room counter",
+    "midi.note":"Buffet contents and price to confirm with the restaurant.",
+    "soir.k":"Evening · à la carte","soir.h":"The evening table",
+    "soir.p":"In the evening, the white tablecloths come out. Thin wood-fired pizzas, house-made fresh pasta and seafood: generous Italian cooking, a notch above.",
+    "soir.d1d":"Parma ham, creamy burrata, cherry tomatoes, rocket",
+    "soir.d2d":"Mussels, calamari, clams, seafood, wood oven",
+    "soir.d3d":"Tomato, fior di latte mozzarella, fresh basil",
+    "soir.d4d":"Italian specialities, house-made — to confirm",
+    "soir.d5d":"Evening suggestions, semi-gastronomic",
+    "soir.d6d":"House Italian desserts — to confirm",
+    "soir.note":"Menu and prices are indicative — to confirm with the restaurant.",
+    "soir.tag1":"Signature","soir.tag2":"Wood-fired","soir.cap1":"Prosciutto &amp; Burrata","soir.cap2":"Frutti di Mare",
+    "nuit.k":"Night · lounge &amp; events","nuit.h":"When the room becomes a lounge",
+    "nuit.p":"As night falls, Bel Mondo shows its second face: cocktail bar, soft atmosphere and, at weekends, its festive music nights. This is the house's true extra soul.",
+    "nuit.f1h":"Lounge nights &amp; music","nuit.f1p":"Cocktails, full bar and weekend music programming — to confirm.",
+    "nuit.f2h":"Your private events","nuit.f2p":"Birthdays, banquets and family celebrations in the event room, beneath the great Roman clock. Capacity to confirm.",
+    "nuit.cta":"Plan an event",
+    "visit.h":"The house clock","visit.sub":"Our opening hours — lunch and dinner service. Closed on Mondays.",
+    "visit.closed":"Closed","visit.hnote":"Hours indicative — to confirm with the restaurant.",
+    "visit.addr":"Address","visit.zone":"Pedestrian zone · town centre","visit.contact":"Reservations","visit.pay":"Visa · Mastercard · Sodexo / meal vouchers",
+    "day.mon":"Monday","day.tue":"Tuesday","day.wed":"Wednesday","day.thu":"Thursday","day.fri":"Friday","day.sat":"Saturday","day.sun":"Sunday",
+    "foot.tag":"Restaurant · Bar · Lounge — Diekirch","foot.find":"Find us","foot.hours":"Hours",
+    "foot.h1":"Tue – Sat: 11:00–14:30 · 18:00–22:00","foot.h2":"Sun: 11:00–14:30","foot.h3":"Mon: closed",
+    "foot.demo":"Demonstration site — content, hours, prices and menus to confirm with the restaurant.",
+    "foot.tc":"Photography: genuine images of Bel Mondo, Diekirch."
+  }
+};
+function setLang(lang){
+  const dict = I18N[lang]; if(!dict) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[k]!==undefined) el.innerHTML = dict[k];
+  });
+  document.querySelectorAll('.langs button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+}
+document.querySelectorAll('.langs button').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.dataset.lang));
+});
+</script>
+</body>
+</html>

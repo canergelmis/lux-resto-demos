@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>D'Gëlle Klack — Bistro-lounge du terroir · Vieille Ville de Luxembourg</title>
+<meta name="description" content="D'Gëlle Klack — cuisine du terroir luxembourgeois, bar-lounge & piano-bar, terrasse face au Palais grand-ducal. 1 Rue Sigefroi, Luxembourg." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#16100A;
+    --ink-2:#1E160E;
+    --panel:#241A11;
+    --panel-2:#2B2015;
+    --cream:#F4EBD9;
+    --cream-dim:#CDBDA0;
+    --cream-faint:#9C8D75;
+    --gold:#C9A34E;
+    --gold-deep:#AD804B;
+    --gold-hi:#EAD39C;
+    --line:rgba(201,163,78,.26);
+    --line-soft:rgba(201,163,78,.13);
+    --shadow:0 30px 70px -30px rgba(0,0,0,.7);
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --display:"Cinzel",serif;
+    --sans:"Inter",system-ui,sans-serif;
+    --maxw:1400px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:var(--sans);
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--gold);color:var(--ink)}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 48px}
+  .eyebrow{
+    font-family:var(--sans);font-weight:500;font-size:.72rem;
+    letter-spacing:.42em;text-transform:uppercase;color:var(--gold);
+  }
+  .roman{font-family:var(--display);font-weight:500;color:var(--gold-deep)}
+  h1,h2,h3{font-weight:400;line-height:1.05}
+
+  /* ============ TICK / FILIGREE MOTIFS ============ */
+  .filigree{display:flex;align-items:center;gap:14px;color:var(--gold-deep)}
+  .filigree::before,.filigree::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+  .bell{width:22px;height:22px;flex:none;fill:none;stroke:var(--gold);stroke-width:1.4}
+
+  /* ============ MASTHEAD — "Le Cadran" ============ */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:60;
+    transition:background .4s ease,border-color .4s ease,padding .4s ease;
+    border-bottom:1px solid transparent;padding:20px 0;
+  }
+  header::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+    background:linear-gradient(180deg,rgba(10,7,4,.78),rgba(10,7,4,.25) 60%,transparent);
+    transition:opacity .4s;}
+  header.stuck::before{opacity:0}
+  header.stuck{
+    background:rgba(18,12,7,.92);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line-soft);padding:12px 0;
+  }
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand img{height:40px;width:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))}
+  .brand .tick{font-family:var(--display);font-size:.62rem;letter-spacing:.3em;color:var(--cream-faint);text-transform:uppercase;border-left:1px solid var(--line);padding-left:14px}
+  nav.main{display:flex;gap:34px}
+  nav.main a{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim);position:relative;padding:4px 0;transition:color .3s}
+  nav.main a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+  nav.main a:hover{color:var(--cream)}nav.main a:hover::after{width:100%}
+  .actions{display:flex;align-items:center;gap:18px}
+  .lang{display:flex;gap:2px;align-items:center;font-size:.72rem;letter-spacing:.1em}
+  .lang button{background:none;border:none;color:var(--cream-faint);cursor:pointer;font-family:var(--sans);font-size:.72rem;letter-spacing:.12em;padding:4px 6px;text-transform:uppercase;transition:color .25s}
+  .lang button:hover{color:var(--cream)}
+  .lang button.on{color:var(--gold)}
+  .lang .sep{color:var(--line);}
+  .btn{
+    font-family:var(--sans);font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;
+    padding:12px 22px;border:1px solid var(--gold);color:var(--gold);
+    background:transparent;cursor:pointer;transition:all .3s;white-space:nowrap;
+  }
+  .btn:hover{background:var(--gold);color:var(--ink)}
+  .btn.solid{background:var(--gold);color:var(--ink)}
+  .btn.solid:hover{background:var(--gold-hi);border-color:var(--gold-hi)}
+
+  /* ============ HERO — the dial + etched glass ============ */
+  .hero{display:grid;grid-template-columns:0.92fr 1.08fr;min-height:100vh}
+  .hero-panel{
+    background:
+      radial-gradient(120% 90% at 0% 0%,rgba(201,163,78,.09),transparent 60%),
+      linear-gradient(160deg,var(--ink-2),var(--ink));
+    padding:150px 4vw 60px 48px;position:relative;display:flex;
+  }
+  .hero-panel::after{content:"";position:absolute;top:0;right:0;width:1px;height:100%;background:linear-gradient(180deg,transparent,var(--line),transparent)}
+  /* carillon rail */
+  .rail{display:flex;flex-direction:column;justify-content:center;gap:0;margin-right:38px;padding-top:10px}
+  .rail .tk{display:flex;align-items:center;gap:12px;position:relative;padding:11px 0}
+  .rail .dot{width:7px;height:7px;border:1px solid var(--gold);border-radius:50%;flex:none;transition:all .3s}
+  .rail .tk:hover .dot{background:var(--gold)}
+  .rail .hr{font-family:var(--display);font-size:.82rem;color:var(--gold);letter-spacing:.08em;min-width:42px}
+  .rail .lb{font-family:var(--serif);font-size:1.02rem;color:var(--cream-dim);font-style:italic}
+  .rail .stem{position:absolute;left:3px;top:-50%;height:100%;width:1px;background:var(--line);z-index:-1}
+  .hero-copy{display:flex;flex-direction:column;justify-content:center;max-width:520px}
+  .hero-copy .eyebrow{margin-bottom:22px}
+  .hero-copy h1{
+    font-family:var(--display);font-weight:600;font-size:clamp(2.6rem,4.4vw,4.4rem);
+    letter-spacing:.02em;color:var(--cream);line-height:.98;text-transform:uppercase;
+  }
+  .hero-copy h1 .gold{
+    display:block;font-family:var(--serif);font-weight:500;font-style:italic;
+    text-transform:none;letter-spacing:0;font-size:clamp(1.5rem,2.4vw,2.3rem);
+    color:var(--gold);margin-top:8px;
+  }
+  .hero-copy .lede{font-family:var(--serif);font-size:1.32rem;color:var(--cream-dim);margin:26px 0 8px;line-height:1.4}
+  .hero-copy .tagnote{font-size:.72rem;color:var(--cream-faint);letter-spacing:.04em;margin-bottom:34px}
+  .hero-copy .tagnote em{color:var(--gold-deep);font-style:normal}
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .hero-locale{display:flex;align-items:center;gap:10px;margin-top:40px;font-size:.8rem;color:var(--cream-faint);letter-spacing:.02em}
+  .hero-locale svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.4}
+  .hero-media{position:relative;overflow:hidden;background:#0b0805}
+  .hero-media img{width:100%;height:100%;object-fit:cover}
+  .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink) 0%,transparent 22%,transparent 78%,rgba(11,8,5,.45) 100%)}
+  .hero-badge{
+    position:absolute;bottom:38px;right:38px;z-index:3;text-align:right;
+    background:rgba(18,12,7,.5);backdrop-filter:blur(4px);padding:14px 18px;border:1px solid var(--line-soft);
+  }
+  .hero-badge .n{font-family:var(--display);font-size:1.5rem;color:var(--gold)}
+  .hero-badge .l{font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim)}
+
+  /* ============ LES HEURES — carillon day-arc ============ */
+  .hours{background:var(--ink-2);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:0}
+  .hours-head{padding:70px 48px 34px;max-width:var(--maxw);margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+  .hours-head h2{font-family:var(--display);font-size:clamp(1.8rem,2.8vw,2.7rem);color:var(--cream);letter-spacing:.03em}
+  .hours-head p{font-family:var(--serif);font-size:1.15rem;color:var(--cream-dim);font-style:italic;max-width:360px}
+  .arc{display:grid;grid-template-columns:repeat(6,1fr);max-width:var(--maxw);margin:0 auto;border-top:1px solid var(--line)}
+  .toll{padding:40px 24px 54px;border-right:1px solid var(--line-soft);position:relative;transition:background .4s}
+  .toll:last-child{border-right:none}
+  .toll:hover{background:linear-gradient(180deg,rgba(201,163,78,.06),transparent)}
+  .toll .num{font-family:var(--display);font-size:2.1rem;color:var(--gold-deep);letter-spacing:.06em;opacity:.9}
+  .toll .hr{font-size:.72rem;letter-spacing:.24em;color:var(--gold);text-transform:uppercase;margin:16px 0 8px}
+  .toll h3{font-family:var(--serif);font-weight:600;font-size:1.5rem;color:var(--cream);margin-bottom:10px}
+  .toll p{font-size:.9rem;color:var(--cream-faint);line-height:1.55}
+  .toll .barline{position:absolute;left:0;top:0;height:2px;width:0;background:var(--gold);transition:width .5s}
+  .toll:hover .barline{width:100%}
+
+  /* ============ SECTION SHELL ============ */
+  section{position:relative}
+  .sec-label{display:flex;align-items:center;gap:18px;margin-bottom:14px}
+  .sec-label .roman{font-size:1.05rem}
+  .sec-title{font-family:var(--display);font-size:clamp(1.9rem,3.1vw,3rem);color:var(--cream);letter-spacing:.03em;line-height:1.06}
+
+  /* ============ LA CARTE ============ */
+  .carte{padding:100px 0}
+  .carte-grid{display:grid;grid-template-columns:1fr 360px;gap:60px;align-items:start}
+  .carte-head{margin-bottom:34px}
+  .carte-head .sub{font-family:var(--serif);font-style:italic;font-size:1.2rem;color:var(--cream-dim);margin-top:14px;max-width:560px}
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin:30px 0 6px}
+  .filters button{
+    font-family:var(--sans);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
+    padding:9px 18px;border:1px solid var(--line);background:transparent;color:var(--cream-dim);
+    cursor:pointer;transition:all .3s;
+  }
+  .filters button:hover{border-color:var(--gold-deep);color:var(--cream)}
+  .filters button.on{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+  .menu-note{font-size:.72rem;color:var(--cream-faint);letter-spacing:.03em;margin-bottom:24px}
+  .menu-note em{color:var(--gold-deep);font-style:normal}
+  .dishes{display:grid;grid-template-columns:1fr 1fr;gap:0 48px}
+  .dish{
+    display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:baseline;
+    padding:20px 0;border-bottom:1px solid var(--line-soft);
+  }
+  .dish .nm{font-family:var(--serif);font-weight:600;font-size:1.28rem;color:var(--cream)}
+  .dish .leaders{border-bottom:1px dotted var(--line);align-self:end;margin-bottom:5px}
+  .dish .pr{font-family:var(--display);font-size:.95rem;color:var(--gold);white-space:nowrap}
+  .dish .ds{grid-column:1 / -1;font-size:.86rem;color:var(--cream-faint);line-height:1.5}
+  .dish .conf{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);border:1px solid var(--line);padding:2px 6px;white-space:nowrap;margin-left:8px;vertical-align:middle}
+  .dish.hide{display:none}
+
+  /* Cave rail */
+  .cave{position:sticky;top:100px;border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--ink-2))}
+  .cave .cave-img{height:230px;overflow:hidden;position:relative}
+  .cave .cave-img img{width:100%;height:100%;object-fit:cover}
+  .cave .cave-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,var(--panel))}
+  .cave-body{padding:26px 26px 30px}
+  .cave-body h3{font-family:var(--display);font-size:1.15rem;color:var(--gold);letter-spacing:.06em;margin-bottom:6px}
+  .cave-body .k{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--cream-dim);margin-bottom:18px}
+  .cave-list{list-style:none;font-size:.86rem}
+  .cave-list li{padding:9px 0;border-bottom:1px solid var(--line-soft);display:flex;justify-content:space-between;gap:12px;color:var(--cream-dim)}
+  .cave-list li:last-child{border-bottom:none}
+  .cave-list li span{color:var(--gold);font-family:var(--display);font-size:.8rem}
+
+  /* ============ TERRASSE / PALAIS — USP collage ============ */
+  .palace{padding:100px 0;background:linear-gradient(180deg,var(--ink),var(--ink-2))}
+  .palace-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+  .palace-copy p.body{font-size:1rem;color:var(--cream-dim);line-height:1.75;margin:26px 0}
+  .palace-copy p.body.serif{font-family:var(--serif);font-size:1.35rem;font-style:italic;color:var(--cream)}
+  .stats{display:flex;gap:40px;margin-top:36px;flex-wrap:wrap}
+  .stat .n{font-family:var(--display);font-size:2rem;color:var(--gold)}
+  .stat .l{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-faint);margin-top:4px}
+  .collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:220px 160px;gap:16px}
+  .collage .c1{grid-column:1 / -1;overflow:hidden}
+  .collage .c2,.collage .c3{overflow:hidden}
+  .collage img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+  .collage figure{position:relative;overflow:hidden}
+  .collage figure:hover img{transform:scale(1.05)}
+  .collage figcaption{position:absolute;left:14px;bottom:12px;font-family:var(--display);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);background:rgba(18,12,7,.55);padding:5px 10px}
+
+  /* ============ LE SALON — evening band ============ */
+  .salon{position:relative;overflow:hidden;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+  .salon-bg{position:absolute;inset:0;z-index:0}
+  .salon-bg img{width:100%;height:100%;object-fit:cover;opacity:.5}
+  .salon-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink) 12%,rgba(20,14,8,.72) 55%,rgba(20,14,8,.35))}
+  .salon-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding:110px 0}
+  .salon-copy h2{font-family:var(--display);font-size:clamp(2rem,3.3vw,3.2rem);color:var(--cream);letter-spacing:.03em;margin:16px 0 8px}
+  .salon-copy .lede{font-family:var(--serif);font-style:italic;font-size:1.35rem;color:var(--gold-hi);margin-bottom:26px}
+  .programme{list-style:none;margin-top:10px}
+  .programme li{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line-soft)}
+  .programme li .t{font-family:var(--display);font-size:.78rem;letter-spacing:.16em;color:var(--gold);text-transform:uppercase;white-space:nowrap;min-width:90px}
+  .programme li .d strong{font-family:var(--serif);font-weight:600;font-size:1.2rem;color:var(--cream);display:block}
+  .programme li .d span{font-size:.86rem;color:var(--cream-faint)}
+  .salon-card{background:rgba(18,12,7,.6);backdrop-filter:blur(6px);border:1px solid var(--line);padding:38px}
+  .salon-card .q{font-family:var(--serif);font-style:italic;font-size:1.5rem;line-height:1.4;color:var(--cream)}
+  .salon-card .a{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:22px}
+
+  /* ============ RESERVER + VISITE ============ */
+  .visit{padding:100px 0}
+  .visit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:stretch}
+  .res-card{border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--ink-2));padding:44px}
+  .res-card .sec-title{font-size:clamp(1.8rem,2.6vw,2.4rem);margin-bottom:8px}
+  .res-card .sub{font-family:var(--serif);font-style:italic;font-size:1.15rem;color:var(--cream-dim);margin-bottom:30px}
+  .res-actions{display:flex;flex-direction:column;gap:12px;margin-bottom:34px}
+  .res-actions .btn{text-align:center}
+  .hours-block{border-top:1px solid var(--line-soft);padding-top:26px}
+  .hours-block .row{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line-soft)}
+  .hours-block .row:last-child{border-bottom:none}
+  .hours-block .lab{font-family:var(--display);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+  .hours-block .val{font-size:.9rem;color:var(--cream-dim);text-align:right}
+  .hours-block .val small{display:block;color:var(--cream-faint);font-size:.74rem}
+  .contact-line{display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:26px;font-size:.86rem;color:var(--cream-dim)}
+  .contact-line a{color:var(--gold);border-bottom:1px solid var(--line)}
+  .map-wrap{position:relative;border:1px solid var(--line);min-height:440px;overflow:hidden}
+  .map-wrap iframe{width:100%;height:100%;min-height:440px;border:0;filter:grayscale(.35) contrast(1.05) brightness(.85);position:absolute;inset:0}
+  .map-tag{position:absolute;top:20px;left:20px;z-index:2;background:rgba(18,12,7,.85);border:1px solid var(--line);padding:12px 16px}
+  .map-tag .t{font-family:var(--display);font-size:.9rem;color:var(--gold);letter-spacing:.05em}
+  .map-tag .a{font-size:.78rem;color:var(--cream-dim);margin-top:2px}
+
+  /* ============ FOOTER ============ */
+  footer{background:var(--ink-2);border-top:1px solid var(--line);padding:64px 0 34px}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:48px;align-items:start}
+  .foot-brand img{height:52px;margin-bottom:20px}
+  .foot-brand p{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--cream-dim);max-width:320px}
+  .foot-col h4{font-family:var(--display);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+  .foot-col a,.foot-col p{display:block;font-size:.9rem;color:var(--cream-dim);padding:5px 0}
+  .foot-col a:hover{color:var(--gold)}
+  .foot-lang{display:flex;gap:6px;margin-top:12px}
+  .foot-lang button{background:none;border:1px solid var(--line);color:var(--cream-faint);padding:6px 12px;font-family:var(--sans);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .25s}
+  .foot-lang button.on,.foot-lang button:hover{color:var(--gold);border-color:var(--gold-deep)}
+  .foot-bottom{max-width:var(--maxw);margin:48px auto 0;padding:24px 48px 0;border-top:1px solid var(--line-soft);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.74rem;color:var(--cream-faint);letter-spacing:.02em}
+  .disclaimer{color:var(--gold-deep)}
+
+  /* ============ RESPONSIVE ============ */
+  @media(max-width:1080px){
+    .carte-grid{grid-template-columns:1fr}
+    .cave{position:static}
+    .dishes{grid-template-columns:1fr}
+  }
+  @media(max-width:900px){
+    .wrap{padding:0 26px}
+    nav.main{display:none}
+    .hero{grid-template-columns:1fr;min-height:auto}
+    .hero-panel{padding:120px 26px 50px;order:2}
+    .hero-media{order:1;min-height:56vh}
+    .hero-panel::after{display:none}
+    .rail{flex-direction:row;flex-wrap:wrap;gap:14px 22px;margin:0 0 30px}
+    .rail .stem{display:none}
+    .rail .lb{display:none}
+    .arc{grid-template-columns:1fr 1fr}
+    .toll{border-bottom:1px solid var(--line-soft)}
+    .hours-head,.palace-grid,.salon-grid,.visit-grid,.foot-grid,.collage{grid-template-columns:1fr}
+    .palace-grid,.salon-grid,.visit-grid{gap:44px}
+    .collage{grid-template-rows:200px 200px}
+    .foot-bottom{padding:24px 26px 0;flex-direction:column}
+  }
+  @media(max-width:560px){
+    .arc{grid-template-columns:1fr}
+    .stats{gap:26px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header id="masthead">
+  <div class="wrap bar">
+    <a href="#top" class="brand" aria-label="D'Gëlle Klack">
+      <img src="assets/logo.png" alt="D'Gëlle Klack" />
+      <span class="tick" data-i18n="brand.tick">Vieille Ville · Luxembourg</span>
+    </a>
+    <nav class="main">
+      <a href="#heures" data-i18n="nav.hours">La Journée</a>
+      <a href="#carte" data-i18n="nav.menu">La Carte</a>
+      <a href="#palais" data-i18n="nav.terrace">La Terrasse</a>
+      <a href="#salon" data-i18n="nav.salon">Le Salon</a>
+      <a href="#visite" data-i18n="nav.visit">Réserver</a>
+    </nav>
+    <div class="actions">
+      <div class="lang" role="group" aria-label="Langue">
+        <button data-lang="fr" class="on">FR</button><span class="sep">·</span>
+        <button data-lang="de">DE</button><span class="sep">·</span>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="tel:+35226867632" class="btn solid" data-i18n="cta.reserve">Réserver</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-panel">
+    <div class="rail" aria-hidden="true">
+      <div class="tk"><span class="stem"></span><span class="dot"></span><span class="hr">VII</span><span class="lb" data-i18n="rail.kaffi">Kaffi</span></div>
+      <div class="tk"><span class="dot"></span><span class="hr">XII</span><span class="lb" data-i18n="rail.lunch">Déjeuner</span></div>
+      <div class="tk"><span class="dot"></span><span class="hr">XV</span><span class="lb" data-i18n="rail.after">Salon</span></div>
+      <div class="tk"><span class="dot"></span><span class="hr">XVIII</span><span class="lb" data-i18n="rail.aperitif">Apéro</span></div>
+      <div class="tk"><span class="dot"></span><span class="hr">XXII</span><span class="lb" data-i18n="rail.lounge">Lounge</span></div>
+      <div class="tk"><span class="dot"></span><span class="hr">I</span><span class="lb" data-i18n="rail.late">Piano</span></div>
+    </div>
+    <div class="hero-copy">
+      <span class="eyebrow" data-i18n="hero.eyebrow">La Cloche d'Or de la Vieille Ville</span>
+      <h1>
+        D'Gëlle Klack
+        <span class="gold" data-i18n="hero.sub">Exzellent Iessen — le bistro-lounge du terroir</span>
+      </h1>
+      <p class="lede" data-i18n="hero.lede">Cuisine du terroir luxembourgeois, au pied du Palais grand-ducal.</p>
+      <p class="tagnote"><em data-i18n="tag.proposed">Signature proposée</em> <span data-i18n="hero.tagnote">— à valider avec l'établissement.</span></p>
+      <div class="hero-cta">
+        <a href="#visite" class="btn solid" data-i18n="cta.reserveTable">Réserver une table</a>
+        <a href="#carte" class="btn" data-i18n="cta.seeMenu">Voir la carte</a>
+      </div>
+      <div class="hero-locale">
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <span data-i18n="hero.locale">Terrasse face au Palais grand-ducal · 1 Rue Sigefroi</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-media">
+    <img src="assets/exterior.webp" alt="Le logo doré gravé sur la vitrine de D'Gëlle Klack, guirlandes lumineuses en arrière-plan" />
+    <div class="hero-badge">
+      <div class="n">4,3<span style="font-size:.9rem">/5</span></div>
+      <div class="l" data-i18n="hero.badge">TripAdvisor · ~169 avis · à conf.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LES HEURES — carillon day-arc ============ -->
+<section class="hours" id="heures">
+  <div class="hours-head">
+    <div>
+      <div class="filigree" style="width:160px;margin-bottom:20px">
+        <svg class="bell" viewBox="0 0 24 24"><path d="M12 3a5 5 0 015 5c0 4 2 6 2 8H5c0-2 2-4 2-8a5 5 0 015-5z"/><path d="M10 21a2 2 0 004 0"/></svg>
+      </div>
+      <h2 data-i18n="hours.title">La journée en six coups de cloche</h2>
+    </div>
+    <p data-i18n="hours.intro">Du café du matin au piano-bar de minuit, la Gëlle Klack sonne chaque heure de la Vieille Ville.</p>
+  </div>
+  <div class="arc">
+    <div class="toll"><span class="barline"></span><div class="num">VII</div><div class="hr">07:00</div><h3 data-i18n="toll1.t">Le Kaffi</h3><p data-i18n="toll1.p">Petit-déjeuner, viennoiseries et cafés de spécialité, servis dès sept heures dans les banquettes de cuir.</p></div>
+    <div class="toll"><span class="barline"></span><div class="num">XII</div><div class="hr">12:00</div><h3 data-i18n="toll2.t">Le Déjeuner</h3><p data-i18n="toll2.p">Plat du jour et classiques régionaux — produits de saison, cuisine de terroir à midi pile.</p></div>
+    <div class="toll"><span class="barline"></span><div class="num">XV</div><div class="hr">15:00</div><h3 data-i18n="toll3.t">Le Salon</h3><p data-i18n="toll3.p">L'après-midi tranquille : thés Kusmi, pâtisseries et un fauteuil club au calme.</p></div>
+    <div class="toll"><span class="barline"></span><div class="num">XVIII</div><div class="hr">18:00</div><h3 data-i18n="toll4.t">L'Apéro</h3><p data-i18n="toll4.p">Crémants et vins luxembourgeois, cocktails et planches — l'heure de l'after-work en Vieille Ville.</p></div>
+    <div class="toll"><span class="barline"></span><div class="num">XXII</div><div class="hr">22:00</div><h3 data-i18n="toll5.t">Le Lounge</h3><p data-i18n="toll5.p">Dîner tardif et ambiance lounge feutrée, jusque tard le vendredi et le samedi.</p></div>
+    <div class="toll"><span class="barline"></span><div class="num">I</div><div class="hr">Piano</div><h3 data-i18n="toll6.t">Le Piano-bar</h3><p data-i18n="toll6.p">Soirées piano, expositions d'artistes et dégustations — la carte des soirs à confirmer.</p></div>
+  </div>
+</section>
+
+<!-- ============ LA CARTE ============ -->
+<section class="carte" id="carte">
+  <div class="wrap carte-grid">
+    <div>
+      <div class="carte-head">
+        <div class="sec-label"><span class="roman">II</span><span class="eyebrow" data-i18n="carte.eyebrow">La Carte</span></div>
+        <h2 class="sec-title" data-i18n="carte.title">Le terroir, dressé à l'assiette</h2>
+        <p class="sub" data-i18n="carte.sub">Une brasserie de saison signée par la cuisine de la maison : classiques luxembourgeois, poissons du jour et flammekuchen.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filtrer la carte">
+        <button class="on" data-cat="all" data-i18n="filter.all">Tout</button>
+        <button data-cat="entrees" data-i18n="filter.starters">Entrées</button>
+        <button data-cat="plats" data-i18n="filter.mains">Plats</button>
+        <button data-cat="flamm" data-i18n="filter.flamm">Flammekuchen</button>
+        <button data-cat="desserts" data-i18n="filter.desserts">Desserts</button>
+      </div>
+      <p class="menu-note"><em data-i18n="carte.noteHead">Prix indicatifs</em> <span data-i18n="carte.note">— d'après la carte de printemps 2026, variables selon la saison, à confirmer avec l'établissement.</span></p>
+
+      <div class="dishes">
+        <!-- entrées -->
+        <div class="dish" data-cat="entrees">
+          <span class="nm">Feierstengszalot</span><span class="leaders"></span><span class="pr">17 €</span>
+          <span class="ds" data-i18n="d.feier">Salade luxembourgeoise de bœuf mariné, œuf et pickles — un classique du pays.</span>
+        </div>
+        <div class="dish" data-cat="entrees">
+          <span class="nm">Escargots de Bourgogne</span><span class="leaders"></span><span class="pr">14 €</span>
+          <span class="ds" data-i18n="d.escargots">Six escargots, beurre persillé à l'ail, croûtons dorés.</span>
+        </div>
+        <div class="dish" data-cat="entrees">
+          <span class="nm">Soupe de lentilles</span><span class="leaders"></span><span class="pr">11 €</span>
+          <span class="ds" data-i18n="d.lentilles">Velouté de lentilles fumées, lard régional — ou la soupe du jour.</span>
+        </div>
+        <div class="dish" data-cat="entrees">
+          <span class="nm">Salade César</span><span class="leaders"></span><span class="pr">16 €</span>
+          <span class="ds" data-i18n="d.cesar">Cœurs de laitue, poulet grillé, copeaux de parmesan.</span>
+        </div>
+        <!-- plats -->
+        <div class="dish" data-cat="plats">
+          <span class="nm">Poisson du jour</span><span class="leaders"></span><span class="pr" data-i18n="pr.market">au marché</span>
+          <span class="ds" data-i18n="d.poisson">Arrivage du jour, garniture de saison — demandez au service.</span>
+        </div>
+        <div class="dish" data-cat="plats">
+          <span class="nm">Vol-au-vent</span><span class="leaders"></span><span class="pr">24 €</span>
+          <span class="ds" data-i18n="d.volauvent">Bouchée à la reine à la luxembourgeoise, quenelles, frites maison.</span>
+        </div>
+        <div class="dish" data-cat="plats">
+          <span class="nm">Boudin noir & pommes</span><span class="leaders"></span><span class="pr">21 €</span>
+          <span class="ds" data-i18n="d.boudin">Boudin noir, purée maison et compote de pommes — franchement régional.</span>
+        </div>
+        <div class="dish" data-cat="plats">
+          <span class="nm">Poulet aux champignons</span><span class="leaders"></span><span class="pr">23 €</span>
+          <span class="ds" data-i18n="d.poulet">Suprême de volaille, sauce crémée aux champignons de saison.</span>
+        </div>
+        <!-- flammekuchen -->
+        <div class="dish" data-cat="flamm">
+          <span class="nm">Flammekuche classique</span><span class="leaders"></span><span class="pr">20 €</span>
+          <span class="ds" data-i18n="d.flammClassic">Pâte fine, crème, lard fumé et oignons — la tarte flambée de la maison.</span>
+        </div>
+        <div class="dish" data-cat="flamm">
+          <span class="nm">Flammekuche gratinée</span><span class="leaders"></span><span class="pr">21 €</span>
+          <span class="ds" data-i18n="d.flammVar">Variation au fromage et champignons — autres déclinaisons à l'ardoise.</span>
+        </div>
+        <!-- desserts -->
+        <div class="dish" data-cat="desserts">
+          <span class="nm">Dessert du jour</span><span class="leaders"></span><span class="pr">9 €</span>
+          <span class="ds" data-i18n="d.dessertjour">Pâtisserie de la maison, crème fouettée et coulis de fruits rouges.</span>
+        </div>
+        <div class="dish" data-cat="desserts">
+          <span class="nm">Café gourmand</span><span class="leaders"></span><span class="pr">12 €</span>
+          <span class="ds" data-i18n="d.cafegourmand">Espresso et son trio de mignardises maison.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cave rail -->
+    <aside class="cave">
+      <div class="cave-img"><img src="assets/interior-3.jpg" alt="Dessert dressé de la maison" /></div>
+      <div class="cave-body">
+        <h3 data-i18n="cave.title">La Cave luxembourgeoise</h3>
+        <p class="k" data-i18n="cave.sub">Crémants & vins de la Moselle, tout près.</p>
+        <ul class="cave-list">
+          <li>Crémant Alice Hartmann <span data-i18n="cave.glass">au verre</span></li>
+          <li>Domaine Krier-Welbes <span data-i18n="cave.bottle">bouteille</span></li>
+          <li>Caves Mathes <span data-i18n="cave.bottle2">bouteille</span></li>
+          <li data-i18n="cave.champagne">Champagnes & bulles<span>—</span></li>
+          <li>Cocktails <span>13 €</span></li>
+          <li data-i18n="cave.beer">Bières pression<span>4,80–7,50 €</span></li>
+          <li data-i18n="cave.tea">Thés Kusmi<span>—</span></li>
+        </ul>
+        <p class="menu-note" style="margin:18px 0 0"><span data-i18n="cave.note">Sélection indicative — carte des vins complète à l'établissement.</span></p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ TERRASSE / PALAIS ============ -->
+<section class="palace" id="palais">
+  <div class="wrap palace-grid">
+    <div class="palace-copy">
+      <div class="sec-label"><span class="roman">III</span><span class="eyebrow" data-i18n="palace.eyebrow">La Terrasse & le Palais</span></div>
+      <h2 class="sec-title" data-i18n="palace.title">Une adresse au pied du Palais grand-ducal</h2>
+      <p class="body serif" data-i18n="palace.leadserif">On s'attable dans la Vieille Ville, là où la ville a commencé, à quelques pas de la résidence du Grand-Duc.</p>
+      <p class="body" data-i18n="palace.body">Banquettes de cuir patiné, guirlandes chaudes derrière la vitrine gravée, expositions d'artistes aux murs : la Gëlle Klack est un salon de quartier autant qu'un restaurant. Aux beaux jours, la terrasse donne directement sur le Palais — l'une des plus belles vues de tables de la capitale.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">4,3/5</div><div class="l" data-i18n="palace.s1">TripAdvisor · à confirmer</div></div>
+        <div class="stat"><div class="n">2025</div><div class="l" data-i18n="palace.s2">Travellers' Choice · à conf.</div></div>
+        <div class="stat"><div class="n">1</div><div class="l" data-i18n="palace.s3">Rue Sigefroi · Vieille Ville</div></div>
+      </div>
+    </div>
+    <div class="collage">
+      <figure class="c1"><img src="assets/interior-2.jpg" alt="Salon-lounge : banquettes de cuir capitonné, viennoiseries, vue de la Vieille Ville aux murs" /><figcaption data-i18n="cap.lounge">Le salon-lounge</figcaption></figure>
+      <figure class="c2"><img src="assets/food-1.jpg" alt="Fauteuils club en cuir du salon, terrasse en arrière-plan" /><figcaption data-i18n="cap.fauteuils">Les fauteuils club</figcaption></figure>
+      <figure class="c3"><img src="assets/interior-1.jpg" alt="Le logo doré gravé sur la vitrine, guirlandes lumineuses" /><figcaption data-i18n="cap.vitrine">La vitrine gravée</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LE SALON DU SOIR ============ -->
+<section class="salon" id="salon">
+  <div class="salon-bg"><img src="assets/food-1.jpg" alt="" aria-hidden="true" /></div>
+  <div class="wrap salon-grid">
+    <div class="salon-copy">
+      <div class="sec-label"><span class="roman">IV</span><span class="eyebrow" data-i18n="salon.eyebrow">Le Salon du soir</span></div>
+      <h2 data-i18n="salon.title">Quand la cloche sonne le soir</h2>
+      <p class="lede" data-i18n="salon.lede">Piano-bar, art aux murs et verres de Moselle.</p>
+      <ul class="programme">
+        <li><span class="t" data-i18n="prog1.t">Certains soirs</span><span class="d"><strong data-i18n="prog1.h">Piano-bar</strong><span data-i18n="prog1.d">Musique live et ambiance feutrée — programme à confirmer.</span></span></li>
+        <li><span class="t" data-i18n="prog2.t">En saison</span><span class="d"><strong data-i18n="prog2.h">Expositions d'artistes</strong><span data-i18n="prog2.d">Les murs du salon accueillent régulièrement des accrochages.</span></span></li>
+        <li><span class="t" data-i18n="prog3.t">Sur invitation</span><span class="d"><strong data-i18n="prog3.h">Dégustations de vins</strong><span data-i18n="prog3.d">Crémants et vins luxembourgeois, à découvrir au verre.</span></span></li>
+      </ul>
+    </div>
+    <div class="salon-card">
+      <p class="q" data-i18n="salon.quote">« Un salon de la Vieille Ville où l'on reste du café du matin jusqu'au dernier accord du piano. »</p>
+      <p class="a" data-i18n="salon.attr">— L'esprit de la maison</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESERVER + VISITE ============ -->
+<section class="visit" id="visite">
+  <div class="wrap visit-grid">
+    <div class="res-card">
+      <div class="sec-label"><span class="roman">V</span><span class="eyebrow" data-i18n="visit.eyebrow">Réserver & venir</span></div>
+      <h2 class="sec-title" data-i18n="visit.title">À bientôt à la Klack</h2>
+      <p class="sub" data-i18n="visit.sub">Réservation par téléphone — la table en terrasse part vite aux beaux jours.</p>
+      <div class="res-actions">
+        <a href="tel:+35226867632" class="btn solid" data-i18n="visit.call">Appeler · +352 26 86 76 32</a>
+        <a href="mailto:gelleklack@gelleklack.lu" class="btn" data-i18n="visit.email">Écrire un e-mail</a>
+      </div>
+      <div class="hours-block">
+        <div class="row"><span class="lab" data-i18n="hrs.kitchen">Cuisine</span><span class="val">12:00 – 21:30 <small data-i18n="hrs.daily">tous les jours · à confirmer</small></span></div>
+        <div class="row"><span class="lab" data-i18n="hrs.bar">Bar / Lounge</span><span class="val">07:00 – 23:00<small data-i18n="hrs.barnote">Ven & Sam jusqu'à 01:00</small></span></div>
+        <div class="row"><span class="lab" data-i18n="hrs.kaffi">Kaffi</span><span class="val">07:00 – 10:30<small data-i18n="hrs.kaffinote">week-end jusqu'à 11:00</small></span></div>
+      </div>
+      <div class="contact-line">
+        <span>1 Rue Sigefroi, L-2536 Luxembourg</span>
+        <a href="tel:+35226867632">+352 26 86 76 32</a>
+        <a href="mailto:gelleklack@gelleklack.lu">gelleklack@gelleklack.lu</a>
+      </div>
+    </div>
+    <div class="map-wrap">
+      <div class="map-tag">
+        <div class="t">D'Gëlle Klack</div>
+        <div class="a">1 Rue Sigefroi · Vieille Ville</div>
+      </div>
+      <iframe title="Carte — 1 Rue Sigefroi, Luxembourg" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=1+Rue+Sigefroi,+2536+Luxembourg&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="assets/logo.png" alt="D'Gëlle Klack" />
+      <p data-i18n="foot.tag">La Cloche d'Or de la Vieille Ville — cuisine du terroir, bar-lounge & piano-bar, face au Palais grand-ducal.</p>
+      <div class="foot-lang" role="group" aria-label="Langue">
+        <button data-lang="fr" class="on">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h4 data-i18n="foot.explore">Explorer</h4>
+      <a href="#heures" data-i18n="nav.hours">La Journée</a>
+      <a href="#carte" data-i18n="nav.menu">La Carte</a>
+      <a href="#palais" data-i18n="nav.terrace">La Terrasse</a>
+      <a href="#salon" data-i18n="nav.salon">Le Salon</a>
+      <a href="#visite" data-i18n="nav.visit">Réserver</a>
+    </div>
+    <div class="foot-col">
+      <h4 data-i18n="foot.contact">Contact</h4>
+      <p>1 Rue Sigefroi</p>
+      <p>L-2536 Luxembourg</p>
+      <a href="tel:+35226867632">+352 26 86 76 32</a>
+      <a href="mailto:gelleklack@gelleklack.lu">gelleklack@gelleklack.lu</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© <span id="yr"></span> D'Gëlle Klack · 1 Rue Sigefroi, Luxembourg</span>
+    <span class="disclaimer" data-i18n="foot.demo">Site de démonstration — contenus, horaires et prix à confirmer avec l'établissement.</span>
+  </div>
+</footer>
+
+<script>
+/* ============ i18n ============ */
+const I18N = {
+  fr:{
+    "brand.tick":"Vieille Ville · Luxembourg",
+    "nav.hours":"La Journée","nav.menu":"La Carte","nav.terrace":"La Terrasse","nav.salon":"Le Salon","nav.visit":"Réserver",
+    "cta.reserve":"Réserver","cta.reserveTable":"Réserver une table","cta.seeMenu":"Voir la carte",
+    "rail.kaffi":"Kaffi","rail.lunch":"Déjeuner","rail.after":"Salon","rail.aperitif":"Apéro","rail.lounge":"Lounge","rail.late":"Piano",
+    "hero.eyebrow":"La Cloche d'Or de la Vieille Ville",
+    "hero.sub":"Exzellent Iessen — le bistro-lounge du terroir",
+    "hero.lede":"Cuisine du terroir luxembourgeois, au pied du Palais grand-ducal.",
+    "tag.proposed":"Signature proposée","hero.tagnote":"— à valider avec l'établissement.",
+    "hero.locale":"Terrasse face au Palais grand-ducal · 1 Rue Sigefroi",
+    "hero.badge":"TripAdvisor · ~169 avis · à conf.",
+    "hours.title":"La journée en six coups de cloche",
+    "hours.intro":"Du café du matin au piano-bar de minuit, la Gëlle Klack sonne chaque heure de la Vieille Ville.",
+    "toll1.t":"Le Kaffi","toll1.p":"Petit-déjeuner, viennoiseries et cafés de spécialité, servis dès sept heures dans les banquettes de cuir.",
+    "toll2.t":"Le Déjeuner","toll2.p":"Plat du jour et classiques régionaux — produits de saison, cuisine de terroir à midi pile.",
+    "toll3.t":"Le Salon","toll3.p":"L'après-midi tranquille : thés Kusmi, pâtisseries et un fauteuil club au calme.",
+    "toll4.t":"L'Apéro","toll4.p":"Crémants et vins luxembourgeois, cocktails et planches — l'heure de l'after-work en Vieille Ville.",
+    "toll5.t":"Le Lounge","toll5.p":"Dîner tardif et ambiance lounge feutrée, jusque tard le vendredi et le samedi.",
+    "toll6.t":"Le Piano-bar","toll6.p":"Soirées piano, expositions d'artistes et dégustations — la carte des soirs à confirmer.",
+    "carte.eyebrow":"La Carte","carte.title":"Le terroir, dressé à l'assiette",
+    "carte.sub":"Une brasserie de saison signée par la cuisine de la maison : classiques luxembourgeois, poissons du jour et flammekuchen.",
+    "filter.all":"Tout","filter.starters":"Entrées","filter.mains":"Plats","filter.flamm":"Flammekuchen","filter.desserts":"Desserts",
+    "carte.noteHead":"Prix indicatifs","carte.note":"— d'après la carte de printemps 2026, variables selon la saison, à confirmer avec l'établissement.",
+    "d.feier":"Salade luxembourgeoise de bœuf mariné, œuf et pickles — un classique du pays.",
+    "d.escargots":"Six escargots, beurre persillé à l'ail, croûtons dorés.",
+    "d.lentilles":"Velouté de lentilles fumées, lard régional — ou la soupe du jour.",
+    "d.cesar":"Cœurs de laitue, poulet grillé, copeaux de parmesan.",
+    "pr.market":"au marché","d.poisson":"Arrivage du jour, garniture de saison — demandez au service.",
+    "d.volauvent":"Bouchée à la reine à la luxembourgeoise, quenelles, frites maison.",
+    "d.boudin":"Boudin noir, purée maison et compote de pommes — franchement régional.",
+    "d.poulet":"Suprême de volaille, sauce crémée aux champignons de saison.",
+    "d.flammClassic":"Pâte fine, crème, lard fumé et oignons — la tarte flambée de la maison.",
+    "d.flammVar":"Variation au fromage et champignons — autres déclinaisons à l'ardoise.",
+    "d.dessertjour":"Pâtisserie de la maison, crème fouettée et coulis de fruits rouges.",
+    "d.cafegourmand":"Espresso et son trio de mignardises maison.",
+    "cave.title":"La Cave luxembourgeoise","cave.sub":"Crémants & vins de la Moselle, tout près.",
+    "cave.glass":"au verre","cave.bottle":"bouteille","cave.bottle2":"bouteille","cave.champagne":"Champagnes & bulles","cave.beer":"Bières pression","cave.tea":"Thés Kusmi",
+    "cave.note":"Sélection indicative — carte des vins complète à l'établissement.",
+    "palace.eyebrow":"La Terrasse & le Palais","palace.title":"Une adresse au pied du Palais grand-ducal",
+    "palace.leadserif":"On s'attable dans la Vieille Ville, là où la ville a commencé, à quelques pas de la résidence du Grand-Duc.",
+    "palace.body":"Banquettes de cuir patiné, guirlandes chaudes derrière la vitrine gravée, expositions d'artistes aux murs : la Gëlle Klack est un salon de quartier autant qu'un restaurant. Aux beaux jours, la terrasse donne directement sur le Palais — l'une des plus belles vues de tables de la capitale.",
+    "palace.s1":"TripAdvisor · à confirmer","palace.s2":"Travellers' Choice · à conf.","palace.s3":"Rue Sigefroi · Vieille Ville",
+    "cap.lounge":"Le salon-lounge","cap.fauteuils":"Les fauteuils club","cap.vitrine":"La vitrine gravée",
+    "salon.eyebrow":"Le Salon du soir","salon.title":"Quand la cloche sonne le soir","salon.lede":"Piano-bar, art aux murs et verres de Moselle.",
+    "prog1.t":"Certains soirs","prog1.h":"Piano-bar","prog1.d":"Musique live et ambiance feutrée — programme à confirmer.",
+    "prog2.t":"En saison","prog2.h":"Expositions d'artistes","prog2.d":"Les murs du salon accueillent régulièrement des accrochages.",
+    "prog3.t":"Sur invitation","prog3.h":"Dégustations de vins","prog3.d":"Crémants et vins luxembourgeois, à découvrir au verre.",
+    "salon.quote":"« Un salon de la Vieille Ville où l'on reste du café du matin jusqu'au dernier accord du piano. »","salon.attr":"— L'esprit de la maison",
+    "visit.eyebrow":"Réserver & venir","visit.title":"À bientôt à la Klack","visit.sub":"Réservation par téléphone — la table en terrasse part vite aux beaux jours.",
+    "visit.call":"Appeler · +352 26 86 76 32","visit.email":"Écrire un e-mail",
+    "hrs.kitchen":"Cuisine","hrs.daily":"tous les jours · à confirmer","hrs.bar":"Bar / Lounge","hrs.barnote":"Ven & Sam jusqu'à 01:00","hrs.kaffi":"Kaffi","hrs.kaffinote":"week-end jusqu'à 11:00",
+    "foot.tag":"La Cloche d'Or de la Vieille Ville — cuisine du terroir, bar-lounge & piano-bar, face au Palais grand-ducal.",
+    "foot.explore":"Explorer","foot.contact":"Contact",
+    "foot.demo":"Site de démonstration — contenus, horaires et prix à confirmer avec l'établissement."
+  },
+  de:{
+    "brand.tick":"Uewerstad · Luxemburg",
+    "nav.hours":"Der Tag","nav.menu":"Die Karte","nav.terrace":"Die Terrasse","nav.salon":"Der Salon","nav.visit":"Reservieren",
+    "cta.reserve":"Reservieren","cta.reserveTable":"Tisch reservieren","cta.seeMenu":"Zur Karte",
+    "rail.kaffi":"Kaffi","rail.lunch":"Mittag","rail.after":"Salon","rail.aperitif":"Apéro","rail.lounge":"Lounge","rail.late":"Piano",
+    "hero.eyebrow":"Die Goldene Glocke der Altstadt",
+    "hero.sub":"Exzellent Iessen — das Bistro-Lounge der Region",
+    "hero.lede":"Luxemburgische Regionalküche, zu Füßen des großherzoglichen Palastes.",
+    "tag.proposed":"Vorgeschlagener Claim","hero.tagnote":"— mit dem Haus abzustimmen.",
+    "hero.locale":"Terrasse mit Blick auf den Palast · 1 Rue Sigefroi",
+    "hero.badge":"TripAdvisor · ~169 Bew. · unbest.",
+    "hours.title":"Der Tag in sechs Glockenschlägen",
+    "hours.intro":"Vom Morgenkaffee bis zur Pianobar um Mitternacht — die Gëlle Klack läutet jede Stunde der Altstadt.",
+    "toll1.t":"De Kaffi","toll1.p":"Frühstück, Gebäck und Spezialitätenkaffee, ab sieben Uhr auf den Ledersofas serviert.",
+    "toll2.t":"Das Mittagessen","toll2.p":"Tagesgericht und regionale Klassiker — saisonale Produkte, Regionalküche pünktlich um zwölf.",
+    "toll3.t":"Der Salon","toll3.p":"Der ruhige Nachmittag: Kusmi-Tees, Patisserie und ein Clubsessel in aller Ruhe.",
+    "toll4.t":"Der Apéro","toll4.p":"Crémants und luxemburgische Weine, Cocktails und Platten — die After-Work-Stunde in der Altstadt.",
+    "toll5.t":"Die Lounge","toll5.p":"Spätes Dinner und gediegene Lounge-Atmosphäre, freitags und samstags bis spät.",
+    "toll6.t":"Die Pianobar","toll6.p":"Piano-Abende, Kunstausstellungen und Verkostungen — Abendprogramm unbestätigt.",
+    "carte.eyebrow":"Die Karte","carte.title":"Die Region, auf dem Teller angerichtet",
+    "carte.sub":"Eine saisonale Brasserie aus der Hausküche: luxemburgische Klassiker, Fisch des Tages und Flammkuchen.",
+    "filter.all":"Alles","filter.starters":"Vorspeisen","filter.mains":"Hauptgerichte","filter.flamm":"Flammkuchen","filter.desserts":"Desserts",
+    "carte.noteHead":"Richtpreise","carte.note":"— nach der Frühjahrskarte 2026, saisonal veränderlich, mit dem Haus zu bestätigen.",
+    "d.feier":"Luxemburgischer Salat aus mariniertem Rindfleisch, Ei und Pickles — ein Landesklassiker.",
+    "d.escargots":"Sechs Schnecken, Knoblauch-Kräuterbutter, goldene Croûtons.",
+    "d.lentilles":"Cremige Suppe aus geräucherten Linsen, regionaler Speck — oder die Tagessuppe.",
+    "d.cesar":"Salatherzen, gegrilltes Hähnchen, Parmesanspäne.",
+    "pr.market":"Marktpreis","d.poisson":"Fang des Tages, saisonale Beilage — fragen Sie den Service.",
+    "d.volauvent":"Königinpastete auf luxemburgische Art, Klößchen, hausgemachte Pommes.",
+    "d.boudin":"Blutwurst, hausgemachtes Püree und Apfelkompott — echt regional.",
+    "d.poulet":"Hähnchenbrust, Rahmsauce mit saisonalen Pilzen.",
+    "d.flammClassic":"Dünner Teig, Crème, geräucherter Speck und Zwiebeln — der Flammkuchen des Hauses.",
+    "d.flammVar":"Variation mit Käse und Pilzen — weitere Sorten auf der Tafel.",
+    "d.dessertjour":"Hausgemachte Patisserie, Schlagsahne und Fruchtcoulis.",
+    "d.cafegourmand":"Espresso mit seinem Trio hausgemachter Kleinigkeiten.",
+    "cave.title":"Der luxemburgische Keller","cave.sub":"Crémants & Weine von der nahen Mosel.",
+    "cave.glass":"im Glas","cave.bottle":"Flasche","cave.bottle2":"Flasche","cave.champagne":"Champagner & Perlweine","cave.beer":"Bier vom Fass","cave.tea":"Kusmi-Tees",
+    "cave.note":"Auswahl als Beispiel — vollständige Weinkarte im Haus.",
+    "palace.eyebrow":"Die Terrasse & der Palast","palace.title":"Eine Adresse zu Füßen des großherzoglichen Palastes",
+    "palace.leadserif":"Man sitzt in der Altstadt, wo die Stadt begann, wenige Schritte von der Residenz des Großherzogs entfernt.",
+    "palace.body":"Sofas aus patiniertem Leder, warme Lichterketten hinter der gravierten Scheibe, Kunstausstellungen an den Wänden: die Gëlle Klack ist ebenso Stubensalon wie Restaurant. An schönen Tagen blickt die Terrasse direkt auf den Palast — eine der schönsten Tischaussichten der Hauptstadt.",
+    "palace.s1":"TripAdvisor · unbestätigt","palace.s2":"Travellers' Choice · unbest.","palace.s3":"Rue Sigefroi · Altstadt",
+    "cap.lounge":"Der Lounge-Salon","cap.fauteuils":"Die Clubsessel","cap.vitrine":"Die gravierte Scheibe",
+    "salon.eyebrow":"Der Abend-Salon","salon.title":"Wenn die Glocke am Abend läutet","salon.lede":"Pianobar, Kunst an den Wänden und Gläser von der Mosel.",
+    "prog1.t":"An manchen Abenden","prog1.h":"Pianobar","prog1.d":"Live-Musik und gediegene Stimmung — Programm unbestätigt.",
+    "prog2.t":"Saisonal","prog2.h":"Kunstausstellungen","prog2.d":"Die Wände des Salons zeigen regelmäßig wechselnde Hängungen.",
+    "prog3.t":"Auf Einladung","prog3.h":"Weinverkostungen","prog3.d":"Crémants und luxemburgische Weine, im Glas zu entdecken.",
+    "salon.quote":"„Ein Salon der Altstadt, in dem man vom Morgenkaffee bis zum letzten Klavierakkord bleibt.“","salon.attr":"— Der Geist des Hauses",
+    "visit.eyebrow":"Reservieren & kommen","visit.title":"Bis bald in der Klack","visit.sub":"Reservierung telefonisch — der Terrassentisch ist bei schönem Wetter schnell weg.",
+    "visit.call":"Anrufen · +352 26 86 76 32","visit.email":"E-Mail schreiben",
+    "hrs.kitchen":"Küche","hrs.daily":"täglich · zu bestätigen","hrs.bar":"Bar / Lounge","hrs.barnote":"Fr & Sa bis 01:00","hrs.kaffi":"Kaffi","hrs.kaffinote":"Wochenende bis 11:00",
+    "foot.tag":"Die Goldene Glocke der Altstadt — Regionalküche, Bar-Lounge & Pianobar, gegenüber dem großherzoglichen Palast.",
+    "foot.explore":"Entdecken","foot.contact":"Kontakt",
+    "foot.demo":"Demo-Website — Inhalte, Öffnungszeiten und Preise mit dem Haus zu bestätigen."
+  },
+  en:{
+    "brand.tick":"Old Town · Luxembourg",
+    "nav.hours":"The Day","nav.menu":"The Menu","nav.terrace":"The Terrace","nav.salon":"The Salon","nav.visit":"Reserve",
+    "cta.reserve":"Reserve","cta.reserveTable":"Reserve a table","cta.seeMenu":"See the menu",
+    "rail.kaffi":"Kaffi","rail.lunch":"Lunch","rail.after":"Salon","rail.aperitif":"Apéro","rail.lounge":"Lounge","rail.late":"Piano",
+    "hero.eyebrow":"The Golden Bell of the Old Town",
+    "hero.sub":"Exzellent Iessen — the terroir bistro-lounge",
+    "hero.lede":"Luxembourg terroir cuisine, at the foot of the Grand Ducal Palace.",
+    "tag.proposed":"Proposed line","hero.tagnote":"— to be validated with the venue.",
+    "hero.locale":"Terrace facing the Grand Ducal Palace · 1 Rue Sigefroi",
+    "hero.badge":"TripAdvisor · ~169 reviews · TBC",
+    "hours.title":"The day in six strokes of the bell",
+    "hours.intro":"From morning coffee to the midnight piano-bar, the Gëlle Klack rings every hour of the Old Town.",
+    "toll1.t":"The Kaffi","toll1.p":"Breakfast, pastries and specialty coffee, served from seven on the leather banquettes.",
+    "toll2.t":"Lunch","toll2.p":"Dish of the day and regional classics — seasonal produce, terroir cooking right at noon.",
+    "toll3.t":"The Salon","toll3.p":"The quiet afternoon: Kusmi teas, pastries and a club armchair in peace.",
+    "toll4.t":"Apéro","toll4.p":"Crémants and Luxembourg wines, cocktails and boards — the after-work hour in the Old Town.",
+    "toll5.t":"The Lounge","toll5.p":"Late dinner and a hushed lounge mood, running late on Fridays and Saturdays.",
+    "toll6.t":"The Piano-bar","toll6.p":"Piano nights, artists' exhibitions and tastings — evening programme to be confirmed.",
+    "carte.eyebrow":"The Menu","carte.title":"The terroir, plated",
+    "carte.sub":"A seasonal brasserie from the house kitchen: Luxembourg classics, fish of the day and flammekuchen.",
+    "filter.all":"All","filter.starters":"Starters","filter.mains":"Mains","filter.flamm":"Flammekuchen","filter.desserts":"Desserts",
+    "carte.noteHead":"Indicative prices","carte.note":"— from the spring 2026 menu, seasonally variable, to be confirmed with the venue.",
+    "d.feier":"Luxembourg salad of marinated beef, egg and pickles — a national classic.",
+    "d.escargots":"Six snails, garlic-parsley butter, golden croutons.",
+    "d.lentilles":"Smoked-lentil velouté, regional bacon — or the soup of the day.",
+    "d.cesar":"Lettuce hearts, grilled chicken, parmesan shavings.",
+    "pr.market":"market price","d.poisson":"Today's catch, seasonal garnish — ask the service.",
+    "d.volauvent":"Luxembourg-style vol-au-vent, quenelles, house fries.",
+    "d.boudin":"Black pudding, house mash and apple compote — properly regional.",
+    "d.poulet":"Chicken suprême, creamed sauce with seasonal mushrooms.",
+    "d.flammClassic":"Thin base, crème, smoked bacon and onions — the house tarte flambée.",
+    "d.flammVar":"Cheese-and-mushroom variation — other toppings on the board.",
+    "d.dessertjour":"House pastry, whipped cream and red-berry coulis.",
+    "d.cafegourmand":"Espresso with its trio of house petits fours.",
+    "cave.title":"The Luxembourg Cellar","cave.sub":"Crémants & wines from the nearby Moselle.",
+    "cave.glass":"by the glass","cave.bottle":"bottle","cave.bottle2":"bottle","cave.champagne":"Champagnes & sparkling","cave.beer":"Draught beers","cave.tea":"Kusmi teas",
+    "cave.note":"Indicative selection — full wine list at the venue.",
+    "palace.eyebrow":"The Terrace & the Palace","palace.title":"An address at the foot of the Grand Ducal Palace",
+    "palace.leadserif":"You sit down in the Old Town, where the city began, a few steps from the Grand Duke's residence.",
+    "palace.body":"Patinated leather banquettes, warm fairy lights behind the engraved window, artists' shows on the walls: the Gëlle Klack is as much a neighbourhood salon as a restaurant. In fine weather the terrace looks straight onto the Palace — one of the finest table views in the capital.",
+    "palace.s1":"TripAdvisor · to be confirmed","palace.s2":"Travellers' Choice · TBC","palace.s3":"Rue Sigefroi · Old Town",
+    "cap.lounge":"The lounge-salon","cap.fauteuils":"The club armchairs","cap.vitrine":"The engraved window",
+    "salon.eyebrow":"The Evening Salon","salon.title":"When the bell rings at night","salon.lede":"Piano-bar, art on the walls and glasses from the Moselle.",
+    "prog1.t":"Some evenings","prog1.h":"Piano-bar","prog1.d":"Live music and a hushed mood — programme to be confirmed.",
+    "prog2.t":"In season","prog2.h":"Artists' exhibitions","prog2.d":"The salon walls regularly host rotating shows.",
+    "prog3.t":"By invitation","prog3.h":"Wine tastings","prog3.d":"Crémants and Luxembourg wines, to discover by the glass.",
+    "salon.quote":"“An Old Town salon where you linger from the morning coffee to the last piano chord.”","salon.attr":"— The spirit of the house",
+    "visit.eyebrow":"Reserve & visit","visit.title":"See you soon at the Klack","visit.sub":"Reservations by phone — the terrace table goes fast in fine weather.",
+    "visit.call":"Call · +352 26 86 76 32","visit.email":"Send an email",
+    "hrs.kitchen":"Kitchen","hrs.daily":"daily · to be confirmed","hrs.bar":"Bar / Lounge","hrs.barnote":"Fri & Sat until 01:00","hrs.kaffi":"Kaffi","hrs.kaffinote":"weekends until 11:00",
+    "foot.tag":"The Golden Bell of the Old Town — terroir cuisine, bar-lounge & piano-bar, facing the Grand Ducal Palace.",
+    "foot.explore":"Explore","foot.contact":"Contact",
+    "foot.demo":"Demonstration site — content, hours and prices to be confirmed with the venue."
+  }
+};
+
+function setLang(lang){
+  const dict = I18N[lang]; if(!dict) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k = el.getAttribute("data-i18n");
+    if(dict[k]!==undefined) el.textContent = dict[k];
+  });
+  document.querySelectorAll(".lang button, .foot-lang button").forEach(b=>{
+    b.classList.toggle("on", b.getAttribute("data-lang")===lang);
+  });
+}
+document.querySelectorAll("[data-lang]").forEach(b=>{
+  b.addEventListener("click",()=>setLang(b.getAttribute("data-lang")));
+});
+
+/* ============ menu filter ============ */
+const fbtns = document.querySelectorAll(".filters button");
+fbtns.forEach(b=>b.addEventListener("click",()=>{
+  fbtns.forEach(x=>x.classList.remove("on")); b.classList.add("on");
+  const cat = b.getAttribute("data-cat");
+  document.querySelectorAll(".dish").forEach(d=>{
+    d.classList.toggle("hide", cat!=="all" && d.getAttribute("data-cat")!==cat);
+  });
+}));
+
+/* ============ sticky header ============ */
+const mh = document.getElementById("masthead");
+const onScroll = ()=> mh.classList.toggle("stuck", window.scrollY>60);
+window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+
+document.getElementById("yr").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

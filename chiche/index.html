@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Chiche! — Cuisine libanaise faite maison · Limpertsberg, Luxembourg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Outfit:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#1FAE55;
+    --green-deep:#0c6a37;
+    --green-ink:#083f21;
+    --cream:#FBF5E8;
+    --cream-2:#F4EAD5;
+    --paper:#FFFDF7;
+    --ink:#242019;
+    --ink-soft:#5a5347;
+    --terra:#C6612C;
+    --terra-deep:#9c4a1f;
+    --olive:#7d7a35;
+    --line:#e4d8bf;
+    --shadow:0 24px 60px -30px rgba(40,32,15,.5);
+    --shadow-sm:0 14px 34px -22px rgba(40,32,15,.55);
+    --maxw:1500px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Outfit',system-ui,-apple-system,'Segoe UI',sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,'Times New Roman',serif;line-height:1.02;font-weight:600;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
+  .script{font-family:'Caveat',cursive;font-weight:700}
+
+  /* zellige-ish tile motif for accent strips */
+  .tiles{
+    background-color:var(--green-deep);
+    background-image:
+      radial-gradient(circle at 0 0, transparent 10px, rgba(255,255,255,.06) 11px 12px, transparent 13px),
+      radial-gradient(circle at 20px 20px, transparent 10px, rgba(255,255,255,.06) 11px 12px, transparent 13px),
+      linear-gradient(45deg, rgba(255,255,255,.045) 25%, transparent 25% 75%, rgba(255,255,255,.045) 75%),
+      linear-gradient(-45deg, rgba(255,255,255,.045) 25%, transparent 25% 75%, rgba(255,255,255,.045) 75%);
+    background-size:40px 40px,40px 40px,20px 20px,20px 20px;
+  }
+
+  /* ============ TOP RAIL (table edge) ============ */
+  .rail{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,245,232,.92);
+    backdrop-filter:blur(9px);
+    border-bottom:1px solid var(--line);
+  }
+  .rail-in{max-width:var(--maxw);margin:0 auto;padding:14px 40px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px}
+  .rail-logo img{height:40px;width:auto}
+  .rail-nav{display:flex;gap:30px;justify-content:center;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink-soft)}
+  .rail-nav a{position:relative;padding:4px 0;white-space:nowrap}
+  .rail-nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--green);transition:right .3s}
+  .rail-nav a:hover{color:var(--green-deep)}
+  .rail-nav a:hover::after{right:0}
+  .rail-right{display:flex;gap:14px;align-items:center;justify-content:flex-end}
+  .langsw{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--paper)}
+  .langsw button{font-family:inherit;font-size:.72rem;font-weight:600;letter-spacing:.06em;padding:6px 11px;border:0;background:transparent;color:var(--ink-soft);cursor:pointer;transition:.2s}
+  .langsw button.on{background:var(--green);color:#fff}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--green);color:#fff;font-weight:600;font-size:.85rem;letter-spacing:.02em;
+    padding:11px 20px;border-radius:999px;border:0;cursor:pointer;transition:.22s;white-space:nowrap;
+    box-shadow:0 10px 22px -12px rgba(31,174,85,.9);
+  }
+  .btn:hover{background:var(--green-deep);transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:var(--green-deep);border:1.5px solid var(--green);box-shadow:none}
+  .btn.ghost:hover{background:var(--green);color:#fff}
+  .btn.terra{background:var(--terra);box-shadow:0 10px 22px -12px rgba(198,97,44,.9)}
+  .btn.terra:hover{background:var(--terra-deep)}
+
+  /* ============ HERO — the table is set ============ */
+  .hero{position:relative;padding:26px 0 0}
+  .hero-grid{
+    max-width:var(--maxw);margin:0 auto;padding:0 40px;
+    display:grid;grid-template-columns:0.92fr 1.08fr;gap:34px;align-items:stretch;
+  }
+  .hero-brand{
+    position:relative;background:var(--paper);border:1px solid var(--line);border-radius:26px;
+    padding:46px 44px 40px;display:flex;flex-direction:column;justify-content:space-between;
+    box-shadow:var(--shadow-sm);overflow:hidden;
+  }
+  .hero-brand::before{
+    content:"";position:absolute;left:0;right:0;top:0;height:10px;
+    background:repeating-linear-gradient(90deg,var(--green) 0 26px,var(--terra) 26px 52px,var(--olive) 52px 78px);
+    opacity:.9;
+  }
+  .kicker{display:inline-flex;align-items:center;gap:9px;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--terra);margin-bottom:20px}
+  .kicker::before{content:"";width:26px;height:2px;background:var(--terra)}
+  .hero-h1{font-size:clamp(3rem,5.4vw,5.4rem);font-weight:900;color:var(--ink)}
+  .hero-h1 em{font-style:italic;color:var(--green-deep);font-weight:600}
+  .hero-sub{font-size:1.12rem;color:var(--ink-soft);margin:22px 0 8px;max-width:44ch}
+  .hero-tag{font-family:'Caveat',cursive;font-size:2rem;color:var(--green-deep);font-weight:700;line-height:1.05;margin-top:6px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+  .hero-meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:34px;padding-top:24px;border-top:1px dashed var(--line);font-size:.86rem;color:var(--ink-soft)}
+  .hero-meta b{display:block;font-family:'Fraunces',serif;font-size:1.02rem;color:var(--ink);font-weight:600;margin-bottom:1px}
+
+  .hero-plate{position:relative;border-radius:26px;overflow:hidden;box-shadow:var(--shadow);min-height:560px}
+  .hero-plate img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .hero-plate .card{
+    position:absolute;left:26px;bottom:26px;right:26px;
+    background:rgba(251,245,232,.95);backdrop-filter:blur(4px);
+    border-radius:16px;padding:18px 22px;display:flex;align-items:center;gap:18px;
+    box-shadow:var(--shadow-sm);
+  }
+  .hero-plate .card .dot{width:46px;height:46px;border-radius:50%;background:var(--green);flex:0 0 auto;display:grid;place-items:center;color:#fff;font-family:'Fraunces',serif;font-size:1.4rem}
+  .hero-plate .card b{font-family:'Fraunces',serif;font-size:1.05rem}
+  .hero-plate .card span{font-size:.85rem;color:var(--ink-soft)}
+
+  /* ============ MISSION — la grande table ============ */
+  .mission{margin-top:64px;color:var(--cream)}
+  .mission-in{
+    max-width:var(--maxw);margin:0 auto;
+    display:grid;grid-template-columns:1.15fr 1fr;align-items:stretch;
+    border-radius:0;overflow:hidden;
+  }
+  .mission-text{padding:74px 6vw 74px calc((100vw - var(--maxw))/2 + 40px)}
+  @media(max-width:1580px){.mission-text{padding:74px 5vw}}
+  .mission-eye{font-size:.76rem;letter-spacing:.24em;text-transform:uppercase;color:#9fe4b9;font-weight:600;display:flex;align-items:center;gap:10px;margin-bottom:22px}
+  .mission-eye::before{content:"";width:30px;height:2px;background:#9fe4b9}
+  .mission h2{font-size:clamp(2.2rem,3.4vw,3.4rem);color:#fff;font-weight:600;max-width:16ch}
+  .mission h2 span{color:#ffd9a8;font-style:italic}
+  .mission p{margin-top:22px;font-size:1.06rem;color:rgba(255,255,255,.9);max-width:52ch}
+  .mission-stats{display:flex;gap:38px;flex-wrap:wrap;margin-top:38px}
+  .mstat b{font-family:'Fraunces',serif;font-size:2.3rem;font-weight:600;color:#fff;display:block;line-height:1}
+  .mstat span{font-size:.82rem;color:#bfeccf;letter-spacing:.04em}
+  .mission-note{margin-top:26px;font-size:.78rem;color:#8fd3a8;font-style:italic}
+  .mission-img{position:relative;min-height:460px}
+  .mission-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+  /* ============ MENU — le mezze grid ============ */
+  .menu{padding:82px 0 40px}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:14px}
+  .sec-head .eye{font-size:.76rem;letter-spacing:.24em;text-transform:uppercase;color:var(--terra);font-weight:600;display:flex;align-items:center;gap:10px}
+  .sec-head .eye::before{content:"";width:30px;height:2px;background:var(--terra)}
+  .sec-head h2{font-size:clamp(2.2rem,3.6vw,3.5rem);font-weight:900;color:var(--ink);margin-top:12px}
+  .sec-head h2 em{font-style:italic;color:var(--green-deep);font-weight:500}
+  .sec-head .aside{font-size:.86rem;color:var(--ink-soft);max-width:34ch;text-align:right}
+  .confirm{font-size:.7rem;background:var(--cream-2);color:var(--terra-deep);border:1px solid var(--line);padding:2px 9px;border-radius:999px;font-weight:600;letter-spacing:.04em;display:inline-block}
+
+  .board{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:34px;grid-auto-flow:dense}
+  .cat{grid-column:span 12;display:flex;align-items:center;gap:16px;margin-top:18px}
+  .cat h3{font-size:1.5rem;font-weight:600;color:var(--green-deep);white-space:nowrap}
+  .cat .ar{font-family:'Caveat',cursive;color:var(--terra);font-size:1.5rem}
+  .cat::after{content:"";flex:1;height:1px;background:var(--line)}
+  .dish{
+    grid-column:span 4;background:var(--paper);border:1px solid var(--line);border-radius:16px;
+    padding:20px 22px;transition:.25s;position:relative;display:flex;flex-direction:column;
+  }
+  .dish:hover{transform:translateY(-4px);box-shadow:var(--shadow-sm);border-color:#cfe8d6}
+  .dish .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .dish h4{font-size:1.2rem;font-weight:600}
+  .dish .price{font-family:'Fraunces',serif;font-weight:600;color:var(--terra);font-size:1.12rem;white-space:nowrap}
+  .dish p{font-size:.88rem;color:var(--ink-soft);margin-top:7px}
+  .dish .tag{margin-top:12px;display:inline-flex;gap:6px;flex-wrap:wrap}
+  .dish .tag span{font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--olive);background:#f2efdd;border-radius:999px;padding:3px 8px}
+  .dish.big{grid-column:span 4}
+  .dish.sig{border:1.5px solid var(--green);background:linear-gradient(180deg,#f2fbf4,var(--paper))}
+  .dish.sig::before{content:"★";position:absolute;top:14px;right:16px;color:var(--green);font-size:.8rem}
+  .photo-tile{grid-column:span 4;border-radius:16px;overflow:hidden;min-height:220px;position:relative;box-shadow:var(--shadow-sm)}
+  .photo-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .photo-tile .lbl{position:absolute;left:14px;bottom:14px;background:rgba(12,106,55,.92);color:#fff;font-size:.74rem;font-weight:600;letter-spacing:.05em;padding:6px 12px;border-radius:999px}
+  .menu-foot{margin-top:34px;background:var(--cream-2);border:1px dashed var(--line);border-radius:16px;padding:20px 26px;display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+  .menu-foot p{font-size:.9rem;color:var(--ink-soft);max-width:60ch}
+
+  /* ============ ATMOSPHERE gallery ============ */
+  .atmo{padding:70px 0}
+  .atmo-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:150px;gap:16px;margin-top:34px}
+  .atmo-grid figure{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-sm)}
+  .atmo-grid figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.6s}
+  .atmo-grid figure:hover img{transform:scale(1.06)}
+  .a1{grid-column:span 5;grid-row:span 2}
+  .a2{grid-column:span 4;grid-row:span 2}
+  .a3{grid-column:span 3;grid-row:span 1}
+  .a4{grid-column:span 3;grid-row:span 1}
+  .a5{grid-column:span 4;grid-row:span 2}
+  .a6{grid-column:span 5;grid-row:span 2}
+  .a3.quote{background:var(--green-deep);color:#fff;display:flex;align-items:center;padding:22px;grid-row:span 2}
+  .a3.quote p{font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;line-height:1.25}
+  .a3.quote small{display:block;margin-top:10px;font-family:'Outfit';font-style:normal;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#9fe4b9}
+
+  /* ============ VISIT — passez à table ============ */
+  .visit{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:74px 0}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:34px;align-items:start}
+  .visit h2{font-size:clamp(2rem,3vw,3rem);font-weight:900;margin-bottom:8px}
+  .visit h2 em{font-style:italic;color:var(--green-deep);font-weight:500}
+  .hours-tbl{width:100%;border-collapse:collapse;margin-top:6px}
+  .hours-tbl td{padding:10px 0;border-bottom:1px solid var(--line);font-size:.92rem;vertical-align:top}
+  .hours-tbl td:first-child{font-weight:600}
+  .hours-tbl td:last-child{text-align:right;color:var(--ink-soft)}
+  .hours-tbl tr.closed td:last-child{color:var(--terra)}
+  .info-block{font-size:.95rem}
+  .info-block .row{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .info-block .row .ic{width:34px;height:34px;border-radius:9px;background:#eef8f0;color:var(--green-deep);display:grid;place-items:center;flex:0 0 auto;font-family:'Fraunces',serif;font-weight:700}
+  .info-block .row b{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .info-block .row a,.info-block .row span{font-size:1rem;color:var(--ink)}
+  .map-box{border-radius:18px;overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--line);height:100%;min-height:340px}
+  .map-box iframe{width:100%;height:100%;min-height:340px;border:0;display:block}
+  .visit-note{font-size:.75rem;color:var(--ink-soft);font-style:italic;margin-top:14px}
+
+  /* ============ FOOTER ============ */
+  footer{color:var(--cream);padding:60px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start}
+  .foot-logo{background:var(--cream);border-radius:16px;padding:16px 20px;display:inline-block}
+  .foot-logo img{height:42px}
+  footer h4{color:#fff;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;font-family:'Outfit';font-weight:600;margin-bottom:16px}
+  footer p,footer a{color:rgba(255,255,255,.82);font-size:.92rem}
+  footer a:hover{color:#fff}
+  .foot-links{display:flex;flex-direction:column;gap:9px}
+  .foot-tag{font-family:'Caveat',cursive;font-size:1.7rem;color:#ffd9a8;margin-top:18px;line-height:1.1}
+  .foot-bottom{max-width:var(--maxw);margin:40px auto 0;padding:22px 40px 0;border-top:1px solid rgba(255,255,255,.15);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.78rem;color:rgba(255,255,255,.6)}
+  .foot-bottom .demo{background:rgba(255,255,255,.1);padding:5px 12px;border-radius:999px}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+
+  /* ============ RESPONSIVE ============ */
+  @media(max-width:1080px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero-plate{min-height:400px}
+    .mission-in{grid-template-columns:1fr}
+    .mission-text{padding:56px 40px}
+    .mission-img{min-height:320px}
+    .visit-grid{grid-template-columns:1fr 1fr}
+    .map-box{grid-column:span 2}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .dish,.dish.big,.photo-tile{grid-column:span 6}
+    .a1,.a2,.a5,.a6{grid-column:span 6}
+    .a3,.a4{grid-column:span 6}
+  }
+  @media(max-width:760px){
+    .wrap,.rail-in,.hero-grid{padding-left:20px;padding-right:20px}
+    .rail-in{grid-template-columns:1fr auto}
+    .rail-nav{display:none}
+    .board{gap:12px}
+    .dish,.dish.big,.photo-tile,.a1,.a2,.a3,.a4,.a5,.a6{grid-column:span 12}
+    .atmo-grid{grid-auto-rows:130px}
+    .visit-grid{grid-template-columns:1fr}
+    .map-box{grid-column:span 1}
+    .foot-grid{grid-template-columns:1fr}
+    .hero-meta{gap:18px}
+    .mission-text{padding:48px 20px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TOP RAIL ===== -->
+<header class="rail">
+  <div class="rail-in">
+    <a class="rail-logo" href="#top" aria-label="Chiche!"><img src="assets/logo.png" alt="Chiche!"></a>
+    <nav class="rail-nav">
+      <a href="#mission" data-i18n="nav.mission">Notre mission</a>
+      <a href="#menu" data-i18n="nav.menu">Le mezze</a>
+      <a href="#atmo" data-i18n="nav.atmo">L'ambiance</a>
+      <a href="#visit" data-i18n="nav.visit">Nous trouver</a>
+    </nav>
+    <div class="rail-right">
+      <div class="langsw" role="group" aria-label="Language">
+        <button data-lang="fr" class="on">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a class="btn" href="tel:+35226480981" data-i18n="cta.reserve">Réserver</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-brand rv">
+        <div>
+          <span class="kicker" data-i18n="hero.kicker">Cuisine libanaise &amp; syrienne · Limpertsberg</span>
+          <h1 class="hero-h1"><span data-i18n="hero.h1a">La table</span> <em data-i18n="hero.h1b">est mise.</em></h1>
+          <p class="hero-sub" data-i18n="hero.sub">Mezze faits maison, grillades au charbon et une longue table où chacun a sa place. La cuisine du Moyen-Orient, préparée avec soin — et avec cœur.</p>
+          <p class="hero-tag" data-i18n="hero.tag">Une cuisine faite maison — et faite ensemble.</p>
+          <div class="hero-cta">
+            <a class="btn" href="tel:+35226480981" data-i18n="hero.cta1">Réserver une table</a>
+            <a class="btn ghost" href="#menu" data-i18n="hero.cta2">Découvrir le mezze</a>
+          </div>
+        </div>
+        <div class="hero-meta">
+          <div><b data-i18n="hero.m1a">Midi &amp; soir</b><span data-i18n="hero.m1b">Lun – Sam · à confirmer</span></div>
+          <div><b data-i18n="hero.m2a">À partager</b><span data-i18n="hero.m2b">Table pleine de plats</span></div>
+          <div><b data-i18n="hero.m3a">Livraison</b><span data-i18n="hero.m3b">via Wolt</span></div>
+        </div>
+      </div>
+      <div class="hero-plate rv">
+        <img src="assets/hero.jpg" alt="Grande table de mezze libanais chez Chiche!">
+        <div class="card">
+          <span class="dot">!</span>
+          <div>
+            <b data-i18n="hero.card.t">Le concept « table pleine »</b><br>
+            <span data-i18n="hero.card.s">On commande, on partage, on recommence.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MISSION ===== -->
+  <section class="mission tiles" id="mission">
+    <div class="mission-in">
+      <div class="mission-text rv">
+        <div class="mission-eye" data-i18n="mission.eye">Une entreprise sociale</div>
+        <h2 data-i18n="mission.h2">Une seule grande table, <span>et une place pour chacun.</span></h2>
+        <p data-i18n="mission.p1">Chiche! est un restaurant à vocation sociale. Nous associons une cuisine libanaise authentique, faite maison, à un projet d'inclusion : nous employons des réfugiés et des personnes migrantes pour soutenir leur intégration dans la société luxembourgeoise — l'un des plus grands employeurs de réfugiés du pays.</p>
+        <p data-i18n="mission.p2">Chaque assiette servie fait avancer ce projet. Manger chez Chiche!, c'est prendre place à cette table.</p>
+        <div class="mission-stats">
+          <div class="mstat"><b>100%</b><span data-i18n="mission.s1">fait maison</span></div>
+          <div class="mstat"><b data-i18n="mission.s2n">Réfugiés</b><span data-i18n="mission.s2">au cœur de l'équipe</span></div>
+          <div class="mstat"><b>🌱</b><span data-i18n="mission.s3">options végé &amp; vegan</span></div>
+        </div>
+        <p class="mission-note" data-i18n="mission.note">Chiffres d'effectifs exacts à confirmer avec l'établissement.</p>
+      </div>
+      <div class="mission-img rv">
+        <img src="assets/interior-1.jpg" alt="Intérieur chaleureux et vintage de Chiche!">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MENU ===== -->
+  <section class="menu wrap" id="menu">
+    <div class="sec-head rv">
+      <div>
+        <span class="eye" data-i18n="menu.eye">Le mezze — à partager</span>
+        <h2 data-i18n="menu.h2">Posez les plats <em>au centre.</em></h2>
+      </div>
+      <p class="aside" data-i18n="menu.aside">Un choix de nos incontournables. Carte complète et boissons au restaurant. <span class="confirm" data-i18n="menu.confirm">prix à confirmer</span></p>
+    </div>
+
+    <div class="board">
+      <!-- Mezze -->
+      <div class="cat rv"><h3 data-i18n="cat.mezze">Mezze</h3><span class="ar">مزّة</span></div>
+
+      <div class="dish sig rv">
+        <div class="top"><h4>Hummus</h4><span class="price">~€8.00</span></div>
+        <p data-i18n="d.hummus">Purée de pois chiches, tahini, citron, filet d'huile d'olive.</p>
+        <div class="tag"><span data-i18n="t.veg">végétarien</span><span data-i18n="t.vegan">vegan</span></div>
+      </div>
+      <div class="dish rv">
+        <div class="top"><h4>Mutabal</h4><span class="price">~€8.50</span></div>
+        <p data-i18n="d.mutabal">Purée d'aubergine grillée au feu, tahini et grenade.</p>
+        <div class="tag"><span data-i18n="t.veg">végétarien</span><span data-i18n="t.smoky">fumé</span></div>
+      </div>
+      <div class="photo-tile rv">
+        <img src="assets/food-2.jpg" alt="Taboulé frais">
+        <span class="lbl">Tabouli · ~€9.00</span>
+      </div>
+
+      <div class="dish rv">
+        <div class="top"><h4>Tabouli</h4><span class="price">~€9.00</span></div>
+        <p data-i18n="d.tabouli">Persil, tomate, boulgour, menthe, citron. Le classique, bien vert.</p>
+        <div class="tag"><span data-i18n="t.veg">végétarien</span><span data-i18n="t.fresh">frais</span></div>
+      </div>
+      <div class="dish rv">
+        <div class="top"><h4>Halloumi</h4><span class="price">~€8.50</span></div>
+        <p data-i18n="d.halloumi">Fromage grillé, doré et fondant à l'intérieur.</p>
+        <div class="tag"><span data-i18n="t.veg">végétarien</span></div>
+      </div>
+      <div class="dish rv">
+        <div class="top"><h4>Cheese Rolls</h4><span class="price">~€3.50</span></div>
+        <p data-i18n="d.cheese">Rouleaux croustillants au fromage, servis chauds.</p>
+        <div class="tag"><span data-i18n="t.veg">végétarien</span></div>
+      </div>
+
+      <!-- Grill -->
+      <div class="cat rv"><h3 data-i18n="cat.grill">Grillades au charbon</h3><span class="ar">مشاوي</span></div>
+
+      <div class="dish sig rv">
+        <div class="top"><h4>Chiche Tavuk</h4><span class="price">~€14.50</span></div>
+        <p data-i18n="d.tavuk">Brochette de poulet mariné, grillée au charbon de bois.</p>
+        <div class="tag"><span data-i18n="t.signature">signature</span></div>
+      </div>
+      <div class="dish sig rv">
+        <div class="top"><h4>Chiche Urfalli</h4><span class="price">~€14.50</span></div>
+        <p data-i18n="d.urfalli">Brochette d'agneau &amp; bœuf épicée, façon Urfa.</p>
+        <div class="tag"><span data-i18n="t.signature">signature</span></div>
+      </div>
+      <div class="photo-tile rv">
+        <img src="assets/food-4.jpg" alt="Plat grillé Chiche!">
+        <span class="lbl" data-i18n="menu.grilllbl">Du charbon, rien d'autre</span>
+      </div>
+
+      <!-- Boxes -->
+      <div class="cat rv"><h3 data-i18n="cat.boxes">Boxes &amp; Shawarma</h3><span class="ar">شاورما</span></div>
+
+      <div class="dish rv">
+        <div class="top"><h4>Shawarma Chicken Mezze</h4><span class="price">~€13.50</span></div>
+        <p data-i18n="d.shawarma">Poulet shawarma, sauces maison et pain libanais.</p>
+      </div>
+      <div class="dish rv">
+        <div class="top"><h4>Shawarma Box</h4><span class="price">~€21.50</span></div>
+        <p data-i18n="d.sbox">Généreuse box shawarma à partager — accompagnements inclus.</p>
+        <div class="tag"><span data-i18n="t.share">à partager</span></div>
+      </div>
+      <div class="dish rv">
+        <div class="top"><h4>Urfalli Box</h4><span class="price">~€22.50</span></div>
+        <p data-i18n="d.ubox">Box grillade agneau &amp; bœuf, riz, salades et sauces.</p>
+        <div class="tag"><span data-i18n="t.share">à partager</span></div>
+      </div>
+
+      <!-- Desserts -->
+      <div class="cat rv"><h3 data-i18n="cat.dessert">Douceurs</h3><span class="ar">حلويات</span></div>
+
+      <div class="photo-tile rv">
+        <img src="assets/food-6.jpg" alt="Assortiment de plats Chiche!">
+        <span class="lbl" data-i18n="menu.dessertlbl">La table complète</span>
+      </div>
+      <div class="dish rv">
+        <div class="top"><h4 data-i18n="d.honeyt">Gâteau au miel</h4><span class="price"><span class="confirm" data-i18n="menu.confirm">à confirmer</span></span></div>
+        <p data-i18n="d.honey">Le fameux gâteau au miel ukrainien salué par les habitués.</p>
+        <div class="tag"><span data-i18n="t.fav">coup de cœur</span></div>
+      </div>
+      <div class="dish rv">
+        <div class="top"><h4 data-i18n="d.mezzet">Assortiment de mezze</h4><span class="price"><span class="confirm" data-i18n="menu.confirm">à confirmer</span></span></div>
+        <p data-i18n="d.mezze">Falafel, muhammara, labneh, kebbeh, yalanji… demandez le plateau du jour.</p>
+        <div class="tag"><span data-i18n="t.vegopt">options végé</span></div>
+      </div>
+    </div>
+
+    <div class="menu-foot rv">
+      <p data-i18n="menu.footp">Prix indicatifs issus de la carte de livraison — les tarifs en salle peuvent différer. Sans gluten et végétarien sur demande. Merci de confirmer allergènes et disponibilités auprès de l'équipe.</p>
+      <a class="btn terra" href="https://wolt.com/en/lux/luxembourg/restaurant/chiche-limpertsberg" target="_blank" rel="noopener" data-i18n="menu.wolt">Commander sur Wolt</a>
+    </div>
+  </section>
+
+  <!-- ===== ATMOSPHERE ===== -->
+  <section class="atmo wrap" id="atmo">
+    <div class="sec-head rv">
+      <div>
+        <span class="eye" data-i18n="atmo.eye">Autour de la table</span>
+        <h2 data-i18n="atmo.h2">Chaleureux, vintage, <em>vivant.</em></h2>
+      </div>
+      <p class="aside" data-i18n="atmo.aside">Fauteuils dépareillés, lumières douces, brouhaha joyeux des soirs de partage.</p>
+    </div>
+    <div class="atmo-grid">
+      <figure class="a1 rv"><img src="assets/interior-2.jpg" alt="Salle de Chiche!"></figure>
+      <figure class="a2 rv"><img src="assets/food-5.jpg" alt="Plat libanais"></figure>
+      <figure class="a3 quote rv"><p data-i18n="atmo.quote">« Un décor magnifique et une ambiance chaleureuse. »<small data-i18n="atmo.quotecite">avis clients · à vérifier</small></p></figure>
+      <figure class="a4 rv"><img src="assets/food-8.jpg" alt="Mezze"></figure>
+      <figure class="a5 rv"><img src="assets/interior-3.jpg" alt="Coin salon vintage"></figure>
+      <figure class="a6 rv"><img src="assets/vibe-1.jpg" alt="Ambiance Chiche!"></figure>
+    </div>
+  </section>
+
+  <!-- ===== VISIT ===== -->
+  <section class="visit" id="visit">
+    <div class="wrap">
+      <div class="sec-head rv" style="margin-bottom:34px">
+        <div>
+          <span class="eye" data-i18n="visit.eye">Passez à table</span>
+          <h2 data-i18n="visit.h2">Nous trouver <em>au Limpertsberg.</em></h2>
+        </div>
+      </div>
+      <div class="visit-grid">
+        <div class="rv">
+          <h4 style="font-family:'Fraunces';font-size:1.3rem;margin-bottom:6px" data-i18n="visit.hours">Horaires</h4>
+          <table class="hours-tbl">
+            <tr><td data-i18n="day.monthu">Lun – Jeu</td><td>11:00–14:00 · 18:00–22:00</td></tr>
+            <tr><td data-i18n="day.fri">Vendredi</td><td>11:00–14:00 · 18:00–22:30</td></tr>
+            <tr><td data-i18n="day.sat">Samedi</td><td>18:00–22:30</td></tr>
+            <tr class="closed"><td data-i18n="day.sun">Dimanche</td><td data-i18n="day.closed">fermé</td></tr>
+          </table>
+          <p class="visit-note" data-i18n="visit.hoursnote">Horaires agrégés — à confirmer avec l'établissement.</p>
+        </div>
+        <div class="info-block rv">
+          <h4 style="font-family:'Fraunces';font-size:1.3rem;margin-bottom:6px" data-i18n="visit.contact">Contact</h4>
+          <div class="row"><span class="ic">◎</span><div><b data-i18n="visit.addr">Adresse</b><span>20, avenue Pasteur<br>L-2310 Luxembourg</span></div></div>
+          <div class="row"><span class="ic">✆</span><div><b data-i18n="visit.phone">Téléphone</b><a href="tel:+35226480981">+352 26 48 09 81</a></div></div>
+          <div class="row"><span class="ic">✉</span><div><b data-i18n="visit.email">E-mail</b><a href="mailto:contact@chiche.lu">contact@chiche.lu</a></div></div>
+          <a class="btn" style="margin-top:18px" href="tel:+35226480981" data-i18n="visit.book">Réserver par téléphone</a>
+        </div>
+        <div class="map-box rv">
+          <iframe title="Carte Chiche! Limpertsberg" loading="lazy" src="https://www.google.com/maps?q=20+avenue+Pasteur,+L-2310+Luxembourg&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="tiles">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <span class="foot-logo"><img src="assets/logo.png" alt="Chiche!"></span>
+        <p class="foot-tag" data-i18n="foot.tag">On vous garde une place.</p>
+        <p style="margin-top:14px;max-width:38ch" data-i18n="foot.blurb">Cuisine libanaise &amp; syrienne faite maison, portée par l'inclusion et la diversité, au cœur du Limpertsberg.</p>
+      </div>
+      <div>
+        <h4 data-i18n="foot.visit">Visite</h4>
+        <div class="foot-links">
+          <span>20, avenue Pasteur</span>
+          <span>L-2310 Luxembourg</span>
+          <a href="tel:+35226480981">+352 26 48 09 81</a>
+          <a href="mailto:contact@chiche.lu">contact@chiche.lu</a>
+        </div>
+      </div>
+      <div>
+        <h4 data-i18n="foot.follow">Suivre &amp; commander</h4>
+        <div class="foot-links">
+          <a href="https://www.chiche.lu/" target="_blank" rel="noopener">chiche.lu</a>
+          <a href="https://www.facebook.com/ChicheLuxembourg/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://wolt.com/en/lux/luxembourg/restaurant/chiche-limpertsberg" target="_blank" rel="noopener" data-i18n="foot.wolt">Livraison Wolt</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© <span id="yr"></span> Chiche! · Limpertsberg, Luxembourg</span>
+    <span class="demo" data-i18n="foot.demo">Site de démonstration — contenu &amp; horaires à confirmer avec l'établissement.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var I18N = {
+    de:{
+      "nav.mission":"Unsere Mission","nav.menu":"Das Mezze","nav.atmo":"Ambiente","nav.visit":"Anfahrt",
+      "cta.reserve":"Reservieren",
+      "hero.kicker":"Libanesische & syrische Küche · Limpertsberg",
+      "hero.h1a":"Der Tisch","hero.h1b":"ist gedeckt.",
+      "hero.sub":"Hausgemachte Mezze, Grillspezialitäten vom Holzkohlegrill und ein langer Tisch, an dem jeder Platz hat. Küche aus dem Nahen Osten, mit Sorgfalt zubereitet — und mit Herz.",
+      "hero.tag":"Hausgemacht — und gemeinsam gemacht.",
+      "hero.cta1":"Tisch reservieren","hero.cta2":"Mezze entdecken",
+      "hero.m1a":"Mittags & abends","hero.m1b":"Mo – Sa · zu bestätigen",
+      "hero.m2a":"Zum Teilen","hero.m2b":"Voll gedeckter Tisch",
+      "hero.m3a":"Lieferung","hero.m3b":"über Wolt",
+      "hero.card.t":"Das „voller Tisch\"-Konzept","hero.card.s":"Bestellen, teilen, nachbestellen.",
+      "mission.eye":"Ein Sozialunternehmen",
+      "mission.h2":"Ein einziger großer Tisch, und ein Platz für jeden.",
+      "mission.p1":"Chiche! ist ein Restaurant mit sozialer Mission. Wir verbinden authentische, hausgemachte libanesische Küche mit Inklusion: Wir beschäftigen Geflüchtete und Migrant:innen und fördern ihre Integration in die luxemburgische Gesellschaft — als einer der größten Arbeitgeber für Geflüchtete des Landes.",
+      "mission.p2":"Jeder servierte Teller trägt dieses Projekt weiter. Bei Chiche! zu essen heißt, an diesem Tisch Platz zu nehmen.",
+      "mission.s1":"hausgemacht","mission.s2n":"Geflüchtete","mission.s2":"im Herzen des Teams","mission.s3":"vegetarisch & vegan",
+      "mission.note":"Genaue Mitarbeiterzahlen mit dem Restaurant zu bestätigen.",
+      "menu.eye":"Das Mezze — zum Teilen","menu.h2":"Stellt die Teller in die Mitte.",
+      "menu.aside":"Eine Auswahl unserer Klassiker. Vollständige Karte & Getränke im Restaurant.","menu.confirm":"Preis zu bestätigen",
+      "cat.mezze":"Mezze","cat.grill":"Vom Holzkohlegrill","cat.boxes":"Boxen & Shawarma","cat.dessert":"Süßes",
+      "d.hummus":"Kichererbsenpüree, Tahini, Zitrone, ein Schuss Olivenöl.","t.veg":"vegetarisch","t.vegopt":"vegetarische Optionen","t.vegan":"vegan",
+      "d.mutabal":"Püree aus über Feuer gegrillter Aubergine, Tahini und Granatapfel.","t.smoky":"rauchig",
+      "d.tabouli":"Petersilie, Tomate, Bulgur, Minze, Zitrone. Der Klassiker, schön grün.","t.fresh":"frisch",
+      "d.halloumi":"Gegrillter Käse, goldbraun und innen weich.",
+      "d.cheese":"Knusprige Käserollen, warm serviert.",
+      "d.tavuk":"Marinierter Hähnchenspieß vom Holzkohlegrill.","t.signature":"Signature",
+      "d.urfalli":"Würziger Lamm- & Rindfleischspieß nach Urfa-Art.",
+      "menu.grilllbl":"Nur Holzkohle, sonst nichts",
+      "d.shawarma":"Hähnchen-Shawarma, hausgemachte Saucen und libanesisches Brot.",
+      "d.sbox":"Großzügige Shawarma-Box zum Teilen — Beilagen inklusive.","t.share":"zum Teilen",
+      "d.ubox":"Grill-Box mit Lamm & Rind, Reis, Salaten und Saucen.",
+      "menu.dessertlbl":"Der ganze Tisch",
+      "d.honeyt":"Honigkuchen","d.honey":"Der berühmte ukrainische Honigkuchen, den die Stammgäste lieben.","t.fav":"Liebling",
+      "d.mezzet":"Mezze-Auswahl","d.mezze":"Falafel, Muhammara, Labneh, Kebbeh, Yalanji… fragt nach der Tagesplatte.",
+      "menu.footp":"Richtpreise aus der Lieferkarte — Preise im Restaurant können abweichen. Glutenfrei und vegetarisch auf Anfrage. Bitte Allergene und Verfügbarkeit beim Team erfragen.",
+      "menu.wolt":"Bei Wolt bestellen",
+      "atmo.eye":"Rund um den Tisch","atmo.h2":"Warm, vintage, lebendig.",
+      "atmo.aside":"Unpassende Sessel, sanftes Licht, das fröhliche Stimmengewirr geteilter Abende.",
+      "atmo.quote":"„Ein wunderschönes Dekor und eine herzliche Atmosphäre.\"","atmo.quotecite":"Gästestimmen · zu prüfen",
+      "visit.eye":"Zu Tisch","visit.h2":"Finden Sie uns in Limpertsberg.",
+      "visit.hours":"Öffnungszeiten","day.monthu":"Mo – Do","day.fri":"Freitag","day.sat":"Samstag","day.sun":"Sonntag","day.closed":"geschlossen",
+      "visit.hoursnote":"Aggregierte Zeiten — mit dem Restaurant zu bestätigen.",
+      "visit.contact":"Kontakt","visit.addr":"Adresse","visit.phone":"Telefon","visit.email":"E-Mail","visit.book":"Telefonisch reservieren",
+      "foot.tag":"Wir halten Ihnen einen Platz frei.",
+      "foot.blurb":"Hausgemachte libanesische & syrische Küche, getragen von Inklusion und Vielfalt, im Herzen von Limpertsberg.",
+      "foot.visit":"Besuch","foot.follow":"Folgen & bestellen","foot.wolt":"Lieferung Wolt",
+      "foot.demo":"Demo-Website — Inhalte & Öffnungszeiten mit dem Restaurant zu bestätigen."
+    },
+    en:{
+      "nav.mission":"Our mission","nav.menu":"The mezze","nav.atmo":"Atmosphere","nav.visit":"Find us",
+      "cta.reserve":"Reserve",
+      "hero.kicker":"Lebanese & Syrian kitchen · Limpertsberg",
+      "hero.h1a":"The table","hero.h1b":"is set.",
+      "hero.sub":"Home-made mezze, charcoal-grilled skewers and one long table where everyone has a seat. Middle-Eastern cooking, made with care — and with heart.",
+      "hero.tag":"Home-made — and made together.",
+      "hero.cta1":"Book a table","hero.cta2":"Explore the mezze",
+      "hero.m1a":"Lunch & dinner","hero.m1b":"Mon – Sat · to confirm",
+      "hero.m2a":"To share","hero.m2b":"A table full of food",
+      "hero.m3a":"Delivery","hero.m3b":"via Wolt",
+      "hero.card.t":"The \"full table\" concept","hero.card.s":"Order, share, order again.",
+      "mission.eye":"A social enterprise",
+      "mission.h2":"One long table, and a seat for everyone.",
+      "mission.p1":"Chiche! is a social-enterprise restaurant. We pair authentic, home-made Lebanese food with inclusion: we employ refugees and migrants to support their integration into Luxembourg society — one of the country's largest employers of refugees.",
+      "mission.p2":"Every plate we serve moves that mission forward. To eat at Chiche! is to take a seat at this table.",
+      "mission.s1":"home-made","mission.s2n":"Refugees","mission.s2":"at the heart of the team","mission.s3":"veggie & vegan options",
+      "mission.note":"Exact headcount to be confirmed with the restaurant.",
+      "menu.eye":"The mezze — to share","menu.h2":"Put the plates in the middle.",
+      "menu.aside":"A selection of our staples. Full menu & drinks at the restaurant.","menu.confirm":"price to confirm",
+      "cat.mezze":"Mezze","cat.grill":"From the charcoal grill","cat.boxes":"Boxes & Shawarma","cat.dessert":"Sweet things",
+      "d.hummus":"Chickpea purée, tahini, lemon, a drizzle of olive oil.","t.veg":"vegetarian","t.vegopt":"veggie options","t.vegan":"vegan",
+      "d.mutabal":"Purée of fire-grilled aubergine, tahini and pomegranate.","t.smoky":"smoky",
+      "d.tabouli":"Parsley, tomato, bulgur, mint, lemon. The classic, nicely green.","t.fresh":"fresh",
+      "d.halloumi":"Grilled cheese, golden outside, soft within.",
+      "d.cheese":"Crispy cheese rolls, served hot.",
+      "d.tavuk":"Marinated chicken skewer, charcoal-grilled.","t.signature":"signature",
+      "d.urfalli":"Spiced lamb & beef skewer, Urfa style.",
+      "menu.grilllbl":"Charcoal, nothing else",
+      "d.shawarma":"Chicken shawarma, house sauces and Lebanese bread.",
+      "d.sbox":"Generous shawarma box to share — sides included.","t.share":"to share",
+      "d.ubox":"Lamb & beef grill box with rice, salads and sauces.",
+      "menu.dessertlbl":"The whole table",
+      "d.honeyt":"Honey cake","d.honey":"The famous Ukrainian honey cake the regulars rave about.","t.fav":"favourite",
+      "d.mezzet":"Mezze selection","d.mezze":"Falafel, muhammara, labneh, kebbeh, yalanji… ask for today's platter.",
+      "menu.footp":"Indicative prices from the delivery menu — dine-in prices may differ. Gluten-free and vegetarian on request. Please check allergens and availability with the team.",
+      "menu.wolt":"Order on Wolt",
+      "atmo.eye":"Around the table","atmo.h2":"Warm, vintage, alive.",
+      "atmo.aside":"Mismatched armchairs, soft light, the happy hum of shared evenings.",
+      "atmo.quote":"\"Beautiful decor and a warm, welcoming atmosphere.\"","atmo.quotecite":"guest reviews · to verify",
+      "visit.eye":"Come to the table","visit.h2":"Find us in Limpertsberg.",
+      "visit.hours":"Opening hours","day.monthu":"Mon – Thu","day.fri":"Friday","day.sat":"Saturday","day.sun":"Sunday","day.closed":"closed",
+      "visit.hoursnote":"Aggregated hours — to confirm with the restaurant.",
+      "visit.contact":"Contact","visit.addr":"Address","visit.phone":"Phone","visit.email":"Email","visit.book":"Reserve by phone",
+      "foot.tag":"We'll keep a seat for you.",
+      "foot.blurb":"Home-made Lebanese & Syrian food, driven by inclusion and diversity, in the heart of Limpertsberg.",
+      "foot.visit":"Visit","foot.follow":"Follow & order","foot.wolt":"Wolt delivery",
+      "foot.demo":"Demonstration site — content & hours to be confirmed with the establishment."
+    }
+  };
+
+  var nodes = document.querySelectorAll('[data-i18n]');
+  var FR = {};
+  nodes.forEach(function(n){ FR[n.getAttribute('data-i18n')] = n.innerHTML; });
+
+  function setLang(lang){
+    var dict = lang === 'fr' ? FR : I18N[lang];
+    nodes.forEach(function(n){
+      var k = n.getAttribute('data-i18n');
+      var v = (lang==='fr') ? FR[k] : (I18N[lang] && I18N[lang][k]);
+      if(v!==undefined) n.innerHTML = v;
+      else if(lang!=='fr' && FR[k]!==undefined) n.innerHTML = FR[k];
+    });
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.langsw button').forEach(function(b){
+      b.classList.toggle('on', b.getAttribute('data-lang')===lang);
+    });
+  }
+  document.querySelectorAll('.langsw button').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
+  });
+
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // reveal on scroll
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>

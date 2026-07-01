@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Restaurant Acacia — Le Registre de la Maison · Esch-sur-Alzette</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#13484c;          /* deep petrol-teal — the house ink */
+    --ink-soft:#2b5f63;
+    --terra:#b0453a;        /* dining-room terracotta */
+    --terra-deep:#8f342b;
+    --leaf:#6fae55;         /* Logis leaf, sparingly */
+    --paper:#f8e8ce;        /* cream paper */
+    --paper-2:#f3ddb8;
+    --paper-edge:#e6cfa6;
+    --walnut:#3a2a1e;
+    --brass:#b0894f;
+    --brass-light:#d7b177;
+    --rule:#d8bd92;         /* ledger rule line */
+    --shadow:rgba(58,42,30,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'EB Garamond',Georgia,serif;
+    color:var(--walnut);
+    background:#e9d3ac;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(255,255,255,.25), transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(176,69,58,.06), transparent 45%);
+    font-size:18px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  img{display:block;max-width:100%}
+
+  /* ---------- The bound register shell ---------- */
+  .book{
+    max-width:1460px;
+    margin:26px auto;
+    background:var(--paper);
+    background-image:
+      repeating-linear-gradient(0deg, transparent 0, transparent 37px, rgba(19,72,76,.05) 37px, rgba(19,72,76,.05) 38px);
+    box-shadow:0 30px 70px -20px var(--shadow), 0 2px 0 var(--paper-edge);
+    border:1px solid var(--paper-edge);
+    position:relative;
+    overflow:hidden;
+  }
+  .book::before{ /* leather spine on far left */
+    content:"";position:absolute;left:0;top:0;bottom:0;width:26px;
+    background:linear-gradient(90deg,#0d3437,#13484c 55%,#0d3437);
+    box-shadow:inset -6px 0 10px rgba(0,0,0,.35);
+    z-index:5;
+  }
+
+  /* ---------- Masthead / cover plate ---------- */
+  header.plate{
+    position:relative;
+    margin-left:26px;
+    padding:22px 40px 20px;
+    background:linear-gradient(180deg,#123f43,#13484c 60%,#0f3b3f);
+    color:var(--paper);
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    align-items:center;
+    gap:26px;
+    border-bottom:3px double var(--brass);
+  }
+  header.plate::after{
+    content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;
+    background:repeating-linear-gradient(90deg,var(--brass) 0 14px,transparent 14px 22px);
+    opacity:.5;
+  }
+  .mark{display:flex;align-items:center;gap:14px}
+  .mark img{height:40px;filter:brightness(0) invert(1);opacity:.95}
+  .mark .est{
+    font-family:'Caveat',cursive;font-size:20px;color:var(--brass-light);
+    border-left:1px solid rgba(255,255,255,.3);padding-left:14px;line-height:1.1;
+  }
+  .titleblock{text-align:center;line-height:1}
+  .titleblock .kicker{
+    font-family:'Caveat',cursive;color:var(--leaf);font-size:20px;letter-spacing:.04em;
+  }
+  .titleblock h1{
+    font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:clamp(26px,3.4vw,46px);letter-spacing:.12em;text-transform:uppercase;
+    color:var(--paper);margin:2px 0;
+  }
+  .titleblock .sub{
+    font-family:'EB Garamond',serif;font-style:italic;font-size:15px;
+    color:rgba(248,232,206,.8);letter-spacing:.05em;
+  }
+  .plate-actions{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+  .langsw{display:flex;border:1px solid var(--brass);border-radius:2px;overflow:hidden}
+  .langsw button{
+    background:transparent;color:var(--brass-light);border:0;cursor:pointer;
+    font-family:'EB Garamond',serif;font-size:14px;letter-spacing:.14em;
+    padding:5px 11px;transition:.2s;
+  }
+  .langsw button+button{border-left:1px solid rgba(176,137,79,.5)}
+  .langsw button.active{background:var(--brass);color:#0f3b3f;font-weight:600}
+  .langsw button:hover:not(.active){color:var(--paper)}
+  .reserve{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--terra);color:var(--paper);text-decoration:none;
+    font-family:'Cormorant Garamond',serif;font-weight:600;font-size:17px;letter-spacing:.14em;
+    text-transform:uppercase;padding:9px 20px;border-radius:2px;
+    box-shadow:0 3px 0 var(--terra-deep);transition:.15s;
+  }
+  .reserve:hover{transform:translateY(1px);box-shadow:0 2px 0 var(--terra-deep)}
+
+  /* ---------- Body: index rail + folios ---------- */
+  .body{
+    display:grid;
+    grid-template-columns:206px 1fr;
+    margin-left:26px;
+  }
+  /* vertical tab index like a ledger's thumb-index */
+  nav.index{
+    position:sticky;top:0;align-self:start;
+    background:var(--paper-2);
+    border-right:2px solid var(--rule);
+    padding:26px 0 40px;
+    min-height:100%;
+  }
+  nav.index .idx-h{
+    font-family:'Caveat',cursive;color:var(--ink);font-size:19px;
+    padding:0 20px 12px;border-bottom:1px solid var(--rule);margin-bottom:8px;
+    display:flex;justify-content:space-between;align-items:baseline;
+  }
+  nav.index a{
+    display:block;position:relative;text-decoration:none;color:var(--ink);
+    font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;
+    letter-spacing:.03em;padding:13px 20px 13px 22px;margin:6px 0;
+    border-left:3px solid transparent;transition:.18s;
+  }
+  nav.index a .fol{
+    display:block;font-family:'EB Garamond',serif;font-style:italic;
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);opacity:.8;
+  }
+  nav.index a:hover, nav.index a.on{
+    background:var(--paper);border-left-color:var(--terra);color:var(--terra-deep);
+  }
+  nav.index .rail-foot{
+    margin-top:24px;padding:16px 20px;border-top:1px solid var(--rule);
+    font-family:'EB Garamond',serif;font-style:italic;font-size:13.5px;color:var(--ink-soft);
+  }
+  nav.index .rail-foot a{
+    display:inline;font-family:'EB Garamond',serif;font-size:14px;font-style:normal;
+    padding:0;margin:0;border:0;color:var(--ink);text-decoration:underline;text-decoration-color:var(--brass);
+  }
+
+  main.folios{padding:0 clamp(24px,3.4vw,52px) 0}
+
+  .folio{padding:52px 0 46px;border-bottom:1px dashed var(--rule)}
+  .folio:last-of-type{border-bottom:0}
+  .folio-head{display:flex;align-items:baseline;gap:16px;margin-bottom:26px}
+  .folio-num{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--terra);white-space:nowrap;
+  }
+  .folio-num::before{content:"—  "}
+  .folio-head h2{
+    font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:clamp(30px,3.6vw,44px);color:var(--ink);letter-spacing:.02em;line-height:1;
+  }
+  .folio-head .line{flex:1;height:0;border-bottom:1px solid var(--rule);transform:translateY(-6px)}
+
+  /* Folio I — the facing-page spread */
+  .spread{
+    display:grid;grid-template-columns:1.05fr 1fr;gap:0;position:relative;
+    background:var(--paper);
+    border:1px solid var(--paper-edge);
+    box-shadow:inset 0 1px 0 #fff9ec;
+  }
+  .spread::before{ /* center gutter shadow */
+    content:"";position:absolute;top:0;bottom:0;left:50%;width:34px;transform:translateX(-50%);
+    background:linear-gradient(90deg,transparent,rgba(58,42,30,.14) 45%,rgba(58,42,30,.14) 55%,transparent);
+    pointer-events:none;z-index:2;
+  }
+  .page{padding:36px 40px}
+  .page.left{border-right:1px solid var(--rule)}
+  .drop{
+    font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--terra);
+    float:left;font-size:76px;line-height:.72;padding:8px 12px 0 0;
+  }
+  .page p{margin:0 0 15px;color:#4a3a2c}
+  .page p.lead{font-size:20px;color:var(--ink-soft)}
+  .sig{
+    font-family:'Caveat',cursive;font-size:34px;color:var(--ink);margin-top:6px;line-height:1;
+  }
+  .sig small{display:block;font-family:'EB Garamond',serif;font-style:italic;font-size:13px;color:var(--ink-soft);letter-spacing:.04em;margin-top:4px}
+
+  /* tipped-in photo plate on the right page */
+  .plate-photo{margin:0;position:relative}
+  .plate-photo .frame{
+    border:8px solid #fff;box-shadow:0 10px 26px -8px var(--shadow);
+    outline:1px solid var(--paper-edge);
+  }
+  .plate-photo .frame img{width:100%;height:300px;object-fit:cover;display:block}
+  .plate-photo figcaption{
+    font-family:'Caveat',cursive;font-size:18px;color:var(--ink-soft);
+    text-align:right;margin-top:10px;transform:rotate(-1.2deg);
+  }
+  .ledger-facts{
+    margin-top:22px;border-top:1px solid var(--rule);padding-top:16px;
+    display:grid;grid-template-columns:1fr 1fr;gap:2px 20px;
+  }
+  .ledger-facts div{
+    display:flex;justify-content:space-between;gap:10px;
+    border-bottom:1px dotted var(--rule);padding:7px 0;font-size:15.5px;
+  }
+  .ledger-facts dt{font-style:italic;color:var(--ink-soft)}
+  .ledger-facts dd{font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--ink);text-align:right}
+
+  /* Folio II — the carte, multi-column ledger entries */
+  .carte{
+    columns:2;column-gap:56px;
+  }
+  .course{break-inside:avoid;margin:0 0 30px}
+  .course h3{
+    font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;color:var(--terra-deep);
+    letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .course h3::after{content:"";flex:1;height:0;border-bottom:1px solid var(--rule)}
+  .course .cn{
+    font-family:'Caveat',cursive;font-size:16px;color:var(--leaf);letter-spacing:0;text-transform:none;
+  }
+  .dish{display:flex;align-items:baseline;gap:6px;padding:9px 0;border-bottom:1px dotted var(--rule)}
+  .dish .d-name{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--ink);font-weight:500}
+  .dish .d-lead{flex:1;border-bottom:1px dotted var(--rule);transform:translateY(-4px);margin:0 4px}
+  .dish .d-note{font-style:italic;font-size:14px;color:var(--ink-soft);white-space:nowrap}
+  .carte-note{
+    columns:1;margin-top:6px;font-style:italic;font-size:14.5px;color:var(--terra-deep);
+    background:rgba(176,69,58,.06);border-left:3px solid var(--terra);padding:10px 16px;
+  }
+
+  /* Folio III — formulas as register slips */
+  .slips{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .slip{
+    background:#fffaf0;border:1px solid var(--paper-edge);
+    box-shadow:0 8px 20px -12px var(--shadow);
+    padding:26px 24px 22px;position:relative;
+    border-top:4px solid var(--ink);
+  }
+  .slip.feature{border-top-color:var(--terra)}
+  .slip .tag{
+    position:absolute;top:-12px;right:16px;background:var(--terra);color:var(--paper);
+    font-family:'EB Garamond',serif;font-style:italic;font-size:12px;letter-spacing:.1em;
+    padding:3px 12px;border-radius:2px;box-shadow:0 2px 0 var(--terra-deep);
+  }
+  .slip h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:var(--ink);letter-spacing:.03em}
+  .slip .price{font-family:'Cormorant Garamond',serif;font-size:40px;color:var(--terra-deep);font-weight:700;line-height:1;margin:8px 0 4px}
+  .slip .price small{font-size:16px;font-weight:500;color:var(--ink-soft)}
+  .slip p{font-size:15.5px;color:#4a3a2c;margin-top:8px}
+  .slip .conf{font-style:italic;font-size:12.5px;color:var(--ink-soft);margin-top:14px;border-top:1px dotted var(--rule);padding-top:8px}
+  .paycard{
+    grid-column:1/-1;display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    font-style:italic;color:var(--ink-soft);font-size:15px;margin-top:4px;
+  }
+  .paycard b{font-style:normal;font-family:'Cormorant Garamond',serif;color:var(--ink);letter-spacing:.05em}
+  .paycard span{
+    background:var(--paper-2);border:1px solid var(--paper-edge);border-radius:2px;
+    padding:3px 10px;font-style:normal;font-size:13px;letter-spacing:.06em;color:var(--walnut);
+  }
+
+  /* Folio IV — hours + address, double entry */
+  .visit{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .hours-table{width:100%;border-collapse:collapse}
+  .hours-table td{padding:11px 4px;border-bottom:1px dotted var(--rule);font-size:16.5px}
+  .hours-table td:first-child{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--ink);font-weight:500}
+  .hours-table td:last-child{text-align:right;color:var(--ink-soft)}
+  .hours-table tr.closed td:last-child{color:var(--terra-deep);font-style:italic}
+  .warn{
+    font-style:italic;font-size:13.5px;color:var(--terra-deep);
+    background:rgba(176,69,58,.06);border-left:3px solid var(--terra);padding:9px 14px;margin-top:14px;
+  }
+  .addr-lines{list-style:none;margin:6px 0 18px}
+  .addr-lines li{padding:6px 0;border-bottom:1px dotted var(--rule);display:flex;gap:12px}
+  .addr-lines li b{font-family:'Cormorant Garamond',serif;font-style:normal;color:var(--terra-deep);min-width:96px;font-weight:600;letter-spacing:.04em}
+  .addr-lines a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--brass)}
+  .thumbs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 14px}
+  .thumbs figure{margin:0}
+  .thumbs .frame{border:6px solid #fff;box-shadow:0 6px 16px -8px var(--shadow);outline:1px solid var(--paper-edge)}
+  .thumbs img{width:100%;height:150px;object-fit:cover}
+  .thumbs figcaption{font-family:'Caveat',cursive;font-size:15px;color:var(--ink-soft);text-align:center;margin-top:5px}
+  .mapframe{border:6px solid #fff;box-shadow:0 8px 20px -10px var(--shadow);outline:1px solid var(--paper-edge)}
+  .mapframe iframe{display:block;width:100%;height:300px;border:0;filter:sepia(.12) saturate(.9)}
+
+  /* colophon footer */
+  footer.colophon{
+    margin-left:26px;background:linear-gradient(180deg,#0f3b3f,#13484c);color:rgba(248,232,206,.85);
+    padding:34px 44px 30px;border-top:3px double var(--brass);
+    display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;align-items:start;
+  }
+  footer.colophon .cwordmark{font-family:'Cormorant Garamond',serif;font-size:28px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper)}
+  footer.colophon .est2{font-family:'Caveat',cursive;font-size:20px;color:var(--brass-light);margin-top:2px}
+  footer.colophon p{font-size:14.5px;margin-top:12px;line-height:1.55}
+  footer.colophon h4{font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-light);margin-bottom:8px;font-weight:600}
+  footer.colophon a{color:var(--paper);text-decoration:underline;text-decoration-color:var(--brass)}
+  footer.colophon .fcol div{padding:3px 0;font-size:14.5px}
+  .demo{
+    grid-column:1/-1;margin-top:8px;border-top:1px solid rgba(176,137,79,.35);padding-top:14px;
+    font-style:italic;font-size:12.5px;color:rgba(248,232,206,.6);line-height:1.5;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:1080px){
+    .body{grid-template-columns:1fr;margin-left:26px}
+    nav.index{position:static;border-right:0;border-bottom:2px solid var(--rule);
+      display:flex;flex-wrap:wrap;gap:4px;padding:14px 16px}
+    nav.index .idx-h{width:100%;border:0;padding:0 0 6px;margin:0}
+    nav.index a{margin:0;padding:8px 14px;border-left:0;border-bottom:2px solid transparent}
+    nav.index a .fol{display:inline;margin-left:8px}
+    nav.index a:hover,nav.index a.on{border-left:0;border-bottom-color:var(--terra)}
+    nav.index .rail-foot{width:100%;margin-top:8px;padding:10px 0 0}
+  }
+  @media(max-width:820px){
+    body{font-size:17px}
+    header.plate{grid-template-columns:1fr;gap:14px;text-align:center;justify-items:center}
+    .plate-actions{align-items:center}
+    .spread{grid-template-columns:1fr}
+    .spread::before{display:none}
+    .page.left{border-right:0;border-bottom:1px solid var(--rule)}
+    .carte{columns:1}
+    .slips{grid-template-columns:1fr}
+    .visit{grid-template-columns:1fr}
+    footer.colophon{grid-template-columns:1fr;gap:20px}
+  }
+  @media(max-width:520px){
+    .book{margin:0}
+    .plate-photo .frame img{height:230px}
+    .ledger-facts{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="book">
+
+  <!-- ===== MASTHEAD / COVER PLATE ===== -->
+  <header class="plate">
+    <div class="mark">
+      <img src="assets/logo.png" alt="Acacia — Logis Hotels">
+      <span class="est" data-i18n="est">Maison<br>familiale · 1980</span>
+    </div>
+    <div class="titleblock">
+      <div class="kicker" data-i18n="kicker">Le registre de la maison</div>
+      <h1>Restaurant&nbsp;Acacia</h1>
+      <div class="sub" data-i18n="sub">Cuisine française de tradition · Esch-sur-Alzette</div>
+    </div>
+    <div class="plate-actions">
+      <div class="langsw" role="group" aria-label="Langue">
+        <button data-lang="fr" class="active" onclick="setLang('fr')">FR</button>
+        <button data-lang="de" onclick="setLang('de')">DE</button>
+        <button data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+      <a class="reserve" href="tel:+35254106 1"><span data-i18n="reserve">Réserver une table</span></a>
+    </div>
+  </header>
+
+  <!-- ===== INDEX RAIL + FOLIOS ===== -->
+  <div class="body">
+
+    <nav class="index" aria-label="Sommaire">
+      <div class="idx-h"><span data-i18n="idx_h">Sommaire</span><span>✦</span></div>
+      <a href="#maison" class="on"><span class="fol" data-i18n="fol1">Folio I</span><span data-i18n="nav_maison">La Maison</span></a>
+      <a href="#carte"><span class="fol" data-i18n="fol2">Folio II</span><span data-i18n="nav_carte">La Carte</span></a>
+      <a href="#formules"><span class="fol" data-i18n="fol3">Folio III</span><span data-i18n="nav_formules">Les Formules</span></a>
+      <a href="#visite"><span class="fol" data-i18n="fol4">Folio IV</span><span data-i18n="nav_visite">Heures & Adresse</span></a>
+      <div class="rail-foot">
+        <span data-i18n="rail_tel">Réservations</span><br>
+        <a href="tel:+35254106 1">+352 54 10 61</a><br>
+        <a href="mailto:hacacia@pt.lu">hacacia@pt.lu</a>
+      </div>
+    </nav>
+
+    <main class="folios">
+
+      <!-- FOLIO I — LA MAISON -->
+      <section class="folio" id="maison">
+        <div class="folio-head">
+          <span class="folio-num" data-i18n="fol1">Folio I</span>
+          <h2 data-i18n="maison_h">La Maison</h2>
+          <span class="line"></span>
+        </div>
+
+        <div class="spread">
+          <div class="page left">
+            <p class="lead"><span class="drop">D</span><span data-i18n="maison_p1">Depuis 1980, la même main tient les fourneaux du restaurant Acacia. Serge Rihm y a d'abord cuisiné aux côtés de son père Marc, avant de reprendre seul le piano de la maison — une table familiale, l'une des plus établies du sud du Grand-Duché.</span></p>
+            <p data-i18n="maison_p2">Ici, la cuisine est française, de saison et de marché : gastronomique dans le geste, traditionnelle dans l'âme, avec ce qu'il faut d'esprit pour la garder vivante. Les habitués reviennent pour les classiques ; on les comprend.</p>
+            <p data-i18n="maison_p3">Salle claire aux nappes blanches, banquettes terracotta, cheminée de pierre et lustre de laiton : une adresse élégante et sans façon, faite pour un déjeuner d'affaires comme pour un dîner d'anniversaire.</p>
+            <div class="sig">Serge Rihm<small data-i18n="sig_role">Chef-propriétaire · au piano depuis 1980</small></div>
+          </div>
+
+          <div class="page">
+            <figure class="plate-photo">
+              <div class="frame"><img src="assets/interior-dining.jpg" alt="La salle du restaurant Acacia"></div>
+              <figcaption data-i18n="cap_interior">La salle — nappes blanches, cheminée de pierre, lustre de laiton.</figcaption>
+            </figure>
+            <dl class="ledger-facts">
+              <div><dt data-i18n="f_cuisine">Cuisine</dt><dd data-i18n="f_cuisine_v">Française · tradition</dd></div>
+              <div><dt data-i18n="f_since">Depuis</dt><dd>1980</dd></div>
+              <div><dt data-i18n="f_ville">Ville</dt><dd>Esch-sur-Alzette</dd></div>
+              <div><dt data-i18n="f_note">Guide</dt><dd>TripAdvisor 4,3/5</dd></div>
+              <div><dt data-i18n="f_style">Esprit</dt><dd data-i18n="f_style_v">Élégant, sans façon</dd></div>
+              <div><dt data-i18n="f_conforts">Conforts</dt><dd data-i18n="f_conforts_v">Clim. · parking · bar</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOLIO II — LA CARTE -->
+      <section class="folio" id="carte">
+        <div class="folio-head">
+          <span class="folio-num" data-i18n="fol2">Folio II</span>
+          <h2 data-i18n="carte_h">La Carte</h2>
+          <span class="line"></span>
+        </div>
+
+        <div class="carte">
+          <div class="course">
+            <h3><span data-i18n="c_entrees">Entrées</span> <span class="cn" data-i18n="c_entrees_n">pour commencer</span></h3>
+            <div class="dish"><span class="d-name">Terrine de brochet aux Saint-Jacques</span><span class="d-lead"></span><span class="d-note" data-i18n="n_signature">signature</span></div>
+            <div class="dish"><span class="d-name">Foie gras en terrine</span><span class="d-lead"></span><span class="d-note" data-i18n="n_saison">selon saison</span></div>
+            <div class="dish"><span class="d-name">Asperges au champagne, mousseline traditionnelle</span><span class="d-lead"></span><span class="d-note" data-i18n="n_printemps">printemps</span></div>
+          </div>
+
+          <div class="course">
+            <h3><span data-i18n="c_poissons">Poissons</span> <span class="cn" data-i18n="c_poissons_n">de la mer</span></h3>
+            <div class="dish"><span class="d-name">« Bernadette » de saumon poêlé aux poireaux blancs</span><span class="d-lead"></span><span class="d-note" data-i18n="n_maison">maison</span></div>
+            <div class="dish"><span class="d-name">Filet de cabillaud rôti sur poireaux blancs</span><span class="d-lead"></span><span class="d-note"></span></div>
+          </div>
+
+          <div class="course">
+            <h3><span data-i18n="c_viandes">Viandes</span> <span class="cn" data-i18n="c_viandes_n">de nos régions</span></h3>
+            <div class="dish"><span class="d-name">Grenadin de veau, sauce Roquefort</span><span class="d-lead"></span><span class="d-note"></span></div>
+            <div class="dish"><span class="d-name">Magret de canard au poivre vert</span><span class="d-lead"></span><span class="d-note" data-i18n="n_classique">le classique</span></div>
+          </div>
+
+          <div class="course">
+            <h3><span data-i18n="c_desserts">Desserts</span> <span class="cn" data-i18n="c_desserts_n">& fromages</span></h3>
+            <div class="dish"><span class="d-name">Charlotte au fromage blanc, sauce vanille</span><span class="d-lead"></span><span class="d-note"></span></div>
+            <div class="dish"><span class="d-name">Tarte du jour aux pommes</span><span class="d-lead"></span><span class="d-note" data-i18n="n_dujour">du jour</span></div>
+            <div class="dish"><span class="d-name">Plateau de fromages affinés</span><span class="d-lead"></span><span class="d-note"></span></div>
+          </div>
+
+          <p class="carte-note" data-i18n="carte_note">Carte donnée à titre indicatif, compilée d'après la presse et les guides — les plats et leur disponibilité varient au fil des saisons et du marché. Carte complète à confirmer avec l'établissement.</p>
+        </div>
+      </section>
+
+      <!-- FOLIO III — LES FORMULES -->
+      <section class="folio" id="formules">
+        <div class="folio-head">
+          <span class="folio-num" data-i18n="fol3">Folio III</span>
+          <h2 data-i18n="formules_h">Les Formules</h2>
+          <span class="line"></span>
+        </div>
+
+        <div class="slips">
+          <div class="slip">
+            <h3 data-i18n="s1_h">Menu des saveurs</h3>
+            <div class="price">30&nbsp;<small>€</small></div>
+            <p data-i18n="s1_p">Le menu de saison de la maison — entrée, plat et dessert au gré du marché.</p>
+            <div class="conf" data-i18n="tarif_conf">Tarif indicatif — à confirmer.</div>
+          </div>
+          <div class="slip feature">
+            <span class="tag" data-i18n="s2_tag">Le midi en semaine</span>
+            <h3 data-i18n="s2_h">Menu business</h3>
+            <div class="price">50&nbsp;<small>€</small></div>
+            <p data-i18n="s2_p">Pensé pour le déjeuner d'affaires : service soigné, tempo maîtrisé.</p>
+            <div class="conf" data-i18n="tarif_conf">Tarif indicatif — à confirmer.</div>
+          </div>
+          <div class="slip">
+            <h3 data-i18n="s3_h">Menu végétarien</h3>
+            <div class="price">30&nbsp;<small>€</small></div>
+            <p data-i18n="s3_p">Une lecture végétale de la saison. Forfait vins ~15&nbsp;€ en accompagnement.</p>
+            <div class="conf" data-i18n="tarif_conf">Tarif indicatif — à confirmer.</div>
+          </div>
+          <div class="paycard">
+            <b data-i18n="pay_h">Au comptoir&nbsp;:</b>
+            <span>VISA</span><span>Mastercard</span><span>Amex</span><span>Ticket Restaurant</span>
+            <em data-i18n="pay_note">— moyens de paiement à confirmer.</em>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOLIO IV — HEURES & ADRESSE -->
+      <section class="folio" id="visite">
+        <div class="folio-head">
+          <span class="folio-num" data-i18n="fol4">Folio IV</span>
+          <h2 data-i18n="visite_h">Heures & Adresse</h2>
+          <span class="line"></span>
+        </div>
+
+        <div class="visit">
+          <div>
+            <h3 style="font-family:'Cormorant Garamond',serif;color:var(--terra-deep);letter-spacing:.06em;text-transform:uppercase;font-size:20px;margin-bottom:6px" data-i18n="hours_h">Le service</h3>
+            <table class="hours-table">
+              <tr><td data-i18n="d_monsat">Lundi – Samedi</td><td data-i18n="h_lunch">12h00 – 14h00 · 19h00 – 22h00</td></tr>
+              <tr class="closed"><td data-i18n="d_sun">Dimanche</td><td data-i18n="h_closed">Fermé</td></tr>
+            </table>
+            <div class="warn" data-i18n="hours_warn">⚠ Horaires à confirmer — aucun horaire n'est publié sur le site de l'établissement. Merci d'appeler avant de vous déplacer.</div>
+
+            <h3 style="font-family:'Cormorant Garamond',serif;color:var(--terra-deep);letter-spacing:.06em;text-transform:uppercase;font-size:20px;margin:26px 0 6px" data-i18n="addr_h">Nous trouver</h3>
+            <ul class="addr-lines">
+              <li><b data-i18n="a_addr">Adresse</b><span>10, rue de la Libération, L-4210 Esch-sur-Alzette <em style="font-style:italic;color:var(--ink-soft)" data-i18n="a_addr_note">(code postal à confirmer)</em></span></li>
+              <li><b data-i18n="a_tel">Téléphone</b><a href="tel:+35254106 1">+352 54 10 61</a></li>
+              <li><b data-i18n="a_mail">Courriel</b><a href="mailto:hacacia@pt.lu">hacacia@pt.lu</a></li>
+              <li><b data-i18n="a_hotel">Hôtel</b><span data-i18n="a_hotel_v">Restaurant de l'Hôtel Acacia (Logis)</span></li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="thumbs">
+              <figure>
+                <div class="frame"><img src="assets/exterior-facade.jpg" alt="Façade du restaurant Acacia"></div>
+                <figcaption data-i18n="cap_facade">La façade, rue de la Libération</figcaption>
+              </figure>
+              <figure>
+                <div class="frame"><img src="assets/exterior-sign.jpg" alt="Enseigne Hôtel Acacia"></div>
+                <figcaption data-i18n="cap_sign">L'enseigne lumineuse</figcaption>
+              </figure>
+            </div>
+            <div class="mapframe">
+              <iframe title="Plan — Restaurant Acacia" loading="lazy" src="https://www.google.com/maps?q=10+rue+de+la+Lib%C3%A9ration+Esch-sur-Alzette+Luxembourg&output=embed"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== COLOPHON / FOOTER ===== -->
+  <footer class="colophon">
+    <div>
+      <div class="cwordmark">Restaurant Acacia</div>
+      <div class="est2" data-i18n="est">Maison familiale · 1980</div>
+      <p data-i18n="foot_blurb">La tradition française, au cœur d'Esch depuis 1980. Une cuisine de saison, signée Serge Rihm.</p>
+    </div>
+    <div class="fcol">
+      <h4 data-i18n="foot_visit">Visite</h4>
+      <div>10, rue de la Libération</div>
+      <div>L-4210 Esch-sur-Alzette</div>
+      <div><a href="tel:+35254106 1">+352 54 10 61</a></div>
+      <div><a href="mailto:hacacia@pt.lu">hacacia@pt.lu</a></div>
+    </div>
+    <div class="fcol">
+      <h4 data-i18n="foot_hours">Service</h4>
+      <div data-i18n="foot_h1">Lun – Sam : 12h – 14h</div>
+      <div data-i18n="foot_h2">Lun – Sam : 19h – 22h</div>
+      <div data-i18n="foot_h3">Dimanche : fermé</div>
+      <div style="font-style:italic;opacity:.7" data-i18n="foot_h4">horaires à confirmer</div>
+    </div>
+    <div class="demo" data-i18n="disclaimer">Site de démonstration réalisé à titre de proposition — non affilié officiellement au Restaurant Acacia à ce stade. Les horaires, plats, formules et tarifs sont donnés à titre indicatif et restent à confirmer avec l'établissement. Photographie haute résolution des plats à fournir par l'établissement. Logo et photos © Hôtel-Restaurant Acacia.</div>
+  </footer>
+
+</div>
+
+<script>
+const dict = {
+  fr:{
+    est:"Maison<br>familiale · 1980",
+    kicker:"Le registre de la maison",
+    sub:"Cuisine française de tradition · Esch-sur-Alzette",
+    reserve:"Réserver une table",
+    idx_h:"Sommaire",
+    fol1:"Folio I", fol2:"Folio II", fol3:"Folio III", fol4:"Folio IV",
+    nav_maison:"La Maison", nav_carte:"La Carte", nav_formules:"Les Formules", nav_visite:"Heures & Adresse",
+    rail_tel:"Réservations",
+    maison_h:"La Maison",
+    maison_p1:"Depuis 1980, la même main tient les fourneaux du restaurant Acacia. Serge Rihm y a d'abord cuisiné aux côtés de son père Marc, avant de reprendre seul le piano de la maison — une table familiale, l'une des plus établies du sud du Grand-Duché.",
+    maison_p2:"Ici, la cuisine est française, de saison et de marché : gastronomique dans le geste, traditionnelle dans l'âme, avec ce qu'il faut d'esprit pour la garder vivante. Les habitués reviennent pour les classiques ; on les comprend.",
+    maison_p3:"Salle claire aux nappes blanches, banquettes terracotta, cheminée de pierre et lustre de laiton : une adresse élégante et sans façon, faite pour un déjeuner d'affaires comme pour un dîner d'anniversaire.",
+    sig_role:"Chef-propriétaire · au piano depuis 1980",
+    cap_interior:"La salle — nappes blanches, cheminée de pierre, lustre de laiton.",
+    f_cuisine:"Cuisine", f_cuisine_v:"Française · tradition",
+    f_since:"Depuis", f_ville:"Ville", f_note:"Guide",
+    f_style:"Esprit", f_style_v:"Élégant, sans façon",
+    f_conforts:"Conforts", f_conforts_v:"Clim. · parking · bar",
+    carte_h:"La Carte",
+    c_entrees:"Entrées", c_entrees_n:"pour commencer",
+    c_poissons:"Poissons", c_poissons_n:"de la mer",
+    c_viandes:"Viandes", c_viandes_n:"de nos régions",
+    c_desserts:"Desserts", c_desserts_n:"& fromages",
+    n_signature:"signature", n_saison:"selon saison", n_printemps:"printemps",
+    n_maison:"maison", n_classique:"le classique", n_dujour:"du jour",
+    carte_note:"Carte donnée à titre indicatif, compilée d'après la presse et les guides — les plats et leur disponibilité varient au fil des saisons et du marché. Carte complète à confirmer avec l'établissement.",
+    formules_h:"Les Formules",
+    s1_h:"Menu des saveurs", s1_p:"Le menu de saison de la maison — entrée, plat et dessert au gré du marché.",
+    s2_tag:"Le midi en semaine", s2_h:"Menu business", s2_p:"Pensé pour le déjeuner d'affaires : service soigné, tempo maîtrisé.",
+    s3_h:"Menu végétarien", s3_p:"Une lecture végétale de la saison. Forfait vins ~15 € en accompagnement.",
+    tarif_conf:"Tarif indicatif — à confirmer.",
+    pay_h:"Au comptoir :", pay_note:"— moyens de paiement à confirmer.",
+    visite_h:"Heures & Adresse",
+    hours_h:"Le service",
+    d_monsat:"Lundi – Samedi", h_lunch:"12h00 – 14h00 · 19h00 – 22h00",
+    d_sun:"Dimanche", h_closed:"Fermé",
+    hours_warn:"⚠ Horaires à confirmer — aucun horaire n'est publié sur le site de l'établissement. Merci d'appeler avant de vous déplacer.",
+    addr_h:"Nous trouver",
+    a_addr:"Adresse", a_addr_note:"(code postal à confirmer)",
+    a_tel:"Téléphone", a_mail:"Courriel",
+    a_hotel:"Hôtel", a_hotel_v:"Restaurant de l'Hôtel Acacia (Logis)",
+    cap_facade:"La façade, rue de la Libération", cap_sign:"L'enseigne lumineuse",
+    foot_blurb:"La tradition française, au cœur d'Esch depuis 1980. Une cuisine de saison, signée Serge Rihm.",
+    foot_visit:"Visite", foot_hours:"Service",
+    foot_h1:"Lun – Sam : 12h – 14h", foot_h2:"Lun – Sam : 19h – 22h", foot_h3:"Dimanche : fermé", foot_h4:"horaires à confirmer",
+    disclaimer:"Site de démonstration réalisé à titre de proposition — non affilié officiellement au Restaurant Acacia à ce stade. Les horaires, plats, formules et tarifs sont donnés à titre indicatif et restent à confirmer avec l'établissement. Photographie haute résolution des plats à fournir par l'établissement. Logo et photos © Hôtel-Restaurant Acacia."
+  },
+  de:{
+    est:"Familien-<br>haus · 1980",
+    kicker:"Das Hausbuch",
+    sub:"Klassische französische Küche · Esch an der Alzette",
+    reserve:"Tisch reservieren",
+    idx_h:"Inhalt",
+    fol1:"Blatt I", fol2:"Blatt II", fol3:"Blatt III", fol4:"Blatt IV",
+    nav_maison:"Das Haus", nav_carte:"Die Karte", nav_formules:"Die Menüs", nav_visite:"Zeiten & Adresse",
+    rail_tel:"Reservierungen",
+    maison_h:"Das Haus",
+    maison_p1:"Seit 1980 führt dieselbe Hand die Küche des Restaurant Acacia. Serge Rihm kochte zunächst an der Seite seines Vaters Marc, bevor er den Herd allein übernahm — ein Familienhaus, eine der etabliertesten Tafeln im Süden des Großherzogtums.",
+    maison_p2:"Die Küche ist französisch, saisonal und marktfrisch: gastronomisch im Handwerk, traditionell im Herzen, mit gerade genug Esprit, um lebendig zu bleiben. Die Stammgäste kommen für die Klassiker zurück — zu Recht.",
+    maison_p3:"Heller Saal mit weißem Leinen, terrakottafarbene Bänke, steinerner Kamin und ein Messingleuchter: eine elegante, unprätentiöse Adresse — für das Geschäftsessen wie für das Geburtstagsdinner.",
+    sig_role:"Küchenchef & Inhaber · am Herd seit 1980",
+    cap_interior:"Der Saal — weißes Leinen, steinerner Kamin, Messingleuchter.",
+    f_cuisine:"Küche", f_cuisine_v:"Französisch · Tradition",
+    f_since:"Seit", f_ville:"Stadt", f_note:"Guide",
+    f_style:"Stil", f_style_v:"Elegant, unprätentiös",
+    f_conforts:"Komfort", f_conforts_v:"Klima · Parken · Bar",
+    carte_h:"Die Karte",
+    c_entrees:"Vorspeisen", c_entrees_n:"zum Beginn",
+    c_poissons:"Fisch", c_poissons_n:"aus dem Meer",
+    c_viandes:"Fleisch", c_viandes_n:"aus der Region",
+    c_desserts:"Desserts", c_desserts_n:"& Käse",
+    n_signature:"Signature", n_saison:"je nach Saison", n_printemps:"Frühling",
+    n_maison:"Hausspezialität", n_classique:"der Klassiker", n_dujour:"des Tages",
+    carte_note:"Karte als Anhaltspunkt, zusammengestellt aus Presse und Guides — Gerichte und Verfügbarkeit wechseln mit Saison und Markt. Vollständige Karte beim Haus zu bestätigen.",
+    formules_h:"Die Menüs",
+    s1_h:"Menü der Aromen", s1_p:"Das saisonale Hausmenü — Vorspeise, Hauptgang und Dessert nach Marktangebot.",
+    s2_tag:"Werktags mittags", s2_h:"Business-Menü", s2_p:"Für das Geschäftsessen gedacht: sorgfältiger Service, verlässliches Tempo.",
+    s3_h:"Vegetarisches Menü", s3_p:"Eine pflanzliche Lesart der Saison. Weinpauschale ~15 € dazu.",
+    tarif_conf:"Richtpreis — zu bestätigen.",
+    pay_h:"An der Kasse:", pay_note:"— Zahlungsmittel zu bestätigen.",
+    visite_h:"Zeiten & Adresse",
+    hours_h:"Der Service",
+    d_monsat:"Montag – Samstag", h_lunch:"12:00 – 14:00 · 19:00 – 22:00",
+    d_sun:"Sonntag", h_closed:"Geschlossen",
+    hours_warn:"⚠ Öffnungszeiten zu bestätigen — auf der Website des Hauses sind keine Zeiten veröffentlicht. Bitte vorher anrufen.",
+    addr_h:"So finden Sie uns",
+    a_addr:"Adresse", a_addr_note:"(Postleitzahl zu bestätigen)",
+    a_tel:"Telefon", a_mail:"E-Mail",
+    a_hotel:"Hotel", a_hotel_v:"Restaurant des Hotel Acacia (Logis)",
+    cap_facade:"Die Fassade, rue de la Libération", cap_sign:"Das Leuchtschild",
+    foot_blurb:"Französische Tradition im Herzen von Esch seit 1980. Saisonale Küche von Serge Rihm.",
+    foot_visit:"Besuch", foot_hours:"Service",
+    foot_h1:"Mo – Sa: 12 – 14 Uhr", foot_h2:"Mo – Sa: 19 – 22 Uhr", foot_h3:"Sonntag: geschlossen", foot_h4:"Zeiten zu bestätigen",
+    disclaimer:"Demo-Website als Vorschlag erstellt — derzeit nicht offiziell mit dem Restaurant Acacia verbunden. Zeiten, Gerichte, Menüs und Preise sind Richtwerte und beim Haus zu bestätigen. Hochauflösende Speisefotos vom Haus beizustellen. Logo und Fotos © Hôtel-Restaurant Acacia."
+  },
+  en:{
+    est:"Family<br>house · 1980",
+    kicker:"The house register",
+    sub:"Classic French cooking · Esch-sur-Alzette",
+    reserve:"Book a table",
+    idx_h:"Contents",
+    fol1:"Folio I", fol2:"Folio II", fol3:"Folio III", fol4:"Folio IV",
+    nav_maison:"The House", nav_carte:"The Menu", nav_formules:"Set Menus", nav_visite:"Hours & Address",
+    rail_tel:"Reservations",
+    maison_h:"The House",
+    maison_p1:"Since 1980 the same hand has kept the stove at Restaurant Acacia. Serge Rihm first cooked alongside his father Marc before taking the kitchen on alone — a family table, one of the most established in the south of the Grand Duchy.",
+    maison_p2:"The cooking is French, seasonal and market-led: gastronomic in craft, traditional at heart, with just enough spirit to keep it alive. The regulars come back for the classics; you can see why.",
+    maison_p3:"A bright room of white linen, terracotta banquettes, a stone fireplace and a brass chandelier — an elegant, unfussy address, made as much for a business lunch as for an anniversary dinner.",
+    sig_role:"Chef-owner · at the stove since 1980",
+    cap_interior:"The dining room — white linen, stone fireplace, brass chandelier.",
+    f_cuisine:"Cuisine", f_cuisine_v:"French · traditional",
+    f_since:"Since", f_ville:"Town", f_note:"Guide",
+    f_style:"Spirit", f_style_v:"Elegant, unfussy",
+    f_conforts:"Comforts", f_conforts_v:"A/C · parking · bar",
+    carte_h:"The Menu",
+    c_entrees:"Starters", c_entrees_n:"to begin",
+    c_poissons:"Fish", c_poissons_n:"from the sea",
+    c_viandes:"Meat", c_viandes_n:"from our regions",
+    c_desserts:"Desserts", c_desserts_n:"& cheeses",
+    n_signature:"signature", n_saison:"in season", n_printemps:"spring",
+    n_maison:"house special", n_classique:"the classic", n_dujour:"of the day",
+    carte_note:"Menu shown for reference, compiled from press and guides — dishes and availability change with the season and the market. Full current menu to be confirmed with the establishment.",
+    formules_h:"Set Menus",
+    s1_h:"Menu des Saveurs", s1_p:"The house seasonal menu — starter, main and dessert following the market.",
+    s2_tag:"Weekday lunch", s2_h:"Business Menu", s2_p:"Built for the business lunch: careful service, steady pace.",
+    s3_h:"Vegetarian Menu", s3_p:"A plant-led reading of the season. Wine pairing ~€15 alongside.",
+    tarif_conf:"Indicative price — to be confirmed.",
+    pay_h:"At the till:", pay_note:"— payment methods to be confirmed.",
+    visite_h:"Hours & Address",
+    hours_h:"Service",
+    d_monsat:"Monday – Saturday", h_lunch:"12:00 – 14:00 · 19:00 – 22:00",
+    d_sun:"Sunday", h_closed:"Closed",
+    hours_warn:"⚠ Hours to be confirmed — none are published on the venue's own site. Please call ahead before travelling.",
+    addr_h:"Find us",
+    a_addr:"Address", a_addr_note:"(postcode to be confirmed)",
+    a_tel:"Phone", a_mail:"Email",
+    a_hotel:"Hotel", a_hotel_v:"Restaurant of Hotel Acacia (Logis)",
+    cap_facade:"The facade, rue de la Libération", cap_sign:"The illuminated sign",
+    foot_blurb:"French tradition in the heart of Esch since 1980. Seasonal cooking by Serge Rihm.",
+    foot_visit:"Visit", foot_hours:"Service",
+    foot_h1:"Mon – Sat: 12 – 2 pm", foot_h2:"Mon – Sat: 7 – 10 pm", foot_h3:"Sunday: closed", foot_h4:"hours to be confirmed",
+    disclaimer:"Demonstration website created as a proposal — not officially affiliated with Restaurant Acacia at this stage. Hours, dishes, set menus and prices are indicative and remain to be confirmed with the establishment. High-resolution food photography to be supplied by the establishment. Logo and photos © Hôtel-Restaurant Acacia."
+  }
+};
+
+function setLang(lang){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[lang] && dict[lang][k]!==undefined) el.innerHTML = dict[lang][k];
+  });
+  document.querySelectorAll('.langsw button').forEach(b=>{
+    b.classList.toggle('active', b.getAttribute('data-lang')===lang);
+  });
+}
+
+// index-rail active state on scroll
+const links = [...document.querySelectorAll('nav.index a')];
+const secs = links.map(a=>document.querySelector(a.getAttribute('href')));
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id = '#'+e.target.id;
+      links.forEach(a=>a.classList.toggle('on', a.getAttribute('href')===id));
+    }
+  });
+},{rootMargin:'-40% 0px -55% 0px'});
+secs.forEach(s=>s && io.observe(s));
+</script>
+</body>
+</html>

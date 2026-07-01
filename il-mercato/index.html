@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Il Mercato — Italian Food Market · Strassen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Caveat:wght@500;700&family=Oswald:wght@400;500;600;700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#16283B;
+    --navy-2:#1E2C3E;
+    --navy-deep:#101E2E;
+    --cream:#F6F0E2;
+    --cream-2:#EFE6D2;
+    --paper:#FBF7EE;
+    --cobalt:#2C5EA8;
+    --cobalt-lt:#3E77C9;
+    --sun:#E8AE2E;
+    --sun-lt:#F2C24A;
+    --terra:#C4573A;
+    --ink:#12100D;
+    --shadow:0 22px 44px -24px rgba(16,30,46,.55);
+    --stripe: repeating-linear-gradient(90deg, var(--navy) 0 24px, var(--cream) 24px 48px);
+    --maiolica: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46' viewBox='0 0 46 46'%3E%3Crect width='46' height='46' fill='%23F6F0E2'/%3E%3Cg%3E%3Ccircle cx='23' cy='23' r='5.5' fill='%23E8AE2E'/%3E%3Cg fill='%232C5EA8'%3E%3Cellipse cx='23' cy='7' rx='4' ry='7'/%3E%3Cellipse cx='23' cy='39' rx='4' ry='7'/%3E%3Cellipse cx='7' cy='23' rx='7' ry='4'/%3E%3Cellipse cx='39' cy='23' rx='7' ry='4'/%3E%3C/g%3E%3Cg fill='%23C4573A'%3E%3Ccircle cx='9' cy='9' r='3'/%3E%3Ccircle cx='37' cy='9' r='3'/%3E%3Ccircle cx='9' cy='37' r='3'/%3E%3Ccircle cx='37' cy='37' r='3'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Archivo',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  h1,h2,h3{line-height:1.02;letter-spacing:-.01em}
+
+  .script{font-family:'Caveat',cursive}
+  .serif{font-family:'Fraunces',serif}
+  .sign{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em}
+
+  .wrap{max-width:1400px;margin:0 auto;padding:0 40px}
+
+  /* ---------- awning stripe helpers ---------- */
+  .stripe-bar{height:14px;background:var(--stripe)}
+  .scallop{
+    height:20px;background:var(--stripe);
+    -webkit-mask:radial-gradient(circle 10px at 10px 0, transparent 9.5px, #000 10px) repeat-x;
+    mask:radial-gradient(circle 10px at 10px 0, transparent 9.5px, #000 10px) repeat-x;
+    -webkit-mask-size:20px 20px;mask-size:20px 20px;
+  }
+
+  /* ---------- masthead ---------- */
+  header.masthead{position:sticky;top:0;z-index:60}
+  .topbar{
+    background:var(--navy);color:var(--cream);
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+    padding:12px 40px;
+  }
+  .brand{display:flex;align-items:baseline;gap:14px;line-height:1}
+  .brand .mk{font-family:'Caveat',cursive;font-weight:700;font-size:2.6rem;color:var(--cream);transform:rotate(-3deg);display:inline-block}
+  .brand .mk b{color:var(--sun-lt);font-weight:700}
+  .brand .sub{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.28em;font-size:.62rem;color:#cdd6e0;padding-bottom:4px}
+  nav.mainnav{display:flex;gap:26px;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:.8rem;font-weight:500}
+  nav.mainnav a{color:#e6ecf3;padding:4px 0;border-bottom:2px solid transparent;transition:.2s}
+  nav.mainnav a:hover{color:var(--sun-lt);border-color:var(--sun-lt)}
+  .tools{display:flex;align-items:center;gap:12px}
+  .langsw{display:flex;border:1px solid rgba(255,255,255,.28);border-radius:999px;overflow:hidden}
+  .langsw button{
+    background:transparent;color:#cdd6e0;border:0;cursor:pointer;
+    font-family:'Oswald',sans-serif;font-size:.72rem;letter-spacing:.1em;font-weight:600;
+    padding:6px 10px;transition:.15s;
+  }
+  .langsw button.active{background:var(--sun);color:var(--navy)}
+  .btn{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-weight:600;font-size:.78rem;
+    padding:11px 18px;border-radius:999px;cursor:pointer;border:0;display:inline-flex;align-items:center;gap:8px;transition:.2s;
+  }
+  .btn-sun{background:var(--sun);color:var(--navy)}
+  .btn-sun:hover{background:var(--sun-lt);transform:translateY(-2px)}
+  .btn-wolt{background:transparent;color:var(--cream);border:1.5px solid rgba(255,255,255,.4)}
+  .btn-wolt:hover{border-color:var(--sun-lt);color:var(--sun-lt)}
+  .btn-terra{background:var(--terra);color:#fff}
+  .btn-terra:hover{background:#d3653f;transform:translateY(-2px)}
+  .btn-navy{background:var(--navy);color:var(--cream)}
+  .btn-navy:hover{background:var(--navy-2);transform:translateY(-2px)}
+
+  /* department valance under bar */
+  .valance{background:var(--navy-deep);position:relative}
+  .valance .items{
+    display:flex;justify-content:center;flex-wrap:wrap;gap:0;
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.24em;font-size:.68rem;color:#b7c2cf;
+  }
+  .valance .items span{padding:9px 26px;position:relative}
+  .valance .items span:not(:last-child)::after{content:"•";position:absolute;right:-3px;color:var(--sun)}
+
+  /* ---------- HERO / la devanture ---------- */
+  .hero{background:var(--cream);position:relative}
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 1.35fr;gap:0;align-items:stretch;
+  }
+  .hero-copy{
+    background:var(--navy);color:var(--cream);
+    padding:64px 56px 64px 40px;display:flex;flex-direction:column;justify-content:center;position:relative;
+  }
+  .hero-copy .kicker{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.26em;font-size:.72rem;color:var(--sun-lt);margin-bottom:22px}
+  .hero-copy h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2.6rem,4.6vw,4.6rem);color:var(--cream)}
+  .hero-copy h1 em{font-style:italic;color:var(--sun-lt);font-weight:500}
+  .hero-copy .lede{margin-top:22px;font-size:1.08rem;max-width:34ch;color:#dbe3ec}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+  .hero-tags{margin-top:38px;display:flex;gap:8px;flex-wrap:wrap}
+  .hero-tags span{border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:6px 14px;font-family:'Oswald',sans-serif;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#c6d0db}
+  .hero-copy::before{
+    content:"";position:absolute;top:22px;right:26px;width:46px;height:46px;
+    background:var(--maiolica);background-size:cover;border-radius:6px;opacity:.9;
+  }
+  .hero-photo{position:relative;min-height:560px}
+  .hero-photo .frame{position:absolute;inset:0;overflow:hidden}
+  .hero-photo img{width:100%;height:100%;object-fit:cover}
+  .hero-photo .awn{position:absolute;top:0;left:0;right:0;height:22px;background:var(--stripe);z-index:2}
+  /* market ticket */
+  .ticket{
+    position:absolute;left:34px;bottom:34px;z-index:3;
+    background:var(--paper);color:var(--ink);border-radius:8px;box-shadow:var(--shadow);
+    padding:18px 22px;max-width:290px;
+    border-left:6px solid var(--terra);
+  }
+  .ticket .t-h{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:.66rem;color:var(--terra);display:flex;align-items:center;gap:8px}
+  .ticket .t-h::before{content:"";width:9px;height:9px;border-radius:50%;background:#3fae6a;box-shadow:0 0 0 3px rgba(63,174,106,.25)}
+  .ticket .t-day{font-family:'Fraunces',serif;font-weight:600;font-size:1.28rem;margin-top:6px}
+  .ticket .t-hours{font-size:.9rem;color:#4a4740;margin-top:2px}
+  .ticket .t-note{font-size:.7rem;color:#8a857a;margin-top:8px;font-style:italic}
+
+  /* ---------- section frame ---------- */
+  section{position:relative}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:38px}
+  .sec-head .lhs{max-width:60ch}
+  .eyebrow{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.28em;font-size:.72rem;color:var(--terra);display:flex;align-items:center;gap:12px}
+  .eyebrow::before{content:"";width:34px;height:3px;background:var(--sun);display:inline-block}
+  .sec-title{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2rem,3.4vw,3.2rem);color:var(--navy);margin-top:14px}
+  .sec-sub{margin-top:12px;font-size:1.02rem;color:#4d4a42;max-width:56ch}
+
+  /* ---------- RAYONS / market stalls ---------- */
+  .rayons{background:var(--cream);padding:78px 0}
+  .stalls{display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
+  .stall{
+    background:var(--paper);border-radius:10px 10px 12px 12px;overflow:hidden;
+    box-shadow:0 16px 30px -22px rgba(16,30,46,.45);display:flex;flex-direction:column;
+    transition:.25s;position:relative;border:1px solid #e7ddc6;
+  }
+  .stall:hover{transform:translateY(-6px)}
+  .stall .awn{height:16px;background:var(--stripe)}
+  .stall .num{font-family:'Fraunces',serif;font-weight:900;font-size:2.4rem;color:var(--cobalt);opacity:.16;position:absolute;top:22px;right:16px;line-height:1}
+  .stall .body{padding:24px 20px 26px}
+  .stall .ico{width:44px;height:44px;border-radius:8px;background:var(--navy);color:var(--sun-lt);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .stall .ico svg{width:24px;height:24px}
+  .stall h3{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:1.02rem;color:var(--navy);font-weight:600}
+  .stall .rn{font-family:'Oswald',sans-serif;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--terra);margin-bottom:6px}
+  .stall p{font-size:.86rem;color:#5a564d;margin-top:8px}
+
+  /* ---------- LA CARTE / price tags ---------- */
+  .carte{background:var(--navy);color:var(--cream);padding:82px 0}
+  .carte .eyebrow{color:var(--sun-lt)}
+  .carte .eyebrow::before{background:var(--terra)}
+  .carte .sec-title{color:var(--cream)}
+  .carte .sec-sub{color:#c4cdd8}
+  .carte-grid{
+    display:grid;grid-template-columns:1fr 1fr 0.9fr;gap:26px;align-items:start;
+  }
+  .menucol{display:flex;flex-direction:column;gap:26px}
+  .menucard{background:var(--paper);color:var(--ink);border-radius:8px;padding:22px 24px 26px;box-shadow:var(--shadow);position:relative}
+  .menucard::before{
+    content:"";position:absolute;top:14px;right:14px;width:34px;height:34px;background:var(--maiolica);background-size:cover;border-radius:5px;opacity:.85;
+  }
+  .menucard h3{font-family:'Fraunces',serif;font-weight:900;font-size:1.5rem;color:var(--navy);padding-right:44px}
+  .menucard .cat-note{font-family:'Oswald',sans-serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin:4px 0 16px}
+  .dish{display:grid;grid-template-columns:1fr auto;gap:6px 10px;padding:9px 0;border-bottom:1px dotted #d8cdb2}
+  .dish:last-child{border-bottom:0}
+  .dish .dn{font-weight:600;font-size:.96rem;color:var(--ink)}
+  .dish .dd{grid-column:1/2;font-size:.78rem;color:#7a7466;margin-top:1px}
+  .dish .dp{font-family:'Oswald',sans-serif;font-weight:600;font-size:.92rem;color:var(--cobalt);white-space:nowrap}
+  .photo-tag{border-radius:8px;overflow:hidden;box-shadow:var(--shadow);position:relative}
+  .photo-tag img{width:100%;height:230px;object-fit:cover}
+  .photo-tag .cap{position:absolute;left:0;bottom:0;right:0;background:linear-gradient(transparent,rgba(16,30,46,.9));color:var(--cream);padding:26px 16px 12px;font-family:'Caveat',cursive;font-size:1.5rem}
+  .photo-tag .awn{position:absolute;top:0;left:0;right:0;height:14px;background:var(--stripe)}
+  .price-note{margin-top:26px;font-size:.82rem;color:#c4cdd8;font-style:italic;display:flex;gap:10px;align-items:center}
+  .price-note::before{content:"";width:8px;height:8px;background:var(--sun);border-radius:50%;flex:none}
+
+  /* ---------- CAVE + terrace ---------- */
+  .cave{background:var(--navy-deep);color:var(--cream)}
+  .cave-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+  .cave-photo{position:relative;min-height:520px}
+  .cave-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .cave-photo .awn{position:absolute;top:0;left:0;right:0;height:20px;background:var(--stripe);z-index:2}
+  .cave-copy{padding:76px 56px;display:flex;flex-direction:column;justify-content:center}
+  .cave-copy .eyebrow{color:var(--sun-lt)}
+  .cave-copy .eyebrow::before{background:var(--terra)}
+  .cave-copy h2{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2rem,3vw,3rem);color:var(--cream);margin-top:14px}
+  .cave-copy p{margin-top:18px;color:#c8d1db;font-size:1.02rem;max-width:44ch}
+  .wine-stats{display:flex;gap:34px;margin-top:34px;flex-wrap:wrap}
+  .wine-stats .ws{border-left:3px solid var(--sun);padding-left:14px}
+  .wine-stats .ws b{font-family:'Fraunces',serif;font-size:2.1rem;color:var(--sun-lt);display:block;line-height:1}
+  .wine-stats .ws span{font-family:'Oswald',sans-serif;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#a9b4c1}
+
+  /* ---------- HISTOIRE ---------- */
+  .story{background:var(--cream);padding:82px 0}
+  .story-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:52px;align-items:center}
+  .story-photo{position:relative}
+  .story-photo .box{border-radius:10px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:16/10}
+  .story-photo .box img{width:100%;height:100%;object-fit:cover}
+  .story-photo .awn{position:absolute;top:0;left:0;right:0;height:16px;background:var(--stripe);z-index:2;border-radius:10px 10px 0 0}
+  .story-photo .chip{position:absolute;right:-16px;bottom:-16px;background:var(--terra);color:#fff;font-family:'Caveat',cursive;font-size:1.6rem;padding:12px 22px;border-radius:8px;box-shadow:var(--shadow);transform:rotate(-2deg)}
+  .story-copy p{font-size:1.05rem;color:#454239;margin-top:16px}
+  .story-copy p.big{font-family:'Fraunces',serif;font-size:1.3rem;font-style:italic;color:var(--navy);border-left:4px solid var(--sun);padding-left:18px}
+  .story-stats{display:flex;gap:0;margin-top:34px;border-top:1px solid #ddd1b7;border-bottom:1px solid #ddd1b7}
+  .story-stats .st{flex:1;padding:20px 0;text-align:center;border-right:1px solid #ddd1b7}
+  .story-stats .st:last-child{border-right:0}
+  .story-stats .st b{font-family:'Fraunces',serif;font-weight:900;font-size:1.9rem;color:var(--cobalt);display:block}
+  .story-stats .st span{font-family:'Oswald',sans-serif;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#7a7568}
+
+  /* ---------- VISITE ---------- */
+  .visite{background:var(--paper);padding:82px 0}
+  .visit-grid{display:grid;grid-template-columns:1.1fr 0.9fr 1.1fr;gap:26px;align-items:start}
+  .panel{background:#fff;border:1px solid #e7ddc6;border-radius:10px;box-shadow:0 16px 30px -24px rgba(16,30,46,.4);overflow:hidden}
+  .panel .awn{height:14px;background:var(--stripe)}
+  .panel .pbody{padding:26px 26px 28px}
+  .panel h3{font-family:'Fraunces',serif;font-weight:900;font-size:1.4rem;color:var(--navy);margin-bottom:6px}
+  .panel .psub{font-family:'Oswald',sans-serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);margin-bottom:18px}
+  /* hours table */
+  .hours{width:100%;border-collapse:collapse;font-size:.9rem}
+  .hours td{padding:8px 0;border-bottom:1px dotted #d8cdb2}
+  .hours td:last-child{text-align:right;font-family:'Oswald',sans-serif;font-size:.82rem;color:var(--navy)}
+  .hours tr.closed td:last-child{color:var(--terra)}
+  .hours-sub{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.62rem;color:#8a857a;margin:16px 0 6px}
+  /* form */
+  .field{margin-bottom:14px}
+  .field label{display:block;font-family:'Oswald',sans-serif;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:#6a655a;margin-bottom:5px}
+  .field input,.field select,.field textarea{
+    width:100%;padding:11px 13px;border:1px solid #d9cfb8;border-radius:7px;background:var(--paper);
+    font-family:'Archivo',sans-serif;font-size:.92rem;color:var(--ink);
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--cobalt);border-color:transparent}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .form-note{font-size:.72rem;color:#8a857a;font-style:italic;margin-top:6px}
+  .contact-line{display:flex;gap:10px;align-items:flex-start;margin-bottom:14px}
+  .contact-line .ic{flex:none;width:34px;height:34px;border-radius:7px;background:var(--navy);color:var(--sun-lt);display:flex;align-items:center;justify-content:center}
+  .contact-line .ic svg{width:18px;height:18px}
+  .contact-line .ct{font-size:.92rem}
+  .contact-line .ct b{display:block;font-family:'Oswald',sans-serif;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#8a857a;font-weight:600}
+  .contact-line a{color:var(--cobalt);font-weight:600}
+  .mapbox{border-radius:10px;overflow:hidden;margin-top:16px;border:1px solid #e7ddc6}
+  .mapbox iframe{display:block;width:100%;height:220px;border:0;filter:grayscale(.2)}
+
+  /* ---------- FOOTER ---------- */
+  footer.foot{background:var(--navy);color:var(--cream)}
+  .foot-main{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;padding:56px 0 40px}
+  .foot .mk{font-family:'Caveat',cursive;font-weight:700;font-size:2.6rem;color:var(--cream);transform:rotate(-3deg);display:inline-block}
+  .foot .mk b{color:var(--sun-lt)}
+  .foot .fsub{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.24em;font-size:.62rem;color:#9fabb8;margin-top:6px}
+  .foot p.fd{color:#b5bfca;font-size:.9rem;margin-top:14px;max-width:38ch}
+  .foot h4{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:var(--sun-lt);margin-bottom:14px}
+  .foot ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .foot ul a{color:#c4cdd8;font-size:.92rem}
+  .foot ul a:hover{color:var(--sun-lt)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.12);padding:18px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.78rem;color:#8f9aa7}
+  .disclaimer{background:var(--terra);color:#fff;text-align:center;font-size:.78rem;padding:9px 20px;font-family:'Oswald',sans-serif;letter-spacing:.06em}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:1080px){
+    .stalls{grid-template-columns:repeat(3,1fr)}
+    .carte-grid{grid-template-columns:1fr 1fr}
+    .visit-grid{grid-template-columns:1fr 1fr}
+    .foot-main{grid-template-columns:1fr 1fr}
+    nav.mainnav{display:none}
+  }
+  @media(max-width:820px){
+    .wrap{padding:0 22px}
+    .topbar{padding:12px 22px;flex-wrap:wrap;gap:12px}
+    .hero-grid{grid-template-columns:1fr}
+    .hero-copy{padding:48px 26px}
+    .hero-photo{min-height:420px}
+    .cave-grid{grid-template-columns:1fr}
+    .cave-copy{padding:52px 26px}
+    .story-grid{grid-template-columns:1fr;gap:40px}
+    .carte-grid{grid-template-columns:1fr}
+    .stalls{grid-template-columns:1fr 1fr}
+    .visit-grid{grid-template-columns:1fr}
+    .foot-main{grid-template-columns:1fr}
+    .valance .items{font-size:.6rem}
+    .valance .items span{padding:8px 14px}
+  }
+  @media(max-width:520px){
+    .stalls{grid-template-columns:1fr}
+    .frow{grid-template-columns:1fr}
+    .story-stats{flex-wrap:wrap}
+    .story-stats .st{flex:1 0 50%;border-bottom:1px solid #ddd1b7}
+  }
+</style>
+</head>
+<body>
+
+<!-- ======================= MASTHEAD ======================= -->
+<header class="masthead">
+  <div class="stripe-bar"></div>
+  <div class="topbar">
+    <a href="#top" class="brand" aria-label="Il Mercato">
+      <span class="mk">il&nbsp;mercato</span>
+      <span class="sub">Italian Food Market · Strassen</span>
+    </a>
+    <nav class="mainnav">
+      <a href="#rayons" data-i18n="nav_market">Le marché</a>
+      <a href="#carte" data-i18n="nav_menu">La carte</a>
+      <a href="#cave" data-i18n="nav_wine">La cave</a>
+      <a href="#story" data-i18n="nav_story">L'histoire</a>
+      <a href="#visite" data-i18n="nav_visit">Visite</a>
+    </nav>
+    <div class="tools">
+      <div class="langsw" role="group" aria-label="Language">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="#visite" class="btn btn-sun" data-i18n="cta_reserve">Réserver</a>
+      <a href="https://wolt.com/" target="_blank" rel="noopener" class="btn btn-wolt">Wolt</a>
+    </div>
+  </div>
+  <div class="valance">
+    <div class="items">
+      <span>Pizzeria</span><span>Pasta</span><span data-i18n="dep_wine">Cave à vin</span><span data-i18n="dep_epicerie">Épicerie</span><span>Traiteur</span>
+    </div>
+  </div>
+  <div class="scallop"></div>
+</header>
+
+<!-- ======================= HERO ======================= -->
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="kicker" data-i18n="hero_kicker">Épicerie · Pizzeria · Cave à vin · Traiteur</div>
+      <h1 data-i18n="hero_title">Le marché italien<br>de Strassen, <em>comme à la maison.</em></h1>
+      <p class="lede" data-i18n="hero_lede">Un ancien garage transformé en marché italien : ~5 000 produits, 100+ vins, et une cuisine où l'on déguste ce que l'on peut aussi emporter.</p>
+      <div class="hero-cta">
+        <a href="#visite" class="btn btn-sun" data-i18n="hero_cta1">Réserver une table</a>
+        <a href="#carte" class="btn btn-wolt" data-i18n="hero_cta2">Voir la carte</a>
+      </div>
+      <div class="hero-tags">
+        <span data-i18n="tag1">Terrasse plantée</span>
+        <span data-i18n="tag2">Produits bio sélectionnés</span>
+        <span data-i18n="tag3">Corridor route d'Arlon</span>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="awn"></div>
+      <div class="frame">
+        <img src="assets/hero-exterior.jpg" alt="Devanture navy d'Il Mercato avec stores rayés et terrasse plantée" />
+      </div>
+      <div class="ticket">
+        <div class="t-h" data-i18n="ticket_open">Ouvert aujourd'hui</div>
+        <div class="t-day" data-i18n="ticket_day">Mar. – Sam.</div>
+        <div class="t-hours">11:30 – 21:30</div>
+        <div class="t-note" data-i18n="ticket_note">Horaires à confirmer avec l'établissement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= RAYONS / STALLS ======================= -->
+<section class="rayons" id="rayons">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="lhs">
+        <div class="eyebrow" data-i18n="ray_eye">Le plan du marché</div>
+        <h2 class="sec-title" data-i18n="ray_title">Cinq rayons sous un même toit</h2>
+        <p class="sec-sub" data-i18n="ray_sub">Faites vos courses, puis restez déjeuner : chez Il Mercato, ce que vous voyez dans les rayons se retrouve dans votre assiette.</p>
+      </div>
+    </div>
+    <div class="stalls">
+      <article class="stall">
+        <div class="awn"></div>
+        <span class="num">01</span>
+        <div class="body">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></div>
+          <div class="rn">Rayon 01</div>
+          <h3>Pizzeria</h3>
+          <p data-i18n="stall1">Pizzas artisanales cuites au four, pâte longue fermentation, servies sur maiolica sicilienne.</p>
+        </div>
+      </article>
+      <article class="stall">
+        <div class="awn"></div>
+        <span class="num">02</span>
+        <div class="body">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20c2-6 3-12 8-12s6 6 8 12"/><path d="M6 8c1-3 3-4 6-4s5 1 6 4"/></svg></div>
+          <div class="rn">Rayon 02</div>
+          <h3>Pasta</h3>
+          <p data-i18n="stall2">Pâtes fraîches et primi : vongole, tartufo nero, pesto & scampi — la trattoria dans le marché.</p>
+        </div>
+      </article>
+      <article class="stall">
+        <div class="awn"></div>
+        <span class="num">03</span>
+        <div class="body">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3h8l-1 5a4 4 0 0 1-6 0z"/><path d="M12 8v9"/><path d="M8 21h8"/></svg></div>
+          <div class="rn">Rayon 03</div>
+          <h3 data-i18n="dep_wine2">Cave à vin</h3>
+          <p data-i18n="stall3">Plus de 100 vins italiens, prosecco et labels régionaux, à boire sur place ou à emporter.</p>
+        </div>
+      </article>
+      <article class="stall">
+        <div class="awn"></div>
+        <span class="num">04</span>
+        <div class="body">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h16v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M4 8l2-4h12l2 4"/><path d="M10 12h4"/></svg></div>
+          <div class="rn">Rayon 04</div>
+          <h3 data-i18n="dep_epicerie2">Épicerie & Salumeria</h3>
+          <p data-i18n="stall4">~5 000 spécialités italiennes, dont beaucoup certifiées bio, charcuteries & fromages au comptoir.</p>
+        </div>
+      </article>
+      <article class="stall">
+        <div class="awn"></div>
+        <span class="num">05</span>
+        <div class="body">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 0 1 18 0"/><path d="M3 12h18v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M12 3v3"/></svg></div>
+          <div class="rn">Rayon 05</div>
+          <h3>Traiteur</h3>
+          <p data-i18n="stall5">Planches, plats et hampers pour vos réceptions — l'Italie livrée à votre table.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= LA CARTE / PRICE TAGS ======================= -->
+<section class="carte" id="carte">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="lhs">
+        <div class="eyebrow" data-i18n="menu_eye">Au comptoir & en salle</div>
+        <h2 class="sec-title" data-i18n="menu_title">Les étiquettes du marché</h2>
+        <p class="sec-sub" data-i18n="menu_sub">Une sélection représentative de la carte. Plats et prix relevés sur place et susceptibles d'évoluer selon la saison.</p>
+      </div>
+    </div>
+
+    <div class="carte-grid">
+      <!-- column 1 -->
+      <div class="menucol">
+        <div class="menucard">
+          <h3>Pizze</h3>
+          <div class="cat-note" data-i18n="cat_pizza">Four artisanal · ~11,9 – 24,8 €</div>
+          <div class="dish"><span class="dn">Margherita</span><span class="dp">~11,9 €</span><span class="dd" data-i18n="d_marg">Sauce tomate, mozzarella, basilic, huile d'olive extra vierge</span></div>
+          <div class="dish"><span class="dn">Burrata di Bufala</span><span class="dp">~17,9 €</span><span class="dd" data-i18n="d_burr">Datterini, roquette & burrata de bufflonne</span></div>
+          <div class="dish"><span class="dn">Prosciutto & Tartufo</span><span class="dp">~ à conf.</span><span class="dd" data-i18n="d_pros">Prosciutto crudo, burrata & truffe fraîche</span></div>
+          <div class="dish"><span class="dn">Tartufata</span><span class="dp">~24,8 €</span><span class="dd" data-i18n="d_tart">Sauce truffe, burrata, truffe fraîche râpée</span></div>
+          <div class="dish"><span class="dn">'Nduja & Gorgonzola</span><span class="dp">~16 €</span><span class="dd" data-i18n="d_nduja">Mozzarella, 'nduja piquante, gorgonzola, mortadella</span></div>
+        </div>
+        <div class="photo-tag">
+          <div class="awn"></div>
+          <img src="assets/food-pizza-burrata.jpg" alt="Pizza burrata, datterini et roquette sur assiette maiolica" />
+          <div class="cap">Burrata, datterini &amp; rucola</div>
+        </div>
+      </div>
+
+      <!-- column 2 -->
+      <div class="menucol">
+        <div class="menucard">
+          <h3>Pasta & Primi</h3>
+          <div class="cat-note" data-i18n="cat_pasta">Pâtes fraîches · ~18 – 26 €</div>
+          <div class="dish"><span class="dn">Spaghetti alle Vongole</span><span class="dp">~25,9 €</span><span class="dd" data-i18n="d_vong">Palourdes, ail, piment</span></div>
+          <div class="dish"><span class="dn">Tagliolini al Tartufo Nero</span><span class="dp">~ à conf.</span><span class="dd" data-i18n="d_tagl">Truffe noire fraîche, crème de mascarpone</span></div>
+          <div class="dish"><span class="dn">Chicche al Pesto & Scampi</span><span class="dp">~24,9 €</span><span class="dd" data-i18n="d_chic">Gnocchi, pesto, courgettes & scampi</span></div>
+          <div class="dish"><span class="dn">Orecchiette Salsiccia</span><span class="dp">~23,9 €</span><span class="dd" data-i18n="d_orec">Saucisse, burrata & peperoni</span></div>
+          <div class="dish"><span class="dn">Paccheri alla Norma</span><span class="dp">~18 €</span><span class="dd" data-i18n="d_norma">Aubergine, tomate, ricotta salata</span></div>
+        </div>
+        <div class="menucard">
+          <h3>Le Proteine</h3>
+          <div class="cat-note" data-i18n="cat_prot">Secondi · viandes & poissons</div>
+          <div class="dish"><span class="dn">Tagliata di Manzo</span><span class="dp">~29 €</span><span class="dd" data-i18n="d_tagli">Roquette, tomate & grana padano</span></div>
+          <div class="dish"><span class="dn">Filet de bœuf</span><span class="dp">~ à conf.</span><span class="dd" data-i18n="d_filet">Sauce au choix : poivre, truffe ou cèpes</span></div>
+          <div class="dish"><span class="dn">Porchetta maison</span><span class="dp">~ à conf.</span><span class="dd" data-i18n="d_porch">Recette maison, garniture du jour</span></div>
+          <div class="dish"><span class="dn">Polpette maison</span><span class="dp">~ à conf.</span><span class="dd" data-i18n="d_polp">Boulettes maison & leur sauce</span></div>
+        </div>
+      </div>
+
+      <!-- column 3 -->
+      <div class="menucol">
+        <div class="photo-tag">
+          <div class="awn"></div>
+          <img src="assets/food-pizza-prosciutto-truffle.jpg" alt="Pizza prosciutto crudo, burrata et truffe" />
+          <div class="cap">Prosciutto, burrata &amp; tartufo</div>
+        </div>
+        <div class="menucard">
+          <h3 data-i18n="cat_anti_h">Antipasti & Salumeria</h3>
+          <div class="cat-note" data-i18n="cat_anti">Du comptoir à la table</div>
+          <div class="dish"><span class="dn">Parmigiana di Melanzane</span><span class="dp">~ à conf.</span><span class="dd" data-i18n="d_parm">Aubergines gratinées, tomate & parmesan</span></div>
+          <div class="dish"><span class="dn">Burrata di Puglia</span><span class="dp">~ à conf.</span><span class="dd" data-i18n="d_burp">Burrata des Pouilles, huile d'olive</span></div>
+          <div class="dish"><span class="dn" data-i18n="d_planche_n">Planche mixte</span><span class="dp">~ à conf.</span><span class="dd" data-i18n="d_planche">Charcuteries & fromages italiens (tagliere)</span></div>
+          <div class="dish"><span class="dn">Polpo alla griglia</span><span class="dp">~ à conf.</span><span class="dd" data-i18n="d_polpo">Poulpe grillé, légumes de saison</span></div>
+        </div>
+        <div class="photo-tag">
+          <div class="awn"></div>
+          <img src="assets/food-seafood.jpg" alt="Assiette de poisson frais : Saint-Jacques, palourdes, cabillaud" />
+          <div class="cap" data-i18n="cap_sea">Le poisson du jour</div>
+        </div>
+      </div>
+    </div>
+    <p class="price-note" data-i18n="menu_disclaimer">Prix et plats à confirmer avec l'établissement — relevés depuis une carte photographiée et des sources publiques, sujets à variation saisonnière.</p>
+  </div>
+</section>
+
+<!-- ======================= LA CAVE ======================= -->
+<section class="cave" id="cave">
+  <div class="cave-grid">
+    <div class="cave-photo">
+      <div class="awn"></div>
+      <img src="assets/terrace-wine-menu.jpg" alt="Verre de vin rouge sur la terrasse, au-dessus de la carte" />
+    </div>
+    <div class="cave-copy">
+      <div class="eyebrow" data-i18n="cave_eye">La cave & la terrasse</div>
+      <h2 data-i18n="cave_title">Un verre d'Italie, à l'ombre des stores rayés</h2>
+      <p data-i18n="cave_p">Plus de cent vins italiens choisis parmi les régions du pays, du prosecco aux rouges de caractère. Achetez la bouteille en cave ou dégustez-la en salle et sur la terrasse plantée, au droit de courses.</p>
+      <div class="wine-stats">
+        <div class="ws"><b>100+</b><span data-i18n="ws1">Vins italiens</span></div>
+        <div class="ws"><b>~5 000</b><span data-i18n="ws2">Produits en rayon</span></div>
+        <div class="ws"><b>1</b><span data-i18n="ws3">Ancien garage</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= HISTOIRE ======================= -->
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="lhs">
+        <div class="eyebrow" data-i18n="story_eye">L'histoire</div>
+        <h2 class="sec-title" data-i18n="story_title">Un garage devenu marché</h2>
+      </div>
+    </div>
+    <div class="story-grid">
+      <div class="story-photo">
+        <div class="awn"></div>
+        <div class="box"><img src="assets/exterior.jpg" alt="Vue large de la devanture d'Il Mercato à Strassen" /></div>
+        <div class="chip">by Come à la Maison</div>
+      </div>
+      <div class="story-copy">
+        <p class="big" data-i18n="story_quote">« Les meilleurs produits italiens, sélectionnés directement à la source, sur le goût et la qualité. »</p>
+        <p data-i18n="story_p1">Route d'Arlon, à Strassen, un ancien garage a été réhabillé de bois navy et de stores rayés pour devenir un véritable marché italien. Sous un même toit : une épicerie fine, une salumeria, une cave à vin, une pizzeria et un traiteur.</p>
+        <p data-i18n="story_p2">On y fait ses courses parmi des milliers de spécialités, puis on s'attable pour déguster les mêmes produits — antipasti, pâtes fraîches, pizzas au four — au comptoir, en salle ou sur la terrasse plantée. Le tout signé Come à la Maison.</p>
+        <div class="story-stats">
+          <div class="st"><b>2021</b><span data-i18n="st1">Ouverture</span></div>
+          <div class="st"><b>5 rayons</b><span data-i18n="st2">Sous un toit</span></div>
+          <div class="st"><b>Bio</b><span data-i18n="st3">Nombreux produits</span></div>
+          <div class="st"><b>Strassen</b><span data-i18n="st4">Route d'Arlon</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= VISITE ======================= -->
+<section class="visite" id="visite">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="lhs">
+        <div class="eyebrow" data-i18n="visit_eye">Passez nous voir</div>
+        <h2 class="sec-title" data-i18n="visit_title">Réserver, trouver, appeler</h2>
+        <p class="sec-sub" data-i18n="visit_sub">Réservez une table en quelques secondes — la nouveauté de ce site. Ou passez simplement faire vos courses.</p>
+      </div>
+    </div>
+    <div class="visit-grid">
+      <!-- reservation form -->
+      <div class="panel">
+        <div class="awn"></div>
+        <div class="pbody">
+          <h3 data-i18n="form_h">Réserver une table</h3>
+          <div class="psub" data-i18n="form_sub">Demande de réservation</div>
+          <form onsubmit="return false;">
+            <div class="frow">
+              <div class="field"><label data-i18n="f_name">Nom</label><input type="text" data-i18n-ph="f_name_ph" placeholder="Votre nom" /></div>
+              <div class="field"><label data-i18n="f_phone">Téléphone</label><input type="tel" placeholder="+352 …" /></div>
+            </div>
+            <div class="field"><label data-i18n="f_email">E-mail</label><input type="email" placeholder="vous@exemple.lu" /></div>
+            <div class="frow">
+              <div class="field"><label data-i18n="f_date">Date</label><input type="date" /></div>
+              <div class="field"><label data-i18n="f_guests">Couverts</label>
+                <select>
+                  <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option>
+                </select>
+              </div>
+            </div>
+            <div class="field"><label data-i18n="f_msg">Message</label><textarea rows="2" data-i18n-ph="f_msg_ph" placeholder="Terrasse, allergies, occasion…"></textarea></div>
+            <button class="btn btn-terra" style="width:100%;justify-content:center" data-i18n="f_submit">Envoyer la demande</button>
+            <p class="form-note" data-i18n="f_note">Formulaire de démonstration — non fonctionnel. Réservations actuelles : téléphone ou e-mail ci-contre.</p>
+          </form>
+        </div>
+      </div>
+
+      <!-- hours -->
+      <div class="panel">
+        <div class="awn"></div>
+        <div class="pbody">
+          <h3 data-i18n="hours_h">Horaires</h3>
+          <div class="psub" data-i18n="hours_sub_conf">À confirmer</div>
+          <div class="hours-sub" data-i18n="hours_resto">Restaurant</div>
+          <table class="hours">
+            <tr><td data-i18n="day_mon">Lundi</td><td>11:30 – 15:00</td></tr>
+            <tr><td data-i18n="day_tuesat">Mar. – Sam.</td><td>11:30 – 21:30</td></tr>
+            <tr class="closed"><td data-i18n="day_sun">Dimanche</td><td data-i18n="closed">Fermé</td></tr>
+          </table>
+          <div class="hours-sub" data-i18n="hours_shop">Épicerie & cave</div>
+          <table class="hours">
+            <tr><td data-i18n="day_monsat">Lun. – Sam.</td><td>09:00 – 19:00</td></tr>
+          </table>
+          <p class="form-note" data-i18n="hours_note">Horaires resto / épicerie / takeaway diffèrent selon les sources — à confirmer avec l'établissement.</p>
+        </div>
+      </div>
+
+      <!-- contact + map -->
+      <div class="panel">
+        <div class="awn"></div>
+        <div class="pbody">
+          <h3 data-i18n="contact_h">Nous trouver</h3>
+          <div class="psub" data-i18n="contact_sub">Strassen · Route d'Arlon</div>
+          <div class="contact-line">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+            <span class="ct"><b data-i18n="c_addr">Adresse</b>155a Route d'Arlon<br>L-8009 Strassen</span>
+          </div>
+          <div class="contact-line">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+            <span class="ct"><b data-i18n="c_phone">Téléphone</b><a href="tel:+35223641151">+352 23 64 11 51</a></span>
+          </div>
+          <div class="contact-line">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <span class="ct"><b>E-mail</b><a href="mailto:info@ilmercato.lu">info@ilmercato.lu</a><br><a href="mailto:reservations@ilmercato.lu">reservations@ilmercato.lu</a></span>
+          </div>
+          <div class="mapbox">
+            <iframe title="Carte — Il Mercato, Strassen" loading="lazy" src="https://www.google.com/maps?q=155a+Route+d'Arlon,+L-8009+Strassen,+Luxembourg&output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="foot">
+  <div class="stripe-bar"></div>
+  <div class="wrap">
+    <div class="foot-main">
+      <div>
+        <span class="mk">il&nbsp;mercato</span>
+        <div class="fsub">Italian Food Market · by Come à la Maison</div>
+        <p class="fd" data-i18n="foot_desc">Épicerie, pizzeria, cave à vin & traiteur — l'Italie, comme à la maison, route d'Arlon à Strassen.</p>
+      </div>
+      <div>
+        <h4 data-i18n="foot_nav">Le marché</h4>
+        <ul>
+          <li><a href="#rayons" data-i18n="nav_market">Le marché</a></li>
+          <li><a href="#carte" data-i18n="nav_menu">La carte</a></li>
+          <li><a href="#cave" data-i18n="nav_wine">La cave</a></li>
+          <li><a href="#story" data-i18n="nav_story">L'histoire</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="foot_contact">Contact</h4>
+        <ul>
+          <li><a href="tel:+35223641151">+352 23 64 11 51</a></li>
+          <li><a href="mailto:info@ilmercato.lu">info@ilmercato.lu</a></li>
+          <li>155a Route d'Arlon</li>
+          <li>L-8009 Strassen</li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="foot_order">Commander</h4>
+        <ul>
+          <li><a href="https://wolt.com/" target="_blank" rel="noopener">Wolt — livraison</a></li>
+          <li><a href="#visite" data-i18n="cta_reserve">Réserver</a></li>
+          <li><a href="https://www.instagram.com/ilmercato.lu/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/ComealaMaisonIlMercatoStrassen/" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Il Mercato · Strassen</span>
+      <span data-i18n="foot_by">Maquette conçue par Webwerk</span>
+    </div>
+  </div>
+  <div class="disclaimer" data-i18n="disclaimer">Site de démonstration — contenus, prix et horaires à confirmer avec l'établissement.</div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  const I18N = {
+    nav_market:{fr:"Le marché",de:"Der Markt",en:"The Market"},
+    nav_menu:{fr:"La carte",de:"Die Karte",en:"Menu"},
+    nav_wine:{fr:"La cave",de:"Der Weinkeller",en:"The Cellar"},
+    nav_story:{fr:"L'histoire",de:"Geschichte",en:"Our Story"},
+    nav_visit:{fr:"Visite",de:"Besuch",en:"Visit"},
+    cta_reserve:{fr:"Réserver",de:"Reservieren",en:"Book a table"},
+
+    dep_wine:{fr:"Cave à vin",de:"Weinkeller",en:"Wine cellar"},
+    dep_wine2:{fr:"Cave à vin",de:"Weinkeller",en:"Wine cellar"},
+    dep_epicerie:{fr:"Épicerie",de:"Feinkost",en:"Grocery"},
+    dep_epicerie2:{fr:"Épicerie & Salumeria",de:"Feinkost & Salumeria",en:"Grocery & Salumeria"},
+
+    hero_kicker:{fr:"Épicerie · Pizzeria · Cave à vin · Traiteur",de:"Feinkost · Pizzeria · Weinkeller · Catering",en:"Grocery · Pizzeria · Wine cellar · Catering"},
+    hero_title:{fr:"Le marché italien<br>de Strassen, <em>comme à la maison.</em>",de:"Der italienische Markt<br>in Strassen, <em>wie zu Hause.</em>",en:"The Italian market<br>of Strassen, <em>just like home.</em>"},
+    hero_lede:{fr:"Un ancien garage transformé en marché italien : ~5 000 produits, 100+ vins, et une cuisine où l'on déguste ce que l'on peut aussi emporter.",de:"Eine ehemalige Garage, verwandelt in einen italienischen Markt: ~5 000 Produkte, 100+ Weine und eine Küche, in der man genießt, was man auch mitnehmen kann.",en:"A former garage turned Italian market: ~5,000 products, 100+ wines, and a kitchen where you eat the very products you can also take home."},
+    hero_cta1:{fr:"Réserver une table",de:"Tisch reservieren",en:"Book a table"},
+    hero_cta2:{fr:"Voir la carte",de:"Zur Karte",en:"See the menu"},
+    tag1:{fr:"Terrasse plantée",de:"Bepflanzte Terrasse",en:"Planted terrace"},
+    tag2:{fr:"Produits bio sélectionnés",de:"Ausgewählte Bio-Produkte",en:"Selected organic products"},
+    tag3:{fr:"Corridor route d'Arlon",de:"Route d'Arlon Korridor",en:"Route d'Arlon corridor"},
+
+    ticket_open:{fr:"Ouvert aujourd'hui",de:"Heute geöffnet",en:"Open today"},
+    ticket_day:{fr:"Mar. – Sam.",de:"Di. – Sa.",en:"Tue – Sat"},
+    ticket_note:{fr:"Horaires à confirmer avec l'établissement",de:"Öffnungszeiten mit dem Lokal zu bestätigen",en:"Hours to be confirmed with the venue"},
+
+    ray_eye:{fr:"Le plan du marché",de:"Der Marktplan",en:"The market floor plan"},
+    ray_title:{fr:"Cinq rayons sous un même toit",de:"Fünf Abteilungen unter einem Dach",en:"Five departments under one roof"},
+    ray_sub:{fr:"Faites vos courses, puis restez déjeuner : chez Il Mercato, ce que vous voyez dans les rayons se retrouve dans votre assiette.",de:"Erst einkaufen, dann zum Essen bleiben: Bei Il Mercato landet auf dem Teller, was Sie im Regal sehen.",en:"Shop, then stay for lunch: at Il Mercato, what you see on the shelves lands on your plate."},
+    stall1:{fr:"Pizzas artisanales cuites au four, pâte longue fermentation, servies sur maiolica sicilienne.",de:"Handwerkliche Ofenpizzen, lang gereifter Teig, serviert auf sizilianischer Maiolica.",en:"Artisanal wood-oven pizzas, long-fermented dough, served on Sicilian maiolica."},
+    stall2:{fr:"Pâtes fraîches et primi : vongole, tartufo nero, pesto & scampi — la trattoria dans le marché.",de:"Frische Pasta und Primi: Vongole, Tartufo Nero, Pesto & Scampi — die Trattoria im Markt.",en:"Fresh pasta and primi: vongole, black truffle, pesto & scampi — the trattoria inside the market."},
+    stall3:{fr:"Plus de 100 vins italiens, prosecco et labels régionaux, à boire sur place ou à emporter.",de:"Über 100 italienische Weine, Prosecco und regionale Labels — vor Ort oder zum Mitnehmen.",en:"Over 100 Italian wines, prosecco and regional labels, to drink in or take away."},
+    stall4:{fr:"~5 000 spécialités italiennes, dont beaucoup certifiées bio, charcuteries & fromages au comptoir.",de:"~5 000 italienische Spezialitäten, viele Bio-zertifiziert, Wurst & Käse an der Theke.",en:"~5,000 Italian specialties, many certified organic, charcuterie & cheese at the counter."},
+    stall5:{fr:"Planches, plats et hampers pour vos réceptions — l'Italie livrée à votre table.",de:"Platten, Gerichte und Geschenkkörbe für Ihre Anlässe — Italien an Ihren Tisch geliefert.",en:"Platters, dishes and hampers for your events — Italy delivered to your table."},
+
+    menu_eye:{fr:"Au comptoir & en salle",de:"An der Theke & im Saal",en:"At the counter & in the dining room"},
+    menu_title:{fr:"Les étiquettes du marché",de:"Die Preisschilder des Marktes",en:"The market price-tags"},
+    menu_sub:{fr:"Une sélection représentative de la carte. Plats et prix relevés sur place et susceptibles d'évoluer selon la saison.",de:"Eine repräsentative Auswahl der Karte. Gerichte und Preise vor Ort erfasst, saisonal veränderlich.",en:"A representative selection from the menu. Dishes and prices noted on site and subject to seasonal change."},
+    cat_pizza:{fr:"Four artisanal · ~11,9 – 24,8 €",de:"Steinofen · ~11,9 – 24,8 €",en:"Artisan oven · ~€11.9 – 24.8"},
+    cat_pasta:{fr:"Pâtes fraîches · ~18 – 26 €",de:"Frische Pasta · ~18 – 26 €",en:"Fresh pasta · ~€18 – 26"},
+    cat_prot:{fr:"Secondi · viandes & poissons",de:"Secondi · Fleisch & Fisch",en:"Secondi · meat & fish"},
+    cat_anti_h:{fr:"Antipasti & Salumeria",de:"Antipasti & Salumeria",en:"Antipasti & Salumeria"},
+    cat_anti:{fr:"Du comptoir à la table",de:"Von der Theke auf den Tisch",en:"From counter to table"},
+
+    d_marg:{fr:"Sauce tomate, mozzarella, basilic, huile d'olive extra vierge",de:"Tomatensauce, Mozzarella, Basilikum, natives Olivenöl extra",en:"Tomato sauce, mozzarella, basil, extra-virgin olive oil"},
+    d_burr:{fr:"Datterini, roquette & burrata de bufflonne",de:"Datterini, Rucola & Büffel-Burrata",en:"Datterini, rocket & buffalo burrata"},
+    d_pros:{fr:"Prosciutto crudo, burrata & truffe fraîche",de:"Prosciutto crudo, Burrata & frischer Trüffel",en:"Prosciutto crudo, burrata & fresh truffle"},
+    d_tart:{fr:"Sauce truffe, burrata, truffe fraîche râpée",de:"Trüffelsauce, Burrata, frisch geriebener Trüffel",en:"Truffle sauce, burrata, freshly shaved truffle"},
+    d_nduja:{fr:"Mozzarella, 'nduja piquante, gorgonzola, mortadella",de:"Mozzarella, scharfe 'Nduja, Gorgonzola, Mortadella",en:"Mozzarella, spicy 'nduja, gorgonzola, mortadella"},
+    d_vong:{fr:"Palourdes, ail, piment",de:"Venusmuscheln, Knoblauch, Peperoncino",en:"Clams, garlic, chilli"},
+    d_tagl:{fr:"Truffe noire fraîche, crème de mascarpone",de:"Frischer schwarzer Trüffel, Mascarpone-Creme",en:"Fresh black truffle, mascarpone cream"},
+    d_chic:{fr:"Gnocchi, pesto, courgettes & scampi",de:"Gnocchi, Pesto, Zucchini & Scampi",en:"Gnocchi, pesto, courgettes & scampi"},
+    d_orec:{fr:"Saucisse, burrata & peperoni",de:"Wurst, Burrata & Peperoni",en:"Sausage, burrata & peppers"},
+    d_norma:{fr:"Aubergine, tomate, ricotta salata",de:"Aubergine, Tomate, Ricotta salata",en:"Aubergine, tomato, ricotta salata"},
+    d_tagli:{fr:"Roquette, tomate & grana padano",de:"Rucola, Tomate & Grana Padano",en:"Rocket, tomato & grana padano"},
+    d_filet:{fr:"Sauce au choix : poivre, truffe ou cèpes",de:"Sauce nach Wahl: Pfeffer, Trüffel oder Steinpilze",en:"Sauce of choice: pepper, truffle or porcini"},
+    d_porch:{fr:"Recette maison, garniture du jour",de:"Hausrezept, Beilage des Tages",en:"House recipe, side of the day"},
+    d_polp:{fr:"Boulettes maison & leur sauce",de:"Hausgemachte Fleischbällchen & Sauce",en:"House meatballs & their sauce"},
+    d_parm:{fr:"Aubergines gratinées, tomate & parmesan",de:"Überbackene Auberginen, Tomate & Parmesan",en:"Baked aubergines, tomato & parmesan"},
+    d_burp:{fr:"Burrata des Pouilles, huile d'olive",de:"Burrata aus Apulien, Olivenöl",en:"Puglia burrata, olive oil"},
+    d_planche_n:{fr:"Planche mixte",de:"Gemischte Platte",en:"Mixed board"},
+    d_planche:{fr:"Charcuteries & fromages italiens (tagliere)",de:"Italienische Wurst & Käse (Tagliere)",en:"Italian charcuterie & cheese (tagliere)"},
+    d_polpo:{fr:"Poulpe grillé, légumes de saison",de:"Gegrillter Oktopus, saisonales Gemüse",en:"Grilled octopus, seasonal vegetables"},
+    cap_sea:{fr:"Le poisson du jour",de:"Fisch des Tages",en:"Catch of the day"},
+    menu_disclaimer:{fr:"Prix et plats à confirmer avec l'établissement — relevés depuis une carte photographiée et des sources publiques, sujets à variation saisonnière.",de:"Preise und Gerichte mit dem Lokal zu bestätigen — von einer fotografierten Karte und öffentlichen Quellen erfasst, saisonal veränderlich.",en:"Prices and dishes to be confirmed with the venue — taken from a photographed menu and public sources, subject to seasonal change."},
+
+    cave_eye:{fr:"La cave & la terrasse",de:"Weinkeller & Terrasse",en:"The cellar & terrace"},
+    cave_title:{fr:"Un verre d'Italie, à l'ombre des stores rayés",de:"Ein Glas Italien, im Schatten der gestreiften Markisen",en:"A glass of Italy, in the shade of the striped awnings"},
+    cave_p:{fr:"Plus de cent vins italiens choisis parmi les régions du pays, du prosecco aux rouges de caractère. Achetez la bouteille en cave ou dégustez-la en salle et sur la terrasse plantée, au droit de courses.",de:"Über hundert italienische Weine aus allen Regionen des Landes, vom Prosecco bis zu charaktervollen Rotweinen. Kaufen Sie die Flasche im Keller oder genießen Sie sie im Saal und auf der bepflanzten Terrasse — gleich neben dem Einkauf.",en:"Over a hundred Italian wines chosen from across the country's regions, from prosecco to characterful reds. Buy the bottle in the cellar or enjoy it in the dining room and on the planted terrace, right beside the shopping."},
+    ws1:{fr:"Vins italiens",de:"Italienische Weine",en:"Italian wines"},
+    ws2:{fr:"Produits en rayon",de:"Produkte im Regal",en:"Products on the shelves"},
+    ws3:{fr:"Ancien garage",de:"Ehemalige Garage",en:"Former garage"},
+
+    story_eye:{fr:"L'histoire",de:"Die Geschichte",en:"Our story"},
+    story_title:{fr:"Un garage devenu marché",de:"Aus einer Garage wurde ein Markt",en:"A garage turned market"},
+    story_quote:{fr:"« Les meilleurs produits italiens, sélectionnés directement à la source, sur le goût et la qualité. »",de:"„Die besten italienischen Produkte, direkt an der Quelle nach Geschmack und Qualität ausgewählt.“",en:"“The best Italian products, selected directly at source on taste and quality.”"},
+    story_p1:{fr:"Route d'Arlon, à Strassen, un ancien garage a été réhabillé de bois navy et de stores rayés pour devenir un véritable marché italien. Sous un même toit : une épicerie fine, une salumeria, une cave à vin, une pizzeria et un traiteur.",de:"An der Route d'Arlon in Strassen wurde eine ehemalige Garage mit dunkelblauem Holz und gestreiften Markisen zu einem echten italienischen Markt umgebaut. Unter einem Dach: Feinkost, Salumeria, Weinkeller, Pizzeria und Catering.",en:"On the Route d'Arlon in Strassen, a former garage was re-clad in navy timber and striped awnings to become a genuine Italian market. Under one roof: a deli, a salumeria, a wine cellar, a pizzeria and a caterer."},
+    story_p2:{fr:"On y fait ses courses parmi des milliers de spécialités, puis on s'attable pour déguster les mêmes produits — antipasti, pâtes fraîches, pizzas au four — au comptoir, en salle ou sur la terrasse plantée. Le tout signé Come à la Maison.",de:"Man kauft unter Tausenden Spezialitäten ein und setzt sich dann, um dieselben Produkte zu genießen — Antipasti, frische Pasta, Ofenpizza — an der Theke, im Saal oder auf der bepflanzten Terrasse. Alles von Come à la Maison.",en:"You shop among thousands of specialties, then sit down to enjoy the same products — antipasti, fresh pasta, oven pizza — at the counter, in the dining room or on the planted terrace. All by Come à la Maison."},
+    st1:{fr:"Ouverture",de:"Eröffnung",en:"Opened"},
+    st2:{fr:"Sous un toit",de:"Unter einem Dach",en:"Under one roof"},
+    st3:{fr:"Nombreux produits",de:"Viele Produkte",en:"Many products"},
+    st4:{fr:"Route d'Arlon",de:"Route d'Arlon",en:"Route d'Arlon"},
+
+    visit_eye:{fr:"Passez nous voir",de:"Besuchen Sie uns",en:"Come and see us"},
+    visit_title:{fr:"Réserver, trouver, appeler",de:"Reservieren, finden, anrufen",en:"Book, find, call"},
+    visit_sub:{fr:"Réservez une table en quelques secondes — la nouveauté de ce site. Ou passez simplement faire vos courses.",de:"Reservieren Sie in Sekunden — das Neue an dieser Website. Oder kommen Sie einfach zum Einkaufen vorbei.",en:"Book a table in seconds — the new feature of this site. Or just drop by to shop."},
+
+    form_h:{fr:"Réserver une table",de:"Tisch reservieren",en:"Book a table"},
+    form_sub:{fr:"Demande de réservation",de:"Reservierungsanfrage",en:"Reservation request"},
+    f_name:{fr:"Nom",de:"Name",en:"Name"},
+    f_name_ph:{fr:"Votre nom",de:"Ihr Name",en:"Your name"},
+    f_phone:{fr:"Téléphone",de:"Telefon",en:"Phone"},
+    f_email:{fr:"E-mail",de:"E-Mail",en:"Email"},
+    f_date:{fr:"Date",de:"Datum",en:"Date"},
+    f_guests:{fr:"Couverts",de:"Gedecke",en:"Guests"},
+    f_msg:{fr:"Message",de:"Nachricht",en:"Message"},
+    f_msg_ph:{fr:"Terrasse, allergies, occasion…",de:"Terrasse, Allergien, Anlass…",en:"Terrace, allergies, occasion…"},
+    f_submit:{fr:"Envoyer la demande",de:"Anfrage senden",en:"Send request"},
+    f_note:{fr:"Formulaire de démonstration — non fonctionnel. Réservations actuelles : téléphone ou e-mail ci-contre.",de:"Demo-Formular — nicht funktionsfähig. Aktuelle Reservierungen: Telefon oder E-Mail nebenstehend.",en:"Demo form — not functional. Current reservations: phone or email opposite."},
+
+    hours_h:{fr:"Horaires",de:"Öffnungszeiten",en:"Opening hours"},
+    hours_sub_conf:{fr:"À confirmer",de:"Zu bestätigen",en:"To be confirmed"},
+    hours_resto:{fr:"Restaurant",de:"Restaurant",en:"Restaurant"},
+    hours_shop:{fr:"Épicerie & cave",de:"Feinkost & Keller",en:"Grocery & cellar"},
+    day_mon:{fr:"Lundi",de:"Montag",en:"Monday"},
+    day_tuesat:{fr:"Mar. – Sam.",de:"Di. – Sa.",en:"Tue – Sat"},
+    day_sun:{fr:"Dimanche",de:"Sonntag",en:"Sunday"},
+    day_monsat:{fr:"Lun. – Sam.",de:"Mo. – Sa.",en:"Mon – Sat"},
+    closed:{fr:"Fermé",de:"Geschlossen",en:"Closed"},
+    hours_note:{fr:"Horaires resto / épicerie / takeaway diffèrent selon les sources — à confirmer avec l'établissement.",de:"Zeiten für Restaurant / Feinkost / Takeaway variieren je nach Quelle — mit dem Lokal zu bestätigen.",en:"Restaurant / grocery / takeaway hours differ across sources — to be confirmed with the venue."},
+
+    contact_h:{fr:"Nous trouver",de:"So finden Sie uns",en:"Find us"},
+    contact_sub:{fr:"Strassen · Route d'Arlon",de:"Strassen · Route d'Arlon",en:"Strassen · Route d'Arlon"},
+    c_addr:{fr:"Adresse",de:"Adresse",en:"Address"},
+    c_phone:{fr:"Téléphone",de:"Telefon",en:"Phone"},
+
+    foot_desc:{fr:"Épicerie, pizzeria, cave à vin & traiteur — l'Italie, comme à la maison, route d'Arlon à Strassen.",de:"Feinkost, Pizzeria, Weinkeller & Catering — Italien, wie zu Hause, Route d'Arlon in Strassen.",en:"Grocery, pizzeria, wine cellar & caterer — Italy, just like home, Route d'Arlon in Strassen."},
+    foot_nav:{fr:"Le marché",de:"Der Markt",en:"The market"},
+    foot_contact:{fr:"Contact",de:"Kontakt",en:"Contact"},
+    foot_order:{fr:"Commander",de:"Bestellen",en:"Order"},
+    foot_by:{fr:"Maquette conçue par Webwerk",de:"Entwurf von Webwerk gestaltet",en:"Mockup designed by Webwerk"},
+    disclaimer:{fr:"Site de démonstration — contenus, prix et horaires à confirmer avec l'établissement.",de:"Demo-Website — Inhalte, Preise und Öffnungszeiten mit dem Lokal zu bestätigen.",en:"Demonstration site — content, prices and hours to be confirmed with the venue."}
+  };
+
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var k = el.getAttribute('data-i18n');
+      if(I18N[k] && I18N[k][lang]) el.innerHTML = I18N[k][lang];
+    });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+      var k = el.getAttribute('data-i18n-ph');
+      if(I18N[k] && I18N[k][lang]) el.setAttribute('placeholder', I18N[k][lang]);
+    });
+    document.querySelectorAll('.langsw button').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+  }
+  document.querySelectorAll('.langsw button').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
+  });
+  // default FR is already in HTML — no re-render needed on load
+</script>
+</body>
+</html>

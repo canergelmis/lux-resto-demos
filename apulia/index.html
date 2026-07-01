@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Apulia — Antichi Sapori · Restaurant · Pizzeria · Kirchberg</title>
+<meta name="description" content="Apulia — Antichi Sapori. Les saveurs des Pouilles au cœur du Kirchberg. Orecchiette, puccia, pizza napolitaine, pâtes fraîches.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500;1,9..144,600&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --grout:#c9522c;               /* terracotta grout between tiles */
+    --grout-deep:#a8401f;
+    --glaze:#faf4e8;               /* cream tile glaze */
+    --glaze-2:#f4ecdb;
+    --ink:#211a15;                 /* warm charcoal */
+    --ink-soft:#5a4d42;
+    --clay:#c4622d;                /* puglia sun-baked clay */
+    --tomato:#c8382e;
+    --basil:#2f7d43;
+    --maroon:#7a2e2a;
+    --gold:#d8a24a;
+    --line:rgba(122,46,42,.28);
+    --shadow:0 1px 0 rgba(0,0,0,.04), 0 10px 26px -18px rgba(60,20,10,.55);
+    --serif:"Fraunces", Georgia, "Times New Roman", serif;
+    --sans:"Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--grout);
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(255,255,255,.10), transparent 42%),
+      radial-gradient(circle at 82% 78%, rgba(0,0,0,.14), transparent 46%),
+      repeating-linear-gradient(45deg, rgba(0,0,0,.03) 0 2px, transparent 2px 7px);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  /* ---------- layout frame ---------- */
+  .wrap{max-width:1400px;margin:0 auto;padding:0 26px 26px}
+
+  /* ---------- tile system (maiolica) ---------- */
+  .tile{
+    position:relative;
+    background:var(--glaze);
+    border-radius:5px;
+    box-shadow:var(--shadow);
+    padding:26px 28px;
+    overflow:hidden;
+  }
+  .tile::before{
+    content:"";position:absolute;inset:7px;
+    border:1.5px solid var(--line);
+    border-radius:3px;pointer-events:none;
+  }
+  .tile.plain::before{display:none}
+  .tile.painted::after{
+    content:"";position:absolute;inset:12px;
+    border:1px dotted rgba(196,98,45,.5);
+    border-radius:2px;pointer-events:none;
+  }
+  .tile.dark{background:#181310;color:var(--glaze)}
+  .tile.dark::before{border-color:rgba(216,162,74,.35)}
+  .tile.clay{background:linear-gradient(155deg,#c8642f,#a5461f);color:#fdf3e6}
+  .tile.clay::before{border-color:rgba(255,255,255,.32)}
+  .photo{padding:0}
+  .photo::before{inset:0;border-color:rgba(255,255,255,.5);border-width:1px;mix-blend-mode:overlay;z-index:2}
+  .photo img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease}
+  .photo:hover img{transform:scale(1.06)}
+  .photo .cap{
+    position:absolute;left:0;bottom:0;right:0;z-index:3;
+    padding:34px 18px 12px;color:#fff;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+    background:linear-gradient(0deg,rgba(20,10,6,.72),transparent);
+  }
+
+  /* section title chip */
+  .eyebrow{
+    font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;font-weight:700;
+    color:var(--clay);display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--tomato)}
+  h2.sec{font-family:var(--serif);font-weight:900;font-size:clamp(26px,3vw,42px);line-height:1.02;margin:.35em 0 .15em;letter-spacing:-.01em}
+  .sec-note{font-size:13px;color:var(--ink-soft);max-width:52ch}
+
+  .tri{display:inline-flex;height:1em;width:2.1em;border-radius:2px;overflow:hidden;vertical-align:-.12em;box-shadow:0 0 0 1px rgba(0,0,0,.12)}
+  .tri i{flex:1}.tri i:nth-child(1){background:var(--basil)}.tri i:nth-child(2){background:#fff}.tri i:nth-child(3){background:var(--tomato)}
+
+  /* ---------- header rail ---------- */
+  header.rail{position:sticky;top:0;z-index:50}
+  .rail-inner{
+    max-width:1400px;margin:0 auto;padding:9px 26px;
+    display:flex;align-items:center;gap:20px;
+    background:rgba(24,19,16,.94);color:var(--glaze);
+    backdrop-filter:blur(6px);
+    border-bottom:2px solid var(--gold);
+  }
+  .brandmark{display:flex;flex-direction:column;line-height:1;margin-right:6px}
+  .brandmark .b1{font-family:var(--serif);font-style:italic;font-weight:600;font-size:23px;letter-spacing:.01em}
+  .brandmark .b2{font-size:8.5px;letter-spacing:.42em;font-weight:700;margin-top:3px;color:var(--gold);display:flex;align-items:center;gap:7px}
+  nav.top{display:flex;gap:22px;margin-left:auto;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500}
+  nav.top a{opacity:.82;transition:opacity .2s,color .2s;white-space:nowrap}
+  nav.top a:hover{opacity:1;color:var(--gold)}
+  .rail .tel{font-size:12.5px;letter-spacing:.06em;font-weight:600;white-space:nowrap}
+  .rail .tel span{color:var(--gold)}
+  .langs{display:flex;gap:2px;background:rgba(255,255,255,.09);border-radius:20px;padding:3px}
+  .langs button{
+    font:inherit;font-size:11px;font-weight:700;letter-spacing:.08em;cursor:pointer;
+    border:0;background:transparent;color:inherit;padding:5px 9px;border-radius:16px;opacity:.7;transition:.2s;
+  }
+  .langs button.on{background:var(--gold);color:#1c140a;opacity:1}
+
+  /* ---------- HERO mosaic ---------- */
+  .hero{
+    display:grid;grid-template-columns:repeat(12,1fr);
+    grid-auto-rows:168px;gap:12px;margin-top:12px;
+  }
+  .h-insegna{grid-column:1/6;grid-row:1/3;display:flex;flex-direction:column;justify-content:center}
+  .h-sole{grid-column:6/9;grid-row:1/2}
+  .h-book{grid-column:6/9;grid-row:2/3}
+  .h-photo{grid-column:9/13;grid-row:1/4}
+  .h-tag{grid-column:1/9;grid-row:3/4;display:flex;align-items:center}
+
+  .wordmark{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(46px,5.6vw,88px);line-height:.86;letter-spacing:-.01em}
+  .subword{display:flex;align-items:center;gap:12px;margin-top:14px;font-size:14px;letter-spacing:.44em;font-weight:700;color:var(--maroon)}
+  .rest-pizz{margin-top:9px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .h-insegna .lead{margin-top:16px;font-family:var(--serif);font-style:italic;font-size:16.5px;color:var(--ink-soft);max-width:30ch}
+  .h-insegna .propose{font-size:10.5px;letter-spacing:.05em;color:var(--clay);font-style:normal;margin-top:5px;text-transform:uppercase}
+
+  .sole{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:9px}
+  .sole svg{width:56px;height:56px}
+  .sole .p{font-family:var(--serif);font-weight:900;font-size:19px}
+  .sole .s{font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:#fdf3e6;opacity:.85}
+
+  .h-book{display:flex;flex-direction:column;justify-content:center;gap:10px}
+  .h-book .k{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--clay);font-weight:700}
+  .h-book .hrs{font-family:var(--serif);font-weight:600;font-size:18px}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--tomato);color:#fff;font-weight:700;
+    font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;padding:11px 18px;border-radius:3px;align-self:flex-start;transition:.2s}
+  .btn:hover{background:#a82a22}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .btn.ghost:hover{background:var(--ink);color:var(--glaze)}
+
+  .h-tag .txt{font-family:var(--serif);font-size:clamp(17px,1.9vw,25px);font-weight:500;line-height:1.25;font-style:italic}
+  .h-tag .txt b{font-style:normal;font-weight:900;color:var(--clay)}
+
+  /* ---------- generic section grid ---------- */
+  .band{margin-top:12px;display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+  .head-tile{display:flex;flex-direction:column;justify-content:center}
+
+  /* menu tiles */
+  .menu-cat h3{font-family:var(--serif);font-weight:900;font-size:22px;margin-bottom:2px}
+  .menu-cat .rule{height:2px;background:linear-gradient(90deg,var(--maroon),transparent);margin:8px 0 14px}
+  .mi{display:flex;gap:10px;align-items:baseline;margin:9px 0;font-size:14px}
+  .mi .n{font-weight:600}
+  .mi .d{font-size:12px;color:var(--ink-soft);font-weight:400;display:block;margin-top:1px;line-height:1.35}
+  .mi .dots{flex:1;border-bottom:1.5px dotted var(--line);transform:translateY(-3px)}
+  .mi .p{font-weight:700;color:var(--maroon);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .sig{background:linear-gradient(160deg,#fff6e6,#f3e6cd)}
+  .sig .badge{display:inline-block;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;color:#fff;background:var(--basil);padding:3px 8px;border-radius:2px;margin-bottom:8px}
+
+  /* puccia */
+  .puccia-txt{display:flex;flex-direction:column;justify-content:center}
+  .fill-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .fill{display:flex;flex-direction:column;justify-content:flex-end;min-height:120px;background:linear-gradient(160deg,#fbf5ea,#efe2c9)}
+  .fill .fn{font-family:var(--serif);font-weight:900;font-size:18px}
+  .fill .fd{font-size:11px;color:var(--ink-soft);margin-top:3px}
+  .fill b{position:absolute;top:14px;right:16px;font-family:var(--serif);font-style:italic;font-size:20px;color:var(--clay);opacity:.5}
+
+  /* pranzo day tiles */
+  .days{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .day{background:linear-gradient(165deg,#fbf5ea,#f0e4cd);min-height:150px;display:flex;flex-direction:column}
+  .day .dd{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:var(--tomato)}
+  .day .dn{font-family:var(--serif);font-weight:600;font-size:16px;margin-top:10px;flex:1;line-height:1.25}
+  .day .dp{font-weight:800;color:var(--maroon);font-size:15px}
+
+  /* story */
+  .story-txt p{margin:12px 0;font-size:14.5px;color:var(--ink-soft);max-width:56ch}
+  .story-txt .chef{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ink)}
+  .quote{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(19px,2.2vw,30px);line-height:1.25}
+
+  /* visit */
+  .info .row{display:flex;gap:12px;margin:12px 0;font-size:14px}
+  .info .ic{flex:0 0 auto;color:var(--clay);font-weight:900;font-family:var(--serif)}
+  .info .lab{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
+  .info .val{font-weight:600;margin-top:2px}
+  .conf{font-size:11px;color:var(--clay);font-style:italic}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chip{font-size:11.5px;font-weight:600;letter-spacing:.02em;background:#fff;border:1px solid var(--line);color:var(--maroon);padding:6px 11px;border-radius:20px}
+  .mapbox{padding:0;min-height:340px}
+  .mapbox iframe{width:100%;height:100%;min-height:340px;border:0;display:block}
+
+  /* footer */
+  footer{margin-top:12px}
+  .foot{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+  .foot .f-brand{grid-column:1/6;display:flex;flex-direction:column;gap:12px;justify-content:center}
+  .foot .f-brand .wm{font-family:var(--serif);font-style:italic;font-weight:600;font-size:38px;color:var(--gold);line-height:.9}
+  .foot .f-brand .b2{font-size:9px;letter-spacing:.4em;font-weight:700;color:#e9d6a8}
+  .foot .f-links{grid-column:6/9;display:flex;flex-direction:column;gap:9px;font-size:13px;justify-content:center}
+  .foot .f-links a{opacity:.8}.foot .f-links a:hover{opacity:1;color:var(--gold)}
+  .foot .f-contact{grid-column:9/13;font-size:13px;display:flex;flex-direction:column;gap:7px;justify-content:center}
+  .foot .f-contact b{color:var(--gold);font-weight:600}
+  .disclaimer{grid-column:1/13;border-top:1px solid rgba(216,162,74,.28);margin-top:6px;padding-top:14px;
+    font-size:11px;color:#c9b59a;line-height:1.6;display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:space-between}
+  .disclaimer .demo{color:var(--gold);font-weight:700}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:1080px){
+    .hero{grid-auto-rows:150px}
+    .h-insegna{grid-column:1/7}.h-sole{grid-column:7/10}.h-book{grid-column:10/13;grid-row:1/2}
+    .h-photo{grid-column:7/13;grid-row:2/4}.h-tag{grid-column:1/7;grid-row:3/4}
+    .fill-grid,.days{grid-template-columns:repeat(3,1fr)}
+  }
+  @media(max-width:860px){
+    nav.top{display:none}
+    .band>*,.foot>*{grid-column:1/13 !important}
+    .hero{display:flex;flex-direction:column;grid-auto-rows:auto}
+    .hero>*{grid-column:auto;grid-row:auto}
+    .h-photo{min-height:300px}
+    .h-sole{min-height:150px}
+    .foot .f-brand,.foot .f-links,.foot .f-contact{grid-column:1/13}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 12px 14px}
+    .rail-inner{padding:8px 12px;gap:12px}
+    .fill-grid,.days{grid-template-columns:1fr 1fr}
+    .tile{padding:20px}
+    .rail .tel{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ======== HEADER RAIL ======== -->
+<header class="rail">
+  <div class="rail-inner">
+    <div class="brandmark">
+      <span class="b1">Apulia</span>
+      <span class="b2">ANTICHI SAPORI <span class="tri"><i></i><i></i><i></i></span></span>
+    </div>
+    <nav class="top">
+      <a href="#carta" data-i18n="nav.menu">La Carta</a>
+      <a href="#puccia" data-i18n="nav.puccia">La Puccia</a>
+      <a href="#pranzo" data-i18n="nav.lunch">Le Déjeuner</a>
+      <a href="#storia" data-i18n="nav.story">La Maison</a>
+      <a href="#visite" data-i18n="nav.visit">Nous trouver</a>
+    </nav>
+    <span class="tel"><span>☎</span> +352 24 52 74 85</span>
+    <div class="langs" role="group" aria-label="Language">
+      <button data-lang="fr" class="on">FR</button>
+      <button data-lang="de">DE</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ======== HERO MOSAIC ======== -->
+  <section class="hero" aria-label="Apulia">
+    <div class="tile painted h-insegna">
+      <div class="wordmark">Apulia</div>
+      <div class="subword">ANTICHI SAPORI</div>
+      <div class="rest-pizz" data-i18n="hero.restpizz">Restaurant · Pizzeria · Kirchberg</div>
+      <div class="lead">
+        <span data-i18n="hero.lead">Les saveurs des Pouilles, au cœur du Kirchberg.</span>
+        <span class="propose" data-i18n="hero.propose">(slogan proposé — à confirmer)</span>
+      </div>
+    </div>
+
+    <div class="tile clay h-sole">
+      <div class="sole">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <g fill="none" stroke="#fdf3e6" stroke-width="4" stroke-linecap="round">
+            <circle cx="50" cy="50" r="17" fill="#fdf3e6" stroke="none"/>
+            <line x1="50" y1="8" x2="50" y2="22"/><line x1="50" y1="78" x2="50" y2="92"/>
+            <line x1="8" y1="50" x2="22" y2="50"/><line x1="78" y1="50" x2="92" y2="50"/>
+            <line x1="20" y1="20" x2="30" y2="30"/><line x1="70" y1="70" x2="80" y2="80"/>
+            <line x1="80" y1="20" x2="70" y2="30"/><line x1="30" y1="70" x2="20" y2="80"/>
+          </g>
+        </svg>
+        <div class="p">Puglia · Italia</div>
+        <div class="s" data-i18n="hero.sun">La cuisine du soleil</div>
+      </div>
+    </div>
+
+    <div class="tile h-book">
+      <div class="k" data-i18n="hero.today">Aujourd'hui</div>
+      <div class="hrs">Lun–Sam · 11:30–22:00</div>
+      <a class="btn" href="tel:+35224527485" data-i18n="hero.reserve">Réserver une table</a>
+    </div>
+
+    <div class="tile photo h-photo">
+      <img src="assets/food-orecchiette.jpg" alt="Orecchiette pugliesi, boulettes et braciole, caprese">
+      <div class="cap"><span data-i18n="hero.cap">Orecchiette pugliesi · la table des Pouilles</span></div>
+    </div>
+
+    <div class="tile h-tag">
+      <div class="txt" data-i18n="hero.tag">Pâtes fraîches, pizza napolitaine et <b>spécialités des Pouilles</b> — servies dans une trattoria animée, entre bureaux, familles et cinéma du Kirchberg.</div>
+    </div>
+  </section>
+
+  <!-- ======== LA CARTA ======== -->
+  <section class="band" id="carta">
+    <div class="tile plain head-tile" style="grid-column:1/13;background:transparent;box-shadow:none;padding:22px 4px 2px">
+      <div class="eyebrow" data-i18n="carta.eye">La Carta · notre table</div>
+      <h2 class="sec" data-i18n="carta.title">Une carte aux accents des Pouilles</h2>
+      <div class="sec-note" data-i18n="carta.note">Sélection représentative de la maison. Prix indicatifs, relevés sur la carte de l'établissement — à confirmer avant publication.</div>
+    </div>
+
+    <!-- signature orecchiette -->
+    <div class="tile menu-cat sig" style="grid-column:1/5">
+      <span class="badge" data-i18n="carta.signature">Signature</span>
+      <h3>Orecchiette Pugliesi</h3>
+      <div class="rule"></div>
+      <p style="font-size:13.5px;color:var(--ink-soft);line-height:1.5" data-i18n="carta.orecchiette">Les « petites oreilles », pâte fraîche emblématique des Pouilles, sugo de tomate, boulettes & braciole. Le plat-signature d'Apulia.</p>
+      <div class="mi" style="margin-top:14px"><span class="n" data-i18n="carta.ore_full">Plat complet</span><span class="dots"></span><span class="p" data-i18n="conf.short">à conf.</span></div>
+    </div>
+
+    <!-- pizza photo -->
+    <div class="tile photo" style="grid-column:5/9;min-height:230px">
+      <img src="assets/food-pizza.png" alt="Pizza napolitaine, légumes, champignons">
+      <div class="cap" data-i18n="carta.pizzacap">Pizza napolitaine · pâte à la journée</div>
+    </div>
+
+    <!-- antipasti -->
+    <div class="tile menu-cat" style="grid-column:9/13">
+      <h3 data-i18n="carta.antipasti">Entrées & Zuppe</h3>
+      <div class="rule"></div>
+      <div class="mi"><span><span class="n">Assiette gourmande</span><span class="d" data-i18n="carta.gourmande">Jambon de Parme, roquette, tomates cerises, mozzarella di bufala</span></span><span class="dots"></span><span class="p">20,90&nbsp;€</span></div>
+      <div class="mi"><span class="n">Tortellini in brodo</span><span class="dots"></span><span class="p">14,90&nbsp;€</span></div>
+      <div class="mi"><span class="n">Minestrone</span><span class="dots"></span><span class="p">13,90&nbsp;€</span></div>
+      <div class="mi"><span class="n">Bisque de homard</span><span class="dots"></span><span class="p">11,90&nbsp;€</span></div>
+    </div>
+
+    <!-- pates -->
+    <div class="tile menu-cat" style="grid-column:1/5">
+      <h3 data-i18n="carta.pasta">Pâtes fraîches</h3>
+      <div class="rule"></div>
+      <div class="mi"><span class="n">Spaghetti carbonara</span><span class="dots"></span><span class="p">18,90&nbsp;€</span></div>
+      <div class="mi"><span class="n">Penne all'arrabbiata</span><span class="dots"></span><span class="p">17,90&nbsp;€</span></div>
+      <div class="mi"><span class="n">Penne aux 4 fromages</span><span class="dots"></span><span class="p">18,90&nbsp;€</span></div>
+      <div class="mi"><span class="n">Spaghetti alla rucola</span><span class="dots"></span><span class="p">21,40&nbsp;€</span></div>
+      <div class="mi"><span class="n">Spaghetti fruits de mer</span><span class="dots"></span><span class="p" data-i18n="conf.short">à conf.</span></div>
+    </div>
+
+    <!-- seafood photo -->
+    <div class="tile photo" style="grid-column:5/8;min-height:210px">
+      <img src="assets/food-seafood-pasta.jpg" alt="Tagliolini au gambero rosso, dressage soigné">
+      <div class="cap" data-i18n="carta.seafoodcap">Tagliolini · gambero rosso</div>
+    </div>
+
+    <!-- salades + dolci -->
+    <div class="tile menu-cat" style="grid-column:8/13">
+      <h3 data-i18n="carta.salads">Salades & Dolci</h3>
+      <div class="rule"></div>
+      <div class="mi"><span class="n">Salade alla nordica</span><span class="dots"></span><span class="p">21,40&nbsp;€</span></div>
+      <div class="mi"><span class="n">Carpaccio de bœuf</span><span class="dots"></span><span class="p">19,20&nbsp;€</span></div>
+      <div class="mi"><span class="n">Cocktail de crevettes</span><span class="dots"></span><span class="p">17,90&nbsp;€</span></div>
+      <div class="mi"><span class="n">Saumon fumé & toasts</span><span class="dots"></span><span class="p">21,90&nbsp;€</span></div>
+      <div class="mi"><span><span class="n">Tiramisu</span> <span class="d" data-i18n="carta.tiramisu">fait maison</span></span><span class="dots"></span><span class="p" data-i18n="conf.short">à conf.</span></div>
+    </div>
+  </section>
+
+  <!-- ======== LA PUCCIA ======== -->
+  <section class="band" id="puccia">
+    <div class="tile clay puccia-txt" style="grid-column:1/6">
+      <div class="eyebrow" style="color:#ffe6cf" data-i18n="puccia.eye">La spécialité</div>
+      <h2 class="sec" style="color:#fff" data-i18n="puccia.title">La Puccia</h2>
+      <p style="color:#fdeede;font-size:14.5px;line-height:1.55;margin-top:8px" data-i18n="puccia.body">Le pain plat farci des Pouilles — chaud, généreux, à composer. Une vraie signature régionale, rare à Luxembourg. Choisissez votre garniture.</p>
+      <a class="btn ghost" href="#visite" style="margin-top:16px;color:#fff;border-color:#fff" data-i18n="puccia.cta">À déguster sur place</a>
+    </div>
+    <div class="tile plain" style="grid-column:6/13;background:transparent;box-shadow:none;padding:0">
+      <div class="fill-grid" style="height:100%">
+        <div class="tile fill"><b>1</b><div class="fn">Burrata</div><div class="fd" data-i18n="puccia.f1">crémeuse, tomate, basilic</div></div>
+        <div class="tile fill"><b>2</b><div class="fn">Italiana</div><div class="fd" data-i18n="puccia.f2">jambon de Parme</div></div>
+        <div class="tile fill"><b>3</b><div class="fn">Fumée</div><div class="fd" data-i18n="puccia.f3">speck tirolese</div></div>
+        <div class="tile fill"><b>4</b><div class="fn">Saumon</div><div class="fd" data-i18n="puccia.f4">saumon fumé</div></div>
+        <div class="tile fill"><b>5</b><div class="fn">Bresaola</div><div class="fd" data-i18n="puccia.f5">roquette, parmesan</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== LE DÉJEUNER (pranzo) ======== -->
+  <section class="band" id="pranzo">
+    <div class="tile dark head-tile" style="grid-column:1/4">
+      <div class="eyebrow" style="color:var(--gold)" data-i18n="pranzo.eye">Il Pranzo</div>
+      <h2 class="sec" style="color:#fff;font-size:clamp(24px,2.4vw,34px)" data-i18n="pranzo.title">Le déjeuner du Kirchberg</h2>
+      <p style="color:#d9cdb8;font-size:13px;margin-top:6px" data-i18n="pranzo.note">Suggestions du midi pour les bureaux du plateau. Rotation hebdomadaire — exemples, à confirmer.</p>
+      <span class="chip" style="background:transparent;border-color:var(--gold);color:var(--gold);margin-top:14px;align-self:flex-start" data-i18n="pranzo.tr">Ticket Restaurant · Chèque Repas</span>
+    </div>
+    <div class="tile plain" style="grid-column:4/13;background:transparent;box-shadow:none;padding:0">
+      <div class="days" style="height:100%">
+        <div class="tile day"><div class="dd" data-i18n="day.mon">Lundi</div><div class="dn" data-i18n="pranzo.mon">Faux-filet, sauce gorgonzola</div><div class="dp">16,90&nbsp;€</div></div>
+        <div class="tile day"><div class="dd" data-i18n="day.tue">Mardi</div><div class="dn" data-i18n="pranzo.tue">Pâtes thon, poivrons & tomate</div><div class="dp">14,90&nbsp;€</div></div>
+        <div class="tile day"><div class="dd" data-i18n="day.wed">Mercredi</div><div class="dn" data-i18n="pranzo.wed">Rôti de dinde, champignons</div><div class="dp">16,90&nbsp;€</div></div>
+        <div class="tile day"><div class="dd" data-i18n="day.thu">Jeudi</div><div class="dn" data-i18n="pranzo.thu">Pâtes alla Norma</div><div class="dp">14,90&nbsp;€</div></div>
+        <div class="tile day"><div class="dd" data-i18n="day.fri">Vendredi</div><div class="dn" data-i18n="pranzo.fri">Filet de lieu noir</div><div class="dp">16,90&nbsp;€</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== LA MAISON (storia) ======== -->
+  <section class="band" id="storia">
+    <div class="tile painted story-txt" style="grid-column:1/8;display:flex;flex-direction:column;justify-content:center">
+      <div class="eyebrow" data-i18n="storia.eye">Antichi Sapori</div>
+      <h2 class="sec" data-i18n="storia.title">Les « anciennes saveurs », transmises</h2>
+      <p data-i18n="storia.p1">« Antichi sapori » — les saveurs d'autrefois. Apulia porte les Pouilles à Luxembourg : orecchiette roulées à la main, pizza napolitaine, mozzarella di bufala et cette générosité méridionale où l'on partage sans compter.</p>
+      <p class="chef" data-i18n="storia.chef">En cuisine, le chef Vito Colapietro apporte sa touche personnelle à chaque assiette. <span class="conf">(chef à confirmer)</span></p>
+      <div class="quote" style="margin-top:14px;color:var(--maroon)" data-i18n="storia.quote">« Le soleil des Pouilles, dans l'assiette. »</div>
+    </div>
+    <div class="tile photo" style="grid-column:8/13;min-height:300px">
+      <img src="assets/interior-1.jpg" alt="Salle du restaurant Apulia au Kirchberg Shopping">
+      <div class="cap" data-i18n="storia.cap">La salle · Kirchberg Shopping, près de Kinepolis</div>
+    </div>
+  </section>
+
+  <!-- ======== NOUS TROUVER (visite) ======== -->
+  <section class="band" id="visite">
+    <div class="tile mapbox photo" style="grid-column:1/8">
+      <iframe title="Apulia — Kirchberg" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=5%20Rue%20Alphonse%20Weicker%20L-2721%20Luxembourg%20Kirchberg&output=embed"></iframe>
+    </div>
+    <div class="tile plain" style="grid-column:8/13;background:transparent;box-shadow:none;padding:0;display:flex;flex-direction:column;gap:12px">
+      <div class="tile info">
+        <div class="eyebrow" data-i18n="visite.eye">La Visita</div>
+        <div class="row"><span class="ic">◷</span><span><span class="lab" data-i18n="visite.hours">Horaires</span><span class="val">Lun–Sam · 11:30–22:00<br><span data-i18n="visite.sun">Dimanche fermé</span></span><span class="conf" data-i18n="conf.long">à confirmer avec l'établissement</span></span></div>
+        <div class="row"><span class="ic">⌖</span><span><span class="lab" data-i18n="visite.addr">Adresse</span><span class="val">5, Rue Alphonse Weicker<br>L-2721 Luxembourg — Kirchberg</span><span class="conf" data-i18n="visite.mall">Kirchberg Shopping Center (Auchan)</span></span></div>
+        <div class="row"><span class="ic">☎</span><span><span class="lab" data-i18n="visite.contact">Contact</span><span class="val">+352 24 52 74 85</span><span class="conf" data-i18n="visite.email">e-mail à confirmer</span></span></div>
+      </div>
+      <div class="tile" style="flex:1">
+        <span class="lab" data-i18n="visite.services">Services & confort</span>
+        <div class="chips">
+          <span class="chip" data-i18n="amen.terrace">Terrasse</span>
+          <span class="chip" data-i18n="amen.parking">Parking gratuit</span>
+          <span class="chip" data-i18n="amen.takeaway">À emporter</span>
+          <span class="chip" data-i18n="amen.seats">100+ couverts</span>
+          <span class="chip" data-i18n="amen.tr">Ticket Restaurant</span>
+          <span class="chip" data-i18n="amen.cards">Visa · Mastercard · Maestro</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer>
+    <div class="tile dark foot">
+      <div class="f-brand">
+        <div class="wm">Apulia</div>
+        <div class="b2">ANTICHI SAPORI · RESTAURANT · PIZZERIA</div>
+      </div>
+      <div class="f-links">
+        <a href="#carta" data-i18n="nav.menu">La Carta</a>
+        <a href="#puccia" data-i18n="nav.puccia">La Puccia</a>
+        <a href="#pranzo" data-i18n="nav.lunch">Le Déjeuner</a>
+        <a href="#visite" data-i18n="nav.visit">Nous trouver</a>
+      </div>
+      <div class="f-contact">
+        <span><b data-i18n="foot.addr">Adresse</b><br>5, Rue Alphonse Weicker<br>L-2721 Luxembourg — Kirchberg</span>
+        <span><b data-i18n="foot.tel">Téléphone</b><br>+352 24 52 74 85</span>
+      </div>
+      <div class="disclaimer">
+        <span class="demo" data-i18n="foot.demo">Site de démonstration — non officiel. Contenus, prix et horaires indicatifs, à confirmer avec l'établissement.</span>
+        <span>© <span id="yr"></span> Apulia — Antichi Sapori · Kirchberg, Luxembourg</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  const I18N = {
+    fr:{
+      "nav.menu":"La Carta","nav.puccia":"La Puccia","nav.lunch":"Le Déjeuner","nav.story":"La Maison","nav.visit":"Nous trouver",
+      "hero.restpizz":"Restaurant · Pizzeria · Kirchberg","hero.lead":"Les saveurs des Pouilles, au cœur du Kirchberg.","hero.propose":"(slogan proposé — à confirmer)",
+      "hero.sun":"La cuisine du soleil","hero.today":"Aujourd'hui","hero.reserve":"Réserver une table",
+      "hero.cap":"Orecchiette pugliesi · la table des Pouilles",
+      "hero.tag":"Pâtes fraîches, pizza napolitaine et <b>spécialités des Pouilles</b> — servies dans une trattoria animée, entre bureaux, familles et cinéma du Kirchberg.",
+      "carta.eye":"La Carta · notre table","carta.title":"Une carte aux accents des Pouilles",
+      "carta.note":"Sélection représentative de la maison. Prix indicatifs, relevés sur la carte de l'établissement — à confirmer avant publication.",
+      "carta.signature":"Signature","carta.orecchiette":"Les « petites oreilles », pâte fraîche emblématique des Pouilles, sugo de tomate, boulettes & braciole. Le plat-signature d'Apulia.",
+      "carta.ore_full":"Plat complet","conf.short":"à conf.","carta.pizzacap":"Pizza napolitaine · pâte à la journée",
+      "carta.antipasti":"Entrées & Zuppe","carta.gourmande":"Jambon de Parme, roquette, tomates cerises, mozzarella di bufala",
+      "carta.pasta":"Pâtes fraîches","carta.seafoodcap":"Tagliolini · gambero rosso","carta.salads":"Salades & Dolci","carta.tiramisu":"fait maison",
+      "puccia.eye":"La spécialité","puccia.title":"La Puccia","puccia.body":"Le pain plat farci des Pouilles — chaud, généreux, à composer. Une vraie signature régionale, rare à Luxembourg. Choisissez votre garniture.",
+      "puccia.cta":"À déguster sur place","puccia.f1":"crémeuse, tomate, basilic","puccia.f2":"jambon de Parme","puccia.f3":"speck tirolese","puccia.f4":"saumon fumé","puccia.f5":"roquette, parmesan",
+      "pranzo.eye":"Il Pranzo","pranzo.title":"Le déjeuner du Kirchberg","pranzo.note":"Suggestions du midi pour les bureaux du plateau. Rotation hebdomadaire — exemples, à confirmer.","pranzo.tr":"Ticket Restaurant · Chèque Repas",
+      "day.mon":"Lundi","day.tue":"Mardi","day.wed":"Mercredi","day.thu":"Jeudi","day.fri":"Vendredi",
+      "pranzo.mon":"Faux-filet, sauce gorgonzola","pranzo.tue":"Pâtes thon, poivrons & tomate","pranzo.wed":"Rôti de dinde, champignons","pranzo.thu":"Pâtes alla Norma","pranzo.fri":"Filet de lieu noir",
+      "storia.eye":"Antichi Sapori","storia.title":"Les « anciennes saveurs », transmises",
+      "storia.p1":"« Antichi sapori » — les saveurs d'autrefois. Apulia porte les Pouilles à Luxembourg : orecchiette roulées à la main, pizza napolitaine, mozzarella di bufala et cette générosité méridionale où l'on partage sans compter.",
+      "storia.chef":"En cuisine, le chef Vito Colapietro apporte sa touche personnelle à chaque assiette. <span class='conf'>(chef à confirmer)</span>",
+      "storia.quote":"« Le soleil des Pouilles, dans l'assiette. »","storia.cap":"La salle · Kirchberg Shopping, près de Kinepolis",
+      "visite.eye":"La Visita","visite.hours":"Horaires","visite.sun":"Dimanche fermé","conf.long":"à confirmer avec l'établissement",
+      "visite.addr":"Adresse","visite.mall":"Kirchberg Shopping Center (Auchan)","visite.contact":"Contact","visite.email":"e-mail à confirmer","visite.services":"Services & confort",
+      "amen.terrace":"Terrasse","amen.parking":"Parking gratuit","amen.takeaway":"À emporter","amen.seats":"100+ couverts","amen.tr":"Ticket Restaurant","amen.cards":"Visa · Mastercard · Maestro",
+      "foot.addr":"Adresse","foot.tel":"Téléphone","foot.demo":"Site de démonstration — non officiel. Contenus, prix et horaires indicatifs, à confirmer avec l'établissement."
+    },
+    de:{
+      "nav.menu":"Die Karte","nav.puccia":"Die Puccia","nav.lunch":"Mittagstisch","nav.story":"Das Haus","nav.visit":"So finden Sie uns",
+      "hero.restpizz":"Restaurant · Pizzeria · Kirchberg","hero.lead":"Die Aromen Apuliens, im Herzen von Kirchberg.","hero.propose":"(Slogan-Vorschlag — zu bestätigen)",
+      "hero.sun":"Die Küche der Sonne","hero.today":"Heute","hero.reserve":"Tisch reservieren",
+      "hero.cap":"Orecchiette pugliesi · Apuliens Tafel",
+      "hero.tag":"Frische Pasta, neapolitanische Pizza und <b>apulische Spezialitäten</b> — serviert in einer lebhaften Trattoria, zwischen Büros, Familien und Kino auf dem Kirchberg.",
+      "carta.eye":"Die Karte · unser Tisch","carta.title":"Eine Karte mit apulischem Akzent",
+      "carta.note":"Repräsentative Auswahl des Hauses. Preise als Richtwert, von der Karte des Lokals übernommen — vor Veröffentlichung zu bestätigen.",
+      "carta.signature":"Signatur","carta.orecchiette":"Die „kleinen Öhrchen“, die typische frische Pasta Apuliens, Tomatensugo, Hackbällchen & Braciole. Das Signature-Gericht von Apulia.",
+      "carta.ore_full":"Komplettes Gericht","conf.short":"zu best.","carta.pizzacap":"Neapolitanische Pizza · täglich frischer Teig",
+      "carta.antipasti":"Vorspeisen & Zuppe","carta.gourmande":"Parmaschinken, Rucola, Kirschtomaten, Mozzarella di bufala",
+      "carta.pasta":"Frische Pasta","carta.seafoodcap":"Tagliolini · Gambero rosso","carta.salads":"Salate & Dolci","carta.tiramisu":"hausgemacht",
+      "puccia.eye":"Die Spezialität","puccia.title":"Die Puccia","puccia.body":"Das gefüllte Fladenbrot Apuliens — warm, großzügig, nach Wahl. Eine echte regionale Signatur, selten in Luxemburg. Wählen Sie Ihre Füllung.",
+      "puccia.cta":"Vor Ort genießen","puccia.f1":"cremig, Tomate, Basilikum","puccia.f2":"Parmaschinken","puccia.f3":"Speck tirolese","puccia.f4":"Räucherlachs","puccia.f5":"Rucola, Parmesan",
+      "pranzo.eye":"Il Pranzo","pranzo.title":"Der Mittagstisch am Kirchberg","pranzo.note":"Mittagsempfehlungen für die Büros des Plateaus. Wöchentlich wechselnd — Beispiele, zu bestätigen.","pranzo.tr":"Ticket Restaurant · Chèque Repas",
+      "day.mon":"Montag","day.tue":"Dienstag","day.wed":"Mittwoch","day.thu":"Donnerstag","day.fri":"Freitag",
+      "pranzo.mon":"Rumpsteak, Gorgonzolasauce","pranzo.tue":"Pasta Thunfisch, Paprika & Tomate","pranzo.wed":"Putenbraten, Pilze","pranzo.thu":"Pasta alla Norma","pranzo.fri":"Seelachsfilet",
+      "storia.eye":"Antichi Sapori","storia.title":"Die „alten Aromen“, weitergegeben",
+      "storia.p1":"„Antichi sapori“ — die Aromen von einst. Apulia bringt Apulien nach Luxemburg: handgerollte Orecchiette, neapolitanische Pizza, Mozzarella di bufala und jene südliche Großzügigkeit, bei der man ohne zu zählen teilt.",
+      "storia.chef":"In der Küche verleiht Chef Vito Colapietro jedem Teller seine persönliche Note. <span class='conf'>(Chef zu bestätigen)</span>",
+      "storia.quote":"„Die Sonne Apuliens, auf dem Teller.“","storia.cap":"Der Saal · Kirchberg Shopping, nahe Kinepolis",
+      "visite.eye":"La Visita","visite.hours":"Öffnungszeiten","visite.sun":"Sonntag geschlossen","conf.long":"mit dem Lokal zu bestätigen",
+      "visite.addr":"Adresse","visite.mall":"Kirchberg Shopping Center (Auchan)","visite.contact":"Kontakt","visite.email":"E-Mail zu bestätigen","visite.services":"Service & Komfort",
+      "amen.terrace":"Terrasse","amen.parking":"Kostenlose Parkplätze","amen.takeaway":"Zum Mitnehmen","amen.seats":"100+ Plätze","amen.tr":"Ticket Restaurant","amen.cards":"Visa · Mastercard · Maestro",
+      "foot.addr":"Adresse","foot.tel":"Telefon","foot.demo":"Demo-Website — inoffiziell. Inhalte, Preise und Öffnungszeiten als Richtwert, mit dem Lokal zu bestätigen."
+    },
+    en:{
+      "nav.menu":"The Menu","nav.puccia":"The Puccia","nav.lunch":"Lunch","nav.story":"The House","nav.visit":"Find us",
+      "hero.restpizz":"Restaurant · Pizzeria · Kirchberg","hero.lead":"The flavours of Puglia, in the heart of Kirchberg.","hero.propose":"(proposed slogan — to be confirmed)",
+      "hero.sun":"The cuisine of the sun","hero.today":"Today","hero.reserve":"Reserve a table",
+      "hero.cap":"Orecchiette pugliesi · the table of Puglia",
+      "hero.tag":"Fresh pasta, Neapolitan pizza and <b>Apulian specialities</b> — served in a lively trattoria, between the offices, families and cinema of Kirchberg.",
+      "carta.eye":"The Menu · our table","carta.title":"A menu with an Apulian accent",
+      "carta.note":"A representative selection of the house. Prices are indicative, taken from the venue's own menu — to be confirmed before publishing.",
+      "carta.signature":"Signature","carta.orecchiette":"The 'little ears', Puglia's iconic fresh pasta, tomato sugo, meatballs & braciole. Apulia's signature dish.",
+      "carta.ore_full":"Full plate","conf.short":"to conf.","carta.pizzacap":"Neapolitan pizza · dough made daily",
+      "carta.antipasti":"Starters & Zuppe","carta.gourmande":"Parma ham, rocket, cherry tomatoes, mozzarella di bufala",
+      "carta.pasta":"Fresh pasta","carta.seafoodcap":"Tagliolini · gambero rosso","carta.salads":"Salads & Dolci","carta.tiramisu":"homemade",
+      "puccia.eye":"The speciality","puccia.title":"The Puccia","puccia.body":"Puglia's stuffed flatbread — warm, generous, made to order. A true regional signature, rare in Luxembourg. Choose your filling.",
+      "puccia.cta":"Enjoy it in-house","puccia.f1":"creamy, tomato, basil","puccia.f2":"Parma ham","puccia.f3":"speck tirolese","puccia.f4":"smoked salmon","puccia.f5":"rocket, parmesan",
+      "pranzo.eye":"Il Pranzo","pranzo.title":"The Kirchberg lunch","pranzo.note":"Midday suggestions for the plateau's offices. Rotates weekly — examples, to be confirmed.","pranzo.tr":"Ticket Restaurant · Chèque Repas",
+      "day.mon":"Monday","day.tue":"Tuesday","day.wed":"Wednesday","day.thu":"Thursday","day.fri":"Friday",
+      "pranzo.mon":"Sirloin, gorgonzola sauce","pranzo.tue":"Pasta with tuna, peppers & tomato","pranzo.wed":"Roast turkey, mushrooms","pranzo.thu":"Pasta alla Norma","pranzo.fri":"Black pollock fillet",
+      "storia.eye":"Antichi Sapori","storia.title":"The 'ancient flavours', passed on",
+      "storia.p1":"'Antichi sapori' — the flavours of old. Apulia brings Puglia to Luxembourg: hand-rolled orecchiette, Neapolitan pizza, mozzarella di bufala and that southern generosity where you share without counting.",
+      "storia.chef":"In the kitchen, chef Vito Colapietro adds a personal touch to every plate. <span class='conf'>(chef to be confirmed)</span>",
+      "storia.quote":"'The sun of Puglia, on the plate.'","storia.cap":"The dining room · Kirchberg Shopping, near Kinepolis",
+      "visite.eye":"La Visita","visite.hours":"Opening hours","visite.sun":"Sunday closed","conf.long":"to be confirmed with the venue",
+      "visite.addr":"Address","visite.mall":"Kirchberg Shopping Center (Auchan)","visite.contact":"Contact","visite.email":"e-mail to be confirmed","visite.services":"Services & comfort",
+      "amen.terrace":"Terrace","amen.parking":"Free parking","amen.takeaway":"Takeaway","amen.seats":"100+ seats","amen.tr":"Ticket Restaurant","amen.cards":"Visa · Mastercard · Maestro",
+      "foot.addr":"Address","foot.tel":"Phone","foot.demo":"Demonstration website — unofficial. Content, prices and hours are indicative, to be confirmed with the venue."
+    }
+  };
+
+  function setLang(lang){
+    const dict = I18N[lang] || I18N.fr;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const v = dict[el.getAttribute('data-i18n')];
+      if(v!==undefined) el.innerHTML = v;
+    });
+    document.querySelectorAll('.langs button').forEach(b=>{
+      b.classList.toggle('on', b.getAttribute('data-lang')===lang);
+    });
+    try{ localStorage.setItem('apulia-lang', lang); }catch(e){}
+  }
+  document.querySelectorAll('.langs button').forEach(b=>{
+    b.addEventListener('click',()=>setLang(b.getAttribute('data-lang')));
+  });
+  // default stays French (in-HTML). Only re-apply if a non-FR pref was stored.
+  try{ const s=localStorage.getItem('apulia-lang'); if(s && s!=='fr') setLang(s); }catch(e){}
+</script>
+</body>
+</html>

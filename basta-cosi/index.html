@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Basta Così — Restaurant Italien · Luxembourg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --purple:#3B1E8F;
+    --purple-deep:#2A1266;
+    --purple-ink:#1B0C48;
+    --green:#3FB34F;
+    --green-deep:#2E9440;
+    --cream:#EFE3D8;
+    --cream-soft:#F6EFE7;
+    --paper:#FBF7F1;
+    --red:#E8341C;
+    --wood:#7A5638;
+    --ink:#241a2e;
+    --frame: 2px;
+    --serif:'Cormorant Garamond', Georgia, serif;
+    --sans:'Hanken Grotesk', system-ui, sans-serif;
+    --script:'Pinyon Script', cursive;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 12% 8%, rgba(59,30,143,.05), transparent 45%),
+      radial-gradient(circle at 88% 92%, rgba(63,179,79,.06), transparent 45%),
+      var(--cream);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  /* ---------- MASTHEAD CORNICE ---------- */
+  .cornice{
+    position:sticky;top:0;z-index:60;
+    background:var(--purple);
+    border-bottom:3px solid var(--green);
+    color:var(--cream);
+  }
+  .cornice__in{
+    max-width:1440px;margin:0 auto;
+    display:flex;align-items:center;gap:24px;
+    padding:14px 32px;
+  }
+  .brand{display:flex;align-items:center;gap:14px;margin-right:auto}
+  .brand img{height:46px;width:auto}
+  .brand .tag{
+    font-family:var(--serif);font-style:italic;font-size:.95rem;
+    color:#cdbfe8;border-left:1px solid rgba(255,255,255,.28);
+    padding-left:14px;letter-spacing:.02em;
+  }
+  .nav{display:flex;gap:26px;align-items:center}
+  .nav a{
+    font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
+    font-weight:600;color:#d9cff0;transition:color .2s;
+  }
+  .nav a:hover{color:#fff}
+  .actions{display:flex;gap:10px;align-items:center}
+  .btn{
+    font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700;
+    padding:10px 16px;border-radius:2px;border:1.5px solid transparent;
+    cursor:pointer;transition:all .2s;white-space:nowrap;
+  }
+  .btn--red{background:var(--red);color:#fff}
+  .btn--red:hover{background:#c9280f}
+  .btn--ghost{border-color:var(--green);color:var(--cream)}
+  .btn--ghost:hover{background:var(--green);color:var(--purple-ink)}
+  .lang{display:flex;gap:2px;margin-left:6px;border:1px solid rgba(255,255,255,.25);border-radius:2px;overflow:hidden}
+  .lang button{
+    background:transparent;border:0;color:#cbbdea;cursor:pointer;
+    font-family:var(--sans);font-weight:700;font-size:.68rem;letter-spacing:.08em;
+    padding:8px 9px;transition:all .18s;
+  }
+  .lang button.on{background:var(--green);color:var(--purple-ink)}
+  .lang button:hover:not(.on){color:#fff}
+
+  /* ---------- WALL / QUADRERIA GRID ---------- */
+  .wall{
+    max-width:1440px;margin:0 auto;
+    padding:34px 32px;
+    display:grid;grid-template-columns:repeat(12,1fr);
+    gap:20px;grid-auto-rows:minmax(10px,auto);
+  }
+  .tile{position:relative;border-radius:3px;overflow:hidden}
+  /* framed-picture look: green mat frame + shadow */
+  .frame{
+    border:var(--frame) solid var(--green);
+    background:#fff;padding:8px;
+    box-shadow:0 12px 30px -14px rgba(27,12,72,.5);
+  }
+  .frame .pic{position:relative;overflow:hidden;height:100%;width:100%}
+  .frame .pic img{width:100%;height:100%;object-fit:cover;display:block}
+  .cap{
+    position:absolute;left:10px;bottom:10px;right:10px;
+    display:flex;justify-content:space-between;align-items:flex-end;gap:10px;
+    color:#fff;pointer-events:none;
+  }
+  .cap .k{
+    font-family:var(--serif);font-style:italic;font-size:1.35rem;line-height:1;
+    text-shadow:0 2px 12px rgba(0,0,0,.7);
+  }
+  .cap .n{
+    font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+    background:rgba(27,12,72,.72);padding:5px 8px;border-radius:2px;
+  }
+  .pic::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 45%,rgba(20,10,45,.55));
+    pointer-events:none;
+  }
+
+  /* HERO */
+  .t-hero{grid-column:span 8;grid-row:span 2;min-height:520px}
+  .t-hero .pic{border-radius:2px}
+  .hero-overlay{
+    position:absolute;inset:8px;z-index:3;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:34px;color:#fff;
+  }
+  .hero-overlay .eyebrow{
+    font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;
+    color:#8fe19a;margin-bottom:14px;
+  }
+  .hero-overlay h1{
+    font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,4.4vw,4.6rem);
+    line-height:1.02;letter-spacing:.005em;text-shadow:0 3px 24px rgba(0,0,0,.55);
+    max-width:16ch;
+  }
+  .hero-overlay h1 em{font-style:italic;color:#ffe9b0}
+  .hero-overlay .sub{
+    margin-top:16px;font-size:1.02rem;max-width:44ch;color:#efe6ff;
+    text-shadow:0 2px 12px rgba(0,0,0,.6);
+  }
+  .hero-overlay .cta{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap}
+  .hero-overlay .cta .btn{font-size:.75rem;padding:13px 22px}
+
+  /* MANIFESTO purple tile */
+  .t-manifesto{
+    grid-column:span 4;grid-row:span 2;
+    background:
+      radial-gradient(circle at 80% 12%, rgba(63,179,79,.22), transparent 55%),
+      var(--purple);
+    color:var(--cream);
+    border:var(--frame) solid var(--green);
+    padding:34px 30px;display:flex;flex-direction:column;
+  }
+  .t-manifesto .mono{
+    font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;
+    color:#8fe19a;margin-bottom:auto;
+  }
+  .t-manifesto .quote{
+    font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:clamp(1.7rem,2.3vw,2.35rem);line-height:1.18;margin:26px 0 18px;
+  }
+  .t-manifesto .quote .cosi{font-family:var(--script);font-style:normal;font-size:1.5em;color:#fff;line-height:.6}
+  .t-manifesto .quote .acc{color:var(--red)}
+  .t-manifesto p{font-size:.95rem;color:#d9ccf2;max-width:38ch}
+  .t-manifesto .sign{margin-top:22px;font-family:var(--serif);font-style:italic;font-size:1.15rem;color:#ffe9b0}
+
+  /* small stat tiles */
+  .t-stat{
+    grid-column:span 4;background:var(--cream-soft);
+    border:var(--frame) solid var(--green);
+    padding:22px 24px;display:flex;flex-direction:column;justify-content:center;
+  }
+  .t-stat .big{font-family:var(--serif);font-weight:600;font-size:2.6rem;line-height:.95;color:var(--purple)}
+  .t-stat .lbl{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--wood);margin-top:8px}
+
+  /* OVEN wide tile */
+  .t-oven{grid-column:span 8;min-height:230px}
+  .t-oven .cap .k{color:#ffcf8a}
+
+  /* food squares */
+  .t-food{grid-column:span 3;min-height:220px}
+
+  /* SECTION HEADERS as framed labels on the wall */
+  .wall-head{
+    grid-column:1 / -1;display:flex;align-items:flex-end;justify-content:space-between;
+    gap:20px;margin-top:20px;padding-bottom:6px;border-bottom:1px dashed rgba(59,30,143,.28);
+    flex-wrap:wrap;
+  }
+  .wall-head .lhs{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .wall-head h2{
+    font-family:var(--serif);font-weight:600;font-size:clamp(2rem,3vw,2.9rem);
+    color:var(--purple);line-height:1;
+  }
+  .wall-head h2 em{font-style:italic;color:var(--red)}
+  .wall-head .kick{
+    font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--green-deep);
+  }
+  .wall-head .note{
+    font-size:.72rem;color:var(--wood);font-style:italic;max-width:40ch;text-align:right;
+  }
+
+  /* MENU category tiles */
+  .t-cat{
+    grid-column:span 4;background:var(--paper);
+    border:var(--frame) solid var(--green);
+    padding:24px 24px 22px;display:flex;flex-direction:column;
+  }
+  .t-cat.feature{background:var(--purple);color:var(--cream);border-color:var(--green)}
+  .t-cat h3{
+    font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.7rem;
+    color:var(--purple);display:flex;align-items:baseline;gap:10px;margin-bottom:4px;
+  }
+  .t-cat.feature h3{color:#fff}
+  .t-cat h3 .no{
+    font-family:var(--sans);font-style:normal;font-size:.66rem;font-weight:700;
+    letter-spacing:.14em;color:var(--green-deep);
+  }
+  .t-cat.feature h3 .no{color:#8fe19a}
+  .t-cat .csub{font-size:.8rem;color:var(--wood);margin-bottom:16px;font-style:italic}
+  .t-cat.feature .csub{color:#c9bce8}
+  .dish{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px dotted rgba(59,30,143,.2)}
+  .t-cat.feature .dish{border-bottom-color:rgba(255,255,255,.16)}
+  .dish:last-child{border-bottom:0}
+  .dish .dn{font-family:var(--serif);font-size:1.16rem;font-weight:500;color:var(--ink)}
+  .t-cat.feature .dish .dn{color:#fff}
+  .dish .dd{font-size:.75rem;color:var(--wood);display:block;font-family:var(--sans);font-style:italic}
+  .t-cat.feature .dish .dd{color:#c9bce8}
+  .dish .pr{
+    font-family:var(--sans);font-weight:700;font-size:.9rem;color:var(--red);white-space:nowrap;
+    letter-spacing:.01em;
+  }
+  .t-cat.feature .dish .pr{color:#ffcf8a}
+
+  /* FAST tile */
+  .t-fast{
+    grid-column:span 12;
+    background:
+      linear-gradient(105deg, var(--red) 0 42%, #c9280f 42% 100%);
+    color:#fff;border:var(--frame) solid var(--green);
+    display:grid;grid-template-columns:1.3fr 1fr;gap:0;overflow:hidden;
+  }
+  .t-fast .l{padding:34px 40px;display:flex;flex-direction:column;justify-content:center}
+  .t-fast .bolt{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:#ffe0d9}
+  .t-fast h3{font-family:var(--serif);font-weight:600;font-style:italic;font-size:clamp(2rem,3vw,3rem);margin:8px 0 10px;line-height:1}
+  .t-fast p{max-width:46ch;color:#ffe6e0;font-size:.98rem}
+  .t-fast .r{
+    padding:34px 40px;display:flex;flex-direction:column;justify-content:center;gap:14px;
+    background:rgba(27,12,72,.16);
+  }
+  .t-fast .r .row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.2)}
+  .t-fast .r .row:last-child{border-bottom:0;padding-bottom:0}
+  .t-fast .r .rt{font-family:var(--serif);font-style:italic;font-size:1.25rem}
+  .t-fast .r .rp{font-weight:700;font-size:.82rem;letter-spacing:.05em}
+
+  /* VENUE tiles */
+  .t-venue{
+    grid-column:span 6;background:#fff;border:var(--frame) solid var(--green);
+    display:flex;flex-direction:column;overflow:hidden;
+  }
+  .t-venue .banner{position:relative;height:190px}
+  .t-venue .banner img{width:100%;height:100%;object-fit:cover}
+  .t-venue .banner .flag{
+    position:absolute;top:14px;left:14px;background:var(--purple);color:var(--cream);
+    font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+    padding:6px 11px;border-radius:2px;border:1px solid var(--green);
+  }
+  .t-venue .banner .flag.alt{background:var(--wood)}
+  .t-venue .vin{padding:24px 26px;display:flex;flex-direction:column;gap:14px;flex:1}
+  .t-venue h3{font-family:var(--serif);font-weight:600;font-size:1.7rem;color:var(--purple)}
+  .t-venue h3 span{font-style:italic;color:var(--wood);font-size:1rem;display:block;font-weight:400}
+  .vrow{display:flex;gap:12px;font-size:.9rem;align-items:flex-start}
+  .vrow .ic{color:var(--green-deep);font-weight:700;min-width:20px}
+  .vrow a{border-bottom:1px solid transparent;transition:border .2s}
+  .vrow a:hover{border-bottom-color:var(--red)}
+  .vconf{font-size:.7rem;color:var(--wood);font-style:italic}
+  .vmap{margin-top:auto;border:1px solid rgba(59,30,143,.25);border-radius:2px;overflow:hidden;height:170px}
+  .vmap iframe{width:100%;height:100%;border:0;filter:saturate(.9)}
+  .vcta{display:flex;gap:10px;flex-wrap:wrap}
+  .vcta .btn{font-size:.68rem}
+  .btn--purple{background:var(--purple);color:var(--cream)}
+  .btn--purple:hover{background:var(--purple-deep)}
+  .btn--pline{border:1.5px solid var(--purple);color:var(--purple)}
+  .btn--pline:hover{background:var(--purple);color:#fff}
+
+  /* EVENTS tile */
+  .t-event{
+    grid-column:span 12;background:var(--purple-deep);color:var(--cream);
+    border:var(--frame) solid var(--green);
+    display:grid;grid-template-columns:1fr 1fr;overflow:hidden;
+  }
+  .t-event .pic{position:relative;min-height:280px}
+  .t-event .pic img{width:100%;height:100%;object-fit:cover}
+  .t-event .body{padding:44px 46px;display:flex;flex-direction:column;justify-content:center}
+  .t-event .kick{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:#8fe19a}
+  .t-event h3{font-family:var(--serif);font-weight:500;font-style:italic;font-size:clamp(2rem,3vw,3.1rem);margin:12px 0;line-height:1.05}
+  .t-event p{color:#d5c9ef;max-width:46ch;margin-bottom:22px}
+  .t-event .chips{display:flex;gap:10px;flex-wrap:wrap}
+  .chip{border:1px solid var(--green);color:#bfeec6;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:7px 12px;border-radius:2px}
+
+  /* FOOTER */
+  footer{
+    background:var(--purple-ink);color:#cdbfe8;
+    border-top:3px solid var(--green);margin-top:40px;
+  }
+  .foot{max-width:1440px;margin:0 auto;padding:44px 32px 30px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+  .foot img{height:52px;margin-bottom:14px}
+  .foot h4{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#8fe19a;margin-bottom:14px;font-weight:700}
+  .foot a{display:block;font-size:.9rem;padding:3px 0;color:#d9cff0}
+  .foot a:hover{color:#fff}
+  .foot .desc{font-size:.9rem;color:#b3a5d6;max-width:38ch}
+  .foot .social{display:flex;gap:10px;margin-top:14px}
+  .foot .social a{border:1px solid rgba(255,255,255,.25);border-radius:2px;padding:6px 12px;font-size:.72rem;letter-spacing:.08em}
+  .legal{
+    border-top:1px solid rgba(255,255,255,.12);margin-top:8px;
+    padding:18px 32px 30px;max-width:1440px;margin-left:auto;margin-right:auto;
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    font-size:.74rem;color:#8f81b8;
+  }
+  .legal .demo{color:#ffcf8a;font-style:italic}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:1080px){
+    .t-hero{grid-column:span 12;grid-row:span 1;min-height:440px}
+    .t-manifesto{grid-column:span 12;grid-row:span 1}
+    .t-oven{grid-column:span 8}
+    .t-stat{grid-column:span 4}
+    .t-food{grid-column:span 6}
+    .t-cat{grid-column:span 6}
+    .t-venue{grid-column:span 12}
+  }
+  @media(max-width:820px){
+    .cornice__in{flex-wrap:wrap;gap:12px;padding:12px 18px}
+    .brand{margin-right:0;width:100%}
+    .brand .tag{display:none}
+    .nav{display:none}
+    .actions{margin-left:auto}
+    .wall{padding:22px 16px;gap:14px}
+    .t-oven,.t-stat,.t-food,.t-cat{grid-column:span 12}
+    .t-fast{grid-template-columns:1fr}
+    .t-event{grid-template-columns:1fr}
+    .t-event .pic{min-height:220px}
+    .foot{grid-template-columns:1fr}
+    .hero-overlay{padding:22px}
+    .wall-head .note{text-align:left}
+  }
+  @media(max-width:500px){
+    .actions .btn{padding:9px 11px;font-size:.66rem}
+    .t-fast .l,.t-fast .r,.t-event .body{padding:26px 22px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ CORNICE / MASTHEAD ============ -->
+<header class="cornice">
+  <div class="cornice__in">
+    <a class="brand" href="#top" aria-label="Basta Così">
+      <img src="assets/logo-white.png" alt="Basta Così" />
+      <span class="tag" data-i18n="brandTag">Restaurant Italien · au feu de bois</span>
+    </a>
+    <nav class="nav">
+      <a href="#carta" data-i18n="navMenu">La Carte</a>
+      <a href="#fast" data-i18n="navFast">Le Fast</a>
+      <a href="#maisons" data-i18n="navVenues">Nos Maisons</a>
+      <a href="#events" data-i18n="navEvents">Événements</a>
+    </nav>
+    <div class="actions">
+      <a class="btn btn--ghost" href="https://www.wedely.com/restaurant/540-basta-cosi-glacis" target="_blank" rel="noopener" data-i18n="navOrder">Commander</a>
+      <a class="btn btn--red" href="tel:+35226268555" data-i18n="navBook">Réserver</a>
+      <div class="lang" role="group" aria-label="Langue">
+        <button data-lang="fr" class="on">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ WALL 1 — HERO QUADRERIA ============ -->
+  <section class="wall">
+
+    <!-- HERO -->
+    <article class="tile frame t-hero">
+      <div class="pic"><img src="assets/hero.jpg" alt="Salle véranda du Basta Così au Glacis" /></div>
+      <div class="hero-overlay">
+        <div class="eyebrow" data-i18n="heroKick">Luxembourg · Glacis &amp; Louvigny</div>
+        <h1 data-i18n="heroTitle">L'Italie, <em>comme à la maison.</em></h1>
+        <p class="sub" data-i18n="heroSub">Cuisine familiale des régions d'Italie, pizzas au feu de bois et pâtes fraîches — préparées devant vous. « Rien comme tout le monde. »</p>
+        <div class="cta">
+          <a class="btn btn--red" href="tel:+35226268555" data-i18n="heroBook">Réserver une table</a>
+          <a class="btn btn--ghost" href="#carta" data-i18n="heroSee">Voir la carte</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- MANIFESTO -->
+    <aside class="tile t-manifesto">
+      <div class="mono" data-i18n="manKick">La Maison</div>
+      <blockquote class="quote">
+        <span data-i18n="manQuote">« Le Basta Così ne fait décidément rien comme tout le monde. »</span>
+      </blockquote>
+      <p data-i18n="manBody">Une trattoria de famille née rue Louvigny, près de la Place d'Armes, devenue une adresse phare au Glacis. Produits travaillés sous vos yeux, desserts maison, et ce four à bois qui donne le ton.</p>
+      <div class="sign">basta <span style="font-family:var(--script);font-size:1.5em">Così</span></div>
+    </aside>
+
+    <!-- OVEN -->
+    <article class="tile frame t-oven">
+      <div class="pic"><img src="assets/hero-oven.jpg" alt="Four à bois en flammes" /></div>
+      <div class="cap">
+        <span class="k" data-i18n="ovenCap">Au feu de bois, depuis toujours</span>
+        <span class="n" data-i18n="ovenTag">Forno a legna</span>
+      </div>
+    </article>
+
+    <!-- STAT -->
+    <div class="tile t-stat">
+      <div class="big">2</div>
+      <div class="lbl" data-i18n="stat1">Maisons à Luxembourg</div>
+      <div class="big" style="margin-top:16px">~110</div>
+      <div class="lbl" data-i18n="stat2">Convives · banquets &amp; mariages</div>
+    </div>
+
+    <!-- FOOD SQUARES -->
+    <article class="tile frame t-food">
+      <div class="pic"><img src="assets/food-2-margherita.jpg" alt="Pizza Margherita" /></div>
+      <div class="cap"><span class="k">Margherita</span></div>
+    </article>
+    <article class="tile frame t-food">
+      <div class="pic"><img src="assets/food-1-diavola.jpg" alt="Pizza Diavola" /></div>
+      <div class="cap"><span class="k">Diavola</span></div>
+    </article>
+    <article class="tile frame t-food">
+      <div class="pic"><img src="assets/food-3-tagliatelle-bolognese.jpg" alt="Tagliatelle alla Bolognese" /></div>
+      <div class="cap"><span class="k">Tagliatelle</span></div>
+    </article>
+    <article class="tile frame t-food">
+      <div class="pic"><img src="assets/food-4-milanese.jpg" alt="Escalope milanaise" /></div>
+      <div class="cap"><span class="k">Milanese</span></div>
+    </article>
+
+  </section>
+
+  <!-- ============ WALL 2 — LA CARTA ============ -->
+  <section class="wall" id="carta">
+    <div class="wall-head">
+      <div class="lhs">
+        <span class="kick" data-i18n="menuKick">Al forno · Fatto in casa</span>
+        <h2 data-i18n="menuTitle">La <em>Carta</em></h2>
+      </div>
+      <p class="note" data-i18n="menuNote">Sélection de nos incontournables. Carte complète et prix à confirmer avec l'établissement.</p>
+    </div>
+
+    <!-- Pizze (feature) -->
+    <article class="tile t-cat feature">
+      <h3><span data-i18n="catPizze">Pizze</span> <span class="no" data-i18n="catPizzeNo">Au feu de bois</span></h3>
+      <div class="csub" data-i18n="catPizzeSub">Pâte longue fermentation, four à bois</div>
+      <div class="dish"><span class="dn">Margherita<span class="dd" data-i18n="dPizza1">Tomate, mozzarella, basilic</span></span><span class="pr">15,50 €</span></div>
+      <div class="dish"><span class="dn">Diavola<span class="dd" data-i18n="dPizza2">Salami piquant</span></span><span class="pr">18,90 €</span></div>
+      <div class="dish"><span class="dn">Quattro Stagioni<span class="dd" data-i18n="dPizza3">Quatre saisons</span></span><span class="pr">17,50 €</span></div>
+      <div class="dish"><span class="dn">Margherita di Bufala<span class="dd" data-i18n="dPizza4">Mozzarella de bufflonne</span></span><span class="pr">18,90 €</span></div>
+      <div class="dish"><span class="dn">Frutti di Mare<span class="dd" data-i18n="dPizza5">Fruits de mer</span></span><span class="pr">23,90 €</span></div>
+    </article>
+
+    <!-- Pasta -->
+    <article class="tile t-cat">
+      <h3><span data-i18n="catPasta">Pasta</span> <span class="no" data-i18n="catPastaNo">Fraîche</span></h3>
+      <div class="csub" data-i18n="catPastaSub">Pâtes fraîches, sauces maison</div>
+      <div class="dish"><span class="dn">Spaghetti alla Carbonara</span><span class="pr">22,90 €</span></div>
+      <div class="dish"><span class="dn">Tagliatelle alla Bolognese</span><span class="pr">22,90 €</span></div>
+      <div class="dish"><span class="dn">Linguine alle Vongole<span class="dd" data-i18n="dPasta1">Palourdes</span></span><span class="pr">28,90 €</span></div>
+      <div class="dish"><span class="dn">Paccheri al Pesto di Pistacchio</span><span class="pr">26,90 €</span></div>
+      <div class="dish"><span class="dn">Penne all'Arrabbiata</span><span class="pr">18,90 €</span></div>
+    </article>
+
+    <!-- Antipasti -->
+    <article class="tile t-cat">
+      <h3><span data-i18n="catAnti">Antipasti</span> <span class="no" data-i18n="catAntiNo">Salumi</span></h3>
+      <div class="csub" data-i18n="catAntiSub">Pour commencer, à partager</div>
+      <div class="dish"><span class="dn">Bruschetta alla Romana</span><span class="pr">10,50 €</span></div>
+      <div class="dish"><span class="dn">Prosciutto San Daniele 28 Mesi</span><span class="pr">14,90 €</span></div>
+      <div class="dish"><span class="dn">Vitello Tonnato</span><span class="pr">18,50 €</span></div>
+      <div class="dish"><span class="dn">Tartare di Salmone agli Agrumi</span><span class="pr">19,90 €</span></div>
+      <div class="dish"><span class="dn">Salumi e Formaggi<span class="dd" data-i18n="dAnti1">Assortiment charcuteries &amp; fromages</span></span><span class="pr">27,90 €</span></div>
+    </article>
+
+    <!-- Dolci -->
+    <article class="tile t-cat">
+      <h3><span data-i18n="catDolci">Dolci</span> <span class="no" data-i18n="catDolciNo">Faits maison</span></h3>
+      <div class="csub" data-i18n="catDolciSub">Tous nos desserts sont faits maison</div>
+      <div class="dish"><span class="dn">Tiramisù</span><span class="pr">6,50 €</span></div>
+      <div class="dish"><span class="dn">Panna Cotta ai Frutti di Bosco</span><span class="pr">6,50 €</span></div>
+      <div class="dish"><span class="dn">Cheesecake Caramello &amp; Speculoos</span><span class="pr">6,50 €</span></div>
+      <div class="dish"><span class="dn">Mousse al Cioccolato</span><span class="pr">6,50 €</span></div>
+    </article>
+
+    <!-- Vini -->
+    <article class="tile t-cat">
+      <h3><span data-i18n="catVini">Vini</span> <span class="no" data-i18n="catViniNo">Carte des vins</span></h3>
+      <div class="csub" data-i18n="catViniSub">Rouges, blancs &amp; bulles d'Italie</div>
+      <div class="dish"><span class="dn" data-i18n="dVini1">Rouges</span><span class="pr" data-i18n="dViniP1">dès 31,50 €</span></div>
+      <div class="dish"><span class="dn" data-i18n="dVini2">Blancs</span><span class="pr">39–105 €</span></div>
+      <div class="dish"><span class="dn" data-i18n="dVini3">Bulles &amp; Prosecco</span><span class="pr" data-i18n="dViniP3">au verre &amp; bouteille</span></div>
+      <div class="dish"><span class="dn" data-i18n="dVini4">Conseil du sommelier</span><span class="pr" data-i18n="dViniP4">à table</span></div>
+    </article>
+
+    <!-- Also feature — full categories -->
+    <article class="tile t-cat feature">
+      <h3><span data-i18n="catMoreT">Et aussi</span></h3>
+      <div class="csub" data-i18n="catMoreSub">La carte complète en salle</div>
+      <p style="font-size:.95rem;color:#d9ccf2;line-height:1.7" data-i18n="catMoreBody">Insalate · Risotti · Gratinati · Pizze Bianche · Poissons · Viandes — une carte généreuse aux accents des régions italiennes, avec une touche française.</p>
+      <a class="btn btn--ghost" style="margin-top:18px;align-self:flex-start" href="https://www.wedely.com/restaurant/540-basta-cosi-glacis" target="_blank" rel="noopener" data-i18n="catMoreBtn">Voir la carte en ligne</a>
+    </article>
+  </section>
+
+  <!-- ============ WALL 3 — LE FAST ============ -->
+  <section class="wall" id="fast" style="padding-top:8px">
+    <article class="tile t-fast">
+      <div class="l">
+        <div class="bolt" data-i18n="fastKick">Service express · midi</div>
+        <h3 data-i18n="fastTitle">Le Fast</h3>
+        <p data-i18n="fastBody">La pause déjeuner des quartiers d'affaires : une formule rapide, servie sans compromis sur la qualité. Sur place, à emporter ou en livraison.</p>
+      </div>
+      <div class="r">
+        <div class="row"><span class="rt" data-i18n="fastR1">Sur place</span><span class="rp" data-i18n="fastR1p">Midi en semaine</span></div>
+        <div class="row"><span class="rt" data-i18n="fastR2">À emporter</span><span class="rp" data-i18n="fastR2p">Prêt en quelques minutes</span></div>
+        <div class="row"><span class="rt" data-i18n="fastR3">Livraison</span><span class="rp" data-i18n="fastR3p">Wolt &amp; Wedely</span></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ WALL 4 — NOS MAISONS ============ -->
+  <section class="wall" id="maisons">
+    <div class="wall-head">
+      <div class="lhs">
+        <span class="kick" data-i18n="venKick">Deux adresses, une famille</span>
+        <h2 data-i18n="venTitle">Nos <em>Maisons</em></h2>
+      </div>
+      <p class="note" data-i18n="venNote">Horaires indicatifs — à confirmer avec l'établissement.</p>
+    </div>
+
+    <!-- Glacis -->
+    <article class="tile t-venue">
+      <div class="banner">
+        <img src="assets/interior-1.jpg" alt="Salle du Basta Così Glacis" />
+        <span class="flag">Glacis · Limpertsberg</span>
+      </div>
+      <div class="vin">
+        <h3>Basta Così — Glacis <span data-i18n="glacisSub">Le vaisseau amiral · véranda &amp; terrasse</span></h3>
+        <div class="vrow"><span class="ic">◆</span><span>18 Avenue Pasteur, L-2310 Luxembourg</span></div>
+        <div class="vrow"><span class="ic">☎</span><a href="tel:+35226268555">+352 26 26 85 55</a></div>
+        <div class="vrow"><span class="ic">✉</span><a href="mailto:glacis@bastacosi.lu">glacis@bastacosi.lu</a></div>
+        <div class="vrow"><span class="ic">◷</span><span><span data-i18n="glacisHours">Déj. 11:30–14:00 · Dîner 18:30–22:30 (ven.–sam. 22:45) · Fermé dimanche</span> <span class="vconf" data-i18n="conf">(à confirmer)</span></span></div>
+        <div class="vcta">
+          <a class="btn btn--purple" href="tel:+35226268555" data-i18n="vBook">Réserver</a>
+          <a class="btn btn--pline" href="https://www.google.com/maps?q=18+Avenue+Pasteur,+L-2310+Luxembourg" target="_blank" rel="noopener" data-i18n="vDir">Itinéraire</a>
+        </div>
+        <div class="vmap"><iframe title="Carte Glacis" loading="lazy" src="https://www.google.com/maps?q=18+Avenue+Pasteur,+L-2310+Luxembourg&output=embed"></iframe></div>
+      </div>
+    </article>
+
+    <!-- Louvigny -->
+    <article class="tile t-venue">
+      <div class="banner">
+        <img src="assets/interior-3.jpg" alt="Salle du Basta Così Louvigny" />
+        <span class="flag alt">Louvigny · Centre-ville</span>
+      </div>
+      <div class="vin">
+        <h3>Basta Così — Louvigny <span data-i18n="louvSub">La maison d'origine · près de la Place d'Armes</span></h3>
+        <div class="vrow"><span class="ic">◆</span><span>10 Rue Louvigny, L-1946 Luxembourg</span></div>
+        <div class="vrow"><span class="ic">☎</span><a href="tel:+35226268585">+352 26 26 85 85</a></div>
+        <div class="vrow"><span class="ic">✉</span><a href="mailto:louvigny@bastacosi.lu">louvigny@bastacosi.lu</a></div>
+        <div class="vrow"><span class="ic">◷</span><span><span data-i18n="louvHours">Déj. 11:30–14:30 · Dîner 19:00–22:30 (ven.–sam. 22:45) · Fermé mar. soir &amp; dimanche</span> <span class="vconf" data-i18n="conf2">(à confirmer)</span></span></div>
+        <div class="vcta">
+          <a class="btn btn--purple" href="tel:+35226268585" data-i18n="vBook2">Réserver</a>
+          <a class="btn btn--pline" href="https://www.google.com/maps?q=10+Rue+Louvigny,+L-1946+Luxembourg" target="_blank" rel="noopener" data-i18n="vDir2">Itinéraire</a>
+        </div>
+        <div class="vmap"><iframe title="Carte Louvigny" loading="lazy" src="https://www.google.com/maps?q=10+Rue+Louvigny,+L-1946+Luxembourg&output=embed"></iframe></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ WALL 5 — EVENTS ============ -->
+  <section class="wall" id="events" style="padding-top:8px">
+    <article class="tile t-event">
+      <div class="pic"><img src="assets/interior-4.jpg" alt="Espace réception Basta Così" /></div>
+      <div class="body">
+        <div class="kick" data-i18n="evtKick">Banquets · Mariages · Séminaires</div>
+        <h3 data-i18n="evtTitle">Vos grandes tablées, chez nous.</h3>
+        <p data-i18n="evtBody">Le Glacis accueille vos événements jusqu'à ~110 convives : plusieurs espaces, une véranda vitrée rétractable et un service attentif pour mariages, anniversaires et repas d'entreprise.</p>
+        <div class="chips">
+          <span class="chip" data-i18n="evtC1">Jusqu'à ~110 personnes</span>
+          <span class="chip" data-i18n="evtC2">Véranda &amp; terrasse</span>
+          <span class="chip" data-i18n="evtC3">Accès PMR</span>
+          <span class="chip" data-i18n="evtC4">Menus sur mesure</span>
+        </div>
+        <a class="btn btn--red" style="margin-top:26px;align-self:flex-start" href="mailto:glacis@bastacosi.lu" data-i18n="evtBtn">Demander un devis</a>
+      </div>
+    </article>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot">
+    <div>
+      <img src="assets/logo-white.png" alt="Basta Così" />
+      <p class="desc" data-i18n="footDesc">Restaurant italien au feu de bois — cuisine familiale des régions d'Italie, à Luxembourg-Glacis et au centre-ville, rue Louvigny.</p>
+      <div class="social">
+        <a href="https://www.instagram.com/bastacosiglacis" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/bastacosiglacis" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div>
+      <h4 data-i18n="footNav">Explorer</h4>
+      <a href="#carta" data-i18n="footL1">La Carte</a>
+      <a href="#fast" data-i18n="footL2">Le Fast</a>
+      <a href="#maisons" data-i18n="footL3">Nos Maisons</a>
+      <a href="#events" data-i18n="footL4">Événements</a>
+      <a href="https://www.wedely.com/restaurant/540-basta-cosi-glacis" target="_blank" rel="noopener" data-i18n="footL5">Commander en ligne</a>
+    </div>
+    <div>
+      <h4 data-i18n="footContact">Contact</h4>
+      <a href="tel:+35226268555">Glacis · +352 26 26 85 55</a>
+      <a href="mailto:glacis@bastacosi.lu">glacis@bastacosi.lu</a>
+      <a href="tel:+35226268585">Louvigny · +352 26 26 85 85</a>
+      <a href="mailto:louvigny@bastacosi.lu">louvigny@bastacosi.lu</a>
+    </div>
+  </div>
+  <div class="legal">
+    <span>© <span id="yr"></span> Basta Così · Luxembourg</span>
+    <span class="demo" data-i18n="footDemo">Site de démonstration — contenu, horaires et prix à confirmer avec l'établissement.</span>
+  </div>
+</footer>
+
+<script>
+/* ---------- i18n dictionary (FR default in HTML) ---------- */
+const I18N = {
+  fr:{
+    brandTag:"Restaurant Italien · au feu de bois",
+    navMenu:"La Carte", navFast:"Le Fast", navVenues:"Nos Maisons", navEvents:"Événements",
+    navOrder:"Commander", navBook:"Réserver",
+    heroKick:"Luxembourg · Glacis & Louvigny",
+    heroTitle:"L'Italie, comme à la maison.",
+    heroSub:"Cuisine familiale des régions d'Italie, pizzas au feu de bois et pâtes fraîches — préparées devant vous. « Rien comme tout le monde. »",
+    heroBook:"Réserver une table", heroSee:"Voir la carte",
+    manKick:"La Maison",
+    manQuote:"« Le Basta Così ne fait décidément rien comme tout le monde. »",
+    manBody:"Une trattoria de famille née rue Louvigny, près de la Place d'Armes, devenue une adresse phare au Glacis. Produits travaillés sous vos yeux, desserts maison, et ce four à bois qui donne le ton.",
+    ovenCap:"Au feu de bois, depuis toujours", ovenTag:"Forno a legna",
+    stat1:"Maisons à Luxembourg", stat2:"Convives · banquets & mariages",
+    menuKick:"Al forno · Fatto in casa", menuTitle:"La Carta",
+    menuNote:"Sélection de nos incontournables. Carte complète et prix à confirmer avec l'établissement.",
+    catPizze:"Pizze", catPizzeNo:"Au feu de bois", catPizzeSub:"Pâte longue fermentation, four à bois",
+    dPizza1:"Tomate, mozzarella, basilic", dPizza2:"Salami piquant", dPizza3:"Quatre saisons", dPizza4:"Mozzarella de bufflonne", dPizza5:"Fruits de mer",
+    catPasta:"Pasta", catPastaNo:"Fraîche", catPastaSub:"Pâtes fraîches, sauces maison", dPasta1:"Palourdes",
+    catAnti:"Antipasti", catAntiNo:"Salumi", catAntiSub:"Pour commencer, à partager", dAnti1:"Assortiment charcuteries & fromages",
+    catDolci:"Dolci", catDolciNo:"Faits maison", catDolciSub:"Tous nos desserts sont faits maison",
+    catVini:"Vini", catViniNo:"Carte des vins", catViniSub:"Rouges, blancs & bulles d'Italie",
+    dVini1:"Rouges", dViniP1:"dès 31,50 €", dVini2:"Blancs", dVini3:"Bulles & Prosecco", dViniP3:"au verre & bouteille", dVini4:"Conseil du sommelier", dViniP4:"à table",
+    catMoreT:"Et aussi", catMoreSub:"La carte complète en salle",
+    catMoreBody:"Insalate · Risotti · Gratinati · Pizze Bianche · Poissons · Viandes — une carte généreuse aux accents des régions italiennes, avec une touche française.",
+    catMoreBtn:"Voir la carte en ligne",
+    fastKick:"Service express · midi", fastTitle:"Le Fast",
+    fastBody:"La pause déjeuner des quartiers d'affaires : une formule rapide, servie sans compromis sur la qualité. Sur place, à emporter ou en livraison.",
+    fastR1:"Sur place", fastR1p:"Midi en semaine", fastR2:"À emporter", fastR2p:"Prêt en quelques minutes", fastR3:"Livraison", fastR3p:"Wolt & Wedely",
+    venKick:"Deux adresses, une famille", venTitle:"Nos Maisons", venNote:"Horaires indicatifs — à confirmer avec l'établissement.",
+    glacisSub:"Le vaisseau amiral · véranda & terrasse",
+    glacisHours:"Déj. 11:30–14:00 · Dîner 18:30–22:30 (ven.–sam. 22:45) · Fermé dimanche", conf:"(à confirmer)",
+    vBook:"Réserver", vDir:"Itinéraire",
+    louvSub:"La maison d'origine · près de la Place d'Armes",
+    louvHours:"Déj. 11:30–14:30 · Dîner 19:00–22:30 (ven.–sam. 22:45) · Fermé mar. soir & dimanche", conf2:"(à confirmer)",
+    vBook2:"Réserver", vDir2:"Itinéraire",
+    evtKick:"Banquets · Mariages · Séminaires", evtTitle:"Vos grandes tablées, chez nous.",
+    evtBody:"Le Glacis accueille vos événements jusqu'à ~110 convives : plusieurs espaces, une véranda vitrée rétractable et un service attentif pour mariages, anniversaires et repas d'entreprise.",
+    evtC1:"Jusqu'à ~110 personnes", evtC2:"Véranda & terrasse", evtC3:"Accès PMR", evtC4:"Menus sur mesure", evtBtn:"Demander un devis",
+    footDesc:"Restaurant italien au feu de bois — cuisine familiale des régions d'Italie, à Luxembourg-Glacis et au centre-ville, rue Louvigny.",
+    footNav:"Explorer", footL1:"La Carte", footL2:"Le Fast", footL3:"Nos Maisons", footL4:"Événements", footL5:"Commander en ligne",
+    footContact:"Contact", footDemo:"Site de démonstration — contenu, horaires et prix à confirmer avec l'établissement."
+  },
+  de:{
+    brandTag:"Italienisches Restaurant · aus dem Holzofen",
+    navMenu:"Speisekarte", navFast:"Le Fast", navVenues:"Unsere Häuser", navEvents:"Events",
+    navOrder:"Bestellen", navBook:"Reservieren",
+    heroKick:"Luxemburg · Glacis & Louvigny",
+    heroTitle:"Italien, wie zu Hause.",
+    heroSub:"Familienküche aus den Regionen Italiens, Pizza aus dem Holzofen und frische Pasta — vor Ihren Augen zubereitet. „Nichts wie alle anderen.“",
+    heroBook:"Tisch reservieren", heroSee:"Zur Speisekarte",
+    manKick:"Das Haus",
+    manQuote:"„Basta Così macht entschieden nichts wie alle anderen.“",
+    manBody:"Eine Familien-Trattoria, entstanden in der Rue Louvigny nahe der Place d'Armes, heute eine feste Adresse am Glacis. Produkte vor Ihren Augen zubereitet, hausgemachte Desserts und dieser Holzofen, der den Ton angibt.",
+    ovenCap:"Aus dem Holzofen, seit jeher", ovenTag:"Forno a legna",
+    stat1:"Häuser in Luxemburg", stat2:"Gäste · Bankette & Hochzeiten",
+    menuKick:"Al forno · Hausgemacht", menuTitle:"La Carta",
+    menuNote:"Auswahl unserer Klassiker. Vollständige Karte und Preise beim Restaurant zu bestätigen.",
+    catPizze:"Pizze", catPizzeNo:"Aus dem Holzofen", catPizzeSub:"Lange geführter Teig, Holzofen",
+    dPizza1:"Tomate, Mozzarella, Basilikum", dPizza2:"Scharfe Salami", dPizza3:"Vier Jahreszeiten", dPizza4:"Büffelmozzarella", dPizza5:"Meeresfrüchte",
+    catPasta:"Pasta", catPastaNo:"Frisch", catPastaSub:"Frische Pasta, hausgemachte Saucen", dPasta1:"Venusmuscheln",
+    catAnti:"Antipasti", catAntiNo:"Salumi", catAntiSub:"Zum Beginnen, zum Teilen", dAnti1:"Auswahl an Wurst & Käse",
+    catDolci:"Dolci", catDolciNo:"Hausgemacht", catDolciSub:"Alle Desserts sind hausgemacht",
+    catVini:"Vini", catViniNo:"Weinkarte", catViniSub:"Rot, Weiß & Schaumwein aus Italien",
+    dVini1:"Rotweine", dViniP1:"ab 31,50 €", dVini2:"Weißweine", dVini3:"Schaumwein & Prosecco", dViniP3:"glasweise & Flasche", dVini4:"Empfehlung des Sommeliers", dViniP4:"am Tisch",
+    catMoreT:"Und außerdem", catMoreSub:"Vollständige Karte im Restaurant",
+    catMoreBody:"Insalate · Risotti · Gratinati · Pizze Bianche · Fisch · Fleisch — eine großzügige Karte mit den Aromen der italienischen Regionen und französischem Touch.",
+    catMoreBtn:"Karte online ansehen",
+    fastKick:"Express-Service · mittags", fastTitle:"Le Fast",
+    fastBody:"Die Mittagspause fürs Geschäftsviertel: schnell serviert, ohne Kompromisse bei der Qualität. Vor Ort, zum Mitnehmen oder als Lieferung.",
+    fastR1:"Vor Ort", fastR1p:"Werktags mittags", fastR2:"Zum Mitnehmen", fastR2p:"In wenigen Minuten fertig", fastR3:"Lieferung", fastR3p:"Wolt & Wedely",
+    venKick:"Zwei Adressen, eine Familie", venTitle:"Unsere Häuser", venNote:"Richtwerte — beim Restaurant zu bestätigen.",
+    glacisSub:"Das Flaggschiff · Wintergarten & Terrasse",
+    glacisHours:"Mittag 11:30–14:00 · Abend 18:30–22:30 (Fr–Sa 22:45) · Sonntag geschlossen", conf:"(zu bestätigen)",
+    vBook:"Reservieren", vDir:"Route",
+    louvSub:"Das Stammhaus · nahe der Place d'Armes",
+    louvHours:"Mittag 11:30–14:30 · Abend 19:00–22:30 (Fr–Sa 22:45) · Di Abend & Sonntag geschlossen", conf2:"(zu bestätigen)",
+    vBook2:"Reservieren", vDir2:"Route",
+    evtKick:"Bankette · Hochzeiten · Seminare", evtTitle:"Ihre großen Tafeln, bei uns.",
+    evtBody:"Am Glacis empfangen wir Ihre Events bis ~110 Gäste: mehrere Räume, ein einfahrbarer Glas-Wintergarten und aufmerksamer Service für Hochzeiten, Geburtstage und Firmenessen.",
+    evtC1:"Bis ~110 Personen", evtC2:"Wintergarten & Terrasse", evtC3:"Barrierefrei", evtC4:"Maßgeschneiderte Menüs", evtBtn:"Angebot anfragen",
+    footDesc:"Italienisches Restaurant aus dem Holzofen — Familienküche aus den Regionen Italiens, in Luxemburg-Glacis und im Zentrum, Rue Louvigny.",
+    footNav:"Entdecken", footL1:"Speisekarte", footL2:"Le Fast", footL3:"Unsere Häuser", footL4:"Events", footL5:"Online bestellen",
+    footContact:"Kontakt", footDemo:"Demo-Website — Inhalte, Öffnungszeiten und Preise beim Restaurant zu bestätigen."
+  },
+  en:{
+    brandTag:"Italian Restaurant · wood-fired",
+    navMenu:"Menu", navFast:"Le Fast", navVenues:"Our Houses", navEvents:"Events",
+    navOrder:"Order", navBook:"Book",
+    heroKick:"Luxembourg · Glacis & Louvigny",
+    heroTitle:"Italy, the way it should taste.",
+    heroSub:"Family cooking from the regions of Italy, wood-fired pizza and fresh pasta — prepared in front of you. “Nothing like everyone else.”",
+    heroBook:"Book a table", heroSee:"See the menu",
+    manKick:"The House",
+    manQuote:"“Basta Così truly does nothing like everyone else.”",
+    manBody:"A family trattoria born on Rue Louvigny by the Place d'Armes, now a flagship address at the Glacis. Ingredients worked in front of you, homemade desserts, and a wood-fired oven that sets the tone.",
+    ovenCap:"Wood-fired, always", ovenTag:"Forno a legna",
+    stat1:"Houses in Luxembourg", stat2:"Guests · banquets & weddings",
+    menuKick:"Al forno · Homemade", menuTitle:"La Carta",
+    menuNote:"A selection of our signatures. Full menu and prices to be confirmed with the restaurant.",
+    catPizze:"Pizze", catPizzeNo:"Wood-fired", catPizzeSub:"Long-fermented dough, wood-fired oven",
+    dPizza1:"Tomato, mozzarella, basil", dPizza2:"Spicy salami", dPizza3:"Four seasons", dPizza4:"Buffalo mozzarella", dPizza5:"Seafood",
+    catPasta:"Pasta", catPastaNo:"Fresh", catPastaSub:"Fresh pasta, homemade sauces", dPasta1:"Clams",
+    catAnti:"Antipasti", catAntiNo:"Salumi", catAntiSub:"To begin, to share", dAnti1:"Cured meats & cheese board",
+    catDolci:"Dolci", catDolciNo:"Homemade", catDolciSub:"All our desserts are made in-house",
+    catVini:"Vini", catViniNo:"Wine list", catViniSub:"Reds, whites & sparkling from Italy",
+    dVini1:"Reds", dViniP1:"from €31.50", dVini2:"Whites", dVini3:"Sparkling & Prosecco", dViniP3:"by glass & bottle", dVini4:"Sommelier's pick", dViniP4:"at the table",
+    catMoreT:"And also", catMoreSub:"Full menu in the dining room",
+    catMoreBody:"Insalate · Risotti · Gratinati · Pizze Bianche · Fish · Meats — a generous menu with the flavours of Italy's regions and a French touch.",
+    catMoreBtn:"View the menu online",
+    fastKick:"Express service · lunch", fastTitle:"Le Fast",
+    fastBody:"The business-district lunch break: a fast formula served with no compromise on quality. Dine in, takeaway or delivery.",
+    fastR1:"Dine in", fastR1p:"Weekday lunch", fastR2:"Takeaway", fastR2p:"Ready in minutes", fastR3:"Delivery", fastR3p:"Wolt & Wedely",
+    venKick:"Two addresses, one family", venTitle:"Our Houses", venNote:"Indicative hours — to be confirmed with the restaurant.",
+    glacisSub:"The flagship · veranda & terrace",
+    glacisHours:"Lunch 11:30–14:00 · Dinner 18:30–22:30 (Fri–Sat 22:45) · Closed Sunday", conf:"(to confirm)",
+    vBook:"Book", vDir:"Directions",
+    louvSub:"The original house · near Place d'Armes",
+    louvHours:"Lunch 11:30–14:30 · Dinner 19:00–22:30 (Fri–Sat 22:45) · Closed Tue eve & Sunday", conf2:"(to confirm)",
+    vBook2:"Book", vDir2:"Directions",
+    evtKick:"Banquets · Weddings · Seminars", evtTitle:"Your big tables, with us.",
+    evtBody:"The Glacis hosts your events for up to ~110 guests: several spaces, a retractable glass veranda and attentive service for weddings, birthdays and company dinners.",
+    evtC1:"Up to ~110 guests", evtC2:"Veranda & terrace", evtC3:"Wheelchair access", evtC4:"Bespoke menus", evtBtn:"Request a quote",
+    footDesc:"Wood-fired Italian restaurant — family cooking from the regions of Italy, in Luxembourg-Glacis and the city centre on Rue Louvigny.",
+    footNav:"Explore", footL1:"Menu", footL2:"Le Fast", footL3:"Our Houses", footL4:"Events", footL5:"Order online",
+    footContact:"Contact", footDemo:"Demonstration site — content, hours and prices to be confirmed with the restaurant."
+  }
+};
+
+function setLang(lang){
+  const dict = I18N[lang]; if(!dict) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[k]!==undefined) el.textContent = dict[k];
+  });
+  document.querySelectorAll('.lang button').forEach(b=>{
+    b.classList.toggle('on', b.dataset.lang===lang);
+  });
+}
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.dataset.lang));
+});
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Charles Sandwiches — Le Comptoir · Luxembourg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#EEEAE2; --cream-2:#F4F1EA; --paper:#E7E1D5;
+    --gold:#BE9C63; --gold-d:#846737; --brown:#725930;
+    --ink:#212529; --ink-2:#3a3f44; --black:#141210;
+    --tomato:#C0472E;
+    --rail-w:296px;
+    --hair:1px solid rgba(33,37,41,.16);
+    --gold-hair:1px solid var(--gold);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'EB Garamond',Georgia,serif;
+    color:var(--ink); background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(190,156,99,.06), transparent 42%),
+      radial-gradient(circle at 82% 78%, rgba(114,89,48,.05), transparent 46%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--gold);color:var(--cream)}
+
+  .disp{font-family:'Playfair Display',serif}
+  .mono{font-family:'Space Mono',monospace}
+  .ui{font-family:'Inter',sans-serif}
+
+  /* ============ SHELL: fixed order-rail + scrolling catalogue ============ */
+  .shell{display:flex;align-items:flex-start;min-height:100vh}
+
+  /* ---------- LEFT ORDER RAIL ---------- */
+  .rail{
+    width:var(--rail-w); flex:0 0 var(--rail-w);
+    position:sticky; top:0; height:100vh;
+    background:
+      linear-gradient(180deg,#1b1815,#26221c 60%,#1b1815);
+    color:var(--cream);
+    display:flex; flex-direction:column;
+    border-right:3px solid var(--gold);
+    box-shadow:6px 0 24px -12px rgba(0,0,0,.5);
+    z-index:40;
+  }
+  .rail::before{ /* brass spike line */
+    content:""; position:absolute; top:0; bottom:0; right:14px; width:2px;
+    background:linear-gradient(180deg,transparent,rgba(190,156,99,.5),transparent);
+  }
+  .rail-head{padding:26px 26px 14px;text-align:center;border-bottom:1px solid rgba(190,156,99,.28)}
+  .rail-logo{
+    background:var(--cream); border-radius:3px; padding:14px 12px 10px;
+    box-shadow:0 6px 18px -8px rgba(0,0,0,.6); position:relative;
+  }
+  .rail-logo::after{content:"";position:absolute;inset:5px;border:1px solid rgba(33,37,41,.18);border-radius:2px;pointer-events:none}
+  .rail-logo img{width:100%;filter:contrast(1.05)}
+  .rail-tag{margin-top:12px;font-size:10px;letter-spacing:.32em;color:var(--gold);text-transform:uppercase}
+
+  .rail-nav{flex:1 1 auto;overflow-y:auto;padding:16px 0 8px}
+  .rail-nav::-webkit-scrollbar{width:6px}
+  .rail-nav::-webkit-scrollbar-thumb{background:rgba(190,156,99,.4);border-radius:3px}
+  .rail-nav ol{list-style:none}
+  .rail-link{
+    display:flex;align-items:baseline;gap:12px;
+    padding:11px 24px 11px 28px; position:relative;
+    font-family:'Playfair Display',serif; font-size:17px; color:#e9e3d6;
+    transition:.18s; cursor:pointer;
+  }
+  .rail-link .rl-no{font-family:'Space Mono',monospace;font-size:11px;color:var(--gold);min-width:24px}
+  .rail-link:hover{background:rgba(190,156,99,.12);color:#fff;padding-left:34px}
+  .rail-link.active{color:#fff}
+  .rail-link.active::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;background:var(--gold)}
+
+  .rail-foot{padding:16px 24px 22px;border-top:1px solid rgba(190,156,99,.28)}
+  .rail-cta{
+    display:block;text-align:center;background:var(--gold);color:#211c14;
+    font-family:'Inter',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;
+    padding:13px;border-radius:3px;text-transform:uppercase;transition:.18s;
+    border:1px solid var(--gold);
+  }
+  .rail-cta:hover{background:transparent;color:var(--gold)}
+  .rail-mini{margin-top:14px;font-family:'Space Mono',monospace;font-size:11px;line-height:1.9;color:#c9c1b0}
+  .rail-mini a:hover{color:var(--gold)}
+  .rail-mini .dot{color:var(--gold)}
+
+  .lang{display:flex;gap:6px;margin-top:16px;justify-content:center}
+  .lang-btn{
+    font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.05em;
+    background:transparent;border:1px solid rgba(190,156,99,.5);color:#cdc4b2;
+    padding:5px 10px;border-radius:2px;cursor:pointer;transition:.15s;
+  }
+  .lang-btn:hover{border-color:var(--gold);color:#fff}
+  .lang-btn.on{background:var(--gold);color:#211c14;border-color:var(--gold);font-weight:700}
+
+  /* mobile rail toggle (hidden desktop) */
+  .rail-burger{display:none}
+
+  /* ---------- RIGHT CATALOGUE ---------- */
+  .cat{flex:1 1 auto;min-width:0}
+  .wrap{max-width:1240px;padding:0 clamp(28px,4vw,72px)}
+  section{scroll-margin-top:12px}
+
+  /* engraved plate frame system */
+  .plate{position:relative;background:var(--cream-2);border:var(--hair)}
+  .plate::before,.plate::after{content:"";position:absolute;width:22px;height:22px;pointer-events:none}
+  .brk{position:absolute;width:16px;height:16px;border:var(--gold-hair);pointer-events:none;z-index:2}
+  .brk.tl{top:8px;left:8px;border-right:0;border-bottom:0}
+  .brk.tr{top:8px;right:8px;border-left:0;border-bottom:0}
+  .brk.bl{bottom:8px;left:8px;border-right:0;border-top:0}
+  .brk.br{bottom:8px;right:8px;border-left:0;border-top:0}
+
+  .kicker{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-d)}
+  .rule-orn{display:flex;align-items:center;gap:14px;color:var(--gold)}
+  .rule-orn::before,.rule-orn::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .rule-orn svg{flex:0 0 auto}
+
+  /* ============ DEVANTURE (storefront hero) ============ */
+  .front{padding:34px 0 10px}
+  .enseigne{
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+    border-top:3px solid var(--ink);border-bottom:1px solid var(--ink);
+    padding:14px 0 16px;flex-wrap:wrap;
+  }
+  .enseigne .est{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.28em;color:var(--brown);text-transform:uppercase}
+  .enseigne h1{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(30px,4vw,52px);line-height:.95;letter-spacing:-.01em}
+  .enseigne h1 em{font-style:italic;font-weight:600;color:var(--gold-d)}
+  .seal{
+    flex:0 0 auto;text-align:center;border:2px solid var(--gold);border-radius:50%;
+    width:110px;height:110px;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    color:var(--brown);position:relative;background:var(--cream-2);
+  }
+  .seal::after{content:"";position:absolute;inset:6px;border:1px solid rgba(190,156,99,.5);border-radius:50%}
+  .seal b{font-family:'Playfair Display',serif;font-size:26px;color:var(--gold-d);line-height:1}
+  .seal span{font-family:'Space Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;margin-top:3px}
+
+  .front-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:22px;margin-top:22px}
+  .front-photo{position:relative;overflow:hidden;border:var(--hair);min-height:440px}
+  .front-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(1.02) contrast(1.03)}
+  .front-photo .cap{
+    position:absolute;left:16px;bottom:16px;background:rgba(20,18,16,.82);color:var(--cream);
+    font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;padding:8px 13px;border-left:3px solid var(--gold);
+  }
+  .front-card{display:flex;flex-direction:column;justify-content:space-between;padding:30px 28px}
+  .front-card .lede{font-size:20px;line-height:1.5;color:var(--ink-2)}
+  .front-card .lede strong{color:var(--ink);font-weight:500}
+  .front-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:23px;line-height:1.3;color:var(--brown);margin:20px 0}
+  .front-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+  .btn{
+    font-family:'Inter',sans-serif;font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase;
+    padding:13px 20px;border-radius:3px;cursor:pointer;transition:.18s;display:inline-block;border:1px solid var(--ink);
+  }
+  .btn-fill{background:var(--ink);color:var(--cream)}
+  .btn-fill:hover{background:var(--gold);border-color:var(--gold);color:#211c14}
+  .btn-line{background:transparent;color:var(--ink)}
+  .btn-line:hover{background:var(--ink);color:var(--cream)}
+
+  .counters{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:22px;border:var(--hair)}
+  .counter{padding:16px 18px;border-right:var(--hair);position:relative}
+  .counter:last-child{border-right:0}
+  .counter .cn{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--gold-d);text-transform:uppercase}
+  .counter h4{font-family:'Playfair Display',serif;font-size:20px;margin:5px 0 4px}
+  .counter p{font-size:14.5px;color:var(--ink-2);line-height:1.45}
+  .counter a.tel{font-family:'Space Mono',monospace;font-size:12px;color:var(--brown);display:inline-block;margin-top:6px}
+  .counter a.tel:hover{color:var(--gold-d)}
+
+  /* ============ SECTION HEADERS ============ */
+  .sec{padding:56px 0 8px}
+  .sec-head{margin-bottom:26px}
+  .sec-head .kicker{display:block;margin-bottom:8px}
+  .sec-head h2{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(26px,3.2vw,40px);line-height:1.02;letter-spacing:-.01em}
+  .sec-head .sub{font-size:17px;color:var(--ink-2);max-width:60ch;margin-top:10px;line-height:1.5}
+
+  /* ============ CATALOGUE — numbered engraved plates ============ */
+  .album{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .dish{position:relative;background:var(--cream-2);border:var(--hair);display:flex;flex-direction:column;transition:.2s}
+  .dish:hover{transform:translateY(-3px);box-shadow:0 16px 30px -20px rgba(20,18,16,.5);border-color:var(--gold)}
+  .dish .no{
+    position:absolute;top:0;left:0;z-index:3;background:var(--ink);color:var(--cream);
+    font-family:'Space Mono',monospace;font-size:12px;font-weight:700;padding:6px 11px;letter-spacing:.05em;
+  }
+  .dish-photo{height:186px;overflow:hidden;border-bottom:var(--hair)}
+  .dish-photo img{width:100%;height:100%;object-fit:cover;transition:.4s;filter:saturate(1.03)}
+  .dish:hover .dish-photo img{transform:scale(1.05)}
+  /* engraving-only card (no photo) */
+  .dish-engrave{
+    height:186px;border-bottom:var(--hair);display:flex;align-items:center;justify-content:center;
+    background:
+      repeating-linear-gradient(45deg,rgba(114,89,48,.05) 0 2px,transparent 2px 9px),
+      var(--paper);
+    position:relative;
+  }
+  .dish-engrave .mark{font-family:'Playfair Display',serif;font-style:italic;color:var(--brown);font-size:19px;text-align:center;padding:0 18px}
+  .dish-engrave .mark small{display:block;font-family:'Space Mono',monospace;font-style:normal;font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-d);margin-top:8px}
+  .dish-body{padding:16px 18px 18px;flex:1;display:flex;flex-direction:column}
+  .dish-body .dname{font-family:'Playfair Display',serif;font-size:20px;line-height:1.1;font-weight:700}
+  .dish-body .ddesc{font-size:15px;color:var(--ink-2);line-height:1.42;margin:8px 0 14px;flex:1}
+  .dish-price{display:flex;align-items:center;justify-content:space-between;border-top:1px dotted rgba(33,37,41,.3);padding-top:11px}
+  .dish-price .pp{font-family:'Space Mono',monospace;font-weight:700;font-size:16px;color:var(--ink)}
+  .dish-price .conf{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.06em;color:var(--brown);text-transform:uppercase}
+  .badge{display:inline-block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--gold);color:#211c14;padding:2px 7px;border-radius:2px;margin-left:8px;vertical-align:middle}
+  .badge.red{background:var(--tomato);color:#fff}
+
+  /* ============ BURGERS & SALADES — asymmetric feature ============ */
+  .feat{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:stretch}
+  .feat-hero{position:relative;overflow:hidden;border:var(--hair);min-height:420px}
+  .feat-hero img{width:100%;height:100%;object-fit:cover}
+  .feat-hero .ftag{
+    position:absolute;left:0;bottom:0;right:0;padding:26px 24px 22px;
+    background:linear-gradient(0deg,rgba(20,18,16,.9),transparent);color:var(--cream);
+  }
+  .feat-hero .ftag .fn{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--gold)}
+  .feat-hero .ftag h3{font-family:'Playfair Display',serif;font-size:30px;margin:6px 0 4px}
+  .feat-hero .ftag p{font-size:15px;opacity:.9;max-width:44ch}
+  .feat-list{display:flex;flex-direction:column;gap:0;border:var(--hair);background:var(--cream-2)}
+  .fitem{padding:16px 20px;border-bottom:var(--hair);display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+  .fitem:last-child{border-bottom:0}
+  .fitem .fi-l h4{font-family:'Playfair Display',serif;font-size:19px}
+  .fitem .fi-l p{font-size:14px;color:var(--ink-2);margin-top:3px;line-height:1.4}
+  .fitem .fi-p{font-family:'Space Mono',monospace;font-weight:700;font-size:15px;white-space:nowrap;color:var(--ink)}
+  .fitem .fi-p small{display:block;font-size:8.5px;color:var(--brown);letter-spacing:.05em;text-align:right;margin-top:3px}
+
+  /* ============ FAIT MAISON — ledger strip ============ */
+  .maison{
+    background:linear-gradient(180deg,#211c16,#1a1611);color:var(--cream);
+    border:1px solid var(--gold-d);
+  }
+  .maison-in{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .mcell{padding:30px 24px;border-right:1px solid rgba(190,156,99,.25);position:relative}
+  .mcell:last-child{border-right:0}
+  .mcell.photo{padding:0;min-height:230px;overflow:hidden}
+  .mcell.photo img{width:100%;height:100%;object-fit:cover;filter:brightness(.92)}
+  .mcell .mno{font-family:'Space Mono',monospace;font-size:11px;color:var(--gold)}
+  .mcell h4{font-family:'Playfair Display',serif;font-size:23px;margin:10px 0 8px;color:#f3eee3}
+  .mcell p{font-size:15px;line-height:1.5;color:#cdc4b2}
+
+  /* ============ BRUNCH ============ */
+  .brunch{display:grid;grid-template-columns:1fr 1.1fr;gap:22px;align-items:center}
+  .brunch-photo{overflow:hidden;border:var(--hair);min-height:360px}
+  .brunch-photo img{width:100%;height:100%;object-fit:cover}
+  .brunch-text .chips{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 20px}
+  .chip{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;border:1px solid var(--gold);color:var(--brown);padding:6px 12px;border-radius:2px;background:var(--cream-2)}
+  .brunch-text p{font-size:17px;line-height:1.55;color:var(--ink-2)}
+
+  /* ============ CLICK & COLLECT TICKET ============ */
+  .collect{padding:56px 0 8px}
+  .ticket{
+    background:var(--cream-2);position:relative;
+    border:2px dashed var(--ink);
+    display:grid;grid-template-columns:1.1fr 1.3fr;
+  }
+  .ticket::before,.ticket::after{content:"";position:absolute;width:26px;height:26px;background:var(--cream);border-radius:50%}
+  .ticket::before{left:-14px;top:calc(50% - 13px)}
+  .ticket::after{right:-14px;top:calc(50% - 13px)}
+  .ticket-l{padding:34px 30px;border-right:2px dashed var(--ink)}
+  .ticket-l .tk-h{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--tomato)}
+  .ticket-l h2{font-family:'Playfair Display',serif;font-weight:900;font-size:34px;margin:8px 0 12px;line-height:1}
+  .ticket-l p{font-size:16px;line-height:1.5;color:var(--ink-2)}
+  .ticket-l .wolt{margin-top:18px;font-family:'Space Mono',monospace;font-size:12px;color:var(--brown)}
+  .ticket-r{padding:30px 30px}
+  .steps{list-style:none;counter-reset:s}
+  .steps li{counter-increment:s;display:flex;gap:16px;padding:14px 0;border-bottom:1px dotted rgba(33,37,41,.3)}
+  .steps li:last-child{border-bottom:0}
+  .steps li::before{content:counter(s,decimal-leading-zero);font-family:'Space Mono',monospace;font-weight:700;font-size:15px;color:var(--cream);background:var(--ink);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .steps li h4{font-family:'Playfair Display',serif;font-size:19px}
+  .steps li p{font-size:14.5px;color:var(--ink-2);margin-top:2px;line-height:1.4}
+  .ticket-cta{margin-top:14px}
+
+  /* ============ COMPTOIRS (locations) ============ */
+  .shops{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .shop{background:var(--cream-2);border:var(--hair);display:flex;flex-direction:column}
+  .shop-photo{height:170px;overflow:hidden;border-bottom:var(--hair)}
+  .shop-photo img{width:100%;height:100%;object-fit:cover}
+  .shop-body{padding:18px 20px}
+  .shop-body .sn{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-d)}
+  .shop-body h3{font-family:'Playfair Display',serif;font-size:24px;margin:5px 0 8px}
+  .shop-body address{font-style:normal;font-size:15px;line-height:1.5;color:var(--ink-2)}
+  .shop-body .lines{margin-top:10px;font-family:'Space Mono',monospace;font-size:12px;line-height:2;color:var(--brown)}
+  .shop-body .lines a:hover{color:var(--gold-d)}
+  .shop-map{border:0;width:100%;height:180px;filter:grayscale(.32) sepia(.12) contrast(1.02);border-top:var(--hair)}
+
+  /* ============ FOOTER ============ */
+  footer{margin-top:64px;background:linear-gradient(180deg,#1b1712,#141210);color:var(--cream);border-top:3px solid var(--gold)}
+  .foot-in{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;padding:44px clamp(28px,4vw,72px) 30px}
+  .foot-logo{background:var(--cream);border-radius:3px;padding:14px;max-width:230px}
+  .foot-logo img{width:100%}
+  .foot-blurb{font-size:15px;line-height:1.55;color:#cdc4b2;margin-top:16px;max-width:40ch}
+  .foot-col h5{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .foot-col p,.foot-col a{font-size:15px;line-height:1.9;color:#d6cdbc;display:block}
+  .foot-col a:hover{color:var(--gold)}
+  .foot-bar{border-top:1px solid rgba(190,156,99,.24);padding:16px clamp(28px,4vw,72px);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .foot-bar span{font-family:'Space Mono',monospace;font-size:11px;color:#b3aa98;letter-spacing:.04em}
+  .demo{color:var(--gold)!important}
+
+  /* ============ RESPONSIVE ============ */
+  @media(max-width:1080px){
+    .front-grid{grid-template-columns:1fr}
+    .front-photo{min-height:300px}
+    .album{grid-template-columns:repeat(2,1fr)}
+    .maison-in{grid-template-columns:repeat(2,1fr)}
+    .foot-in{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:860px){
+    :root{--rail-w:0px}
+    .shell{flex-direction:column}
+    .rail{
+      position:sticky;top:0;width:100%;height:auto;flex-direction:row;align-items:center;
+      justify-content:space-between;border-right:0;border-bottom:3px solid var(--gold);padding:10px 16px;
+    }
+    .rail::before{display:none}
+    .rail-head{padding:0;border:0;display:flex;align-items:center;gap:12px;text-align:left}
+    .rail-logo{width:120px;padding:8px}
+    .rail-tag{display:none}
+    .rail-nav{display:none;position:absolute;top:100%;left:0;right:0;background:#1b1815;border-bottom:2px solid var(--gold);max-height:70vh}
+    .rail-nav.open{display:block}
+    .rail-foot{display:none}
+    .rail-burger{display:flex;flex-direction:column;gap:5px;background:none;border:1px solid var(--gold);padding:9px 11px;border-radius:3px;cursor:pointer}
+    .rail-burger span{width:22px;height:2px;background:var(--gold);display:block}
+    .m-actions{display:flex;align-items:center;gap:10px}
+    .m-cta{background:var(--gold);color:#211c14;font-family:'Inter',sans-serif;font-weight:600;font-size:12px;padding:10px 14px;border-radius:3px;text-transform:uppercase}
+  }
+  @media(min-width:861px){.rail-burger,.m-actions{display:none}}
+  @media(max-width:640px){
+    .album{grid-template-columns:1fr}
+    .feat,.brunch,.ticket,.shops,.maison-in,.counters{grid-template-columns:1fr}
+    .ticket-l{border-right:0;border-bottom:2px dashed var(--ink)}
+    .counter{border-right:0;border-bottom:var(--hair)}
+    .mcell{border-right:0;border-bottom:1px solid rgba(190,156,99,.25)}
+    .enseigne h1{font-size:32px}
+    .foot-in{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- ========================= ORDER RAIL ========================= -->
+  <aside class="rail">
+    <div class="rail-head">
+      <div class="rail-logo"><img src="assets/logo.png" alt="Charles Sandwiches"></div>
+      <div class="rail-tag" data-i18n="rail.tag">Comptoir &amp; Traiteur · Luxembourg</div>
+      <div class="m-actions">
+        <a class="m-cta" href="#collect" data-i18n="nav.collect">Click &amp; Collect</a>
+        <button class="rail-burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+
+    <nav class="rail-nav" id="railnav">
+      <ol>
+        <li><a class="rail-link" href="#devanture"><span class="rl-no">00</span><span data-i18n="nav.home">La Maison</span></a></li>
+        <li><a class="rail-link" href="#catalogue"><span class="rl-no">01</span><span data-i18n="nav.signatures">Les Signatures</span></a></li>
+        <li><a class="rail-link" href="#burgers"><span class="rl-no">02</span><span data-i18n="nav.burgers">Burgers &amp; Salades</span></a></li>
+        <li><a class="rail-link" href="#maison"><span class="rl-no">03</span><span data-i18n="nav.maison">Le Fait Maison</span></a></li>
+        <li><a class="rail-link" href="#brunch"><span class="rl-no">04</span><span data-i18n="nav.brunch">Brunch &amp; Carte</span></a></li>
+        <li><a class="rail-link" href="#collect"><span class="rl-no">05</span><span data-i18n="nav.collectnav">Click &amp; Collect</span></a></li>
+        <li><a class="rail-link" href="#comptoirs"><span class="rl-no">06</span><span data-i18n="nav.shops">Nos Comptoirs</span></a></li>
+      </ol>
+    </nav>
+
+    <div class="rail-foot">
+      <a class="rail-cta" href="#collect" data-i18n="nav.collect">Click &amp; Collect</a>
+      <div class="rail-mini">
+        <span class="dot">●</span> <span data-i18n="rail.open">Tous les jours · 11h–22h</span><br>
+        <span class="dot">●</span> <a href="tel:+35227993838">+352 27 99 38 38</a><br>
+        <span class="dot">●</span> <a href="mailto:info@charles-sandwiches.lu">info@charles-sandwiches.lu</a>
+      </div>
+      <div class="lang">
+        <button class="lang-btn on" data-lang="fr" onclick="setLang('fr')">FR</button>
+        <button class="lang-btn" data-lang="de" onclick="setLang('de')">DE</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========================= CATALOGUE ========================= -->
+  <main class="cat">
+
+    <!-- ===== DEVANTURE / STOREFRONT ===== -->
+    <section class="front wrap" id="devanture">
+      <div class="enseigne">
+        <div>
+          <div class="est" data-i18n="front.est">Maison de sandwiches · fondée à Luxembourg</div>
+          <h1 data-i18n="front.title">Le sandwich, <em>sérieusement.</em></h1>
+        </div>
+        <div class="seal">
+          <b>365</b>
+          <span data-i18n="front.seal">jours par an</span>
+        </div>
+      </div>
+
+      <div class="front-grid">
+        <div class="front-photo">
+          <img src="assets/hero.jpg" alt="Brunch Charles Sandwiches">
+          <div class="cap" data-i18n="front.cap">La planche brunch — servie tous les matins</div>
+        </div>
+        <div class="front-card plate">
+          <span class="brk tl"></span><span class="brk tr"></span><span class="brk bl"></span><span class="brk br"></span>
+          <div>
+            <p class="lede" data-i18n="front.lede">Baguettes de boulangerie garnies à la commande, burgers généreux, salades et brunch — avec des sauces, des frites et un mélange thon <strong>faits maison</strong>.</p>
+            <p class="front-quote" data-i18n="front.quote">« De l'esprit d'un deli américain, sur du pain frais luxembourgeois. »</p>
+          </div>
+          <div>
+            <div class="rule-orn" style="margin-bottom:18px">
+              <svg width="26" height="12" viewBox="0 0 26 12"><path d="M1 6 H10 M16 6 H25 M13 1 L13 11 M10 6 A3 3 0 0 1 16 6 A3 3 0 0 1 10 6" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+            </div>
+            <div class="front-actions">
+              <a class="btn btn-fill" href="#collect" data-i18n="front.cta1">Commander à emporter</a>
+              <a class="btn btn-line" href="#catalogue" data-i18n="front.cta2">Voir la carte</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="counters">
+        <div class="counter">
+          <div class="cn" data-i18n="ct.centre.n">Comptoir I · Centre-ville</div>
+          <h4>Centre</h4>
+          <p>19, rue Chimay<br>L-1333 Luxembourg</p>
+          <a class="tel" href="tel:+35227993838">+352 27 99 38 38</a>
+        </div>
+        <div class="counter">
+          <div class="cn" data-i18n="ct.gare.n">Comptoir II · Quartier Gare</div>
+          <h4>Gare</h4>
+          <p>16, rue du Fort Bourbon<br>L-1249 Luxembourg</p>
+          <a class="tel" href="tel:+35227999061">+352 27 99 90 61</a>
+        </div>
+        <div class="counter">
+          <div class="cn" data-i18n="ct.jung.n">Comptoir III · Est du pays</div>
+          <h4>Junglinster</h4>
+          <p>7, rue Nicolas Glesener<br>L-6131 Junglinster</p>
+          <a class="tel" href="tel:+35227881928">+352 27 88 19 28</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LES SIGNATURES (numbered plates) ===== -->
+    <section class="sec wrap" id="catalogue">
+      <div class="sec-head">
+        <span class="kicker" data-i18n="cat.kicker">Planche I — Les Baguettes</span>
+        <h2 data-i18n="cat.title">Les sandwiches signature</h2>
+        <p class="sub" data-i18n="cat.sub">Garnis à la commande sur baguette fraîche. Prix relevés en ligne — <em>à confirmer avec l'établissement.</em></p>
+      </div>
+
+      <div class="album">
+        <!-- 01 Philly -->
+        <article class="dish">
+          <div class="no">Nº 01</div>
+          <div class="dish-photo"><img src="assets/food-phillycheese.jpg" alt="The Philly Cheesesteak"></div>
+          <div class="dish-body">
+            <div class="dname">The Philly Cheesesteak</div>
+            <div class="ddesc" data-i18n="d.philly">Émincé de bœuf, provolone fondu, oignons caramélisés, ketchup.</div>
+            <div class="dish-price"><span class="pp">€14,90</span><span class="conf" data-i18n="conf">à confirmer</span></div>
+          </div>
+        </article>
+        <!-- 02 Union Jack -->
+        <article class="dish">
+          <div class="no">Nº 02</div>
+          <div class="dish-photo"><img src="assets/food-sandwich-bacon.jpg" alt="The Union Jack"></div>
+          <div class="dish-body">
+            <div class="dname">The Union Jack</div>
+            <div class="ddesc" data-i18n="d.union">Bacon, cheddar et — évidemment — sauce HP.</div>
+            <div class="dish-price"><span class="pp">€10,20</span><span class="conf" data-i18n="conf">à confirmer</span></div>
+          </div>
+        </article>
+        <!-- 03 Pastrami -->
+        <article class="dish">
+          <div class="no">Nº 03</div>
+          <div class="dish-photo"><img src="assets/food-5.jpg" alt="Pastrami baguette"></div>
+          <div class="dish-body">
+            <div class="dname">Pastrami Baguette</div>
+            <div class="ddesc" data-i18n="d.pastrami">Pastrami, fromage fondu, pickles, mâche, sur planche.</div>
+            <div class="dish-price"><span class="pp" data-i18n="mkt">Prix du marché</span><span class="conf" data-i18n="conf">à confirmer</span></div>
+          </div>
+        </article>
+        <!-- 04 Tuna melt (engraving-only) -->
+        <article class="dish">
+          <div class="no">Nº 04</div>
+          <div class="dish-engrave">
+            <div class="mark">The Spicy Tuna Melt<small data-i18n="eng.house">Recette de la maison</small></div>
+          </div>
+          <div class="dish-body">
+            <div class="dname">The Spicy Tuna Melt</div>
+            <div class="ddesc" data-i18n="d.tuna">Mélange de thon épicé fait maison, cheddar fondu, œuf dur.</div>
+            <div class="dish-price"><span class="pp">€12,80</span><span class="conf" data-i18n="conf">à confirmer</span></div>
+          </div>
+        </article>
+        <!-- 05 Pesto Chicken (engraving-only) -->
+        <article class="dish">
+          <div class="no">Nº 05</div>
+          <div class="dish-engrave">
+            <div class="mark">The Summer Pesto Chicken<small data-i18n="eng.season">Édition de saison</small></div>
+          </div>
+          <div class="dish-body">
+            <div class="dname">The Summer Pesto Chicken</div>
+            <div class="ddesc" data-i18n="d.pesto">Filet de poulet, cream cheese, pesto.</div>
+            <div class="dish-price"><span class="pp">€12,80</span><span class="conf" data-i18n="conf">à confirmer</span></div>
+          </div>
+        </article>
+        <!-- 06 Baguette maison -->
+        <article class="dish">
+          <div class="no">Nº 06</div>
+          <div class="dish-photo"><img src="assets/food-6.jpg" alt="Baguette fraîche"></div>
+          <div class="dish-body">
+            <div class="dname" data-i18n="d.baguette.n">La base : baguette fraîche</div>
+            <div class="ddesc" data-i18n="d.baguette">Pain de boulangerie livré chaque jour — le socle de chaque sandwich.</div>
+            <div class="dish-price"><span class="conf" data-i18n="d.baguette.tag" style="font-size:11px">Le pain change tout</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== BURGERS & SALADES (asymmetric feature) ===== -->
+    <section class="sec wrap" id="burgers">
+      <div class="sec-head">
+        <span class="kicker" data-i18n="bg.kicker">Planche II — Le Grill &amp; le Vert</span>
+        <h2 data-i18n="bg.title">Burgers &amp; salades</h2>
+      </div>
+
+      <div class="feat">
+        <div class="feat-hero">
+          <img src="assets/food-3.jpg" alt="The Crispy Mushroom Burger">
+          <div class="ftag">
+            <div class="fn">Nº 07 · <span data-i18n="bg.hero.tag">Vedette de saison</span></div>
+            <h3>The Crispy Mushroom Burger</h3>
+            <p data-i18n="bg.hero.desc">Le burger vedette du moment — croustillant, généreux, en édition limitée. Prix à confirmer.</p>
+          </div>
+        </div>
+        <div class="feat-list">
+          <div class="fitem">
+            <div class="fi-l"><h4>The Bacon Cheese Burger</h4><p data-i18n="bg.bacon">Cheddar, bacon, tomate, iceberg, ranch maison, ketchup.</p></div>
+            <div class="fi-p">€15,60<small data-i18n="conf">à confirmer</small></div>
+          </div>
+          <div class="fitem">
+            <div class="fi-l"><h4>The Cheese Burger</h4><p data-i18n="bg.cheese">Cheddar, tomate, iceberg, ranch maison, ketchup.</p></div>
+            <div class="fi-p">€14,20<small data-i18n="conf">à confirmer</small></div>
+          </div>
+          <div class="fitem">
+            <div class="fi-l"><h4>Charles' Special <span class="badge red" data-i18n="bg.ltd">Édition limitée</span></h4><p data-i18n="bg.special">Bœuf, sauce HP, miel, roquette, brie.</p></div>
+            <div class="fi-p">€14,90<small data-i18n="conf">à confirmer</small></div>
+          </div>
+          <div class="fitem">
+            <div class="fi-l"><h4>The Original Caesar</h4><p data-i18n="bg.caesar">Iceberg, croûtons, parmesan, pain, sauce César maison.</p></div>
+            <div class="fi-p">€14,30<small data-i18n="conf">à confirmer</small></div>
+          </div>
+          <div class="fitem">
+            <div class="fi-l"><h4>The Great Caesar</h4><p data-i18n="bg.great">Filet de poulet, bacon, parmesan, sauce César.</p></div>
+            <div class="fi-p">€13,40<small data-i18n="conf">à confirmer</small></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat" style="margin-top:20px;grid-template-columns:.8fr 1.2fr">
+        <div class="feat-list">
+          <div class="fitem">
+            <div class="fi-l"><h4 data-i18n="side.fries.n">Frites maison</h4><p data-i18n="side.fries">Coupées et cuites sur place.</p></div>
+            <div class="fi-p">€4,00<small data-i18n="conf">à confirmer</small></div>
+          </div>
+          <div class="fitem">
+            <div class="fi-l"><h4>Loaded Fries</h4><p data-i18n="side.loaded">Frites, sauce cheddar, bacon.</p></div>
+            <div class="fi-p">€5,70<small data-i18n="conf">à confirmer</small></div>
+          </div>
+          <div class="fitem">
+            <div class="fi-l"><h4 data-i18n="side.sidecaesar.n">Petite salade César</h4><p data-i18n="side.sidecaesar">La version accompagnement.</p></div>
+            <div class="fi-p">€4,00<small data-i18n="conf">à confirmer</small></div>
+          </div>
+        </div>
+        <div class="feat-hero">
+          <img src="assets/food-4.jpg" alt="Loaded Fries">
+          <div class="ftag">
+            <div class="fn">Nº 08 · <span data-i18n="side.tag">Les à-côtés</span></div>
+            <h3 data-i18n="side.title">Frites &amp; garnitures</h3>
+            <p data-i18n="side.desc">Cheddar fondant, bacon croustillant — l'accompagnement qui vole la vedette.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LE FAIT MAISON (dark ledger strip) ===== -->
+    <section class="sec wrap" id="maison">
+      <div class="sec-head">
+        <span class="kicker" data-i18n="fm.kicker">Le carnet de la maison</span>
+        <h2 data-i18n="fm.title">Fait maison, chaque jour</h2>
+      </div>
+      <div class="maison">
+        <div class="maison-in">
+          <div class="mcell">
+            <div class="mno">Nº i</div>
+            <h4 data-i18n="fm.sauce.n">Les sauces</h4>
+            <p data-i18n="fm.sauce">Ranch, César, cheddar — préparées maison, jamais sorties d'un bidon.</p>
+          </div>
+          <div class="mcell photo"><img src="assets/food-1.jpg" alt="Sauce maison"></div>
+          <div class="mcell">
+            <div class="mno">Nº ii</div>
+            <h4 data-i18n="fm.tuna.n">Le mélange thon</h4>
+            <p data-i18n="fm.tuna">Notre mélange de thon épicé, assemblé à la main pour le Spicy Tuna Melt.</p>
+          </div>
+          <div class="mcell">
+            <div class="mno">Nº iii</div>
+            <h4 data-i18n="fm.fries.n">Les frites</h4>
+            <p data-i18n="fm.fries">Coupées et cuites sur place — jamais surgelées d'avance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BRUNCH & CARTE ===== -->
+    <section class="sec wrap" id="brunch">
+      <div class="brunch">
+        <div class="brunch-photo"><img src="assets/food-brunch.jpg" alt="Brunch"></div>
+        <div class="brunch-text">
+          <span class="kicker" data-i18n="br.kicker">Planche III — Le matin &amp; au-delà</span>
+          <div class="sec-head" style="margin:8px 0 0"><h2 data-i18n="br.title">Brunch, desserts &amp; la carte</h2></div>
+          <div class="chips">
+            <span class="chip" data-i18n="br.c1">Brunch</span>
+            <span class="chip" data-i18n="br.c2">Desserts</span>
+            <span class="chip" data-i18n="br.c3">Boissons &amp; vins</span>
+            <span class="chip" data-i18n="br.c4">Happy Hour</span>
+            <span class="chip" data-i18n="br.c5">Traiteur</span>
+          </div>
+          <p data-i18n="br.body">La planche brunch se sert tous les matins ; desserts, boissons et une petite carte de vins complètent la table. Le détail des plats et les prix du brunch sont <em>à confirmer avec l'établissement.</em></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CLICK & COLLECT TICKET ===== -->
+    <section class="collect wrap" id="collect">
+      <div class="ticket">
+        <div class="ticket-l">
+          <div class="tk-h" data-i18n="cc.h">Bon de commande</div>
+          <h2 data-i18n="cc.title">Click &amp; Collect</h2>
+          <p data-i18n="cc.body">Commandez en ligne, choisissez votre comptoir, et récupérez votre commande prête à l'heure. Sans file d'attente.</p>
+          <p class="wolt" data-i18n="cc.wolt">Livraison également disponible via Wolt.</p>
+          <a class="btn btn-fill ticket-cta" href="https://www.charles-sandwiches.lu" data-i18n="cc.cta">Commander maintenant</a>
+        </div>
+        <div class="ticket-r">
+          <ol class="steps">
+            <li><div><h4 data-i18n="cc.s1.h">Composez</h4><p data-i18n="cc.s1.p">Parcourez la carte et remplissez votre bon en ligne.</p></div></li>
+            <li><div><h4 data-i18n="cc.s2.h">Choisissez le comptoir</h4><p data-i18n="cc.s2.p">Centre, Gare ou Junglinster — au plus proche de vous.</p></div></li>
+            <li><div><h4 data-i18n="cc.s3.h">Récupérez</h4><p data-i18n="cc.s3.p">Passez à l'heure indiquée : tout est prêt, encore chaud.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COMPTOIRS ===== -->
+    <section class="sec wrap" id="comptoirs">
+      <div class="sec-head">
+        <span class="kicker" data-i18n="sh.kicker">Trois adresses · ouvert 365 jours</span>
+        <h2 data-i18n="sh.title">Nos comptoirs</h2>
+        <p class="sub" data-i18n="sh.sub">Tous les jours, 11h–22h. <em>Horaires à confirmer avec l'établissement.</em></p>
+      </div>
+      <div class="shops">
+        <article class="shop">
+          <div class="shop-photo"><img src="assets/exterior-centre.jpg" alt="Charles Sandwiches Centre"></div>
+          <div class="shop-body">
+            <div class="sn">Comptoir I</div>
+            <h3>Centre</h3>
+            <address>19, rue Chimay<br>L-1333 Luxembourg</address>
+            <div class="lines">
+              <a href="tel:+35227993838">☎ +352 27 99 38 38</a><br>
+              <span data-i18n="sh.hours">Tous les jours · 11h–22h</span>
+            </div>
+          </div>
+          <iframe class="shop-map" loading="lazy" title="Carte Centre" src="https://www.google.com/maps?q=19+rue+Chimay+L-1333+Luxembourg&output=embed"></iframe>
+        </article>
+
+        <article class="shop">
+          <div class="shop-photo"><img src="assets/exterior-gare.jpg" alt="Charles Sandwiches Gare"></div>
+          <div class="shop-body">
+            <div class="sn">Comptoir II</div>
+            <h3>Gare</h3>
+            <address>16, rue du Fort Bourbon<br>L-1249 Luxembourg</address>
+            <div class="lines">
+              <a href="tel:+35227999061">☎ +352 27 99 90 61</a><br>
+              <span data-i18n="sh.hours">Tous les jours · 11h–22h</span>
+            </div>
+          </div>
+          <iframe class="shop-map" loading="lazy" title="Carte Gare" src="https://www.google.com/maps?q=16+rue+du+Fort+Bourbon+L-1249+Luxembourg&output=embed"></iframe>
+        </article>
+
+        <article class="shop">
+          <div class="shop-photo"><img src="assets/interior-1.jpg" alt="Charles Sandwiches Junglinster"></div>
+          <div class="shop-body">
+            <div class="sn">Comptoir III</div>
+            <h3>Junglinster</h3>
+            <address>7, rue Nicolas Glesener<br>L-6131 Junglinster</address>
+            <div class="lines">
+              <a href="tel:+35227881928">☎ +352 27 88 19 28</a><br>
+              <span data-i18n="sh.hours">Tous les jours · 11h–22h</span>
+            </div>
+          </div>
+          <iframe class="shop-map" loading="lazy" title="Carte Junglinster" src="https://www.google.com/maps?q=7+rue+Nicolas+Glesener+L-6131+Junglinster&output=embed"></iframe>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <div class="foot-in">
+        <div>
+          <div class="foot-logo"><img src="assets/logo.png" alt="Charles Sandwiches"></div>
+          <p class="foot-blurb" data-i18n="ft.blurb">Baguettes garnies, burgers et brunch faits maison — au cœur de Luxembourg, tous les jours de l'année.</p>
+        </div>
+        <div class="foot-col">
+          <h5 data-i18n="ft.contact">Contact</h5>
+          <a href="mailto:info@charles-sandwiches.lu">info@charles-sandwiches.lu</a>
+          <a href="tel:+35227993838">+352 27 99 38 38</a>
+          <p data-i18n="ft.hours">Tous les jours · 11h – 22h</p>
+        </div>
+        <div class="foot-col">
+          <h5 data-i18n="ft.nav">La carte</h5>
+          <a href="#catalogue" data-i18n="nav.signatures">Les Signatures</a>
+          <a href="#burgers" data-i18n="nav.burgers">Burgers &amp; Salades</a>
+          <a href="#brunch" data-i18n="nav.brunch">Brunch &amp; Carte</a>
+          <a href="#collect" data-i18n="nav.collectnav">Click &amp; Collect</a>
+        </div>
+      </div>
+      <div class="foot-bar">
+        <span data-i18n="ft.copy">© Charles Sandwiches · Luxembourg</span>
+        <span class="demo" data-i18n="ft.demo">Site de démonstration — contenu &amp; prix à confirmer avec l'établissement.</span>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+/* ============ i18n ============ */
+const I18N = {
+  fr:{
+    "rail.tag":"Comptoir &amp; Traiteur · Luxembourg","nav.collect":"Click &amp; Collect","nav.home":"La Maison",
+    "nav.signatures":"Les Signatures","nav.burgers":"Burgers &amp; Salades","nav.maison":"Le Fait Maison",
+    "nav.brunch":"Brunch &amp; Carte","nav.collectnav":"Click &amp; Collect","nav.shops":"Nos Comptoirs",
+    "rail.open":"Tous les jours · 11h–22h",
+    "front.est":"Maison de sandwiches · fondée à Luxembourg","front.title":"Le sandwich, <em>sérieusement.</em>",
+    "front.seal":"jours par an","front.cap":"La planche brunch — servie tous les matins",
+    "front.lede":"Baguettes de boulangerie garnies à la commande, burgers généreux, salades et brunch — avec des sauces, des frites et un mélange thon <strong>faits maison</strong>.",
+    "front.quote":"« De l'esprit d'un deli américain, sur du pain frais luxembourgeois. »",
+    "front.cta1":"Commander à emporter","front.cta2":"Voir la carte",
+    "ct.centre.n":"Comptoir I · Centre-ville","ct.gare.n":"Comptoir II · Quartier Gare","ct.jung.n":"Comptoir III · Est du pays",
+    "cat.kicker":"Planche I — Les Baguettes","cat.title":"Les sandwiches signature",
+    "cat.sub":"Garnis à la commande sur baguette fraîche. Prix relevés en ligne — <em>à confirmer avec l'établissement.</em>",
+    "d.philly":"Émincé de bœuf, provolone fondu, oignons caramélisés, ketchup.","d.union":"Bacon, cheddar et — évidemment — sauce HP.",
+    "d.pastrami":"Pastrami, fromage fondu, pickles, mâche, sur planche.","d.tuna":"Mélange de thon épicé fait maison, cheddar fondu, œuf dur.",
+    "d.pesto":"Filet de poulet, cream cheese, pesto.","d.baguette.n":"La base : baguette fraîche",
+    "d.baguette":"Pain de boulangerie livré chaque jour — le socle de chaque sandwich.","d.baguette.tag":"Le pain change tout",
+    "conf":"à confirmer","mkt":"Prix du marché","eng.house":"Recette de la maison","eng.season":"Édition de saison",
+    "bg.kicker":"Planche II — Le Grill &amp; le Vert","bg.title":"Burgers &amp; salades","bg.hero.tag":"Vedette de saison",
+    "bg.hero.desc":"Le burger vedette du moment — croustillant, généreux, en édition limitée. Prix à confirmer.",
+    "bg.bacon":"Cheddar, bacon, tomate, iceberg, ranch maison, ketchup.","bg.cheese":"Cheddar, tomate, iceberg, ranch maison, ketchup.",
+    "bg.ltd":"Édition limitée","bg.special":"Bœuf, sauce HP, miel, roquette, brie.",
+    "bg.caesar":"Iceberg, croûtons, parmesan, pain, sauce César maison.","bg.great":"Filet de poulet, bacon, parmesan, sauce César.",
+    "side.fries.n":"Frites maison","side.fries":"Coupées et cuites sur place.","side.loaded":"Frites, sauce cheddar, bacon.",
+    "side.sidecaesar.n":"Petite salade César","side.sidecaesar":"La version accompagnement.",
+    "side.tag":"Les à-côtés","side.title":"Frites &amp; garnitures","side.desc":"Cheddar fondant, bacon croustillant — l'accompagnement qui vole la vedette.",
+    "fm.kicker":"Le carnet de la maison","fm.title":"Fait maison, chaque jour",
+    "fm.sauce.n":"Les sauces","fm.sauce":"Ranch, César, cheddar — préparées maison, jamais sorties d'un bidon.",
+    "fm.tuna.n":"Le mélange thon","fm.tuna":"Notre mélange de thon épicé, assemblé à la main pour le Spicy Tuna Melt.",
+    "fm.fries.n":"Les frites","fm.fries":"Coupées et cuites sur place — jamais surgelées d'avance.",
+    "br.kicker":"Planche III — Le matin &amp; au-delà","br.title":"Brunch, desserts &amp; la carte",
+    "br.c1":"Brunch","br.c2":"Desserts","br.c3":"Boissons &amp; vins","br.c4":"Happy Hour","br.c5":"Traiteur",
+    "br.body":"La planche brunch se sert tous les matins ; desserts, boissons et une petite carte de vins complètent la table. Le détail des plats et les prix du brunch sont <em>à confirmer avec l'établissement.</em>",
+    "cc.h":"Bon de commande","cc.title":"Click &amp; Collect",
+    "cc.body":"Commandez en ligne, choisissez votre comptoir, et récupérez votre commande prête à l'heure. Sans file d'attente.",
+    "cc.wolt":"Livraison également disponible via Wolt.","cc.cta":"Commander maintenant",
+    "cc.s1.h":"Composez","cc.s1.p":"Parcourez la carte et remplissez votre bon en ligne.",
+    "cc.s2.h":"Choisissez le comptoir","cc.s2.p":"Centre, Gare ou Junglinster — au plus proche de vous.",
+    "cc.s3.h":"Récupérez","cc.s3.p":"Passez à l'heure indiquée : tout est prêt, encore chaud.",
+    "sh.kicker":"Trois adresses · ouvert 365 jours","sh.title":"Nos comptoirs",
+    "sh.sub":"Tous les jours, 11h–22h. <em>Horaires à confirmer avec l'établissement.</em>","sh.hours":"Tous les jours · 11h–22h",
+    "ft.blurb":"Baguettes garnies, burgers et brunch faits maison — au cœur de Luxembourg, tous les jours de l'année.",
+    "ft.contact":"Contact","ft.hours":"Tous les jours · 11h – 22h","ft.nav":"La carte",
+    "ft.copy":"© Charles Sandwiches · Luxembourg","ft.demo":"Site de démonstration — contenu &amp; prix à confirmer avec l'établissement."
+  },
+  de:{
+    "rail.tag":"Feinkost &amp; Catering · Luxemburg","nav.collect":"Click &amp; Collect","nav.home":"Das Haus",
+    "nav.signatures":"Die Signature-Baguettes","nav.burgers":"Burger &amp; Salate","nav.maison":"Hausgemacht",
+    "nav.brunch":"Brunch &amp; Karte","nav.collectnav":"Click &amp; Collect","nav.shops":"Unsere Theken",
+    "rail.open":"Täglich · 11–22 Uhr",
+    "front.est":"Sandwich-Haus · gegründet in Luxemburg","front.title":"Sandwiches, <em>mit Ernst gemacht.</em>",
+    "front.seal":"Tage im Jahr","front.cap":"Die Brunch-Platte — jeden Morgen frisch",
+    "front.lede":"Frische Bäcker-Baguettes auf Bestellung belegt, üppige Burger, Salate und Brunch — mit <strong>hausgemachten</strong> Saucen, Pommes und Thunfischmischung.",
+    "front.quote":"„Der Geist eines amerikanischen Delis auf frischem Luxemburger Brot.“",
+    "front.cta1":"Zum Mitnehmen bestellen","front.cta2":"Zur Karte",
+    "ct.centre.n":"Theke I · Stadtzentrum","ct.gare.n":"Theke II · Bahnhofsviertel","ct.jung.n":"Theke III · Osten des Landes",
+    "cat.kicker":"Tafel I — Die Baguettes","cat.title":"Die Signature-Sandwiches",
+    "cat.sub":"Auf Bestellung auf frischem Baguette belegt. Preise online erfasst — <em>beim Haus zu bestätigen.</em>",
+    "d.philly":"Rindfleischstreifen, geschmolzener Provolone, karamellisierte Zwiebeln, Ketchup.","d.union":"Bacon, Cheddar und — natürlich — HP-Sauce.",
+    "d.pastrami":"Pastrami, geschmolzener Käse, Pickles, Feldsalat, auf dem Brett.","d.tuna":"Hausgemachte scharfe Thunfischmischung, geschmolzener Cheddar, gekochtes Ei.",
+    "d.pesto":"Hähnchenfilet, Frischkäse, Pesto.","d.baguette.n":"Die Basis: frisches Baguette",
+    "d.baguette":"Täglich geliefertes Bäckerbrot — die Grundlage jedes Sandwichs.","d.baguette.tag":"Das Brot macht alles aus",
+    "conf":"zu bestätigen","mkt":"Tagespreis","eng.house":"Hausrezept","eng.season":"Saison-Edition",
+    "bg.kicker":"Tafel II — Grill &amp; Grünes","bg.title":"Burger &amp; Salate","bg.hero.tag":"Saison-Highlight",
+    "bg.hero.desc":"Der Burger der Stunde — knusprig, üppig, in limitierter Auflage. Preis zu bestätigen.",
+    "bg.bacon":"Cheddar, Bacon, Tomate, Eisbergsalat, Ranch aus dem Haus, Ketchup.","bg.cheese":"Cheddar, Tomate, Eisbergsalat, Ranch aus dem Haus, Ketchup.",
+    "bg.ltd":"Limitiert","bg.special":"Rind, HP-Sauce, Honig, Rucola, Brie.",
+    "bg.caesar":"Eisbergsalat, Croutons, Parmesan, Brot, hausgemachtes Caesar-Dressing.","bg.great":"Hähnchenfilet, Bacon, Parmesan, Caesar-Dressing.",
+    "side.fries.n":"Hausgemachte Pommes","side.fries":"Frisch geschnitten und vor Ort frittiert.","side.loaded":"Pommes, Cheddar-Sauce, Bacon.",
+    "side.sidecaesar.n":"Kleiner Caesar-Salat","side.sidecaesar":"Die Beilagen-Variante.",
+    "side.tag":"Die Beilagen","side.title":"Pommes &amp; Beilagen","side.desc":"Cremiger Cheddar, knuspriger Bacon — die Beilage, die zum Star wird.",
+    "fm.kicker":"Das Notizbuch des Hauses","fm.title":"Hausgemacht, jeden Tag",
+    "fm.sauce.n":"Die Saucen","fm.sauce":"Ranch, Caesar, Cheddar — im Haus zubereitet, nie aus dem Kanister.",
+    "fm.tuna.n":"Die Thunfischmischung","fm.tuna":"Unsere scharfe Thunfischmischung, von Hand angerührt für den Spicy Tuna Melt.",
+    "fm.fries.n":"Die Pommes","fm.fries":"Vor Ort geschnitten und frittiert — nie vorgefroren.",
+    "br.kicker":"Tafel III — Der Morgen &amp; danach","br.title":"Brunch, Desserts &amp; Karte",
+    "br.c1":"Brunch","br.c2":"Desserts","br.c3":"Getränke &amp; Weine","br.c4":"Happy Hour","br.c5":"Catering",
+    "br.body":"Die Brunch-Platte gibt es jeden Morgen; Desserts, Getränke und eine kleine Weinkarte runden den Tisch ab. Gerichte und Preise des Brunchs sind <em>beim Haus zu bestätigen.</em>",
+    "cc.h":"Bestellschein","cc.title":"Click &amp; Collect",
+    "cc.body":"Online bestellen, Theke wählen und die fertige Bestellung pünktlich abholen. Ohne Warteschlange.",
+    "cc.wolt":"Lieferung ebenfalls über Wolt verfügbar.","cc.cta":"Jetzt bestellen",
+    "cc.s1.h":"Zusammenstellen","cc.s1.p":"Karte durchgehen und den Bestellschein online ausfüllen.",
+    "cc.s2.h":"Theke wählen","cc.s2.p":"Centre, Gare oder Junglinster — ganz in Ihrer Nähe.",
+    "cc.s3.h":"Abholen","cc.s3.p":"Zur angegebenen Zeit kommen: alles fertig, noch warm.",
+    "sh.kicker":"Drei Adressen · 365 Tage geöffnet","sh.title":"Unsere Theken",
+    "sh.sub":"Täglich, 11–22 Uhr. <em>Öffnungszeiten beim Haus zu bestätigen.</em>","sh.hours":"Täglich · 11–22 Uhr",
+    "ft.blurb":"Belegte Baguettes, Burger und hausgemachter Brunch — im Herzen Luxemburgs, an jedem Tag des Jahres.",
+    "ft.contact":"Kontakt","ft.hours":"Täglich · 11 – 22 Uhr","ft.nav":"Die Karte",
+    "ft.copy":"© Charles Sandwiches · Luxemburg","ft.demo":"Demo-Website — Inhalt &amp; Preise beim Haus zu bestätigen."
+  },
+  en:{
+    "rail.tag":"Deli &amp; Catering · Luxembourg","nav.collect":"Click &amp; Collect","nav.home":"The House",
+    "nav.signatures":"The Signatures","nav.burgers":"Burgers &amp; Salads","nav.maison":"Home-Made",
+    "nav.brunch":"Brunch &amp; Menu","nav.collectnav":"Click &amp; Collect","nav.shops":"Our Counters",
+    "rail.open":"Every day · 11am–10pm",
+    "front.est":"Sandwich house · founded in Luxembourg","front.title":"Sandwiches, <em>taken seriously.</em>",
+    "front.seal":"days a year","front.cap":"The brunch board — served every morning",
+    "front.lede":"Fresh bakery baguettes filled to order, generous burgers, salads and brunch — with <strong>home-made</strong> sauces, fries and tuna mix.",
+    "front.quote":"“The spirit of an American deli, on fresh Luxembourg bread.”",
+    "front.cta1":"Order to go","front.cta2":"See the menu",
+    "ct.centre.n":"Counter I · City centre","ct.gare.n":"Counter II · Station district","ct.jung.n":"Counter III · Eastern belt",
+    "cat.kicker":"Plate I — The Baguettes","cat.title":"The signature sandwiches",
+    "cat.sub":"Filled to order on fresh baguette. Prices captured online — <em>to be confirmed with the venue.</em>",
+    "d.philly":"Beef steak, melted provolone, caramelised onions, ketchup.","d.union":"Bacon, cheddar and — of course — HP sauce.",
+    "d.pastrami":"Pastrami, melted cheese, pickles, lamb's lettuce, on the board.","d.tuna":"Home-made spicy tuna mix, melted cheddar, boiled egg.",
+    "d.pesto":"Chicken fillet, cream cheese, pesto.","d.baguette.n":"The base: fresh baguette",
+    "d.baguette":"Bakery bread delivered daily — the foundation of every sandwich.","d.baguette.tag":"The bread changes everything",
+    "conf":"to confirm","mkt":"Market price","eng.house":"House recipe","eng.season":"Seasonal edition",
+    "bg.kicker":"Plate II — The Grill &amp; the Green","bg.title":"Burgers &amp; salads","bg.hero.tag":"Seasonal star",
+    "bg.hero.desc":"The burger of the moment — crispy, generous, limited edition. Price to confirm.",
+    "bg.bacon":"Cheddar, bacon, tomato, iceberg, home-made ranch, ketchup.","bg.cheese":"Cheddar, tomato, iceberg, home-made ranch, ketchup.",
+    "bg.ltd":"Limited edition","bg.special":"Beef, HP sauce, honey, arugula, brie.",
+    "bg.caesar":"Iceberg, croutons, parmesan, bread, house Caesar dressing.","bg.great":"Chicken fillet, bacon, parmesan, Caesar dressing.",
+    "side.fries.n":"Home-made fries","side.fries":"Cut and cooked on site.","side.loaded":"Fries, cheddar sauce, bacon.",
+    "side.sidecaesar.n":"Side Caesar salad","side.sidecaesar":"The side-order version.",
+    "side.tag":"The sides","side.title":"Fries &amp; sides","side.desc":"Molten cheddar, crispy bacon — the side that steals the show.",
+    "fm.kicker":"The house notebook","fm.title":"Home-made, every day",
+    "fm.sauce.n":"The sauces","fm.sauce":"Ranch, Caesar, cheddar — made in-house, never poured from a tub.",
+    "fm.tuna.n":"The tuna mix","fm.tuna":"Our spicy tuna mix, hand-assembled for the Spicy Tuna Melt.",
+    "fm.fries.n":"The fries","fm.fries":"Cut and cooked on site — never pre-frozen.",
+    "br.kicker":"Plate III — The morning &amp; beyond","br.title":"Brunch, desserts &amp; the menu",
+    "br.c1":"Brunch","br.c2":"Desserts","br.c3":"Drinks &amp; wines","br.c4":"Happy Hour","br.c5":"Catering",
+    "br.body":"The brunch board is served every morning; desserts, drinks and a short wine list round out the table. Brunch dishes and prices are <em>to be confirmed with the venue.</em>",
+    "cc.h":"Order slip","cc.title":"Click &amp; Collect",
+    "cc.body":"Order online, choose your counter, and pick up your order ready on time. No queue.",
+    "cc.wolt":"Delivery also available via Wolt.","cc.cta":"Order now",
+    "cc.s1.h":"Build it","cc.s1.p":"Browse the menu and fill your slip online.",
+    "cc.s2.h":"Choose the counter","cc.s2.p":"Centre, Gare or Junglinster — whichever is closest.",
+    "cc.s3.h":"Collect","cc.s3.p":"Arrive at the given time: everything's ready, still hot.",
+    "sh.kicker":"Three addresses · open 365 days","sh.title":"Our counters",
+    "sh.sub":"Every day, 11am–10pm. <em>Hours to be confirmed with the venue.</em>","sh.hours":"Every day · 11am–10pm",
+    "ft.blurb":"Filled baguettes, burgers and home-made brunch — in the heart of Luxembourg, every day of the year.",
+    "ft.contact":"Contact","ft.hours":"Every day · 11am – 10pm","ft.nav":"The menu",
+    "ft.copy":"© Charles Sandwiches · Luxembourg","ft.demo":"Demonstration site — content &amp; prices to be confirmed with the venue."
+  }
+};
+function setLang(l){
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k=el.getAttribute('data-i18n'); var v=I18N[l]&&I18N[l][k];
+    if(v!=null) el.innerHTML=v;
+  });
+  document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.dataset.lang===l);});
+}
+
+/* ============ mobile rail toggle ============ */
+document.getElementById('burger').addEventListener('click',function(){
+  document.getElementById('railnav').classList.toggle('open');
+});
+document.querySelectorAll('.rail-link').forEach(function(a){
+  a.addEventListener('click',function(){document.getElementById('railnav').classList.remove('open');});
+});
+
+/* ============ scroll-spy on order rail ============ */
+var links=[].slice.call(document.querySelectorAll('.rail-link'));
+var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+var spy=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      var i=secs.indexOf(e.target);
+      links.forEach(function(l){l.classList.remove('active');});
+      if(i>-1) links[i].classList.add('active');
+    }
+  });
+},{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(function(s){if(s)spy.observe(s);});
+</script>
+</body>
+</html>

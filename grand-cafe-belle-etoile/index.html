@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Grand Café — Belle Étoile · Steakhouse au feu de bois Josper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#141210;
+    --ink2:#1a1714;
+    --panel:#221d19;
+    --panel2:#2a2320;
+    --terra:#B4442E;
+    --terra-br:#cf5c41;
+    --ember:#e07a2c;
+    --cream:#F5F0E6;
+    --cream-dim:#cdc4b4;
+    --wood:#a9744f;
+    --olive:#63664c;
+    --line:rgba(245,240,230,.13);
+    --line-strong:rgba(245,240,230,.28);
+    --rail:74px;
+    --slash:repeating-linear-gradient(115deg, transparent 0 13px, rgba(180,68,46,.5) 13px 15px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:"Inter",system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4,.disp{font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.01em;line-height:1}
+  .mono{font-family:"Space Mono",monospace}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .eyebrow{font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--terra-br)}
+
+  /* ============ LEFT RAIL (fire index / nav) ============ */
+  .rail{
+    position:fixed;top:0;left:0;bottom:0;width:var(--rail);z-index:60;
+    background:linear-gradient(180deg,#0e0c0b,#181310);
+    border-right:1px solid var(--line);
+    display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+    padding:18px 0;
+  }
+  .rail .stamp{
+    writing-mode:vertical-rl;transform:rotate(180deg);
+    font-family:"Oswald";font-weight:700;letter-spacing:.42em;font-size:.72rem;
+    text-transform:uppercase;color:var(--cream);
+  }
+  .rail .stamp b{color:var(--terra-br)}
+  .rail nav{display:flex;flex-direction:column;gap:26px;align-items:center}
+  .rail nav a{
+    writing-mode:vertical-rl;
+    font-family:"Space Mono",monospace;font-size:.64rem;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--cream-dim);transition:color .2s;position:relative;
+  }
+  .rail nav a::before{content:attr(data-num);color:var(--terra);margin-bottom:6px;display:block;opacity:.7}
+  .rail nav a:hover{color:var(--cream)}
+  .rail .gauge{display:flex;flex-direction:column;align-items:center;gap:5px}
+  .rail .gauge .dot{width:5px;height:5px;border-radius:50%;background:var(--line-strong)}
+  .rail .gauge .dot.on{background:var(--terra-br);box-shadow:0 0 8px var(--terra)}
+  .rail .gauge .lbl{writing-mode:vertical-rl;font-family:"Space Mono";font-size:.55rem;letter-spacing:.2em;color:var(--cream-dim);text-transform:uppercase;margin-top:4px}
+
+  .wrap{margin-left:var(--rail)}
+
+  /* ============ TOP BAR ============ */
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 42px;border-bottom:1px solid var(--line);
+    position:sticky;top:0;z-index:50;
+    background:rgba(20,18,16,.86);backdrop-filter:blur(9px);
+  }
+  .brandmark{display:flex;align-items:center;gap:13px}
+  .brandmark img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+  .brandmark .txt .l1{font-family:"Oswald";font-weight:700;font-size:1.02rem;letter-spacing:.14em;line-height:1;color:var(--cream)}
+  .brandmark .txt .l2{font-family:"Space Mono";font-size:.58rem;letter-spacing:.28em;color:var(--terra-br);text-transform:uppercase;margin-top:3px}
+  .topbar .right{display:flex;align-items:center;gap:22px}
+  .langs{display:flex;gap:2px;border:1px solid var(--line-strong);border-radius:2px;overflow:hidden}
+  .langs button{
+    background:transparent;color:var(--cream-dim);border:0;cursor:pointer;
+    font-family:"Space Mono";font-size:.66rem;letter-spacing:.12em;padding:6px 10px;text-transform:uppercase;transition:.18s;
+  }
+  .langs button.active{background:var(--terra);color:#fff}
+  .langs button:hover:not(.active){color:var(--cream)}
+  .btn-res{
+    background:var(--terra);color:#fff;font-family:"Oswald";font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;font-size:.8rem;padding:11px 22px;border:0;cursor:pointer;transition:.2s;
+    clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+  }
+  .btn-res:hover{background:var(--terra-br)}
+
+  /* ============ HERO / LA FORGE ============ */
+  .forge{
+    position:relative;display:grid;grid-template-columns:1.15fr .85fr;min-height:calc(100vh - 78px);
+    border-bottom:1px solid var(--line);
+  }
+  .forge .left{padding:64px 56px 48px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+  .forge .left::after{content:"";position:absolute;inset:0;background:var(--slash);opacity:.11;pointer-events:none}
+  .forge .kicker{display:flex;align-items:center;gap:14px;margin-bottom:26px;position:relative;z-index:2}
+  .forge .kicker .rule{height:1px;width:56px;background:var(--terra)}
+  .forge h1{font-size:clamp(3.2rem,7.2vw,7rem);font-weight:700;text-transform:uppercase;position:relative;z-index:2}
+  .forge h1 .a{color:var(--cream);display:block}
+  .forge h1 .b{color:var(--terra);display:block;-webkit-text-stroke:0}
+  .forge h1 .c{display:block;color:transparent;-webkit-text-stroke:1.4px var(--cream-dim)}
+  .forge .sub{max-width:44ch;margin-top:28px;color:var(--cream-dim);font-size:1.05rem;position:relative;z-index:2}
+  .forge .sub .prop{font-size:.68rem;color:var(--terra-br);font-family:"Space Mono";letter-spacing:.15em}
+  .forge .fiche{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:44px;position:relative;z-index:2;
+    border:1px solid var(--line);background:rgba(0,0,0,.25);
+  }
+  .forge .fiche .cell{padding:18px 20px;border-right:1px solid var(--line)}
+  .forge .fiche .cell:last-child{border-right:0}
+  .forge .fiche .num{font-family:"Oswald";font-weight:600;font-size:2rem;color:var(--terra-br);line-height:1}
+  .forge .fiche .num small{font-size:.9rem;color:var(--cream-dim)}
+  .forge .fiche .cap{font-family:"Space Mono";font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim);margin-top:8px}
+  .forge .actions{margin-top:40px;display:flex;gap:16px;align-items:center;position:relative;z-index:2;flex-wrap:wrap}
+  .link-ghost{font-family:"Oswald";font-weight:500;letter-spacing:.12em;text-transform:uppercase;font-size:.82rem;color:var(--cream);border-bottom:2px solid var(--terra);padding-bottom:3px}
+  .link-ghost:hover{color:var(--terra-br)}
+
+  .forge .right{position:relative;overflow:hidden;border-left:1px solid var(--line)}
+  .forge .right img{width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.05)}
+  .forge .right .glow{position:absolute;inset:0;background:radial-gradient(120% 80% at 80% 20%,transparent 40%,rgba(180,68,46,.28) 100%);pointer-events:none}
+  .forge .right .tag{
+    position:absolute;left:26px;bottom:26px;background:rgba(14,12,11,.82);border:1px solid var(--line-strong);
+    padding:12px 16px;backdrop-filter:blur(4px);
+  }
+  .forge .right .tag .t1{font-family:"Space Mono";font-size:.58rem;letter-spacing:.22em;color:var(--terra-br);text-transform:uppercase}
+  .forge .right .tag .t2{font-family:"Oswald";font-weight:600;font-size:1.05rem;text-transform:uppercase;letter-spacing:.05em;margin-top:4px}
+  .forge .temp-badge{
+    position:absolute;right:24px;top:24px;width:112px;height:112px;border-radius:50%;
+    background:radial-gradient(circle,#1a1512,#0d0b0a);border:1px solid var(--terra);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    box-shadow:0 0 30px rgba(180,68,46,.35);z-index:3;
+  }
+  .forge .temp-badge .v{font-family:"Oswald";font-weight:700;font-size:1.8rem;color:var(--terra-br);line-height:.9}
+  .forge .temp-badge .u{font-family:"Space Mono";font-size:.52rem;letter-spacing:.18em;color:var(--cream-dim);text-transform:uppercase;margin-top:4px}
+
+  /* ============ MARQUEE ============ */
+  .marquee{overflow:hidden;border-bottom:1px solid var(--line);background:var(--terra);padding:11px 0}
+  .marquee .track{display:flex;gap:52px;white-space:nowrap;animation:scroll 34s linear infinite;font-family:"Oswald";font-weight:600;text-transform:uppercase;letter-spacing:.2em;color:#fff;font-size:.92rem}
+  .marquee .track span{display:flex;align-items:center;gap:52px}
+  .marquee .track b{color:#2a1410;font-weight:700}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;padding:0 0 30px;flex-wrap:wrap}
+  .section-head h2{font-size:clamp(2rem,3.6vw,3.2rem);text-transform:uppercase;color:var(--cream)}
+  .section-head h2 em{color:var(--terra);font-style:normal}
+  .section-head .note{max-width:38ch;color:var(--cream-dim);font-size:.92rem}
+  .divider{height:2px;background:var(--slash);opacity:.5}
+
+  /* ============ MAISON / PROCESS ============ */
+  .maison{padding:74px 56px;display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+  .maison .media{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:220px 160px;gap:12px}
+  .maison .media .a{grid-row:1 / span 2;height:100%}
+  .maison .media img{width:100%;height:100%;object-fit:cover;border:1px solid var(--line)}
+  .maison .copy h2{font-size:clamp(2rem,3.4vw,3rem);text-transform:uppercase;margin:16px 0 20px}
+  .maison .copy h2 em{color:var(--terra);font-style:normal}
+  .maison .copy p{color:var(--cream-dim);margin-bottom:16px;max-width:52ch}
+  .process{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:32px;border-top:1px solid var(--line-strong)}
+  .process .step{padding:22px 20px 18px;border-right:1px solid var(--line);position:relative}
+  .process .step:last-child{border-right:0}
+  .process .step .n{font-family:"Space Mono";font-size:.62rem;letter-spacing:.2em;color:var(--terra-br)}
+  .process .step h4{font-size:1.15rem;text-transform:uppercase;margin:12px 0 6px;color:var(--cream)}
+  .process .step p{font-size:.82rem;color:var(--cream-dim);margin:0}
+
+  /* ============ REGISTRE / MENU ============ */
+  .registre{padding:74px 56px;background:linear-gradient(180deg,var(--ink),#100e0c)}
+  .registre-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:44px;margin-top:14px}
+  .ledger{border:1px solid var(--line-strong)}
+  .ledger .lh{
+    display:grid;grid-template-columns:1fr auto auto auto;gap:16px;padding:12px 22px;
+    background:var(--panel);border-bottom:1px solid var(--line-strong);
+    font-family:"Space Mono";font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim);
+  }
+  .ledger .row{
+    display:grid;grid-template-columns:1fr auto auto auto;gap:16px;padding:16px 22px;
+    align-items:center;border-bottom:1px solid var(--line);transition:background .18s;
+  }
+  .ledger .row:hover{background:rgba(180,68,46,.09)}
+  .ledger .row:last-child{border-bottom:0}
+  .ledger .row .nm{font-family:"Oswald";font-weight:500;font-size:1.12rem;text-transform:uppercase;letter-spacing:.02em;color:var(--cream)}
+  .ledger .row .nm small{display:block;font-family:"Inter";font-weight:400;font-size:.74rem;letter-spacing:0;text-transform:none;color:var(--cream-dim);margin-top:3px}
+  .ledger .row .mat,.ledger .row .wt{font-family:"Space Mono";font-size:.78rem;color:var(--wood);text-align:right;min-width:64px}
+  .ledger .row .pr{font-family:"Oswald";font-weight:600;font-size:1.2rem;color:var(--terra-br);text-align:right;min-width:70px}
+  .ledger .row.hl{background:rgba(180,68,46,.13)}
+  .ledger .row .flag{display:inline-block;font-family:"Space Mono";font-size:.5rem;letter-spacing:.14em;background:var(--terra);color:#fff;padding:2px 6px;text-transform:uppercase;margin-left:8px;vertical-align:middle}
+
+  .side-col{display:flex;flex-direction:column;gap:26px}
+  .card-photo{border:1px solid var(--line);position:relative;overflow:hidden;height:200px}
+  .card-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .card-photo:hover img{transform:scale(1.05)}
+  .card-photo .cap{position:absolute;left:0;bottom:0;right:0;padding:14px 16px;background:linear-gradient(0deg,rgba(10,8,7,.92),transparent);display:flex;justify-content:space-between;align-items:flex-end}
+  .card-photo .cap .nm{font-family:"Oswald";font-weight:600;text-transform:uppercase;font-size:1rem}
+  .card-photo .cap .pr{font-family:"Oswald";font-weight:600;color:var(--terra-br);font-size:1.05rem}
+  .minilist{border:1px solid var(--line);padding:20px 22px}
+  .minilist h4{font-size:1.15rem;text-transform:uppercase;color:var(--cream);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .minilist .mi{display:flex;justify-content:space-between;gap:12px;padding:7px 0;font-size:.9rem;color:var(--cream-dim)}
+  .minilist .mi .p{font-family:"Space Mono";color:var(--wood);font-size:.82rem}
+  .menu-note{margin-top:26px;font-family:"Space Mono";font-size:.66rem;letter-spacing:.06em;color:var(--cream-dim)}
+  .menu-note b{color:var(--terra-br)}
+
+  /* ============ SALLE / AMBIANCE ============ */
+  .salle{padding:74px 56px}
+  .salle-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:280px 200px;gap:12px;margin-top:14px}
+  .salle-grid figure{position:relative;overflow:hidden;border:1px solid var(--line)}
+  .salle-grid figure img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .salle-grid figure:hover img{transform:scale(1.04)}
+  .salle-grid .big{grid-row:1 / span 2}
+  .salle-grid .talk{grid-column:2 / span 2;background:var(--panel);border:1px solid var(--line);padding:30px 32px;display:flex;flex-direction:column;justify-content:center}
+  .salle-grid .talk h3{font-size:1.7rem;text-transform:uppercase;color:var(--cream);margin-bottom:12px}
+  .salle-grid .talk h3 em{color:var(--terra);font-style:normal}
+  .salle-grid .talk p{color:var(--cream-dim);font-size:.92rem}
+  .salle-grid figcaption{position:absolute;left:12px;bottom:12px;font-family:"Space Mono";font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;background:rgba(14,12,11,.8);padding:5px 9px;color:var(--cream-dim)}
+
+  /* ============ SERVICE / RESERVATION + MAP ============ */
+  .service{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .service .res{padding:64px 56px;background:linear-gradient(160deg,#1c1613,#100d0b);position:relative;overflow:hidden}
+  .service .res::before{content:"";position:absolute;inset:0;background:var(--slash);opacity:.08}
+  .service .res .inner{position:relative;z-index:2;max-width:520px}
+  .service .res h2{font-size:clamp(2rem,3vw,2.7rem);text-transform:uppercase;margin:14px 0 10px}
+  .service .res h2 em{color:var(--terra);font-style:normal}
+  .service .res p{color:var(--cream-dim);margin-bottom:28px;font-size:.94rem}
+  form.book{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  form.book .full{grid-column:1 / -1}
+  form.book label{font-family:"Space Mono";font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim);display:block;margin-bottom:6px}
+  form.book input,form.book select{
+    width:100%;background:rgba(0,0,0,.35);border:1px solid var(--line-strong);color:var(--cream);
+    padding:12px 13px;font-family:"Inter";font-size:.92rem;border-radius:0;
+  }
+  form.book input:focus,form.book select:focus{outline:none;border-color:var(--terra)}
+  form.book button{
+    grid-column:1 / -1;background:var(--terra);color:#fff;border:0;cursor:pointer;
+    font-family:"Oswald";font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.95rem;
+    padding:15px;margin-top:6px;transition:.2s;clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
+  }
+  form.book button:hover{background:var(--terra-br)}
+  .book-ok{margin-top:16px;color:var(--ember);font-family:"Space Mono";font-size:.8rem;display:none}
+  .book-ok.show{display:block}
+
+  .service .info{padding:64px 56px;background:var(--ink2);display:flex;flex-direction:column;gap:24px}
+  .info .block .k{font-family:"Space Mono";font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terra-br);margin-bottom:7px}
+  .info .block .v{color:var(--cream);font-size:1rem}
+  .info .block .v a{border-bottom:1px solid var(--terra)}
+  .info .hours{display:grid;grid-template-columns:1fr auto;gap:4px 16px;font-size:.9rem}
+  .info .hours .d{color:var(--cream-dim)}
+  .info .hours .t{font-family:"Space Mono";font-size:.82rem;color:var(--cream);text-align:right}
+  .info .conf{font-family:"Space Mono";font-size:.62rem;color:var(--cream-dim);letter-spacing:.05em}
+  .info .conf b{color:var(--terra-br)}
+  .mapbox{border:1px solid var(--line-strong);height:220px;filter:grayscale(.35) contrast(1.05)}
+  .mapbox iframe{width:100%;height:100%;border:0;display:block}
+
+  /* ============ FOOTER ============ */
+  footer{padding:52px 56px 30px;background:#0d0b0a;border-top:1px solid var(--line)}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start}
+  .foot-brand .brandmark img{width:52px;height:52px}
+  .foot-brand p{color:var(--cream-dim);font-size:.85rem;margin-top:16px;max-width:36ch}
+  footer .col h5{font-family:"Space Mono";font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terra-br);margin-bottom:14px}
+  footer .col a,footer .col p{display:block;color:var(--cream-dim);font-size:.9rem;margin-bottom:8px}
+  footer .col a:hover{color:var(--cream)}
+  .foot-bottom{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:"Space Mono";font-size:.62rem;letter-spacing:.06em;color:var(--cream-dim)}
+  .foot-bottom .demo{color:var(--terra-br)}
+
+  /* ============ RESPONSIVE ============ */
+  @media(max-width:1080px){
+    .forge{grid-template-columns:1fr}
+    .forge .right{min-height:360px;border-left:0;border-top:1px solid var(--line)}
+    .maison{grid-template-columns:1fr;gap:36px}
+    .registre-grid{grid-template-columns:1fr}
+    .salle-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+    .salle-grid .big{grid-row:auto}
+    .salle-grid .talk{grid-column:1 / -1}
+    .service{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:720px){
+    :root{--rail:0px}
+    .rail{display:none}
+    .topbar{padding:12px 18px;flex-wrap:wrap;gap:12px}
+    .btn-res{display:none}
+    .forge .left{padding:44px 22px}
+    .forge .fiche{grid-template-columns:1fr}
+    .forge .fiche .cell{border-right:0;border-bottom:1px solid var(--line)}
+    .maison,.registre,.salle{padding:48px 22px}
+    .maison .media{grid-template-rows:180px 130px}
+    .process{grid-template-columns:1fr}
+    .process .step{border-right:0;border-bottom:1px solid var(--line)}
+    .salle-grid{grid-template-columns:1fr}
+    .ledger .lh{display:none}
+    .ledger .row{grid-template-columns:1fr auto;grid-template-areas:"nm pr" "mat wt"}
+    .ledger .row .nm{grid-area:nm}.ledger .row .pr{grid-area:pr}
+    .ledger .row .mat{grid-area:mat;text-align:left}.ledger .row .wt{grid-area:wt}
+    .service .res,.service .info{padding:44px 22px}
+    form.book{grid-template-columns:1fr}
+    footer{padding:40px 22px 26px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== LEFT FIRE-INDEX RAIL ===== -->
+<aside class="rail" aria-hidden="true">
+  <div class="stamp">GRAND <b>CAFÉ</b> · <span data-i18n="rail_be">BELLE ÉTOILE</span></div>
+  <nav>
+    <a href="#forge" data-num="01" data-i18n="nav_forge">La Forge</a>
+    <a href="#maison" data-num="02" data-i18n="nav_maison">La Maison</a>
+    <a href="#carte" data-num="03" data-i18n="nav_carte">La Carte</a>
+    <a href="#salle" data-num="04" data-i18n="nav_salle">La Salle</a>
+    <a href="#service" data-num="05" data-i18n="nav_service">Réserver</a>
+  </nav>
+  <div class="gauge">
+    <span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span>
+    <span class="lbl" data-i18n="rail_josper">Josper</span>
+  </div>
+</aside>
+
+<div class="wrap">
+
+  <!-- ===== TOP BAR ===== -->
+  <header class="topbar">
+    <a href="#forge" class="brandmark">
+      <img src="assets/logo.png" alt="Grand Café" />
+      <span class="txt">
+        <span class="l1">GRAND CAFÉ</span>
+        <span class="l2" data-i18n="brand_sub">Belle Étoile · Bertrange</span>
+      </span>
+    </a>
+    <div class="right">
+      <div class="langs" role="group" aria-label="Langue">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <button class="btn-res" onclick="document.getElementById('service').scrollIntoView()" data-i18n="cta_book">Réserver une table</button>
+    </div>
+  </header>
+
+  <!-- ===== HERO / LA FORGE ===== -->
+  <section class="forge" id="forge">
+    <div class="left">
+      <div class="kicker">
+        <span class="rule"></span>
+        <span class="eyebrow" data-i18n="hero_kick">Steakhouse au feu de bois · Four Josper</span>
+      </div>
+      <h1>
+        <span class="a" data-i18n="hero_l1">Viande</span>
+        <span class="b" data-i18n="hero_l2">Maturée,</span>
+        <span class="c" data-i18n="hero_l3">Saisie au feu</span>
+      </h1>
+      <p class="sub">
+        <span data-i18n="hero_sub">Une sélection de viandes de prestige, maturées et saisies à la braise dans notre four Josper. Au cœur du foodmarket G.A.N.G., à la Belle Étoile.</span>
+        <br><span class="prop" data-i18n="hero_prop">— slogan proposé, à valider avec l'établissement</span>
+      </p>
+      <div class="fiche">
+        <div class="cell">
+          <div class="num">350<small>°C</small></div>
+          <div class="cap" data-i18n="fiche_braise">Braise Josper</div>
+        </div>
+        <div class="cell">
+          <div class="num">+30<small>j</small></div>
+          <div class="cap" data-i18n="fiche_matur">Maturation</div>
+        </div>
+        <div class="cell">
+          <div class="num">7<small>/7</small></div>
+          <div class="cap" data-i18n="fiche_open">Midi &amp; soir · à confirmer</div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn-res" onclick="document.getElementById('service').scrollIntoView()" data-i18n="cta_book2">Réserver une table</button>
+        <a href="#carte" class="link-ghost" data-i18n="cta_menu">Voir la carte des viandes →</a>
+      </div>
+    </div>
+    <div class="right">
+      <img src="assets/food-tomahawk.png" alt="Tomahawk maturé, Grand Café" />
+      <div class="glow"></div>
+      <div class="temp-badge">
+        <span class="v">Bleu</span>
+        <span class="u" data-i18n="badge_temp">Saisie à la braise</span>
+      </div>
+      <div class="tag">
+        <div class="t1" data-i18n="hero_tag1">Pièce d'exception</div>
+        <div class="t2" data-i18n="hero_tag2">Tomahawk Simmental</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MARQUEE ===== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>
+        <b>///</b> Filet <b>///</b> Entrecôte Irish Angus <b>///</b> Tomahawk Simmental <b>///</b> Wagyu Kagoshima <b>///</b> Côte de bœuf <b>///</b> Tartare au couteau <b>///</b> Carpaccio signature <b>///</b>
+      </span>
+      <span>
+        <b>///</b> Filet <b>///</b> Entrecôte Irish Angus <b>///</b> Tomahawk Simmental <b>///</b> Wagyu Kagoshima <b>///</b> Côte de bœuf <b>///</b> Tartare au couteau <b>///</b> Carpaccio signature <b>///</b>
+      </span>
+    </div>
+  </div>
+
+  <!-- ===== MAISON / PROCESS ===== -->
+  <section class="maison" id="maison">
+    <div class="media">
+      <img class="a" src="assets/hero.jpg" alt="Tartare de bœuf signature" />
+      <img src="assets/food-filet.jpg" alt="Filet grillé, marqueur Bleu Rare" />
+      <img src="assets/interior-2.jpg" alt="Salle Grand Café" />
+    </div>
+    <div class="copy">
+      <span class="eyebrow" data-i18n="maison_kick">La maison · RedBeef</span>
+      <h2><span data-i18n="maison_h1">Trois gestes,</span> <em data-i18n="maison_h2">une obsession :</em> <span data-i18n="maison_h3">la viande.</span></h2>
+      <p data-i18n="maison_p1">Grand Café, c'est la table carnivore du groupe RedBeef à la Belle Étoile. Toutes nos viandes sont sélectionnées, maturées puis saisies à la braise — pour une croûte fumée et un cœur fondant. Une brasserie de prestige, généreuse et décontractée, ouverte sur le foodmarket G.A.N.G.</p>
+      <p data-i18n="maison_p2">De la rôtisserie aux pièces d'exception hebdomadaires, chaque assiette suit la même règle : le produit d'abord.</p>
+      <div class="process">
+        <div class="step">
+          <span class="n">01 · <span data-i18n="step1_n">Sélection</span></span>
+          <h4 data-i18n="step1_h">Sélection</h4>
+          <p data-i18n="step1_p">Angus, Simmental, Irish, Wagyu — des origines choisies pièce par pièce.</p>
+        </div>
+        <div class="step">
+          <span class="n">02 · <span data-i18n="step2_n">Maturation</span></span>
+          <h4 data-i18n="step2_h">Maturation</h4>
+          <p data-i18n="step2_p">Affinage patient pour concentrer le goût et attendrir la fibre.</p>
+        </div>
+        <div class="step">
+          <span class="n">03 · <span data-i18n="step3_n">Braise</span></span>
+          <h4 data-i18n="step3_h">Braise Josper</h4>
+          <p data-i18n="step3_p">Saisie au charbon dans le four Josper, à haute température.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== CARTE / REGISTRE DES VIANDES ===== -->
+  <section class="registre" id="carte">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow" data-i18n="carte_kick">Le registre · Sélection</span>
+        <h2><span data-i18n="carte_h1">La Carte</span> <em data-i18n="carte_h2">des Viandes</em></h2>
+      </div>
+      <p class="note" data-i18n="carte_note">Pièces phares de la carte. La sélection de viandes maturées tourne chaque semaine — prix et disponibilités à confirmer avec l'établissement.</p>
+    </div>
+
+    <div class="registre-grid">
+      <!-- LEDGER: prestige cuts -->
+      <div class="ledger">
+        <div class="lh">
+          <span data-i18n="lh_cut">Pièce</span>
+          <span data-i18n="lh_mat">Matur.</span>
+          <span data-i18n="lh_origin">Origine</span>
+          <span data-i18n="lh_price">Prix</span>
+        </div>
+        <div class="row hl">
+          <div class="nm">Filet <span class="flag" data-i18n="flag_signature">signature</span><small data-i18n="cut_filet">Cœur de filet saisi, frites fraîches &amp; sauce maison</small></div>
+          <div class="mat">+30 j</div>
+          <div class="wt">Angus</div>
+          <div class="pr">42,00</div>
+        </div>
+        <div class="row">
+          <div class="nm">Entrecôte<small data-i18n="cut_entrecote">Irish Angus, persillée, à la braise</small></div>
+          <div class="mat">+28 j</div>
+          <div class="wt">Irish</div>
+          <div class="pr">39,00</div>
+        </div>
+        <div class="row">
+          <div class="nm">Tagliata<small data-i18n="cut_tagliata">Émincé de bœuf, roquette &amp; parmesan</small></div>
+          <div class="mat">—</div>
+          <div class="wt">Angus</div>
+          <div class="pr">34,50</div>
+        </div>
+        <div class="row">
+          <div class="nm">Cœur de rumsteak<small data-i18n="cut_rump">Tendre &amp; goûteux, cuit à cœur</small></div>
+          <div class="mat">—</div>
+          <div class="wt">Bœuf</div>
+          <div class="pr">33,50</div>
+        </div>
+        <div class="row hl">
+          <div class="nm">Tomahawk <span class="flag" data-i18n="flag_week">pièce du moment</span><small data-i18n="cut_tomahawk">Simmental maturé, à partager · prix à confirmer</small></div>
+          <div class="mat">+40 j</div>
+          <div class="wt">Simmental</div>
+          <div class="pr">n.c.</div>
+        </div>
+        <div class="row">
+          <div class="nm">Wagyu Kagoshima<small data-i18n="cut_wagyu">Pièce d'exception hebdomadaire · prix à confirmer</small></div>
+          <div class="mat">—</div>
+          <div class="wt">Wagyu</div>
+          <div class="pr">n.c.</div>
+        </div>
+        <div class="row">
+          <div class="nm">Carpaccio signature<small data-i18n="cut_carpaccio">Le carpaccio maison, recette Grand Café</small></div>
+          <div class="mat" data-i18n="cru">cru</div>
+          <div class="wt">Bœuf</div>
+          <div class="pr">27,50</div>
+        </div>
+        <div class="row">
+          <div class="nm">Tartare de bœuf Angus<small data-i18n="cut_tartare">Coupé au couteau, assaisonné minute</small></div>
+          <div class="mat" data-i18n="cru">cru</div>
+          <div class="wt">Angus</div>
+          <div class="pr">29,50</div>
+        </div>
+      </div>
+
+      <!-- SIDE: photo cards + mini lists -->
+      <div class="side-col">
+        <div class="card-photo">
+          <img src="assets/food-filet.jpg" alt="Filet grillé Bleu Rare" />
+          <div class="cap"><span class="nm" data-i18n="pc_filet">Filet · Bleu Rare</span><span class="pr">42,00</span></div>
+        </div>
+
+        <div class="minilist">
+          <h4 data-i18n="ml_brasserie_h">Rôtisserie &amp; Brasserie</h4>
+          <div class="mi"><span data-i18n="ml_magret">Magret de canard</span><span class="p">36,50</span></div>
+          <div class="mi"><span data-i18n="ml_ribs">Spare-ribs</span><span class="p">29,50</span></div>
+          <div class="mi"><span data-i18n="ml_poulet">½ poulet grillé rôtisserie</span><span class="p">25,50</span></div>
+          <div class="mi"><span data-i18n="ml_bouchee">Bouchée à la reine Grand Café</span><span class="p">24,50</span></div>
+          <div class="mi"><span data-i18n="ml_dorade">Dorade royale</span><span class="p">36,50</span></div>
+        </div>
+
+        <div class="card-photo">
+          <img src="assets/food-burger.jpg" alt="Big Cheese burger" />
+          <div class="cap"><span class="nm" data-i18n="pc_burger">Big Cheese</span><span class="pr">32,50</span></div>
+        </div>
+
+        <div class="minilist">
+          <h4 data-i18n="ml_burgers_h">Burgers &amp; Entrées</h4>
+          <div class="mi"><span data-i18n="ml_cheese">Cheeseburger</span><span class="p">26,50</span></div>
+          <div class="mi"><span data-i18n="ml_veggie">Burger veggie chèvre</span><span class="p">25,50</span></div>
+          <div class="mi"><span data-i18n="ml_moelle">Os à moëlle</span><span class="p">16,50</span></div>
+          <div class="mi"><span data-i18n="ml_burrata">Carpaccio &amp; burrata</span><span class="p">28,50</span></div>
+          <div class="mi"><span data-i18n="ml_cesar">Salade César</span><span class="p">27,50</span></div>
+        </div>
+
+        <div class="card-photo">
+          <img src="assets/food-veggie.jpg" alt="Burger veggie chèvre" />
+          <div class="cap"><span class="nm" data-i18n="pc_veggie">Veggie · Chèvre chaud</span><span class="pr">25,50</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="menu-note"><b>///</b> <span data-i18n="menu_note_txt">Menu enfant (≤8 ans) 16,00 · Brunch le dimanche · Desserts maison dès 9,00. Tous les prix en € — carte rotative, à confirmer avec l'établissement.</span></p>
+  </section>
+
+  <!-- ===== SALLE / AMBIANCE ===== -->
+  <section class="salle" id="salle">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow" data-i18n="salle_kick">Le décor · G.A.N.G. foodmarket</span>
+        <h2><span data-i18n="salle_h1">La Salle</span> <em>///</em></h2>
+      </div>
+      <p class="note" data-i18n="salle_note">Acier apparent, cuisine ouverte carrelée de rouge, néon « GRAND CAFÉ » et banquettes en cuir olive — au sein du plus grand foodmarket du Luxembourg.</p>
+    </div>
+    <div class="salle-grid">
+      <figure class="big">
+        <img src="assets/interior-1.jpg" alt="Salle avec néon Grand Café" />
+        <figcaption data-i18n="cap_neon">Le néon rouge de la salle</figcaption>
+      </figure>
+      <div class="talk">
+        <h3><span data-i18n="talk_h1">Décontracté,</span> <em data-i18n="talk_h2">jamais tiède.</em></h3>
+        <p data-i18n="talk_p">Une brasserie de prestige à l'esprit foodmarket : parfaite pour un déjeuner d'affaires, un dîner entre carnivores ou le brunch du dimanche en famille. Terrasse, parking privé, bornes de recharge — et bienvenue aux animaux.</p>
+      </div>
+      <figure>
+        <img src="assets/venue-gang.jpg" alt="Halle du foodmarket G.A.N.G." />
+        <figcaption data-i18n="cap_gang">La halle G.A.N.G.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/interior-2.jpg" alt="Salle tamisée, plantes et lumières" />
+        <figcaption data-i18n="cap_salle">Ambiance tamisée</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== SERVICE / RESERVATION + MAP ===== -->
+  <section class="service" id="service">
+    <div class="res">
+      <div class="inner">
+        <span class="eyebrow" data-i18n="res_kick">Fiche de service · Réservation</span>
+        <h2><span data-i18n="res_h1">Réservez</span> <em data-i18n="res_h2">votre table</em></h2>
+        <p data-i18n="res_p">Une envie carnivore ? Réservez en quelques secondes — nous vous recontactons pour confirmer. (Formulaire de démonstration.)</p>
+        <form class="book" onsubmit="return bookSubmit(event)">
+          <div>
+            <label data-i18n="f_name">Nom</label>
+            <input type="text" required placeholder="Nom" />
+          </div>
+          <div>
+            <label data-i18n="f_phone">Téléphone</label>
+            <input type="tel" required placeholder="+352 …" />
+          </div>
+          <div>
+            <label data-i18n="f_date">Date</label>
+            <input type="date" required />
+          </div>
+          <div>
+            <label data-i18n="f_time">Heure</label>
+            <input type="time" required />
+          </div>
+          <div class="full">
+            <label data-i18n="f_guests">Couverts</label>
+            <select>
+              <option>1</option><option selected>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option data-i18n="f_more">7 et plus</option>
+            </select>
+          </div>
+          <button type="submit" data-i18n="f_submit">Demander une réservation</button>
+          <p class="book-ok" id="bookOk" data-i18n="f_ok">Merci ! Demande enregistrée (démo). L'établissement vous recontactera pour confirmer.</p>
+        </form>
+      </div>
+    </div>
+    <div class="info">
+      <div class="block">
+        <div class="k" data-i18n="i_addr">Adresse</div>
+        <div class="v">Belle Étoile · Espace G.A.N.G.<br>Route d'Arlon, L-8050 Bertrange<br><span class="conf" data-i18n="i_addr_conf">Rue exacte &amp; code postal <b>à confirmer</b></span></div>
+      </div>
+      <div class="block">
+        <div class="k" data-i18n="i_contact">Contact</div>
+        <div class="v">
+          <a href="tel:+35226270292">+352 26 27 02 92 41</a><br>
+          <a href="mailto:contact@groupe-srb.com">contact@groupe-srb.com</a>
+        </div>
+      </div>
+      <div class="block">
+        <div class="k" data-i18n="i_hours">Horaires</div>
+        <div class="hours">
+          <span class="d" data-i18n="d_monthu">Lun – Jeu</span><span class="t">11:30 – 21:30</span>
+          <span class="d" data-i18n="d_frisat">Ven – Sam</span><span class="t">11:30 – 22:00</span>
+          <span class="d" data-i18n="d_sun">Dimanche</span><span class="t" data-i18n="t_sun">Brunch · midi</span>
+        </div>
+        <p class="conf" style="margin-top:10px" data-i18n="i_hours_conf">Les sources divergent — horaires <b>à confirmer avec l'établissement</b>.</p>
+      </div>
+      <div class="mapbox">
+        <iframe title="Plan Grand Café Belle Étoile" loading="lazy" src="https://www.google.com/maps?q=Grand+Caf%C3%A9+Belle+%C3%89toile+Bertrange&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brandmark">
+          <img src="assets/logo.png" alt="Grand Café" />
+          <span class="txt"><span class="l1">GRAND CAFÉ</span><span class="l2">Belle Étoile · RedBeef</span></span>
+        </div>
+        <p data-i18n="foot_tag">La table carnivore de la Belle Étoile. Viandes de prestige maturées, saisies au feu de bois Josper.</p>
+      </div>
+      <div class="col">
+        <h5 data-i18n="foot_nav">Navigation</h5>
+        <a href="#forge" data-i18n="nav_forge">La Forge</a>
+        <a href="#maison" data-i18n="nav_maison">La Maison</a>
+        <a href="#carte" data-i18n="nav_carte">La Carte</a>
+        <a href="#salle" data-i18n="nav_salle">La Salle</a>
+        <a href="#service" data-i18n="nav_service">Réserver</a>
+      </div>
+      <div class="col">
+        <h5 data-i18n="foot_find">Nous trouver</h5>
+        <p>Belle Étoile · Espace G.A.N.G.<br>Bertrange, Luxembourg</p>
+        <a href="tel:+35226270292">+352 26 27 02 92 41</a>
+        <a href="https://www.instagram.com/grandcafe.lu" target="_blank" rel="noopener">Instagram @grandcafe.lu</a>
+        <a href="https://www.facebook.com/grandcafeluxembourg" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Grand Café · Groupe RedBeef / SRB</span>
+      <span class="demo" data-i18n="foot_demo">/// Site de démonstration — contenu, prix &amp; horaires à confirmer avec l'établissement.</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+/* ===== YEAR ===== */
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ===== RESERVATION DEMO ===== */
+function bookSubmit(e){
+  e.preventDefault();
+  document.getElementById('bookOk').classList.add('show');
+  return false;
+}
+
+/* ===== I18N ===== */
+const I18N = {
+  fr:{
+    rail_be:"BELLE ÉTOILE", rail_josper:"Josper",
+    nav_forge:"La Forge", nav_maison:"La Maison", nav_carte:"La Carte", nav_salle:"La Salle", nav_service:"Réserver",
+    brand_sub:"Belle Étoile · Bertrange", cta_book:"Réserver une table", cta_book2:"Réserver une table",
+    hero_kick:"Steakhouse au feu de bois · Four Josper",
+    hero_l1:"Viande", hero_l2:"Maturée,", hero_l3:"Saisie au feu",
+    hero_sub:"Une sélection de viandes de prestige, maturées et saisies à la braise dans notre four Josper. Au cœur du foodmarket G.A.N.G., à la Belle Étoile.",
+    hero_prop:"— slogan proposé, à valider avec l'établissement",
+    fiche_braise:"Braise Josper", fiche_matur:"Maturation", fiche_open:"Midi & soir · à confirmer",
+    cta_menu:"Voir la carte des viandes →",
+    badge_temp:"Saisie à la braise", hero_tag1:"Pièce d'exception", hero_tag2:"Tomahawk Simmental",
+    maison_kick:"La maison · RedBeef",
+    maison_h1:"Trois gestes,", maison_h2:"une obsession :", maison_h3:"la viande.",
+    maison_p1:"Grand Café, c'est la table carnivore du groupe RedBeef à la Belle Étoile. Toutes nos viandes sont sélectionnées, maturées puis saisies à la braise — pour une croûte fumée et un cœur fondant. Une brasserie de prestige, généreuse et décontractée, ouverte sur le foodmarket G.A.N.G.",
+    maison_p2:"De la rôtisserie aux pièces d'exception hebdomadaires, chaque assiette suit la même règle : le produit d'abord.",
+    step1_n:"Sélection", step1_h:"Sélection", step1_p:"Angus, Simmental, Irish, Wagyu — des origines choisies pièce par pièce.",
+    step2_n:"Maturation", step2_h:"Maturation", step2_p:"Affinage patient pour concentrer le goût et attendrir la fibre.",
+    step3_n:"Braise", step3_h:"Braise Josper", step3_p:"Saisie au charbon dans le four Josper, à haute température.",
+    carte_kick:"Le registre · Sélection", carte_h1:"La Carte", carte_h2:"des Viandes",
+    carte_note:"Pièces phares de la carte. La sélection de viandes maturées tourne chaque semaine — prix et disponibilités à confirmer avec l'établissement.",
+    lh_cut:"Pièce", lh_mat:"Matur.", lh_origin:"Origine", lh_price:"Prix",
+    flag_signature:"signature", flag_week:"pièce du moment", cru:"cru",
+    cut_filet:"Cœur de filet saisi, frites fraîches & sauce maison",
+    cut_entrecote:"Irish Angus, persillée, à la braise",
+    cut_tagliata:"Émincé de bœuf, roquette & parmesan",
+    cut_rump:"Tendre & goûteux, cuit à cœur",
+    cut_tomahawk:"Simmental maturé, à partager · prix à confirmer",
+    cut_wagyu:"Pièce d'exception hebdomadaire · prix à confirmer",
+    cut_carpaccio:"Le carpaccio maison, recette Grand Café",
+    cut_tartare:"Coupé au couteau, assaisonné minute",
+    pc_filet:"Filet · Bleu Rare",
+    ml_brasserie_h:"Rôtisserie & Brasserie", ml_magret:"Magret de canard", ml_ribs:"Spare-ribs",
+    ml_poulet:"½ poulet grillé rôtisserie", ml_bouchee:"Bouchée à la reine Grand Café", ml_dorade:"Dorade royale",
+    pc_burger:"Big Cheese", ml_burgers_h:"Burgers & Entrées", ml_cheese:"Cheeseburger",
+    ml_veggie:"Burger veggie chèvre", ml_moelle:"Os à moëlle", ml_burrata:"Carpaccio & burrata", ml_cesar:"Salade César",
+    pc_veggie:"Veggie · Chèvre chaud",
+    menu_note_txt:"Menu enfant (≤8 ans) 16,00 · Brunch le dimanche · Desserts maison dès 9,00. Tous les prix en € — carte rotative, à confirmer avec l'établissement.",
+    salle_kick:"Le décor · G.A.N.G. foodmarket", salle_h1:"La Salle",
+    salle_note:"Acier apparent, cuisine ouverte carrelée de rouge, néon « GRAND CAFÉ » et banquettes en cuir olive — au sein du plus grand foodmarket du Luxembourg.",
+    cap_neon:"Le néon rouge de la salle", cap_gang:"La halle G.A.N.G.", cap_salle:"Ambiance tamisée",
+    talk_h1:"Décontracté,", talk_h2:"jamais tiède.",
+    talk_p:"Une brasserie de prestige à l'esprit foodmarket : parfaite pour un déjeuner d'affaires, un dîner entre carnivores ou le brunch du dimanche en famille. Terrasse, parking privé, bornes de recharge — et bienvenue aux animaux.",
+    res_kick:"Fiche de service · Réservation", res_h1:"Réservez", res_h2:"votre table",
+    res_p:"Une envie carnivore ? Réservez en quelques secondes — nous vous recontactons pour confirmer. (Formulaire de démonstration.)",
+    f_name:"Nom", f_phone:"Téléphone", f_date:"Date", f_time:"Heure", f_guests:"Couverts", f_more:"7 et plus",
+    f_submit:"Demander une réservation", f_ok:"Merci ! Demande enregistrée (démo). L'établissement vous recontactera pour confirmer.",
+    i_addr:"Adresse", i_addr_conf:"Rue exacte & code postal à confirmer",
+    i_contact:"Contact", i_hours:"Horaires",
+    d_monthu:"Lun – Jeu", d_frisat:"Ven – Sam", d_sun:"Dimanche", t_sun:"Brunch · midi",
+    i_hours_conf:"Les sources divergent — horaires à confirmer avec l'établissement.",
+    foot_tag:"La table carnivore de la Belle Étoile. Viandes de prestige maturées, saisies au feu de bois Josper.",
+    foot_nav:"Navigation", foot_find:"Nous trouver",
+    foot_demo:"/// Site de démonstration — contenu, prix & horaires à confirmer avec l'établissement."
+  },
+  de:{
+    rail_be:"BELLE ÉTOILE", rail_josper:"Josper",
+    nav_forge:"Die Glut", nav_maison:"Das Haus", nav_carte:"Die Karte", nav_salle:"Der Saal", nav_service:"Reservieren",
+    brand_sub:"Belle Étoile · Bertrange", cta_book:"Tisch reservieren", cta_book2:"Tisch reservieren",
+    hero_kick:"Steakhouse am Holzfeuer · Josper-Ofen",
+    hero_l1:"Fleisch,", hero_l2:"gereift,", hero_l3:"am Feuer gebraten",
+    hero_sub:"Eine Auswahl edler, gereifter Fleischstücke, über der Glut im Josper-Ofen gebraten. Im Herzen des G.A.N.G. Foodmarkets in der Belle Étoile.",
+    hero_prop:"— vorgeschlagener Slogan, mit dem Haus abzustimmen",
+    fiche_braise:"Josper-Glut", fiche_matur:"Reifung", fiche_open:"Mittag & Abend · zu bestätigen",
+    cta_menu:"Zur Fleischkarte →",
+    badge_temp:"Über der Glut gebraten", hero_tag1:"Ausnahmestück", hero_tag2:"Tomahawk Simmental",
+    maison_kick:"Das Haus · RedBeef",
+    maison_h1:"Drei Handgriffe,", maison_h2:"eine Obsession:", maison_h3:"das Fleisch.",
+    maison_p1:"Das Grand Café ist die Fleischadresse der RedBeef-Gruppe in der Belle Étoile. Jedes Stück wird ausgewählt, gereift und über der Glut gebraten — für eine rauchige Kruste und einen zarten Kern. Eine edle, großzügige und entspannte Brasserie, offen zum G.A.N.G. Foodmarket.",
+    maison_p2:"Von der Rotisserie bis zu den wöchentlichen Ausnahmestücken folgt jeder Teller derselben Regel: das Produkt zuerst.",
+    step1_n:"Auswahl", step1_h:"Auswahl", step1_p:"Angus, Simmental, Irish, Wagyu — Herkünfte Stück für Stück gewählt.",
+    step2_n:"Reifung", step2_h:"Reifung", step2_p:"Geduldiges Reifen für vollen Geschmack und zarte Fasern.",
+    step3_n:"Glut", step3_h:"Josper-Glut", step3_p:"Über Holzkohle im Josper-Ofen bei hoher Temperatur gebraten.",
+    carte_kick:"Das Register · Auswahl", carte_h1:"Die Fleisch-", carte_h2:"karte",
+    carte_note:"Highlights der Karte. Die Auswahl gereifter Stücke wechselt wöchentlich — Preise und Verfügbarkeit mit dem Haus zu bestätigen.",
+    lh_cut:"Stück", lh_mat:"Reif.", lh_origin:"Herkunft", lh_price:"Preis",
+    flag_signature:"Signatur", flag_week:"Stück der Woche", cru:"roh",
+    cut_filet:"Filetkern gebraten, frische Pommes & Haussauce",
+    cut_entrecote:"Irish Angus, marmoriert, über der Glut",
+    cut_tagliata:"Rinderstreifen, Rucola & Parmesan",
+    cut_rump:"Zart & aromatisch, durchgegart",
+    cut_tomahawk:"Gereiftes Simmental, zum Teilen · Preis zu bestätigen",
+    cut_wagyu:"Wöchentliches Ausnahmestück · Preis zu bestätigen",
+    cut_carpaccio:"Das hausgemachte Carpaccio, Rezept Grand Café",
+    cut_tartare:"Mit dem Messer geschnitten, à la minute gewürzt",
+    pc_filet:"Filet · Blau/Rare",
+    ml_brasserie_h:"Rotisserie & Brasserie", ml_magret:"Entenbrust", ml_ribs:"Spare-Ribs",
+    ml_poulet:"½ Grillhähnchen vom Grill", ml_bouchee:"Königinpastete Grand Café", ml_dorade:"Goldbrasse",
+    pc_burger:"Big Cheese", ml_burgers_h:"Burger & Vorspeisen", ml_cheese:"Cheeseburger",
+    ml_veggie:"Veggie-Burger Ziegenkäse", ml_moelle:"Markknochen", ml_burrata:"Carpaccio & Burrata", ml_cesar:"Caesar-Salat",
+    pc_veggie:"Veggie · Warmer Ziegenkäse",
+    menu_note_txt:"Kindermenü (≤8 J.) 16,00 · Sonntagsbrunch · Hausdesserts ab 9,00. Alle Preise in € — wechselnde Karte, mit dem Haus zu bestätigen.",
+    salle_kick:"Das Ambiente · G.A.N.G. Foodmarket", salle_h1:"Der Saal",
+    salle_note:"Sichtstahl, offene rot geflieste Küche, „GRAND CAFÉ“-Neon und olivfarbene Lederbänke — im größten Foodmarket Luxemburgs.",
+    cap_neon:"Das rote Neon im Saal", cap_gang:"Die G.A.N.G.-Halle", cap_salle:"Gedämpfte Atmosphäre",
+    talk_h1:"Entspannt,", talk_h2:"nie lauwarm.",
+    talk_p:"Eine edle Brasserie im Foodmarket-Geist: perfekt für das Geschäftsessen, den Abend unter Fleischliebhabern oder den Sonntagsbrunch mit der Familie. Terrasse, eigener Parkplatz, Ladesäulen — und Tiere willkommen.",
+    res_kick:"Serviceblatt · Reservierung", res_h1:"Reservieren", res_h2:"Sie Ihren Tisch",
+    res_p:"Lust auf Fleisch? Reservieren Sie in Sekunden — wir melden uns zur Bestätigung. (Demo-Formular.)",
+    f_name:"Name", f_phone:"Telefon", f_date:"Datum", f_time:"Uhrzeit", f_guests:"Gedecke", f_more:"7 und mehr",
+    f_submit:"Reservierung anfragen", f_ok:"Danke! Anfrage erfasst (Demo). Das Haus meldet sich zur Bestätigung.",
+    i_addr:"Adresse", i_addr_conf:"Genaue Straße & PLZ zu bestätigen",
+    i_contact:"Kontakt", i_hours:"Öffnungszeiten",
+    d_monthu:"Mo – Do", d_frisat:"Fr – Sa", d_sun:"Sonntag", t_sun:"Brunch · mittags",
+    i_hours_conf:"Die Quellen weichen ab — Zeiten mit dem Haus zu bestätigen.",
+    foot_tag:"Die Fleischadresse der Belle Étoile. Edles, gereiftes Fleisch, am Josper-Holzfeuer gebraten.",
+    foot_nav:"Navigation", foot_find:"So finden Sie uns",
+    foot_demo:"/// Demo-Website — Inhalte, Preise & Zeiten mit dem Haus zu bestätigen."
+  },
+  en:{
+    rail_be:"BELLE ÉTOILE", rail_josper:"Josper",
+    nav_forge:"The Fire", nav_maison:"The House", nav_carte:"The Menu", nav_salle:"The Room", nav_service:"Reserve",
+    brand_sub:"Belle Étoile · Bertrange", cta_book:"Book a table", cta_book2:"Book a table",
+    hero_kick:"Wood-fired steakhouse · Josper oven",
+    hero_l1:"Meat,", hero_l2:"aged,", hero_l3:"seared over fire",
+    hero_sub:"A selection of prestige aged cuts, seared over the embers in our Josper charcoal oven. In the heart of the G.A.N.G. foodmarket, at the Belle Étoile.",
+    hero_prop:"— proposed tagline, to be confirmed with the venue",
+    fiche_braise:"Josper embers", fiche_matur:"Ageing", fiche_open:"Lunch & dinner · to confirm",
+    cta_menu:"See the meat menu →",
+    badge_temp:"Seared over embers", hero_tag1:"Exceptional cut", hero_tag2:"Tomahawk Simmental",
+    maison_kick:"The house · RedBeef",
+    maison_h1:"Three moves,", maison_h2:"one obsession:", maison_h3:"the meat.",
+    maison_p1:"Grand Café is the carnivore's table of the RedBeef group at the Belle Étoile. Every cut is selected, aged, then seared over the embers — for a smoky crust and a tender heart. A prestige brasserie, generous and relaxed, opening onto the G.A.N.G. foodmarket.",
+    maison_p2:"From the rotisserie to the weekly exceptional cuts, every plate follows the same rule: the product first.",
+    step1_n:"Selection", step1_h:"Selection", step1_p:"Angus, Simmental, Irish, Wagyu — origins chosen cut by cut.",
+    step2_n:"Ageing", step2_h:"Ageing", step2_p:"Patient dry-ageing to concentrate flavour and tenderise the fibre.",
+    step3_n:"Embers", step3_h:"Josper embers", step3_p:"Seared over charcoal in the Josper oven at high heat.",
+    carte_kick:"The register · Selection", carte_h1:"The Meat", carte_h2:"Menu",
+    carte_note:"Signature cuts from the card. The aged-beef selection rotates weekly — prices and availability to confirm with the venue.",
+    lh_cut:"Cut", lh_mat:"Aged", lh_origin:"Origin", lh_price:"Price",
+    flag_signature:"signature", flag_week:"cut of the moment", cru:"raw",
+    cut_filet:"Seared filet heart, fresh fries & house sauce",
+    cut_entrecote:"Irish Angus, marbled, over the embers",
+    cut_tagliata:"Sliced beef, rocket & parmesan",
+    cut_rump:"Tender & flavourful, cooked through",
+    cut_tomahawk:"Aged Simmental, to share · price to confirm",
+    cut_wagyu:"Weekly exceptional cut · price to confirm",
+    cut_carpaccio:"The house carpaccio, Grand Café recipe",
+    cut_tartare:"Hand-cut with the knife, seasoned to order",
+    pc_filet:"Filet · Blue Rare",
+    ml_brasserie_h:"Rotisserie & Brasserie", ml_magret:"Duck breast", ml_ribs:"Spare ribs",
+    ml_poulet:"½ rotisserie chicken", ml_bouchee:"Vol-au-vent Grand Café", ml_dorade:"Royal sea bream",
+    pc_burger:"Big Cheese", ml_burgers_h:"Burgers & Starters", ml_cheese:"Cheeseburger",
+    ml_veggie:"Veggie goat-cheese burger", ml_moelle:"Bone marrow", ml_burrata:"Carpaccio & burrata", ml_cesar:"Caesar salad",
+    pc_veggie:"Veggie · Warm goat cheese",
+    menu_note_txt:"Kids menu (≤8 yrs) 16.00 · Sunday brunch · House desserts from 9.00. All prices in € — rotating card, to confirm with the venue.",
+    salle_kick:"The setting · G.A.N.G. foodmarket", salle_h1:"The Room",
+    salle_note:"Exposed steel, a red-tiled open kitchen, the “GRAND CAFÉ” neon and olive-leather banquettes — inside Luxembourg's largest foodmarket.",
+    cap_neon:"The room's red neon", cap_gang:"The G.A.N.G. hall", cap_salle:"Low-lit ambiance",
+    talk_h1:"Relaxed,", talk_h2:"never lukewarm.",
+    talk_p:"A prestige brasserie with a foodmarket spirit: perfect for a business lunch, a dinner among meat-lovers, or Sunday family brunch. Terrace, private parking, EV charging — and pets welcome.",
+    res_kick:"Service ticket · Reservation", res_h1:"Reserve", res_h2:"your table",
+    res_p:"Craving meat? Book in seconds — we'll get back to you to confirm. (Demonstration form.)",
+    f_name:"Name", f_phone:"Phone", f_date:"Date", f_time:"Time", f_guests:"Guests", f_more:"7 and more",
+    f_submit:"Request a reservation", f_ok:"Thank you! Request logged (demo). The venue will get back to you to confirm.",
+    i_addr:"Address", i_addr_conf:"Exact street & postcode to confirm",
+    i_contact:"Contact", i_hours:"Hours",
+    d_monthu:"Mon – Thu", d_frisat:"Fri – Sat", d_sun:"Sunday", t_sun:"Brunch · lunch",
+    i_hours_conf:"Sources disagree — hours to confirm with the venue.",
+    foot_tag:"The Belle Étoile's carnivore table. Prestige aged beef, seared over Josper wood fire.",
+    foot_nav:"Navigation", foot_find:"Find us",
+    foot_demo:"/// Demonstration site — content, prices & hours to confirm with the venue."
+  }
+};
+
+function setLang(lang){
+  const dict = I18N[lang]; if(!dict) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[k] !== undefined) el.textContent = dict[k];
+  });
+  document.querySelectorAll('.langs button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang===lang);
+  });
+}
+document.querySelectorAll('.langs button').forEach(b=>{
+  b.addEventListener('click', ()=>setLang(b.dataset.lang));
+});
+</script>
+</body>
+</html>
