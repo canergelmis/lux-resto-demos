@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Le Schiste — Brasserie française &amp; luxembourgeoise · Rombach-Martelange</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400;1,9..144,600&family=Archivo:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --slate-0:#12161a;   /* deepest quarry */
+    --slate-1:#1a1f24;
+    --slate-2:#232a30;
+    --slate-3:#2e363d;
+    --slate-4:#3a444c;
+    --seam:#4d5a64;
+    --cream:#efe9dd;
+    --cream-dim:#c7c2b6;
+    --muted:#9aa1a0;
+    --amber:#e0a95c;     /* festoon glow */
+    --amber-soft:#c98f43;
+    --green:#8a9a63;     /* ornamental grasses */
+    --green-dim:#6f7d52;
+    --chalk:#f4f1e8;
+    --board:#232b28;     /* ardoise */
+    --line:rgba(220,225,220,.14);
+    --line-strong:rgba(220,225,220,.28);
+    --ff-serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --ff-sans:"Archivo",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    --ff-chalk:"Caveat","Segoe Script",cursive;
+    --maxw:1560px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--ff-sans);
+    color:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    background:var(--slate-0);
+    /* descent through strata: fixed gradient so scrolling feels like going down into the quarry */
+    background-image:
+      linear-gradient(180deg,
+        #262e34 0%,
+        #20272c 16%,
+        #1b2126 40%,
+        #171c21 66%,
+        #12161a 100%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+  /* faint slate striation overlay across whole page */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    background:
+      repeating-linear-gradient(178deg, rgba(255,255,255,.015) 0 2px, rgba(0,0,0,.03) 2px 5px, transparent 5px 34px),
+      radial-gradient(1200px 700px at 78% 8%, rgba(224,169,92,.10), transparent 60%),
+      radial-gradient(900px 600px at 10% 90%, rgba(138,154,99,.07), transparent 60%);
+    mix-blend-mode:screen;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  /* ---------- SHELL: stratigraphic rail + content ---------- */
+  .shell{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;
+    display:grid;grid-template-columns:264px 1fr;align-items:start}
+
+  /* left rail = the stratigraphic column / quarry depth index */
+  .rail{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;
+    border-right:1px solid var(--line);padding:26px 22px 26px 30px;overflow:hidden}
+  .rail::after{content:"";position:absolute;top:0;bottom:0;right:-1px;width:1px;
+    background:linear-gradient(180deg,transparent,var(--seam) 12%,var(--seam) 88%,transparent)}
+  .brandmark{display:flex;flex-direction:column;gap:2px;margin-bottom:8px}
+  .emblem{width:52px;height:52px;border:1.5px solid var(--seam);border-radius:50%;
+    display:grid;place-items:center;position:relative;margin-bottom:12px;
+    background:radial-gradient(circle at 40% 32%, #333d44, #1a2025)}
+  .emblem::before{content:"";position:absolute;inset:5px;border:1px solid rgba(224,169,92,.35);border-radius:50%}
+  .emblem span{font-family:var(--ff-serif);font-weight:800;font-size:20px;color:var(--amber);line-height:1}
+  .wordmark{font-family:var(--ff-serif);font-weight:800;letter-spacing:.02em;
+    font-size:23px;line-height:.98;
+    text-shadow:0 1px 0 rgba(255,255,255,.07),0 -1px 1px rgba(0,0,0,.55)}
+  .wordmark small{display:block;font-family:var(--ff-sans);font-weight:600;letter-spacing:.34em;
+    font-size:9.5px;color:var(--amber);margin-top:8px;text-transform:uppercase;text-shadow:none}
+
+  .strata-nav{margin-top:30px;display:flex;flex-direction:column;gap:2px;flex:1}
+  .strata-nav a{position:relative;display:grid;grid-template-columns:34px 1fr;align-items:baseline;
+    gap:6px;padding:11px 0;border-top:1px solid var(--line);color:var(--cream-dim);
+    transition:color .25s,transform .25s}
+  .strata-nav a:last-of-type{border-bottom:1px solid var(--line)}
+  .strata-nav .num{font-family:var(--ff-serif);font-size:12px;color:var(--seam);letter-spacing:.05em}
+  .strata-nav .lab{font-size:12.5px;font-weight:600;letter-spacing:.02em;text-transform:uppercase}
+  .strata-nav .depth{grid-column:2;font-size:9.5px;color:var(--muted);letter-spacing:.14em;margin-top:1px}
+  .strata-nav a:hover,.strata-nav a.active{color:var(--amber);transform:translateX(3px)}
+  .strata-nav a.active .num{color:var(--amber)}
+  .rail-foot{font-size:10px;color:var(--muted);letter-spacing:.08em;line-height:1.7}
+  .depth-readout{font-family:var(--ff-serif);font-size:12px;color:var(--green);letter-spacing:.1em;margin-bottom:10px}
+
+  /* content column */
+  .content{min-width:0}
+  section{position:relative;padding:64px 6% 66px;border-top:1px solid var(--line)}
+  section:first-child{border-top:none}
+  .couche-tag{display:flex;align-items:center;gap:14px;margin-bottom:26px;
+    font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--amber)}
+  .couche-tag b{font-family:var(--ff-serif);font-weight:600;font-style:italic;
+    font-size:13px;letter-spacing:.02em;text-transform:none;color:var(--cream-dim)}
+  .couche-tag .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--line-strong),transparent)}
+
+  h1,h2,h3{font-family:var(--ff-serif);font-weight:600;line-height:1.05}
+  .lead{max-width:60ch;color:var(--cream-dim);font-size:17px}
+
+  /* ---------- HERO / le front de taille ---------- */
+  #hero{padding-top:0;min-height:100vh;display:flex;flex-direction:column}
+  .topbar{display:flex;justify-content:flex-end;align-items:center;gap:22px;
+    padding:22px 6% 0}
+  .lang{display:inline-flex;border:1px solid var(--line-strong);border-radius:999px;overflow:hidden}
+  .lang button{font-family:var(--ff-sans);font-size:11px;font-weight:700;letter-spacing:.12em;
+    padding:7px 13px;background:transparent;color:var(--cream-dim);border:none;cursor:pointer;transition:.2s}
+  .lang button+button{border-left:1px solid var(--line)}
+  .lang button.on{background:var(--amber);color:#20160a}
+  .lang button:hover:not(.on){color:var(--cream)}
+  .topline{font-size:11px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+
+  .hero-grid{flex:1;display:grid;grid-template-columns:1.05fr .95fr;gap:0;align-items:stretch;
+    padding:0 6%}
+  .hero-copy{display:flex;flex-direction:column;justify-content:center;padding:40px 48px 40px 0}
+  .kicker{font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--green);margin-bottom:22px}
+  .hero-title{font-size:clamp(52px,7vw,104px);letter-spacing:-.01em;font-weight:800;
+    text-shadow:0 2px 0 rgba(255,255,255,.06),0 -2px 3px rgba(0,0,0,.6)}
+  .hero-title em{font-style:italic;font-weight:400;color:var(--amber);display:block;
+    font-size:.42em;letter-spacing:.01em;margin-top:6px}
+  .hero-sub{font-size:19px;color:var(--cream-dim);max-width:44ch;margin:26px 0 34px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--ff-sans);
+    font-weight:700;font-size:13px;letter-spacing:.06em;padding:14px 24px;border-radius:2px;
+    border:1px solid transparent;cursor:pointer;transition:.22s}
+  .btn-amber{background:var(--amber);color:#20160a}
+  .btn-amber:hover{background:#eeb96b;transform:translateY(-2px)}
+  .btn-ghost{border-color:var(--seam);color:var(--cream)}
+  .btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+  .hero-meta{display:flex;gap:30px;margin-top:44px;flex-wrap:wrap}
+  .hero-meta div{border-left:2px solid var(--green-dim);padding-left:12px}
+  .hero-meta .n{font-family:var(--ff-serif);font-size:22px;color:var(--cream)}
+  .hero-meta .t{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+  .hero-visual{position:relative;display:flex;align-items:stretch;padding:36px 0 46px}
+  .hero-frame{position:relative;flex:1;border:1px solid var(--seam);
+    box-shadow:0 40px 80px -30px rgba(0,0,0,.8);overflow:hidden;min-height:420px}
+  .hero-frame img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05) brightness(.96)}
+  .hero-frame::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 55%,rgba(18,22,26,.55));pointer-events:none}
+  .frame-cap{position:absolute;left:16px;bottom:14px;font-size:11px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--cream);text-shadow:0 1px 4px rgba(0,0,0,.8);z-index:2}
+  /* depth ruler down the outer edge of hero visual */
+  .ruler{position:absolute;left:-30px;top:36px;bottom:46px;width:22px;display:flex;
+    flex-direction:column;justify-content:space-between;align-items:flex-end}
+  .ruler span{font-size:9px;color:var(--seam);letter-spacing:.1em;position:relative;padding-right:8px}
+  .ruler span::after{content:"";position:absolute;right:0;top:50%;width:6px;height:1px;background:var(--seam)}
+
+  /* ---------- COUCHE I — la maison ---------- */
+  .maison-grid{display:grid;grid-template-columns:1.4fr .9fr;gap:54px;align-items:start}
+  .maison-copy p{margin-bottom:18px;color:var(--cream-dim);font-size:16.5px;max-width:62ch}
+  .maison-copy p.first::first-letter{font-family:var(--ff-serif);font-size:62px;float:left;
+    line-height:.72;padding:6px 12px 0 0;color:var(--amber);font-weight:800}
+  .signoff{font-family:var(--ff-chalk);font-size:26px;color:var(--green);margin-top:6px}
+  /* core sample = carotte de sondage */
+  .core{border:1px solid var(--line-strong);background:rgba(255,255,255,.02)}
+  .core h4{font-family:var(--ff-sans);font-weight:700;font-size:10.5px;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--amber);padding:16px 20px;border-bottom:1px solid var(--line)}
+  .core-row{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;
+    padding:15px 20px;border-bottom:1px solid var(--line);position:relative}
+  .core-row:last-child{border-bottom:none}
+  .core-row .k{font-size:12px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+  .core-row .v{font-family:var(--ff-serif);font-size:18px;color:var(--cream);text-align:right}
+  .core-row .v em{font-style:normal;color:var(--green);font-size:13px;display:block}
+
+  /* ---------- COUCHE II — l'ardoise (menu) ---------- */
+  #menu{background:linear-gradient(180deg,rgba(0,0,0,.14),transparent)}
+  .board{position:relative;background:
+      radial-gradient(120% 90% at 20% 0%, rgba(255,255,255,.04), transparent 55%),
+      radial-gradient(100% 80% at 90% 100%, rgba(255,255,255,.03), transparent 50%),
+      var(--board);
+    border:12px solid #1a211d;border-radius:6px;
+    box-shadow:inset 0 0 90px rgba(0,0,0,.6),0 30px 70px -34px rgba(0,0,0,.85);
+    padding:40px clamp(24px,4vw,58px) 46px;overflow:hidden}
+  .board::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.4;
+    background:repeating-linear-gradient(96deg,rgba(255,255,255,.02) 0 3px,transparent 3px 30px)}
+  .board-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:14px;
+    margin-bottom:30px;position:relative}
+  .board-head h2{font-size:clamp(30px,4vw,46px);color:var(--chalk);
+    text-shadow:0 0 1px rgba(255,255,255,.5)}
+  .board-head .sub{font-family:var(--ff-chalk);font-size:22px;color:var(--amber)}
+  .board-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:30px 54px;position:relative}
+  .mcat h3{font-family:var(--ff-serif);font-style:italic;font-size:22px;color:var(--amber);
+    margin-bottom:6px}
+  .mcat .catline{height:1px;background:rgba(244,241,232,.22);margin-bottom:14px}
+  .dish{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:baseline;
+    padding:8px 0;border-bottom:1px dotted rgba(244,241,232,.14)}
+  .dish:last-child{border-bottom:none}
+  .dish .nm{font-family:var(--ff-serif);font-size:16.5px;color:var(--chalk)}
+  .dish .ds{grid-column:1/-1;font-size:12.5px;color:rgba(244,241,232,.6);margin-top:-2px}
+  .dish .pr{font-family:var(--ff-serif);font-size:15px;color:var(--amber);white-space:nowrap}
+  .tbc{font-family:var(--ff-chalk);font-size:15px;color:var(--green);white-space:nowrap}
+  /* formule = chalk-circled plat du jour */
+  .formule{grid-column:1/-1;margin-top:6px;display:flex;gap:20px;align-items:center;flex-wrap:wrap;
+    border:2px solid var(--amber);border-radius:60% 55% 58% 62%/58% 62% 55% 60%;
+    padding:20px 30px;position:relative}
+  .formule .big{font-family:var(--ff-serif);font-size:34px;color:var(--amber);line-height:1}
+  .formule .txt{flex:1;min-width:200px}
+  .formule .txt b{font-family:var(--ff-serif);font-size:19px;color:var(--chalk);display:block}
+  .formule .txt span{font-size:13px;color:rgba(244,241,232,.66)}
+  .formule .stamp{font-family:var(--ff-chalk);font-size:20px;color:var(--green);transform:rotate(-6deg)}
+  .board-foot{margin-top:26px;font-size:12px;color:rgba(244,241,232,.5);letter-spacing:.04em;
+    position:relative;font-style:italic}
+
+  /* ---------- COUCHE III — la terrasse / gallery ---------- */
+  .gal{display:grid;grid-template-columns:1.5fr 1fr;grid-template-rows:auto auto;gap:16px}
+  .gal-a{grid-row:1/3}
+  .gtile{position:relative;overflow:hidden;border:1px solid var(--seam);min-height:210px}
+  .gal-a{min-height:auto}
+  .gtile img{width:100%;height:100%;object-fit:cover;min-height:210px}
+  .gtile .cap{position:absolute;left:14px;bottom:12px;font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--cream);text-shadow:0 1px 4px rgba(0,0,0,.85);z-index:2}
+  .gtile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(0,0,0,.5))}
+  /* honest placeholder = un carreau d'ardoise à graver */
+  .ph{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;
+    text-align:center;padding:26px;background:
+      repeating-linear-gradient(135deg,rgba(255,255,255,.02) 0 8px,transparent 8px 16px),var(--slate-2);
+    border:1px dashed var(--seam);color:var(--muted)}
+  .ph .ico{font-family:var(--ff-serif);font-size:30px;color:var(--seam)}
+  .ph b{font-family:var(--ff-serif);font-style:italic;color:var(--cream-dim);font-size:15px;font-weight:400}
+  .ph span{font-size:11px;letter-spacing:.04em;max-width:24ch}
+  .pull{grid-column:1/-1;margin-top:8px}
+  blockquote{font-family:var(--ff-serif);font-style:italic;font-size:clamp(22px,2.6vw,32px);
+    line-height:1.3;color:var(--cream);max-width:26ch;position:relative;padding-left:26px}
+  blockquote::before{content:"«";position:absolute;left:-4px;top:-8px;font-size:60px;color:var(--green);opacity:.5}
+  blockquote cite{display:block;font-family:var(--ff-sans);font-style:normal;font-size:12px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-top:14px}
+
+  /* ---------- COUCHE IV — le passage / visit ---------- */
+  .visit{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:2px;
+    border:1px solid var(--line-strong);background:var(--line)}
+  .vcard{background:var(--slate-1);padding:26px 26px 30px}
+  .vcard h3{font-size:12px;font-family:var(--ff-sans);font-weight:700;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--amber);margin-bottom:20px}
+  .hours{display:flex;flex-direction:column;gap:0}
+  .hrow{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:baseline;
+    padding:8px 0;border-bottom:1px solid var(--line)}
+  .hrow:last-child{border-bottom:none}
+  .hrow .d{font-size:13px;color:var(--cream-dim);font-weight:600}
+  .hrow .h{font-size:13px;color:var(--cream);text-align:right;font-variant-numeric:tabular-nums}
+  .hrow.closed .h{color:var(--muted);font-style:italic}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:11.5px;letter-spacing:.04em;padding:7px 12px;border:1px solid var(--seam);
+    border-radius:2px;color:var(--cream-dim)}
+  .pay{margin-top:20px}
+  .pay .lbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .contact-line{font-family:var(--ff-serif);font-size:17px;color:var(--cream);margin-bottom:6px}
+  .contact-line a{color:var(--amber)}
+  .map{grid-column:1/-1;height:340px;border:1px solid var(--seam);border-top:none;overflow:hidden;filter:grayscale(.3) contrast(1.05)}
+  .map iframe{width:100%;height:100%;border:0;filter:invert(.9) hue-rotate(180deg) saturate(.7)}
+  .note{font-size:12px;color:var(--muted);font-style:italic;margin-top:12px}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line-strong);padding:44px 6% 40px;
+    display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;align-items:start}
+  footer .fw{font-family:var(--ff-serif);font-weight:800;font-size:26px;
+    text-shadow:0 1px 0 rgba(255,255,255,.06),0 -1px 1px rgba(0,0,0,.55)}
+  footer .fw small{display:block;font-family:var(--ff-sans);font-weight:600;letter-spacing:.3em;
+    font-size:9px;color:var(--amber);margin-top:8px;text-transform:uppercase;text-shadow:none}
+  footer p{font-size:13px;color:var(--muted);margin-top:14px;max-width:40ch}
+  footer h5{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:12px}
+  footer .frow{font-size:13.5px;color:var(--cream-dim);margin-bottom:7px}
+  footer .frow a:hover{color:var(--amber)}
+  .disclaimer{grid-column:1/-1;border-top:1px solid var(--line);margin-top:20px;padding-top:18px;
+    font-size:11px;color:var(--muted);letter-spacing:.03em;line-height:1.7}
+  .disclaimer b{color:var(--cream-dim)}
+
+  /* mobile top nav (hidden on desktop) */
+  .mobile-nav{display:none}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:1180px){
+    .maison-grid{grid-template-columns:1fr 1fr}
+    .visit{grid-template-columns:1fr 1fr}
+    .map{grid-column:1/-1}
+  }
+  @media(max-width:920px){
+    .shell{grid-template-columns:1fr}
+    .rail{display:none}
+    .mobile-nav{display:flex;position:sticky;top:0;z-index:20;align-items:center;gap:14px;
+      padding:12px 5%;background:rgba(18,22,26,.92);backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--line-strong);overflow-x:auto}
+    .mobile-nav .mw{font-family:var(--ff-serif);font-weight:800;font-size:17px;margin-right:auto;white-space:nowrap}
+    .mobile-nav a{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dim);white-space:nowrap}
+    .hero-grid{grid-template-columns:1fr}
+    .hero-copy{padding:20px 0 10px}
+    .hero-visual{padding:6px 0 20px}
+    .ruler{display:none}
+    .maison-grid{grid-template-columns:1fr}
+    .board-cols{grid-template-columns:1fr}
+    .gal{grid-template-columns:1fr}
+    .gal-a{grid-row:auto}
+    .visit{grid-template-columns:1fr}
+    footer{grid-template-columns:1fr}
+    .topbar{padding-top:14px}
+  }
+  @media(max-width:520px){
+    section{padding:44px 6% 46px}
+    .hero-meta{gap:18px}
+  }
+  @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ===== mobile-only top nav ===== -->
+<nav class="mobile-nav">
+  <span class="mw">Le Schiste</span>
+  <a href="#menu" data-i18n="nav.menu">La carte</a>
+  <a href="#terrasse" data-i18n="nav.space">La terrasse</a>
+  <a href="#visit" data-i18n="nav.visit">Visite</a>
+  <span class="lang" style="border:none">
+    <button data-lang="fr" class="on">FR</button>
+    <button data-lang="de">DE</button>
+    <button data-lang="en">EN</button>
+  </span>
+</nav>
+
+<div class="shell">
+
+  <!-- ===== stratigraphic rail ===== -->
+  <aside class="rail">
+    <div class="brandmark">
+      <div class="emblem"><span>S</span></div>
+      <div class="wordmark">Le&nbsp;Schiste<small data-i18n="brand.tag">Pays de l'ardoise</small></div>
+    </div>
+
+    <nav class="strata-nav" id="stratanav">
+      <a href="#hero" data-depth="0 m">
+        <span class="num">0</span>
+        <span><span class="lab" data-i18n="nav.surface">Le front de taille</span><span class="depth">0 m · surface</span></span>
+      </a>
+      <a href="#maison" data-depth="-1">
+        <span class="num">I</span>
+        <span><span class="lab" data-i18n="nav.house">La maison</span><span class="depth" data-i18n="nav.house.d">Histoire &amp; terroir</span></span>
+      </a>
+      <a href="#menu" data-depth="-2">
+        <span class="num">II</span>
+        <span><span class="lab" data-i18n="nav.menu">La carte</span><span class="depth" data-i18n="nav.menu.d">L'ardoise du jour</span></span>
+      </a>
+      <a href="#terrasse" data-depth="-3">
+        <span class="num">III</span>
+        <span><span class="lab" data-i18n="nav.space">La terrasse</span><span class="depth" data-i18n="nav.space.d">Les lieux</span></span>
+      </a>
+      <a href="#visit" data-depth="-4">
+        <span class="num">IV</span>
+        <span><span class="lab" data-i18n="nav.visit">Le passage</span><span class="depth" data-i18n="nav.visit.d">Horaires &amp; accès</span></span>
+      </a>
+    </nav>
+
+    <div class="rail-foot">
+      <div class="depth-readout" id="depthReadout">— 0 m</div>
+      <div data-i18n="rail.addr">Route d'Arlon 2<br>L-8832 Rombach-Martelange</div>
+      <div style="margin-top:8px"><a href="tel:+35226615124">+352 26 61 51 24</a></div>
+    </div>
+  </aside>
+
+  <!-- ===== content ===== -->
+  <main class="content">
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="topbar">
+        <span class="topline" data-i18n="hero.top">Brasserie · Rambrouch · depuis le pays de l'ardoise</span>
+        <span class="lang">
+          <button data-lang="fr" class="on">FR</button>
+          <button data-lang="de">DE</button>
+          <button data-lang="en">EN</button>
+        </span>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="kicker" data-i18n="hero.kicker">Cuisine française &amp; luxembourgeoise · faite maison</div>
+          <h1 class="hero-title">Le Schiste<em data-i18n="hero.em">au cœur du pays de l'ardoise</em></h1>
+          <p class="hero-sub" data-i18n="hero.sub">Une brasserie de village, tenue en famille, où l'on cuisine frais et maison à partir de produits du coin — dans l'ancien pays des carrières d'ardoise, à la frontière belgo-luxembourgeoise.</p>
+          <div class="hero-cta">
+            <a class="btn btn-amber" href="#menu" data-i18n="hero.cta1">Voir la carte</a>
+            <a class="btn btn-ghost" href="tel:+35226615124" data-i18n="hero.cta2">Réserver · +352 26 61 51 24</a>
+          </div>
+          <div class="hero-meta">
+            <div><div class="n">4,5<span style="font-size:14px;color:var(--muted)">/5</span></div><div class="t" data-i18n="hero.m1">≈65 avis Google</div></div>
+            <div><div class="n">N&deg;2</div><div class="t" data-i18n="hero.m2">restaurants à Rambrouch</div></div>
+            <div><div class="n" data-i18n="hero.m3v">Fait maison</div><div class="t" data-i18n="hero.m3">produits frais &amp; locaux</div></div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="ruler"><span>0 m</span><span>-5</span><span>-10</span><span>-15</span><span>-20 m</span></div>
+          <div class="hero-frame">
+            <img src="assets/terrace.jpg" alt="La terrasse couverte du Schiste, poutres de bois et guirlandes lumineuses" loading="eager">
+            <span class="frame-cap" data-i18n="hero.cap">La terrasse couverte, le soir</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUCHE I — LA MAISON -->
+    <section id="maison">
+      <div class="couche-tag"><span>Couche I</span><b data-i18n="c1.tag">La maison</b><span class="rule"></span></div>
+      <div class="maison-grid">
+        <div class="maison-copy">
+          <h2 style="font-size:clamp(28px,3.4vw,42px);margin-bottom:22px" data-i18n="c1.title">Le goût d'un terroir de pierre</h2>
+          <p class="first" data-i18n="c1.p1">À Rombach-Martelange, la terre a longtemps donné de l'ardoise. Les carrières et le Musée de l'Ardoise racontent encore ce pays de schiste, à cheval sur la frontière. C'est de là que la maison tient son nom — et une certaine idée du travail bien fait, sans esbroufe.</p>
+          <p data-i18n="c1.p2">Dans l'assiette, cela donne une cuisine de brasserie honnête : des plats généreux, faits maison, à partir de produits frais et, autant que possible, locaux. La cheffe signe des assiettes fines et parfumées — un tournedos et ses frites maison, un poisson du moment, un risotto — que l'on retrouve d'une saison à l'autre.</p>
+          <p data-i18n="c1.p3">On y vient en voisins et en habitués, en couple pour un dîner au calme sous les guirlandes, en famille le dimanche, ou entre deux rendez-vous pour la formule du midi. L'accueil est personnel, la salle intime — parfois pleine, toujours chaleureuse.</p>
+          <div class="signoff" data-i18n="c1.sign">— Fait maison, produits frais.</div>
+        </div>
+        <div class="core">
+          <h4 data-i18n="c1.core.h">Carotte de sondage</h4>
+          <div class="core-row"><span class="k" data-i18n="c1.core.k1">Cuisine</span><span class="v" data-i18n="c1.core.v1">Française &amp; luxembourgeoise<em>de brasserie</em></span></div>
+          <div class="core-row"><span class="k" data-i18n="c1.core.k2">Style</span><span class="v" data-i18n="c1.core.v2">Fait maison<em>produits frais &amp; locaux</em></span></div>
+          <div class="core-row"><span class="k" data-i18n="c1.core.k3">Classée</span><span class="v">N&deg;2 / 5<em data-i18n="c1.core.v3">à Rambrouch</em></span></div>
+          <div class="core-row"><span class="k" data-i18n="c1.core.k4">Cadre</span><span class="v" data-i18n="c1.core.v4">Terrasse couverte<em>rustique &amp; convivial</em></span></div>
+          <div class="core-row"><span class="k" data-i18n="c1.core.k5">Budget</span><span class="v">€€<em data-i18n="c1.core.v5">formule midi dès ~13,90 €*</em></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUCHE II — L'ARDOISE / MENU -->
+    <section id="menu">
+      <div class="couche-tag"><span>Couche II</span><b data-i18n="c2.tag">L'ardoise</b><span class="rule"></span></div>
+      <div class="board">
+        <div class="board-head">
+          <h2 data-i18n="c2.title">La carte, à l'ardoise</h2>
+          <span class="sub" data-i18n="c2.sub">au gré du marché &amp; des saisons</span>
+        </div>
+        <div class="board-cols">
+
+          <div class="mcat">
+            <h3 data-i18n="c2.starters">Entrées</h3><div class="catline"></div>
+            <div class="dish"><span class="nm">Carpaccio de bœuf</span><span class="pr tbc" data-i18n="tbc">à confirmer</span><span class="ds" data-i18n="d.carpaccio">Fines tranches, copeaux &amp; roquette</span></div>
+            <div class="dish"><span class="nm">Soupe à l'oignon gratinée</span><span class="pr tbc" data-i18n="tbc">à confirmer</span><span class="ds" data-i18n="d.onion">Le grand classique, bien gratiné</span></div>
+            <div class="dish"><span class="nm">Asperges blanches &amp; saumon fumé</span><span class="pr tbc" data-i18n="tbc">à confirmer</span><span class="ds" data-i18n="d.asperges">De saison, au printemps</span></div>
+          </div>
+
+          <div class="mcat">
+            <h3 data-i18n="c2.mains">Plats</h3><div class="catline"></div>
+            <div class="dish"><span class="nm">Tournedos de bœuf, frites maison</span><span class="pr tbc" data-i18n="tbc">à confirmer</span><span class="ds" data-i18n="d.tournedos">Filet, frites maison &amp; salade</span></div>
+            <div class="dish"><span class="nm">Poitrine de porc, purée maison</span><span class="pr tbc" data-i18n="tbc">à confirmer</span><span class="ds" data-i18n="d.porc">Purée maison &amp; légumes rôtis</span></div>
+            <div class="dish"><span class="nm">Choucroute &amp; jambonneau</span><span class="pr tbc" data-i18n="tbc">à confirmer</span><span class="ds" data-i18n="d.chou">Généreuse, à la mode du pays</span></div>
+            <div class="dish"><span class="nm">Burger de rumsteck, frites maison</span><span class="pr tbc" data-i18n="tbc">à confirmer</span><span class="ds" data-i18n="d.burger">Bœuf, frites maison</span></div>
+          </div>
+
+          <div class="mcat">
+            <h3 data-i18n="c2.fish">Poissons</h3><div class="catline"></div>
+            <div class="dish"><span class="nm">Filet de poisson du moment</span><span class="pr tbc" data-i18n="tbc">à confirmer</span><span class="ds" data-i18n="d.fish">Selon l'arrivage</span></div>
+            <div class="dish"><span class="nm">Cabillaud en croûte d'ail des ours</span><span class="pr tbc" data-i18n="tbc">à confirmer</span><span class="ds" data-i18n="d.cod">Croûte d'ail des ours, de saison</span></div>
+            <div class="dish"><span class="nm">Risotto aux fruits de mer</span><span class="pr tbc" data-i18n="tbc">à confirmer</span><span class="ds" data-i18n="d.risotto">Crémeux, aussi en version légumes</span></div>
+          </div>
+
+          <div class="mcat">
+            <h3 data-i18n="c2.desserts">Desserts</h3><div class="catline"></div>
+            <div class="dish"><span class="nm">Dessert au chocolat</span><span class="pr tbc" data-i18n="tbc">à confirmer</span><span class="ds" data-i18n="d.choco">Pour les gourmands</span></div>
+            <div class="dish"><span class="nm">Carpaccio d'ananas</span><span class="pr tbc" data-i18n="tbc">à confirmer</span><span class="ds" data-i18n="d.ananas">Frais &amp; léger</span></div>
+            <div class="dish"><span class="nm">Dame blanche</span><span class="pr tbc" data-i18n="tbc">à confirmer</span><span class="ds" data-i18n="d.dame">Glace vanille &amp; chocolat chaud</span></div>
+          </div>
+
+          <div class="formule">
+            <div class="big">~13,90&nbsp;€*</div>
+            <div class="txt"><b data-i18n="c2.form.b">Formule du midi</b><span data-i18n="c2.form.s">Entrée + plat ou plat + dessert, en semaine</span></div>
+            <div class="stamp" data-i18n="c2.form.st">le midi !</div>
+          </div>
+        </div>
+        <div class="board-foot" data-i18n="c2.foot">* Plats, prix et disponibilités indicatifs, compilés à partir des avis — à confirmer avec l'établissement. La carte change au fil du marché.</div>
+      </div>
+    </section>
+
+    <!-- COUCHE III — LA TERRASSE -->
+    <section id="terrasse">
+      <div class="couche-tag"><span>Couche III</span><b data-i18n="c3.tag">La terrasse</b><span class="rule"></span></div>
+      <h2 style="font-size:clamp(28px,3.4vw,42px);margin-bottom:8px" data-i18n="c3.title">Sous les poutres et les guirlandes</h2>
+      <p class="lead" style="margin-bottom:28px" data-i18n="c3.lead">La terrasse couverte, ourlée de graminées et de lavande, est la signature de la maison — un coin d'été comme d'arrière-saison, chaleureux le soir venu.</p>
+      <div class="gal">
+        <div class="gtile gal-a">
+          <img src="assets/terrace.jpg" alt="Terrasse couverte, poutres et guirlandes lumineuses">
+          <span class="cap" data-i18n="c3.cap1">La terrasse couverte, le soir</span>
+        </div>
+        <div class="gtile">
+          <img src="assets/interior-1.jpg" alt="La salle vue depuis les plantations, bar et ardoise">
+          <span class="cap" data-i18n="c3.cap2">La salle &amp; l'emblème gravé</span>
+        </div>
+        <div class="gtile ph">
+          <span class="ico">◲</span>
+          <b data-i18n="c3.ph.b">Photo à venir</b>
+          <span data-i18n="c3.ph.s">Photo haute résolution à fournir par l'établissement (plats / façade)</span>
+        </div>
+        <div class="pull">
+          <blockquote>
+            <span data-i18n="c3.quote">Petit restaurant romantique, cuisine fine et parfumée, service attentionné — des portions généreuses et faites maison.</span>
+            <cite data-i18n="c3.quote.c">— d'après les avis Google &amp; TripAdvisor</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUCHE IV — LE PASSAGE / VISIT -->
+    <section id="visit">
+      <div class="couche-tag"><span>Couche IV</span><b data-i18n="c4.tag">Le passage</b><span class="rule"></span></div>
+      <h2 style="font-size:clamp(28px,3.4vw,42px);margin-bottom:26px" data-i18n="c4.title">Nous trouver</h2>
+      <div class="visit">
+        <div class="vcard">
+          <h3 data-i18n="c4.hours">Horaires*</h3>
+          <div class="hours">
+            <div class="hrow"><span class="d" data-i18n="day.mon">Lundi</span><span class="h">12–14 · 18:30–21:30</span></div>
+            <div class="hrow closed"><span class="d" data-i18n="day.tue">Mardi</span><span class="h" data-i18n="closed">Fermé</span></div>
+            <div class="hrow closed"><span class="d" data-i18n="day.wed">Mercredi</span><span class="h" data-i18n="closed">Fermé</span></div>
+            <div class="hrow"><span class="d" data-i18n="day.thu">Jeudi</span><span class="h">12–14 · 18:30–21:30</span></div>
+            <div class="hrow"><span class="d" data-i18n="day.fri">Vendredi</span><span class="h">12–14 · 18:30–21:30</span></div>
+            <div class="hrow"><span class="d" data-i18n="day.sat">Samedi</span><span class="h">12–14 · 18:30–21:30</span></div>
+            <div class="hrow"><span class="d" data-i18n="day.sun">Dimanche</span><span class="h">12–14 · 18:30–21:30</span></div>
+          </div>
+          <div class="note" data-i18n="c4.hours.note">* Horaires à confirmer avec l'établissement.</div>
+        </div>
+
+        <div class="vcard">
+          <h3 data-i18n="c4.facil">Sur place</h3>
+          <div class="chips">
+            <span class="chip" data-i18n="f.terrace">Terrasse couverte</span>
+            <span class="chip" data-i18n="f.parking">Parking gratuit</span>
+            <span class="chip" data-i18n="f.ac">Climatisation</span>
+            <span class="chip" data-i18n="f.wifi">Wi-Fi gratuit</span>
+            <span class="chip" data-i18n="f.takeaway">À emporter</span>
+            <span class="chip" data-i18n="f.dogs">Chiens admis</span>
+            <span class="chip" data-i18n="f.bar">Coin lounge / bar</span>
+            <span class="chip" data-i18n="f.sunday">Ouvert le dimanche</span>
+          </div>
+          <div class="pay">
+            <div class="lbl" data-i18n="c4.pay">Paiements</div>
+            <div class="chips">
+              <span class="chip">VISA</span><span class="chip">Amex</span><span class="chip">MasterCard</span>
+              <span class="chip">Maestro</span><span class="chip">V PAY</span>
+              <span class="chip">Ticket Restaurant</span><span class="chip">Chèque Repas</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="vcard">
+          <h3 data-i18n="c4.contact">Contact &amp; accès</h3>
+          <div class="contact-line">Route d'Arlon 2</div>
+          <div class="contact-line" style="color:var(--cream-dim);font-size:15px">L-8832 Rombach-Martelange</div>
+          <div class="contact-line" style="margin-top:14px"><a href="tel:+35226615124">+352 26 61 51 24</a></div>
+          <div class="note" data-i18n="c4.access">À la frontière belgo-luxembourgeoise, sur la Route d'Arlon, près du Musée de l'Ardoise.</div>
+          <a class="btn btn-amber" style="margin-top:18px" href="https://www.google.com/maps?q=Route+d'Arlon+2,+L-8832+Rombach-Martelange,+Luxembourg" target="_blank" rel="noopener" data-i18n="c4.itin">Itinéraire</a>
+        </div>
+
+        <div class="map">
+          <iframe title="Le Schiste — carte" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Route+d'Arlon+2,+L-8832+Rombach-Martelange,+Luxembourg&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div>
+        <div class="fw">Le Schiste<small data-i18n="brand.tag">Pays de l'ardoise</small></div>
+        <p data-i18n="foot.blurb">Brasserie française &amp; luxembourgeoise, faite maison, au cœur du pays de l'ardoise — Rombach-Martelange.</p>
+      </div>
+      <div>
+        <h5 data-i18n="foot.contact">Contact</h5>
+        <div class="frow">Route d'Arlon 2, L-8832<br>Rombach-Martelange</div>
+        <div class="frow"><a href="tel:+35226615124">+352 26 61 51 24</a></div>
+        <div class="frow"><a href="https://www.facebook.com/p/Le-Schiste-100063462256192/" target="_blank" rel="noopener">Facebook</a></div>
+      </div>
+      <div>
+        <h5 data-i18n="foot.nav">Parcours</h5>
+        <div class="frow"><a href="#maison" data-i18n="nav.house">La maison</a></div>
+        <div class="frow"><a href="#menu" data-i18n="nav.menu">La carte</a></div>
+        <div class="frow"><a href="#terrasse" data-i18n="nav.space">La terrasse</a></div>
+        <div class="frow"><a href="#visit" data-i18n="nav.visit">Le passage</a></div>
+      </div>
+      <div class="disclaimer">
+        <b data-i18n="foot.demo.b">Site de démonstration.</b>
+        <span data-i18n="foot.demo">Maquette non officielle réalisée à des fins de présentation. Horaires, carte, prix, logo, couleurs et typographies sont proposés / à confirmer avec l'établissement. Photos © Le Schiste. Non indexé (noindex).</span>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+/* ---------------- i18n ---------------- */
+const I18N = {
+  fr:{
+    "brand.tag":"Pays de l'ardoise",
+    "nav.surface":"Le front de taille","nav.house":"La maison","nav.house.d":"Histoire & terroir",
+    "nav.menu":"La carte","nav.menu.d":"L'ardoise du jour","nav.space":"La terrasse","nav.space.d":"Les lieux",
+    "nav.visit":"Le passage","nav.visit.d":"Horaires & accès",
+    "rail.addr":"Route d'Arlon 2<br>L-8832 Rombach-Martelange",
+    "hero.top":"Brasserie · Rambrouch · depuis le pays de l'ardoise",
+    "hero.kicker":"Cuisine française & luxembourgeoise · faite maison",
+    "hero.em":"au cœur du pays de l'ardoise",
+    "hero.sub":"Une brasserie de village, tenue en famille, où l'on cuisine frais et maison à partir de produits du coin — dans l'ancien pays des carrières d'ardoise, à la frontière belgo-luxembourgeoise.",
+    "hero.cta1":"Voir la carte","hero.cta2":"Réserver · +352 26 61 51 24",
+    "hero.m1":"≈65 avis Google","hero.m2":"restaurants à Rambrouch","hero.m3v":"Fait maison","hero.m3":"produits frais & locaux",
+    "hero.cap":"La terrasse couverte, le soir",
+    "c1.tag":"La maison","c1.title":"Le goût d'un terroir de pierre",
+    "c1.p1":"À Rombach-Martelange, la terre a longtemps donné de l'ardoise. Les carrières et le Musée de l'Ardoise racontent encore ce pays de schiste, à cheval sur la frontière. C'est de là que la maison tient son nom — et une certaine idée du travail bien fait, sans esbroufe.",
+    "c1.p2":"Dans l'assiette, cela donne une cuisine de brasserie honnête : des plats généreux, faits maison, à partir de produits frais et, autant que possible, locaux. La cheffe signe des assiettes fines et parfumées — un tournedos et ses frites maison, un poisson du moment, un risotto — que l'on retrouve d'une saison à l'autre.",
+    "c1.p3":"On y vient en voisins et en habitués, en couple pour un dîner au calme sous les guirlandes, en famille le dimanche, ou entre deux rendez-vous pour la formule du midi. L'accueil est personnel, la salle intime — parfois pleine, toujours chaleureuse.",
+    "c1.sign":"— Fait maison, produits frais.",
+    "c1.core.h":"Carotte de sondage",
+    "c1.core.k1":"Cuisine","c1.core.v1":"Française & luxembourgeoise<em>de brasserie</em>",
+    "c1.core.k2":"Style","c1.core.v2":"Fait maison<em>produits frais & locaux</em>",
+    "c1.core.k3":"Classée","c1.core.v3":"à Rambrouch",
+    "c1.core.k4":"Cadre","c1.core.v4":"Terrasse couverte<em>rustique & convivial</em>",
+    "c1.core.k5":"Budget","c1.core.v5":"formule midi dès ~13,90 €*",
+    "c2.tag":"L'ardoise","c2.title":"La carte, à l'ardoise","c2.sub":"au gré du marché & des saisons",
+    "c2.starters":"Entrées","c2.mains":"Plats","c2.fish":"Poissons","c2.desserts":"Desserts",
+    "tbc":"à confirmer",
+    "d.carpaccio":"Fines tranches, copeaux & roquette","d.onion":"Le grand classique, bien gratiné","d.asperges":"De saison, au printemps",
+    "d.tournedos":"Filet, frites maison & salade","d.porc":"Purée maison & légumes rôtis","d.chou":"Généreuse, à la mode du pays","d.burger":"Bœuf, frites maison",
+    "d.fish":"Selon l'arrivage","d.cod":"Croûte d'ail des ours, de saison","d.risotto":"Crémeux, aussi en version légumes",
+    "d.choco":"Pour les gourmands","d.ananas":"Frais & léger","d.dame":"Glace vanille & chocolat chaud",
+    "c2.form.b":"Formule du midi","c2.form.s":"Entrée + plat ou plat + dessert, en semaine","c2.form.st":"le midi !",
+    "c2.foot":"* Plats, prix et disponibilités indicatifs, compilés à partir des avis — à confirmer avec l'établissement. La carte change au fil du marché.",
+    "c3.tag":"La terrasse","c3.title":"Sous les poutres et les guirlandes",
+    "c3.lead":"La terrasse couverte, ourlée de graminées et de lavande, est la signature de la maison — un coin d'été comme d'arrière-saison, chaleureux le soir venu.",
+    "c3.cap1":"La terrasse couverte, le soir","c3.cap2":"La salle & l'emblème gravé",
+    "c3.ph.b":"Photo à venir","c3.ph.s":"Photo haute résolution à fournir par l'établissement (plats / façade)",
+    "c3.quote":"Petit restaurant romantique, cuisine fine et parfumée, service attentionné — des portions généreuses et faites maison.","c3.quote.c":"— d'après les avis Google & TripAdvisor",
+    "c4.tag":"Le passage","c4.title":"Nous trouver","c4.hours":"Horaires*",
+    "day.mon":"Lundi","day.tue":"Mardi","day.wed":"Mercredi","day.thu":"Jeudi","day.fri":"Vendredi","day.sat":"Samedi","day.sun":"Dimanche","closed":"Fermé",
+    "c4.hours.note":"* Horaires à confirmer avec l'établissement.",
+    "c4.facil":"Sur place",
+    "f.terrace":"Terrasse couverte","f.parking":"Parking gratuit","f.ac":"Climatisation","f.wifi":"Wi-Fi gratuit","f.takeaway":"À emporter","f.dogs":"Chiens admis","f.bar":"Coin lounge / bar","f.sunday":"Ouvert le dimanche",
+    "c4.pay":"Paiements","c4.contact":"Contact & accès",
+    "c4.access":"À la frontière belgo-luxembourgeoise, sur la Route d'Arlon, près du Musée de l'Ardoise.","c4.itin":"Itinéraire",
+    "foot.blurb":"Brasserie française & luxembourgeoise, faite maison, au cœur du pays de l'ardoise — Rombach-Martelange.",
+    "foot.contact":"Contact","foot.nav":"Parcours",
+    "foot.demo.b":"Site de démonstration.",
+    "foot.demo":"Maquette non officielle réalisée à des fins de présentation. Horaires, carte, prix, logo, couleurs et typographies sont proposés / à confirmer avec l'établissement. Photos © Le Schiste. Non indexé (noindex)."
+  },
+  de:{
+    "brand.tag":"Land des Schiefers",
+    "nav.surface":"Die Abbauwand","nav.house":"Das Haus","nav.house.d":"Geschichte & Terroir",
+    "nav.menu":"Die Karte","nav.menu.d":"Die Tafel des Tages","nav.space":"Die Terrasse","nav.space.d":"Die Räume",
+    "nav.visit":"Der Weg","nav.visit.d":"Öffnungszeiten & Anfahrt",
+    "rail.addr":"Route d'Arlon 2<br>L-8832 Rombach-Martelange",
+    "hero.top":"Brasserie · Rambrouch · aus dem Land des Schiefers",
+    "hero.kicker":"Französische & luxemburgische Küche · hausgemacht",
+    "hero.em":"im Herzen des Schieferlands",
+    "hero.sub":"Eine familiengeführte Dorf-Brasserie, in der frisch und hausgemacht mit Produkten aus der Region gekocht wird — im alten Land der Schieferbrüche, an der belgisch-luxemburgischen Grenze.",
+    "hero.cta1":"Zur Karte","hero.cta2":"Reservieren · +352 26 61 51 24",
+    "hero.m1":"≈65 Google-Bewertungen","hero.m2":"Restaurants in Rambrouch","hero.m3v":"Hausgemacht","hero.m3":"frische & lokale Produkte",
+    "hero.cap":"Die überdachte Terrasse am Abend",
+    "c1.tag":"Das Haus","c1.title":"Der Geschmack eines steinernen Terroirs",
+    "c1.p1":"In Rombach-Martelange gab die Erde lange Zeit Schiefer her. Die Brüche und das Schiefermuseum erzählen noch heute von diesem Schieferland an der Grenze. Daher hat das Haus seinen Namen — und eine bestimmte Vorstellung von gut gemachter Arbeit, ganz ohne Getöse.",
+    "c1.p2":"Auf dem Teller bedeutet das eine ehrliche Brasserie-Küche: großzügige, hausgemachte Gerichte aus frischen und, soweit möglich, lokalen Produkten. Die Köchin bringt feine, aromatische Teller hervor — ein Tournedos mit hausgemachten Pommes, ein Fisch des Tages, ein Risotto — Saison für Saison.",
+    "c1.p3":"Man kommt als Nachbar und Stammgast, zu zweit für ein ruhiges Abendessen unter den Lichterketten, sonntags mit der Familie oder zwischen zwei Terminen für das Mittagsmenü. Der Empfang ist persönlich, der Saal intim — manchmal voll, immer herzlich.",
+    "c1.sign":"— Hausgemacht, frische Produkte.",
+    "c1.core.h":"Bohrkern",
+    "c1.core.k1":"Küche","c1.core.v1":"Französisch & luxemburgisch<em>Brasserie</em>",
+    "c1.core.k2":"Stil","c1.core.v2":"Hausgemacht<em>frisch & lokal</em>",
+    "c1.core.k3":"Platzierung","c1.core.v3":"in Rambrouch",
+    "c1.core.k4":"Ambiente","c1.core.v4":"Überdachte Terrasse<em>rustikal & gesellig</em>",
+    "c1.core.k5":"Budget","c1.core.v5":"Mittagsmenü ab ~13,90 €*",
+    "c2.tag":"Die Tafel","c2.title":"Die Karte, auf der Schiefertafel","c2.sub":"nach Markt & Saison",
+    "c2.starters":"Vorspeisen","c2.mains":"Hauptgerichte","c2.fish":"Fisch","c2.desserts":"Desserts",
+    "tbc":"zu bestätigen",
+    "d.carpaccio":"Feine Scheiben, Späne & Rucola","d.onion":"Der Klassiker, gut überbacken","d.asperges":"Saisonal, im Frühling",
+    "d.tournedos":"Filet, hausgemachte Pommes & Salat","d.porc":"Hausgemachtes Püree & Röstgemüse","d.chou":"Großzügig, nach Landesart","d.burger":"Rind, hausgemachte Pommes",
+    "d.fish":"Je nach Fang","d.cod":"Bärlauchkruste, saisonal","d.risotto":"Cremig, auch als Gemüseversion",
+    "d.choco":"Für Naschkatzen","d.ananas":"Frisch & leicht","d.dame":"Vanilleeis & heiße Schokolade",
+    "c2.form.b":"Mittagsmenü","c2.form.s":"Vorspeise + Hauptgang oder Hauptgang + Dessert, werktags","c2.form.st":"mittags!",
+    "c2.foot":"* Gerichte, Preise und Verfügbarkeit sind Richtwerte, zusammengestellt aus Bewertungen — mit dem Betrieb zu bestätigen. Die Karte wechselt je nach Markt.",
+    "c3.tag":"Die Terrasse","c3.title":"Unter Balken und Lichterketten",
+    "c3.lead":"Die überdachte Terrasse, gesäumt von Ziergräsern und Lavendel, ist das Markenzeichen des Hauses — ein Plätzchen für Sommer wie Spätsaison, abends besonders warm.",
+    "c3.cap1":"Die überdachte Terrasse am Abend","c3.cap2":"Der Saal & das gravierte Emblem",
+    "c3.ph.b":"Foto folgt","c3.ph.s":"Hochauflösendes Foto vom Betrieb bereitzustellen (Gerichte / Fassade)",
+    "c3.quote":"Kleines romantisches Restaurant, feine und aromatische Küche, aufmerksamer Service — großzügige, hausgemachte Portionen.","c3.quote.c":"— laut Google- & TripAdvisor-Bewertungen",
+    "c4.tag":"Der Weg","c4.title":"So finden Sie uns","c4.hours":"Öffnungszeiten*",
+    "day.mon":"Montag","day.tue":"Dienstag","day.wed":"Mittwoch","day.thu":"Donnerstag","day.fri":"Freitag","day.sat":"Samstag","day.sun":"Sonntag","closed":"Geschlossen",
+    "c4.hours.note":"* Öffnungszeiten mit dem Betrieb zu bestätigen.",
+    "c4.facil":"Vor Ort",
+    "f.terrace":"Überdachte Terrasse","f.parking":"Kostenloser Parkplatz","f.ac":"Klimaanlage","f.wifi":"Kostenloses WLAN","f.takeaway":"Zum Mitnehmen","f.dogs":"Hunde erlaubt","f.bar":"Lounge- / Barbereich","f.sunday":"Sonntags geöffnet",
+    "c4.pay":"Zahlungsmittel","c4.contact":"Kontakt & Anfahrt",
+    "c4.access":"An der belgisch-luxemburgischen Grenze, an der Route d'Arlon, nahe dem Schiefermuseum.","c4.itin":"Route",
+    "foot.blurb":"Französische & luxemburgische Brasserie, hausgemacht, im Herzen des Schieferlands — Rombach-Martelange.",
+    "foot.contact":"Kontakt","foot.nav":"Rundgang",
+    "foot.demo.b":"Demo-Website.",
+    "foot.demo":"Inoffizielles Muster zu Präsentationszwecken. Öffnungszeiten, Karte, Preise, Logo, Farben und Schriften sind Vorschläge / mit dem Betrieb zu bestätigen. Fotos © Le Schiste. Nicht indexiert (noindex)."
+  },
+  en:{
+    "brand.tag":"Slate country",
+    "nav.surface":"The quarry face","nav.house":"The house","nav.house.d":"Story & terroir",
+    "nav.menu":"The menu","nav.menu.d":"Today's slate","nav.space":"The terrace","nav.space.d":"The space",
+    "nav.visit":"The way in","nav.visit.d":"Hours & access",
+    "rail.addr":"Route d'Arlon 2<br>L-8832 Rombach-Martelange",
+    "hero.top":"Brasserie · Rambrouch · from slate country",
+    "hero.kicker":"French & Luxembourgish cooking · homemade",
+    "hero.em":"in the heart of slate country",
+    "hero.sub":"A family-run village brasserie serving fresh, homemade cooking from local produce — in the old land of the slate quarries, on the Belgian–Luxembourg border.",
+    "hero.cta1":"See the menu","hero.cta2":"Book · +352 26 61 51 24",
+    "hero.m1":"≈65 Google reviews","hero.m2":"restaurants in Rambrouch","hero.m3v":"Homemade","hero.m3":"fresh & local produce",
+    "hero.cap":"The covered terrace, at night",
+    "c1.tag":"The house","c1.title":"The taste of a land of stone",
+    "c1.p1":"In Rombach-Martelange, the land long yielded slate. The quarries and the Slate Museum still tell the story of this schist country straddling the border. That is where the house takes its name — and a certain idea of work done well, without fuss.",
+    "c1.p2":"On the plate, that means honest brasserie cooking: generous, homemade dishes from fresh and, wherever possible, local produce. The chef turns out refined, flavourful plates — a tournedos with homemade fries, the fish of the day, a risotto — season after season.",
+    "c1.p3":"People come as neighbours and regulars, as couples for a quiet dinner under the string lights, as families on Sundays, or between meetings for the lunch formula. The welcome is personal, the room intimate — sometimes full, always warm.",
+    "c1.sign":"— Homemade, fresh produce.",
+    "c1.core.h":"Core sample",
+    "c1.core.k1":"Cuisine","c1.core.v1":"French & Luxembourgish<em>brasserie</em>",
+    "c1.core.k2":"Style","c1.core.v2":"Homemade<em>fresh & local produce</em>",
+    "c1.core.k3":"Ranked","c1.core.v3":"in Rambrouch",
+    "c1.core.k4":"Setting","c1.core.v4":"Covered terrace<em>rustic & convivial</em>",
+    "c1.core.k5":"Budget","c1.core.v5":"lunch formula from ~€13.90*",
+    "c2.tag":"The slate","c2.title":"The menu, on the slate","c2.sub":"by the market & the seasons",
+    "c2.starters":"Starters","c2.mains":"Mains","c2.fish":"Fish","c2.desserts":"Desserts",
+    "tbc":"to confirm",
+    "d.carpaccio":"Thin slices, shavings & rocket","d.onion":"The great classic, well gratinéed","d.asperges":"Seasonal, in spring",
+    "d.tournedos":"Fillet, homemade fries & salad","d.porc":"Homemade purée & roast vegetables","d.chou":"Generous, country style","d.burger":"Beef, homemade fries",
+    "d.fish":"According to the catch","d.cod":"Wild-garlic crust, seasonal","d.risotto":"Creamy, also as a vegetable version",
+    "d.choco":"For the sweet-toothed","d.ananas":"Fresh & light","d.dame":"Vanilla ice cream & hot chocolate",
+    "c2.form.b":"Lunch formula","c2.form.s":"Starter + main or main + dessert, weekdays","c2.form.st":"lunchtime!",
+    "c2.foot":"* Dishes, prices and availability are indicative, compiled from reviews — to confirm with the venue. The menu changes with the market.",
+    "c3.tag":"The terrace","c3.title":"Under beams and string lights",
+    "c3.lead":"The covered terrace, fringed with ornamental grasses and lavender, is the house signature — a spot for summer and late season alike, warmest as evening falls.",
+    "c3.cap1":"The covered terrace, at night","c3.cap2":"The room & the engraved emblem",
+    "c3.ph.b":"Photo to come","c3.ph.s":"High-resolution photo to be supplied by the venue (dishes / façade)",
+    "c3.quote":"A romantic little restaurant, refined and flavourful cooking, attentive service — generous, homemade portions.","c3.quote.c":"— from Google & TripAdvisor reviews",
+    "c4.tag":"The way in","c4.title":"Find us","c4.hours":"Hours*",
+    "day.mon":"Monday","day.tue":"Tuesday","day.wed":"Wednesday","day.thu":"Thursday","day.fri":"Friday","day.sat":"Saturday","day.sun":"Sunday","closed":"Closed",
+    "c4.hours.note":"* Hours to be confirmed with the venue.",
+    "c4.facil":"On site",
+    "f.terrace":"Covered terrace","f.parking":"Free parking","f.ac":"Air conditioning","f.wifi":"Free Wi-Fi","f.takeaway":"Takeaway","f.dogs":"Dogs allowed","f.bar":"Lounge / bar area","f.sunday":"Open Sundays",
+    "c4.pay":"Payments","c4.contact":"Contact & access",
+    "c4.access":"On the Belgian–Luxembourg border, on the Route d'Arlon, near the Slate Museum.","c4.itin":"Directions",
+    "foot.blurb":"French & Luxembourgish brasserie, homemade, in the heart of slate country — Rombach-Martelange.",
+    "foot.contact":"Contact","foot.nav":"Walk-through",
+    "foot.demo.b":"Demonstration site.",
+    "foot.demo":"Unofficial mock-up made for presentation purposes. Hours, menu, prices, logo, colours and typefaces are proposed / to be confirmed with the venue. Photos © Le Schiste. Not indexed (noindex)."
+  }
+};
+
+function setLang(lang){
+  const dict = I18N[lang]; if(!dict) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[k]!=null) el.innerHTML = dict[k];
+  });
+  document.querySelectorAll('.lang button, .mobile-nav .lang button').forEach(b=>{
+    b.classList.toggle('on', b.getAttribute('data-lang')===lang);
+  });
+}
+document.querySelectorAll('[data-lang]').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.getAttribute('data-lang')));
+});
+
+/* ---------- scroll: active couche + depth readout ---------- */
+const sections = ['hero','maison','menu','terrasse','visit'];
+const navLinks = [...document.querySelectorAll('#stratanav a')];
+const readout = document.getElementById('depthReadout');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id = e.target.id;
+      navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+id));
+      const idx = sections.indexOf(id);
+      if(readout) readout.textContent = idx<=0 ? '— 0 m' : '— '+(idx*5)+' m';
+    }
+  });
+},{rootMargin:'-45% 0px -50% 0px', threshold:0});
+sections.forEach(id=>{const el=document.getElementById(id); if(el) io.observe(el);});
+
+/* default paint is already French in the HTML; ensure state is consistent */
+setLang('fr');
+</script>
+</body>
+</html>

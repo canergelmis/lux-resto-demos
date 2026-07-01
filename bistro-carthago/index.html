@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Bistro Carthago — Cuisine tunisienne bistronomique · Luxembourg-Gare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Sidi Bou Saïd / Carthage palette — validated against the venue's own blue-tile interior */
+    --plaster:#F4EDE1;      /* whitewash */
+    --plaster-2:#EBE1CE;
+    --cobalt:#173F6B;       /* deep Tunisian blue */
+    --cobalt-2:#1F5892;
+    --azure:#2E77B0;
+    --brass:#D8A24A;        /* ochre / brass */
+    --brass-deep:#B5822E;
+    --terra:#9E3B2E;        /* brick / terracotta accent */
+    --teal:#2C6E6B;
+    --ink:#141110;          /* near-black (monogram tone) */
+    --ink-soft:#3a332d;
+    --line:rgba(20,17,16,.14);
+    --tile-gap:14px;
+    --maxw:1560px;
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --sans:"DM Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--plaster);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  /* ---- zellige 8-point star line-motifs (CSS/SVG, no assets) ---- */
+  .star-brass{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='58' height='58' viewBox='0 0 58 58'%3E%3Cg fill='none' stroke='%23D8A24A' stroke-width='1' opacity='0.55'%3E%3Crect x='14' y='14' width='30' height='30'/%3E%3Crect x='14' y='14' width='30' height='30' transform='rotate(45 29 29)'/%3E%3C/g%3E%3C/svg%3E");}
+  .star-cream{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='58' height='58' viewBox='0 0 58 58'%3E%3Cg fill='none' stroke='%23F4EDE1' stroke-width='1' opacity='0.16'%3E%3Crect x='14' y='14' width='30' height='30'/%3E%3Crect x='14' y='14' width='30' height='30' transform='rotate(45 29 29)'/%3E%3C/g%3E%3C/svg%3E");}
+  .star-ink{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='58' height='58' viewBox='0 0 58 58'%3E%3Cg fill='none' stroke='%23173F6B' stroke-width='1' opacity='0.12'%3E%3Crect x='14' y='14' width='30' height='30'/%3E%3Crect x='14' y='14' width='30' height='30' transform='rotate(45 29 29)'/%3E%3C/g%3E%3C/svg%3E");}
+
+  /* ---- shared tile chrome ---- */
+  .tile{border-radius:6px;overflow:hidden;position:relative}
+  .frame{border:1px solid var(--line);background:#fff}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+
+  /* =========================================================
+     MASTHEAD (lintel)
+     ========================================================= */
+  header.lintel{
+    position:sticky;top:0;z-index:50;
+    background:var(--cobalt);
+    color:var(--plaster);
+    border-bottom:3px solid var(--brass);
+  }
+  .lintel-in{
+    max-width:var(--maxw);margin:0 auto;padding:12px 26px;
+    display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;
+  }
+  .brand{display:flex;align-items:center;gap:13px}
+  .monogram{
+    width:44px;height:44px;flex:none;border-radius:5px;background:var(--ink);
+    display:grid;place-items:center;border:1px solid rgba(216,162,74,.5);
+  }
+  .monogram img{width:44px;height:44px;object-fit:contain}
+  .brand .wordmark{display:flex;flex-direction:column;line-height:1}
+  .brand .wordmark b{font-family:var(--serif);font-weight:700;font-size:1.28rem;letter-spacing:.02em}
+  .brand .wordmark span{font-size:.63rem;letter-spacing:.32em;text-transform:uppercase;color:var(--brass);margin-top:4px}
+  nav.main{display:flex;gap:30px;justify-content:center}
+  nav.main a{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;opacity:.85;padding:6px 0;border-bottom:2px solid transparent;transition:.2s}
+  nav.main a:hover{opacity:1;border-color:var(--brass)}
+  .lintel-right{display:flex;align-items:center;gap:18px}
+  .tel{font-family:var(--serif);font-size:1rem;letter-spacing:.02em;white-space:nowrap}
+  .tel small{display:block;font-family:var(--sans);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
+  .btn{
+    font-family:var(--sans);font-weight:600;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+    padding:11px 20px;border-radius:4px;cursor:pointer;border:1px solid transparent;transition:.2s;white-space:nowrap;display:inline-block;
+  }
+  .btn-brass{background:var(--brass);color:var(--ink)}
+  .btn-brass:hover{background:var(--plaster)}
+  .btn-ghost{background:transparent;border-color:currentColor}
+  .btn-ghost:hover{background:rgba(255,255,255,.1)}
+  .btn-ink{background:var(--ink);color:var(--plaster)}
+  .btn-ink:hover{background:var(--terra)}
+
+  .lang{display:flex;gap:2px;border:1px solid rgba(244,237,225,.35);border-radius:4px;overflow:hidden}
+  .lang button{
+    font-family:var(--sans);background:transparent;color:var(--plaster);border:none;cursor:pointer;
+    font-size:.72rem;font-weight:600;letter-spacing:.08em;padding:7px 9px;transition:.15s;
+  }
+  .lang button[aria-pressed="true"]{background:var(--brass);color:var(--ink)}
+
+  /* =========================================================
+     MOSAIC HERO — the signature: a whitewashed zellige wall
+     ========================================================= */
+  .mosaic{
+    max-width:var(--maxw);margin:26px auto;padding:0 26px;
+    display:grid;gap:var(--tile-gap);
+    grid-template-columns:repeat(12,1fr);
+    grid-auto-rows:118px;
+  }
+  /* hero headline tile */
+  .m-head{
+    grid-column:span 5;grid-row:span 4;
+    background:var(--cobalt);color:var(--plaster);
+    padding:42px 40px;display:flex;flex-direction:column;justify-content:center;
+    position:relative;
+  }
+  .m-head::after{content:"";position:absolute;inset:0;background-size:58px;opacity:.9;pointer-events:none}
+  .eyebrow{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--brass);margin-bottom:20px}
+  .m-head h1{font-family:var(--serif);font-weight:700;font-size:clamp(2.6rem,4vw,4rem);line-height:.98;letter-spacing:-.01em}
+  .m-head h1 em{font-style:italic;color:var(--brass);font-weight:500}
+  .m-head .lede{margin-top:22px;font-size:1.06rem;max-width:34ch;color:rgba(244,237,225,.9)}
+  .m-head .cta{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+
+  /* signature dish photo */
+  .m-signature{grid-column:span 4;grid-row:span 4;background:var(--ink)}
+  .m-signature img{width:100%;height:100%;object-fit:cover;object-position:68% 16%}
+  .photo-chip{
+    position:absolute;left:0;bottom:0;right:0;padding:26px 22px 18px;
+    background:linear-gradient(0deg,rgba(20,17,16,.86),rgba(20,17,16,0));color:var(--plaster);
+  }
+  .photo-chip .k{font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:var(--brass)}
+  .photo-chip .v{font-family:var(--serif);font-size:1.3rem;margin-top:4px}
+
+  /* quote tile */
+  .m-quote{
+    grid-column:span 3;grid-row:span 2;background:var(--brass);color:var(--ink);
+    padding:26px 24px;display:flex;flex-direction:column;justify-content:center;
+  }
+  .m-quote q{font-family:var(--serif);font-style:italic;font-size:1.34rem;line-height:1.2;quotes:"«\00a0" "\00a0»"}
+  .m-quote cite{margin-top:14px;font-style:normal;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+
+  /* interior photo */
+  .m-interior{grid-column:span 3;grid-row:span 2;background:var(--ink)}
+  .m-interior img{width:100%;height:100%;object-fit:cover;object-position:22% 34%}
+
+  /* badges strip */
+  .m-badges{grid-column:span 3;grid-row:span 2;display:grid;grid-template-rows:1fr 1fr 1fr;gap:var(--tile-gap)}
+  .badge{
+    background:#fff;border:1px solid var(--line);border-radius:6px;
+    display:flex;align-items:center;gap:12px;padding:0 18px;
+  }
+  .badge .num{font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--cobalt);line-height:1}
+  .badge .lab{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+
+  /* pure-pattern filler tile */
+  .m-pattern{grid-column:span 9;grid-row:span 2;background:var(--terra);background-size:58px}
+  .m-pattern .seal{position:absolute;inset:0;display:grid;place-items:center;color:var(--plaster);text-align:center}
+  .m-pattern .seal span{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;opacity:.8}
+  .m-pattern .seal b{font-family:var(--serif);font-style:italic;font-size:1.5rem;display:block;margin-top:6px}
+
+  /* =========================================================
+     SECTION SCAFFOLD
+     ========================================================= */
+  section{padding:64px 0}
+  .sec-head{max-width:var(--maxw);margin:0 auto 30px;padding:0 26px;display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap}
+  .sec-head .t h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.9rem,3vw,2.9rem);line-height:1;letter-spacing:-.01em}
+  .sec-head .t .kick{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--brass-deep);margin-bottom:12px}
+  .sec-head p{max-width:44ch;color:var(--ink-soft);font-size:.98rem}
+  .rule{height:2px;background:repeating-linear-gradient(90deg,var(--brass) 0 10px,transparent 10px 20px);max-width:var(--maxw);margin:0 auto;}
+
+  /* ---- LA CARTE : dish mosaic ---- */
+  #carte{background:var(--plaster-2)}
+  .menu-grid{
+    max-width:var(--maxw);margin:0 auto;padding:0 26px;
+    display:grid;grid-template-columns:repeat(12,1fr);gap:var(--tile-gap);
+  }
+  .dish{
+    background:#fff;border:1px solid var(--line);border-radius:6px;padding:24px 24px 22px;
+    display:flex;flex-direction:column;position:relative;transition:.2s;grid-column:span 3;
+  }
+  .dish:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(23,63,107,.13)}
+  .dish .cat{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--brass-deep);margin-bottom:12px}
+  .dish h3{font-family:var(--serif);font-weight:600;font-size:1.32rem;line-height:1.1}
+  .dish p{margin-top:9px;font-size:.9rem;color:var(--ink-soft)}
+  .dish .tags{margin-top:auto;padding-top:16px;display:flex;gap:7px;flex-wrap:wrap}
+  .pill{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:20px;background:var(--plaster);color:var(--ink-soft);border:1px solid var(--line)}
+  .dish.hero{grid-column:span 6;background:var(--cobalt);color:var(--plaster);border-color:transparent}
+  .dish.hero .cat{color:var(--brass)}
+  .dish.hero p{color:rgba(244,237,225,.85)}
+  .dish.hero h3{font-size:1.9rem}
+  .dish.hero .pill{background:rgba(244,237,225,.12);color:var(--plaster);border-color:rgba(244,237,225,.25)}
+  .dish.hero::after{content:"";position:absolute;right:-10px;top:-10px;width:130px;height:130px;background-size:58px;opacity:.5}
+  .note-bar{
+    max-width:var(--maxw);margin:24px auto 0;padding:14px 22px;
+    background:transparent;border:1px dashed var(--brass-deep);border-radius:6px;color:var(--ink-soft);
+    font-size:.83rem;display:flex;align-items:center;gap:12px;
+  }
+  .note-bar .dot{width:9px;height:9px;border-radius:50%;background:var(--brass);flex:none}
+  .menu-grid .note-bar{grid-column:span 12}
+
+  /* ---- LA MAISON : story + 3 lieux ---- */
+  #maison .maison-grid{
+    max-width:var(--maxw);margin:0 auto;padding:0 26px;
+    display:grid;grid-template-columns:repeat(12,1fr);gap:var(--tile-gap);grid-auto-rows:minmax(120px,auto);
+  }
+  .story{
+    grid-column:span 5;background:var(--ink);color:var(--plaster);border-radius:6px;padding:40px 36px;
+    display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;
+  }
+  .story::before{content:"";position:absolute;inset:0;background-size:58px;opacity:1;pointer-events:none}
+  .story h3{font-family:var(--serif);font-weight:600;font-size:1.9rem;position:relative;line-height:1.1}
+  .story p{margin-top:16px;font-size:.98rem;color:rgba(244,237,225,.86);position:relative}
+  .story p+p{margin-top:12px}
+  .story .sig{margin-top:24px;position:relative;font-family:var(--serif);font-style:italic;color:var(--brass);font-size:1.15rem}
+  .lieu{
+    grid-column:span 7;border-radius:6px;overflow:hidden;background:var(--ink);position:relative;min-height:250px;
+  }
+  .lieu img{width:100%;height:100%;object-fit:cover;object-position:22% 34%;position:absolute;inset:0}
+  .lieu .cap{
+    position:absolute;left:0;bottom:0;right:0;padding:30px 26px 22px;color:var(--plaster);
+    background:linear-gradient(0deg,rgba(20,17,16,.9),rgba(20,17,16,0));
+  }
+  .lieu .cap .k{font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:var(--brass)}
+  .lieu .cap .v{font-family:var(--serif);font-size:1.5rem;margin-top:4px}
+  .setting{
+    grid-column:span 4;background:#fff;border:1px solid var(--line);border-radius:6px;padding:28px 26px;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .setting .ic{width:40px;height:40px;border-radius:5px;background:var(--plaster);border:1px solid var(--line);display:grid;place-items:center;color:var(--cobalt);font-family:var(--serif);font-weight:700}
+  .setting h4{font-family:var(--serif);font-weight:600;font-size:1.2rem}
+  .setting p{font-size:.88rem;color:var(--ink-soft)}
+
+  /* ---- VISITE : contact mosaic ---- */
+  #visite{background:var(--cobalt);color:var(--plaster)}
+  #visite .rule{background:repeating-linear-gradient(90deg,var(--brass) 0 10px,transparent 10px 20px)}
+  #visite .sec-head .t h2{color:var(--plaster)}
+  #visite .sec-head .t .kick{color:var(--brass)}
+  #visite .sec-head p{color:rgba(244,237,225,.82)}
+  .visit-grid{
+    max-width:var(--maxw);margin:0 auto;padding:0 26px;
+    display:grid;grid-template-columns:repeat(12,1fr);gap:var(--tile-gap);grid-auto-rows:minmax(70px,auto);
+  }
+  .map-tile{grid-column:span 6;grid-row:span 6;border-radius:6px;overflow:hidden;min-height:420px;border:1px solid rgba(244,237,225,.2)}
+  .map-tile iframe{width:100%;height:100%;border:0;filter:saturate(.9)}
+  .info-card{
+    grid-column:span 3;grid-row:span 3;background:rgba(244,237,225,.06);border:1px solid rgba(244,237,225,.18);
+    border-radius:6px;padding:26px 24px;display:flex;flex-direction:column;gap:6px;
+  }
+  .info-card .k{font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:var(--brass)}
+  .info-card .big{font-family:var(--serif);font-size:1.28rem;line-height:1.25;margin-top:2px}
+  .info-card a.big:hover{color:var(--brass)}
+  .info-card .small{font-size:.82rem;color:rgba(244,237,225,.78)}
+  .hours-row{display:flex;justify-content:space-between;gap:14px;font-size:.9rem;padding:5px 0;border-bottom:1px dashed rgba(244,237,225,.2)}
+  .hours-row:last-of-type{border-bottom:none}
+  .hours-row b{font-weight:500}
+  .cta-card{
+    grid-column:span 6;grid-row:span 3;background:var(--brass);color:var(--ink);border-radius:6px;
+    padding:30px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  }
+  .cta-card h3{font-family:var(--serif);font-weight:700;font-size:1.7rem;line-height:1.05;max-width:22ch}
+  .cta-card .acts{display:flex;gap:12px;flex-wrap:wrap}
+  .confirm{font-size:.66rem;letter-spacing:.06em;color:var(--brass);opacity:.85;font-style:italic}
+  .info-card .confirm{color:var(--brass)}
+
+  /* ---- FOOTER ---- */
+  footer{background:var(--ink);color:var(--plaster);padding:52px 0 30px}
+  .foot-grid{max-width:var(--maxw);margin:0 auto;padding:0 26px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;align-items:start}
+  .foot-brand{display:flex;flex-direction:column;gap:16px;max-width:40ch}
+  .foot-brand .wordmark b{font-family:var(--serif);font-size:1.5rem}
+  .foot-brand p{font-size:.86rem;color:rgba(244,237,225,.7)}
+  .foot-col h5{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--brass);margin-bottom:14px}
+  .foot-col a,.foot-col p{display:block;font-size:.9rem;color:rgba(244,237,225,.82);margin-bottom:8px}
+  .foot-col a:hover{color:var(--brass)}
+  .demo-note{
+    max-width:var(--maxw);margin:38px auto 0;padding:16px 26px 0;border-top:1px solid rgba(244,237,225,.15);
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.74rem;color:rgba(244,237,225,.55);
+  }
+  .demo-note b{color:var(--brass);font-weight:600}
+
+  /* =========================================================
+     RESPONSIVE
+     ========================================================= */
+  @media(max-width:1100px){
+    nav.main{gap:18px}
+    .m-head{grid-column:span 12;grid-row:span 3}
+    .m-signature{grid-column:span 7;grid-row:span 3}
+    .m-quote{grid-column:span 5;grid-row:span 3}
+    .m-interior{grid-column:span 4;grid-row:span 2}
+    .m-badges{grid-column:span 4;grid-row:span 2}
+    .m-pattern{grid-column:span 4;grid-row:span 2}
+    .dish{grid-column:span 6}
+    .dish.hero{grid-column:span 12}
+    .story{grid-column:span 12}
+    .lieu{grid-column:span 12;min-height:300px}
+    .setting{grid-column:span 6}
+    .map-tile{grid-column:span 12;grid-row:auto;min-height:360px}
+    .info-card{grid-column:span 6;grid-row:auto}
+    .cta-card{grid-column:span 12;grid-row:auto}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:820px){
+    .lintel-in{grid-template-columns:1fr auto;row-gap:12px}
+    nav.main{grid-column:1/-1;order:3;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}
+    .lintel-right{gap:12px}
+    .tel{display:none}
+    .mosaic{grid-auto-rows:100px}
+    .m-signature{grid-column:span 12;grid-row:span 3}
+    .m-quote{grid-column:span 12;grid-row:span 2}
+    .m-interior{grid-column:span 6;grid-row:span 2}
+    .m-badges{grid-column:span 6;grid-row:span 3}
+    .m-pattern{grid-column:span 12;grid-row:span 2}
+    .dish,.dish.hero,.setting{grid-column:span 12}
+    .info-card{grid-column:span 12}
+    .foot-grid{grid-template-columns:1fr}
+    .sec-head{align-items:flex-start}
+  }
+  @media(max-width:520px){
+    .wrap,.mosaic,.menu-grid,.maison-grid,.visit-grid,.lintel-in{padding-left:16px;padding-right:16px}
+    .m-head{padding:30px 24px}
+    .brand .wordmark span{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD / LINTEL ============ -->
+<header class="lintel">
+  <div class="lintel-in">
+    <a class="brand" href="#top" aria-label="Bistro Carthago">
+      <span class="monogram"><img src="assets/food-2.jpg" alt="Monogramme Bistro Carthago"></span>
+      <span class="wordmark"><b>Bistro Carthago</b><span data-i18n="brand.sub">Cuisine tunisienne · Luxembourg-Gare</span></span>
+    </a>
+    <nav class="main">
+      <a href="#carte" data-i18n="nav.carte">La Carte</a>
+      <a href="#maison" data-i18n="nav.maison">La Maison</a>
+      <a href="#visite" data-i18n="nav.visite">Visite</a>
+    </nav>
+    <div class="lintel-right">
+      <div class="lang" role="group" aria-label="Langue">
+        <button data-lang="fr" aria-pressed="true">FR</button>
+        <button data-lang="de" aria-pressed="false">DE</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="tel" href="tel:+35226482158">+352 26 48 21 58<small data-i18n="tel.label">Réservations</small></a>
+      <a class="btn btn-brass" href="tel:+35226482158" data-i18n="cta.reserve">Réserver</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MOSAIC HERO ============ -->
+<main id="top">
+<div class="mosaic">
+
+  <div class="m-head tile">
+    <div class="star-cream" style="position:absolute;inset:0;background-size:58px;opacity:.9;pointer-events:none"></div>
+    <div style="position:relative">
+      <div class="eyebrow" data-i18n="hero.eyebrow">Cuisine tunisienne bistronomique</div>
+      <h1 data-i18n="hero.title" data-i18n-html>Bistro <em>Carthago</em></h1>
+      <p class="lede" data-i18n="hero.lede">Les saveurs de la Tunisie, au cœur de la Gare — une cuisine relevée mais douce, pensée avec des chefs tunisiens pour retrouver le goût d'antan.</p>
+      <div class="cta">
+        <a class="btn btn-brass" href="#carte" data-i18n="hero.cta1">Découvrir la carte</a>
+        <a class="btn btn-ghost" href="#visite" data-i18n="hero.cta2">Nous trouver</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="m-signature tile">
+    <img src="assets/food-1.jpg" alt="Couscous tunisien, plat signature du Bistro Carthago">
+    <div class="photo-chip">
+      <div class="k" data-i18n="sig.k">La signature</div>
+      <div class="v" data-i18n="sig.v">Couscous tunisien au poulpe</div>
+    </div>
+  </div>
+
+  <div class="m-quote tile">
+    <q data-i18n="quote.text">Un couscous qui rendrait ma mère fière.</q>
+    <cite data-i18n="quote.cite">Avis client · TripAdvisor</cite>
+  </div>
+
+  <div class="m-interior tile">
+    <img src="assets/interior-1.jpg" alt="Salle du Bistro Carthago, décor oriental et zellige">
+  </div>
+
+  <div class="m-badges">
+    <div class="badge frame"><span class="num">#129</span><span class="lab" data-i18n="badge.ta">TripAdvisor · Luxembourg-Ville</span></div>
+    <div class="badge frame"><span class="num">4,9</span><span class="lab" data-i18n="badge.fb">Facebook · ~95 avis</span></div>
+    <div class="badge frame"><span class="num">'26</span><span class="lab" data-i18n="badge.pf">Petit Futé · bistronomique</span></div>
+  </div>
+
+  <div class="m-pattern tile star-cream">
+    <div class="seal">
+      <div>
+        <span data-i18n="seal.top">Depuis Carthage</span>
+        <b data-i18n="seal.mid">Tradition &amp; modernité</b>
+      </div>
+    </div>
+  </div>
+
+</div>
+</main>
+
+<div class="rule"></div>
+
+<!-- ============ LA CARTE ============ -->
+<section id="carte">
+  <div class="sec-head">
+    <div class="t">
+      <div class="kick" data-i18n="carte.kick">La table</div>
+      <h2 data-i18n="carte.title">La carte</h2>
+    </div>
+    <p data-i18n="carte.intro">Couscous, tajines et grillades tunisiennes, entre tradition familiale et esprit bistronomique. Carte indicative.</p>
+  </div>
+  <div class="menu-grid">
+
+    <article class="dish hero star-cream">
+      <div class="cat" data-i18n="d.sig.cat">Le plat signature</div>
+      <h3 data-i18n="d.sig.n">Couscous au poulpe</h3>
+      <p data-i18n="d.sig.d">Semoule roulée, poulpe fondant et bouillon parfumé aux épices douces — le plat qui a fait la réputation de la maison.</p>
+      <div class="tags"><span class="pill" data-i18n="tag.signature">Signature</span><span class="pill" data-i18n="tag.mer">Produits de la mer</span></div>
+    </article>
+
+    <article class="dish">
+      <div class="cat" data-i18n="cat.entree">Entrée</div>
+      <h3 data-i18n="d.brick.n">Brick tunisienne</h3>
+      <p data-i18n="d.brick.d">Feuille de brick croustillante, œuf coulant et herbes — le grand classique de l'entrée tunisienne.</p>
+      <div class="tags"><span class="pill" data-i18n="tag.croustille">Croustillant</span></div>
+    </article>
+
+    <article class="dish">
+      <div class="cat" data-i18n="cat.entree">Entrée</div>
+      <h3 data-i18n="d.salade.n">Salade de poulpe</h3>
+      <p data-i18n="d.salade.d">Poulpe tendre, huile d'olive, citron et épices — fraîcheur méditerranéenne en ouverture.</p>
+      <div class="tags"><span class="pill" data-i18n="tag.frais">Frais</span></div>
+    </article>
+
+    <article class="dish">
+      <div class="cat" data-i18n="cat.couscous">Couscous</div>
+      <h3 data-i18n="d.trad.n">Couscous traditionnel</h3>
+      <p data-i18n="d.trad.d">Agneau, poulet ou légumes, semoule et bouillon maison — la générosité du couscous d'antan.</p>
+      <div class="tags"><span class="pill" data-i18n="tag.maison">Maison</span></div>
+    </article>
+
+    <article class="dish">
+      <div class="cat" data-i18n="cat.plat">Plat</div>
+      <h3 data-i18n="d.tajine.n">Tajines tunisiens</h3>
+      <p data-i18n="d.tajine.d">Mijotés lents et parfumés, dans la tradition des tajines tunisiens, relevés mais tout en douceur.</p>
+      <div class="tags"><span class="pill" data-i18n="tag.mijote">Mijoté</span></div>
+    </article>
+
+    <article class="dish">
+      <div class="cat" data-i18n="cat.plat">Plat</div>
+      <h3 data-i18n="d.agneau.n">Épaule d'agneau braisée</h3>
+      <p data-i18n="d.agneau.d">Braisée longuement, équilibre sucré-salé — une pièce fondante à partager.</p>
+      <div class="tags"><span class="pill" data-i18n="tag.partage">À partager</span></div>
+    </article>
+
+    <article class="dish">
+      <div class="cat" data-i18n="cat.plat">Plat</div>
+      <h3 data-i18n="d.grill.n">Grillades mixtes</h3>
+      <p data-i18n="d.grill.d">Sélection de viandes grillées et merguez, accompagnées de leurs garnitures orientales.</p>
+      <div class="tags"><span class="pill" data-i18n="tag.grill">Grillé</span></div>
+    </article>
+
+    <div class="note-bar">
+      <span class="dot"></span>
+      <span data-i18n="carte.note">Carte indicative établie d'après les plats de la maison. Composition et prix exacts à confirmer avec l'établissement.</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ LA MAISON ============ -->
+<section id="maison">
+  <div class="sec-head">
+    <div class="t">
+      <div class="kick" data-i18n="maison.kick">La maison</div>
+      <h2 data-i18n="maison.title">Trois manières d'y être bien</h2>
+    </div>
+    <p data-i18n="maison.intro">Un déjeuner d'affaires à l'abri du bruit, un dîner convivial, une échappée sur la terrasse cachée.</p>
+  </div>
+  <div class="maison-grid">
+
+    <div class="story star-cream">
+      <h3 data-i18n="story.h">Un nouveau concept de cuisine tunisienne</h3>
+      <p data-i18n="story.p1">Au cœur du quartier de la Gare, le Bistro Carthago sert une cuisine tunisienne moderne et raffinée, restée fidèle à la tradition familiale.</p>
+      <p data-i18n="story.p2">La carte a été développée avec plusieurs chefs tunisiens pour préserver « le goût et les saveurs d'antan » — relevée, mais également douce, pleine de saveurs.</p>
+      <div class="sig" data-i18n="story.sig">— Nommé d'après l'antique Carthage, fleuron du patrimoine tunisien.</div>
+    </div>
+
+    <div class="lieu">
+      <img src="assets/interior-1.jpg" alt="Salle orientale du Bistro Carthago, moucharabieh et zellige">
+      <div class="cap">
+        <div class="k" data-i18n="lieu.salle.k">L'ambiance</div>
+        <div class="v" data-i18n="lieu.salle.v">La salle orientale</div>
+      </div>
+    </div>
+
+    <div class="setting">
+      <div class="ic">﹅</div>
+      <h4 data-i18n="set.terrasse.h">La terrasse cachée</h4>
+      <p data-i18n="set.terrasse.p">Un coin discret, à l'abri du bruit de la ville, pour déjeuner ou dîner au calme.</p>
+    </div>
+
+    <div class="setting">
+      <div class="ic">◈</div>
+      <h4 data-i18n="set.salon.h">Le salon d'affaires</h4>
+      <p data-i18n="set.salon.p">Une salle privée pour les déjeuners confidentiels et les rendez-vous professionnels.</p>
+    </div>
+
+    <div class="setting">
+      <div class="ic">✶</div>
+      <h4 data-i18n="set.accueil.h">L'accueil</h4>
+      <p data-i18n="set.accueil.p">Un accueil souriant et chaleureux, salué par les habitués — l'esprit tunisien de l'hospitalité.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ============ VISITE ============ -->
+<section id="visite">
+  <div class="sec-head">
+    <div class="t">
+      <div class="kick" data-i18n="visite.kick">Nous trouver</div>
+      <h2 data-i18n="visite.title">Visite &amp; réservation</h2>
+    </div>
+    <p data-i18n="visite.intro">À deux pas de la gare de Luxembourg. Réservation par téléphone recommandée.</p>
+  </div>
+  <div class="visit-grid">
+
+    <div class="map-tile">
+      <iframe title="Carte — Bistro Carthago" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=69+rue+du+Fort+Neipperg,+L-2230+Luxembourg&output=embed"></iframe>
+    </div>
+
+    <div class="info-card">
+      <div class="k" data-i18n="info.addr.k">Adresse</div>
+      <div class="big">69, rue du Fort Neipperg<br>L-2230 Luxembourg</div>
+      <div class="small" data-i18n="info.addr.s">Quartier Gare / Centre</div>
+    </div>
+
+    <div class="info-card">
+      <div class="k" data-i18n="info.tel.k">Téléphone</div>
+      <a class="big" href="tel:+35226482158">+352 26 48 21 58</a>
+      <a class="small" href="mailto:info@bistrocarthago.lu">info@bistrocarthago.lu</a>
+      <div class="confirm" data-i18n="info.tel.c">Mobile & e-mail à confirmer</div>
+    </div>
+
+    <div class="info-card" style="grid-column:span 6;grid-row:span 3">
+      <div class="k" data-i18n="info.hours.k">Horaires</div>
+      <div style="margin-top:6px">
+        <div class="hours-row"><b data-i18n="hours.mon">Lun – Sam</b><span>11h30 – 14h · 18h30 – 23h</span></div>
+        <div class="hours-row"><b data-i18n="hours.sun">Dimanche</b><span data-i18n="hours.sun.v">Fermé</span></div>
+      </div>
+      <div class="confirm" style="margin-top:12px" data-i18n="info.hours.c">Les sources diffèrent sur le dimanche et le samedi midi — horaires à confirmer avec l'établissement.</div>
+    </div>
+
+    <div class="cta-card">
+      <h3 data-i18n="cta.h">Une table vous attend au cœur de la Gare</h3>
+      <div class="acts">
+        <a class="btn btn-ink" href="tel:+35226482158" data-i18n="cta.call">Appeler</a>
+        <a class="btn btn-ink" href="https://www.facebook.com/BistroCarthago/" target="_blank" rel="noopener" data-i18n="cta.fb">Facebook</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <div class="brand" style="gap:13px">
+        <span class="monogram"><img src="assets/food-2.jpg" alt="Monogramme Bistro Carthago"></span>
+        <span class="wordmark"><b>Bistro Carthago</b></span>
+      </div>
+      <p data-i18n="foot.blurb">Cuisine tunisienne bistronomique — couscous, tajines et grillades — à cheval entre tradition et modernité, au cœur du quartier de la Gare.</p>
+    </div>
+    <div class="foot-col">
+      <h5 data-i18n="foot.visit">Visite</h5>
+      <p>69, rue du Fort Neipperg<br>L-2230 Luxembourg</p>
+      <a href="tel:+35226482158">+352 26 48 21 58</a>
+      <a href="mailto:info@bistrocarthago.lu">info@bistrocarthago.lu</a>
+    </div>
+    <div class="foot-col">
+      <h5 data-i18n="foot.follow">Suivre</h5>
+      <a href="https://www.facebook.com/BistroCarthago/" target="_blank" rel="noopener">Facebook</a>
+      <a href="#carte" data-i18n="nav.carte">La Carte</a>
+      <a href="#visite" data-i18n="nav.visite">Visite</a>
+    </div>
+  </div>
+  <div class="demo-note">
+    <span><b data-i18n="demo.tag">Site de démonstration</b> — <span data-i18n="demo.text">maquette proposée pour le Bistro Carthago. Photos, horaires, carte et prix à confirmer avec l'établissement. Photographies haute résolution à fournir par l'établissement.</span></span>
+    <span>© <span id="yr"></span> Bistro Carthago</span>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  fr:{
+    "brand.sub":"Cuisine tunisienne · Luxembourg-Gare",
+    "nav.carte":"La Carte","nav.maison":"La Maison","nav.visite":"Visite",
+    "tel.label":"Réservations","cta.reserve":"Réserver",
+    "hero.eyebrow":"Cuisine tunisienne bistronomique",
+    "hero.title":"Bistro <em>Carthago</em>",
+    "hero.lede":"Les saveurs de la Tunisie, au cœur de la Gare — une cuisine relevée mais douce, pensée avec des chefs tunisiens pour retrouver le goût d'antan.",
+    "hero.cta1":"Découvrir la carte","hero.cta2":"Nous trouver",
+    "sig.k":"La signature","sig.v":"Couscous tunisien au poulpe",
+    "quote.text":"Un couscous qui rendrait ma mère fière.","quote.cite":"Avis client · TripAdvisor",
+    "badge.ta":"TripAdvisor · Luxembourg-Ville","badge.fb":"Facebook · ~95 avis","badge.pf":"Petit Futé · bistronomique",
+    "seal.top":"Depuis Carthage","seal.mid":"Tradition & modernité",
+    "carte.kick":"La table","carte.title":"La carte",
+    "carte.intro":"Couscous, tajines et grillades tunisiennes, entre tradition familiale et esprit bistronomique. Carte indicative.",
+    "d.sig.cat":"Le plat signature","d.sig.n":"Couscous au poulpe",
+    "d.sig.d":"Semoule roulée, poulpe fondant et bouillon parfumé aux épices douces — le plat qui a fait la réputation de la maison.",
+    "tag.signature":"Signature","tag.mer":"Produits de la mer",
+    "cat.entree":"Entrée","cat.couscous":"Couscous","cat.plat":"Plat",
+    "d.brick.n":"Brick tunisienne","d.brick.d":"Feuille de brick croustillante, œuf coulant et herbes — le grand classique de l'entrée tunisienne.",
+    "tag.croustille":"Croustillant",
+    "d.salade.n":"Salade de poulpe","d.salade.d":"Poulpe tendre, huile d'olive, citron et épices — fraîcheur méditerranéenne en ouverture.",
+    "tag.frais":"Frais",
+    "d.trad.n":"Couscous traditionnel","d.trad.d":"Agneau, poulet ou légumes, semoule et bouillon maison — la générosité du couscous d'antan.",
+    "tag.maison":"Maison",
+    "d.tajine.n":"Tajines tunisiens","d.tajine.d":"Mijotés lents et parfumés, dans la tradition des tajines tunisiens, relevés mais tout en douceur.",
+    "tag.mijote":"Mijoté",
+    "d.agneau.n":"Épaule d'agneau braisée","d.agneau.d":"Braisée longuement, équilibre sucré-salé — une pièce fondante à partager.",
+    "tag.partage":"À partager",
+    "d.grill.n":"Grillades mixtes","d.grill.d":"Sélection de viandes grillées et merguez, accompagnées de leurs garnitures orientales.",
+    "tag.grill":"Grillé",
+    "carte.note":"Carte indicative établie d'après les plats de la maison. Composition et prix exacts à confirmer avec l'établissement.",
+    "maison.kick":"La maison","maison.title":"Trois manières d'y être bien",
+    "maison.intro":"Un déjeuner d'affaires à l'abri du bruit, un dîner convivial, une échappée sur la terrasse cachée.",
+    "story.h":"Un nouveau concept de cuisine tunisienne",
+    "story.p1":"Au cœur du quartier de la Gare, le Bistro Carthago sert une cuisine tunisienne moderne et raffinée, restée fidèle à la tradition familiale.",
+    "story.p2":"La carte a été développée avec plusieurs chefs tunisiens pour préserver « le goût et les saveurs d'antan » — relevée, mais également douce, pleine de saveurs.",
+    "story.sig":"— Nommé d'après l'antique Carthage, fleuron du patrimoine tunisien.",
+    "lieu.salle.k":"L'ambiance","lieu.salle.v":"La salle orientale",
+    "set.terrasse.h":"La terrasse cachée","set.terrasse.p":"Un coin discret, à l'abri du bruit de la ville, pour déjeuner ou dîner au calme.",
+    "set.salon.h":"Le salon d'affaires","set.salon.p":"Une salle privée pour les déjeuners confidentiels et les rendez-vous professionnels.",
+    "set.accueil.h":"L'accueil","set.accueil.p":"Un accueil souriant et chaleureux, salué par les habitués — l'esprit tunisien de l'hospitalité.",
+    "visite.kick":"Nous trouver","visite.title":"Visite & réservation",
+    "visite.intro":"À deux pas de la gare de Luxembourg. Réservation par téléphone recommandée.",
+    "info.addr.k":"Adresse","info.addr.s":"Quartier Gare / Centre",
+    "info.tel.k":"Téléphone","info.tel.c":"Mobile & e-mail à confirmer",
+    "info.hours.k":"Horaires","hours.mon":"Lun – Sam","hours.sun":"Dimanche","hours.sun.v":"Fermé",
+    "info.hours.c":"Les sources diffèrent sur le dimanche et le samedi midi — horaires à confirmer avec l'établissement.",
+    "cta.h":"Une table vous attend au cœur de la Gare","cta.call":"Appeler","cta.fb":"Facebook",
+    "foot.blurb":"Cuisine tunisienne bistronomique — couscous, tajines et grillades — à cheval entre tradition et modernité, au cœur du quartier de la Gare.",
+    "foot.visit":"Visite","foot.follow":"Suivre",
+    "demo.tag":"Site de démonstration","demo.text":"maquette proposée pour le Bistro Carthago. Photos, horaires, carte et prix à confirmer avec l'établissement. Photographies haute résolution à fournir par l'établissement."
+  },
+  de:{
+    "brand.sub":"Tunesische Küche · Luxemburg-Bahnhof",
+    "nav.carte":"Speisekarte","nav.maison":"Das Haus","nav.visite":"Besuch",
+    "tel.label":"Reservierungen","cta.reserve":"Reservieren",
+    "hero.eyebrow":"Tunesische Bistroküche",
+    "hero.title":"Bistro <em>Carthago</em>",
+    "hero.lede":"Die Aromen Tunesiens im Herzen des Bahnhofsviertels — würzig und zugleich mild, mit tunesischen Köchen entwickelt, um den Geschmack von einst zu bewahren.",
+    "hero.cta1":"Speisekarte entdecken","hero.cta2":"So finden Sie uns",
+    "sig.k":"Das Aushängeschild","sig.v":"Tunesischer Couscous mit Oktopus",
+    "quote.text":"Ein Couscous, auf den meine Mutter stolz wäre.","quote.cite":"Gästebewertung · TripAdvisor",
+    "badge.ta":"TripAdvisor · Luxemburg-Stadt","badge.fb":"Facebook · ~95 Bewertungen","badge.pf":"Petit Futé · Bistronomie",
+    "seal.top":"Seit Karthago","seal.mid":"Tradition & Moderne",
+    "carte.kick":"Der Tisch","carte.title":"Speisekarte",
+    "carte.intro":"Couscous, Tajines und tunesische Grillgerichte, zwischen Familientradition und Bistro-Geist. Beispielhafte Karte.",
+    "d.sig.cat":"Das Signature-Gericht","d.sig.n":"Couscous mit Oktopus",
+    "d.sig.d":"Handgerollter Grieß, zarter Oktopus und ein mit milden Gewürzen aromatisierter Sud — das Gericht, das den Ruf des Hauses begründete.",
+    "tag.signature":"Signature","tag.mer":"Meeresfrüchte",
+    "cat.entree":"Vorspeise","cat.couscous":"Couscous","cat.plat":"Hauptgang",
+    "d.brick.n":"Tunesisches Brik","d.brick.d":"Knuspriger Brik-Teig, flüssiges Ei und Kräuter — der große Klassiker der tunesischen Vorspeise.",
+    "tag.croustille":"Knusprig",
+    "d.salade.n":"Oktopussalat","d.salade.d":"Zarter Oktopus, Olivenöl, Zitrone und Gewürze — mediterrane Frische zum Auftakt.",
+    "tag.frais":"Frisch",
+    "d.trad.n":"Traditioneller Couscous","d.trad.d":"Lamm, Hähnchen oder Gemüse, Grieß und hausgemachter Sud — die Großzügigkeit des Couscous von einst.",
+    "tag.maison":"Hausgemacht",
+    "d.tajine.n":"Tunesische Tajines","d.tajine.d":"Langsam geschmort und aromatisch, in der Tradition tunesischer Tajines — würzig und doch sanft.",
+    "tag.mijote":"Geschmort",
+    "d.agneau.n":"Geschmorte Lammschulter","d.agneau.d":"Lange geschmort, süß-salzige Balance — ein zartes Stück zum Teilen.",
+    "tag.partage":"Zum Teilen",
+    "d.grill.n":"Gemischte Grillplatte","d.grill.d":"Auswahl gegrillter Fleischsorten und Merguez mit orientalischen Beilagen.",
+    "tag.grill":"Gegrillt",
+    "carte.note":"Beispielhafte Karte nach den Gerichten des Hauses. Genaue Zusammensetzung und Preise mit dem Haus zu bestätigen.",
+    "maison.kick":"Das Haus","maison.title":"Drei Arten, sich wohlzufühlen",
+    "maison.intro":"Ein Geschäftsessen fernab des Lärms, ein geselliges Abendessen, eine Auszeit auf der versteckten Terrasse.",
+    "story.h":"Ein neues Konzept tunesischer Küche",
+    "story.p1":"Im Herzen des Bahnhofsviertels serviert das Bistro Carthago eine moderne, raffinierte tunesische Küche, die der Familientradition treu bleibt.",
+    "story.p2":"Die Karte wurde mit mehreren tunesischen Köchen entwickelt, um „den Geschmack und die Aromen von einst“ zu bewahren — würzig, aber auch mild und voller Geschmack.",
+    "story.sig":"— Benannt nach dem antiken Karthago, dem Wahrzeichen des tunesischen Erbes.",
+    "lieu.salle.k":"Das Ambiente","lieu.salle.v":"Der orientalische Saal",
+    "set.terrasse.h":"Die versteckte Terrasse","set.terrasse.p":"Eine ruhige, vor dem Stadtlärm geschützte Ecke zum Mittag- oder Abendessen.",
+    "set.salon.h":"Der Business-Raum","set.salon.p":"Ein privater Raum für vertrauliche Mittagessen und geschäftliche Treffen.",
+    "set.accueil.h":"Der Empfang","set.accueil.p":"Ein herzlicher, freundlicher Empfang, von Stammgästen gelobt — der tunesische Geist der Gastfreundschaft.",
+    "visite.kick":"So finden Sie uns","visite.title":"Besuch & Reservierung",
+    "visite.intro":"Nur wenige Schritte vom Luxemburger Bahnhof. Telefonische Reservierung empfohlen.",
+    "info.addr.k":"Adresse","info.addr.s":"Bahnhofsviertel / Zentrum",
+    "info.tel.k":"Telefon","info.tel.c":"Mobil & E-Mail zu bestätigen",
+    "info.hours.k":"Öffnungszeiten","hours.mon":"Mo – Sa","hours.sun":"Sonntag","hours.sun.v":"Geschlossen",
+    "info.hours.c":"Die Quellen weichen bei Sonntag und Samstagmittag ab — Zeiten mit dem Haus zu bestätigen.",
+    "cta.h":"Ein Tisch erwartet Sie im Herzen des Bahnhofsviertels","cta.call":"Anrufen","cta.fb":"Facebook",
+    "foot.blurb":"Tunesische Bistroküche — Couscous, Tajines und Grillgerichte — zwischen Tradition und Moderne, im Herzen des Bahnhofsviertels.",
+    "foot.visit":"Besuch","foot.follow":"Folgen",
+    "demo.tag":"Demo-Website","demo.text":"Vorgeschlagenes Muster für das Bistro Carthago. Fotos, Öffnungszeiten, Karte und Preise mit dem Haus zu bestätigen. Hochauflösende Fotos vom Haus bereitzustellen."
+  },
+  en:{
+    "brand.sub":"Tunisian cuisine · Luxembourg-Gare",
+    "nav.carte":"Menu","nav.maison":"The House","nav.visite":"Visit",
+    "tel.label":"Reservations","cta.reserve":"Reserve",
+    "hero.eyebrow":"Tunisian bistro cuisine",
+    "hero.title":"Bistro <em>Carthago</em>",
+    "hero.lede":"The flavours of Tunisia in the heart of the Gare — spiced yet gentle cooking, developed with Tunisian chefs to bring back the taste of old.",
+    "hero.cta1":"Explore the menu","hero.cta2":"Find us",
+    "sig.k":"The signature","sig.v":"Tunisian octopus couscous",
+    "quote.text":"A couscous that would make my mother proud.","quote.cite":"Guest review · TripAdvisor",
+    "badge.ta":"TripAdvisor · Luxembourg City","badge.fb":"Facebook · ~95 reviews","badge.pf":"Petit Futé · bistronomic",
+    "seal.top":"Since Carthage","seal.mid":"Tradition & modernity",
+    "carte.kick":"The table","carte.title":"The menu",
+    "carte.intro":"Couscous, tagines and Tunisian grills, between family tradition and bistro spirit. Indicative menu.",
+    "d.sig.cat":"The signature dish","d.sig.n":"Octopus couscous",
+    "d.sig.d":"Hand-rolled semolina, tender octopus and a broth perfumed with gentle spices — the dish that built the house's reputation.",
+    "tag.signature":"Signature","tag.mer":"From the sea",
+    "cat.entree":"Starter","cat.couscous":"Couscous","cat.plat":"Main",
+    "d.brick.n":"Tunisian brik","d.brick.d":"Crisp brik pastry, runny egg and herbs — the great classic of the Tunisian starter.",
+    "tag.croustille":"Crisp",
+    "d.salade.n":"Octopus salad","d.salade.d":"Tender octopus, olive oil, lemon and spices — Mediterranean freshness to open.",
+    "tag.frais":"Fresh",
+    "d.trad.n":"Traditional couscous","d.trad.d":"Lamb, chicken or vegetables, semolina and house broth — the generosity of couscous as it used to be.",
+    "tag.maison":"House-made",
+    "d.tajine.n":"Tunisian tagines","d.tajine.d":"Slow, fragrant stews in the tradition of Tunisian tagines — spiced yet gentle.",
+    "tag.mijote":"Slow-cooked",
+    "d.agneau.n":"Braised lamb shoulder","d.agneau.d":"Long-braised, sweet-savoury balance — a tender cut to share.",
+    "tag.partage":"To share",
+    "d.grill.n":"Mixed grill","d.grill.d":"A selection of grilled meats and merguez with their oriental sides.",
+    "tag.grill":"Grilled",
+    "carte.note":"Indicative menu drawn from the house's dishes. Exact composition and prices to be confirmed with the restaurant.",
+    "maison.kick":"The house","maison.title":"Three ways to feel at home",
+    "maison.intro":"A business lunch away from the noise, a convivial dinner, an escape to the hidden terrace.",
+    "story.h":"A new concept of Tunisian cuisine",
+    "story.p1":"In the heart of the Gare district, Bistro Carthago serves modern, refined Tunisian cuisine that stays faithful to family tradition.",
+    "story.p2":"The menu was developed with several Tunisian chefs to preserve “the taste and flavours of old” — spiced, yet also gentle and full of flavour.",
+    "story.sig":"— Named after ancient Carthage, the flagship of Tunisian heritage.",
+    "lieu.salle.k":"The ambience","lieu.salle.v":"The oriental dining room",
+    "set.terrasse.h":"The hidden terrace","set.terrasse.p":"A quiet corner, sheltered from the city's noise, for a calm lunch or dinner.",
+    "set.salon.h":"The business room","set.salon.p":"A private room for confidential lunches and professional meetings.",
+    "set.accueil.h":"The welcome","set.accueil.p":"A warm, smiling welcome praised by regulars — the Tunisian spirit of hospitality.",
+    "visite.kick":"Find us","visite.title":"Visit & reservation",
+    "visite.intro":"A short walk from Luxembourg station. Reservation by phone recommended.",
+    "info.addr.k":"Address","info.addr.s":"Gare district / Centre",
+    "info.tel.k":"Phone","info.tel.c":"Mobile & e-mail to be confirmed",
+    "info.hours.k":"Hours","hours.mon":"Mon – Sat","hours.sun":"Sunday","hours.sun.v":"Closed",
+    "info.hours.c":"Sources differ on Sunday and Saturday lunch — hours to be confirmed with the restaurant.",
+    "cta.h":"A table awaits you in the heart of the Gare","cta.call":"Call","cta.fb":"Facebook",
+    "foot.blurb":"Tunisian bistro cuisine — couscous, tagines and grills — straddling tradition and modernity, in the heart of the Gare district.",
+    "foot.visit":"Visit","foot.follow":"Follow",
+    "demo.tag":"Demonstration site","demo.text":"proposed mock-up for Bistro Carthago. Photos, hours, menu and prices to be confirmed with the restaurant. High-resolution photographs to be provided by the restaurant."
+  }
+};
+
+function setLang(lang){
+  const dict = I18N[lang] || I18N.fr;
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k = el.getAttribute("data-i18n");
+    if(dict[k]===undefined) return;
+    if(el.hasAttribute("data-i18n-html")) el.innerHTML = dict[k];
+    else el.textContent = dict[k];
+  });
+  document.querySelectorAll(".lang button").forEach(b=>{
+    b.setAttribute("aria-pressed", b.dataset.lang===lang ? "true":"false");
+  });
+  try{localStorage.setItem("bc-lang",lang);}catch(e){}
+}
+document.querySelectorAll(".lang button").forEach(b=>{
+  b.addEventListener("click",()=>setLang(b.dataset.lang));
+});
+document.getElementById("yr").textContent = new Date().getFullYear();
+// restore saved language (default stays FR = first paint)
+try{const s=localStorage.getItem("bc-lang"); if(s && s!=="fr") setLang(s);}catch(e){}
+</script>
+</body>
+</html>

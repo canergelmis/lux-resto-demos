@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Aller Retour — smart food &amp; drinks · Luxembourg-Gare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Space+Mono:wght@400;700&family=Manrope:wght@300;400;500;600;700;800&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#141414;
+  --ink-2:#1c1c1c;
+  --ink-3:#232323;
+  --red:#E8423D;
+  --red-dim:#b8322e;
+  --cream:#F5F2EC;
+  --white:#ffffff;
+  --line:rgba(245,242,236,.16);
+  --muted:#9a938c;
+  --amber:#f0c24b;
+  --deco:'Poiret One',sans-serif;
+  --mono:'Space Mono',monospace;
+  --body:'Manrope',system-ui,sans-serif;
+  --script:'Caveat',cursive;
+  --maxw:1440px;
+  --pad:clamp(20px,4vw,72px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.mono{font-family:var(--mono)}
+.deco{font-family:var(--deco)}
+.dash{border-top:1px dashed var(--line)}
+
+/* perforation utility */
+.perf{
+  position:relative;
+}
+.perf::after{
+  content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;
+  background-image:radial-gradient(circle,var(--red) 1.4px,transparent 1.6px);
+  background-size:12px 2px;background-repeat:repeat-x;opacity:.5;
+}
+
+/* ============ TICKET HEADER RAIL ============ */
+.rail{
+  position:sticky;top:0;z-index:60;
+  background:var(--ink);
+  color:var(--cream);
+  border-bottom:1px dashed var(--line);
+}
+.rail-inner{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:24px;
+  padding-top:12px;padding-bottom:12px;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .mono-ar{
+  width:40px;height:40px;border:1.5px solid var(--red);
+  display:grid;place-items:center;font-family:var(--deco);font-size:15px;color:var(--red);
+  letter-spacing:.5px;
+}
+.brand .bname{font-family:var(--deco);font-size:22px;letter-spacing:1px;line-height:1}
+.brand .btag{font-family:var(--script);font-size:16px;color:var(--red);line-height:1;margin-top:2px}
+.route{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--mono);font-size:11px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;
+}
+.route b{color:var(--cream);font-weight:700}
+.route .seg{display:flex;align-items:center;gap:10px}
+.route .tick{width:26px;height:1px;background:var(--line);position:relative}
+.route .tick::after{content:"";position:absolute;right:0;top:-2px;width:5px;height:5px;border-top:1px solid var(--red);border-right:1px solid var(--red);transform:rotate(45deg)}
+.rail-right{display:flex;align-items:center;gap:14px}
+.lang{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.lang button{
+  background:transparent;border:0;color:var(--muted);font-family:var(--mono);font-size:11px;
+  padding:7px 10px;cursor:pointer;letter-spacing:1px;transition:.2s;
+}
+.lang button:hover{color:var(--cream)}
+.lang button.on{background:var(--red);color:#fff}
+.btn-book{
+  font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase;
+  background:var(--red);color:#fff;padding:11px 18px;border:0;cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;transition:.2s;
+}
+.btn-book:hover{background:#fff;color:var(--ink)}
+
+/* ============ HERO / DEPARTURES ============ */
+.hero{background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(120% 80% at 85% 0%,rgba(232,66,61,.16),transparent 55%),
+    repeating-linear-gradient(90deg,rgba(245,242,236,.03) 0 1px,transparent 1px 64px);
+  pointer-events:none;
+}
+.hero-grid{
+  position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;
+  padding-top:clamp(48px,7vw,96px);padding-bottom:clamp(40px,5vw,72px);align-items:center;
+}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:22px;display:flex;align-items:center;gap:12px}
+.kicker .quai{border:1px solid var(--red);padding:3px 9px;color:var(--red)}
+.hero h1{
+  font-family:var(--deco);font-weight:400;line-height:.92;letter-spacing:1px;
+  font-size:clamp(64px,9vw,148px);color:var(--cream);
+}
+.hero h1 .r2{color:var(--red);display:block}
+.hero .script{font-family:var(--script);font-size:clamp(30px,3.4vw,44px);color:var(--red);margin:6px 0 26px}
+.hero .lede{max-width:44ch;font-size:clamp(15px,1.15vw,17px);color:#cfc9c1;font-weight:300;margin-bottom:34px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.btn-ghost{
+  font-family:var(--mono);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;
+  border:1px solid var(--line);color:var(--cream);padding:14px 22px;cursor:pointer;background:transparent;transition:.2s;
+}
+.btn-ghost:hover{border-color:var(--red);color:var(--red)}
+.hero-solid{
+  font-family:var(--mono);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;
+  background:var(--red);color:#fff;padding:15px 24px;cursor:pointer;border:0;transition:.2s;
+}
+.hero-solid:hover{background:#fff;color:var(--ink)}
+
+/* board */
+.board{
+  background:#0c0c0c;border:1px solid var(--line);border-radius:4px;overflow:hidden;
+  box-shadow:0 40px 80px -30px rgba(0,0,0,.8);
+}
+.board-head{
+  display:flex;justify-content:space-between;align-items:center;
+  background:var(--red);color:#fff;padding:12px 18px;font-family:var(--mono);
+  font-size:12px;letter-spacing:2px;text-transform:uppercase;
+}
+.board-head .clock{font-weight:700;font-size:15px;letter-spacing:2px}
+.board-row{
+  display:grid;grid-template-columns:64px 1fr auto auto;gap:14px;align-items:center;
+  padding:15px 18px;border-bottom:1px solid rgba(245,242,236,.08);
+}
+.board-row:last-child{border-bottom:0}
+.flap{
+  font-family:var(--mono);font-weight:700;background:#191919;color:var(--amber);
+  padding:6px 8px;text-align:center;font-size:14px;letter-spacing:1px;border-radius:2px;
+  box-shadow:inset 0 -1px 0 #000,inset 0 1px 0 #2a2a2a;
+}
+.board-row .svc{font-family:var(--deco);font-size:22px;color:var(--cream);letter-spacing:.5px}
+.board-row .svc small{display:block;font-family:var(--body);font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:2px;font-weight:500}
+.board-row .time{font-family:var(--mono);font-size:18px;color:var(--cream);font-weight:700}
+.status{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;display:inline-flex;align-items:center;gap:7px;color:#7fcf8e}
+.status .dot{width:7px;height:7px;border-radius:50%;background:#7fcf8e;box-shadow:0 0 8px #7fcf8e}
+.board-foot{padding:11px 18px;font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:1px;text-align:center;background:#0a0a0a}
+
+/* ticker / platform photo */
+.ticker{background:var(--red);color:#fff;overflow:hidden;border-top:1px dashed rgba(255,255,255,.35);border-bottom:1px dashed rgba(255,255,255,.35)}
+.ticker-track{display:flex;gap:0;white-space:nowrap;animation:slide 34s linear infinite;font-family:var(--mono);font-size:12px;letter-spacing:3px;text-transform:uppercase;padding:11px 0}
+.ticker-track span{padding:0 26px;position:relative}
+.ticker-track span::after{content:"◆";position:absolute;right:-6px;top:50%;transform:translateY(-50%);font-size:7px;opacity:.7}
+@keyframes slide{to{transform:translateX(-50%)}}
+.platform{position:relative;background:var(--ink)}
+.platform img{width:100%;height:clamp(260px,42vw,560px);object-fit:cover;object-position:center 62%;opacity:.85}
+.platform .cap{
+  position:absolute;left:var(--pad);bottom:32px;background:var(--cream);color:var(--ink);
+  padding:16px 22px;max-width:min(360px,80vw);border-left:4px solid var(--red);
+}
+.platform .cap .t{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--red)}
+.platform .cap .d{font-family:var(--deco);font-size:22px;margin-top:4px;line-height:1.1}
+
+/* ============ SECTION SHELL ============ */
+section{position:relative}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end;margin-bottom:44px}
+.sec-num{font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--red)}
+.sec-title{font-family:var(--deco);font-size:clamp(34px,4.6vw,64px);line-height:.95;letter-spacing:.5px}
+.sec-title small{display:block;font-family:var(--script);font-size:.42em;color:var(--red);letter-spacing:0}
+.sec-line{border-top:1px solid rgba(20,20,20,.14);align-self:center;margin-bottom:10px}
+
+/* ============ LE VOYAGE (destinations) ============ */
+.voyage{padding:clamp(64px,7vw,104px) 0}
+.legs{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.leg{
+  border:1px solid rgba(20,20,20,.16);background:var(--white);
+  display:flex;flex-direction:column;position:relative;overflow:hidden;
+}
+.leg .lg-top{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px dashed rgba(20,20,20,.2)}
+.leg .code{font-family:var(--mono);font-weight:700;font-size:15px;letter-spacing:2px}
+.leg .code b{color:var(--red)}
+.leg .flag{font-size:20px}
+.leg .lg-img{height:180px;background:var(--ink)}
+.leg .lg-img img{width:100%;height:100%;object-fit:cover}
+.leg .lg-noimg{height:180px;display:grid;place-items:center;background:var(--ink);color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:1px;text-align:center;padding:0 24px}
+.leg .lg-body{padding:22px 20px 26px;flex:1;display:flex;flex-direction:column}
+.leg h3{font-family:var(--deco);font-size:30px;letter-spacing:.5px;line-height:1}
+.leg .lg-body p{font-size:14.5px;color:#4a453f;margin-top:12px;font-weight:300;flex:1}
+.leg .lg-tag{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);margin-top:18px;padding-top:14px;border-top:1px solid rgba(20,20,20,.1)}
+
+/* ============ TIMETABLE ============ */
+.timetable{background:var(--ink);color:var(--cream);padding:clamp(64px,7vw,104px) 0}
+.timetable .sec-title{color:var(--cream)}
+.timetable .sec-line{border-top-color:var(--line)}
+.tt-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:start}
+.tt-table{width:100%;border-collapse:collapse;font-family:var(--body)}
+.tt-table th{
+  font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--red);
+  text-align:left;padding:0 14px 14px;border-bottom:1px solid var(--line);
+}
+.tt-table td{padding:18px 14px;border-bottom:1px solid rgba(245,242,236,.08);vertical-align:middle}
+.tt-table .svc{font-family:var(--deco);font-size:24px;letter-spacing:.5px}
+.tt-table .days{color:var(--muted);font-size:13px}
+.tt-table .dep{font-family:var(--mono);font-weight:700;font-size:16px;color:var(--amber)}
+.tt-table .note{font-family:var(--mono);font-size:10px;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
+.tt-side{border:1px solid var(--line);padding:30px;background:#0f0f0f;border-radius:4px}
+.tt-side .lbl{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--red);text-transform:uppercase}
+.tt-side h4{font-family:var(--deco);font-size:28px;margin:8px 0 16px;line-height:1}
+.tt-side p{font-size:14px;color:#cfc9c1;font-weight:300;margin-bottom:16px}
+.tt-side .conf{font-family:var(--mono);font-size:10px;letter-spacing:1px;color:var(--muted);border-top:1px dashed var(--line);padding-top:16px;margin-top:4px}
+
+/* ============ LA CARTE ============ */
+.carte{padding:clamp(64px,7vw,104px) 0}
+.carte-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
+.dish{
+  display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:baseline;
+  padding:20px 0;border-bottom:1px dashed rgba(20,20,20,.22);
+}
+.dish .dcode{font-family:var(--mono);font-size:12px;color:var(--red);font-weight:700;letter-spacing:1px;padding-top:4px}
+.dish .dmain h4{font-family:var(--deco);font-size:24px;letter-spacing:.3px;line-height:1.05}
+.dish .dmain .dsig{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#fff;background:var(--red);padding:2px 7px;margin-left:8px;vertical-align:middle}
+.dish .dmain p{font-size:13.5px;color:#5a544d;font-weight:300;margin-top:6px}
+.dish .dprice{font-family:var(--mono);font-size:13px;color:var(--ink);white-space:nowrap;text-align:right;padding-top:4px}
+.dish .dprice small{display:block;color:var(--muted);font-size:9px;letter-spacing:1px;text-transform:uppercase}
+.carte-note{margin-top:36px;font-family:var(--mono);font-size:11px;letter-spacing:.5px;color:#8a847d;display:flex;gap:10px;align-items:flex-start}
+.carte-note b{color:var(--red)}
+
+/* ============ LE BAR ============ */
+.bar{background:var(--ink);color:var(--cream);position:relative;overflow:hidden}
+.bar-grid{display:grid;grid-template-columns:1fr 1fr;min-height:clamp(420px,44vw,600px)}
+.bar-photo{position:relative;background:#000}
+.bar-photo img{width:100%;height:100%;object-fit:cover;opacity:.9}
+.bar-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,var(--ink))}
+.bar-copy{padding:clamp(48px,6vw,88px) var(--pad) clamp(48px,6vw,88px) clamp(36px,4vw,64px);display:flex;flex-direction:column;justify-content:center}
+.bar-copy .kicker{margin-bottom:18px}
+.bar-copy h2{font-family:var(--deco);font-size:clamp(38px,5vw,68px);line-height:.95;letter-spacing:.5px}
+.bar-copy h2 em{color:var(--red);font-style:normal}
+.bar-copy .barlede{max-width:40ch;color:#cfc9c1;font-weight:300;margin:22px 0 30px;font-size:15px}
+.bar-list{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.bar-list .bl{border-top:1px solid var(--line);padding-top:14px}
+.bar-list .bl .n{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;color:var(--red);text-transform:uppercase}
+.bar-list .bl .v{font-family:var(--deco);font-size:20px;margin-top:6px}
+.bar-list .bl small{color:var(--muted);font-size:12px}
+
+/* ============ VISIT / BILLET ============ */
+.visit{padding:clamp(64px,7vw,104px) 0;background:var(--cream)}
+.billet{
+  display:grid;grid-template-columns:1.15fr .85fr;background:var(--white);
+  border:1px solid rgba(20,20,20,.18);box-shadow:0 30px 60px -40px rgba(0,0,0,.4);
+}
+.billet-l{padding:clamp(34px,3.5vw,54px);position:relative}
+.billet-l::after{content:"";position:absolute;right:0;top:24px;bottom:24px;border-right:1px dashed rgba(20,20,20,.25)}
+.billet-brandline{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+.billet-brandline .bb{font-family:var(--deco);font-size:26px;letter-spacing:1px}
+.billet-brandline .cls{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--red);border:1px solid var(--red);padding:4px 9px}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px 30px}
+.info .l{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:7px}
+.info .v{font-size:15px;line-height:1.5}
+.info .v a:hover{color:var(--red)}
+.info.full{grid-column:1/-1}
+.hours-line{display:flex;justify-content:space-between;font-size:13.5px;padding:6px 0;border-bottom:1px dotted rgba(20,20,20,.18)}
+.hours-line span:first-child{color:#5a544d}
+.hours-line span:last-child{font-family:var(--mono);font-size:12px}
+.billet-r{position:relative;min-height:340px;background:var(--ink)}
+.billet-r iframe{width:100%;height:100%;border:0;filter:grayscale(.3) contrast(1.05);position:absolute;inset:0}
+.map-tag{position:absolute;left:18px;top:18px;z-index:2;background:var(--red);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:7px 12px}
+
+/* ============ FOOTER ============ */
+.foot{background:var(--ink);color:var(--cream);padding-top:0}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding:clamp(48px,5vw,72px) 0 44px}
+.foot .fbrand .bname{font-family:var(--deco);font-size:34px;letter-spacing:1.5px;line-height:1}
+.foot .fbrand .btag{font-family:var(--script);font-size:22px;color:var(--red);margin-top:2px}
+.foot .fbrand p{color:var(--muted);font-size:13px;max-width:34ch;margin-top:18px;font-weight:300}
+.foot h5{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14px;color:#cfc9c1}
+.foot ul a:hover{color:var(--cream)}
+.foot-bottom{border-top:1px dashed var(--line);padding:22px 0 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center}
+.foot-bottom .demo{font-family:var(--mono);font-size:11px;letter-spacing:1px;color:var(--muted);max-width:60ch}
+.foot-bottom .demo b{color:var(--red)}
+.foot-bottom .credit{font-family:var(--mono);font-size:11px;letter-spacing:1px;color:var(--muted)}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1080px){
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .tt-grid{grid-template-columns:1fr;gap:38px}
+  .bar-grid{grid-template-columns:1fr}
+  .bar-photo{min-height:300px}
+  .bar-photo::after{background:linear-gradient(0deg,var(--ink),transparent 55%)}
+  .billet{grid-template-columns:1fr}
+  .billet-l::after{display:none}
+  .billet-r{min-height:320px;border-top:1px dashed rgba(20,20,20,.25)}
+}
+@media(max-width:820px){
+  .rail-inner{grid-template-columns:1fr auto;row-gap:10px}
+  .route{display:none}
+  .legs{grid-template-columns:1fr}
+  .carte-grid{grid-template-columns:1fr;gap:0}
+  .foot-top{grid-template-columns:1fr;gap:32px}
+}
+@media(max-width:560px){
+  .brand .btag{display:none}
+  .board-row{grid-template-columns:52px 1fr;gap:8px 12px}
+  .board-row .time{grid-column:2;justify-self:start}
+  .board-row .status{grid-column:1/-1}
+  .info-grid{grid-template-columns:1fr}
+  .bar-list{grid-template-columns:1fr}
+  .hero-cta{flex-direction:column;align-items:stretch}
+  .hero-cta button{width:100%}
+  .sec-head{grid-template-columns:1fr}
+  .sec-line{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== TICKET RAIL ===== -->
+<header class="rail">
+  <div class="wrap rail-inner">
+    <a href="#top" class="brand" aria-label="Aller Retour">
+      <span class="mono-ar">AR</span>
+      <span>
+        <span class="bname">Aller Retour</span>
+        <span class="btag">smart food &amp; drinks</span>
+      </span>
+    </a>
+    <nav class="route" aria-hidden="true">
+      <span class="seg"><b>LUX</b><span class="tick"></span>PAR</span>
+      <span class="seg"><span class="tick"></span>ROM</span>
+      <span class="seg"><span class="tick"></span>MNL</span>
+      <span class="seg"><span class="tick"></span><b data-i18n="route.ar">ALLER · RETOUR</b></span>
+    </nav>
+    <div class="rail-right">
+      <div class="lang" role="group" aria-label="Langue">
+        <button data-lang="fr" class="on">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="#visite"><button class="btn-book"><span data-i18n="nav.book">Réserver</span> ↗</button></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===== HERO / DEPARTURES ===== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="kicker"><span class="quai" data-i18n="hero.quai">VOIE 4</span> <span data-i18n="hero.kicker">Gare · Luxembourg-Ville</span></div>
+      <h1>Aller<span class="r2">Retour</span></h1>
+      <div class="script">smart food &amp; drinks</div>
+      <p class="lede" data-i18n="hero.lede">Une brasserie française au cœur du quartier Gare. Un aller simple pour l'apéritif, un billet retour pour les tapas d'Asie — et entre les deux, un voyage : Paris, un détour par l'Italie, escale à Manille.</p>
+      <div class="hero-cta">
+        <a href="#carte"><button class="hero-solid" data-i18n="hero.cta1">Voir la carte</button></a>
+        <a href="#voyage"><button class="btn-ghost" data-i18n="hero.cta2">Le voyage ↓</button></a>
+      </div>
+    </div>
+
+    <aside class="board" aria-label="Départs du jour">
+      <div class="board-head">
+        <span data-i18n="board.title">Départs du jour</span>
+        <span class="clock" id="clock">--:--</span>
+      </div>
+      <div class="board-row">
+        <span class="flap">07·00</span>
+        <span class="svc" data-i18n="board.brk">Petit-déjeuner<small data-i18n="board.brk.s">7/7 · dès l'aube</small></span>
+        <span class="time">07:00</span>
+        <span class="status"><span class="dot"></span><span data-i18n="board.ontime">À l'heure</span></span>
+      </div>
+      <div class="board-row">
+        <span class="flap">11·45</span>
+        <span class="svc" data-i18n="board.lun">Déjeuner<small data-i18n="board.lun.s">Plat du jour · carte brasserie</small></span>
+        <span class="time">11:45</span>
+        <span class="status"><span class="dot"></span><span data-i18n="board.ontime">À l'heure</span></span>
+      </div>
+      <div class="board-row">
+        <span class="flap">19·00</span>
+        <span class="svc" data-i18n="board.din">Dîner &amp; bar<small data-i18n="board.din.s">Tapas d'Asie · gin · cocktails</small></span>
+        <span class="time">19:00</span>
+        <span class="status"><span class="dot"></span><span data-i18n="board.ontime">À l'heure</span></span>
+      </div>
+      <div class="board-foot" data-i18n="board.foot">Horaires indicatifs — à confirmer avec l'établissement</div>
+    </aside>
+  </div>
+
+  <!-- ticker -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="ticker">
+      <span data-i18n="tk.1">Petit-déjeuner 7/7</span><span data-i18n="tk.2">Power lunch</span><span data-i18n="tk.3">Plat du jour</span><span data-i18n="tk.4">Tapas d'Asie</span><span data-i18n="tk.5">Grande sélection de gins</span><span data-i18n="tk.6">Desserts philippins</span><span data-i18n="tk.7">After-work · happy hour</span><span data-i18n="tk.8">Événements &amp; traiteur</span>
+    </div>
+  </div>
+</section>
+
+<!-- platform photo -->
+<div class="platform">
+  <img src="assets/interior-1.jpg" alt="Le bar d'Aller Retour, éclairage rouge et sélection de gins">
+  <div class="cap">
+    <div class="t" data-i18n="plat.t">Quai d'embarquement</div>
+    <div class="d" data-i18n="plat.d">Le long bar rouge, ses horloges et ses gins</div>
+  </div>
+</div>
+
+<!-- ===== LE VOYAGE ===== -->
+<section class="voyage" id="voyage">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title" data-i18n="voy.title">Le voyage<small data-i18n="voy.sub">un aller, trois escales, un retour</small></h2>
+      <span class="sec-line"></span>
+    </div>
+    <div class="legs">
+      <article class="leg">
+        <div class="lg-top"><span class="code"><b>LUX</b> → PAR</span><span class="flag">🇫🇷</span></div>
+        <div class="lg-img"><img src="assets/exterior.jpg" alt="Façade d'Aller Retour, quartier Gare"></div>
+        <div class="lg-body">
+          <h3 data-i18n="voy.1.h">Paris</h3>
+          <p data-i18n="voy.1.p">Le point de départ : une brasserie contemporaine. Plat du jour au déjeuner, poisson et pièce de bœuf à la carte, produits de saison travaillés avec soin — le classique français, sans la poussière.</p>
+          <div class="lg-tag" data-i18n="voy.1.t">Brasserie · déjeuner · carte du soir</div>
+        </div>
+      </article>
+      <article class="leg">
+        <div class="lg-top"><span class="code"><b>PAR</b> → ROM</span><span class="flag">🇮🇹</span></div>
+        <div class="lg-img"><img src="assets/food-1.jpg" alt="Crevettes poêlées, baies roses et poivre sur courgette"></div>
+        <div class="lg-body">
+          <h3 data-i18n="voy.2.h">Détour Italie</h3>
+          <p data-i18n="voy.2.p">Une escale méditerranéenne : huile généreuse, herbes fraîches, produits de la mer. Les crevettes poêlées au poivre concassé et baies roses sur courgette — le clin d'œil signature de la maison.</p>
+          <div class="lg-tag" data-i18n="voy.2.t">Influence méditerranéenne · signature</div>
+        </div>
+      </article>
+      <article class="leg">
+        <div class="lg-top"><span class="code"><b>ROM</b> → MNL</span><span class="flag">🇵🇭</span></div>
+        <div class="lg-noimg" data-i18n="voy.3.ph">Escale asiatique — tapas &amp; douceurs des Philippines</div>
+        <div class="lg-body">
+          <h3 data-i18n="voy.3.h">Escale Manille</h3>
+          <p data-i18n="voy.3.p">Le terminus surprise. Tapas d'Asie à partager le soir — dumplings, rouleaux — et une touche philippine jusqu'au dessert. La fusion qui fait revenir les habitués.</p>
+          <div class="lg-tag" data-i18n="voy.3.t">Tapas d'Asie · fusion philippine</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIMETABLE ===== -->
+<section class="timetable" id="horaires">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title" data-i18n="tt.title">Grille horaire<small data-i18n="tt.sub">trois départs par jour</small></h2>
+      <span class="sec-line"></span>
+    </div>
+    <div class="tt-grid">
+      <table class="tt-table">
+        <thead>
+          <tr>
+            <th data-i18n="tt.h1">Service</th>
+            <th data-i18n="tt.h2">Jours</th>
+            <th data-i18n="tt.h3">Départ</th>
+            <th data-i18n="tt.h4">Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="svc" data-i18n="tt.r1">Petit-déjeuner</td>
+            <td class="days" data-i18n="tt.r1d">Lun–Ven 07:00–10:00 · Sam–Dim 07:30–10:30</td>
+            <td class="dep">07:00</td>
+            <td class="note" data-i18n="tt.conf">À confirmer</td>
+          </tr>
+          <tr>
+            <td class="svc" data-i18n="tt.r2">Déjeuner</td>
+            <td class="days" data-i18n="tt.r2d">Lun–Ven 11:45–14:30</td>
+            <td class="dep">11:45</td>
+            <td class="note" data-i18n="tt.conf">À confirmer</td>
+          </tr>
+          <tr>
+            <td class="svc" data-i18n="tt.r3">Dîner &amp; bar</td>
+            <td class="days" data-i18n="tt.r3d">Lun–Ven 19:00–23:00</td>
+            <td class="dep">19:00</td>
+            <td class="note" data-i18n="tt.conf">À confirmer</td>
+          </tr>
+        </tbody>
+      </table>
+      <aside class="tt-side">
+        <div class="lbl" data-i18n="tt.side.l">Avis aux voyageurs</div>
+        <h4 data-i18n="tt.side.h">Réservez votre billet</h4>
+        <p data-i18n="tt.side.p">Le soir, les tapas d'Asie et le bar tournent vite. Un appel suffit pour garder votre place au comptoir ou en salle — groupes, after-works et privatisations bienvenus.</p>
+        <a href="tel:+352621323366"><button class="hero-solid" style="width:100%">+352 621 323 366</button></a>
+        <div class="conf" data-i18n="tt.side.conf">Les horaires varient selon les sources — merci de confirmer directement avec le restaurant.</div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LA CARTE ===== -->
+<section class="carte" id="carte">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title" data-i18n="ct.title">La carte<small data-i18n="ct.sub">le tableau des plats</small></h2>
+      <span class="sec-line"></span>
+    </div>
+    <div class="carte-grid">
+      <div class="dish">
+        <span class="dcode">AR·01</span>
+        <div class="dmain"><h4>Crevettes poêlées<span class="dsig" data-i18n="ct.sig">Signature</span></h4><p data-i18n="ct.1p">Poivre concassé, baies roses, courgette &amp; herbes fraîches</p></div>
+        <div class="dprice">€€<small data-i18n="ct.conf">à confirmer</small></div>
+      </div>
+      <div class="dish">
+        <span class="dcode">AR·02</span>
+        <div class="dmain"><h4 data-i18n="ct.2h">Tapas d'Asie à partager</h4><p data-i18n="ct.2p">Dumplings &amp; rouleaux, sélection du soir</p></div>
+        <div class="dprice">€€<small data-i18n="ct.conf">à confirmer</small></div>
+      </div>
+      <div class="dish">
+        <span class="dcode">AR·03</span>
+        <div class="dmain"><h4 data-i18n="ct.3h">Plat du jour</h4><p data-i18n="ct.3p">L'ardoise du midi, carte brasserie</p></div>
+        <div class="dprice">€<small data-i18n="ct.conf">à confirmer</small></div>
+      </div>
+      <div class="dish">
+        <span class="dcode">AR·04</span>
+        <div class="dmain"><h4 data-i18n="ct.4h">Poisson du jour</h4><p data-i18n="ct.4p">Arrivage &amp; préparation selon le marché</p></div>
+        <div class="dprice">€€€<small data-i18n="ct.conf">à confirmer</small></div>
+      </div>
+      <div class="dish">
+        <span class="dcode">AR·05</span>
+        <div class="dmain"><h4 data-i18n="ct.5h">Pièce de bœuf</h4><p data-i18n="ct.5p">Grillée, garniture de saison</p></div>
+        <div class="dprice">€€€<small data-i18n="ct.conf">à confirmer</small></div>
+      </div>
+      <div class="dish">
+        <span class="dcode">AR·06</span>
+        <div class="dmain"><h4 data-i18n="ct.6h">Desserts philippins</h4><p data-i18n="ct.6p">La touche sucrée venue de Manille</p></div>
+        <div class="dprice">€<small data-i18n="ct.conf">à confirmer</small></div>
+      </div>
+    </div>
+    <p class="carte-note"><b>ⓘ</b> <span data-i18n="ct.note">Sélection d'après les avis et listings publics. Aucune carte tarifée n'est actuellement en ligne — tous les plats et prix sont à confirmer avec l'établissement.</span></p>
+  </div>
+</section>
+
+<!-- ===== LE BAR ===== -->
+<section class="bar" id="bar">
+  <div class="bar-grid">
+    <div class="bar-photo"><img src="assets/interior-2.jpg" alt="Le bar rouge, étagères de spiritueux et tabourets"></div>
+    <div class="bar-copy">
+      <div class="kicker" data-i18n="bar.kicker">Le retour · côté bar</div>
+      <h2 data-i18n="bar.h">Un long bar rouge,<br>et le temps<br><em>qui ralentit</em></h2>
+      <p class="barlede" data-i18n="bar.p">Murs noirs, horloges au mur, la lueur rouge sous le comptoir. Le soir, Aller Retour devient un salon feutré : une grande sélection de gins, des cocktails, et des tapas d'Asie à grignoter jusqu'à tard.</p>
+      <div class="bar-list">
+        <div class="bl"><div class="n" data-i18n="bar.b1n">Gin</div><div class="v" data-i18n="bar.b1v">Grande sélection</div><small data-i18n="bar.b1s">tonics &amp; garnitures</small></div>
+        <div class="bl"><div class="n" data-i18n="bar.b2n">Apéritif</div><div class="v" data-i18n="bar.b2v">Tapas d'Asie</div><small data-i18n="bar.b2s">à partager</small></div>
+        <div class="bl"><div class="n" data-i18n="bar.b3n">After-work</div><div class="v" data-i18n="bar.b3v">Happy hour</div><small data-i18n="bar.b3s">quartier Gare</small></div>
+        <div class="bl"><div class="n" data-i18n="bar.b4n">Cocktails</div><div class="v" data-i18n="bar.b4v">&amp; vins</div><small data-i18n="bar.b4s">carte du soir</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISIT / BILLET ===== -->
+<section class="visit" id="visite">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title" data-i18n="vs.title">Votre billet<small data-i18n="vs.sub">on vous attend Voie 4</small></h2>
+      <span class="sec-line"></span>
+    </div>
+    <div class="billet">
+      <div class="billet-l">
+        <div class="billet-brandline">
+          <span class="bb">Aller Retour</span>
+          <span class="cls" data-i18n="vs.cls">CLASSE · GARE</span>
+        </div>
+        <div class="info-grid">
+          <div class="info">
+            <div class="l" data-i18n="vs.addr">Adresse</div>
+            <div class="v">4 Rue Joseph Junck<br>L-1839 Luxembourg</div>
+          </div>
+          <div class="info">
+            <div class="l" data-i18n="vs.tel">Téléphone</div>
+            <div class="v"><a href="tel:+352621323366">+352 621 323 366</a></div>
+          </div>
+          <div class="info">
+            <div class="l" data-i18n="vs.email">E-mail</div>
+            <div class="v"><a href="mailto:info@aller-retour.lu">info@aller-retour.lu</a><br><span class="note" style="font-family:var(--mono);font-size:10px;color:#a09a92" data-i18n="vs.email.n">à confirmer</span></div>
+          </div>
+          <div class="info">
+            <div class="l" data-i18n="vs.social">Réseaux</div>
+            <div class="v"><a href="https://facebook.com/restaurantallerretour/" target="_blank" rel="noopener">Facebook ↗</a></div>
+          </div>
+          <div class="info full">
+            <div class="l" data-i18n="vs.hours">Horaires (indicatifs · à confirmer)</div>
+            <div class="hours-line"><span data-i18n="vs.h1">Lun – Ven</span><span>07:00–10:00 · 11:45–14:30 · 19:00–23:00</span></div>
+            <div class="hours-line"><span data-i18n="vs.h2">Samedi</span><span>07:30–10:30</span></div>
+            <div class="hours-line"><span data-i18n="vs.h3">Dimanche</span><span>07:30–10:30</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="billet-r">
+        <span class="map-tag" data-i18n="vs.map">Plan · Gare</span>
+        <iframe title="Aller Retour — 4 Rue Joseph Junck, Luxembourg" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=4+Rue+Joseph+Junck,+L-1839+Luxembourg&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="fbrand">
+        <div class="bname">Aller Retour</div>
+        <div class="btag">smart food &amp; drinks</div>
+        <p data-i18n="ft.blurb">Brasserie française &amp; cuisine du monde, quartier Gare, Luxembourg-Ville. Petit-déjeuner, déjeuner, bar &amp; tapas d'Asie — un aller-retour permanent entre Paris et Manille.</p>
+      </div>
+      <div>
+        <h5 data-i18n="ft.nav">Navigation</h5>
+        <ul>
+          <li><a href="#voyage" data-i18n="ft.n1">Le voyage</a></li>
+          <li><a href="#horaires" data-i18n="ft.n2">Grille horaire</a></li>
+          <li><a href="#carte" data-i18n="ft.n3">La carte</a></li>
+          <li><a href="#bar" data-i18n="ft.n4">Le bar</a></li>
+          <li><a href="#visite" data-i18n="ft.n5">Votre billet</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 data-i18n="ft.contact">Contact</h5>
+        <ul>
+          <li>4 Rue Joseph Junck</li>
+          <li>L-1839 Luxembourg</li>
+          <li><a href="tel:+352621323366">+352 621 323 366</a></li>
+          <li><a href="https://facebook.com/restaurantallerretour/" target="_blank" rel="noopener">Facebook ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="demo"><b data-i18n="ft.demo.b">Site de démonstration.</b> <span data-i18n="ft.demo">Maquette non officielle réalisée pour présentation. Photos, horaires, plats et prix d'après des sources publiques — à confirmer avec l'établissement.</span></div>
+      <div class="credit">© <span id="yr"></span> Aller Retour · Luxembourg</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- live station clock (Luxembourg time) ---------- */
+function tick(){
+  try{
+    var s=new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Luxembourg'});
+    document.getElementById('clock').textContent=s;
+  }catch(e){
+    var d=new Date();document.getElementById('clock').textContent=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
+  }
+}
+tick();setInterval(tick,15000);
+document.getElementById('yr').textContent=new Date().getFullYear();
+/* duplicate ticker for seamless loop */
+(function(){var t=document.getElementById('ticker');t.innerHTML+=t.innerHTML;})();
+
+/* ---------- i18n ---------- */
+var I18N={
+  fr:{
+    "route.ar":"ALLER · RETOUR","nav.book":"Réserver",
+    "hero.quai":"VOIE 4","hero.kicker":"Gare · Luxembourg-Ville",
+    "hero.lede":"Une brasserie française au cœur du quartier Gare. Un aller simple pour l'apéritif, un billet retour pour les tapas d'Asie — et entre les deux, un voyage : Paris, un détour par l'Italie, escale à Manille.",
+    "hero.cta1":"Voir la carte","hero.cta2":"Le voyage ↓",
+    "board.title":"Départs du jour","board.brk":"Petit-déjeuner","board.brk.s":"7/7 · dès l'aube",
+    "board.lun":"Déjeuner","board.lun.s":"Plat du jour · carte brasserie",
+    "board.din":"Dîner & bar","board.din.s":"Tapas d'Asie · gin · cocktails",
+    "board.ontime":"À l'heure","board.foot":"Horaires indicatifs — à confirmer avec l'établissement",
+    "tk.1":"Petit-déjeuner 7/7","tk.2":"Power lunch","tk.3":"Plat du jour","tk.4":"Tapas d'Asie","tk.5":"Grande sélection de gins","tk.6":"Desserts philippins","tk.7":"After-work · happy hour","tk.8":"Événements & traiteur",
+    "plat.t":"Quai d'embarquement","plat.d":"Le long bar rouge, ses horloges et ses gins",
+    "voy.title":"Le voyage","voy.sub":"un aller, trois escales, un retour",
+    "voy.1.ph":"Base française — cuisine de brasserie créative","voy.1.h":"Paris",
+    "voy.1.p":"Le point de départ : une brasserie contemporaine. Plat du jour au déjeuner, poisson et pièce de bœuf à la carte, produits de saison travaillés avec soin — le classique français, sans la poussière.",
+    "voy.1.t":"Brasserie · déjeuner · carte du soir",
+    "voy.2.h":"Détour Italie","voy.2.p":"Une escale méditerranéenne : huile généreuse, herbes fraîches, produits de la mer. Les crevettes poêlées au poivre concassé et baies roses sur courgette — le clin d'œil signature de la maison.",
+    "voy.2.t":"Influence méditerranéenne · signature",
+    "voy.3.ph":"Escale asiatique — tapas & douceurs des Philippines","voy.3.h":"Escale Manille",
+    "voy.3.p":"Le terminus surprise. Tapas d'Asie à partager le soir — dumplings, rouleaux — et une touche philippine jusqu'au dessert. La fusion qui fait revenir les habitués.",
+    "voy.3.t":"Tapas d'Asie · fusion philippine",
+    "tt.title":"Grille horaire","tt.sub":"trois départs par jour",
+    "tt.h1":"Service","tt.h2":"Jours","tt.h3":"Départ","tt.h4":"Statut",
+    "tt.r1":"Petit-déjeuner","tt.r1d":"Lun–Ven 07:00–10:00 · Sam–Dim 07:30–10:30",
+    "tt.r2":"Déjeuner","tt.r2d":"Lun–Ven 11:45–14:30",
+    "tt.r3":"Dîner & bar","tt.r3d":"Lun–Ven 19:00–23:00","tt.conf":"À confirmer",
+    "tt.side.l":"Avis aux voyageurs","tt.side.h":"Réservez votre billet",
+    "tt.side.p":"Le soir, les tapas d'Asie et le bar tournent vite. Un appel suffit pour garder votre place au comptoir ou en salle — groupes, after-works et privatisations bienvenus.",
+    "tt.side.conf":"Les horaires varient selon les sources — merci de confirmer directement avec le restaurant.",
+    "ct.title":"La carte","ct.sub":"le tableau des plats","ct.sig":"Signature","ct.conf":"à confirmer",
+    "ct.1p":"Poivre concassé, baies roses, courgette & herbes fraîches",
+    "ct.2h":"Tapas d'Asie à partager","ct.2p":"Dumplings & rouleaux, sélection du soir",
+    "ct.3h":"Plat du jour","ct.3p":"L'ardoise du midi, carte brasserie",
+    "ct.4h":"Poisson du jour","ct.4p":"Arrivage & préparation selon le marché",
+    "ct.5h":"Pièce de bœuf","ct.5p":"Grillée, garniture de saison",
+    "ct.6h":"Desserts philippins","ct.6p":"La touche sucrée venue de Manille",
+    "ct.note":"Sélection d'après les avis et listings publics. Aucune carte tarifée n'est actuellement en ligne — tous les plats et prix sont à confirmer avec l'établissement.",
+    "bar.kicker":"Le retour · côté bar","bar.h":"Un long bar rouge,<br>et le temps<br><em>qui ralentit</em>",
+    "bar.p":"Murs noirs, horloges au mur, la lueur rouge sous le comptoir. Le soir, Aller Retour devient un salon feutré : une grande sélection de gins, des cocktails, et des tapas d'Asie à grignoter jusqu'à tard.",
+    "bar.b1n":"Gin","bar.b1v":"Grande sélection","bar.b1s":"tonics & garnitures",
+    "bar.b2n":"Apéritif","bar.b2v":"Tapas d'Asie","bar.b2s":"à partager",
+    "bar.b3n":"After-work","bar.b3v":"Happy hour","bar.b3s":"quartier Gare",
+    "bar.b4n":"Cocktails","bar.b4v":"& vins","bar.b4s":"carte du soir",
+    "vs.title":"Votre billet","vs.sub":"on vous attend Voie 4","vs.cls":"CLASSE · GARE",
+    "vs.addr":"Adresse","vs.tel":"Téléphone","vs.email":"E-mail","vs.email.n":"à confirmer","vs.social":"Réseaux",
+    "vs.hours":"Horaires (indicatifs · à confirmer)","vs.h1":"Lun – Ven","vs.h2":"Samedi","vs.h3":"Dimanche","vs.map":"Plan · Gare",
+    "ft.blurb":"Brasserie française & cuisine du monde, quartier Gare, Luxembourg-Ville. Petit-déjeuner, déjeuner, bar & tapas d'Asie — un aller-retour permanent entre Paris et Manille.",
+    "ft.nav":"Navigation","ft.n1":"Le voyage","ft.n2":"Grille horaire","ft.n3":"La carte","ft.n4":"Le bar","ft.n5":"Votre billet",
+    "ft.contact":"Contact","ft.demo.b":"Site de démonstration.",
+    "ft.demo":"Maquette non officielle réalisée pour présentation. Photos, horaires, plats et prix d'après des sources publiques — à confirmer avec l'établissement."
+  },
+  de:{
+    "route.ar":"HIN · RÜCK","nav.book":"Reservieren",
+    "hero.quai":"GLEIS 4","hero.kicker":"Bahnhofsviertel · Luxemburg-Stadt",
+    "hero.lede":"Eine französische Brasserie mitten im Bahnhofsviertel. Ein Hinflug zum Aperitif, ein Rückflug für Asia-Tapas — und dazwischen eine Reise: Paris, ein Abstecher nach Italien, Zwischenstopp in Manila.",
+    "hero.cta1":"Zur Karte","hero.cta2":"Die Reise ↓",
+    "board.title":"Heutige Abfahrten","board.brk":"Frühstück","board.brk.s":"7/7 · ab Tagesanbruch",
+    "board.lun":"Mittagessen","board.lun.s":"Tagesgericht · Brasserie-Karte",
+    "board.din":"Abendessen & Bar","board.din.s":"Asia-Tapas · Gin · Cocktails",
+    "board.ontime":"Pünktlich","board.foot":"Zeiten ohne Gewähr — bitte im Lokal bestätigen",
+    "tk.1":"Frühstück 7/7","tk.2":"Power-Lunch","tk.3":"Tagesgericht","tk.4":"Asia-Tapas","tk.5":"Große Gin-Auswahl","tk.6":"Philippinische Desserts","tk.7":"After-Work · Happy Hour","tk.8":"Events & Catering",
+    "plat.t":"Bahnsteig","plat.d":"Die lange rote Bar, ihre Uhren und Gins",
+    "voy.title":"Die Reise","voy.sub":"ein Hin, drei Stopps, ein Zurück",
+    "voy.1.ph":"Französische Basis — kreative Brasserie-Küche","voy.1.h":"Paris",
+    "voy.1.p":"Der Ausgangspunkt: eine zeitgemäße Brasserie. Tagesgericht zum Mittag, Fisch und Rindfleisch à la carte, sorgfältig verarbeitete Saisonprodukte — der französische Klassiker, entstaubt.",
+    "voy.1.t":"Brasserie · Mittag · Abendkarte",
+    "voy.2.h":"Abstecher Italien","voy.2.p":"Ein mediterraner Zwischenstopp: großzügiges Öl, frische Kräuter, Meeresprodukte. Die gebratenen Garnelen mit grobem Pfeffer und rosa Beeren auf Zucchini — das Signature-Augenzwinkern des Hauses.",
+    "voy.2.t":"Mediterraner Einfluss · Signature",
+    "voy.3.ph":"Asiatischer Stopp — Tapas & Süßes von den Philippinen","voy.3.h":"Stopp Manila",
+    "voy.3.p":"Die Überraschung zum Schluss. Abends Asia-Tapas zum Teilen — Dumplings, Rollen — und ein philippinischer Touch bis zum Dessert. Die Fusion, die Stammgäste zurückbringt.",
+    "voy.3.t":"Asia-Tapas · philippinische Fusion",
+    "tt.title":"Fahrplan","tt.sub":"drei Abfahrten pro Tag",
+    "tt.h1":"Service","tt.h2":"Tage","tt.h3":"Abfahrt","tt.h4":"Status",
+    "tt.r1":"Frühstück","tt.r1d":"Mo–Fr 07:00–10:00 · Sa–So 07:30–10:30",
+    "tt.r2":"Mittagessen","tt.r2d":"Mo–Fr 11:45–14:30",
+    "tt.r3":"Abendessen & Bar","tt.r3d":"Mo–Fr 19:00–23:00","tt.conf":"Zu bestätigen",
+    "tt.side.l":"Hinweis für Reisende","tt.side.h":"Sichern Sie Ihr Ticket",
+    "tt.side.p":"Abends sind Asia-Tapas und Bar schnell voll. Ein Anruf genügt für Ihren Platz an der Theke oder im Saal — Gruppen, After-Works und Privatisierungen willkommen.",
+    "tt.side.conf":"Die Zeiten variieren je nach Quelle — bitte direkt im Restaurant bestätigen.",
+    "ct.title":"Die Karte","ct.sub":"die Anzeigetafel der Gerichte","ct.sig":"Signature","ct.conf":"zu bestätigen",
+    "ct.1p":"Grober Pfeffer, rosa Beeren, Zucchini & frische Kräuter",
+    "ct.2h":"Asia-Tapas zum Teilen","ct.2p":"Dumplings & Rollen, Auswahl des Abends",
+    "ct.3h":"Tagesgericht","ct.3p":"Die Mittagstafel, Brasserie-Karte",
+    "ct.4h":"Fisch des Tages","ct.4p":"Anlieferung & Zubereitung je nach Markt",
+    "ct.5h":"Rindfleisch","ct.5p":"Gegrillt, saisonale Beilage",
+    "ct.6h":"Philippinische Desserts","ct.6p":"Die süße Note aus Manila",
+    "ct.note":"Auswahl nach öffentlichen Bewertungen und Listings. Aktuell ist keine Preiskarte online — alle Gerichte und Preise sind im Lokal zu bestätigen.",
+    "bar.kicker":"Die Rückreise · an der Bar","bar.h":"Eine lange rote Bar,<br>und die Zeit,<br><em>die langsamer wird</em>",
+    "bar.p":"Schwarze Wände, Uhren an der Wand, das rote Glühen unter der Theke. Abends wird Aller Retour zum gemütlichen Salon: große Gin-Auswahl, Cocktails und Asia-Tapas bis spät.",
+    "bar.b1n":"Gin","bar.b1v":"Große Auswahl","bar.b1s":"Tonics & Garnituren",
+    "bar.b2n":"Aperitif","bar.b2v":"Asia-Tapas","bar.b2s":"zum Teilen",
+    "bar.b3n":"After-Work","bar.b3v":"Happy Hour","bar.b3s":"Bahnhofsviertel",
+    "bar.b4n":"Cocktails","bar.b4v":"& Weine","bar.b4s":"Abendkarte",
+    "vs.title":"Ihr Ticket","vs.sub":"wir erwarten Sie an Gleis 4","vs.cls":"KLASSE · BAHNHOF",
+    "vs.addr":"Adresse","vs.tel":"Telefon","vs.email":"E-Mail","vs.email.n":"zu bestätigen","vs.social":"Netzwerke",
+    "vs.hours":"Öffnungszeiten (Richtwert · zu bestätigen)","vs.h1":"Mo – Fr","vs.h2":"Samstag","vs.h3":"Sonntag","vs.map":"Karte · Bahnhof",
+    "ft.blurb":"Französische Brasserie & Weltküche, Bahnhofsviertel, Luxemburg-Stadt. Frühstück, Mittag, Bar & Asia-Tapas — ein ständiges Hin und Zurück zwischen Paris und Manila.",
+    "ft.nav":"Navigation","ft.n1":"Die Reise","ft.n2":"Fahrplan","ft.n3":"Die Karte","ft.n4":"Die Bar","ft.n5":"Ihr Ticket",
+    "ft.contact":"Kontakt","ft.demo.b":"Demo-Website.",
+    "ft.demo":"Inoffizielles Muster zu Präsentationszwecken. Fotos, Zeiten, Gerichte und Preise aus öffentlichen Quellen — im Lokal zu bestätigen."
+  },
+  en:{
+    "route.ar":"ROUND · TRIP","nav.book":"Book",
+    "hero.quai":"PLATFORM 4","hero.kicker":"Station district · Luxembourg City",
+    "hero.lede":"A French brasserie in the heart of the Gare district. A one-way to the aperitif, a return ticket for Asian tapas — and in between, a journey: Paris, a detour through Italy, a stopover in Manila.",
+    "hero.cta1":"See the menu","hero.cta2":"The journey ↓",
+    "board.title":"Today's departures","board.brk":"Breakfast","board.brk.s":"7/7 · from dawn",
+    "board.lun":"Lunch","board.lun.s":"Dish of the day · brasserie menu",
+    "board.din":"Dinner & bar","board.din.s":"Asian tapas · gin · cocktails",
+    "board.ontime":"On time","board.foot":"Times are indicative — please confirm with the venue",
+    "tk.1":"Breakfast 7/7","tk.2":"Power lunch","tk.3":"Dish of the day","tk.4":"Asian tapas","tk.5":"Large gin selection","tk.6":"Filipino desserts","tk.7":"After-work · happy hour","tk.8":"Events & catering",
+    "plat.t":"Boarding platform","plat.d":"The long red bar, its clocks and its gins",
+    "voy.title":"The journey","voy.sub":"one way, three stops, one return",
+    "voy.1.ph":"French base — creative brasserie cooking","voy.1.h":"Paris",
+    "voy.1.p":"The starting point: a contemporary brasserie. Dish of the day at lunch, fish and beef à la carte, seasonal produce handled with care — the French classic, dusted off.",
+    "voy.1.t":"Brasserie · lunch · evening menu",
+    "voy.2.h":"Italian detour","voy.2.p":"A Mediterranean stopover: generous oil, fresh herbs, seafood. The pan-seared prawns with cracked pepper and pink peppercorns on courgette — the house's signature wink.",
+    "voy.2.t":"Mediterranean influence · signature",
+    "voy.3.ph":"Asian stop — tapas & sweets from the Philippines","voy.3.h":"Manila stopover",
+    "voy.3.p":"The surprise terminus. Asian tapas to share in the evening — dumplings, rolls — and a Filipino touch right through to dessert. The fusion that keeps regulars coming back.",
+    "voy.3.t":"Asian tapas · Filipino fusion",
+    "tt.title":"Timetable","tt.sub":"three departures a day",
+    "tt.h1":"Service","tt.h2":"Days","tt.h3":"Departure","tt.h4":"Status",
+    "tt.r1":"Breakfast","tt.r1d":"Mon–Fri 07:00–10:00 · Sat–Sun 07:30–10:30",
+    "tt.r2":"Lunch","tt.r2d":"Mon–Fri 11:45–14:30",
+    "tt.r3":"Dinner & bar","tt.r3d":"Mon–Fri 19:00–23:00","tt.conf":"To confirm",
+    "tt.side.l":"Notice to travellers","tt.side.h":"Book your ticket",
+    "tt.side.p":"In the evening the Asian tapas and bar fill up fast. A call is all it takes to hold your seat at the counter or in the dining room — groups, after-works and private hire welcome.",
+    "tt.side.conf":"Hours vary between sources — please confirm directly with the restaurant.",
+    "ct.title":"The menu","ct.sub":"the departures board of dishes","ct.sig":"Signature","ct.conf":"to confirm",
+    "ct.1p":"Cracked pepper, pink peppercorns, courgette & fresh herbs",
+    "ct.2h":"Asian tapas to share","ct.2p":"Dumplings & rolls, evening selection",
+    "ct.3h":"Dish of the day","ct.3p":"The lunchtime board, brasserie menu",
+    "ct.4h":"Fish of the day","ct.4p":"Delivery & preparation per the market",
+    "ct.5h":"Cut of beef","ct.5p":"Grilled, seasonal garnish",
+    "ct.6h":"Filipino desserts","ct.6p":"The sweet touch from Manila",
+    "ct.note":"Selection based on public reviews and listings. No priced menu is currently online — all dishes and prices are to be confirmed with the venue.",
+    "bar.kicker":"The return · at the bar","bar.h":"A long red bar,<br>and time<br><em>slowing down</em>",
+    "bar.p":"Black walls, clocks on the wall, the red glow beneath the counter. In the evening Aller Retour becomes a cosy lounge: a large gin selection, cocktails, and Asian tapas to nibble late.",
+    "bar.b1n":"Gin","bar.b1v":"Large selection","bar.b1s":"tonics & garnishes",
+    "bar.b2n":"Aperitif","bar.b2v":"Asian tapas","bar.b2s":"to share",
+    "bar.b3n":"After-work","bar.b3v":"Happy hour","bar.b3s":"Gare district",
+    "bar.b4n":"Cocktails","bar.b4v":"& wines","bar.b4s":"evening menu",
+    "vs.title":"Your ticket","vs.sub":"we'll be waiting on Platform 4","vs.cls":"CLASS · STATION",
+    "vs.addr":"Address","vs.tel":"Phone","vs.email":"E-mail","vs.email.n":"to confirm","vs.social":"Social",
+    "vs.hours":"Hours (indicative · to confirm)","vs.h1":"Mon – Fri","vs.h2":"Saturday","vs.h3":"Sunday","vs.map":"Map · Station",
+    "ft.blurb":"French brasserie & world cuisine, Gare district, Luxembourg City. Breakfast, lunch, bar & Asian tapas — a constant round trip between Paris and Manila.",
+    "ft.nav":"Navigation","ft.n1":"The journey","ft.n2":"Timetable","ft.n3":"The menu","ft.n4":"The bar","ft.n5":"Your ticket",
+    "ft.contact":"Contact","ft.demo.b":"Demonstration site.",
+    "ft.demo":"Unofficial mock-up made for presentation. Photos, hours, dishes and prices from public sources — to be confirmed with the venue."
+  }
+};
+function setLang(l){
+  var d=I18N[l]||I18N.fr;
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k=el.getAttribute('data-i18n');
+    if(d[k]!=null) el.innerHTML=d[k];
+  });
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.classList.toggle('on',b.getAttribute('data-lang')===l);
+  });
+  try{localStorage.setItem('ar_lang',l);}catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(function(b){
+  b.addEventListener('click',function(){setLang(b.getAttribute('data-lang'));});
+});
+/* keep French as first paint; only switch if a stored preference exists */
+try{var sv=localStorage.getItem('ar_lang');if(sv&&sv!=='fr')setLang(sv);}catch(e){}
+</script>
+</body>
+</html>

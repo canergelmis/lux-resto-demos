@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Buena Vista — Un coin de soleil à Bonnevoie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --coral:#E88A79;      /* sky */
+    --coral-lt:#F1A99A;
+    --orange:#E5943C;     /* sun */
+    --teal:#3E9BA5;       /* ocean */
+    --teal-dk:#2F7C85;
+    --navy:#213039;       /* silhouettes / ink */
+    --wood:#C8955C;       /* pier */
+    --wood-dk:#A9793F;
+    --paper:#FBF3E9;      /* cream */
+    --paper-2:#FDF9F2;
+    --sky-food:#AEDCE6;   /* matches the food-photo background */
+    --ink:#213039;
+    --ink-soft:#4c5b64;
+    --font-d:"Fredoka",system-ui,sans-serif;
+    --font-b:"DM Sans",system-ui,sans-serif;
+    --wrap:1280px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font-b);
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(18px,4vw,48px)}
+
+  /* ---------- TICKER ---------- */
+  .ticker{
+    background:var(--navy);color:var(--paper);
+    font-family:var(--font-d);font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;font-size:.74rem;
+    overflow:hidden;white-space:nowrap;border-bottom:2px solid var(--orange);
+  }
+  .ticker__track{display:inline-flex;align-items:center;gap:0;animation:scroll 34s linear infinite}
+  .ticker__set{display:inline-flex;align-items:center}
+  .ticker__set span{padding:.62em 1.4em;display:inline-flex;align-items:center}
+  .ticker__set span::after{content:"✺";color:var(--orange);margin-left:1.4em;font-size:.9em}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:60;
+    background:rgba(251,243,233,.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(33,48,57,.12);
+  }
+  .nav-in{display:flex;align-items:center;gap:24px;height:70px}
+  .brand{font-family:var(--font-d);font-weight:700;font-size:1.42rem;color:var(--navy);letter-spacing:.01em;display:flex;align-items:center;gap:.5ch;line-height:1}
+  .brand .dot{width:.62em;height:.62em;border-radius:50%;background:var(--orange);box-shadow:0 0 0 3px var(--coral)}
+  .nav-links{display:flex;gap:6px;margin-left:auto}
+  .nav-links a{
+    font-family:var(--font-d);font-weight:500;font-size:.92rem;color:var(--navy);
+    padding:.5em .85em;border-radius:999px;transition:.18s;white-space:nowrap;
+  }
+  .nav-links a:hover{background:var(--coral);color:#fff}
+  .langs{display:flex;gap:2px;background:rgba(33,48,57,.07);padding:3px;border-radius:999px}
+  .lang-btn{
+    font-family:var(--font-d);font-weight:600;font-size:.72rem;letter-spacing:.06em;
+    border:0;background:transparent;color:var(--ink-soft);cursor:pointer;
+    padding:.42em .62em;border-radius:999px;transition:.15s;
+  }
+  .lang-btn.active{background:var(--navy);color:var(--paper)}
+  .nav-order{
+    font-family:var(--font-d);font-weight:600;font-size:.9rem;color:#fff;
+    background:var(--orange);padding:.6em 1.2em;border-radius:999px;transition:.18s;
+    box-shadow:0 6px 16px -6px rgba(229,148,60,.8);
+  }
+  .nav-order:hover{background:var(--navy);transform:translateY(-1px)}
+  .nav-toggle{display:none}
+
+  /* ---------- HERO : the CSS sunset postcard ---------- */
+  .hero{position:relative;min-height:86vh;overflow:hidden;isolation:isolate}
+  .h-sky{position:absolute;inset:0;background:linear-gradient(180deg,#F3B4A6 0%,var(--coral) 44%,var(--coral-lt) 66%)}
+  .h-sun{
+    position:absolute;left:50%;bottom:24%;width:min(46vw,540px);aspect-ratio:1;
+    transform:translateX(-50%);border-radius:50%;
+    background:radial-gradient(circle at 50% 46%,#F4B24E 0%,var(--orange) 58%,#DF7F2D 100%);
+    box-shadow:0 0 90px 30px rgba(244,178,78,.55);
+  }
+  /* retro sun stripes */
+  .h-sun::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:42%;
+    background:repeating-linear-gradient(180deg,var(--coral) 0 7px,transparent 7px 20px);
+    opacity:.55;border-radius:0 0 999px 999px;
+  }
+  .h-sea{position:absolute;left:0;right:0;bottom:0;height:26%;
+    background:linear-gradient(180deg,var(--teal) 0%,var(--teal-dk) 100%)}
+  .h-sea::before{content:"";position:absolute;inset:0;opacity:.35;
+    background:repeating-linear-gradient(180deg,rgba(255,255,255,.25) 0 2px,transparent 2px 12px)}
+  /* wooden pier, pure CSS, no transformed images */
+  .h-pier{
+    position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+    width:min(34vw,420px);height:23%;
+    clip-path:polygon(38% 0,62% 0,100% 100%,0 100%);
+    background:
+      repeating-linear-gradient(90deg,var(--wood-dk) 0 2px,transparent 2px 5%),
+      linear-gradient(180deg,var(--wood) 0%,var(--wood-dk) 100%);
+  }
+  .h-pier::before{content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(180deg,rgba(33,48,57,.16) 0 6px,transparent 6px 26px)}
+  .palm{position:absolute;bottom:23%;z-index:2;fill:var(--navy)}
+  .palm.l{left:2.5%;width:min(15vw,150px)}
+  .palm.r{right:3%;width:min(19vw,190px)}
+
+  .hero-in{position:relative;z-index:4;max-width:var(--wrap);margin-inline:auto;
+    padding:clamp(40px,7vw,90px) clamp(18px,4vw,48px) 0;min-height:86vh;
+    display:flex;flex-direction:column;justify-content:flex-start}
+  .h-eyebrow{font-family:var(--font-d);font-weight:600;letter-spacing:.28em;
+    text-transform:uppercase;font-size:.82rem;color:var(--navy);opacity:.85}
+  .wordmark{font-family:var(--font-d);font-weight:700;color:var(--navy);
+    font-size:clamp(3.6rem,12.5vw,10rem);line-height:.86;letter-spacing:.005em;
+    margin:.1em 0 .12em;text-shadow:0 3px 0 rgba(255,255,255,.35)}
+  .wordmark em{font-style:normal;color:#fff;-webkit-text-stroke:3px var(--navy);text-shadow:none}
+  .h-tag{font-family:var(--font-d);font-weight:500;color:var(--navy);
+    font-size:clamp(1.25rem,2.5vw,2rem);max-width:16ch;line-height:1.14}
+  .h-proposed{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+    background:var(--navy);color:var(--paper);padding:.28em .6em;border-radius:5px;
+    vertical-align:middle;margin-left:.6em;font-family:var(--font-b);font-weight:500}
+  .h-sub{max-width:44ch;margin-top:1.1em;font-size:1.05rem;line-height:1.55;color:#3a2b26}
+  .h-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:1.6em}
+  .btn{font-family:var(--font-d);font-weight:600;font-size:1rem;border-radius:999px;
+    padding:.85em 1.6em;transition:.18s;display:inline-flex;align-items:center;gap:.5ch;cursor:pointer;border:0}
+  .btn-solid{background:var(--navy);color:#fff}
+  .btn-solid:hover{background:#0f1a20;transform:translateY(-2px)}
+  .btn-ghost{background:rgba(255,255,255,.55);color:var(--navy);border:2px solid var(--navy)}
+  .btn-ghost:hover{background:#fff;transform:translateY(-2px)}
+  .h-badge{position:absolute;right:clamp(18px,4vw,48px);top:clamp(40px,7vw,84px);z-index:5;
+    background:#fff;border-radius:16px;padding:.9em 1.1em;box-shadow:0 14px 40px -18px rgba(33,48,57,.7);
+    display:flex;align-items:center;gap:.7ch;transform:rotate(3deg)}
+  .h-badge .stars{color:var(--orange);font-size:1.1rem;letter-spacing:1px}
+  .h-badge b{font-family:var(--font-d);font-size:1.4rem;color:var(--navy);line-height:1}
+  .h-badge small{display:block;color:var(--ink-soft);font-size:.72rem;margin-top:2px}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{position:relative}
+  .kicker{font-family:var(--font-d);font-weight:600;letter-spacing:.26em;text-transform:uppercase;
+    font-size:.8rem;color:var(--orange);display:inline-flex;align-items:center;gap:.7ch}
+  .kicker::before{content:"";width:34px;height:2px;background:var(--orange)}
+  .h2{font-family:var(--font-d);font-weight:600;color:var(--navy);
+    font-size:clamp(2rem,4vw,3.2rem);line-height:1;margin:.28em 0 .1em}
+  .lead{max-width:60ch;color:var(--ink-soft);font-size:1.02rem;line-height:1.6}
+  .confirm-tag{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--wood-dk);border:1px dashed var(--wood-dk);border-radius:5px;
+    padding:.16em .5em;font-weight:600;white-space:nowrap}
+
+  /* ---------- MENU BENTO ---------- */
+  .menu{padding:clamp(56px,8vw,110px) 0 clamp(40px,6vw,70px)}
+  .menu-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+  .pizza-ribbon{background:var(--coral);color:#fff;border-radius:12px;padding:.75em 1em;
+    font-size:.85rem;line-height:1.35;max-width:34ch;font-weight:500;
+    box-shadow:0 10px 26px -14px rgba(232,138,121,.9)}
+  .pizza-ribbon b{font-family:var(--font-d)}
+
+  .menu-grid{display:grid;grid-template-columns:1fr;gap:16px}
+  .tile{border-radius:22px;overflow:hidden;position:relative;min-height:210px}
+  .tile.card{background:var(--paper-2);border:1px solid rgba(33,48,57,.09);
+    padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column}
+  .tile.photo img{width:100%;height:100%;object-fit:cover}
+  .tile.photo{background:var(--sky-food)}
+  .cap{position:absolute;left:14px;bottom:14px;background:rgba(33,48,57,.86);color:#fff;
+    font-family:var(--font-d);font-weight:500;font-size:.85rem;padding:.4em .85em;border-radius:999px;backdrop-filter:blur(3px)}
+
+  .tile.head{background:linear-gradient(150deg,var(--orange),#DF7F2D);color:#fff;justify-content:center}
+  .tile.head .k{font-family:var(--font-d);font-weight:600;letter-spacing:.2em;text-transform:uppercase;font-size:.74rem;opacity:.92}
+  .tile.head h3{font-family:var(--font-d);font-weight:600;font-size:clamp(1.5rem,2.2vw,2.1rem);line-height:1;margin:.25em 0}
+  .tile.head p{font-size:.92rem;opacity:.95;line-height:1.4}
+
+  .cat-title{font-family:var(--font-d);font-weight:600;color:var(--navy);font-size:1.4rem;
+    display:flex;align-items:center;gap:.6ch;margin-bottom:.7em}
+  .cat-title .pin{width:.5em;height:.5em;border-radius:50%;background:var(--teal)}
+  .m-list{list-style:none;display:flex;flex-direction:column;gap:.1em;flex:1}
+  .m-item{display:flex;align-items:baseline;gap:.6ch;padding:.5em 0;border-bottom:1px dashed rgba(33,48,57,.16)}
+  .m-item:last-child{border-bottom:0}
+  .m-item .n{font-weight:500;color:var(--navy)}
+  .m-item .lead-dots{flex:1;border-bottom:2px dotted rgba(33,48,57,.22);transform:translateY(-4px)}
+  .m-item .p{font-family:var(--font-d);font-weight:600;color:var(--orange);white-space:nowrap}
+  .card .foot-note{margin-top:.9em;display:flex;align-items:center;gap:.6ch;color:var(--ink-soft);font-size:.78rem}
+
+  /* desktop bento */
+  @media(min-width:720px){
+    .menu-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(min-width:1025px){
+    .menu-grid{
+      grid-template-columns:repeat(4,1fr);
+      grid-template-rows:repeat(5,minmax(140px,auto));
+      grid-template-areas:
+        "head   head   burr   burr"
+        "wraps  wraps  burr   burr"
+        "wraps  wraps  taco   ques"
+        "plates plates chili  ques"
+        "plates plates legs   drinks";
+    }
+    .t-head{grid-area:head}
+    .t-wraps{grid-area:wraps}
+    .t-burr{grid-area:burr}
+    .t-taco{grid-area:taco}
+    .t-ques{grid-area:ques}
+    .t-plates{grid-area:plates}
+    .t-chili{grid-area:chili}
+    .t-legs{grid-area:legs}
+    .t-drinks{grid-area:drinks}
+    .tile{min-height:0}
+  }
+
+  /* ---------- FRIDAY BBQ BAND ---------- */
+  .friday{background:var(--teal);color:#fff;position:relative;overflow:hidden}
+  .friday::before{content:"";position:absolute;top:-40%;right:-6%;width:min(40vw,460px);aspect-ratio:1;border-radius:50%;
+    background:radial-gradient(circle at 50%,rgba(244,178,78,.9),rgba(229,148,60,0) 70%)}
+  .friday-in{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;
+    padding:clamp(46px,6vw,84px) 0}
+  .friday .kicker{color:#ffe3c9}
+  .friday .kicker::before{background:#ffe3c9}
+  .fri-title{font-family:var(--font-d);font-weight:700;font-size:clamp(2.2rem,5vw,4rem);line-height:.95;margin:.2em 0}
+  .fri-text{font-size:1.08rem;line-height:1.6;max-width:46ch;color:rgba(255,255,255,.92)}
+  .fri-flame{font-size:clamp(4rem,12vw,9rem);text-align:center;line-height:1;filter:drop-shadow(0 12px 30px rgba(0,0,0,.25))}
+  .fri-photo{border-radius:24px;overflow:hidden;aspect-ratio:4/3;background:var(--sky-food);box-shadow:0 30px 60px -30px rgba(0,0,0,.5)}
+  .fri-photo img{width:100%;height:100%;object-fit:cover}
+
+  /* ---------- STORY ---------- */
+  .story{padding:clamp(60px,9vw,120px) 0}
+  .story-in{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(30px,5vw,72px);align-items:center}
+  .story-copy p{color:var(--ink-soft);line-height:1.7;font-size:1.05rem;margin-top:1.1em;max-width:52ch}
+  .stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:1.8em}
+  .stat{background:var(--paper-2);border:1px solid rgba(33,48,57,.1);border-radius:16px;padding:1em 1.15em;min-width:110px}
+  .stat b{font-family:var(--font-d);font-weight:700;font-size:1.7rem;color:var(--orange);display:block;line-height:1}
+  .stat small{color:var(--ink-soft);font-size:.78rem}
+  /* postcard collage */
+  .postcards{position:relative;min-height:440px}
+  .pc{position:absolute;border-radius:16px;overflow:hidden;box-shadow:0 26px 55px -26px rgba(33,48,57,.6);border:6px solid #fff}
+  .pc-1{width:66%;top:0;right:0;aspect-ratio:1;z-index:1;transform:rotate(3deg)}
+  .pc-2{width:58%;left:0;bottom:0;aspect-ratio:4/3;z-index:2;transform:rotate(-4deg)}
+  .pc img{width:100%;height:100%;object-fit:cover}
+  .pc-stamp{position:absolute;left:8%;top:-4%;z-index:3;background:var(--orange);color:#fff;
+    width:96px;height:96px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    font-family:var(--font-d);text-align:center;transform:rotate(-10deg);box-shadow:0 12px 26px -12px rgba(229,148,60,.9);
+    border:3px dashed #fff}
+  .pc-stamp b{font-size:1.5rem;line-height:1}
+  .pc-stamp span{font-size:.6rem;letter-spacing:.08em;text-transform:uppercase}
+
+  /* ---------- VISIT ---------- */
+  .visit{background:var(--navy);color:var(--paper);padding:clamp(56px,8vw,110px) 0}
+  .visit .kicker{color:var(--coral)}
+  .visit .kicker::before{background:var(--coral)}
+  .visit .h2{color:#fff}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:22px;margin-top:38px;align-items:stretch}
+  .info-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:26px}
+  .info-card h4{font-family:var(--font-d);font-weight:600;font-size:1.05rem;color:#fff;margin-bottom:1em;
+    display:flex;align-items:center;gap:.6ch}
+  .info-card h4 .ic{color:var(--orange)}
+  .hours-row{display:flex;justify-content:space-between;gap:12px;padding:.55em 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.94rem}
+  .hours-row:last-of-type{border-bottom:0}
+  .hours-row .d{color:rgba(255,255,255,.72)}
+  .hours-row .t{font-family:var(--font-d);font-weight:500;color:#fff}
+  .note-line{margin-top:1em;font-size:.76rem;color:var(--wood);display:flex;gap:.6ch;line-height:1.4}
+  .info-card .big{font-family:var(--font-d);font-size:1.15rem;color:#fff;line-height:1.4}
+  .info-card a.link{color:var(--coral);border-bottom:1px solid rgba(232,138,121,.5);display:inline-block;margin-top:.3em}
+  .info-card a.link:hover{color:#fff}
+  .map-card{border-radius:20px;overflow:hidden;min-height:300px;border:1px solid rgba(255,255,255,.12)}
+  .map-card iframe{width:100%;height:100%;min-height:300px;border:0;display:block;filter:saturate(.9)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:linear-gradient(180deg,var(--coral) 0%,var(--orange) 130%);color:var(--navy);padding:clamp(44px,6vw,72px) 0 34px}
+  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;align-items:flex-start}
+  .foot-brand{font-family:var(--font-d);font-weight:700;font-size:2.4rem;color:var(--navy);line-height:1}
+  .foot-brand span{display:block;font-family:var(--font-b);font-weight:500;font-size:.95rem;margin-top:.3em;color:#5a3a30;letter-spacing:.02em}
+  .foot-links{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--font-d);font-weight:500}
+  .foot-links a{border-bottom:2px solid transparent;padding-bottom:2px}
+  .foot-links a:hover{border-color:var(--navy)}
+  .foot-demo{margin-top:30px;padding-top:22px;border-top:1px solid rgba(33,48,57,.28);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:.8rem;color:#4a2f26}
+  .foot-demo strong{color:var(--navy)}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:1024px){
+    .friday-in{grid-template-columns:1fr;gap:26px}
+    .story-in{grid-template-columns:1fr;gap:40px}
+    .visit-grid{grid-template-columns:1fr 1fr}
+    .map-card{grid-column:1/-1}
+    .postcards{min-height:380px}
+  }
+  @media(max-width:760px){
+    .nav-links,.nav-order{display:none}
+    .nav-toggle{display:inline-flex;margin-left:auto;font-family:var(--font-d);font-weight:600;
+      background:var(--navy);color:#fff;border:0;border-radius:999px;padding:.5em 1em;cursor:pointer}
+    .nav-in.open .nav-links{display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;
+      background:var(--paper);padding:14px;border-bottom:1px solid rgba(33,48,57,.15);gap:4px}
+    .h-badge{position:static;transform:none;margin-top:20px;align-self:flex-start}
+    .visit-grid{grid-template-columns:1fr}
+    .tile.photo{min-height:230px}
+    .postcards{min-height:340px}
+    .pc-stamp{width:78px;height:78px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TICKER ===== -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <div class="ticker__set">
+      <span data-i18n="tick1">Street food latine</span>
+      <span data-i18n="tick2">Ouvert 7/7</span>
+      <span data-i18n="tick3">4,9★ · 93 avis</span>
+      <span data-i18n="tick4">Vendredi = Barbecue</span>
+      <span data-i18n="tick5">Un coin de soleil à Bonnevoie</span>
+    </div>
+    <div class="ticker__set">
+      <span data-i18n="tick1">Street food latine</span>
+      <span data-i18n="tick2">Ouvert 7/7</span>
+      <span data-i18n="tick3">4,9★ · 93 avis</span>
+      <span data-i18n="tick4">Vendredi = Barbecue</span>
+      <span data-i18n="tick5">Un coin de soleil à Bonnevoie</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="wrap nav-in" id="navIn">
+    <a href="#top" class="brand"><span class="dot"></span>Buena Vista</a>
+    <div class="nav-links">
+      <a href="#menu" data-i18n="nav_menu">La Carte</a>
+      <a href="#friday" data-i18n="nav_friday">Vendredi BBQ</a>
+      <a href="#story" data-i18n="nav_story">L'Histoire</a>
+      <a href="#visit" data-i18n="nav_visit">Nous trouver</a>
+    </div>
+    <div class="langs" role="group" aria-label="Language">
+      <button class="lang-btn active" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="de">DE</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="https://wolt.com/en/lux/luxembourg/restaurant/buena-vista-luxembourg" target="_blank" rel="noopener" class="nav-order" data-i18n="nav_order">Commander</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="top">
+  <div class="h-sky"></div>
+  <div class="h-sun"></div>
+  <div class="h-sea"></div>
+  <div class="h-pier"></div>
+  <svg class="palm l" viewBox="0 0 100 140" aria-hidden="true"><path d="M50 140c-2-34-6-62-10-84 8 6 15 14 21 24-3-14-11-25-22-31 10-3 22-1 33 6-8-11-20-18-33-18 8-8 20-12 33-11-12-7-27-6-38 2 3-11 11-20 22-25-15-1-28 8-33 21-2-9-1-19 4-28-9 7-14 18-13 30-6-6-10-15-11-25-4 12-2 24 5 33-9-1-18 2-25 9 11-2 21 0 29 6-9 4-16 12-20 22 9-8 19-12 29-11-5 20-8 60-10 103z"/></svg>
+  <svg class="palm r" viewBox="0 0 100 140" aria-hidden="true"><path d="M50 140c-2-34-6-62-10-84 8 6 15 14 21 24-3-14-11-25-22-31 10-3 22-1 33 6-8-11-20-18-33-18 8-8 20-12 33-11-12-7-27-6-38 2 3-11 11-20 22-25-15-1-28 8-33 21-2-9-1-19 4-28-9 7-14 18-13 30-6-6-10-15-11-25-4 12-2 24 5 33-9-1-18 2-25 9 11-2 21 0 29 6-9 4-16 12-20 22 9-8 19-12 29-11-5 20-8 60-10 103z"/></svg>
+
+  <div class="hero-in">
+    <p class="h-eyebrow" data-i18n="hero_eyebrow">Bonnevoie · Luxembourg</p>
+    <h1 class="wordmark">Buena<br><em>Vista</em></h1>
+    <p class="h-tag"><span data-i18n="hero_tag">Un coin de soleil à Bonnevoie.</span><span class="h-proposed" data-i18n="hero_proposed">slogan proposé</span></p>
+    <p class="h-sub" data-i18n="hero_sub">Street food latine, saveurs ensoleillées et pizzas maison — à emporter ou en terrasse, au cœur de Bonnevoie.</p>
+    <div class="h-cta">
+      <a href="#menu" class="btn btn-solid" data-i18n="hero_cta1">Voir la carte</a>
+      <a href="https://wolt.com/en/lux/luxembourg/restaurant/buena-vista-luxembourg" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="hero_cta2">Commander sur Wolt</a>
+    </div>
+  </div>
+  <div class="h-badge">
+    <div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div>
+      <b>4,9</b>
+      <small data-i18n="hero_badge">4,9/5 · 93 avis Google</small>
+    </div>
+  </div>
+</header>
+
+<!-- ===== MENU BENTO ===== -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="menu-head">
+      <div>
+        <span class="kicker" data-i18n="menu_kicker">La Carte</span>
+        <h2 class="h2" data-i18n="menu_title">Saveurs du soleil</h2>
+        <p class="lead" data-i18n="menu_intro">Tout est fait maison, généreux et à petit prix. Prix relevés en ligne — à confirmer avec l'établissement.</p>
+      </div>
+      <div class="pizza-ribbon" data-i18n="pizza_note"><b>Aussi</b> connu pour ses pizzas maison — parmi les moins chères de la ville. (à confirmer)</div>
+    </div>
+
+    <div class="menu-grid">
+      <!-- head -->
+      <div class="tile head t-head">
+        <span class="k" data-i18n="menu_kicker2">Carte du jour</span>
+        <h3 data-i18n="menu_head_h">Fait maison, à partager</h3>
+        <p data-i18n="menu_head_p">Wraps, plateaux généreux et boissons fraîches.</p>
+      </div>
+
+      <!-- wraps card -->
+      <div class="tile card t-wraps">
+        <div class="cat-title"><span class="pin"></span><span data-i18n="cat_wraps">Wraps &amp; street food</span></div>
+        <ul class="m-list">
+          <li class="m-item"><span class="n">Burrito poulet</span><span class="lead-dots"></span><span class="p">€13,00</span></li>
+          <li class="m-item"><span class="n">Quesadilla poulet</span><span class="lead-dots"></span><span class="p">€13,50</span></li>
+          <li class="m-item"><span class="n">Crispy Tacos (x3)</span><span class="lead-dots"></span><span class="p">€14,00</span></li>
+        </ul>
+        <div class="foot-note"><span class="confirm-tag" data-i18n="confirm">à confirmer</span></div>
+      </div>
+
+      <!-- burritos photo (big) -->
+      <div class="tile photo t-burr">
+        <img src="assets/food-1-burritos.jpg" alt="Burrito poulet" loading="lazy" />
+        <span class="cap">Le Burrito</span>
+      </div>
+
+      <!-- tacos photo -->
+      <div class="tile photo t-taco">
+        <img src="assets/food-4-tacos.jpg" alt="Crispy tacos" loading="lazy" />
+        <span class="cap">Crispy Tacos</span>
+      </div>
+
+      <!-- quesadillas photo (tall) -->
+      <div class="tile photo t-ques">
+        <img src="assets/food-2-quesadillas.jpg" alt="Quesadilla poulet" loading="lazy" />
+        <span class="cap">Quesadilla</span>
+      </div>
+
+      <!-- plates card -->
+      <div class="tile card t-plates">
+        <div class="cat-title"><span class="pin"></span><span data-i18n="cat_plates">Les Buena Plates</span></div>
+        <ul class="m-list">
+          <li class="m-item"><span class="n">Buena Chili poulet</span><span class="lead-dots"></span><span class="p">€18,00</span></li>
+          <li class="m-item"><span class="n">Cesar Salad</span><span class="lead-dots"></span><span class="p">€15,00</span></li>
+          <li class="m-item"><span class="n">Assiette cuisse de poulet</span><span class="lead-dots"></span><span class="p">€15,00</span></li>
+          <li class="m-item"><span class="n">Assiette Wings</span><span class="lead-dots"></span><span class="p">€15,00</span></li>
+          <li class="m-item"><span class="n">Double Legs</span><span class="lead-dots"></span><span class="p">€18,00</span></li>
+        </ul>
+        <div class="foot-note"><span class="confirm-tag" data-i18n="confirm">à confirmer</span></div>
+      </div>
+
+      <!-- chili photo -->
+      <div class="tile photo t-chili">
+        <img src="assets/food-3-chili.jpg" alt="Buena Chili" loading="lazy" />
+        <span class="cap">Buena Chili</span>
+      </div>
+
+      <!-- legs photo -->
+      <div class="tile photo t-legs">
+        <img src="assets/food-5-legs.jpg" alt="Double Legs" loading="lazy" />
+        <span class="cap">Double Legs</span>
+      </div>
+
+      <!-- drinks card -->
+      <div class="tile card t-drinks">
+        <div class="cat-title"><span class="pin"></span><span data-i18n="cat_drinks">Boissons</span></div>
+        <ul class="m-list">
+          <li class="m-item"><span class="n">Pepsi · 7up</span><span class="lead-dots"></span><span class="p">€3,00</span></li>
+          <li class="m-item"><span class="n">Mirinda · Ice Tea</span><span class="lead-dots"></span><span class="p">€3,00</span></li>
+        </ul>
+        <div class="foot-note"><span class="confirm-tag" data-i18n="confirm">à confirmer</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FRIDAY BBQ ===== -->
+<section class="friday" id="friday">
+  <div class="wrap friday-in">
+    <div>
+      <span class="kicker" data-i18n="fri_kicker">Chaque vendredi</span>
+      <h2 class="fri-title" data-i18n="fri_title">Le Barbecue du Vendredi</h2>
+      <p class="fri-text" data-i18n="fri_text">Grillades en plein air, l'odeur du charbon et l'ambiance plage : le rendez-vous convivial de la fin de semaine à Bonnevoie. (à confirmer)</p>
+    </div>
+    <div class="fri-photo">
+      <img src="assets/food-5-legs.jpg" alt="Grillades du vendredi" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ===== STORY ===== -->
+<section class="story" id="story">
+  <div class="wrap story-in">
+    <div class="story-copy">
+      <span class="kicker" data-i18n="story_kicker">L'Histoire</span>
+      <h2 class="h2" data-i18n="story_title">Du code au comptoir</h2>
+      <p data-i18n="story_p1">Buena Vista, c'est l'aventure d'Alix : un ancien professionnel de l'informatique qui a troqué l'écran pour les fourneaux, au cœur de Bonnevoie. (à confirmer)</p>
+      <p data-i18n="story_p2">Un petit lieu de quartier tenu par son propriétaire, où l'on vient pour des assiettes généreuses, un accueil chaleureux et un vrai rapport qualité-prix.</p>
+      <div class="stats">
+        <div class="stat"><b>4,9/5</b><small data-i18n="stat_rating">sur Google · 93 avis</small></div>
+        <div class="stat"><b>#4</b><small data-i18n="stat_rank">à Bonnevoie</small></div>
+        <div class="stat"><b>7/7</b><small data-i18n="stat_open">ouvert</small></div>
+      </div>
+    </div>
+    <div class="postcards">
+      <div class="pc pc-1"><img src="assets/hero.jpg" alt="Buena Vista — coucher de soleil tropical" loading="lazy" /></div>
+      <div class="pc pc-2"><img src="assets/exterior.jpg" alt="Buena Vista — l'intérieur" loading="lazy" /></div>
+      <div class="pc-stamp"><b>174</b><span>Rte de Thionville</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISIT ===== -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <span class="kicker" data-i18n="visit_kicker">Nous trouver</span>
+    <h2 class="h2" data-i18n="visit_title">Passez nous voir</h2>
+    <div class="visit-grid">
+      <div class="info-card">
+        <h4><span class="ic">◷</span><span data-i18n="visit_hours_label">Horaires</span></h4>
+        <div class="hours-row"><span class="d" data-i18n="day_mon">Lundi</span><span class="t">11:00–17:00</span></div>
+        <div class="hours-row"><span class="d" data-i18n="day_tuefri">Mardi – Vendredi</span><span class="t">11:00–22:00</span></div>
+        <div class="hours-row"><span class="d" data-i18n="day_satsun">Samedi – Dimanche</span><span class="t">18:00–22:00</span></div>
+        <div class="note-line"><span>⚑</span><span data-i18n="hours_note">Horaires variables selon les sources — à confirmer avec l'établissement.</span></div>
+      </div>
+      <div class="info-card">
+        <h4><span class="ic">✦</span><span data-i18n="visit_contact_label">Adresse &amp; contact</span></h4>
+        <p class="big">174 Route de Thionville<br>L-2610 Luxembourg</p>
+        <a class="link" href="tel:+352621707656">+352 621 70 76 56</a><br>
+        <a class="link" href="https://www.instagram.com/buenavista.lux/" target="_blank" rel="noopener">Instagram @buenavista.lux</a><br>
+        <a class="link" href="https://wolt.com/en/lux/luxembourg/restaurant/buena-vista-luxembourg" target="_blank" rel="noopener" data-i18n="visit_order_link">Commander sur Wolt →</a>
+      </div>
+      <div class="map-card">
+        <iframe title="Carte — Buena Vista" src="https://www.google.com/maps?q=174+Route+de+Thionville,+2610+Luxembourg&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">Buena Vista<span data-i18n="foot_sub">Street food latine · Bonnevoie, Luxembourg</span></div>
+      <div class="foot-links">
+        <a href="#menu" data-i18n="nav_menu">La Carte</a>
+        <a href="#friday" data-i18n="nav_friday">Vendredi BBQ</a>
+        <a href="#story" data-i18n="nav_story">L'Histoire</a>
+        <a href="#visit" data-i18n="nav_visit">Nous trouver</a>
+      </div>
+    </div>
+    <div class="foot-demo">
+      <span data-i18n="foot_demo"><strong>Site de démonstration</strong> — réalisé pour présenter une proposition de site web. Contenus, prix et horaires à confirmer avec l'établissement.</span>
+      <span data-i18n="foot_note">Non affilié officiellement · noindex</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const I18N = {
+    fr:{
+      tick1:"Street food latine", tick2:"Ouvert 7/7", tick3:"4,9★ · 93 avis", tick4:"Vendredi = Barbecue", tick5:"Un coin de soleil à Bonnevoie",
+      nav_menu:"La Carte", nav_friday:"Vendredi BBQ", nav_story:"L'Histoire", nav_visit:"Nous trouver", nav_order:"Commander",
+      hero_eyebrow:"Bonnevoie · Luxembourg", hero_tag:"Un coin de soleil à Bonnevoie.", hero_proposed:"slogan proposé",
+      hero_sub:"Street food latine, saveurs ensoleillées et pizzas maison — à emporter ou en terrasse, au cœur de Bonnevoie.",
+      hero_cta1:"Voir la carte", hero_cta2:"Commander sur Wolt", hero_badge:"4,9/5 · 93 avis Google",
+      menu_kicker:"La Carte", menu_title:"Saveurs du soleil",
+      menu_intro:"Tout est fait maison, généreux et à petit prix. Prix relevés en ligne — à confirmer avec l'établissement.",
+      pizza_note:"Aussi connu pour ses pizzas maison — parmi les moins chères de la ville. (à confirmer)",
+      menu_kicker2:"Carte du jour", menu_head_h:"Fait maison, à partager", menu_head_p:"Wraps, plateaux généreux et boissons fraîches.",
+      cat_wraps:"Wraps & street food", cat_plates:"Les Buena Plates", cat_drinks:"Boissons", confirm:"à confirmer",
+      fri_kicker:"Chaque vendredi", fri_title:"Le Barbecue du Vendredi",
+      fri_text:"Grillades en plein air, l'odeur du charbon et l'ambiance plage : le rendez-vous convivial de la fin de semaine à Bonnevoie. (à confirmer)",
+      story_kicker:"L'Histoire", story_title:"Du code au comptoir",
+      story_p1:"Buena Vista, c'est l'aventure d'Alix : un ancien professionnel de l'informatique qui a troqué l'écran pour les fourneaux, au cœur de Bonnevoie. (à confirmer)",
+      story_p2:"Un petit lieu de quartier tenu par son propriétaire, où l'on vient pour des assiettes généreuses, un accueil chaleureux et un vrai rapport qualité-prix.",
+      stat_rating:"sur Google · 93 avis", stat_rank:"à Bonnevoie", stat_open:"ouvert",
+      visit_kicker:"Nous trouver", visit_title:"Passez nous voir", visit_hours_label:"Horaires",
+      day_mon:"Lundi", day_tuefri:"Mardi – Vendredi", day_satsun:"Samedi – Dimanche",
+      hours_note:"Horaires variables selon les sources — à confirmer avec l'établissement.",
+      visit_contact_label:"Adresse & contact", visit_order_link:"Commander sur Wolt →",
+      foot_sub:"Street food latine · Bonnevoie, Luxembourg",
+      foot_demo:"Site de démonstration — réalisé pour présenter une proposition de site web. Contenus, prix et horaires à confirmer avec l'établissement.",
+      foot_note:"Non affilié officiellement · noindex"
+    },
+    de:{
+      tick1:"Lateinamerikanisches Street Food", tick2:"7/7 geöffnet", tick3:"4,9★ · 93 Bewertungen", tick4:"Freitag = Barbecue", tick5:"Ein Stück Sonne in Bonnevoie",
+      nav_menu:"Speisekarte", nav_friday:"Freitag BBQ", nav_story:"Geschichte", nav_visit:"Anfahrt", nav_order:"Bestellen",
+      hero_eyebrow:"Bonnevoie · Luxemburg", hero_tag:"Ein Stück Sonne in Bonnevoie.", hero_proposed:"Slogan-Vorschlag",
+      hero_sub:"Lateinamerikanisches Street Food, sonnige Aromen und hausgemachte Pizza — zum Mitnehmen oder auf der Terrasse, mitten in Bonnevoie.",
+      hero_cta1:"Zur Karte", hero_cta2:"Auf Wolt bestellen", hero_badge:"4,9/5 · 93 Google-Bewertungen",
+      menu_kicker:"Die Karte", menu_title:"Sonnige Aromen",
+      menu_intro:"Alles hausgemacht, großzügig und günstig. Preise online recherchiert — bitte im Lokal bestätigen.",
+      pizza_note:"Auch bekannt für hausgemachte Pizza — mit die günstigste der Stadt. (zu bestätigen)",
+      menu_kicker2:"Tageskarte", menu_head_h:"Hausgemacht, zum Teilen", menu_head_p:"Wraps, großzügige Teller und kühle Getränke.",
+      cat_wraps:"Wraps & Street Food", cat_plates:"Die Buena Plates", cat_drinks:"Getränke", confirm:"zu bestätigen",
+      fri_kicker:"Jeden Freitag", fri_title:"Das Freitags-Barbecue",
+      fri_text:"Grillen unter freiem Himmel, Kohleduft und Strandfeeling: der gesellige Wochenausklang in Bonnevoie. (zu bestätigen)",
+      story_kicker:"Die Geschichte", story_title:"Vom Code zum Tresen",
+      story_p1:"Buena Vista ist Alix' Abenteuer: ein ehemaliger IT-Profi, der den Bildschirm gegen den Herd tauschte — mitten in Bonnevoie. (zu bestätigen)",
+      story_p2:"Ein kleiner, inhabergeführter Ort im Viertel, an dem man großzügige Teller, herzliche Gastfreundschaft und ein echtes Preis-Leistungs-Verhältnis findet.",
+      stat_rating:"auf Google · 93 Bewertungen", stat_rank:"in Bonnevoie", stat_open:"geöffnet",
+      visit_kicker:"Anfahrt", visit_title:"Besuchen Sie uns", visit_hours_label:"Öffnungszeiten",
+      day_mon:"Montag", day_tuefri:"Dienstag – Freitag", day_satsun:"Samstag – Sonntag",
+      hours_note:"Öffnungszeiten je nach Quelle unterschiedlich — bitte im Lokal bestätigen.",
+      visit_contact_label:"Adresse & Kontakt", visit_order_link:"Auf Wolt bestellen →",
+      foot_sub:"Lateinamerikanisches Street Food · Bonnevoie, Luxemburg",
+      foot_demo:"Demo-Website — erstellt, um einen Website-Vorschlag zu präsentieren. Inhalte, Preise und Öffnungszeiten sind mit dem Lokal zu bestätigen.",
+      foot_note:"Nicht offiziell verbunden · noindex"
+    },
+    en:{
+      tick1:"Latin street food", tick2:"Open 7/7", tick3:"4.9★ · 93 reviews", tick4:"Friday = Barbecue", tick5:"A corner of sunshine in Bonnevoie",
+      nav_menu:"Menu", nav_friday:"Friday BBQ", nav_story:"Our Story", nav_visit:"Find Us", nav_order:"Order",
+      hero_eyebrow:"Bonnevoie · Luxembourg", hero_tag:"A little corner of sunshine in Bonnevoie.", hero_proposed:"proposed slogan",
+      hero_sub:"Latin street food, sunny flavours and homemade pizza — takeaway or terrace, in the heart of Bonnevoie.",
+      hero_cta1:"See the menu", hero_cta2:"Order on Wolt", hero_badge:"4.9/5 · 93 Google reviews",
+      menu_kicker:"The Menu", menu_title:"Flavours of the sun",
+      menu_intro:"Everything homemade, generous and easy on the wallet. Prices gathered online — please confirm with the venue.",
+      pizza_note:"Also known for homemade pizza — among the cheapest in town. (to confirm)",
+      menu_kicker2:"Today's board", menu_head_h:"Homemade, made to share", menu_head_p:"Wraps, generous plates and cold drinks.",
+      cat_wraps:"Wraps & street food", cat_plates:"Buena Plates", cat_drinks:"Drinks", confirm:"to confirm",
+      fri_kicker:"Every Friday", fri_title:"The Friday Barbecue",
+      fri_text:"Open-air grilling, the smell of charcoal and a beach mood: the friendly end-of-week ritual in Bonnevoie. (to confirm)",
+      story_kicker:"Our Story", story_title:"From code to counter",
+      story_p1:"Buena Vista is Alix's adventure: a former IT professional who swapped the screen for the stove, in the heart of Bonnevoie. (to confirm)",
+      story_p2:"A small, owner-run neighbourhood spot for generous plates, warm hospitality and genuine value for money.",
+      stat_rating:"on Google · 93 reviews", stat_rank:"in Bonnevoie", stat_open:"open",
+      visit_kicker:"Find us", visit_title:"Come and see us", visit_hours_label:"Opening hours",
+      day_mon:"Monday", day_tuefri:"Tuesday – Friday", day_satsun:"Saturday – Sunday",
+      hours_note:"Hours vary across sources — please confirm with the venue.",
+      visit_contact_label:"Address & contact", visit_order_link:"Order on Wolt →",
+      foot_sub:"Latin street food · Bonnevoie, Luxembourg",
+      foot_demo:"Demonstration website — built to present a website proposal. Content, prices and hours to be confirmed with the venue.",
+      foot_note:"Not officially affiliated · noindex"
+    }
+  };
+
+  function setLang(lang){
+    const dict = I18N[lang]; if(!dict) return;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const k = el.getAttribute('data-i18n');
+      if(dict[k] !== undefined) el.textContent = dict[k];
+    });
+    document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+  }
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.addEventListener('click',()=>setLang(b.dataset.lang));
+  });
+
+  // mobile nav
+  const navToggle = document.getElementById('navToggle');
+  const navIn = document.getElementById('navIn');
+  navToggle && navToggle.addEventListener('click',()=>navIn.classList.toggle('open'));
+  document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>navIn.classList.remove('open')));
+</script>
+</body>
+</html>

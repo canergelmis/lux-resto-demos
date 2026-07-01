@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Atelier del Gusto — Trattoria · Pizzeria · Bonnevoie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Caveat:wght@500;600;700&family=Marck+Script&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#234d38;        /* forest / leaf */
+    --green-deep:#16311f;   /* slate green */
+    --green-ink:#0e2416;
+    --cream:#f4ecda;        /* warm cream */
+    --cream-2:#efe4cb;
+    --paper:#faf5e9;
+    --charcoal:#221f19;
+    --tomato:#c0402a;       /* terracotta / tomato */
+    --tomato-2:#a5341f;
+    --brass:#c39a53;        /* brass rule */
+    --brass-2:#e0c07f;
+    --ink-soft:#4a4335;
+    --shadow:0 22px 50px -24px rgba(14,36,22,.55);
+    --font-script:'Marck Script', cursive;
+    --font-chalk:'Caveat', cursive;
+    --font-serif:'Fraunces', Georgia, serif;
+    --font-sans:'Work Sans', system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font-sans);
+    color:var(--charcoal);
+    background:var(--cream);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:var(--font-serif);font-weight:500;line-height:1.05}
+  .wrap{max-width:1440px;margin:0 auto;padding:0 40px}
+
+  /* ===== ENSEIGNE (masthead nameplate) ===== */
+  .enseigne{
+    position:sticky;top:0;z-index:60;
+    background:var(--green);
+    border-bottom:3px solid var(--brass);
+    color:var(--cream);
+  }
+  .enseigne::before{content:"";display:block;height:5px;
+    background:repeating-linear-gradient(90deg,var(--brass) 0 22px,var(--brass-2) 22px 44px);opacity:.8}
+  .enseigne-in{
+    max-width:1440px;margin:0 auto;padding:10px 40px;
+    display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:26px;
+  }
+  .mark{display:flex;flex-direction:column;line-height:.9}
+  .mark .script{font-family:var(--font-script);font-size:2.05rem;color:var(--cream)}
+  .mark .script b{color:var(--brass-2);font-weight:400}
+  .mark .sub{font-family:var(--font-sans);font-size:.62rem;letter-spacing:.34em;
+    text-transform:uppercase;color:#cfe0d3;margin-top:3px}
+  .nav{display:flex;gap:30px;justify-content:center;align-items:center;
+    font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500}
+  .nav a{position:relative;padding:4px 0;color:#e7efe6}
+  .nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;
+    background:var(--brass-2);transition:width .3s}
+  .nav a:hover::after{width:100%}
+  .ens-right{display:flex;align-items:center;gap:16px;justify-self:end}
+  .langs{display:flex;gap:2px;background:rgba(0,0,0,.22);border:1px solid rgba(224,192,127,.4);
+    border-radius:30px;padding:3px}
+  .langs button{background:none;border:none;color:#cfe0d3;font:600 .68rem var(--font-sans);
+    letter-spacing:.12em;padding:5px 11px;border-radius:30px;cursor:pointer;transition:.2s}
+  .langs button.on{background:var(--brass);color:var(--green-ink)}
+  .ens-cta{background:var(--tomato);color:var(--cream);padding:11px 20px;border-radius:30px;
+    font:600 .72rem var(--font-sans);letter-spacing:.16em;text-transform:uppercase;
+    box-shadow:0 8px 18px -8px rgba(0,0,0,.6);transition:.2s;white-space:nowrap}
+  .ens-cta:hover{background:var(--tomato-2);transform:translateY(-1px)}
+  .burger{display:none;background:none;border:1px solid rgba(224,192,127,.5);color:var(--cream);
+    border-radius:8px;padding:7px 10px;cursor:pointer;font-size:1.1rem}
+
+  /* ===== LE MUR DE L'ATELIER (hero wall) ===== */
+  .wall{
+    background:
+      radial-gradient(120% 120% at 15% 0%, #2c5a42 0%, var(--green) 42%, var(--green-deep) 100%);
+    color:var(--cream);position:relative;overflow:hidden;
+  }
+  .wall::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);
+    background-size:22px 22px;opacity:.5}
+  .wall-in{
+    max-width:1440px;margin:0 auto;padding:46px 40px 56px;position:relative;z-index:2;
+    display:grid;grid-template-columns:1.02fr 1.32fr .9fr;gap:26px;align-items:stretch;
+  }
+
+  /* -- chalkboard column -- */
+  .slate{
+    background:
+      radial-gradient(140% 100% at 30% 10%, #1c3a28 0%, #12291b 70%, #0d2016 100%);
+    border-radius:6px;padding:26px 26px 30px;position:relative;
+    box-shadow:inset 0 0 0 2px #0a1a10, inset 0 0 40px rgba(0,0,0,.5), var(--shadow);
+    border:10px solid #3a2a16;outline:2px solid var(--brass);
+    display:flex;flex-direction:column;
+  }
+  .slate .eyebrow{font-family:var(--font-sans);font-size:.6rem;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--brass-2);margin-bottom:6px}
+  .slate h2{font-family:var(--font-chalk);font-size:2.9rem;color:#f6f1e4;font-weight:700;
+    line-height:.95;text-shadow:0 1px 0 rgba(255,255,255,.12)}
+  .slate .dash{height:2px;background:repeating-linear-gradient(90deg,#e9e0cf 0 10px,transparent 10px 18px);
+    margin:12px 0 14px;opacity:.55}
+  .slate ul{list-style:none;font-family:var(--font-chalk);font-size:1.42rem;color:#eee7d6}
+  .slate li{display:flex;justify-content:space-between;gap:12px;align-items:baseline;
+    padding:5px 0;border-bottom:1px dotted rgba(233,224,207,.28)}
+  .slate li span:first-child{position:relative;padding-left:20px}
+  .slate li span:first-child::before{content:"❋";position:absolute;left:0;color:var(--tomato);
+    font-size:.9rem;top:2px}
+  .slate li .pr{color:var(--brass-2);white-space:nowrap;font-size:1.2rem}
+  .focaccia{margin-top:auto;padding-top:16px}
+  .focaccia .badge{display:inline-flex;align-items:center;gap:9px;background:rgba(192,64,42,.18);
+    border:1px dashed var(--tomato);color:#f4d9cf;border-radius:8px;padding:9px 13px;
+    font-family:var(--font-chalk);font-size:1.25rem}
+  .focaccia .badge b{color:var(--brass-2);font-weight:400}
+  .confirm{font-family:var(--font-sans);font-size:.6rem;letter-spacing:.06em;color:#9fb4a4;
+    margin-top:10px;font-style:italic}
+
+  /* -- center hero image -- */
+  .stage{display:flex;flex-direction:column;justify-content:space-between}
+  .stage .eyebrow{font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;
+    color:var(--brass-2);text-align:center;margin-bottom:10px}
+  .stage h1{font-size:3.05rem;text-align:center;color:var(--cream);letter-spacing:-.5px;margin-bottom:8px}
+  .stage h1 i{font-family:var(--font-script);font-style:normal;color:var(--brass-2);font-weight:400}
+  .stage .lead{text-align:center;max-width:44ch;margin:0 auto 16px;color:#dfe8de;
+    font-size:.98rem;font-weight:300}
+  .frame{
+    flex:1;min-height:330px;border:9px solid #f4ecda;border-radius:4px;
+    box-shadow:var(--shadow), 0 0 0 2px var(--brass);overflow:hidden;position:relative;
+  }
+  .frame img{width:100%;height:100%;object-fit:cover;min-height:330px}
+  .frame .cap{position:absolute;left:0;bottom:0;right:0;padding:22px 18px 12px;
+    background:linear-gradient(transparent,rgba(14,36,22,.82));
+    font-family:var(--font-chalk);font-size:1.3rem;color:#f4ecda}
+  .stage .actions{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+  .btn{padding:13px 22px;border-radius:32px;font:600 .74rem var(--font-sans);letter-spacing:.14em;
+    text-transform:uppercase;transition:.2s;cursor:pointer;border:none}
+  .btn-solid{background:var(--tomato);color:var(--cream)}
+  .btn-solid:hover{background:var(--tomato-2);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--cream);border:1.5px solid var(--brass-2)}
+  .btn-ghost:hover{background:var(--brass-2);color:var(--green-ink)}
+
+  /* -- épicerie shelf column -- */
+  .shelf{display:flex;flex-direction:column;gap:16px}
+  .shelf .rate{background:rgba(244,236,218,.08);border:1px solid rgba(224,192,127,.35);
+    border-radius:10px;padding:14px 16px}
+  .shelf .rate .row{display:flex;justify-content:space-between;align-items:center;
+    padding:7px 0;font-size:.82rem;color:#dfe8de}
+  .shelf .rate .row+.row{border-top:1px dotted rgba(224,192,127,.25)}
+  .shelf .rate b{font-family:var(--font-serif);font-size:1.15rem;color:var(--brass-2)}
+  .shelf .rate .lead-row{font-family:var(--font-sans);font-size:.6rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--brass-2);margin-bottom:4px}
+  .shelf .photo{border-radius:10px;overflow:hidden;border:1px solid rgba(224,192,127,.4);
+    height:150px;position:relative;box-shadow:var(--shadow)}
+  .shelf .photo img{width:100%;height:100%;object-fit:cover}
+  .shelf .photo .tag{position:absolute;left:10px;bottom:8px;background:rgba(14,36,22,.7);
+    color:var(--cream);font-family:var(--font-chalk);font-size:1.1rem;padding:2px 10px;border-radius:6px}
+  .deliver{background:var(--cream);color:var(--green-ink);border-radius:10px;padding:14px 16px;
+    box-shadow:var(--shadow)}
+  .deliver .lead-row{font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--tomato);margin-bottom:9px;font-weight:600}
+  .deliver .pills{display:flex;gap:8px;flex-wrap:wrap}
+  .pill{background:var(--green);color:var(--cream);border-radius:20px;padding:7px 14px;
+    font-size:.72rem;font-weight:500;letter-spacing:.04em}
+
+  /* ===== L'ÉTABLI (menu worktop) ===== */
+  .worktop{
+    background:
+      linear-gradient(var(--paper),var(--paper)),
+      repeating-linear-gradient(115deg,rgba(160,140,110,.05) 0 3px,transparent 3px 9px);
+    padding:64px 0 70px;position:relative;
+  }
+  .sec-head{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:end;margin-bottom:34px}
+  .sec-head .kick{font-family:var(--font-chalk);font-size:1.35rem;color:var(--tomato)}
+  .sec-head h2{font-size:2.7rem;color:var(--green);letter-spacing:-.5px}
+  .sec-head .rule{height:2px;background:linear-gradient(90deg,var(--brass),transparent);align-self:center}
+  .sec-head .aside{font-size:.66rem;letter-spacing:.05em;color:var(--ink-soft);font-style:italic;
+    text-align:right;max-width:24ch}
+
+  .menu-grid{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:26px;align-items:start}
+  .card{background:#fff;border:1px solid #e6dcc4;border-radius:10px;box-shadow:0 14px 30px -22px rgba(14,36,22,.5)}
+  .card .top{background:var(--green);color:var(--cream);padding:13px 20px;border-radius:10px 10px 0 0;
+    display:flex;justify-content:space-between;align-items:center}
+  .card .top h3{font-family:var(--font-serif);font-size:1.28rem;color:var(--cream)}
+  .card .top .it{font-family:var(--font-script);font-size:1.25rem;color:var(--brass-2)}
+  .card .body{padding:8px 20px 18px}
+  .dish{display:flex;justify-content:space-between;gap:14px;align-items:baseline;
+    padding:11px 0;border-bottom:1px dotted #ddd0b4}
+  .dish:last-child{border-bottom:none}
+  .dish .n{font-family:var(--font-serif);font-size:1.02rem;color:var(--charcoal)}
+  .dish .d{font-size:.76rem;color:var(--ink-soft);display:block;margin-top:2px;font-weight:300}
+  .dish .p{font-family:var(--font-serif);color:var(--tomato);font-weight:600;white-space:nowrap}
+  .card .photo{height:170px;overflow:hidden;border-radius:0 0 10px 10px}
+  .card .photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .card:hover .photo img{transform:scale(1.06)}
+
+  .span2{grid-column:span 2}
+  .forno{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .forno .photo{height:100%;min-height:100%;border-radius:0 0 10px 0}
+  .forno .photo img{height:100%;min-height:230px}
+  .forno .col-body{border-right:1px solid #eee0c8}
+
+  /* polaroid pins strip */
+  .pins{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
+  .polaroid{background:#fff;padding:10px 10px 40px;border-radius:3px;box-shadow:0 16px 30px -20px rgba(14,36,22,.6);
+    position:relative}
+  .polaroid:nth-child(1){transform:rotate(-1.6deg)}
+  .polaroid:nth-child(2){transform:rotate(.8deg)}
+  .polaroid:nth-child(3){transform:rotate(-.6deg)}
+  .polaroid .pic{height:230px;overflow:hidden;background:#eee}
+  .polaroid .pic img{width:100%;height:100%;object-fit:cover}
+  .polaroid .cap{position:absolute;left:0;right:0;bottom:10px;text-align:center;
+    font-family:var(--font-chalk);font-size:1.3rem;color:var(--green)}
+  .polaroid .tape{position:absolute;top:-10px;left:50%;transform:translateX(-50%) rotate(-3deg);
+    width:78px;height:22px;background:rgba(195,154,83,.5);border:1px solid rgba(160,120,60,.4)}
+
+  /* ===== L'ATELIER (story band) ===== */
+  .atelier{background:var(--green);color:var(--cream);padding:70px 0;position:relative;overflow:hidden}
+  .atelier::before{content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.03) 1px,transparent 1px);background-size:20px 20px}
+  .atelier-in{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center}
+  .atelier .txt .kick{font-family:var(--font-chalk);font-size:1.4rem;color:var(--brass-2)}
+  .atelier .txt h2{font-size:2.7rem;color:var(--cream);margin:6px 0 18px;letter-spacing:-.5px}
+  .atelier .txt h2 i{font-family:var(--font-script);font-style:normal;color:var(--brass-2);font-weight:400}
+  .atelier .txt p{color:#dbe6dc;margin-bottom:16px;font-weight:300;max-width:52ch}
+  .atelier .facts{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .fact{border:1px solid rgba(224,192,127,.4);border-radius:10px;padding:12px 16px;min-width:120px}
+  .fact b{display:block;font-family:var(--font-serif);font-size:1.5rem;color:var(--brass-2)}
+  .fact span{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:#c4d4c6}
+  .collage{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr;gap:14px;height:440px}
+  .collage figure{overflow:hidden;border-radius:8px;border:3px solid rgba(244,236,218,.9);position:relative;
+    box-shadow:var(--shadow)}
+  .collage figure img{width:100%;height:100%;object-fit:cover}
+  .collage .big{grid-row:span 2}
+  .collage figcaption{position:absolute;left:0;bottom:0;right:0;padding:16px 12px 8px;
+    background:linear-gradient(transparent,rgba(14,36,22,.8));font-family:var(--font-chalk);
+    font-size:1.1rem;color:var(--cream)}
+
+  /* ===== LE COMPTOIR (visit) ===== */
+  .comptoir{background:var(--cream-2);padding:64px 0 30px}
+  .visit-grid{display:grid;grid-template-columns:.85fr .85fr 1.3fr;gap:24px;align-items:stretch}
+  .panel{background:#fff;border:1px solid #e2d7bd;border-radius:12px;padding:24px 26px;
+    box-shadow:0 14px 30px -24px rgba(14,36,22,.5)}
+  .panel h3{font-family:var(--font-serif);font-size:1.35rem;color:var(--green);margin-bottom:4px}
+  .panel .kick{font-family:var(--font-chalk);color:var(--tomato);font-size:1.2rem;margin-bottom:12px;display:block}
+  .hours li{list-style:none;display:flex;justify-content:space-between;gap:10px;padding:8px 0;
+    border-bottom:1px dotted #ddd0b4;font-size:.86rem}
+  .hours li:last-child{border-bottom:none}
+  .hours .day{color:var(--charcoal);font-weight:500}
+  .hours .time{color:var(--ink-soft);text-align:right}
+  .hours .closed{color:var(--tomato);font-style:italic}
+  .note-conf{font-size:.64rem;color:var(--ink-soft);font-style:italic;margin-top:12px}
+  .contact-line{display:flex;gap:11px;align-items:flex-start;padding:10px 0;border-bottom:1px dotted #ddd0b4;font-size:.9rem}
+  .contact-line:last-of-type{border-bottom:none}
+  .contact-line .ic{width:30px;height:30px;flex:0 0 30px;border-radius:50%;background:var(--green);
+    color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:.9rem}
+  .contact-line b{display:block;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tomato)}
+  .pay{margin-top:14px}
+  .pay .lead-row{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green);
+    font-weight:600;margin-bottom:8px}
+  .pay .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .pay .chips span{background:var(--cream);border:1px solid #ddd0b4;border-radius:6px;
+    padding:5px 10px;font-size:.7rem;color:var(--ink-soft)}
+  .map-panel{padding:0;overflow:hidden}
+  .map-panel iframe{width:100%;height:100%;min-height:340px;border:0;display:block}
+
+  /* ===== PIED (footer) ===== */
+  footer{background:var(--green-ink);color:#cfe0d3;padding:48px 0 26px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;align-items:start}
+  footer .script{font-family:var(--font-script);font-size:2.1rem;color:var(--cream)}
+  footer .script b{color:var(--brass-2);font-weight:400}
+  footer .sub{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:#8fa895;margin-top:4px}
+  footer p{font-size:.82rem;color:#a9c0af;margin-top:14px;max-width:40ch;font-weight:300}
+  footer h4{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-2);margin-bottom:12px}
+  footer .flist a,footer .flist div{display:block;font-size:.86rem;color:#cfe0d3;padding:5px 0}
+  footer .flist a:hover{color:var(--brass-2)}
+  .foot-bar{border-top:1px solid rgba(224,192,127,.2);margin-top:34px;padding-top:16px;
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.68rem;color:#8fa895}
+  .disclaimer{background:rgba(192,64,42,.16);border:1px dashed var(--tomato);color:#f0cfc6;
+    border-radius:8px;padding:8px 14px;font-size:.68rem}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:1080px){
+    .wall-in{grid-template-columns:1fr 1fr}
+    .shelf{grid-column:span 2;flex-direction:row;flex-wrap:wrap}
+    .shelf>*{flex:1 1 220px}
+    .menu-grid{grid-template-columns:1fr 1fr}
+    .span2{grid-column:span 2}
+    .visit-grid{grid-template-columns:1fr 1fr}
+    .map-panel{grid-column:span 2}
+    .atelier-in{grid-template-columns:1fr}
+    .collage{height:360px}
+  }
+  @media(max-width:720px){
+    .wrap,.enseigne-in,.wall-in{padding-left:20px;padding-right:20px}
+    .nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--green-deep);
+      flex-direction:column;gap:0;padding:10px 20px;border-bottom:3px solid var(--brass)}
+    .nav.open{display:flex}
+    .nav a{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);width:100%}
+    .burger{display:block}
+    .enseigne-in{grid-template-columns:auto 1fr;gap:12px}
+    .ens-right{gap:8px}
+    .ens-cta{display:none}
+    .wall-in{grid-template-columns:1fr}
+    .shelf{grid-column:auto;flex-direction:column}
+    .slate h2{font-size:2.4rem}
+    .stage h1{font-size:2.2rem}
+    .menu-grid{grid-template-columns:1fr}
+    .span2{grid-column:auto}
+    .forno{grid-template-columns:1fr}
+    .pins{grid-template-columns:1fr}
+    .polaroid{transform:none!important}
+    .sec-head{grid-template-columns:1fr;gap:8px}
+    .sec-head .rule{display:none}
+    .sec-head .aside{text-align:left;max-width:none}
+    .visit-grid{grid-template-columns:1fr}
+    .map-panel{grid-column:auto}
+    .foot-grid{grid-template-columns:1fr}
+    .collage{grid-template-columns:1fr 1fr;height:300px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== ENSEIGNE ===== -->
+<header class="enseigne">
+  <div class="enseigne-in">
+    <a href="#top" class="mark" aria-label="Atelier del Gusto">
+      <span class="script">Atelier <b>del Gusto</b></span>
+      <span class="sub" data-i18n="mark.sub">Trattoria · Pizzeria · Bonnevoie</span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#carte" data-i18n="nav.menu">La Carte</a>
+      <a href="#atelier" data-i18n="nav.atelier">L'Atelier</a>
+      <a href="#comptoir" data-i18n="nav.visit">Nous trouver</a>
+    </nav>
+    <div class="ens-right">
+      <div class="langs" role="group" aria-label="Langue">
+        <button data-lang="fr" class="on">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="tel:+35226481216" class="ens-cta" data-i18n="nav.reserve">Réserver</a>
+      <button class="burger" id="burger" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== LE MUR DE L'ATELIER (hero) ===== -->
+<section class="wall" id="top">
+  <div class="wall-in">
+
+    <!-- chalkboard -->
+    <div class="slate">
+      <span class="eyebrow" data-i18n="slate.eyebrow">Écrit à la craie, ce matin</span>
+      <h2 data-i18n="slate.title">L'ardoise du jour</h2>
+      <div class="dash"></div>
+      <ul>
+        <li><span data-i18n="slate.i1">Cavatelli alle vongole</span><span class="pr">€16</span></li>
+        <li><span data-i18n="slate.i2">Penne ai frutti di mare</span><span class="pr">€17</span></li>
+        <li><span data-i18n="slate.i3">Fettuccine à la burrata</span><span class="pr">€15</span></li>
+        <li><span data-i18n="slate.i4">Lasagne de la maison</span><span class="pr">€15</span></li>
+      </ul>
+      <div class="focaccia">
+        <div class="badge">🥖&nbsp;<span data-i18n="slate.focaccia">Focaccia maison <b>offerte</b> à chaque table</span></div>
+        <div class="confirm" data-i18n="slate.confirm">La pasta change chaque jour · prix indicatifs, à confirmer</div>
+      </div>
+    </div>
+
+    <!-- center stage -->
+    <div class="stage">
+      <div>
+        <div class="eyebrow" data-i18n="hero.eyebrow">Cucina italiana del giorno</div>
+        <h1><span data-i18n="hero.t1">Fait maison,</span> <i data-i18n="hero.t2">chaque jour</i><span data-i18n="hero.t3">, au cœur de Bonnevoie.</span></h1>
+        <p class="lead" data-i18n="hero.lead">Une vraie trattoria de quartier : pâtes fraîches du jour, pizzas napolitaines le soir, un comptoir d'épicerie italienne — et l'esprit d'un atelier où tout se prépare à la main.</p>
+      </div>
+      <div class="frame">
+        <img src="assets/hero.jpg" alt="Penne au ragù, spécialité de la maison">
+        <div class="cap" data-i18n="hero.cap">Le plat du jour, servi comme à la maison</div>
+      </div>
+      <div class="actions">
+        <a href="#carte" class="btn btn-solid" data-i18n="hero.cta1">Voir la carte</a>
+        <a href="#comptoir" class="btn btn-ghost" data-i18n="hero.cta2">Commander · Wedely & Wolt</a>
+      </div>
+    </div>
+
+    <!-- épicerie shelf -->
+    <aside class="shelf">
+      <div class="rate">
+        <div class="lead-row" data-i18n="shelf.rate">Le quartier en parle</div>
+        <div class="row"><span>Google</span><b>4,4 ★</b></div>
+        <div class="row"><span>Facebook</span><b>4,8 ★</b></div>
+        <div class="row"><span>TripAdvisor</span><b>4,4 ★</b></div>
+      </div>
+      <div class="photo">
+        <img src="assets/terrace-aperitivo.jpg" alt="Aperitivo en terrasse au coucher du soleil">
+        <span class="tag" data-i18n="shelf.terrace">Aperitivo en terrasse</span>
+      </div>
+      <div class="deliver">
+        <div class="lead-row" data-i18n="shelf.deliver">À emporter & livraison</div>
+        <div class="pills">
+          <a class="pill" href="https://www.wedely.com/restaurant/111924-atelier-del-gusto-bonnevoie" target="_blank" rel="noopener">Wedely</a>
+          <a class="pill" href="https://wolt.com/en/lux/luxembourg/restaurant/atelier-del-gusto" target="_blank" rel="noopener">Wolt</a>
+          <span class="pill" data-i18n="shelf.takeaway">Take-away</span>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<!-- ===== L'ÉTABLI (menu) ===== -->
+<section class="worktop" id="carte">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="kick" data-i18n="menu.kick">Sur l'établi</div>
+        <h2 data-i18n="menu.title">La carte</h2>
+      </div>
+      <div class="rule"></div>
+      <div class="aside" data-i18n="menu.aside">Prix indicatifs relevés en ligne — à confirmer avec l'établissement.</div>
+    </div>
+
+    <div class="menu-grid">
+      <!-- Le forno : pizze, spanning 2 with photo -->
+      <div class="card span2 rv">
+        <div class="forno">
+          <div class="col-body">
+            <div class="top">
+              <h3 data-i18n="cat.pizze">Al forno · Pizze</h3>
+              <span class="it">napoletana</span>
+            </div>
+            <div class="body">
+              <div class="dish"><div><span class="n">Margherita</span><span class="d" data-i18n="d.margherita">Tomate San Marzano, mozzarella, basilic</span></div><span class="p">€12</span></div>
+              <div class="dish"><div><span class="n">Diavola</span><span class="d" data-i18n="d.diavola">Salami piquant, mozzarella</span></div><span class="p">€15</span></div>
+              <div class="dish"><div><span class="n">Prosciutto e Funghi</span><span class="d" data-i18n="d.prosciutto">Jambon, champignons, mozzarella</span></div><span class="p">€15</span></div>
+              <div class="dish"><div><span class="n">Quattro Formaggi</span><span class="d" data-i18n="d.quattro">Quatre fromages fondants</span></div><span class="p">€16</span></div>
+              <div class="dish"><div><span class="n">Burrata</span><span class="d" data-i18n="d.burratapizza">Burrata crémeuse, tomate confite, basilic</span></div><span class="p">€19</span></div>
+            </div>
+          </div>
+          <div class="photo"><img src="assets/prosciutto-pizza.jpg" alt="Pizza napolitaine jambon & tomates séchées"></div>
+        </div>
+      </div>
+
+      <!-- Paste del giorno -->
+      <div class="card rv">
+        <div class="top">
+          <h3 data-i18n="cat.paste">Paste del giorno</h3>
+          <span class="it">fresca</span>
+        </div>
+        <div class="body">
+          <div class="dish"><div><span class="n">Napoli</span><span class="d" data-i18n="d.napoli">Sauce tomate, basilic</span></div><span class="p">€12</span></div>
+          <div class="dish"><div><span class="n">Arrabbiata</span><span class="d" data-i18n="d.arrabbiata">Tomate, ail, piment</span></div><span class="p">€15</span></div>
+          <div class="dish"><div><span class="n">Bolognese</span><span class="d" data-i18n="d.bolognese">Ragù de viande mijoté</span></div><span class="p">€15</span></div>
+          <div class="dish"><div><span class="n">Alle Vongole</span><span class="d" data-i18n="d.vongole">Palourdes, ail, vin blanc — selon la pêche</span></div><span class="p">€16</span></div>
+        </div>
+        <div class="photo"><img src="assets/spaghetti-vongole.jpg" alt="Spaghetti alle vongole"></div>
+      </div>
+
+      <!-- Antipasti + Cantina -->
+      <div class="card rv">
+        <div class="top">
+          <h3 data-i18n="cat.anti">Antipasti & al forno</h3>
+          <span class="it">per iniziare</span>
+        </div>
+        <div class="body">
+          <div class="dish"><div><span class="n">Caprese / Burrata</span><span class="d" data-i18n="d.caprese">Burrata, tomate, huile d'olive, grissini</span></div><span class="p" data-i18n="p.market">au marché</span></div>
+          <div class="dish"><div><span class="n">Lasagne</span><span class="d" data-i18n="d.lasagne">Gratinée au four, recette de la maison</span></div><span class="p">€15</span></div>
+          <div class="dish"><div><span class="n">Cannelloni</span><span class="d" data-i18n="d.cannelloni">Ricotta & épinards, gratinés</span></div><span class="p">€15</span></div>
+          <div class="dish"><div><span class="n">Panzerotti</span><span class="d" data-i18n="d.panzerotti">Chaussons frits — certains soirs</span></div><span class="p" data-i18n="p.confirm">à conf.</span></div>
+        </div>
+        <div class="photo"><img src="assets/caprese-tomato.jpg" alt="Caprese burrata & tomate"></div>
+      </div>
+    </div>
+
+    <!-- polaroid pins -->
+    <div class="pins">
+      <figure class="polaroid rv"><span class="tape"></span><div class="pic"><img src="assets/burrata-pizza.jpg" alt="Pizza à la burrata"></div><figcaption data-i18n="pin.burrata">Pizza burrata</figcaption></figure>
+      <figure class="polaroid rv"><span class="tape"></span><div class="pic"><img src="assets/mussel-penne.jpg" alt="Penne aux fruits de mer"></div><figcaption data-i18n="pin.mare">Frutti di mare</figcaption></figure>
+      <figure class="polaroid rv"><span class="tape"></span><div class="pic"><img src="assets/spaghetti-vongole.jpg" alt="Spaghetti alle vongole"></div><figcaption data-i18n="pin.vongole">Alle vongole</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== L'ATELIER (story) ===== -->
+<section class="atelier" id="atelier">
+  <div class="wrap atelier-in">
+    <div class="txt rv">
+      <span class="kick" data-i18n="story.kick">Depuis le comptoir</span>
+      <h2><span data-i18n="story.t1">Un atelier</span> <i data-i18n="story.t2">du goût</i></h2>
+      <p data-i18n="story.p1">À Bonnevoie, « Atelier del Gusto » porte bien son nom : c'est une maison où l'on travaille le produit chaque matin. Les pâtes se déclinent au fil des arrivages, la focaccia sort tiède, et la pizza napolitaine s'allume le soir.</p>
+      <p data-i18n="story.p2">Au fond, un vrai comptoir d'épicerie — fromages, charcuterie, produits d'Italie — prolonge l'assiette. On y vient en famille, entre voisins, ou l'on croise la camionnette « del Gusto » qui promène le goût de la maison dans la ville.</p>
+      <div class="facts">
+        <div class="fact"><b data-i18n="story.f1n">Chaque jour</b><span data-i18n="story.f1l">pâtes fraîches</span></div>
+        <div class="fact"><b>4,4 ★</b><span data-i18n="story.f2l">~648 avis Google</span></div>
+        <div class="fact"><b data-i18n="story.f3n">Terrasse</b><span data-i18n="story.f3l">& food-truck</span></div>
+      </div>
+    </div>
+    <div class="collage rv">
+      <figure class="big"><img src="assets/interior.jpg" alt="Salle chaleureuse et comptoir d'épicerie"><figcaption data-i18n="col.interior">La salle & le comptoir</figcaption></figure>
+      <figure><img src="assets/storefront.jpg" alt="Façade verte de l'Atelier del Gusto"><figcaption data-i18n="col.front">Rue Demy Schlechter</figcaption></figure>
+      <figure><img src="assets/burrata-pizza.jpg" alt="Pizza à la burrata"><figcaption data-i18n="col.pizza">Du four</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LE COMPTOIR (visit) ===== -->
+<section class="comptoir" id="comptoir">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div>
+        <div class="kick" data-i18n="visit.kick">Passez nous voir</div>
+        <h2 data-i18n="visit.title">Le comptoir</h2>
+      </div>
+      <div class="rule"></div>
+      <div class="aside" data-i18n="visit.aside">Fermé le dimanche et le lundi. Horaires à confirmer.</div>
+    </div>
+
+    <div class="visit-grid">
+      <!-- hours -->
+      <div class="panel rv">
+        <span class="kick" data-i18n="hours.kick">Ouverture</span>
+        <h3 data-i18n="hours.title">Horaires</h3>
+        <ul class="hours">
+          <li><span class="day" data-i18n="day.mon">Lundi</span><span class="time closed" data-i18n="hours.closed">Fermé</span></li>
+          <li><span class="day" data-i18n="day.tue">Mardi</span><span class="time">11:45–14:00 · 18:00–22:00</span></li>
+          <li><span class="day" data-i18n="day.wed">Mercredi</span><span class="time">11:45–14:00 · 18:00–22:00</span></li>
+          <li><span class="day" data-i18n="day.thu">Jeudi</span><span class="time">11:45–14:00 · 18:00–22:00</span></li>
+          <li><span class="day" data-i18n="day.fri">Vendredi</span><span class="time">11:45–14:00 · 18:00–22:00</span></li>
+          <li><span class="day" data-i18n="day.sat">Samedi</span><span class="time">11:45–14:00 · 18:00–22:00</span></li>
+          <li><span class="day" data-i18n="day.sun">Dimanche</span><span class="time closed" data-i18n="hours.closed2">Fermé</span></li>
+        </ul>
+        <p class="note-conf" data-i18n="hours.note">Deux sources divergent légèrement — merci de confirmer les horaires exacts.</p>
+      </div>
+
+      <!-- contact + payments -->
+      <div class="panel rv">
+        <span class="kick" data-i18n="contact.kick">Coordonnées</span>
+        <h3 data-i18n="contact.title">Nous contacter</h3>
+        <a class="contact-line" href="https://www.google.com/maps?q=26+Rue+Demy+Schlechter+2521+Luxembourg" target="_blank" rel="noopener">
+          <span class="ic">✦</span><span><b data-i18n="contact.addr">Adresse</b>26, Rue Demy Schlechter<br>L-2521 Luxembourg (Bonnevoie)</span>
+        </a>
+        <a class="contact-line" href="tel:+35226481216">
+          <span class="ic">☎</span><span><b data-i18n="contact.phone">Téléphone</b>+352 26 48 12 16</span>
+        </a>
+        <div class="contact-line">
+          <span class="ic">◷</span><span><b data-i18n="contact.serve">Service</b><span data-i18n="contact.serveval">Sur place · Terrasse · À emporter · Livraison</span></span>
+        </div>
+        <div class="pay">
+          <div class="lead-row" data-i18n="pay.title">Paiements acceptés</div>
+          <div class="chips">
+            <span>Visa</span><span>Mastercard</span><span>Maestro</span><span>V Pay</span>
+            <span data-i18n="pay.tr">Ticket Restaurant</span><span data-i18n="pay.cr">Chèque Repas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- map -->
+      <div class="panel map-panel rv">
+        <iframe
+          title="Carte — Atelier del Gusto, Bonnevoie"
+          src="https://www.google.com/maps?q=26+Rue+Demy+Schlechter+2521+Luxembourg&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PIED ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="script">Atelier <b>del Gusto</b></div>
+        <div class="sub" data-i18n="foot.sub">Trattoria · Pizzeria · Bonnevoie</div>
+        <p data-i18n="foot.blurb">Cucina italiana del giorno — pâtes fraîches, pizzas napolitaines et un comptoir d'épicerie, au cœur de Bonnevoie.</p>
+      </div>
+      <div>
+        <h4 data-i18n="foot.visit">Visite</h4>
+        <div class="flist">
+          <div>26, Rue Demy Schlechter</div>
+          <div>L-2521 Luxembourg</div>
+          <a href="tel:+35226481216">+352 26 48 12 16</a>
+        </div>
+      </div>
+      <div>
+        <h4 data-i18n="foot.order">Commander & suivre</h4>
+        <div class="flist">
+          <a href="https://www.wedely.com/restaurant/111924-atelier-del-gusto-bonnevoie" target="_blank" rel="noopener">Wedely</a>
+          <a href="https://wolt.com/en/lux/luxembourg/restaurant/atelier-del-gusto" target="_blank" rel="noopener">Wolt</a>
+          <a href="https://www.instagram.com/atelierdelgusto_ristorante/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.facebook.com/people/Atelier-del-Gusto-Bonnevoie/100063660604030/" target="_blank" rel="noopener">Facebook</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>© <span id="yr"></span> Atelier del Gusto — Bonnevoie</span>
+      <span class="disclaimer" data-i18n="foot.demo">Site de démonstration — contenu et visuels à valider avec l'établissement. Ceci n'est pas le site officiel.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== i18n ===== */
+const I18N = {
+  fr:{
+    "mark.sub":"Trattoria · Pizzeria · Bonnevoie",
+    "nav.menu":"La Carte","nav.atelier":"L'Atelier","nav.visit":"Nous trouver","nav.reserve":"Réserver",
+    "slate.eyebrow":"Écrit à la craie, ce matin","slate.title":"L'ardoise du jour",
+    "slate.i1":"Cavatelli alle vongole","slate.i2":"Penne ai frutti di mare","slate.i3":"Fettuccine à la burrata","slate.i4":"Lasagne de la maison",
+    "slate.focaccia":"Focaccia maison offerte à chaque table","slate.confirm":"La pasta change chaque jour · prix indicatifs, à confirmer",
+    "hero.eyebrow":"Cucina italiana del giorno","hero.t1":"Fait maison,","hero.t2":"chaque jour","hero.t3":", au cœur de Bonnevoie.",
+    "hero.lead":"Une vraie trattoria de quartier : pâtes fraîches du jour, pizzas napolitaines le soir, un comptoir d'épicerie italienne — et l'esprit d'un atelier où tout se prépare à la main.",
+    "hero.cap":"Le plat du jour, servi comme à la maison","hero.cta1":"Voir la carte","hero.cta2":"Commander · Wedely & Wolt",
+    "shelf.rate":"Le quartier en parle","shelf.terrace":"Aperitivo en terrasse","shelf.deliver":"À emporter & livraison","shelf.takeaway":"Take-away",
+    "menu.kick":"Sur l'établi","menu.title":"La carte","menu.aside":"Prix indicatifs relevés en ligne — à confirmer avec l'établissement.",
+    "cat.pizze":"Al forno · Pizze","cat.paste":"Paste del giorno","cat.anti":"Antipasti & al forno",
+    "d.margherita":"Tomate San Marzano, mozzarella, basilic","d.diavola":"Salami piquant, mozzarella","d.prosciutto":"Jambon, champignons, mozzarella","d.quattro":"Quatre fromages fondants","d.burratapizza":"Burrata crémeuse, tomate confite, basilic",
+    "d.napoli":"Sauce tomate, basilic","d.arrabbiata":"Tomate, ail, piment","d.bolognese":"Ragù de viande mijoté","d.vongole":"Palourdes, ail, vin blanc — selon la pêche",
+    "d.caprese":"Burrata, tomate, huile d'olive, grissini","d.lasagne":"Gratinée au four, recette de la maison","d.cannelloni":"Ricotta & épinards, gratinés","d.panzerotti":"Chaussons frits — certains soirs",
+    "p.market":"au marché","p.confirm":"à conf.",
+    "pin.burrata":"Pizza burrata","pin.mare":"Frutti di mare","pin.vongole":"Alle vongole",
+    "story.kick":"Depuis le comptoir","story.t1":"Un atelier","story.t2":"du goût",
+    "story.p1":"À Bonnevoie, « Atelier del Gusto » porte bien son nom : c'est une maison où l'on travaille le produit chaque matin. Les pâtes se déclinent au fil des arrivages, la focaccia sort tiède, et la pizza napolitaine s'allume le soir.",
+    "story.p2":"Au fond, un vrai comptoir d'épicerie — fromages, charcuterie, produits d'Italie — prolonge l'assiette. On y vient en famille, entre voisins, ou l'on croise la camionnette « del Gusto » qui promène le goût de la maison dans la ville.",
+    "story.f1n":"Chaque jour","story.f1l":"pâtes fraîches","story.f2l":"~648 avis Google","story.f3n":"Terrasse","story.f3l":"& food-truck",
+    "col.interior":"La salle & le comptoir","col.front":"Rue Demy Schlechter","col.pizza":"Du four",
+    "visit.kick":"Passez nous voir","visit.title":"Le comptoir","visit.aside":"Fermé le dimanche et le lundi. Horaires à confirmer.",
+    "hours.kick":"Ouverture","hours.title":"Horaires","hours.closed":"Fermé","hours.closed2":"Fermé","hours.note":"Deux sources divergent légèrement — merci de confirmer les horaires exacts.",
+    "day.mon":"Lundi","day.tue":"Mardi","day.wed":"Mercredi","day.thu":"Jeudi","day.fri":"Vendredi","day.sat":"Samedi","day.sun":"Dimanche",
+    "contact.kick":"Coordonnées","contact.title":"Nous contacter","contact.addr":"Adresse","contact.phone":"Téléphone","contact.serve":"Service","contact.serveval":"Sur place · Terrasse · À emporter · Livraison",
+    "pay.title":"Paiements acceptés","pay.tr":"Ticket Restaurant","pay.cr":"Chèque Repas",
+    "foot.sub":"Trattoria · Pizzeria · Bonnevoie","foot.blurb":"Cucina italiana del giorno — pâtes fraîches, pizzas napolitaines et un comptoir d'épicerie, au cœur de Bonnevoie.",
+    "foot.visit":"Visite","foot.order":"Commander & suivre",
+    "foot.demo":"Site de démonstration — contenu et visuels à valider avec l'établissement. Ceci n'est pas le site officiel."
+  },
+  de:{
+    "mark.sub":"Trattoria · Pizzeria · Bonneweg",
+    "nav.menu":"Speisekarte","nav.atelier":"Das Atelier","nav.visit":"Anfahrt","nav.reserve":"Reservieren",
+    "slate.eyebrow":"Heute früh mit Kreide geschrieben","slate.title":"Die Tafel des Tages",
+    "slate.i1":"Cavatelli alle vongole","slate.i2":"Penne ai frutti di mare","slate.i3":"Fettuccine mit Burrata","slate.i4":"Lasagne des Hauses",
+    "slate.focaccia":"Hausgemachte Focaccia — gratis an jedem Tisch","slate.confirm":"Die Pasta wechselt täglich · Richtpreise, ohne Gewähr",
+    "hero.eyebrow":"Cucina italiana del giorno","hero.t1":"Hausgemacht,","hero.t2":"jeden Tag","hero.t3":", mitten in Bonneweg.",
+    "hero.lead":"Eine echte Trattoria im Viertel: frische Pasta des Tages, neapolitanische Pizza am Abend, ein italienischer Feinkosttresen — und der Geist einer Werkstatt, in der alles von Hand entsteht.",
+    "hero.cap":"Das Tagesgericht, serviert wie zu Hause","hero.cta1":"Zur Karte","hero.cta2":"Bestellen · Wedely & Wolt",
+    "shelf.rate":"Das Viertel spricht darüber","shelf.terrace":"Aperitivo auf der Terrasse","shelf.deliver":"Abholung & Lieferung","shelf.takeaway":"Take-away",
+    "menu.kick":"Auf der Werkbank","menu.title":"Die Karte","menu.aside":"Online erfasste Richtpreise — mit dem Lokal zu bestätigen.",
+    "cat.pizze":"Al forno · Pizze","cat.paste":"Paste del giorno","cat.anti":"Antipasti & al forno",
+    "d.margherita":"San-Marzano-Tomate, Mozzarella, Basilikum","d.diavola":"Scharfe Salami, Mozzarella","d.prosciutto":"Schinken, Champignons, Mozzarella","d.quattro":"Vier geschmolzene Käsesorten","d.burratapizza":"Cremige Burrata, Tomatenconfit, Basilikum",
+    "d.napoli":"Tomatensauce, Basilikum","d.arrabbiata":"Tomate, Knoblauch, Chili","d.bolognese":"Geschmortes Fleischragù","d.vongole":"Venusmuscheln, Knoblauch, Weißwein — je nach Fang",
+    "d.caprese":"Burrata, Tomate, Olivenöl, Grissini","d.lasagne":"Im Ofen überbacken, Hausrezept","d.cannelloni":"Ricotta & Spinat, überbacken","d.panzerotti":"Frittierte Teigtaschen — an manchen Abenden",
+    "p.market":"tagespreis","p.confirm":"n. Abspr.",
+    "pin.burrata":"Burrata-Pizza","pin.mare":"Frutti di mare","pin.vongole":"Alle vongole",
+    "story.kick":"Vom Tresen","story.t1":"Eine Werkstatt","story.t2":"des Geschmacks",
+    "story.p1":"In Bonneweg trägt „Atelier del Gusto“ seinen Namen zu Recht: ein Haus, in dem das Produkt jeden Morgen verarbeitet wird. Die Pasta richtet sich nach der Anlieferung, die Focaccia kommt lauwarm auf den Tisch, und am Abend glüht der Pizzaofen.",
+    "story.p2":"Im Hintergrund verlängert ein echter Feinkosttresen — Käse, Wurstwaren, Produkte aus Italien — den Teller. Man kommt mit der Familie, unter Nachbarn, oder begegnet dem „del Gusto“-Foodtruck, der den Hausgeschmack durch die Stadt fährt.",
+    "story.f1n":"Täglich","story.f1l":"frische Pasta","story.f2l":"~648 Google-Bewertungen","story.f3n":"Terrasse","story.f3l":"& Foodtruck",
+    "col.interior":"Der Gastraum & der Tresen","col.front":"Rue Demy Schlechter","col.pizza":"Aus dem Ofen",
+    "visit.kick":"Besuchen Sie uns","visit.title":"Der Tresen","visit.aside":"Sonntag und Montag geschlossen. Zeiten ohne Gewähr.",
+    "hours.kick":"Öffnung","hours.title":"Öffnungszeiten","hours.closed":"Geschlossen","hours.closed2":"Geschlossen","hours.note":"Zwei Quellen weichen leicht ab — bitte genaue Zeiten bestätigen.",
+    "day.mon":"Montag","day.tue":"Dienstag","day.wed":"Mittwoch","day.thu":"Donnerstag","day.fri":"Freitag","day.sat":"Samstag","day.sun":"Sonntag",
+    "contact.kick":"Kontakt","contact.title":"Kontakt","contact.addr":"Adresse","contact.phone":"Telefon","contact.serve":"Service","contact.serveval":"Vor Ort · Terrasse · Abholung · Lieferung",
+    "pay.title":"Akzeptierte Zahlungen","pay.tr":"Ticket Restaurant","pay.cr":"Chèque Repas",
+    "foot.sub":"Trattoria · Pizzeria · Bonneweg","foot.blurb":"Cucina italiana del giorno — frische Pasta, neapolitanische Pizza und ein Feinkosttresen, mitten in Bonneweg.",
+    "foot.visit":"Besuch","foot.order":"Bestellen & folgen",
+    "foot.demo":"Demo-Website — Inhalte und Bilder mit dem Lokal zu bestätigen. Dies ist nicht die offizielle Website."
+  },
+  en:{
+    "mark.sub":"Trattoria · Pizzeria · Bonnevoie",
+    "nav.menu":"The Menu","nav.atelier":"The Atelier","nav.visit":"Find Us","nav.reserve":"Book a Table",
+    "slate.eyebrow":"Chalked up this morning","slate.title":"Today's slate",
+    "slate.i1":"Cavatelli alle vongole","slate.i2":"Penne ai frutti di mare","slate.i3":"Fettuccine with burrata","slate.i4":"House lasagne",
+    "slate.focaccia":"Homemade focaccia — free at every table","slate.confirm":"The pasta changes daily · prices indicative, to be confirmed",
+    "hero.eyebrow":"Cucina italiana del giorno","hero.t1":"Made by hand,","hero.t2":"every day","hero.t3":", in the heart of Bonnevoie.",
+    "hero.lead":"A genuine neighbourhood trattoria: fresh pasta of the day, Neapolitan pizza at night, an Italian deli counter — and the spirit of a workshop where everything is made by hand.",
+    "hero.cap":"The dish of the day, served like home","hero.cta1":"See the menu","hero.cta2":"Order · Wedely & Wolt",
+    "shelf.rate":"The neighbourhood talks","shelf.terrace":"Aperitivo on the terrace","shelf.deliver":"Takeaway & delivery","shelf.takeaway":"Take-away",
+    "menu.kick":"On the bench","menu.title":"The menu","menu.aside":"Indicative prices found online — to be confirmed with the venue.",
+    "cat.pizze":"Al forno · Pizze","cat.paste":"Paste del giorno","cat.anti":"Antipasti & al forno",
+    "d.margherita":"San Marzano tomato, mozzarella, basil","d.diavola":"Spicy salami, mozzarella","d.prosciutto":"Ham, mushrooms, mozzarella","d.quattro":"Four melting cheeses","d.burratapizza":"Creamy burrata, confit tomato, basil",
+    "d.napoli":"Tomato sauce, basil","d.arrabbiata":"Tomato, garlic, chilli","d.bolognese":"Slow-cooked meat ragù","d.vongole":"Clams, garlic, white wine — depending on the catch",
+    "d.caprese":"Burrata, tomato, olive oil, grissini","d.lasagne":"Oven-baked, house recipe","d.cannelloni":"Ricotta & spinach, baked","d.panzerotti":"Fried pockets — some evenings",
+    "p.market":"market price","p.confirm":"tbc",
+    "pin.burrata":"Burrata pizza","pin.mare":"Frutti di mare","pin.vongole":"Alle vongole",
+    "story.kick":"From the counter","story.t1":"A workshop","story.t2":"of taste",
+    "story.p1":"In Bonnevoie, “Atelier del Gusto” lives up to its name: a house where the produce is worked every morning. The pasta shifts with the deliveries, the focaccia comes out warm, and the Neapolitan oven fires up at night.",
+    "story.p2":"At the back, a real deli counter — cheeses, cured meats, products from Italy — extends the plate. People come with family, among neighbours, or spot the “del Gusto” van carrying the house flavour around town.",
+    "story.f1n":"Every day","story.f1l":"fresh pasta","story.f2l":"~648 Google reviews","story.f3n":"Terrace","story.f3l":"& food truck",
+    "col.interior":"The dining room & counter","col.front":"Rue Demy Schlechter","col.pizza":"From the oven",
+    "visit.kick":"Come and see us","visit.title":"The counter","visit.aside":"Closed Sunday and Monday. Hours to be confirmed.",
+    "hours.kick":"Opening","hours.title":"Opening hours","hours.closed":"Closed","hours.closed2":"Closed","hours.note":"Two sources differ slightly — please confirm exact hours.",
+    "day.mon":"Monday","day.tue":"Tuesday","day.wed":"Wednesday","day.thu":"Thursday","day.fri":"Friday","day.sat":"Saturday","day.sun":"Sunday",
+    "contact.kick":"Details","contact.title":"Contact us","contact.addr":"Address","contact.phone":"Phone","contact.serve":"Service","contact.serveval":"Dine-in · Terrace · Takeaway · Delivery",
+    "pay.title":"Payments accepted","pay.tr":"Ticket Restaurant","pay.cr":"Chèque Repas",
+    "foot.sub":"Trattoria · Pizzeria · Bonnevoie","foot.blurb":"Cucina italiana del giorno — fresh pasta, Neapolitan pizza and a deli counter, in the heart of Bonnevoie.",
+    "foot.visit":"Visit","foot.order":"Order & follow",
+    "foot.demo":"Demonstration site — content and images to be validated with the venue. This is not the official website."
+  }
+};
+function setLang(lang){
+  const dict=I18N[lang]; if(!dict) return;
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(dict[k]!==undefined) el.textContent=dict[k];
+  });
+  document.querySelectorAll('.langs button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+}
+document.querySelectorAll('.langs button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+
+/* mobile nav */
+const burger=document.getElementById('burger'),nav=document.getElementById('nav');
+burger.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+/* year */
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* reveal on scroll */
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

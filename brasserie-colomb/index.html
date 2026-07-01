@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Brasserie Colomb — Cuisine franco-italienne · Gasperich, Luxembourg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Barlow+Condensed:wght@400;500;600&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1E3A5F;
+  --navy-deep:#152a45;
+  --navy-ink:#0f2138;
+  --gold:#B5985A;
+  --gold-lt:#C9AE78;
+  --gold-soft:#e4d4ab;
+  --cream:#F6F1E7;
+  --cream-2:#efe7d6;
+  --paper:#fbf8f1;
+  --ink:#22282f;
+  --ink-soft:#4a5460;
+  --line:rgba(30,58,95,.18);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Barlow',system-ui,sans-serif;
+  --cond:'Barlow Condensed',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+.wrap{max-width:1360px;margin:0 auto;padding:0 40px}
+.label{
+  font-family:var(--cond);
+  text-transform:uppercase;
+  letter-spacing:.34em;
+  font-weight:500;
+  font-size:.72rem;
+  color:var(--gold);
+}
+.serif{font-family:var(--serif)}
+.aconf{
+  font-family:var(--cond);
+  font-size:.6rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gold);
+  border:1px solid var(--gold-soft);
+  padding:1px 6px;
+  border-radius:2px;
+  white-space:nowrap;
+  vertical-align:middle;
+  display:inline-block;
+  line-height:1.5;
+}
+
+/* ============ MASTHEAD ============ */
+.masthead{
+  position:sticky;top:0;z-index:50;
+  background:var(--paper);
+  border-bottom:1px solid var(--line);
+}
+.masthead .wrap{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:36px;
+  padding-top:14px;padding-bottom:14px;
+}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{width:46px;height:46px;object-fit:contain}
+.brand .txt{line-height:1}
+.brand .name{
+  font-family:var(--serif);
+  font-size:1.9rem;
+  color:var(--gold);
+  font-weight:600;
+  letter-spacing:.02em;
+}
+.brand .sub{
+  font-family:var(--cond);
+  text-transform:uppercase;
+  letter-spacing:.32em;
+  font-size:.62rem;
+  color:var(--navy);
+  margin-top:2px;
+}
+/* latitude scale in the center */
+.scale{
+  align-self:center;
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+}
+.scale .ticks{
+  width:100%;height:14px;
+  background:
+    repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 22px);
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+.scale .ticks::before,.scale .ticks::after{
+  content:"";position:absolute;bottom:0;width:1px;height:14px;background:var(--gold);
+}
+.scale .ticks::before{left:0}.scale .ticks::after{right:0}
+.scale .coord{
+  font-family:var(--cond);
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  font-size:.62rem;
+  color:var(--ink-soft);
+  display:flex;justify-content:space-between;width:100%;
+}
+.mast-right{display:flex;align-items:center;gap:22px}
+.langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.langs button{
+  font-family:var(--cond);
+  letter-spacing:.14em;
+  font-size:.72rem;
+  text-transform:uppercase;
+  background:transparent;border:0;cursor:pointer;
+  padding:6px 10px;color:var(--ink-soft);transition:.2s;
+}
+.langs button.active{background:var(--navy);color:var(--gold-lt)}
+.tel{
+  font-family:var(--cond);
+  letter-spacing:.1em;
+  font-size:.95rem;
+  color:var(--navy);
+  white-space:nowrap;
+}
+.btn{
+  font-family:var(--cond);
+  text-transform:uppercase;letter-spacing:.16em;font-size:.8rem;
+  background:var(--gold);color:#fff;
+  padding:11px 20px;border-radius:3px;border:1px solid var(--gold);
+  cursor:pointer;transition:.2s;display:inline-block;
+}
+.btn:hover{background:var(--navy);border-color:var(--navy)}
+.btn.ghost{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn.ghost:hover{background:var(--navy);color:var(--gold-lt)}
+.btn.gold-on-navy{background:var(--gold);border-color:var(--gold);color:var(--navy-ink);font-weight:600}
+.btn.gold-on-navy:hover{background:var(--gold-lt);border-color:var(--gold-lt)}
+
+/* ============ HERO — LE PONT ============ */
+.hero{
+  padding:54px 0 46px;
+  background:
+    radial-gradient(1200px 500px at 78% -10%,rgba(181,152,90,.10),transparent 60%),
+    var(--cream);
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.55fr 1fr;
+  gap:26px;
+  align-items:stretch;
+}
+.hero-photo{
+  position:relative;
+  border:1px solid var(--line);
+  overflow:hidden;
+  min-height:520px;
+}
+.hero-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(1.02)}
+.hero-photo .plaque{
+  position:absolute;left:0;bottom:0;right:0;
+  padding:38px 40px 30px;
+  background:linear-gradient(transparent,rgba(15,33,56,.86)55%);
+  color:#fff;
+}
+.hero-photo .kicker{color:var(--gold-lt);letter-spacing:.34em}
+.hero-photo h1{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:3.5rem;
+  line-height:1.02;
+  margin:10px 0 4px;
+}
+.hero-photo h1 em{font-style:italic;color:var(--gold-lt)}
+.hero-photo .lede{
+  font-size:1.02rem;color:rgba(255,255,255,.86);max-width:34ch;font-weight:300;
+}
+/* navy manifest card */
+.manifest{
+  background:var(--navy);
+  color:#fff;
+  padding:38px 34px 30px;
+  display:flex;flex-direction:column;
+  position:relative;
+  overflow:hidden;
+}
+.manifest::after{
+  content:"";position:absolute;right:-70px;bottom:-70px;
+  width:230px;height:230px;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23C9AE78' stroke-width='.6'><circle cx='50' cy='50' r='48'/><circle cx='50' cy='50' r='34'/><path d='M50 2 L54 46 L98 50 L54 54 L50 98 L46 54 L2 50 L46 46 Z' fill='%23C9AE78' fill-opacity='.14'/><path d='M50 2 L54 46 L98 50 L54 54 L50 98 L46 54 L2 50 L46 46 Z'/></svg>") no-repeat center/contain;
+  opacity:.5;pointer-events:none;
+}
+.manifest .cap{
+  font-family:var(--cond);letter-spacing:.3em;text-transform:uppercase;
+  font-size:.68rem;color:var(--gold-lt);
+  padding-bottom:14px;margin-bottom:20px;border-bottom:1px solid rgba(201,174,120,.35);
+}
+.manifest .line{
+  display:flex;justify-content:space-between;gap:14px;
+  padding:11px 0;border-bottom:1px dashed rgba(255,255,255,.14);
+  position:relative;z-index:2;
+}
+.manifest .line:last-of-type{border-bottom:0}
+.manifest .k{
+  font-family:var(--cond);letter-spacing:.16em;text-transform:uppercase;
+  font-size:.72rem;color:rgba(255,255,255,.6);
+}
+.manifest .v{font-family:var(--serif);font-size:1.32rem;text-align:right;color:#fff;line-height:1.15}
+.manifest .v small{display:block;font-family:var(--sans);font-size:.72rem;letter-spacing:.04em;color:var(--gold-lt);margin-top:2px}
+.manifest .cta{margin-top:auto;padding-top:24px;position:relative;z-index:2;display:flex;gap:10px;flex-wrap:wrap}
+
+/* instruments strip */
+.instruments{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--line);border-top:0;
+  background:var(--paper);
+}
+.instruments div{
+  padding:20px 26px;border-right:1px solid var(--line);
+}
+.instruments div:last-child{border-right:0}
+.instruments .n{font-family:var(--serif);font-size:1.7rem;color:var(--navy);line-height:1}
+.instruments .d{font-family:var(--cond);letter-spacing:.2em;text-transform:uppercase;font-size:.66rem;color:var(--ink-soft);margin-top:6px}
+
+/* ============ SECTION HEADS ============ */
+.sec{padding:78px 0}
+.sec-head{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:26px;
+  margin-bottom:40px;
+}
+.sec-head h2{
+  font-family:var(--serif);font-weight:500;font-size:2.7rem;color:var(--navy);line-height:1;
+}
+.sec-head .rule{height:1px;background:var(--line);margin-bottom:14px;position:relative}
+.sec-head .rule::after{content:"✦";position:absolute;right:0;top:-11px;color:var(--gold);font-size:.8rem}
+.sec-head .note{font-family:var(--cond);letter-spacing:.2em;text-transform:uppercase;font-size:.68rem;color:var(--ink-soft);margin-bottom:14px}
+
+/* ============ CARNET DE BORD (weekly log) ============ */
+.carnet{background:var(--navy);color:#fff}
+.carnet .sec-head h2{color:#fff}
+.carnet .sec-head .label{color:var(--gold-lt)}
+.carnet .sec-head .rule{background:rgba(201,174,120,.35)}
+.carnet .sec-head .note{color:rgba(255,255,255,.6)}
+.week{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  border:1px solid rgba(201,174,120,.35);
+  background:rgba(255,255,255,.02);
+}
+.day{
+  padding:26px 22px 30px;
+  border-right:1px solid rgba(201,174,120,.22);
+  display:flex;flex-direction:column;gap:2px;
+  transition:.25s;
+}
+.day:last-child{border-right:0}
+.day:hover{background:rgba(201,174,120,.08)}
+.day .dh{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding-bottom:14px;margin-bottom:16px;border-bottom:1px dashed rgba(255,255,255,.18);
+}
+.day .dname{font-family:var(--serif);font-size:1.5rem;color:var(--gold-lt)}
+.day .dcoord{font-family:var(--cond);letter-spacing:.12em;font-size:.62rem;color:rgba(255,255,255,.4)}
+.day .plat{margin:0 0 14px}
+.day .plat .t{font-family:var(--serif);font-size:1.24rem;line-height:1.2;color:#fff}
+.day .plat .desc{font-size:.82rem;color:rgba(255,255,255,.62);font-weight:300;margin-top:2px}
+.day .foot{margin-top:auto;padding-top:16px;display:flex;justify-content:space-between;align-items:center}
+.day .price{font-family:var(--serif);font-size:1.5rem;color:var(--gold-lt)}
+.carnet .legend{
+  margin-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+  font-family:var(--cond);letter-spacing:.14em;text-transform:uppercase;font-size:.7rem;color:rgba(255,255,255,.55);
+}
+.carnet .legend .aconf{border-color:rgba(201,174,120,.5);color:var(--gold-lt)}
+
+/* ============ LA CAMBUSE (menu) ============ */
+.cambuse-grid{
+  display:grid;grid-template-columns:1fr 1fr 1fr .92fr;gap:0;
+  border:1px solid var(--line);background:var(--paper);
+}
+.col{padding:32px 30px;border-right:1px solid var(--line)}
+.col:last-child{border-right:0}
+.col h3{
+  font-family:var(--serif);font-size:1.7rem;color:var(--navy);
+  padding-bottom:12px;margin-bottom:18px;border-bottom:2px solid var(--gold);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.col h3 span{font-family:var(--cond);font-size:.62rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;font-weight:500}
+.dish{padding:10px 0;border-bottom:1px dashed var(--line)}
+.dish:last-child{border-bottom:0}
+.dish .nm{font-family:var(--serif);font-size:1.2rem;color:var(--ink);display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.dish .nm .pr{font-family:var(--sans);font-size:.95rem;color:var(--gold);font-weight:600;white-space:nowrap}
+.dish .dd{font-size:.82rem;color:var(--ink-soft);font-weight:300;margin-top:1px}
+.dish.house .nm{color:var(--navy)}
+.dish.house .nm::before{content:"⚓";color:var(--gold);margin-right:6px;font-size:.85em}
+.board-col{background:var(--navy);color:#fff;padding:0;position:relative;overflow:hidden}
+.board-col .ph{height:230px;overflow:hidden}
+.board-col .ph img{width:100%;height:100%;object-fit:cover}
+.board-col .cap{padding:24px 26px}
+.board-col h4{font-family:var(--serif);font-size:1.45rem;color:var(--gold-lt);margin-bottom:8px;line-height:1.1}
+.board-col p{font-size:.86rem;color:rgba(255,255,255,.72);font-weight:300}
+.board-col .aconf{margin-top:14px;border-color:rgba(201,174,120,.5);color:var(--gold-lt)}
+
+/* ============ LA SALLE (gallery) ============ */
+.salle{background:var(--cream-2)}
+.mosaic{
+  display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:186px;gap:16px;
+}
+.plate{position:relative;overflow:hidden;border:1px solid var(--line);background:var(--navy)}
+.plate img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.plate:hover img{transform:scale(1.05)}
+.plate figcaption{
+  position:absolute;left:0;bottom:0;right:0;
+  padding:22px 20px 14px;color:#fff;
+  background:linear-gradient(transparent,rgba(15,33,56,.82));
+  font-family:var(--cond);letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;
+}
+.plate.tall{grid-row:span 2}
+.plate.wide{grid-column:span 2}
+
+/* ============ CAP SUR (visit) ============ */
+.visit-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:26px;align-items:stretch}
+.map-box{border:1px solid var(--line);overflow:hidden;min-height:440px;background:var(--navy)}
+.map-box iframe{width:100%;height:100%;min-height:440px;border:0;display:block;filter:grayscale(.25)}
+.legend-card{background:var(--paper);border:1px solid var(--line);padding:36px 34px;display:flex;flex-direction:column}
+.legend-card h3{font-family:var(--serif);font-size:2rem;color:var(--navy);margin-bottom:4px}
+.legend-card .sub{font-family:var(--cond);letter-spacing:.2em;text-transform:uppercase;font-size:.68rem;color:var(--gold);margin-bottom:22px}
+.lg-row{padding:14px 0;border-bottom:1px dashed var(--line)}
+.lg-row .k{font-family:var(--cond);letter-spacing:.18em;text-transform:uppercase;font-size:.66rem;color:var(--ink-soft)}
+.lg-row .v{font-family:var(--serif);font-size:1.24rem;color:var(--ink);margin-top:2px;line-height:1.3}
+.lg-row .v a{color:var(--navy);border-bottom:1px solid var(--gold-soft)}
+.hours{display:flex;justify-content:space-between;font-size:.92rem;padding:4px 0}
+.hours span:first-child{color:var(--ink-soft)}
+.legend-card .cta{margin-top:auto;padding-top:24px;display:flex;gap:10px;flex-wrap:wrap}
+
+/* ============ FOOTER ============ */
+footer{background:var(--navy-ink);color:rgba(255,255,255,.8)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding:56px 0 34px}
+.foot-brand .name{font-family:var(--serif);font-size:2rem;color:var(--gold-lt)}
+.foot-brand .sub{font-family:var(--cond);letter-spacing:.3em;text-transform:uppercase;font-size:.62rem;color:rgba(255,255,255,.55);margin:4px 0 16px}
+.foot-brand p{font-size:.9rem;font-weight:300;max-width:36ch;color:rgba(255,255,255,.62)}
+.foot-col h5{font-family:var(--cond);letter-spacing:.22em;text-transform:uppercase;font-size:.72rem;color:var(--gold-lt);margin-bottom:14px}
+.foot-col a,.foot-col p{display:block;font-size:.92rem;color:rgba(255,255,255,.72);margin-bottom:7px;font-weight:300}
+.foot-col a:hover{color:var(--gold-lt)}
+.foot-bar{border-top:1px solid rgba(255,255,255,.12);padding:18px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.78rem;color:rgba(255,255,255,.5)}
+.demo-note{font-family:var(--cond);letter-spacing:.12em;text-transform:uppercase;font-size:.68rem;color:var(--gold)}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1080px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-photo{min-height:420px}
+  .cambuse-grid{grid-template-columns:1fr 1fr}
+  .col:nth-child(2){border-right:0}
+  .board-col{grid-column:span 2}
+  .board-col .ph{height:200px}
+  .visit-grid{grid-template-columns:1fr}
+  .mosaic{grid-template-columns:repeat(2,1fr)}
+  .plate.wide{grid-column:span 2}
+}
+@media(max-width:900px){
+  .scale{display:none}
+  .masthead .wrap{grid-template-columns:1fr auto;gap:16px}
+  .week{grid-template-columns:1fr 1fr}
+  .day{border-bottom:1px solid rgba(201,174,120,.22)}
+  .instruments{grid-template-columns:1fr 1fr}
+  .instruments div:nth-child(2){border-right:0}
+  .instruments div{border-bottom:1px solid var(--line)}
+  .foot-grid{grid-template-columns:1fr}
+  .sec-head{grid-template-columns:1fr;gap:8px}
+  .sec-head .rule{display:none}
+}
+@media(max-width:620px){
+  .wrap{padding:0 20px}
+  .mast-right{gap:12px}.tel{display:none}
+  .hero-photo h1{font-size:2.5rem}
+  .sec{padding:52px 0}
+  .cambuse-grid{grid-template-columns:1fr}
+  .col{border-right:0;border-bottom:1px solid var(--line)}
+  .board-col{grid-column:auto}
+  .week{grid-template-columns:1fr}
+  .day{border-right:0}
+  .mosaic{grid-template-columns:1fr;grid-auto-rows:210px}
+  .plate.wide,.plate.tall{grid-column:auto;grid-row:auto}
+  .instruments{grid-template-columns:1fr}
+  .instruments div{border-right:0}
+  .btn.hide-sm{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Brasserie Colomb">
+      <img src="assets/logo.jpg" alt="Blason Brasserie Colomb">
+      <span class="txt">
+        <span class="name">Colomb</span>
+        <span class="sub">brasserie · restaurant</span>
+      </span>
+    </a>
+    <div class="scale" aria-hidden="true">
+      <span class="coord"><span>49°35′N</span><span data-i18n="scaleMid">Gasperich · Luxembourg-Ville</span><span>6°07′E</span></span>
+      <span class="ticks"></span>
+    </div>
+    <div class="mast-right">
+      <div class="langs" role="group" aria-label="Langue">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a class="tel" href="tel:+35226649611">+352 26 64 96 11</a>
+      <a class="btn hide-sm" href="#cap" data-i18n="navReserve">Réserver</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO — LE PONT ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <figure class="hero-photo">
+        <img src="assets/hero.jpg" alt="Salle de la Brasserie Colomb, tables dressées et ardoise du jour">
+        <figcaption class="plaque">
+          <div class="label kicker" data-i18n="heroKicker">Cap sur Gasperich · depuis 1 Rue Christophe Colomb</div>
+          <h1><span data-i18n="heroTitle1">Cuisine franco-italienne,</span> <em data-i18n="heroTitle2">esprit de quartier.</em></h1>
+          <p class="lede" data-i18n="heroLede">Le menu du jour, les pizze au feu de bois et les pâtes maison — une table conviviale au cœur du quartier d'affaires de Gasperich.</p>
+        </figcaption>
+      </figure>
+
+      <aside class="manifest">
+        <div class="cap" data-i18n="mfTitle">Carnet de la maison</div>
+        <div class="line"><span class="k" data-i18n="mfCuisine">Cuisine</span><span class="v" data-i18n="mfCuisineV">Franco-italienne</span></div>
+        <div class="line"><span class="k" data-i18n="mfSpecialty">Spécialités</span><span class="v" data-i18n="mfSpecialtyV">Menu du jour · Pizze · Pâtes</span></div>
+        <div class="line"><span class="k" data-i18n="mfTable">À table</span><span class="v"><span data-i18n="mfTableV">~20–30 €</span> <small data-i18n="mfTableS">par personne · à confirmer</small></span></div>
+        <div class="line"><span class="k" data-i18n="mfBearing">Cap</span><span class="v">Gasperich <small>L-1349 Luxembourg</small></span></div>
+        <div class="cta">
+          <a class="btn gold-on-navy" href="#carnet" data-i18n="mfCta1">Menu du jour</a>
+          <a class="btn ghost" style="border-color:var(--gold-lt);color:var(--gold-lt)" href="tel:+35226649611" data-i18n="mfCta2">Appeler</a>
+        </div>
+      </aside>
+    </div>
+
+    <div class="instruments">
+      <div><div class="n">4,4 / 5</div><div class="d" data-i18n="inst1">Google · ~175 avis</div></div>
+      <div><div class="n">4,5 / 5</div><div class="d" data-i18n="inst2">TripAdvisor</div></div>
+      <div><div class="n" style="font-family:var(--serif)" data-i18n="inst3n">Feu de bois</div><div class="d" data-i18n="inst3">Pizze artisanales</div></div>
+      <div><div class="n" style="font-family:var(--serif)" data-i18n="inst4n">Midi &amp; soir</div><div class="d" data-i18n="inst4">Lun.–Sam. · horaires à confirmer</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CARNET DE BORD — WEEKLY LOG (signature) ============ -->
+<section class="sec carnet" id="carnet">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label" data-i18n="carnetLabel">Le carnet de bord de la semaine</div>
+        <h2 data-i18n="carnetTitle">Menu du jour</h2>
+      </div>
+      <div class="rule"></div>
+      <div class="note" data-i18n="carnetNote">Une escale différente chaque midi · Lun.–Ven.</div>
+    </div>
+
+    <div class="week">
+      <article class="day">
+        <div class="dh"><span class="dname" data-i18n="d1">Lundi</span><span class="dcoord">I</span></div>
+        <div class="plat"><div class="t" data-i18n="d1p1">Roulade de mozzarella</div></div>
+        <div class="plat"><div class="t" data-i18n="d1p2">Pasta salsiccia &amp; funghi</div><div class="desc" data-i18n="d1p2d">Pâtes, saucisse italienne, champignons</div></div>
+        <div class="foot"><span class="price">9,40 €</span><span class="aconf" data-i18n="aconf">à confirmer</span></div>
+      </article>
+      <article class="day">
+        <div class="dh"><span class="dname" data-i18n="d2">Mardi</span><span class="dcoord">II</span></div>
+        <div class="plat"><div class="t" data-i18n="d2p1">Salade du chef</div></div>
+        <div class="plat"><div class="t" data-i18n="d2p2">Lasagne pesto &amp; saumon</div><div class="desc" data-i18n="d2p2d">Le grand classique de la maison</div></div>
+        <div class="foot"><span class="price">9,40 €</span><span class="aconf" data-i18n="aconf">à confirmer</span></div>
+      </article>
+      <article class="day">
+        <div class="dh"><span class="dname" data-i18n="d3">Mercredi</span><span class="dcoord">III</span></div>
+        <div class="plat"><div class="t" data-i18n="d3p1">Pasta crudaiola</div><div class="desc" data-i18n="d3p1d">Tomates fraîches, roquette, parmesan</div></div>
+        <div class="plat"><div class="t" data-i18n="d3p2">Escalope milanaise</div></div>
+        <div class="foot"><span class="price">9,40 €</span><span class="aconf" data-i18n="aconf">à confirmer</span></div>
+      </article>
+      <article class="day">
+        <div class="dh"><span class="dname" data-i18n="d4">Jeudi</span><span class="dcoord">IV</span></div>
+        <div class="plat"><div class="t" data-i18n="d4p1">Bouchée à la reine</div></div>
+        <div class="plat"><div class="t" data-i18n="d4p2">Risotto du jour</div><div class="desc" data-i18n="d4p2d">Selon le marché</div></div>
+        <div class="foot"><span class="price">9,40 €</span><span class="aconf" data-i18n="aconf">à confirmer</span></div>
+      </article>
+      <article class="day">
+        <div class="dh"><span class="dname" data-i18n="d5">Vendredi</span><span class="dcoord">V</span></div>
+        <div class="plat"><div class="t" data-i18n="d5p1">Filet de poisson du marché</div></div>
+        <div class="plat"><div class="t" data-i18n="d5p2">Carpaccio de bœuf</div><div class="desc" data-i18n="d5p2d">Copeaux de parmesan, huile d'olive</div></div>
+        <div class="foot"><span class="price">9,40 €</span><span class="aconf" data-i18n="aconf">à confirmer</span></div>
+      </article>
+    </div>
+
+    <div class="legend">
+      <span data-i18n="carnetLegend1">Relevé de l'ardoise « Menu du Jour » de la salle</span>
+      <span><span data-i18n="carnetLegend2">Prix &amp; plats indicatifs — la carte tourne au gré du marché · </span><span class="aconf" data-i18n="aconf">à confirmer</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LA CAMBUSE — MENU ============ -->
+<section class="sec" id="carte">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label" data-i18n="carteLabel">La carte de la maison</div>
+        <h2 data-i18n="carteTitle">Pizze, pâtes &amp; suggestions</h2>
+      </div>
+      <div class="rule"></div>
+      <div class="note" data-i18n="carteNote">Menu indicatif — nous consulter</div>
+    </div>
+
+    <div class="cambuse-grid">
+      <div class="col">
+        <h3><span data-i18n="colPizzeK">Feu de bois</span> <span data-i18n="colPizze">Pizze</span></h3>
+        <div class="dish"><div class="nm"><span>Margherita</span><span class="pr">≈ 9 €</span></div><div class="dd" data-i18n="pz1">Tomate, mozzarella, basilic</div></div>
+        <div class="dish"><div class="nm"><span>Prosciutto e Funghi</span><span class="pr">≈ 12 €</span></div><div class="dd" data-i18n="pz2">Jambon, champignons</div></div>
+        <div class="dish"><div class="nm"><span>Diavola</span><span class="pr">≈ 12 €</span></div><div class="dd" data-i18n="pz3">Salami piquant</div></div>
+        <div class="dish house"><div class="nm"><span>Pizza « Colomb »</span><span class="pr aconf" data-i18n="aconf">à confirmer</span></div><div class="dd" data-i18n="pz4">La signature de la maison · garniture à confirmer</div></div>
+      </div>
+
+      <div class="col">
+        <h3><span data-i18n="colPlatsK">De la cuisine</span> <span data-i18n="colPlats">Pâtes &amp; plats</span></h3>
+        <div class="dish"><div class="nm"><span data-i18n="pl1">Lasagne au four</span></div><div class="dd" data-i18n="pl1d">Recette maison</div></div>
+        <div class="dish"><div class="nm"><span data-i18n="pl2">Penne &amp; pâtes du jour</span></div><div class="dd" data-i18n="pl2d">Selon l'inspiration du chef</div></div>
+        <div class="dish"><div class="nm"><span data-i18n="pl3">Escalope milanaise</span></div></div>
+        <div class="dish"><div class="nm"><span data-i18n="pl4">Viandes &amp; poissons grillés</span></div><div class="dd" data-i18n="pl4d">Suggestions du chef · risotto, carpaccio</div></div>
+      </div>
+
+      <div class="col">
+        <h3><span data-i18n="colDessK">Pour finir</span> <span data-i18n="colDess">Desserts</span></h3>
+        <div class="dish"><div class="nm"><span>Tiramisù</span><span class="pr">≈ 6 €</span></div></div>
+        <div class="dish"><div class="nm"><span data-i18n="ds2">Moelleux au chocolat</span><span class="pr">≈ 6 €</span></div></div>
+        <div class="dish"><div class="nm"><span data-i18n="ds3">Panna cotta al caffè</span><span class="pr">≈ 6 €</span></div></div>
+        <div class="dish"><div class="nm"><span data-i18n="ds4">Mousse au chocolat</span><span class="pr">≈ 6 €</span></div></div>
+        <div class="dish"><div class="nm"><span>Caffè shakerato</span><span class="pr">≈ 2,50 €</span></div></div>
+      </div>
+
+      <div class="col board-col">
+        <div class="ph"><img src="assets/interior-menu-board.jpg" alt="Ardoise Menu du Jour de la Brasserie Colomb"></div>
+        <div class="cap">
+          <h4 data-i18n="boardTitle">L'ardoise fait foi</h4>
+          <p data-i18n="boardText">La carte complète vit sur l'ardoise en salle et tourne au fil des saisons. Ces catégories sont données à titre indicatif.</p>
+          <span class="aconf" data-i18n="boardAconf">carte & prix à confirmer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LA SALLE — GALLERY ============ -->
+<section class="sec salle" id="salle">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label" data-i18n="salleLabel">À bord de la salle</div>
+        <h2 data-i18n="salleTitle">L'ambiance</h2>
+      </div>
+      <div class="rule"></div>
+      <div class="note" data-i18n="salleNote">Bois chaud, grandes baies, coin bar · Gasperich</div>
+    </div>
+
+    <div class="mosaic">
+      <figure class="plate tall">
+        <img src="assets/interior-2.jpg" alt="Salle avec pilier habillé de journaux et coin BAR">
+        <figcaption data-i18n="cap1">Le coin bar &amp; les grandes tablées</figcaption>
+      </figure>
+      <figure class="plate wide">
+        <img src="assets/interior-3.png" alt="Salle lumineuse ouverte sur la verdure">
+        <figcaption data-i18n="cap2">Baies ouvertes sur la verdure</figcaption>
+      </figure>
+      <figure class="plate">
+        <img src="assets/interior-1.jpg" alt="Salle vue à travers le paravent de bambous">
+        <figcaption data-i18n="cap3">Le paravent de bambous</figcaption>
+      </figure>
+      <figure class="plate wide">
+        <img src="assets/hero.jpg" alt="Tables dressées face à l'ardoise du jour">
+        <figcaption data-i18n="cap4">Tables dressées, prêtes pour le service</figcaption>
+      </figure>
+      <figure class="plate">
+        <img src="assets/interior-menu-board.jpg" alt="Gros plan sur l'ardoise du jour">
+        <figcaption data-i18n="cap5">L'ardoise « Menu du Jour »</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAP SUR — VISIT ============ -->
+<section class="sec" id="cap">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="label" data-i18n="capLabel">Mettre le cap sur</div>
+        <h2 data-i18n="capTitle">Nous trouver</h2>
+      </div>
+      <div class="rule"></div>
+      <div class="note" data-i18n="capNote">1 Rue Christophe Colomb · L-1349 Luxembourg</div>
+    </div>
+
+    <div class="visit-grid">
+      <div class="map-box">
+        <iframe title="Carte — Brasserie Colomb, 1 Rue Christophe Colomb, Luxembourg"
+          src="https://www.google.com/maps?q=1+Rue+Christophe+Colomb,+L-1349+Luxembourg&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <div class="legend-card">
+        <h3 data-i18n="lcTitle">Le journal de bord</h3>
+        <div class="sub" data-i18n="lcSub">Adresse · contact · horaires</div>
+
+        <div class="lg-row">
+          <div class="k" data-i18n="lcAddrK">Adresse</div>
+          <div class="v">1 Rue Christophe Colomb<br>L-1349 Luxembourg · Gasperich</div>
+        </div>
+        <div class="lg-row">
+          <div class="k" data-i18n="lcTelK">Téléphone</div>
+          <div class="v"><a href="tel:+35226649611">+352 26 64 96 11</a> <span class="aconf" data-i18n="aconf">à confirmer</span></div>
+        </div>
+        <div class="lg-row">
+          <div class="k"><span data-i18n="lcHoursK">Horaires</span> <span class="aconf" data-i18n="aconf">à confirmer</span></div>
+          <div class="v" style="font-size:1rem;font-family:var(--sans);margin-top:8px">
+            <div class="hours"><span data-i18n="hMon">Lun. – Ven.</span><span>12:00–14:30 · 18:00–22:00</span></div>
+            <div class="hours"><span data-i18n="hSat">Samedi</span><span data-i18n="hSatV">Sur réservation</span></div>
+            <div class="hours"><span data-i18n="hSun">Dimanche</span><span data-i18n="hSunV">Fermé</span></div>
+          </div>
+        </div>
+
+        <div class="cta">
+          <a class="btn" href="tel:+35226649611" data-i18n="lcCall">Réserver par téléphone</a>
+          <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps?q=1+Rue+Christophe+Colomb,+L-1349+Luxembourg" data-i18n="lcRoute">Itinéraire</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="name">Colomb</div>
+        <div class="sub">brasserie · restaurant</div>
+        <p data-i18n="footAbout">Cuisine franco-italienne, esprit de quartier — au cœur de Gasperich, Luxembourg-Ville.</p>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="footNavT">La maison</h5>
+        <a href="#carnet" data-i18n="footNav1">Menu du jour</a>
+        <a href="#carte" data-i18n="footNav2">La carte</a>
+        <a href="#salle" data-i18n="footNav3">L'ambiance</a>
+        <a href="#cap" data-i18n="footNav4">Nous trouver</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="footContactT">Contact</h5>
+        <p>1 Rue Christophe Colomb<br>L-1349 Luxembourg</p>
+        <a href="tel:+35226649611">+352 26 64 96 11</a>
+        <a href="https://www.facebook.com/p/Brasserie-Colomb-100063571932797/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>© <span id="yr"></span> Brasserie Colomb · Luxembourg</span>
+      <span class="demo-note" data-i18n="footDemo">Site de démonstration — contenus &amp; tarifs à confirmer avec l'établissement</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N={
+  fr:{
+    scaleMid:"Gasperich · Luxembourg-Ville",navReserve:"Réserver",
+    heroKicker:"Cap sur Gasperich · depuis 1 Rue Christophe Colomb",
+    heroTitle1:"Cuisine franco-italienne,",heroTitle2:"esprit de quartier.",
+    heroLede:"Le menu du jour, les pizze au feu de bois et les pâtes maison — une table conviviale au cœur du quartier d'affaires de Gasperich.",
+    mfTitle:"Carnet de la maison",mfCuisine:"Cuisine",mfCuisineV:"Franco-italienne",
+    mfSpecialty:"Spécialités",mfSpecialtyV:"Menu du jour · Pizze · Pâtes",
+    mfTable:"À table",mfTableV:"~20–30 € ",mfTableS:"par personne · à confirmer",
+    mfBearing:"Cap",mfCta1:"Menu du jour",mfCta2:"Appeler",
+    inst1:"Google · ~175 avis",inst2:"TripAdvisor",inst3n:"Feu de bois",inst3:"Pizze artisanales",inst4n:"Midi & soir",inst4:"Lun.–Sam. · horaires à confirmer",
+    carnetLabel:"Le carnet de bord de la semaine",carnetTitle:"Menu du jour",carnetNote:"Une escale différente chaque midi · Lun.–Ven.",
+    d1:"Lundi",d1p1:"Roulade de mozzarella",d1p2:"Pasta salsiccia & funghi",d1p2d:"Pâtes, saucisse italienne, champignons",
+    d2:"Mardi",d2p1:"Salade du chef",d2p2:"Lasagne pesto & saumon",d2p2d:"Le grand classique de la maison",
+    d3:"Mercredi",d3p1:"Pasta crudaiola",d3p1d:"Tomates fraîches, roquette, parmesan",d3p2:"Escalope milanaise",
+    d4:"Jeudi",d4p1:"Bouchée à la reine",d4p2:"Risotto du jour",d4p2d:"Selon le marché",
+    d5:"Vendredi",d5p1:"Filet de poisson du marché",d5p2:"Carpaccio de bœuf",d5p2d:"Copeaux de parmesan, huile d'olive",
+    aconf:"à confirmer",
+    carnetLegend1:"Relevé de l'ardoise « Menu du Jour » de la salle",
+    carnetLegend2:"Prix & plats indicatifs — la carte tourne au gré du marché · ",
+    carteLabel:"La carte de la maison",carteTitle:"Pizze, pâtes & suggestions",carteNote:"Menu indicatif — nous consulter",
+    colPizzeK:"Feu de bois",colPizze:"Pizze",pz1:"Tomate, mozzarella, basilic",pz2:"Jambon, champignons",pz3:"Salami piquant",pz4:"La signature de la maison · garniture à confirmer",
+    colPlatsK:"De la cuisine",colPlats:"Pâtes & plats",pl1:"Lasagne au four",pl1d:"Recette maison",pl2:"Penne & pâtes du jour",pl2d:"Selon l'inspiration du chef",pl3:"Escalope milanaise",pl4:"Viandes & poissons grillés",pl4d:"Suggestions du chef · risotto, carpaccio",
+    colDessK:"Pour finir",colDess:"Desserts",ds2:"Moelleux au chocolat",ds3:"Panna cotta al caffè",ds4:"Mousse au chocolat",
+    boardTitle:"L'ardoise fait foi",boardText:"La carte complète vit sur l'ardoise en salle et tourne au fil des saisons. Ces catégories sont données à titre indicatif.",boardAconf:"carte & prix à confirmer",
+    salleLabel:"À bord de la salle",salleTitle:"L'ambiance",salleNote:"Bois chaud, grandes baies, coin bar · Gasperich",
+    cap1:"Le coin bar & les grandes tablées",cap2:"Baies ouvertes sur la verdure",cap3:"Le paravent de bambous",cap4:"Tables dressées, prêtes pour le service",cap5:"L'ardoise « Menu du Jour »",
+    capLabel:"Mettre le cap sur",capTitle:"Nous trouver",capNote:"1 Rue Christophe Colomb · L-1349 Luxembourg",
+    lcTitle:"Le journal de bord",lcSub:"Adresse · contact · horaires",lcAddrK:"Adresse",lcTelK:"Téléphone",lcHoursK:"Horaires ",
+    hMon:"Lun. – Ven.",hSat:"Samedi",hSatV:"Sur réservation",hSun:"Dimanche",hSunV:"Fermé",
+    lcCall:"Réserver par téléphone",lcRoute:"Itinéraire",
+    footAbout:"Cuisine franco-italienne, esprit de quartier — au cœur de Gasperich, Luxembourg-Ville.",
+    footNavT:"La maison",footNav1:"Menu du jour",footNav2:"La carte",footNav3:"L'ambiance",footNav4:"Nous trouver",
+    footContactT:"Contact",footDemo:"Site de démonstration — contenus & tarifs à confirmer avec l'établissement"
+  },
+  de:{
+    scaleMid:"Gasperich · Luxemburg-Stadt",navReserve:"Reservieren",
+    heroKicker:"Kurs auf Gasperich · 1 Rue Christophe Colomb",
+    heroTitle1:"Französisch-italienische Küche,",heroTitle2:"mit Quartiersgeist.",
+    heroLede:"Das Tagesmenü, Pizze aus dem Holzofen und hausgemachte Pasta — ein geselliger Tisch im Herzen des Geschäftsviertels Gasperich.",
+    mfTitle:"Logbuch des Hauses",mfCuisine:"Küche",mfCuisineV:"Französisch-italienisch",
+    mfSpecialty:"Spezialitäten",mfSpecialtyV:"Tagesmenü · Pizze · Pasta",
+    mfTable:"Zu Tisch",mfTableV:"~20–30 € ",mfTableS:"pro Person · zu bestätigen",
+    mfBearing:"Kurs",mfCta1:"Tagesmenü",mfCta2:"Anrufen",
+    inst1:"Google · ~175 Bewertungen",inst2:"TripAdvisor",inst3n:"Holzofen",inst3:"Handwerkliche Pizze",inst4n:"Mittags & abends",inst4:"Mo.–Sa. · Zeiten zu bestätigen",
+    carnetLabel:"Das Logbuch der Woche",carnetTitle:"Tagesmenü",carnetNote:"Jeden Mittag ein anderer Halt · Mo.–Fr.",
+    d1:"Montag",d1p1:"Mozzarella-Roulade",d1p2:"Pasta Salsiccia & Funghi",d1p2d:"Pasta, italienische Wurst, Pilze",
+    d2:"Dienstag",d2p1:"Salat des Küchenchefs",d2p2:"Lasagne Pesto & Lachs",d2p2d:"Der große Klassiker des Hauses",
+    d3:"Mittwoch",d3p1:"Pasta Crudaiola",d3p1d:"Frische Tomaten, Rucola, Parmesan",d3p2:"Schnitzel Milanese",
+    d4:"Donnerstag",d4p1:"Königinpastete",d4p2:"Risotto des Tages",d4p2d:"Je nach Markt",
+    d5:"Freitag",d5p1:"Fischfilet vom Markt",d5p2:"Rinder-Carpaccio",d5p2d:"Parmesanspäne, Olivenöl",
+    aconf:"zu bestätigen",
+    carnetLegend1:"Übernommen von der „Menu du Jour“-Tafel im Saal",
+    carnetLegend2:"Preise & Gerichte als Richtwert — die Karte wechselt je nach Markt · ",
+    carteLabel:"Die Karte des Hauses",carteTitle:"Pizze, Pasta & Empfehlungen",carteNote:"Richtmenü — bitte nachfragen",
+    colPizzeK:"Holzofen",colPizze:"Pizze",pz1:"Tomate, Mozzarella, Basilikum",pz2:"Schinken, Pilze",pz3:"Scharfe Salami",pz4:"Die Signatur des Hauses · Belag zu bestätigen",
+    colPlatsK:"Aus der Küche",colPlats:"Pasta & Gerichte",pl1:"Lasagne aus dem Ofen",pl1d:"Hausrezept",pl2:"Penne & Pasta des Tages",pl2d:"Nach Inspiration des Chefs",pl3:"Schnitzel Milanese",pl4:"Gegrilltes Fleisch & Fisch",pl4d:"Empfehlungen des Chefs · Risotto, Carpaccio",
+    colDessK:"Zum Abschluss",colDess:"Desserts",ds2:"Schokoladenküchlein",ds3:"Panna cotta al caffè",ds4:"Schokoladenmousse",
+    boardTitle:"Die Tafel gilt",boardText:"Die vollständige Karte lebt auf der Tafel im Saal und wechselt mit den Jahreszeiten. Diese Kategorien dienen als Richtwert.",boardAconf:"Karte & Preise zu bestätigen",
+    salleLabel:"An Bord des Saals",salleTitle:"Das Ambiente",salleNote:"Warmes Holz, große Fenster, Bar-Ecke · Gasperich",
+    cap1:"Die Bar-Ecke & die großen Tafeln",cap2:"Fenster zum Grün",cap3:"Der Bambus-Paravent",cap4:"Gedeckte Tische, bereit zum Service",cap5:"Die „Menu du Jour“-Tafel",
+    capLabel:"Kurs setzen auf",capTitle:"So finden Sie uns",capNote:"1 Rue Christophe Colomb · L-1349 Luxemburg",
+    lcTitle:"Das Bordbuch",lcSub:"Adresse · Kontakt · Öffnungszeiten",lcAddrK:"Adresse",lcTelK:"Telefon",lcHoursK:"Öffnungszeiten ",
+    hMon:"Mo. – Fr.",hSat:"Samstag",hSatV:"Auf Reservierung",hSun:"Sonntag",hSunV:"Geschlossen",
+    lcCall:"Telefonisch reservieren",lcRoute:"Route",
+    footAbout:"Französisch-italienische Küche mit Quartiersgeist — im Herzen von Gasperich, Luxemburg-Stadt.",
+    footNavT:"Das Haus",footNav1:"Tagesmenü",footNav2:"Die Karte",footNav3:"Das Ambiente",footNav4:"So finden Sie uns",
+    footContactT:"Kontakt",footDemo:"Demo-Website — Inhalte & Preise mit dem Betrieb zu bestätigen"
+  },
+  en:{
+    scaleMid:"Gasperich · Luxembourg City",navReserve:"Reserve",
+    heroKicker:"Bearing for Gasperich · 1 Rue Christophe Colomb",
+    heroTitle1:"Franco-Italian cooking,",heroTitle2:"a neighbourhood soul.",
+    heroLede:"The daily set lunch, wood-fired pizze and house-made pasta — a convivial table in the heart of the Gasperich business district.",
+    mfTitle:"The house log",mfCuisine:"Cuisine",mfCuisineV:"Franco-Italian",
+    mfSpecialty:"Specialities",mfSpecialtyV:"Daily menu · Pizze · Pasta",
+    mfTable:"At table",mfTableV:"~€20–30 ",mfTableS:"per person · to confirm",
+    mfBearing:"Bearing",mfCta1:"Today's menu",mfCta2:"Call us",
+    inst1:"Google · ~175 reviews",inst2:"TripAdvisor",inst3n:"Wood-fired",inst3:"Artisan pizze",inst4n:"Lunch & dinner",inst4:"Mon–Sat · hours to confirm",
+    carnetLabel:"The week's logbook",carnetTitle:"Menu of the day",carnetNote:"A different port of call each lunchtime · Mon–Fri",
+    d1:"Monday",d1p1:"Mozzarella roulade",d1p2:"Pasta salsiccia & funghi",d1p2d:"Pasta, Italian sausage, mushrooms",
+    d2:"Tuesday",d2p1:"Chef's salad",d2p2:"Pesto & salmon lasagne",d2p2d:"The house's great classic",
+    d3:"Wednesday",d3p1:"Pasta crudaiola",d3p1d:"Fresh tomato, rocket, parmesan",d3p2:"Escalope milanese",
+    d4:"Thursday",d4p1:"Vol-au-vent à la reine",d4p2:"Risotto of the day",d4p2d:"As the market allows",
+    d5:"Friday",d5p1:"Market fish fillet",d5p2:"Beef carpaccio",d5p2d:"Parmesan shavings, olive oil",
+    aconf:"to confirm",
+    carnetLegend1:"Transcribed from the dining-room “Menu du Jour” board",
+    carnetLegend2:"Prices & dishes indicative — the card turns with the market · ",
+    carteLabel:"The house card",carteTitle:"Pizze, pasta & suggestions",carteNote:"Indicative menu — please ask us",
+    colPizzeK:"Wood-fired",colPizze:"Pizze",pz1:"Tomato, mozzarella, basil",pz2:"Ham, mushrooms",pz3:"Spicy salami",pz4:"The house signature · topping to confirm",
+    colPlatsK:"From the kitchen",colPlats:"Pasta & mains",pl1:"Baked lasagne",pl1d:"House recipe",pl2:"Penne & pasta of the day",pl2d:"As the chef is inspired",pl3:"Escalope milanese",pl4:"Grilled meats & fish",pl4d:"Chef's suggestions · risotto, carpaccio",
+    colDessK:"To finish",colDess:"Desserts",ds2:"Chocolate fondant",ds3:"Panna cotta al caffè",ds4:"Chocolate mousse",
+    boardTitle:"The board rules",boardText:"The full card lives on the dining-room board and turns with the seasons. These categories are given as a guide only.",boardAconf:"card & prices to confirm",
+    salleLabel:"Aboard the room",salleTitle:"The atmosphere",salleNote:"Warm wood, wide windows, bar corner · Gasperich",
+    cap1:"The bar corner & the long tables",cap2:"Windows onto the greenery",cap3:"The bamboo screen",cap4:"Tables laid, ready for service",cap5:"The “Menu du Jour” board",
+    capLabel:"Set a course for",capTitle:"Find us",capNote:"1 Rue Christophe Colomb · L-1349 Luxembourg",
+    lcTitle:"The ship's journal",lcSub:"Address · contact · hours",lcAddrK:"Address",lcTelK:"Telephone",lcHoursK:"Hours ",
+    hMon:"Mon – Fri",hSat:"Saturday",hSatV:"By reservation",hSun:"Sunday",hSunV:"Closed",
+    lcCall:"Reserve by phone",lcRoute:"Directions",
+    footAbout:"Franco-Italian cooking with a neighbourhood soul — in the heart of Gasperich, Luxembourg City.",
+    footNavT:"The house",footNav1:"Today's menu",footNav2:"The card",footNav3:"Atmosphere",footNav4:"Find us",
+    footContactT:"Contact",footDemo:"Demonstration site — content & prices to be confirmed with the establishment"
+  }
+};
+const TITLES={
+  fr:"Brasserie Colomb — Cuisine franco-italienne · Gasperich, Luxembourg",
+  de:"Brasserie Colomb — Französisch-italienische Küche · Gasperich, Luxemburg",
+  en:"Brasserie Colomb — Franco-Italian brasserie · Gasperich, Luxembourg"
+};
+function setLang(l){
+  const d=I18N[l];if(!d)return;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(d[k]!==undefined) el.textContent=d[k];
+  });
+  document.documentElement.lang=l;
+  document.title=TITLES[l];
+  document.querySelectorAll('.langs button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+}
+document.querySelectorAll('.langs button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

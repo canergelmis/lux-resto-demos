@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Brasserie du Casino — Casino Syndical de Bonnevoie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,500&family=Archivo:wght@400;500;600;700&family=Archivo+Narrow:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#1f3f2c; --green-deep:#152a1c; --green-line:#33604492; --green-soft:#2c5238;
+    --cream:#f2e8d6; --cream-2:#e8d9bd; --paper:#faf5ec; --paper-2:#f5eddd;
+    --red:#b23a2e; --red-bright:#c8452f;
+    --wood:#a17948; --wood-dk:#795733;
+    --ink:#231f18; --muted:#726a5b; --line:#d8c9ac;
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Archivo",system-ui,sans-serif;
+    --cond:"Archivo Narrow","Archivo Narrow",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans); color:var(--ink); background:var(--paper);
+    font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  img{display:block; max-width:100%}
+  a{color:inherit}
+  .hatch{
+    background-image:repeating-linear-gradient(45deg,transparent 0 6px,rgba(122,90,52,.18) 6px 7px);
+  }
+
+  /* ===================== FAÇADE / MASTHEAD ===================== */
+  .facade{
+    background:var(--green); color:var(--cream);
+    padding:34px clamp(24px,4vw,68px) 0;
+    position:relative; overflow:hidden;
+  }
+  .facade::before{content:""; position:absolute; inset:0;
+    background:repeating-linear-gradient(0deg,transparent 0 38px,rgba(0,0,0,.10) 38px 39px);
+    opacity:.5; pointer-events:none;}
+  .topline{display:flex; justify-content:space-between; align-items:center; gap:24px;
+    border-bottom:1px solid var(--green-line); padding-bottom:16px; position:relative; z-index:2;}
+  .topline .est{font-family:var(--cond); letter-spacing:.32em; text-transform:uppercase;
+    font-size:12px; color:#cdbf9d;}
+  .lang{display:flex; gap:2px; align-items:center}
+  .lang button{
+    font-family:var(--cond); font-weight:700; letter-spacing:.12em; font-size:12px;
+    background:transparent; color:#cdbf9d; border:1px solid transparent; cursor:pointer;
+    padding:6px 9px; text-transform:uppercase; border-radius:2px; transition:.15s;
+  }
+  .lang button:hover{color:#fff}
+  .lang button.on{background:var(--cream); color:var(--green); border-color:var(--cream)}
+
+  .masthead{
+    display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(28px,4vw,64px);
+    align-items:end; padding:38px 0 0; position:relative; z-index:2;
+  }
+  .wordmark .eyebrow{font-family:var(--cond); letter-spacing:.4em; text-transform:uppercase;
+    font-size:13px; color:var(--red-bright); margin-bottom:14px; display:flex; align-items:center; gap:12px}
+  .wordmark .eyebrow::after{content:""; height:1px; flex:1; background:var(--green-line)}
+  .wordmark h1{font-family:var(--serif); font-weight:900; line-height:.92;
+    font-size:clamp(48px,7vw,104px); letter-spacing:-.01em; color:var(--cream)}
+  .wordmark h1 em{font-style:italic; font-weight:500; color:var(--wood); font-size:.62em; display:block; margin-top:.05em}
+  .wordmark .sub{margin-top:20px; font-size:16px; color:#d7cbac; max-width:40ch}
+  .wordmark .meta{margin-top:26px; display:flex; flex-wrap:wrap; gap:8px 28px; font-family:var(--cond);
+    letter-spacing:.06em; font-size:14.5px; color:#e7dcc0}
+  .wordmark .meta b{color:#fff; font-weight:700}
+
+  .facade-photo{position:relative; align-self:end}
+  .facade-photo .frame{
+    border:6px solid var(--cream); border-bottom:none;
+    box-shadow:0 -20px 50px rgba(0,0,0,.35);
+    height:clamp(300px,34vw,440px); overflow:hidden; background:#0d1a12;
+  }
+  .facade-photo img{width:100%; height:100%; object-fit:cover; object-position:center}
+  .facade-photo .plate{
+    position:absolute; top:16px; left:-6px; background:var(--red); color:#fff;
+    font-family:var(--cond); font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+    font-size:12px; padding:8px 16px; box-shadow:4px 4px 0 rgba(0,0,0,.25);
+  }
+
+  /* directory strip — the "plan des étages" */
+  .directory{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:40px;
+    border-top:1px solid var(--green-line); position:relative; z-index:2;
+  }
+  .directory a{
+    text-decoration:none; padding:22px 26px 26px; display:block; position:relative;
+    border-right:1px solid var(--green-line); transition:background .2s;
+  }
+  .directory a:first-child{padding-left:0}
+  .directory a:last-child{border-right:none}
+  .directory a:hover{background:rgba(255,255,255,.05)}
+  .directory .lvl{font-family:var(--cond); font-weight:700; font-size:13px; letter-spacing:.14em;
+    color:var(--red-bright); display:flex; align-items:center; gap:10px; margin-bottom:9px}
+  .directory .lvl span{display:inline-grid; place-items:center; width:26px; height:26px; border:1px solid var(--red-bright);
+    border-radius:50%; font-size:12px; color:#fff}
+  .directory h3{font-family:var(--serif); font-weight:500; font-size:23px; color:var(--cream); line-height:1.1}
+  .directory p{font-size:13.5px; color:#b9ac8c; margin-top:6px; font-family:var(--cond); letter-spacing:.03em}
+
+  /* ===================== BUILDING SECTION (spine + floors) ===================== */
+  .building{display:grid; grid-template-columns:172px 1fr; align-items:start}
+  .spine{
+    position:sticky; top:0; height:100vh; background:var(--green-deep); color:var(--cream);
+    display:flex; flex-direction:column; padding:26px 0;
+  }
+  .spine .cap{writing-mode:vertical-rl; text-orientation:mixed; transform:rotate(180deg);
+    font-family:var(--cond); letter-spacing:.42em; text-transform:uppercase; font-size:11px;
+    color:#7f9583; margin:14px auto 22px; height:120px}
+  .levels{flex:1; display:flex; flex-direction:column; justify-content:center; gap:0; position:relative}
+  .levels::before{content:""; position:absolute; left:50%; top:6%; bottom:6%; width:2px;
+    background:linear-gradient(var(--green-soft),transparent); transform:translateX(-.5px)}
+  .lvlbtn{
+    appearance:none; background:transparent; border:none; cursor:pointer; color:inherit;
+    position:relative; padding:18px 14px; text-align:center; text-decoration:none; display:block;
+    border-top:1px solid #ffffff14;
+  }
+  .lvlbtn:last-child{border-bottom:1px solid #ffffff14}
+  .lvlbtn .n{font-family:var(--serif); font-weight:900; font-size:30px; line-height:1;
+    color:#5f7566; transition:.2s}
+  .lvlbtn .t{display:block; font-family:var(--cond); letter-spacing:.14em; text-transform:uppercase;
+    font-size:10.5px; margin-top:8px; color:#7f9583; transition:.2s}
+  .lvlbtn .slab{position:absolute; left:0; right:0; height:3px; background:transparent}
+  .lvlbtn.active .n{color:var(--red-bright)}
+  .lvlbtn.active .t{color:#fff}
+  .lvlbtn.active{background:linear-gradient(90deg,transparent,#ffffff0a)}
+  .lvlbtn.active::after{content:""; position:absolute; right:0; top:0; bottom:0; width:4px; background:var(--red)}
+
+  .floors{min-width:0}
+  .floor{padding:clamp(56px,7vw,104px) clamp(28px,5vw,80px); position:relative; scroll-margin-top:0}
+  .floor--fete{background:var(--green); color:var(--cream)}
+  .floor--rdc{background:var(--paper)}
+  .floor--sous{background:var(--cream); }
+
+  .floor-head{display:flex; align-items:baseline; gap:22px; flex-wrap:wrap; margin-bottom:8px}
+  .floor-head .code{font-family:var(--serif); font-weight:900; font-size:clamp(56px,9vw,120px); line-height:.8;
+    letter-spacing:-.02em; opacity:.9}
+  .floor--rdc .code{color:var(--wood)} .floor--sous .code{color:var(--wood-dk)} .floor--fete .code{color:var(--wood)}
+  .floor-head .kick{font-family:var(--cond); letter-spacing:.34em; text-transform:uppercase; font-size:13px}
+  .floor--rdc .kick,.floor--sous .kick{color:var(--red)} .floor--fete .kick{color:var(--red-bright)}
+  .floor h2{font-family:var(--serif); font-weight:500; font-size:clamp(34px,4.4vw,60px); line-height:1.02;
+    letter-spacing:-.01em; margin:2px 0 0}
+  .floor--fete h2{color:#fff}
+  .lead{font-size:19px; max-width:56ch; margin-top:20px; line-height:1.62}
+  .floor--fete .lead{color:#e0d6bd}
+  .floor--rdc .lead,.floor--sous .lead{color:#4b463b}
+
+  /* ÉTAGE +1 — Salle des fêtes */
+  .fete-grid{display:grid; grid-template-columns:1fr 1.25fr; gap:clamp(26px,3.4vw,54px); margin-top:44px; align-items:stretch}
+  .fete-copy .chips{display:flex; flex-wrap:wrap; gap:10px; margin:26px 0 0}
+  .chip{font-family:var(--cond); font-weight:600; letter-spacing:.08em; text-transform:uppercase; font-size:12.5px;
+    border:1px solid #ffffff3a; color:#efe6cd; padding:8px 14px; border-radius:2px}
+  .floor--rdc .chip,.floor--sous .chip{border-color:var(--line); color:var(--wood-dk)}
+  .fete-copy .uses{margin-top:30px; display:grid; grid-template-columns:1fr 1fr; gap:14px 26px}
+  .fete-copy .uses li{list-style:none; padding-left:22px; position:relative; font-size:15.5px; color:#ddd2b8}
+  .fete-copy .uses li::before{content:""; position:absolute; left:0; top:.62em; width:9px; height:9px; background:var(--red); transform:rotate(45deg)}
+  .fete-photos{display:grid; grid-template-rows:1.4fr 1fr; gap:16px; min-height:420px}
+  .fete-photos .big{overflow:hidden; border:5px solid var(--cream)}
+  .fete-photos .row{display:grid; grid-template-columns:1fr; gap:16px; overflow:hidden; border:5px solid var(--cream)}
+  .fete-photos img{width:100%; height:100%; object-fit:cover}
+
+  /* REZ-DE-CHAUSSÉE — brasserie & café + carte */
+  .rdc-intro{display:grid; grid-template-columns:1.05fr 1fr; gap:clamp(26px,3.4vw,54px); margin-top:44px; align-items:center}
+  .rdc-gallery{display:grid; grid-template-columns:1.3fr 1fr; grid-template-rows:1fr 1fr; gap:14px; height:clamp(340px,32vw,440px)}
+  .rdc-gallery figure{overflow:hidden; position:relative; background:#e6d9bd}
+  .rdc-gallery figure:first-child{grid-row:1/3}
+  .rdc-gallery img{width:100%; height:100%; object-fit:cover}
+  .rdc-gallery figcaption{position:absolute; left:0; bottom:0; background:var(--green); color:var(--cream);
+    font-family:var(--cond); letter-spacing:.12em; text-transform:uppercase; font-size:10.5px; padding:6px 11px}
+
+  .plat{margin-top:14px; background:var(--green); color:var(--cream); padding:22px 26px; border-left:5px solid var(--red);
+    display:flex; align-items:center; gap:20px; flex-wrap:wrap}
+  .plat .big{font-family:var(--serif); font-weight:500; font-size:24px; line-height:1.1}
+  .plat .big b{color:var(--wood)}
+  .plat p{font-size:14.5px; color:#d7cbac; max-width:42ch}
+
+  /* la carte */
+  .carte{margin-top:60px; border-top:3px double var(--wood); padding-top:34px}
+  .carte-top{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px; margin-bottom:32px}
+  .carte-top h3{font-family:var(--serif); font-weight:900; font-size:clamp(30px,3.6vw,46px); color:var(--green)}
+  .carte-top .note{font-family:var(--cond); letter-spacing:.06em; font-size:13px; color:var(--red); text-transform:uppercase}
+  .carte-cols{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(24px,3vw,56px)}
+  .carte-col h4{font-family:var(--cond); font-weight:700; letter-spacing:.2em; text-transform:uppercase; font-size:14px;
+    color:var(--red); padding-bottom:10px; border-bottom:1px solid var(--line); margin-bottom:16px;
+    display:flex; align-items:center; gap:10px}
+  .carte-col h4 span{font-family:var(--serif); font-style:italic; font-weight:400; letter-spacing:0; text-transform:none;
+    font-size:13px; color:var(--muted)}
+  .dish{display:flex; align-items:baseline; gap:10px; padding:9px 0; border-bottom:1px dotted #cbbf9f}
+  .dish:last-child{border-bottom:none}
+  .dish .nm{font-family:var(--serif); font-size:17.5px; color:var(--ink); font-weight:500}
+  .dish .nm small{display:block; font-family:var(--sans); font-size:12.5px; color:var(--muted); font-weight:400; margin-top:2px}
+  .dish .dots{flex:1; border-bottom:1px dotted #b9ab88; transform:translateY(-4px); min-width:18px}
+  .dish .pr{font-family:var(--cond); font-weight:700; font-size:16px; color:var(--wood-dk); white-space:nowrap}
+
+  /* SOUS-SOL — quilles */
+  .sous-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(26px,3.4vw,54px); margin-top:44px; align-items:center}
+  .sous-photo{overflow:hidden; border:5px solid var(--paper); box-shadow:0 18px 40px rgba(0,0,0,.14); height:clamp(320px,30vw,420px)}
+  .sous-photo img{width:100%; height:100%; object-fit:cover}
+  .sous-copy .freebadge{display:inline-flex; align-items:center; gap:12px; margin-top:26px;
+    background:var(--red); color:#fff; padding:14px 22px; border-radius:2px}
+  .sous-copy .freebadge b{font-family:var(--serif); font-weight:900; font-size:26px; line-height:1}
+  .sous-copy .freebadge span{font-family:var(--cond); letter-spacing:.1em; text-transform:uppercase; font-size:12.5px; max-width:20ch}
+
+  /* ===================== VISIT / PLAN ===================== */
+  .visit{background:var(--green-deep); color:var(--cream); padding:clamp(56px,6vw,96px) clamp(28px,5vw,80px)}
+  .visit-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(30px,4vw,64px); align-items:stretch}
+  .visit h2{font-family:var(--serif); font-weight:900; font-size:clamp(32px,4vw,54px); line-height:1; color:#fff}
+  .visit .kick{font-family:var(--cond); letter-spacing:.34em; text-transform:uppercase; font-size:13px; color:var(--red-bright); margin-bottom:16px}
+  .info{margin-top:34px; display:grid; gap:22px}
+  .info .row{border-top:1px solid var(--green-line); padding-top:16px}
+  .info .k{font-family:var(--cond); letter-spacing:.2em; text-transform:uppercase; font-size:12px; color:#8ea593; margin-bottom:5px}
+  .info .v{font-size:18px; color:#f1e8cf}
+  .info .v b{font-weight:700}
+  .info .v a{color:#f1e8cf; text-decoration:none; border-bottom:1px solid var(--red)}
+  .conf{font-size:13px; color:#9db0a0; font-style:italic}
+  .map{border:6px solid var(--green); min-height:360px; height:100%; overflow:hidden; background:#0d1a12}
+  .map iframe{width:100%; height:100%; min-height:360px; border:0; filter:grayscale(.2)}
+
+  /* ===================== FOOTER ===================== */
+  footer{background:#101d14; color:#b8ab8c; padding:44px clamp(28px,5vw,80px) 40px}
+  .foot-grid{display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:34px; align-items:start}
+  footer .fm{font-family:var(--serif); font-weight:900; font-size:26px; color:var(--cream)}
+  footer .fm em{font-style:italic; font-weight:400; color:var(--wood); font-size:.7em; display:block}
+  footer p{font-size:14px; margin-top:12px; line-height:1.6}
+  footer h5{font-family:var(--cond); letter-spacing:.2em; text-transform:uppercase; font-size:12px; color:#7f9583; margin-bottom:12px}
+  footer ul{list-style:none; font-size:14px; display:grid; gap:8px}
+  footer a{color:#cdbf9d; text-decoration:none}
+  footer a:hover{color:#fff}
+  .demo{margin-top:34px; border-top:1px solid #ffffff1a; padding-top:18px; font-size:12.5px; color:#7d7361; line-height:1.6}
+
+  /* ===================== RESPONSIVE ===================== */
+  @media(max-width:1060px){
+    .masthead{grid-template-columns:1fr; gap:32px}
+    .facade-photo .frame{height:300px}
+    .fete-grid,.rdc-intro,.sous-grid,.visit-grid{grid-template-columns:1fr}
+    .carte-cols{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:820px){
+    .building{grid-template-columns:1fr}
+    .spine{position:sticky; top:0; height:auto; flex-direction:row; z-index:30; padding:0}
+    .spine .cap{display:none}
+    .levels{flex-direction:row; width:100%}
+    .levels::before{display:none}
+    .lvlbtn{flex:1; border-top:none; border-right:1px solid #ffffff14; padding:12px 6px}
+    .lvlbtn:last-child{border-bottom:none; border-right:none}
+    .lvlbtn .n{font-size:22px}
+    .lvlbtn.active::after{top:auto; bottom:0; left:0; right:0; width:auto; height:4px}
+    .floor{scroll-margin-top:64px}
+  }
+  @media(max-width:640px){
+    body{font-size:16px}
+    .directory{grid-template-columns:1fr}
+    .directory a{border-right:none; border-bottom:1px solid var(--green-line); padding:18px 0}
+    .carte-cols{grid-template-columns:1fr}
+    .fete-copy .uses{grid-template-columns:1fr}
+    .rdc-gallery{height:auto; grid-template-columns:1fr 1fr}
+    .rdc-gallery figure:first-child{grid-row:auto}
+    .rdc-gallery figure{height:150px}
+    .fete-photos{min-height:0}
+    .fete-photos .big{height:220px} .fete-photos .row{height:150px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ FAÇADE / MASTHEAD ============ -->
+<header class="facade">
+  <div class="topline">
+    <div class="est" data-i18n="est">Casino Syndical · Bonnevoie · maison de quartier</div>
+    <div class="lang" role="group" aria-label="Langue">
+      <button data-lang="fr" class="on">FR</button>
+      <button data-lang="de">DE</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+
+  <div class="masthead">
+    <div class="wordmark">
+      <div class="eyebrow" data-i18n="eyebrow">Brasserie · Café · Quilles · Salle des fêtes</div>
+      <h1>Brasserie<br>du Casino<em data-i18n="wm_sub">au Casino Syndical de Bonnevoie</em></h1>
+      <p class="sub" data-i18n="lede">Une maison de quartier sur trois niveaux : on y mange, on y joue aux quilles, on y fête. Cuisine brasserie aux accents portugais, luxembourgeois, français et belges.</p>
+      <div class="meta">
+        <span data-i18n="m_addr"><b>63, rue de Bonnevoie</b> · L-1260 Luxembourg</span>
+        <span><b>+352 48 69 83</b></span>
+      </div>
+    </div>
+    <div class="facade-photo">
+      <div class="plate">Casino Syndical</div>
+      <div class="frame"><img src="assets/exterior.jpg" alt="Le bâtiment du Casino Syndical à Bonnevoie, façade avec l'enseigne Brasserie du Casino"></div>
+    </div>
+  </div>
+
+  <!-- floor directory -->
+  <nav class="directory" aria-label="Les étages">
+    <a href="#fete">
+      <div class="lvl"><span>+1</span> <span style="all:unset" data-i18n="d_up">1ᵉʳ étage</span></div>
+      <h3 data-i18n="d_fete_t">La Salle des fêtes</h3>
+      <p data-i18n="d_fete_p">Grande salle & scène · ~200 couverts</p>
+    </a>
+    <a href="#rdc">
+      <div class="lvl"><span>0</span> <span style="all:unset" data-i18n="d_gf">Rez-de-chaussée</span></div>
+      <h3 data-i18n="d_rdc_t">La Brasserie & le Café</h3>
+      <p data-i18n="d_rdc_p">La carte, le plat du jour, le comptoir</p>
+    </a>
+    <a href="#sous">
+      <div class="lvl"><span>−1</span> <span style="all:unset" data-i18n="d_bs">Sous-sol</span></div>
+      <h3 data-i18n="d_sous_t">Les Quilles</h3>
+      <p data-i18n="d_sous_p">La piste de quilles · jeu offert au repas</p>
+    </a>
+  </nav>
+</header>
+
+<!-- ============ BUILDING SECTION ============ -->
+<div class="building">
+
+  <!-- ELEVATION SPINE -->
+  <aside class="spine" aria-hidden="true">
+    <div class="cap" data-i18n="spine_cap">Coupe de la maison</div>
+    <div class="levels">
+      <a class="lvlbtn" data-target="fete" href="#fete"><span class="n">+1</span><span class="t" data-i18n="s_fete">Salle des fêtes</span></a>
+      <a class="lvlbtn" data-target="rdc" href="#rdc"><span class="n">0</span><span class="t" data-i18n="s_rdc">Brasserie & Café</span></a>
+      <a class="lvlbtn" data-target="sous" href="#sous"><span class="n">−1</span><span class="t" data-i18n="s_sous">Les Quilles</span></a>
+    </div>
+  </aside>
+
+  <div class="floors">
+
+    <!-- ÉTAGE +1 : SALLE DES FÊTES -->
+    <section class="floor floor--fete" id="fete">
+      <div class="floor-head">
+        <div class="code">+1</div>
+        <div>
+          <div class="kick" data-i18n="fete_kick">1ᵉʳ étage — les grandes occasions</div>
+          <h2 data-i18n="fete_h">La Salle des fêtes & sa scène</h2>
+        </div>
+      </div>
+      <p class="lead" data-i18n="fete_lead">Au-dessus de la brasserie, la grande salle du Casino Syndical accueille depuis toujours les moments qui rassemblent le quartier : mariages, communions, fêtes d'association, arbres de Noël d'entreprise et petits concerts sur scène.</p>
+
+      <div class="fete-grid">
+        <div class="fete-copy">
+          <div class="chips">
+            <span class="chip" data-i18n="fete_c1">~200 couverts</span>
+            <span class="chip" data-i18n="fete_c2">Scène équipée</span>
+            <span class="chip" data-i18n="fete_c3">Traiteur sur demande</span>
+          </div>
+          <ul class="uses">
+            <li data-i18n="fete_u1">Mariages & communions</li>
+            <li data-i18n="fete_u2">Fêtes de famille</li>
+            <li data-i18n="fete_u3">Repas d'entreprise</li>
+            <li data-i18n="fete_u4">Concerts & spectacles</li>
+            <li data-i18n="fete_u5">Assemblées d'associations</li>
+            <li data-i18n="fete_u6">Anniversaires</li>
+          </ul>
+          <p class="lead" style="font-size:16px;margin-top:26px" data-i18n="fete_note">Capacité, disponibilités et formules de menu à confirmer avec la maison — appelez-nous pour visiter la salle.</p>
+        </div>
+        <div class="fete-photos">
+          <div class="big"><img src="assets/banquet-hall.jpg" alt="La grande salle des fêtes avec scène, disposée pour un concert"></div>
+          <div class="row"><img src="assets/banquet-room.jpg" alt="La salle dressée en longues tablées pour un banquet"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RDC : BRASSERIE & CAFÉ -->
+    <section class="floor floor--rdc" id="rdc">
+      <div class="floor-head">
+        <div class="code">0</div>
+        <div>
+          <div class="kick" data-i18n="rdc_kick">Rez-de-chaussée — le cœur de la maison</div>
+          <h2 data-i18n="rdc_h">La Brasserie & le Café</h2>
+        </div>
+      </div>
+
+      <div class="rdc-intro">
+        <div>
+          <p class="lead" data-i18n="rdc_lead">On pousse la porte et l'on est chez soi : salle à manger en bois clair, serviettes rouges, et ce comptoir carrelé de bleu et blanc où l'on prend le café du matin comme l'apéro du soir. Une cuisine généreuse et sans chichis, aux accents portugais et luxembourgeois.</p>
+          <div class="plat">
+            <div class="big" data-i18n="plat_big">Le plat du jour <b>~ 10,50 €</b></div>
+            <p data-i18n="plat_p">Plat, potage ou dessert et une boisson — la formule du midi des habitués. Prix et composition à confirmer.</p>
+          </div>
+        </div>
+        <div class="rdc-gallery">
+          <figure><img src="assets/interior-bar.jpg" alt="Le comptoir du café, carrelage bleu et blanc, pilier vert"><figcaption data-i18n="cap_bar">Le comptoir</figcaption></figure>
+          <figure><img src="assets/hero.jpg" alt="Salle à manger, tables en bois et serviettes rouges"><figcaption data-i18n="cap_salle">La salle</figcaption></figure>
+          <figure><img src="assets/interior-cafe.jpg" alt="L'espace café baigné de lumière côté fenêtres"><figcaption data-i18n="cap_cafe">Le café</figcaption></figure>
+        </div>
+      </div>
+
+      <!-- LA CARTE -->
+      <div class="carte">
+        <div class="carte-top">
+          <h3 data-i18n="carte_h">La carte</h3>
+          <div class="note" data-i18n="carte_note">Extrait — plats & prix à confirmer avec l'établissement</div>
+        </div>
+        <div class="carte-cols">
+          <div class="carte-col">
+            <h4>Viandes <span data-i18n="cat_meat">grillades & classiques</span></h4>
+            <div class="dish"><span class="nm">Côte à l'os grillée<small data-i18n="d_cote">sauce maître d'hôtel</small></span><span class="dots"></span><span class="pr">19,00</span></div>
+            <div class="dish"><span class="nm">Entrecôte<small data-i18n="d_sauce">sauce au choix</small></span><span class="dots"></span><span class="pr">16,80</span></div>
+            <div class="dish"><span class="nm">Filet de bœuf<small data-i18n="d_sauce2">sauce au choix</small></span><span class="dots"></span><span class="pr">20,00</span></div>
+            <div class="dish"><span class="nm">Grillade terre & mer</span><span class="dots"></span><span class="pr">27,00</span></div>
+            <div class="dish"><span class="nm">Cordon bleu<small data-i18n="d_champ">crème de champignons</small></span><span class="dots"></span><span class="pr">15,00</span></div>
+            <div class="dish"><span class="nm">Escalope<small data-i18n="d_champ2">crème de champignons</small></span><span class="dots"></span><span class="pr">14,70</span></div>
+          </div>
+          <div class="carte-col">
+            <h4>Poissons <span data-i18n="cat_fish">du grill</span></h4>
+            <div class="dish"><span class="nm">Sole meunière grillée</span><span class="dots"></span><span class="pr">18,00</span></div>
+            <div class="dish"><span class="nm">Cordon bleu de saumon</span><span class="dots"></span><span class="pr">17,50</span></div>
+            <div class="dish"><span class="nm">Saumon grillé</span><span class="dots"></span><span class="pr">16,00</span></div>
+            <div class="dish"><span class="nm">Bar grillé</span><span class="dots"></span><span class="pr">15,80</span></div>
+            <div class="dish"><span class="nm">Daurade grillée</span><span class="dots"></span><span class="pr">14,50</span></div>
+            <div class="dish"><span class="nm">Gambas sautées à l'ail</span><span class="dots"></span><span class="pr">17,00</span></div>
+          </div>
+          <div class="carte-col">
+            <h4>Maison <span data-i18n="cat_house">portugais & luxembourgeois</span></h4>
+            <div class="dish"><span class="nm">Bitoque<small data-i18n="d_bitoque">steak à la portugaise</small></span><span class="dots"></span><span class="pr">10,00</span></div>
+            <div class="dish"><span class="nm">Carne à Alentejana<small data-i18n="d_carne">porc & palourdes</small></span><span class="dots"></span><span class="pr">11,00</span></div>
+            <div class="dish"><span class="nm">Morue maison</span><span class="dots"></span><span class="pr">15,00</span></div>
+            <div class="dish"><span class="nm">Bouchée à la Reine</span><span class="dots"></span><span class="pr">11,00</span></div>
+            <div class="dish"><span class="nm">Kuddelfleck<small data-i18n="d_kuddel">spécialité luxembourgeoise</small></span><span class="dots"></span><span class="pr">13,00</span></div>
+            <div class="dish"><span class="nm">Steak de cheval</span><span class="dots"></span><span class="pr">13,00</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOUS-SOL : QUILLES -->
+    <section class="floor floor--sous" id="sous">
+      <div class="floor-head">
+        <div class="code">−1</div>
+        <div>
+          <div class="kick" data-i18n="sous_kick">Sous-sol — on descend jouer</div>
+          <h2 data-i18n="sous_h">La piste de quilles</h2>
+        </div>
+      </div>
+      <div class="sous-grid">
+        <div class="sous-photo"><img src="assets/bowling.jpg" alt="La piste de quilles au sous-sol, avec tables pour se restaurer sur place"></div>
+        <div class="sous-copy">
+          <p class="lead" data-i18n="sous_lead">Au sous-sol, la vraie piste de quilles de la maison — un coin de convivialité comme on n'en fait plus. On s'installe à table le long de la piste, on commande, et l'on joue entre deux plats. Parfait pour une soirée entre amis, une équipe ou une famille.</p>
+          <div class="freebadge"><b data-i18n="free_b">Offert</b><span data-i18n="free_s">le jeu de quilles est offert avec un repas — sur réservation, à confirmer</span></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- ============ VISIT ============ -->
+<section class="visit" id="visite">
+  <div class="visit-grid">
+    <div>
+      <div class="kick" data-i18n="v_kick">Nous trouver</div>
+      <h2 data-i18n="v_h">Au rond-point de Bonnevoie</h2>
+      <div class="info">
+        <div class="row">
+          <div class="k" data-i18n="v_addr_k">Adresse</div>
+          <div class="v"><b>63, rue de Bonnevoie</b><br>L-1260 Luxembourg</div>
+          <div class="conf" data-i18n="v_addr_c">Code postal L-1260 / L-1261 à confirmer</div>
+        </div>
+        <div class="row">
+          <div class="k" data-i18n="v_tel_k">Téléphone & réservations</div>
+          <div class="v"><a href="tel:+35248 6983">+352 48 69 83</a></div>
+        </div>
+        <div class="row">
+          <div class="k" data-i18n="v_hours_k">Horaires</div>
+          <div class="v" data-i18n="v_hours_v">Horaires — nous consulter</div>
+          <div class="conf" data-i18n="v_hours_c">Jours & heures d'ouverture à confirmer avec la maison.</div>
+        </div>
+        <div class="row">
+          <div class="k" data-i18n="v_group_k">Groupes, quilles & salle des fêtes</div>
+          <div class="v" data-i18n="v_group_v">Sur réservation — appelez-nous pour organiser votre événement.</div>
+        </div>
+      </div>
+    </div>
+    <div class="map">
+      <iframe title="Carte — 63 rue de Bonnevoie, Luxembourg" loading="lazy" src="https://www.google.com/maps?q=63+rue+de+Bonnevoie+L-1260+Luxembourg&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="fm">Brasserie du Casino<em>Casino Syndical · Bonnevoie</em></div>
+      <p data-i18n="f_p">Manger, jouer, fêter — sous un même toit, au cœur de Bonnevoie.</p>
+    </div>
+    <div>
+      <h5 data-i18n="f_nav">Les étages</h5>
+      <ul>
+        <li><a href="#fete" data-i18n="f_fete">+1 · La Salle des fêtes</a></li>
+        <li><a href="#rdc" data-i18n="f_rdc">0 · La Brasserie & le Café</a></li>
+        <li><a href="#sous" data-i18n="f_sous">−1 · Les Quilles</a></li>
+        <li><a href="#visite" data-i18n="f_visit">Nous trouver</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5 data-i18n="f_contact">Contact</h5>
+      <ul>
+        <li>63, rue de Bonnevoie</li>
+        <li>L-1260 Luxembourg</li>
+        <li><a href="tel:+35248 6983">+352 48 69 83</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="demo" data-i18n="disclaimer">Site de démonstration — maquette réalisée à des fins de présentation. Ce n'est pas le site officiel de l'établissement. Photos réelles fournies en basse résolution (à remplacer par des visuels haute résolution fournis par la maison). Menu, prix et horaires issus de sources anciennes — tous à confirmer avec l'établissement. Palette, logo et typographies proposés à titre indicatif.</div>
+</footer>
+
+<script>
+const I18N = {
+  fr:{},
+  de:{
+    est:"Casino Syndical · Bonneweg · Nachbarschaftshaus",
+    eyebrow:"Brasserie · Café · Kegelbahn · Festsaal",
+    wm_sub:"im Casino Syndical von Bonneweg",
+    lede:"Ein Nachbarschaftshaus auf drei Ebenen: hier wird gegessen, gekegelt und gefeiert. Brasserie-Küche mit portugiesischen, luxemburgischen, französischen und belgischen Akzenten.",
+    m_addr:"63, rue de Bonnevoie · L-1260 Luxemburg",
+    d_up:"1. Stock", d_gf:"Erdgeschoss", d_bs:"Untergeschoss",
+    d_fete_t:"Der Festsaal", d_fete_p:"Großer Saal & Bühne · ~200 Plätze",
+    d_rdc_t:"Brasserie & Café", d_rdc_p:"Die Karte, das Tagesgericht, die Theke",
+    d_sous_t:"Die Kegelbahn", d_sous_p:"Kegelbahn · Spiel zum Essen gratis",
+    spine_cap:"Schnitt durch das Haus", s_fete:"Festsaal", s_rdc:"Brasserie & Café", s_sous:"Kegelbahn",
+    fete_kick:"1. Stock — die großen Anlässe", fete_h:"Der Festsaal & seine Bühne",
+    fete_lead:"Über der Brasserie empfängt der große Saal des Casino Syndical seit jeher die Momente, die das Viertel zusammenbringen: Hochzeiten, Kommunionen, Vereinsfeste, Firmen-Weihnachtsfeiern und kleine Konzerte auf der Bühne.",
+    fete_c1:"~200 Plätze", fete_c2:"Ausgestattete Bühne", fete_c3:"Catering auf Anfrage",
+    fete_u1:"Hochzeiten & Kommunionen", fete_u2:"Familienfeiern", fete_u3:"Firmenessen",
+    fete_u4:"Konzerte & Shows", fete_u5:"Vereinsversammlungen", fete_u6:"Geburtstage",
+    fete_note:"Kapazität, Verfügbarkeit und Menü-Formeln mit dem Haus abzustimmen — rufen Sie uns an, um den Saal zu besichtigen.",
+    rdc_kick:"Erdgeschoss — das Herz des Hauses", rdc_h:"Die Brasserie & das Café",
+    rdc_lead:"Man öffnet die Tür und fühlt sich zu Hause: Speisesaal aus hellem Holz, rote Servietten und diese blau-weiß gekachelte Theke, an der man den Morgenkaffee wie den Abend-Aperitif nimmt. Eine großzügige, unkomplizierte Küche mit portugiesischen und luxemburgischen Akzenten.",
+    plat_big:"Tagesgericht ~ 10,50 €", plat_p:"Gericht, Suppe oder Dessert und ein Getränk — das Mittagsmenü der Stammgäste. Preis und Zusammensetzung zu bestätigen.",
+    cap_bar:"Die Theke", cap_salle:"Der Saal", cap_cafe:"Das Café",
+    carte_h:"Die Karte", carte_note:"Auszug — Gerichte & Preise mit dem Haus zu bestätigen",
+    cat_meat:"Grill & Klassiker", cat_fish:"vom Grill", cat_house:"portugiesisch & luxemburgisch",
+    d_cote:"Kräuterbutter", d_sauce:"Sauce nach Wahl", d_sauce2:"Sauce nach Wahl",
+    d_champ:"Champignonrahm", d_champ2:"Champignonrahm",
+    d_bitoque:"Steak nach portugiesischer Art", d_carne:"Schwein & Venusmuscheln", d_kuddel:"luxemburgische Spezialität",
+    sous_kick:"Untergeschoss — zum Spielen hinunter", sous_h:"Die Kegelbahn",
+    sous_lead:"Im Untergeschoss die echte Kegelbahn des Hauses — ein Stück Geselligkeit, wie es sie kaum noch gibt. Man setzt sich an die Tische entlang der Bahn, bestellt und kegelt zwischen zwei Gängen. Perfekt für einen Abend mit Freunden, ein Team oder die Familie.",
+    free_b:"Gratis", free_s:"das Kegelspiel ist zum Essen gratis — auf Reservierung, zu bestätigen",
+    v_kick:"So finden Sie uns", v_h:"Am Kreisverkehr von Bonneweg",
+    v_addr_k:"Adresse", v_addr_c:"Postleitzahl L-1260 / L-1261 zu bestätigen",
+    v_tel_k:"Telefon & Reservierung",
+    v_hours_k:"Öffnungszeiten", v_hours_v:"Öffnungszeiten — bitte anfragen", v_hours_c:"Öffnungstage und -zeiten mit dem Haus zu bestätigen.",
+    v_group_k:"Gruppen, Kegeln & Festsaal", v_group_v:"Auf Reservierung — rufen Sie uns an, um Ihre Feier zu organisieren.",
+    f_p:"Essen, kegeln, feiern — unter einem Dach, im Herzen von Bonneweg.",
+    f_nav:"Die Ebenen", f_fete:"+1 · Der Festsaal", f_rdc:"0 · Brasserie & Café", f_sous:"−1 · Die Kegelbahn", f_visit:"So finden Sie uns",
+    f_contact:"Kontakt",
+    disclaimer:"Demo-Website — Muster zu Präsentationszwecken. Dies ist nicht die offizielle Website des Betriebs. Echte Fotos in niedriger Auflösung (durch hochauflösende Bilder des Hauses zu ersetzen). Menü, Preise und Öffnungszeiten aus älteren Quellen — alle mit dem Betrieb zu bestätigen. Farben, Logo und Schriften als Vorschlag."
+  },
+  en:{
+    est:"Casino Syndical · Bonnevoie · neighbourhood house",
+    eyebrow:"Brasserie · Café · Skittles · Function hall",
+    wm_sub:"at the Casino Syndical of Bonnevoie",
+    lede:"A neighbourhood house on three levels: you eat, you bowl, you celebrate. Brasserie cooking with Portuguese, Luxembourgish, French and Belgian accents.",
+    m_addr:"63, rue de Bonnevoie · L-1260 Luxembourg",
+    d_up:"1st floor", d_gf:"Ground floor", d_bs:"Basement",
+    d_fete_t:"The Function Hall", d_fete_p:"Grand hall & stage · ~200 seats",
+    d_rdc_t:"The Brasserie & Café", d_rdc_p:"The menu, the daily special, the counter",
+    d_sous_t:"The Skittle Alley", d_sous_p:"Skittle lane · game free with a meal",
+    spine_cap:"Section through the house", s_fete:"Function hall", s_rdc:"Brasserie & Café", s_sous:"Skittle alley",
+    fete_kick:"1st floor — the big occasions", fete_h:"The Function Hall & its stage",
+    fete_lead:"Above the brasserie, the grand hall of the Casino Syndical has always hosted the moments that bring the neighbourhood together: weddings, communions, club parties, company Christmas gatherings and small concerts on the stage.",
+    fete_c1:"~200 seats", fete_c2:"Equipped stage", fete_c3:"Catering on request",
+    fete_u1:"Weddings & communions", fete_u2:"Family celebrations", fete_u3:"Company dinners",
+    fete_u4:"Concerts & shows", fete_u5:"Club assemblies", fete_u6:"Birthdays",
+    fete_note:"Capacity, availability and menu packages to confirm with the house — call us to view the hall.",
+    rdc_kick:"Ground floor — the heart of the house", rdc_h:"The Brasserie & the Café",
+    rdc_lead:"Push the door and you're at home: a light-wood dining room, red napkins, and that blue-and-white tiled counter where you take your morning coffee as easily as your evening apéro. Generous, no-fuss cooking with Portuguese and Luxembourgish accents.",
+    plat_big:"Daily special ~ €10.50", plat_p:"Main, soup or dessert and a drink — the regulars' lunch deal. Price and contents to confirm.",
+    cap_bar:"The counter", cap_salle:"The dining room", cap_cafe:"The café",
+    carte_h:"The menu", carte_note:"Excerpt — dishes & prices to confirm with the venue",
+    cat_meat:"grills & classics", cat_fish:"from the grill", cat_house:"Portuguese & Luxembourgish",
+    d_cote:"maître d'hôtel butter", d_sauce:"sauce of your choice", d_sauce2:"sauce of your choice",
+    d_champ:"mushroom cream", d_champ2:"mushroom cream",
+    d_bitoque:"steak, Portuguese style", d_carne:"pork & clams", d_kuddel:"Luxembourgish speciality",
+    sous_kick:"Basement — down we go to play", sous_h:"The Skittle Alley",
+    sous_lead:"Down in the basement, the house's real skittle lane — a slice of conviviality they hardly make anymore. You settle at the tables along the lane, order, and bowl between courses. Perfect for a night with friends, a team or the family.",
+    free_b:"Free", free_s:"the skittle game comes free with a meal — by reservation, to confirm",
+    v_kick:"Find us", v_h:"At the Bonnevoie roundabout",
+    v_addr_k:"Address", v_addr_c:"Postcode L-1260 / L-1261 to confirm",
+    v_tel_k:"Phone & reservations",
+    v_hours_k:"Opening hours", v_hours_v:"Hours — please ask us", v_hours_c:"Opening days and times to confirm with the house.",
+    v_group_k:"Groups, skittles & function hall", v_group_v:"By reservation — call us to organise your event.",
+    f_p:"Eat, bowl, celebrate — under one roof, in the heart of Bonnevoie.",
+    f_nav:"The levels", f_fete:"+1 · The Function Hall", f_rdc:"0 · The Brasserie & Café", f_sous:"−1 · The Skittle Alley", f_visit:"Find us",
+    f_contact:"Contact",
+    disclaimer:"Demonstration website — mock-up for presentation purposes. This is not the venue's official site. Real photos supplied in low resolution (to be replaced with high-resolution visuals from the house). Menu, prices and hours from legacy sources — all to be confirmed with the venue. Palette, logo and typefaces proposed for illustration only."
+  }
+};
+// capture French defaults
+document.querySelectorAll('[data-i18n]').forEach(el=>{ I18N.fr[el.dataset.i18n] = el.textContent; });
+
+function setLang(lang){
+  document.documentElement.lang = lang;
+  const dict = I18N[lang] || I18N.fr;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.dataset.i18n;
+    if(dict[k] !== undefined) el.textContent = dict[k];
+    else if(I18N.fr[k] !== undefined) el.textContent = I18N.fr[k];
+  });
+  document.querySelectorAll('.lang button').forEach(b=> b.classList.toggle('on', b.dataset.lang===lang));
+}
+document.querySelectorAll('.lang button').forEach(b=> b.addEventListener('click',()=> setLang(b.dataset.lang)));
+
+// scrollspy on the elevation spine
+const btns = [...document.querySelectorAll('.lvlbtn')];
+const map = {}; btns.forEach(b=> map[b.dataset.target]=b);
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      btns.forEach(b=>b.classList.remove('active'));
+      const b = map[e.target.id]; if(b) b.classList.add('active');
+    }
+  });
+},{rootMargin:"-45% 0px -45% 0px", threshold:0});
+['fete','rdc','sous'].forEach(id=>{ const s=document.getElementById(id); if(s) io.observe(s); });
+</script>
+</body>
+</html>

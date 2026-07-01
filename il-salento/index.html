@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Il Salento — Salento Rosticceria · Luxembourg Ville Haute</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --terracotta:#c0573f;
+    --terracotta-deep:#9c3f2c;
+    --rose:#e7a9a2;
+    --rose-pale:#f2cdc7;
+    --cream:#f7efe2;
+    --cream-2:#efe3cf;
+    --crust:#2c1a12;
+    --crust-2:#3d281c;
+    --olive:#6f7a43;
+    --olive-deep:#535c31;
+    --ceramic:#2a5a86;   /* Puglian plate-rim blue */
+    --ceramic-deep:#1d4468;
+    --ink:#241611;
+    --gold:#d8a24a;
+    --line:rgba(44,26,18,.16);
+    --rail:64px;
+    --shadow:0 24px 60px -30px rgba(44,26,18,.55);
+    font-synthesis:none;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Inter",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:900;line-height:.98;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .mono{font-family:"Space Mono",monospace;letter-spacing:.02em}
+  .eyebrow{
+    font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.32em;
+    text-transform:uppercase;font-weight:700;
+  }
+
+  /* ===== MERIDIAN RAIL (desktop) — the throughline: Lecce 40°N → Luxembourg 49°N ===== */
+  .meridian{
+    position:fixed;left:0;top:0;bottom:0;width:var(--rail);z-index:60;
+    background:var(--crust);
+    display:flex;flex-direction:column;align-items:center;
+    padding:18px 0;color:var(--cream);
+  }
+  .meridian::before{
+    content:"";position:absolute;left:50%;top:64px;bottom:64px;width:2px;
+    transform:translateX(-50%);
+    background:linear-gradient(var(--gold),rgba(216,162,74,.25),var(--gold));
+  }
+  .mer-cap{font-family:"Space Mono",monospace;font-size:.62rem;letter-spacing:.12em;
+    writing-mode:vertical-rl;text-orientation:mixed;color:var(--gold);white-space:nowrap}
+  .mer-cap.top{margin-bottom:10px}
+  .mer-cap.bot{margin-top:10px}
+  .mer-nav{margin:auto 0;display:flex;flex-direction:column;gap:26px;position:relative;z-index:2}
+  .mer-nav a{
+    width:11px;height:11px;border-radius:50%;background:transparent;
+    border:2px solid rgba(247,239,226,.5);position:relative;transition:.25s;
+  }
+  .mer-nav a:hover,.mer-nav a.active{background:var(--gold);border-color:var(--gold)}
+  .mer-nav a span{
+    position:absolute;left:22px;top:50%;transform:translateY(-50%);
+    font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.14em;
+    text-transform:uppercase;white-space:nowrap;color:var(--cream);
+    opacity:0;pointer-events:none;transition:.25s;
+    background:var(--crust-2);padding:4px 9px;border-radius:4px;
+  }
+  .mer-nav a:hover span{opacity:1}
+
+  /* ===== LANGUAGE SWITCHER ===== */
+  .langs{
+    position:fixed;top:20px;right:24px;z-index:80;display:flex;gap:2px;
+    background:rgba(44,26,18,.9);backdrop-filter:blur(6px);
+    padding:5px;border-radius:100px;box-shadow:var(--shadow);
+  }
+  .langs button{
+    font-family:"Space Mono",monospace;font-size:.72rem;font-weight:700;letter-spacing:.06em;
+    background:none;border:none;color:var(--cream);cursor:pointer;
+    padding:6px 12px;border-radius:100px;transition:.2s;
+  }
+  .langs button.active{background:var(--gold);color:var(--crust)}
+
+  /* ===== SHELL ===== */
+  .shell{padding-left:var(--rail)}
+  section{position:relative}
+  .wrap{max-width:1500px;margin:0 auto;padding:0 clamp(24px,4vw,72px)}
+
+  /* ===== MASTHEAD ===== */
+  .masthead{
+    background:
+      radial-gradient(120% 90% at 88% 8%, var(--rose) 0%, var(--rose-pale) 34%, var(--cream) 68%);
+    padding:clamp(26px,4vw,54px) 0 clamp(40px,5vw,72px);
+    overflow:hidden;
+  }
+  .mh-top{display:flex;align-items:baseline;justify-content:space-between;gap:20px;
+    padding-bottom:clamp(30px,4vw,60px);border-bottom:1.5px solid var(--line)}
+  .brand-line{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .brand-line .il{font-family:"Fraunces",serif;font-style:italic;font-weight:500;
+    font-size:clamp(1.1rem,1.5vw,1.4rem);color:var(--terracotta-deep)}
+  .brand-line .rost{font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--crust)}
+  .mh-open{font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--crust);display:flex;align-items:center;gap:9px}
+  .dot-live{width:8px;height:8px;border-radius:50%;background:var(--olive);
+    box-shadow:0 0 0 0 rgba(111,122,67,.6);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(111,122,67,.5)}70%{box-shadow:0 0 0 9px rgba(111,122,67,0)}100%{box-shadow:0 0 0 0 rgba(111,122,67,0)}}
+
+  .mh-grid{display:grid;grid-template-columns:1.02fr 1.18fr;gap:clamp(28px,4vw,64px);
+    align-items:center;padding-top:clamp(30px,4vw,58px)}
+  .mh-copy .eyebrow{color:var(--terracotta-deep)}
+  .mh-copy h1{font-size:clamp(3.2rem,7.6vw,7.4rem);color:var(--crust);margin:.18em 0 .12em}
+  .mh-copy h1 em{font-style:italic;font-weight:500;color:var(--terracotta)}
+  .mh-tag{font-family:"Fraunces",serif;font-style:italic;font-weight:500;
+    font-size:clamp(1.2rem,2vw,1.7rem);color:var(--crust-2);max-width:20ch;margin-bottom:1.1em}
+  .mh-coords{display:flex;align-items:center;gap:12px;margin-bottom:1.6em;flex-wrap:wrap}
+  .coord-chip{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.08em;
+    background:rgba(44,26,18,.06);border:1px solid var(--line);padding:7px 13px;border-radius:100px;
+    color:var(--crust);display:flex;gap:8px;align-items:center}
+  .coord-chip b{color:var(--terracotta-deep)}
+  .arrow-mer{color:var(--gold);font-weight:700}
+  .mh-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    font-family:"Space Mono",monospace;font-size:.78rem;font-weight:700;letter-spacing:.1em;
+    text-transform:uppercase;padding:15px 26px;border-radius:100px;cursor:pointer;
+    border:1.5px solid var(--crust);transition:.22s;display:inline-flex;align-items:center;gap:9px;
+  }
+  .btn-solid{background:var(--crust);color:var(--cream)}
+  .btn-solid:hover{background:var(--terracotta);border-color:var(--terracotta);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--crust)}
+  .btn-ghost:hover{background:var(--crust);color:var(--cream);transform:translateY(-2px)}
+
+  .mh-visual{position:relative}
+  .sun{
+    position:absolute;inset:-8% -6% -8% -6%;border-radius:50%;z-index:0;
+    background:
+      repeating-conic-gradient(from 0deg,rgba(216,162,74,.14) 0deg 4deg,transparent 4deg 8deg);
+    -webkit-mask:radial-gradient(circle,transparent 46%,#000 47%,#000 60%,transparent 61%);
+            mask:radial-gradient(circle,transparent 46%,#000 47%,#000 60%,transparent 61%);
+    animation:spin 90s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .mh-photo{position:relative;z-index:1;border-radius:20px;overflow:hidden;
+    box-shadow:var(--shadow);aspect-ratio:16/10;border:6px solid #fff}
+  .mh-photo img{width:100%;height:100%;object-fit:cover}
+  .mh-badge{
+    position:absolute;z-index:2;right:-10px;bottom:-18px;
+    width:118px;height:118px;border-radius:50%;background:var(--ceramic);color:var(--cream);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    box-shadow:var(--shadow);border:3px solid #fff;transform:rotate(-8deg)}
+  .mh-badge b{font-family:"Fraunces",serif;font-size:1.5rem;line-height:1}
+  .mh-badge span{font-family:"Space Mono",monospace;font-size:.56rem;letter-spacing:.14em;
+    text-transform:uppercase;margin-top:4px;opacity:.85}
+
+  /* marquee strip */
+  .strip{background:var(--crust);color:var(--cream);overflow:hidden;white-space:nowrap;
+    padding:12px 0;border-top:1px solid rgba(247,239,226,.1)}
+  .strip .track{display:inline-flex;gap:38px;animation:marq 34s linear infinite}
+  .strip span{font-family:"Fraunces",serif;font-style:italic;font-size:1.05rem;
+    display:inline-flex;align-items:center;gap:38px}
+  .strip span::after{content:"◦";color:var(--gold);font-style:normal}
+  @keyframes marq{to{transform:translateX(-50%)}}
+
+  /* ===== SIGNATURE — PUCCIA ORBIT ===== */
+  .puccia{background:var(--cream-2);padding:clamp(56px,7vw,110px) 0}
+  .puc-grid{display:grid;grid-template-columns:.9fr 1.15fr .8fr;gap:clamp(24px,3.5vw,56px);
+    align-items:center}
+  .puc-lead .eyebrow{color:var(--terracotta-deep)}
+  .puc-lead h2{font-size:clamp(2.4rem,3.8vw,3.8rem);color:var(--crust);margin:.2em 0 .5em}
+  .puc-lead h2 em{font-style:italic;font-weight:500;color:var(--terracotta)}
+  .puc-lead p{max-width:34ch;color:var(--crust-2)}
+  .puc-center{position:relative;justify-self:center}
+  .puc-disc{width:min(38vw,420px);aspect-ratio:1;border-radius:50%;overflow:hidden;
+    box-shadow:var(--shadow);border:8px solid #fff;position:relative}
+  .puc-disc img{width:100%;height:100%;object-fit:cover}
+  .puc-ring{position:absolute;inset:-26px;border:1.5px dashed var(--terracotta);border-radius:50%;
+    animation:spin 60s linear infinite}
+  .puc-ring::before{content:"PUCCIA · SALENTO · FORNO · PUGLIA · ";
+    position:absolute;top:-10px;left:50%;transform:translateX(-50%);
+    font-family:"Space Mono",monospace;font-size:.6rem;letter-spacing:.3em;color:var(--terracotta-deep);
+    background:var(--cream-2);padding:0 8px}
+  .puc-facts{display:flex;flex-direction:column;gap:18px}
+  .fact{border-left:3px solid var(--gold);padding-left:16px}
+  .fact b{font-family:"Fraunces",serif;font-size:1.7rem;color:var(--terracotta-deep);display:block;line-height:1}
+  .fact span{font-size:.86rem;color:var(--crust-2)}
+
+  /* ===== LA CARTA — CERAMIC TILE MENU (multi-column centerpiece) ===== */
+  .carta{background:var(--cream);padding:clamp(56px,7vw,104px) 0}
+  .carta-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;
+    flex-wrap:wrap;margin-bottom:clamp(30px,4vw,52px);
+    border-bottom:2px solid var(--crust);padding-bottom:20px}
+  .carta-head h2{font-size:clamp(2.6rem,5vw,4.6rem);color:var(--crust)}
+  .carta-head h2 em{font-style:italic;font-weight:500;color:var(--terracotta)}
+  .carta-note{font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.05em;
+    color:var(--crust-2);max-width:30ch;text-align:right}
+  .tiles{columns:3;column-gap:22px}
+  .tile{break-inside:avoid;margin-bottom:22px;border-radius:16px;padding:22px 22px 24px;
+    border:1px solid var(--line);background:#fff;box-shadow:0 12px 30px -24px rgba(44,26,18,.5)}
+  .tile.accent{background:linear-gradient(160deg,var(--ceramic) 0%,var(--ceramic-deep) 100%);color:var(--cream);border:none}
+  .tile.olive{background:linear-gradient(160deg,var(--olive) 0%,var(--olive-deep) 100%);color:var(--cream);border:none}
+  .tile.terra{background:linear-gradient(160deg,var(--terracotta) 0%,var(--terracotta-deep) 100%);color:var(--cream);border:none}
+  .tile h3{font-size:1.55rem;margin-bottom:2px}
+  .tile .sub{font-family:"Space Mono",monospace;font-size:.62rem;letter-spacing:.18em;
+    text-transform:uppercase;opacity:.75;margin-bottom:16px;display:block}
+  .row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;
+    border-bottom:1px dotted rgba(44,26,18,.18)}
+  .tile.accent .row,.tile.olive .row,.tile.terra .row{border-bottom-color:rgba(247,239,226,.28)}
+  .row:last-child{border-bottom:none}
+  .row .nm{font-weight:500;font-size:.95rem}
+  .row .nm small{display:block;font-weight:400;font-size:.76rem;opacity:.7;font-family:"Inter",sans-serif}
+  .row .pr{font-family:"Space Mono",monospace;font-size:.86rem;white-space:nowrap;font-weight:700}
+  .tile.photo{padding:0;overflow:hidden;border:none}
+  .tile.photo img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .tile.photo figcaption{padding:14px 20px 18px;background:#fff;display:flex;
+    justify-content:space-between;align-items:center;gap:10px}
+  .tile.photo figcaption b{font-family:"Fraunces",serif;font-size:1.15rem}
+  .tile.photo figcaption .pr{font-family:"Space Mono",monospace;font-size:.82rem;color:var(--terracotta-deep);font-weight:700}
+  .tag-veg{font-family:"Space Mono",monospace;font-size:.56rem;letter-spacing:.1em;
+    background:var(--olive);color:var(--cream);padding:2px 7px;border-radius:100px;vertical-align:middle}
+
+  /* ===== FORNO A LEGNA (evening band) ===== */
+  .forno{background:var(--crust);color:var(--cream);padding:clamp(56px,7vw,110px) 0;position:relative;overflow:hidden}
+  .forno::before{content:"";position:absolute;right:-14%;top:-30%;width:60vw;height:60vw;
+    background:radial-gradient(circle,rgba(192,87,63,.35),transparent 62%);pointer-events:none}
+  .forno-grid{display:grid;grid-template-columns:1.15fr .95fr;gap:clamp(30px,4vw,70px);align-items:center;position:relative}
+  .forno-copy .eyebrow{color:var(--gold)}
+  .forno-copy h2{font-size:clamp(2.6rem,4.6vw,4.4rem);margin:.2em 0 .4em}
+  .forno-copy h2 em{font-style:italic;font-weight:500;color:var(--rose)}
+  .forno-copy p{max-width:44ch;color:rgba(247,239,226,.82);margin-bottom:1.6em}
+  .forno-hours{display:inline-flex;align-items:center;gap:14px;
+    font-family:"Space Mono",monospace;font-size:.82rem;letter-spacing:.05em;
+    border:1px solid rgba(247,239,226,.3);padding:12px 20px;border-radius:100px}
+  .forno-hours b{color:var(--gold)}
+  .forno-visual{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .forno-visual figure{border-radius:16px;overflow:hidden;border:5px solid rgba(247,239,226,.9);box-shadow:var(--shadow)}
+  .forno-visual figure img{width:100%;aspect-ratio:1;object-fit:cover}
+  .forno-visual figure.big{grid-column:1 / -1;aspect-ratio:16/9}
+  .forno-visual figure.big img{aspect-ratio:16/9}
+
+  /* ===== STORIA — heel of Italy ===== */
+  .storia{background:var(--cream-2);padding:clamp(56px,7vw,104px) 0}
+  .storia-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(30px,4vw,72px);align-items:center}
+  .heel{position:relative;aspect-ratio:1;max-width:420px;margin:0 auto;width:100%}
+  .heel svg{width:100%;height:100%;overflow:visible}
+  .heel .pin{font-family:"Space Mono",monospace;font-size:.62rem;letter-spacing:.06em;fill:var(--crust)}
+  .storia-copy .eyebrow{color:var(--terracotta-deep)}
+  .storia-copy h2{font-size:clamp(2.4rem,4vw,3.8rem);color:var(--crust);margin:.2em 0 .5em}
+  .storia-copy h2 em{font-style:italic;font-weight:500;color:var(--terracotta)}
+  .storia-copy p{max-width:52ch;color:var(--crust-2);margin-bottom:1.1em}
+  .storia-copy p+p{font-size:.95rem}
+  .cred{margin-top:1em;font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.05em;
+    color:var(--crust-2);border-top:1px solid var(--line);padding-top:14px}
+
+  /* ===== VISITA (3-col info + map) ===== */
+  .visita{background:var(--cream);padding:clamp(56px,7vw,100px) 0 0}
+  .visita h2{font-size:clamp(2.4rem,4vw,3.8rem);color:var(--crust);margin-bottom:.6em}
+  .visita h2 em{font-style:italic;font-weight:500;color:var(--terracotta)}
+  .vis-grid{display:grid;grid-template-columns:.9fr .9fr 1.4fr;gap:clamp(20px,3vw,44px);align-items:start}
+  .vcard h3{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--terracotta-deep);margin-bottom:16px;font-weight:700}
+  .hours-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dotted var(--line);font-size:.92rem}
+  .hours-row.closed{color:var(--crust-2)}
+  .hours-row b{font-family:"Space Mono",monospace;font-size:.82rem}
+  .vcard address{font-style:normal;line-height:1.9;font-size:1rem}
+  .vcard address b{font-family:"Fraunces",serif;font-size:1.3rem;font-weight:600}
+  .deliv{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+  .deliv a{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.06em;
+    border:1.5px solid var(--crust);padding:8px 14px;border-radius:100px;transition:.2s}
+  .deliv a:hover{background:var(--terracotta);border-color:var(--terracotta);color:var(--cream)}
+  .map-frame{border-radius:16px;overflow:hidden;border:5px solid #fff;box-shadow:var(--shadow);height:340px}
+  .map-frame iframe{width:100%;height:100%;border:0;filter:saturate(1.05)}
+  .confirm{font-family:"Space Mono",monospace;font-size:.68rem;color:var(--crust-2);margin-top:12px;
+    display:inline-flex;gap:7px;align-items:center}
+  .confirm::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold)}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--crust);color:var(--cream);padding:clamp(44px,5vw,72px) 0 34px;margin-top:clamp(50px,6vw,90px)}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start;
+    border-bottom:1px solid rgba(247,239,226,.15);padding-bottom:34px}
+  .foot-brand .fw{font-family:"Fraunces",serif;font-size:2.4rem;font-weight:900}
+  .foot-brand .fw em{font-style:italic;font-weight:500;color:var(--rose)}
+  .foot-brand p{max-width:34ch;color:rgba(247,239,226,.7);margin-top:12px;font-size:.9rem}
+  .foot-col h4{font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:14px;font-weight:700}
+  .foot-col a,.foot-col p{display:block;color:rgba(247,239,226,.82);font-size:.9rem;margin-bottom:8px}
+  .foot-col a:hover{color:var(--rose)}
+  .foot-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    padding-top:22px;font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.04em;
+    color:rgba(247,239,226,.55)}
+  .demo-badge{background:var(--gold);color:var(--crust);padding:5px 12px;border-radius:100px;font-weight:700}
+
+  /* mobile top bar (hidden on desktop) */
+  .mtop{display:none}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:1080px){
+    .mh-grid{grid-template-columns:1fr;gap:34px}
+    .puc-grid{grid-template-columns:1fr 1fr;gap:34px}
+    .puc-facts{grid-column:1 / -1;flex-direction:row;flex-wrap:wrap}
+    .fact{flex:1 1 140px}
+    .tiles{columns:2}
+    .forno-grid,.storia-grid,.vis-grid{grid-template-columns:1fr;gap:34px}
+    .heel{max-width:320px}
+    .map-frame{height:300px}
+  }
+  @media(max-width:720px){
+    :root{--rail:0px}
+    .meridian{display:none}
+    .mtop{display:flex;position:sticky;top:0;z-index:70;align-items:center;justify-content:space-between;
+      background:var(--crust);color:var(--cream);padding:12px 16px}
+    .mtop .mw{font-family:"Fraunces",serif;font-style:italic;font-size:1.2rem}
+    .langs{top:auto;bottom:16px;right:16px}
+    .tiles{columns:1}
+    .puc-grid{grid-template-columns:1fr}
+    .puc-center{order:-1}
+    .forno-visual{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr;gap:26px}
+    .mh-copy h1{font-size:clamp(2.8rem,13vw,4rem)}
+    .carta-note{text-align:left}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<!-- MERIDIAN RAIL -->
+<nav class="meridian" aria-label="Navigation">
+  <span class="mer-cap top mono">40°21′N · LECCE</span>
+  <div class="mer-nav">
+    <a href="#apertura" class="active" aria-label="Apertura"><span data-i18n="nav.open">Ouverture</span></a>
+    <a href="#puccia" aria-label="Puccia"><span data-i18n="nav.puccia">La Puccia</span></a>
+    <a href="#carta" aria-label="Carta"><span data-i18n="nav.menu">La Carte</span></a>
+    <a href="#forno" aria-label="Forno"><span data-i18n="nav.forno">Le Four</span></a>
+    <a href="#storia" aria-label="Storia"><span data-i18n="nav.story">L'Histoire</span></a>
+    <a href="#visita" aria-label="Visita"><span data-i18n="nav.visit">Nous Trouver</span></a>
+  </div>
+  <span class="mer-cap bot mono">49°36′N · LUXEMBOURG</span>
+</nav>
+
+<!-- LANG -->
+<div class="langs" role="group" aria-label="Langue">
+  <button data-lang="fr" class="active">FR</button>
+  <button data-lang="de">DE</button>
+  <button data-lang="en">EN</button>
+</div>
+
+<!-- MOBILE TOP -->
+<div class="mtop">
+  <span class="mw">il Salento</span>
+  <a href="#visita" class="mono" style="font-size:.7rem;letter-spacing:.1em" data-i18n="nav.visit">Nous Trouver</a>
+</div>
+
+<div class="shell">
+
+  <!-- ===== MASTHEAD ===== -->
+  <section class="masthead" id="apertura">
+    <div class="wrap">
+      <div class="mh-top">
+        <div class="brand-line">
+          <span class="il">il</span>
+          <span class="rost">Salento · Rosticceria</span>
+        </div>
+        <div class="mh-open">
+          <span class="dot-live"></span>
+          <span data-i18n="mh.openinfo">Lun–Sam · comptoir & four à bois</span>
+        </div>
+      </div>
+
+      <div class="mh-grid">
+        <div class="mh-copy">
+          <p class="eyebrow" data-i18n="mh.eyebrow">Rosticceria pugliese · Ville Haute</p>
+          <h1 data-i18n="mh.title" data-i18n-html="1">Le goût du<br><em>Salento</em></h1>
+          <p class="mh-tag" data-i18n="mh.tag">La Puglia, au cœur de la Ville Haute — pucce, focacce & pizza au four à bois.</p>
+          <div class="mh-coords">
+            <span class="coord-chip mono"><b>Lecce</b> 40°N</span>
+            <span class="arrow-mer mono">———→</span>
+            <span class="coord-chip mono"><b>Luxembourg</b> 49°N</span>
+          </div>
+          <div class="mh-cta">
+            <a href="#carta" class="btn btn-solid" data-i18n="mh.cta1">Voir la carte</a>
+            <a href="#visita" class="btn btn-ghost" data-i18n="mh.cta2">Commander & venir</a>
+          </div>
+        </div>
+
+        <div class="mh-visual">
+          <div class="sun" aria-hidden="true"></div>
+          <div class="mh-photo">
+            <img src="assets/hero-pizzas.jpg" alt="Trois pizzas au four à bois d'Il Salento" />
+          </div>
+          <div class="mh-badge">
+            <b>al forno<br>a legna</b>
+            <span data-i18n="mh.badge">le soir</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- marquee strip -->
+  <div class="strip" aria-hidden="true">
+    <div class="track">
+      <span data-i18n="strip.items">Puccia salentina · Pasticciotto leccese · Focaccia · Pizza al forno a legna · Mortadella & Burrata · Street food del Sud</span>
+      <span data-i18n="strip.items">Puccia salentina · Pasticciotto leccese · Focaccia · Pizza al forno a legna · Mortadella & Burrata · Street food del Sud</span>
+    </div>
+  </div>
+
+  <!-- ===== PUCCIA ORBIT ===== -->
+  <section class="puccia" id="puccia">
+    <div class="wrap">
+      <div class="puc-grid">
+        <div class="puc-lead">
+          <p class="eyebrow" data-i18n="puc.eyebrow">La signature</p>
+          <h2 data-i18n="puc.title" data-i18n-html="1">La <em>puccia</em></h2>
+          <p data-i18n="puc.body">Le pain garni du Salento : une mie dorée, croustillante au feu, remplie à la commande. C'est le geste emblématique de la Puglia — et notre différence face à la pizzeria ordinaire.</p>
+        </div>
+        <div class="puc-center">
+          <div class="puc-ring" aria-hidden="true"></div>
+          <div class="puc-disc">
+            <img src="assets/food-puccia-poulet.jpg" alt="Puccia poulet, pain garni du Salento" />
+          </div>
+        </div>
+        <div class="puc-facts">
+          <div class="fact"><b>1×</b><span data-i18n="puc.f1">pain, cuit puis garni sur commande</span></div>
+          <div class="fact"><b>+400</b><span data-i18n="puc.f2">km au sud de Naples : le vrai Salento</span></div>
+          <div class="fact"><b>≈€11</b><span data-i18n="puc.f3">le déjeuner au comptoir · à confirmer</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LA CARTA ===== -->
+  <section class="carta" id="carta">
+    <div class="wrap">
+      <div class="carta-head">
+        <h2 data-i18n="carta.title" data-i18n-html="1">La <em>carte</em></h2>
+        <p class="carta-note" data-i18n="carta.note">Sélection — prix & disponibilités à confirmer avec l'établissement (sources : plateformes de livraison).</p>
+      </div>
+
+      <div class="tiles">
+
+        <!-- PUCCE -->
+        <div class="tile terra">
+          <h3>Pucce</h3>
+          <span class="sub" data-i18n="carta.pucce">Pain garni du Salento</span>
+          <div class="row"><span class="nm">Mortadella</span><span class="pr">€10,93</span></div>
+          <div class="row"><span class="nm">Salsiccia</span><span class="pr">€13,69</span></div>
+          <div class="row"><span class="nm">Poulet</span><span class="pr">€13,69</span></div>
+          <div class="row"><span class="nm">Vegetariana <span class="tag-veg">veg</span></span><span class="pr" data-i18n="carta.market">à conf.</span></div>
+          <div class="row"><span class="nm">"Surprise"</span><span class="pr" data-i18n="carta.market">à conf.</span></div>
+        </div>
+
+        <!-- PHOTO -->
+        <figure class="tile photo">
+          <img src="assets/food-puccia-salsiccia.jpg" alt="Puccia salsiccia" />
+          <figcaption><b data-i18n="carta.cap1">Puccia salsiccia</b><span class="pr">€13,69</span></figcaption>
+        </figure>
+
+        <!-- FOCACCE -->
+        <div class="tile">
+          <h3>Focacce</h3>
+          <span class="sub" data-i18n="carta.focacce">Moelleuses, au four</span>
+          <div class="row"><span class="nm">Margherita</span><span class="pr">€10,93</span></div>
+          <div class="row"><span class="nm">Prosciutto</span><span class="pr">€13,69</span></div>
+          <div class="row"><span class="nm">Diavola</span><span class="pr">€13,69</span></div>
+          <div class="row"><span class="nm">Napoli</span><span class="pr">€13,69</span></div>
+          <div class="row"><span class="nm">Capricciosa</span><span class="pr">€13,69</span></div>
+        </div>
+
+        <!-- PIZZE (accent) -->
+        <div class="tile accent">
+          <h3>Pizze</h3>
+          <span class="sub" data-i18n="carta.pizze">Au four à bois · le soir</span>
+          <div class="row"><span class="nm">Margherita</span><span class="pr">€16,10</span></div>
+          <div class="row"><span class="nm">Marinara</span><span class="pr">€14,00</span></div>
+          <div class="row"><span class="nm">Diavola</span><span class="pr">€18,50</span></div>
+          <div class="row"><span class="nm">Capricciosa</span><span class="pr">€20,00</span></div>
+          <div class="row"><span class="nm">Quattro Formaggi</span><span class="pr">€20,50</span></div>
+          <div class="row"><span class="nm">Tonno</span><span class="pr">€20,13</span></div>
+          <div class="row"><span class="nm">Mortadella, Burrata<br>e Pistacchio <span style="opacity:.7;font-size:.7rem">★</span></span><span class="pr">€23,50</span></div>
+        </div>
+
+        <!-- PHOTO standout -->
+        <figure class="tile photo">
+          <img src="assets/food-mortadella-burrata.jpg" alt="Pizza Mortadella, Burrata e Pistacchio" />
+          <figcaption><b data-i18n="carta.cap2">Mortadella & Burrata</b><span class="pr">€23,50</span></figcaption>
+        </figure>
+
+        <!-- PIZZE speciali -->
+        <div class="tile">
+          <h3 data-i18n="carta.speciali">Pizze speciali</h3>
+          <span class="sub" data-i18n="carta.speciali_sub">Les signatures de la maison</span>
+          <div class="row"><span class="nm">Carbonara</span><span class="pr">€20,50</span></div>
+          <div class="row"><span class="nm">Carpaccio</span><span class="pr">€23,50</span></div>
+          <div class="row"><span class="nm">La Persia</span><span class="pr">€24,50</span></div>
+        </div>
+
+        <!-- PHOTO focaccia -->
+        <figure class="tile photo">
+          <img src="assets/food-focaccia-margherita.jpg" alt="Focaccia Margherita" />
+          <figcaption><b data-i18n="carta.cap3">Focaccia Margherita</b><span class="pr">€10,93</span></figcaption>
+        </figure>
+
+        <!-- SALADES & PLATS -->
+        <div class="tile olive">
+          <h3 data-i18n="carta.salpiatti">Salades & plats</h3>
+          <span class="sub" data-i18n="carta.salpiatti_sub">Fraîcheur & tradition</span>
+          <div class="row"><span class="nm">Caprese</span><span class="pr">€17,90</span></div>
+          <div class="row"><span class="nm">Insalata Salento</span><span class="pr">€19,90</span></div>
+          <div class="row"><span class="nm">Fiorita</span><span class="pr">€22,50</span></div>
+          <div class="row"><span class="nm">Lasagne al forno</span><span class="pr">€21,50</span></div>
+          <div class="row"><span class="nm">Parmigiana</span><span class="pr">€20,50</span></div>
+        </div>
+
+        <!-- DOLCI -->
+        <div class="tile">
+          <h3>Dolci</h3>
+          <span class="sub" data-i18n="carta.dolci">Pasticceria salentina</span>
+          <div class="row"><span class="nm">Pasticciotto Leccese</span><span class="pr">€6,50</span></div>
+          <div class="row"><span class="nm">Crema Caffè</span><span class="pr">€4,00</span></div>
+          <div class="row"><span class="nm">Pizza Nutella / Pistacchio</span><span class="pr">€10,50</span></div>
+        </div>
+
+        <!-- BOISSONS -->
+        <div class="tile">
+          <h3 data-i18n="carta.drinks">Boissons</h3>
+          <span class="sub" data-i18n="carta.drinks_sub">Bières artisanales & vins</span>
+          <div class="row"><span class="nm" data-i18n="carta.water">Eau</span><span class="pr">€3,50</span></div>
+          <div class="row"><span class="nm" data-i18n="carta.soft">Softs</span><span class="pr">€4,50–6,50</span></div>
+          <div class="row"><span class="nm" data-i18n="carta.beer">Bières artisanales</span><span class="pr">€5,80–8,50</span></div>
+          <div class="row"><span class="nm" data-i18n="carta.wine">Vins</span><span class="pr">€42–60</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FORNO A LEGNA ===== -->
+  <section class="forno" id="forno">
+    <div class="wrap">
+      <div class="forno-grid">
+        <div class="forno-copy">
+          <p class="eyebrow" data-i18n="forno.eyebrow">Al forno a legna</p>
+          <h2 data-i18n="forno.title" data-i18n-html="1">Le soir, on allume<br>le <em>four à bois</em></h2>
+          <p data-i18n="forno.body">La journée, c'est le comptoir : pucce et focacce à emporter, vite et bien. À la tombée du jour, la salle change de rythme — le four à bois s'allume et les pizzas sortent, bord soufflé et braisé.</p>
+          <span class="forno-hours mono"><span data-i18n="forno.hours">Pizza au four</span> · <b>17:45–21:00</b> · <span data-i18n="carta.market">à confirmer</span></span>
+        </div>
+        <div class="forno-visual">
+          <figure class="big"><img src="assets/food-pizza-margherita.jpg" alt="Pizza Margherita au four à bois" /></figure>
+          <figure><img src="assets/food-prosciutto-crudo.jpg" alt="Pizza prosciutto crudo" /></figure>
+          <figure><img src="assets/food-mortadella-burrata.jpg" alt="Pizza mortadella burrata" /></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STORIA ===== -->
+  <section class="storia" id="storia">
+    <div class="wrap">
+      <div class="storia-grid">
+        <div class="heel" aria-hidden="true">
+          <svg viewBox="0 0 300 300">
+            <defs>
+              <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#c0573f"/><stop offset="1" stop-color="#9c3f2c"/>
+              </linearGradient>
+            </defs>
+            <!-- stylised heel of Italy (Salento peninsula) -->
+            <path d="M70 40 C120 30 150 60 150 100 C150 130 130 150 140 180 C150 210 200 220 210 255 C215 275 195 285 178 275 C150 258 150 225 138 205 C120 175 95 175 80 150 C60 118 45 60 70 40 Z"
+                  fill="url(#g1)" opacity=".92"/>
+            <!-- meridian line Lecce -> Luxembourg -->
+            <circle cx="196" cy="262" r="6" fill="#2a5a86" stroke="#f7efe2" stroke-width="2"/>
+            <text x="150" y="285" class="pin">LECCE · 40°N</text>
+            <circle cx="120" cy="40" r="6" fill="#d8a24a" stroke="#f7efe2" stroke-width="2"/>
+            <text x="8" y="30" class="pin">LUXEMBOURG · 49°N</text>
+            <path d="M196 262 C90 230 40 120 120 40" fill="none" stroke="#d8a24a" stroke-width="2" stroke-dasharray="4 5"/>
+          </svg>
+        </div>
+        <div class="storia-copy">
+          <p class="eyebrow" data-i18n="storia.eyebrow">Dal tacco d'Italia</p>
+          <h2 data-i18n="storia.title" data-i18n-html="1">Du talon de la botte<br>à la <em>Grand-Rue</em></h2>
+          <p data-i18n="storia.p1">Le Salento, c'est l'extrême sud de la Puglia — le talon de l'Italie, entre deux mers, où la cuisine est faite de pain, d'huile d'olive et de générosité. Nous en avons rapporté les gestes : la puccia, la focaccia, le pasticciotto leccese.</p>
+          <p data-i18n="storia.p2">Une petite salle, quelques tables, un comptoir animé au déjeuner : Il Salento apporte cette table du Sud au cœur de la Ville Haute.</p>
+          <p class="cred" data-i18n="storia.cred">Récemment ouvert · aux fourneaux : « Mathieu » (à confirmer) · @salento_luxembourg</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VISITA ===== -->
+  <section class="visita" id="visita">
+    <div class="wrap">
+      <h2 data-i18n="visita.title" data-i18n-html="1">Nous <em>trouver</em></h2>
+      <div class="vis-grid">
+
+        <div class="vcard">
+          <h3 data-i18n="visita.hours">Horaires</h3>
+          <div class="hours-row"><span data-i18n="day.mon">Lundi</span><b>10:30–21:30</b></div>
+          <div class="hours-row"><span data-i18n="day.tue">Mardi</span><b>10:30–21:30</b></div>
+          <div class="hours-row"><span data-i18n="day.wed">Mercredi</span><b>10:30–21:30</b></div>
+          <div class="hours-row"><span data-i18n="day.thu">Jeudi</span><b>10:30–21:30</b></div>
+          <div class="hours-row"><span data-i18n="day.fri">Vendredi</span><b>10:30–21:30</b></div>
+          <div class="hours-row"><span data-i18n="day.sat">Samedi</span><b>10:30–21:30</b></div>
+          <div class="hours-row closed"><span data-i18n="day.sun">Dimanche</span><b data-i18n="visita.closed">Fermé</b></div>
+          <span class="confirm" data-i18n="visita.hconf">Horaires à confirmer</span>
+        </div>
+
+        <div class="vcard">
+          <h3 data-i18n="visita.contact">Adresse & contact</h3>
+          <address>
+            <b>Il Salento</b><br>
+            <span data-i18n="visita.addr">Grand-Rue · Ville Haute</span><br>
+            L-1661 Luxembourg<br>
+            <a href="tel:+35226771500">+352 26 77 15 00</a>
+          </address>
+          <span class="confirm" data-i18n="visita.aconf">N° de rue & tél. à confirmer</span>
+          <div class="deliv">
+            <a href="https://wolt.com/en/lux/luxembourg/restaurant/il-salento-luxembourg" target="_blank" rel="noopener">Wolt →</a>
+            <a href="https://www.wedely.com/restaurant/201411-salento-rosticceria" target="_blank" rel="noopener">Wedely →</a>
+            <a href="https://www.ubereats.com/lu/store/salento/XW3VNdpyXpmIsbfmP7S4jQ" target="_blank" rel="noopener">Uber Eats →</a>
+            <a href="https://www.instagram.com/salento_luxembourg/" target="_blank" rel="noopener">Instagram →</a>
+          </div>
+        </div>
+
+        <div class="vcard">
+          <h3 data-i18n="visita.map">Plan</h3>
+          <div class="map-frame">
+            <iframe title="Il Salento — Grand-Rue, Luxembourg" loading="lazy"
+              src="https://www.google.com/maps?q=Il+Salento+Grand-Rue+Luxembourg+Ville+Haute&output=embed"></iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <div class="fw">il <em>Salento</em></div>
+          <p data-i18n="foot.tag">Salento Rosticceria — pucce, focacce & pizza au four à bois, du talon de l'Italie à la Ville Haute de Luxembourg.</p>
+        </div>
+        <div class="foot-col">
+          <h4 data-i18n="foot.explore">Explorer</h4>
+          <a href="#puccia" data-i18n="nav.puccia">La Puccia</a>
+          <a href="#carta" data-i18n="nav.menu">La Carte</a>
+          <a href="#forno" data-i18n="nav.forno">Le Four</a>
+          <a href="#storia" data-i18n="nav.story">L'Histoire</a>
+        </div>
+        <div class="foot-col">
+          <h4 data-i18n="foot.find">Nous trouver</h4>
+          <p data-i18n="visita.addr">Grand-Rue · Ville Haute</p>
+          <p>L-1661 Luxembourg</p>
+          <a href="tel:+35226771500">+352 26 77 15 00</a>
+          <a href="https://www.instagram.com/salento_luxembourg/" target="_blank" rel="noopener">@salento_luxembourg</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span class="demo-badge" data-i18n="foot.demo">SITE DE DÉMONSTRATION</span>
+        <span data-i18n="foot.disclaimer">Maquette non officielle · menu, prix & horaires à confirmer · photos © l'établissement</span>
+        <span>© 2026 Il Salento Sàrl</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+const I18N = {
+  fr:{
+    "nav.open":"Ouverture","nav.puccia":"La Puccia","nav.menu":"La Carte","nav.forno":"Le Four",
+    "nav.story":"L'Histoire","nav.visit":"Nous Trouver",
+    "mh.openinfo":"Lun–Sam · comptoir & four à bois",
+    "mh.eyebrow":"Rosticceria pugliese · Ville Haute",
+    "mh.title":"Le goût du<br><em>Salento</em>",
+    "mh.tag":"La Puglia, au cœur de la Ville Haute — pucce, focacce & pizza au four à bois.",
+    "mh.cta1":"Voir la carte","mh.cta2":"Commander & venir","mh.badge":"le soir",
+    "strip.items":"Puccia salentina · Pasticciotto leccese · Focaccia · Pizza al forno a legna · Mortadella & Burrata · Street food del Sud",
+    "puc.eyebrow":"La signature","puc.title":"La <em>puccia</em>",
+    "puc.body":"Le pain garni du Salento : une mie dorée, croustillante au feu, remplie à la commande. C'est le geste emblématique de la Puglia — et notre différence face à la pizzeria ordinaire.",
+    "puc.f1":"pain, cuit puis garni sur commande","puc.f2":"km au sud de Naples : le vrai Salento",
+    "puc.f3":"le déjeuner au comptoir · à confirmer",
+    "carta.title":"La <em>carte</em>",
+    "carta.note":"Sélection — prix & disponibilités à confirmer avec l'établissement (sources : plateformes de livraison).",
+    "carta.pucce":"Pain garni du Salento","carta.focacce":"Moelleuses, au four","carta.pizze":"Au four à bois · le soir",
+    "carta.speciali":"Pizze speciali","carta.speciali_sub":"Les signatures de la maison",
+    "carta.salpiatti":"Salades & plats","carta.salpiatti_sub":"Fraîcheur & tradition",
+    "carta.dolci":"Pasticceria salentina","carta.drinks":"Boissons","carta.drinks_sub":"Bières artisanales & vins",
+    "carta.water":"Eau","carta.soft":"Softs","carta.beer":"Bières artisanales","carta.wine":"Vins",
+    "carta.market":"à confirmer",
+    "carta.cap1":"Puccia salsiccia","carta.cap2":"Mortadella & Burrata","carta.cap3":"Focaccia Margherita",
+    "forno.eyebrow":"Al forno a legna","forno.title":"Le soir, on allume<br>le <em>four à bois</em>",
+    "forno.body":"La journée, c'est le comptoir : pucce et focacce à emporter, vite et bien. À la tombée du jour, la salle change de rythme — le four à bois s'allume et les pizzas sortent, bord soufflé et braisé.",
+    "forno.hours":"Pizza au four",
+    "storia.eyebrow":"Dal tacco d'Italia","storia.title":"Du talon de la botte<br>à la <em>Grand-Rue</em>",
+    "storia.p1":"Le Salento, c'est l'extrême sud de la Puglia — le talon de l'Italie, entre deux mers, où la cuisine est faite de pain, d'huile d'olive et de générosité. Nous en avons rapporté les gestes : la puccia, la focaccia, le pasticciotto leccese.",
+    "storia.p2":"Une petite salle, quelques tables, un comptoir animé au déjeuner : Il Salento apporte cette table du Sud au cœur de la Ville Haute.",
+    "storia.cred":"Récemment ouvert · aux fourneaux : « Mathieu » (à confirmer) · @salento_luxembourg",
+    "visita.title":"Nous <em>trouver</em>","visita.hours":"Horaires","visita.closed":"Fermé",
+    "visita.contact":"Adresse & contact","visita.addr":"Grand-Rue · Ville Haute","visita.map":"Plan",
+    "visita.hconf":"Horaires à confirmer","visita.aconf":"N° de rue & tél. à confirmer",
+    "day.mon":"Lundi","day.tue":"Mardi","day.wed":"Mercredi","day.thu":"Jeudi","day.fri":"Vendredi","day.sat":"Samedi","day.sun":"Dimanche",
+    "foot.tag":"Salento Rosticceria — pucce, focacce & pizza au four à bois, du talon de l'Italie à la Ville Haute de Luxembourg.",
+    "foot.explore":"Explorer","foot.find":"Nous trouver",
+    "foot.demo":"SITE DE DÉMONSTRATION",
+    "foot.disclaimer":"Maquette non officielle · menu, prix & horaires à confirmer · photos © l'établissement"
+  },
+  de:{
+    "nav.open":"Eröffnung","nav.puccia":"Die Puccia","nav.menu":"Die Karte","nav.forno":"Der Ofen",
+    "nav.story":"Geschichte","nav.visit":"Finden",
+    "mh.openinfo":"Mo–Sa · Theke & Holzofen",
+    "mh.eyebrow":"Apulische Rosticceria · Oberstadt",
+    "mh.title":"Der Geschmack<br>des <em>Salento</em>",
+    "mh.tag":"Apulien mitten in der Oberstadt — Pucce, Focacce & Pizza aus dem Holzofen.",
+    "mh.cta1":"Zur Karte","mh.cta2":"Bestellen & besuchen","mh.badge":"abends",
+    "strip.items":"Puccia salentina · Pasticciotto leccese · Focaccia · Pizza aus dem Holzofen · Mortadella & Burrata · Street Food aus dem Süden",
+    "puc.eyebrow":"Die Signatur","puc.title":"Die <em>Puccia</em>",
+    "puc.body":"Das gefüllte Brot des Salento: goldene Krume, im Feuer knusprig, auf Bestellung gefüllt. Die ikonische Geste Apuliens — und unser Unterschied zur gewöhnlichen Pizzeria.",
+    "puc.f1":"Brot, gebacken und auf Bestellung gefüllt","puc.f2":"km südlich von Neapel: das echte Salento",
+    "puc.f3":"Mittagessen an der Theke · zu bestätigen",
+    "carta.title":"Die <em>Karte</em>",
+    "carta.note":"Auswahl — Preise & Verfügbarkeit mit dem Lokal zu bestätigen (Quellen: Lieferplattformen).",
+    "carta.pucce":"Gefülltes Brot aus dem Salento","carta.focacce":"Weich, aus dem Ofen","carta.pizze":"Aus dem Holzofen · abends",
+    "carta.speciali":"Pizze speciali","carta.speciali_sub":"Die Signaturen des Hauses",
+    "carta.salpiatti":"Salate & Gerichte","carta.salpiatti_sub":"Frische & Tradition",
+    "carta.dolci":"Salentiner Patisserie","carta.drinks":"Getränke","carta.drinks_sub":"Craft-Biere & Weine",
+    "carta.water":"Wasser","carta.soft":"Softdrinks","carta.beer":"Craft-Biere","carta.wine":"Weine",
+    "carta.market":"zu bestätigen",
+    "carta.cap1":"Puccia salsiccia","carta.cap2":"Mortadella & Burrata","carta.cap3":"Focaccia Margherita",
+    "forno.eyebrow":"Al forno a legna","forno.title":"Abends heizen wir<br>den <em>Holzofen</em> an",
+    "forno.body":"Tagsüber die Theke: Pucce und Focacce zum Mitnehmen, schnell und gut. Bei Einbruch der Dunkelheit ändert der Raum den Rhythmus — der Holzofen brennt und die Pizzen kommen heraus, mit luftigem, geröstetem Rand.",
+    "forno.hours":"Pizza aus dem Ofen",
+    "storia.eyebrow":"Dal tacco d'Italia","storia.title":"Vom Absatz des Stiefels<br>zur <em>Grand-Rue</em>",
+    "storia.p1":"Das Salento ist der äußerste Süden Apuliens — der Absatz Italiens, zwischen zwei Meeren, wo die Küche aus Brot, Olivenöl und Großzügigkeit besteht. Wir haben die Gesten mitgebracht: die Puccia, die Focaccia, den Pasticciotto leccese.",
+    "storia.p2":"Ein kleiner Raum, ein paar Tische, eine lebhafte Theke am Mittag: Il Salento bringt diesen Tisch des Südens ins Herz der Oberstadt.",
+    "storia.cred":"Kürzlich eröffnet · am Ofen: „Mathieu" (zu bestätigen) · @salento_luxembourg",
+    "visita.title":"Uns <em>finden</em>","visita.hours":"Öffnungszeiten","visita.closed":"Geschlossen",
+    "visita.contact":"Adresse & Kontakt","visita.addr":"Grand-Rue · Oberstadt","visita.map":"Karte",
+    "visita.hconf":"Öffnungszeiten zu bestätigen","visita.aconf":"Hausnummer & Tel. zu bestätigen",
+    "day.mon":"Montag","day.tue":"Dienstag","day.wed":"Mittwoch","day.thu":"Donnerstag","day.fri":"Freitag","day.sat":"Samstag","day.sun":"Sonntag",
+    "foot.tag":"Salento Rosticceria — Pucce, Focacce & Pizza aus dem Holzofen, vom Absatz Italiens in die Oberstadt Luxemburgs.",
+    "foot.explore":"Entdecken","foot.find":"Finden",
+    "foot.demo":"DEMO-WEBSITE",
+    "foot.disclaimer":"Inoffizielles Modell · Karte, Preise & Zeiten zu bestätigen · Fotos © das Lokal"
+  },
+  en:{
+    "nav.open":"Opening","nav.puccia":"The Puccia","nav.menu":"The Menu","nav.forno":"The Oven",
+    "nav.story":"The Story","nav.visit":"Find Us",
+    "mh.openinfo":"Mon–Sat · counter & wood-fired oven",
+    "mh.eyebrow":"Puglian rosticceria · Upper Town",
+    "mh.title":"A taste of<br>the <em>Salento</em>",
+    "mh.tag":"Puglia in the heart of the Upper Town — pucce, focacce & wood-fired pizza.",
+    "mh.cta1":"See the menu","mh.cta2":"Order & visit","mh.badge":"evenings",
+    "strip.items":"Salento puccia · Pasticciotto leccese · Focaccia · Wood-fired pizza · Mortadella & Burrata · Southern street food",
+    "puc.eyebrow":"The signature","puc.title":"The <em>puccia</em>",
+    "puc.body":"The Salento's filled bread: a golden crumb, crisped in the fire, filled to order. It's Puglia's iconic gesture — and what sets us apart from an ordinary pizzeria.",
+    "puc.f1":"bread, baked then filled to order","puc.f2":"km south of Naples: the true Salento",
+    "puc.f3":"the counter lunch · to confirm",
+    "carta.title":"The <em>menu</em>",
+    "carta.note":"Selection — prices & availability to confirm with the venue (sources: delivery platforms).",
+    "carta.pucce":"Filled Salento bread","carta.focacce":"Soft, from the oven","carta.pizze":"Wood-fired · evenings",
+    "carta.speciali":"Pizze speciali","carta.speciali_sub":"House signatures",
+    "carta.salpiatti":"Salads & mains","carta.salpiatti_sub":"Freshness & tradition",
+    "carta.dolci":"Salento pastry","carta.drinks":"Drinks","carta.drinks_sub":"Craft beers & wines",
+    "carta.water":"Water","carta.soft":"Soft drinks","carta.beer":"Craft beers","carta.wine":"Wines",
+    "carta.market":"to confirm",
+    "carta.cap1":"Puccia salsiccia","carta.cap2":"Mortadella & Burrata","carta.cap3":"Focaccia Margherita",
+    "forno.eyebrow":"Al forno a legna","forno.title":"At night we light<br>the <em>wood-fired oven</em>",
+    "forno.body":"By day it's the counter: pucce and focacce to go, fast and good. As dusk falls the room changes rhythm — the wood-fired oven roars and the pizzas come out, with a puffed, charred crust.",
+    "forno.hours":"Wood-fired pizza",
+    "storia.eyebrow":"Dal tacco d'Italia","storia.title":"From the heel of the boot<br>to the <em>Grand-Rue</em>",
+    "storia.p1":"The Salento is the far south of Puglia — the heel of Italy, between two seas, where the cooking is made of bread, olive oil and generosity. We brought back the gestures: the puccia, the focaccia, the pasticciotto leccese.",
+    "storia.p2":"A small room, a few tables, a lively counter at lunch: Il Salento brings that table of the South into the heart of the Upper Town.",
+    "storia.cred":"Recently opened · at the oven: “Mathieu” (to confirm) · @salento_luxembourg",
+    "visita.title":"Find <em>us</em>","visita.hours":"Hours","visita.closed":"Closed",
+    "visita.contact":"Address & contact","visita.addr":"Grand-Rue · Upper Town","visita.map":"Map",
+    "visita.hconf":"Hours to confirm","visita.aconf":"Street number & phone to confirm",
+    "day.mon":"Monday","day.tue":"Tuesday","day.wed":"Wednesday","day.thu":"Thursday","day.fri":"Friday","day.sat":"Saturday","day.sun":"Sunday",
+    "foot.tag":"Salento Rosticceria — pucce, focacce & wood-fired pizza, from the heel of Italy to Luxembourg's Upper Town.",
+    "foot.explore":"Explore","foot.find":"Find us",
+    "foot.demo":"DEMONSTRATION SITE",
+    "foot.disclaimer":"Unofficial mock-up · menu, prices & hours to confirm · photos © the venue"
+  }
+};
+
+function setLang(lang){
+  const dict = I18N[lang]; if(!dict) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    const val = dict[key];
+    if(val==null) return;
+    if(el.hasAttribute("data-i18n-html")) el.innerHTML = val;
+    else el.textContent = val;
+  });
+  document.querySelectorAll(".langs button").forEach(b=>{
+    b.classList.toggle("active", b.dataset.lang===lang);
+  });
+}
+document.querySelectorAll(".langs button").forEach(b=>{
+  b.addEventListener("click",()=>setLang(b.dataset.lang));
+});
+
+// scrollspy for meridian rail
+const navLinks = [...document.querySelectorAll(".mer-nav a")];
+const secs = navLinks.map(a=>document.querySelector(a.getAttribute("href")));
+const spy = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id = "#"+e.target.id;
+      navLinks.forEach(a=>a.classList.toggle("active", a.getAttribute("href")===id));
+    }
+  });
+},{rootMargin:"-45% 0px -50% 0px"});
+secs.forEach(s=>s&&spy.observe(s));
+</script>
+</body>
+</html>

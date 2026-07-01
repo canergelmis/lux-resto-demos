@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Bak Gi Bo · 北之寳 — Cuisine chinoise authentique · Luxembourg-Gare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --vermilion:#C0311F;
+    --lacquer:#7C1A10;
+    --gold:#C79A3B;
+    --gold-lt:#E7CB84;
+    --porcelain:#1E4E79;
+    --porcelain-lt:#EAF1F6;
+    --wood:#8A5A34;
+    --cream:#FBF4E6;
+    --cream-2:#F5EAD3;
+    --ink:#231913;
+    --ink-soft:#5b4a3f;
+    --paper-line:rgba(124,26,16,.16);
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Inter",system-ui,sans-serif;
+    --han:"Noto Serif SC",serif;
+    --maxw:1400px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
+  .han{font-family:var(--han)}
+
+  /* ---------- SEAL (chop) ---------- */
+  .seal{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:58px;height:58px;border-radius:10px;
+    background:var(--vermilion);color:#fff;
+    font-family:var(--han);font-weight:900;font-size:26px;line-height:1;
+    box-shadow:inset 0 0 0 3px rgba(255,255,255,.4), 0 4px 14px rgba(124,26,16,.35);
+    letter-spacing:-2px;
+  }
+
+  /* ---------- TOP UTILITY BAR ---------- */
+  .util{
+    background:var(--lacquer);color:var(--gold-lt);
+    font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+  }
+  .util .wrap{display:flex;align-items:center;justify-content:space-between;height:42px;gap:20px}
+  .util .note{opacity:.9;font-weight:500}
+  .lang{display:flex;gap:6px;align-items:center}
+  .lang button{
+    font:inherit;letter-spacing:.1em;background:transparent;border:1px solid rgba(231,203,132,.4);
+    color:var(--gold-lt);padding:4px 10px;border-radius:4px;cursor:pointer;transition:.2s;
+  }
+  .lang button:hover{background:rgba(231,203,132,.15)}
+  .lang button[aria-pressed="true"]{background:var(--gold);color:var(--lacquer);border-color:var(--gold);font-weight:700}
+
+  /* ---------- MASTHEAD ---------- */
+  .mast{
+    position:relative;
+    background:
+      radial-gradient(120% 90% at 88% 8%, rgba(199,154,59,.18), transparent 55%),
+      linear-gradient(160deg,var(--vermilion),var(--lacquer) 78%);
+    color:var(--cream);
+    overflow:hidden;
+  }
+  .mast::before{ /* faint porcelain grid texture */
+    content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+    background-size:46px 46px;opacity:.5;pointer-events:none;
+  }
+  .mast .wrap{position:relative;display:grid;grid-template-columns:1.15fr 0.85fr;gap:48px;align-items:center;padding-top:56px;padding-bottom:56px}
+  .mast-left{position:relative}
+  .kicker{
+    display:inline-flex;align-items:center;gap:12px;
+    font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-lt);
+    border:1px solid rgba(231,203,132,.45);border-radius:30px;padding:7px 16px;margin-bottom:26px;
+  }
+  .wordmark{
+    font-family:var(--serif);font-weight:900;line-height:.92;
+    font-size:clamp(52px,7.4vw,104px);letter-spacing:-.02em;
+    text-shadow:0 2px 0 rgba(0,0,0,.12);
+  }
+  .wordmark span{color:var(--gold-lt);font-style:italic}
+  .subline{
+    display:flex;align-items:baseline;gap:16px;margin-top:14px;flex-wrap:wrap;
+  }
+  .subline .cn{font-family:var(--han);font-weight:700;font-size:34px;color:var(--gold-lt);letter-spacing:.12em}
+  .subline .rom{font-size:13px;letter-spacing:.3em;text-transform:uppercase;opacity:.85}
+  .tagline{
+    font-family:var(--serif);font-style:italic;font-size:clamp(19px,1.7vw,25px);
+    margin-top:26px;max-width:30ch;color:#fff;
+  }
+  .mast-badges{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+  .badge{
+    display:flex;flex-direction:column;gap:2px;
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+    padding:12px 18px;border-radius:10px;backdrop-filter:blur(2px);
+  }
+  .badge b{font-family:var(--serif);font-size:22px;font-weight:900;color:var(--gold-lt);line-height:1}
+  .badge small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+  .cta-row{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;
+    padding:14px 24px;border-radius:8px;cursor:pointer;transition:.22s;border:1px solid transparent;
+  }
+  .btn-gold{background:var(--gold);color:var(--lacquer)}
+  .btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;border-color:rgba(255,255,255,.4);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.12)}
+
+  /* vertical han rail */
+  .rail{
+    position:absolute;top:0;right:-6px;height:100%;display:flex;align-items:center;
+    pointer-events:none;
+  }
+  .rail span{
+    writing-mode:vertical-rl;font-family:var(--han);font-weight:900;
+    font-size:150px;color:rgba(255,255,255,.06);letter-spacing:.1em;line-height:1;
+  }
+
+  .mast-photo{position:relative}
+  .photo-frame{
+    position:relative;border-radius:220px 220px 18px 18px;overflow:hidden;
+    height:520px;border:10px solid var(--cream);
+    box-shadow:0 26px 60px rgba(60,10,4,.5);
+  }
+  .photo-frame img{width:100%;height:100%;object-fit:cover}
+  .photo-frame::after{ /* gold ring */
+    content:"";position:absolute;inset:0;border-radius:210px 210px 8px 8px;
+    box-shadow:inset 0 0 0 3px rgba(199,154,59,.7);pointer-events:none;
+  }
+  .photo-cap{
+    position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+    background:var(--lacquer);color:var(--gold-lt);font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;padding:8px 18px;border-radius:30px;white-space:nowrap;
+    border:1px solid rgba(231,203,132,.4);
+  }
+
+  /* ---------- COUNTER RIBBON ---------- */
+  .counter{background:var(--porcelain);color:var(--porcelain-lt);position:relative}
+  .counter .wrap{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  }
+  .cstep{padding:34px 30px;border-right:1px solid rgba(255,255,255,.14);position:relative}
+  .cstep:last-child{border-right:none}
+  .cstep .num{
+    font-family:var(--serif);font-weight:900;font-size:40px;color:var(--gold-lt);line-height:1;
+    display:flex;align-items:baseline;gap:8px;
+  }
+  .cstep .num .cn{font-family:var(--han);font-size:22px;opacity:.7}
+  .cstep h4{font-family:var(--serif);font-size:19px;margin:12px 0 6px;color:#fff;font-weight:600}
+  .cstep p{font-size:14px;opacity:.85;line-height:1.5}
+
+  /* ---------- SECTION HEADINGS ---------- */
+  .sec{padding:80px 0}
+  .sec-head{display:flex;align-items:center;gap:20px;margin-bottom:12px}
+  .sec-head .seal{width:52px;height:52px;font-size:22px}
+  .eyebrow{font-size:12.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--vermilion);font-weight:600}
+  .sec-title{font-family:var(--serif);font-weight:900;font-size:clamp(30px,4vw,50px);line-height:1.02;letter-spacing:-.01em;color:var(--lacquer)}
+  .sec-title .cn{font-family:var(--han);color:var(--porcelain);font-size:.7em;margin-left:10px}
+  .sec-intro{max-width:60ch;color:var(--ink-soft);font-size:16.5px;margin-top:16px}
+
+  /* ---------- REGISTER (menu) ---------- */
+  .register{background:var(--cream-2);position:relative}
+  .register::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(var(--paper-line) 1px,transparent 1.4px);
+    background-size:22px 22px;opacity:.5;pointer-events:none;
+  }
+  .register .wrap{position:relative}
+  .ledger{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-top:48px;align-items:start;
+  }
+  .col-region{
+    background:var(--cream);border:1px solid var(--paper-line);border-radius:16px;
+    padding:0 0 8px;overflow:hidden;box-shadow:0 12px 30px rgba(124,26,16,.07);
+  }
+  .region-head{
+    background:linear-gradient(120deg,var(--vermilion),var(--lacquer));
+    color:var(--cream);padding:22px 24px;display:flex;align-items:center;gap:14px;
+  }
+  .region-head .seal{background:var(--cream);color:var(--vermilion);box-shadow:inset 0 0 0 3px rgba(192,49,31,.25),0 3px 10px rgba(0,0,0,.2)}
+  .region-head h3{font-family:var(--serif);font-size:24px;font-weight:900;line-height:1}
+  .region-head p{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-lt);margin-top:4px}
+  .dish{
+    display:grid;grid-template-columns:1fr auto;gap:6px 14px;
+    padding:16px 24px;border-bottom:1px dashed var(--paper-line);align-items:baseline;
+  }
+  .dish:last-child{border-bottom:none}
+  .dish .d-cn{grid-column:1/2;font-family:var(--han);font-weight:700;font-size:19px;color:var(--porcelain)}
+  .dish .d-name{grid-column:1/2;font-weight:600;font-size:15.5px;color:var(--ink)}
+  .dish .d-desc{grid-column:1/2;font-size:13px;color:var(--ink-soft);line-height:1.4}
+  .dish .d-price{
+    grid-column:2/3;grid-row:1/3;align-self:center;
+    font-family:var(--serif);font-weight:600;font-size:13px;color:var(--vermilion);
+    white-space:nowrap;text-align:right;
+  }
+  .chili{color:var(--vermilion);font-size:12px;letter-spacing:1px}
+  .register-note{
+    margin-top:40px;display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;
+    background:var(--porcelain-lt);border:1px solid rgba(30,78,121,.2);border-left:5px solid var(--porcelain);
+    padding:18px 22px;border-radius:10px;font-size:14px;color:var(--porcelain);max-width:none;
+  }
+  .tag-ac{
+    display:inline-block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    background:var(--gold-lt);color:var(--lacquer);padding:2px 8px;border-radius:20px;font-weight:700;
+  }
+  .also{
+    margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  }
+  .also .lbl{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .chip{
+    background:var(--cream);border:1px solid var(--paper-line);border-radius:30px;
+    padding:8px 16px;font-size:14px;color:var(--lacquer);
+  }
+
+  /* ---------- GALLERY MOSAIC ---------- */
+  .gallery .grid{
+    display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px;margin-top:44px;
+  }
+  .gcell{position:relative;border-radius:14px;overflow:hidden;border:6px solid var(--cream);box-shadow:0 12px 26px rgba(124,26,16,.12)}
+  .gcell img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .gcell:hover img{transform:scale(1.07)}
+  .gcell figcaption{
+    position:absolute;left:0;bottom:0;right:0;
+    background:linear-gradient(transparent,rgba(35,25,19,.86));
+    color:var(--cream);padding:34px 16px 12px;font-size:13.5px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .gcell figcaption .cn{font-family:var(--han);color:var(--gold-lt);font-size:15px}
+  .g-wide{grid-column:span 2}
+  .g-tall{grid-row:span 2}
+
+  /* ---------- STORY strip ---------- */
+  .story{background:var(--lacquer);color:var(--cream);position:relative;overflow:hidden}
+  .story::before{content:"寳";position:absolute;right:-30px;top:-60px;font-family:var(--han);font-weight:900;font-size:420px;color:rgba(255,255,255,.04);line-height:1}
+  .story .wrap{position:relative;display:grid;grid-template-columns:0.9fr 1.1fr;gap:56px;align-items:center;padding:78px 40px}
+  .story h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,3.4vw,44px);line-height:1.05;color:#fff}
+  .story h2 .cn{color:var(--gold-lt);font-family:var(--han)}
+  .story .lede{font-size:17px;opacity:.9;margin-top:18px}
+  .story-points{display:grid;grid-template-columns:1fr 1fr;gap:22px 30px}
+  .sp{border-top:2px solid rgba(231,203,132,.4);padding-top:14px}
+  .sp h4{font-family:var(--serif);font-size:20px;color:var(--gold-lt);margin-bottom:6px}
+  .sp p{font-size:14.5px;opacity:.85;line-height:1.5}
+
+  /* ---------- VISIT ---------- */
+  .visit .wrap{display:grid;grid-template-columns:0.85fr 1.15fr;gap:44px;align-items:stretch}
+  .card{background:var(--cream-2);border:1px solid var(--paper-line);border-radius:16px;padding:34px;box-shadow:0 12px 30px rgba(124,26,16,.07)}
+  .info-row{display:flex;gap:16px;padding:18px 0;border-bottom:1px dashed var(--paper-line);align-items:flex-start}
+  .info-row:last-child{border-bottom:none}
+  .info-row .ic{
+    flex:0 0 auto;width:42px;height:42px;border-radius:10px;background:var(--vermilion);color:var(--cream);
+    display:flex;align-items:center;justify-content:center;font-family:var(--han);font-weight:700;font-size:20px;
+  }
+  .info-row h5{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:3px}
+  .info-row p{font-size:16px;color:var(--ink);font-weight:500}
+  .info-row a{color:var(--vermilion);font-weight:600}
+  .hours-list{list-style:none;font-size:14.5px}
+  .hours-list li{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dotted var(--paper-line);color:var(--ink)}
+  .hours-list li span:last-child{color:var(--ink-soft)}
+  .mapbox{border-radius:16px;overflow:hidden;border:6px solid var(--cream-2);box-shadow:0 14px 34px rgba(124,26,16,.14);min-height:440px}
+  .mapbox iframe{width:100%;height:100%;min-height:440px;border:0;display:block;filter:saturate(.9)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--vermilion);color:var(--cream);position:relative}
+  footer .grad{height:6px;background:linear-gradient(90deg,var(--gold),var(--gold-lt),var(--gold))}
+  footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding:56px 40px 30px}
+  .f-brand .wordmark{font-size:44px}
+  .f-brand .cn{font-family:var(--han);font-size:26px;color:var(--gold-lt);letter-spacing:.1em;margin-top:6px;display:inline-block}
+  .f-brand p{font-size:14px;opacity:.9;margin-top:14px;max-width:34ch}
+  footer h5{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:16px}
+  footer a,footer p.small{font-size:14.5px;opacity:.92;display:block;margin-bottom:8px}
+  footer a:hover{color:var(--gold-lt)}
+  .disclaimer{
+    border-top:1px solid rgba(255,255,255,.2);margin-top:10px;padding:18px 40px 34px;
+    font-size:12px;opacity:.8;text-align:center;letter-spacing:.03em;
+  }
+  .disclaimer .han{color:var(--gold-lt)}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:1080px){
+    .ledger{grid-template-columns:1fr 1fr}
+    .gallery .grid{grid-template-columns:repeat(2,1fr)}
+    .g-wide{grid-column:span 2}
+  }
+  @media(max-width:920px){
+    .mast .wrap{grid-template-columns:1fr;gap:36px}
+    .photo-frame{height:400px}
+    .rail{display:none}
+    .counter .wrap{grid-template-columns:1fr 1fr}
+    .cstep:nth-child(2){border-right:none}
+    .cstep{border-bottom:1px solid rgba(255,255,255,.14)}
+    .story .wrap{grid-template-columns:1fr;gap:32px}
+    .visit .wrap{grid-template-columns:1fr}
+    footer .wrap{grid-template-columns:1fr}
+  }
+  @media(max-width:640px){
+    .wrap{padding:0 20px}
+    .util .wrap{flex-direction:column;height:auto;gap:8px;padding:10px 20px}
+    .ledger{grid-template-columns:1fr}
+    .counter .wrap{grid-template-columns:1fr}
+    .cstep{border-right:none;border-bottom:1px solid rgba(255,255,255,.14)}
+    .gallery .grid{grid-template-columns:1fr;grid-auto-rows:220px}
+    .g-wide,.g-tall{grid-column:auto;grid-row:auto}
+    .story-points{grid-template-columns:1fr}
+    .sec{padding:56px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== UTILITY BAR ===== -->
+<div class="util">
+  <div class="wrap">
+    <div class="note" data-i18n="util.note">Commande au comptoir · à emporter &amp; sur place · Luxembourg-Gare</div>
+    <div class="lang" role="group" aria-label="Langue">
+      <button data-lang="fr" aria-pressed="true">FR</button>
+      <button data-lang="de" aria-pressed="false">DE</button>
+      <button data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MASTHEAD ===== -->
+<header class="mast">
+  <div class="rail" aria-hidden="true"><span>北之寳</span></div>
+  <div class="wrap">
+    <div class="mast-left">
+      <span class="kicker"><span class="seal" style="width:30px;height:30px;font-size:15px">寳</span><span data-i18n="mast.kicker">Cuisine chinoise régionale · depuis le comptoir</span></span>
+      <h1 class="wordmark">Bak&nbsp;Gi&nbsp;<span>Bo</span></h1>
+      <div class="subline">
+        <span class="cn">北之寳</span>
+        <span class="rom" data-i18n="mast.rom">« Le Trésor du Nord »</span>
+      </div>
+      <p class="tagline" data-i18n="mast.tagline">Le trésor du Nord, à deux pas de la Gare — généreux, authentique, servi vite.</p>
+      <div class="mast-badges">
+        <div class="badge"><b>4,8</b><small data-i18n="mast.badge.rating">Note RestaurantGuru</small></div>
+        <div class="badge"><b>≈11h30</b><small data-i18n="mast.badge.open">Ouverture · à confirmer</small></div>
+        <div class="badge"><b>粤·川·东北</b><small data-i18n="mast.badge.region">Canton · Sichuan · Dongbei</small></div>
+      </div>
+      <div class="cta-row">
+        <a href="#register" class="btn btn-gold" data-i18n="mast.cta.menu">Voir les spécialités</a>
+        <a href="tel:+35226845468" class="btn btn-ghost" data-i18n="mast.cta.call">Commander : +352 26 84 54 68</a>
+      </div>
+    </div>
+    <div class="mast-photo">
+      <div class="photo-frame">
+        <img src="assets/hero-sweet-sour.png" alt="Porc croustillant sauce aigre-douce, Bak Gi Bo">
+        <span class="photo-cap" data-i18n="mast.photo">Porc croustillant, sauce aigre-douce</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== COUNTER RIBBON ===== -->
+<section class="counter" aria-label="Le comptoir">
+  <div class="wrap">
+    <div class="cstep">
+      <div class="num">01 <span class="cn">点</span></div>
+      <h4 data-i18n="counter.1.t">On commande au comptoir</h4>
+      <p data-i18n="counter.1.p">Pas de chichis : on choisit, on paie, on s'installe. Le service va vite.</p>
+    </div>
+    <div class="cstep">
+      <div class="num">02 <span class="cn">满</span></div>
+      <h4 data-i18n="counter.2.t">Portions généreuses</h4>
+      <p data-i18n="counter.2.p">Des assiettes copieuses, pensées pour être partagées à table.</p>
+    </div>
+    <div class="cstep">
+      <div class="num">03 <span class="cn">带</span></div>
+      <h4 data-i18n="counter.3.t">À emporter, vite prêt</h4>
+      <p data-i18n="counter.3.p">Beaucoup de plats sont déjà prêts : idéal pour la pause déjeuner près de la Gare.</p>
+    </div>
+    <div class="cstep">
+      <div class="num">04 <span class="cn">真</span></div>
+      <h4 data-i18n="counter.4.t">Le vrai goût régional</h4>
+      <p data-i18n="counter.4.p">Des plats maison de Canton, du Sichuan et du Dongbei que l'on trouve rarement ailleurs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REGISTER (menu) ===== -->
+<section class="sec register" id="register">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="seal">寳</span>
+      <div>
+        <div class="eyebrow" data-i18n="reg.eyebrow">Le registre des trésors</div>
+        <h2 class="sec-title" data-i18n="reg.title">Les spécialités de la maison<span class="cn">菜单</span></h2>
+      </div>
+    </div>
+    <p class="sec-intro" data-i18n="reg.intro">Un aperçu des plats régionaux servis chez Bak Gi Bo, classés par région d'origine. Plats et disponibilités selon la carte chinoise de la maison — orthographe, disponibilité et prix <b>à confirmer avec l'établissement.</b></p>
+
+    <div class="ledger">
+      <!-- CANTON -->
+      <div class="col-region">
+        <div class="region-head">
+          <span class="seal">粤</span>
+          <div><h3 data-i18n="reg.canton.h">Canton</h3><p data-i18n="reg.canton.s">Cantonais · classiques</p></div>
+        </div>
+        <div class="dish">
+          <span class="d-cn">白斩鸡</span>
+          <span class="d-name" data-i18n="d.baizhan.n">Poulet « bai zhan » poché</span>
+          <span class="d-desc" data-i18n="d.baizhan.d">Poulet poché tendre, sauce gingembre-oignon.</span>
+          <span class="d-price">à confirmer</span>
+        </div>
+        <div class="dish">
+          <span class="d-cn">糯米鸡</span>
+          <span class="d-name" data-i18n="d.lotus.n">Poulet au riz gluant, feuille de lotus</span>
+          <span class="d-desc" data-i18n="d.lotus.d">Riz gluant parfumé cuit à la vapeur en feuille de lotus.</span>
+          <span class="d-price">à confirmer</span>
+        </div>
+        <div class="dish">
+          <span class="d-cn">干炒牛河</span>
+          <span class="d-name" data-i18n="d.hofun.n">Nouilles de riz sautées au bœuf</span>
+          <span class="d-desc" data-i18n="d.hofun.d">Ho fun au wok, bœuf et germes de soja — un incontournable.</span>
+          <span class="d-price">à confirmer</span>
+        </div>
+        <div class="dish">
+          <span class="d-cn">脆皮烤鸭</span>
+          <span class="d-name" data-i18n="d.duck.n">Canard rôti à la peau croustillante</span>
+          <span class="d-desc" data-i18n="d.duck.d">Canard laqué, peau dorée et croustillante.</span>
+          <span class="d-price">à confirmer</span>
+        </div>
+        <div class="dish">
+          <span class="d-cn">豉汁凤爪</span>
+          <span class="d-name" data-i18n="d.feet.n">Pattes de poulet, sauce aux haricots noirs</span>
+          <span class="d-desc" data-i18n="d.feet.d">Dim sum classique, mijoté en sauce de soja fermentée.</span>
+          <span class="d-price">à confirmer</span>
+        </div>
+      </div>
+
+      <!-- SICHUAN -->
+      <div class="col-region">
+        <div class="region-head">
+          <span class="seal">川</span>
+          <div><h3 data-i18n="reg.sichuan.h">Sichuan</h3><p data-i18n="reg.sichuan.s">Épicé · « mala »</p></div>
+        </div>
+        <div class="dish">
+          <span class="d-cn">水煮鱼</span>
+          <span class="d-name" data-i18n="d.fish.n">Poisson bouilli à la sichuanaise <span class="chili">🌶🌶</span></span>
+          <span class="d-desc" data-i18n="d.fish.d">Filets de poisson dans un bouillon d'huile pimentée et poivre du Sichuan.</span>
+          <span class="d-price">à confirmer</span>
+        </div>
+        <div class="dish">
+          <span class="d-cn">麻辣肚丝</span>
+          <span class="d-name" data-i18n="d.tripe.n">Tripes émincées « mala » <span class="chili">🌶🌶</span></span>
+          <span class="d-desc" data-i18n="d.tripe.d">Tripes finement coupées, sauce pimentée engourdissante.</span>
+          <span class="d-price">à confirmer</span>
+        </div>
+        <div class="dish">
+          <span class="d-cn">干锅大虾</span>
+          <span class="d-name" data-i18n="d.prawns.n">Gambas au wok sec <span class="chili">🌶</span></span>
+          <span class="d-desc" data-i18n="d.prawns.d">Grosses crevettes sautées, piment séché et aromates.</span>
+          <span class="d-price">à confirmer</span>
+        </div>
+        <div class="dish">
+          <span class="d-cn">凉拌猪耳</span>
+          <span class="d-name" data-i18n="d.ear.n">Salade froide d'oreille de porc <span class="chili">🌶</span></span>
+          <span class="d-desc" data-i18n="d.ear.d">Émincé croquant, coriandre, huile pimentée et vinaigre.</span>
+          <span class="d-price">à confirmer</span>
+        </div>
+      </div>
+
+      <!-- DONGBEI -->
+      <div class="col-region">
+        <div class="region-head">
+          <span class="seal">东</span>
+          <div><h3 data-i18n="reg.dongbei.h">Dongbei</h3><p data-i18n="reg.dongbei.s">Nord-Est · maison</p></div>
+        </div>
+        <div class="dish">
+          <span class="d-cn">东北煎饺</span>
+          <span class="d-name" data-i18n="d.dumpling.n">Raviolis poêlés du Nord-Est</span>
+          <span class="d-desc" data-i18n="d.dumpling.d">Gros raviolis dorés à la poêle, farce généreuse.</span>
+          <span class="d-price">à confirmer</span>
+        </div>
+        <div class="dish">
+          <span class="d-cn">梅菜扣肉</span>
+          <span class="d-name" data-i18n="d.pork.n">Poitrine de porc braisée, moutarde conservée</span>
+          <span class="d-desc" data-i18n="d.pork.d">Porc fondant en sauce soja foncée, légume mei cai.</span>
+          <span class="d-price">à confirmer</span>
+        </div>
+        <div class="dish">
+          <span class="d-cn">溜大肠</span>
+          <span class="d-name" data-i18n="d.intestine.n">Intestin de porc sauté</span>
+          <span class="d-desc" data-i18n="d.intestine.d">Spécialité rustique très recherchée par les habitués.</span>
+          <span class="d-price">à confirmer</span>
+        </div>
+        <div class="dish">
+          <span class="d-cn">火锅</span>
+          <span class="d-name" data-i18n="d.hotpot.n">Fondue chinoise (hot pot)</span>
+          <span class="d-desc" data-i18n="d.hotpot.d">Bouillon parfumé, à partager. Sur demande — à confirmer.</span>
+          <span class="d-price">à confirmer</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="also">
+      <span class="lbl" data-i18n="reg.also">Aussi à la carte</span>
+      <span class="chip" data-i18n="reg.chip1">Rouleaux de printemps</span>
+      <span class="chip" data-i18n="reg.chip2">Riz cantonais</span>
+      <span class="chip" data-i18n="reg.chip3">Nouilles sautées</span>
+      <span class="chip" data-i18n="reg.chip4">Légumes chinois à l'ail</span>
+    </div>
+
+    <div class="register-note">
+      <span class="tag-ac">à confirmer</span>
+      <span data-i18n="reg.note">Prix indicatifs : environ 10–20 € par personne (moyenne ≈ 20 €). La carte complète et les prix exacts doivent être confirmés avec l'établissement avant publication. Le niveau d'épice 🌶 est indiqué à titre indicatif.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="sec gallery" style="background:var(--cream)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="seal">味</span>
+      <div>
+        <div class="eyebrow" data-i18n="gal.eyebrow">Dans l'assiette</div>
+        <h2 class="sec-title" data-i18n="gal.title">Photographié chez Bak Gi Bo<span class="cn">实拍</span></h2>
+      </div>
+    </div>
+    <div class="grid">
+      <figure class="gcell g-wide g-tall">
+        <img src="assets/food-beef-ho-fun.png" alt="Nouilles de riz sautées au bœuf">
+        <figcaption><span class="cn">干炒牛河</span><span data-i18n="gal.hofun">Bœuf ho fun sauté au wok</span></figcaption>
+      </figure>
+      <figure class="gcell">
+        <img src="assets/food-braised-pork.png" alt="Poitrine de porc braisée">
+        <figcaption><span class="cn">梅菜扣肉</span><span data-i18n="gal.pork">Porc braisé, soja foncé</span></figcaption>
+      </figure>
+      <figure class="gcell">
+        <img src="assets/food-stir-fried-greens.png" alt="Légumes chinois sautés à l'ail">
+        <figcaption><span class="cn">蒜蓉青菜</span><span data-i18n="gal.greens">Légumes verts à l'ail</span></figcaption>
+      </figure>
+      <figure class="gcell g-wide">
+        <img src="assets/food-pork-ear-salad.png" alt="Salade froide d'oreille de porc">
+        <figcaption><span class="cn">凉拌猪耳</span><span data-i18n="gal.ear">Salade froide épicée, coriandre</span></figcaption>
+      </figure>
+      <figure class="gcell g-wide">
+        <img src="assets/food-cold-offal-salad.png" alt="Salade froide d'abats épicée">
+        <figcaption><span class="cn">凉菜</span><span data-i18n="gal.cold">Entrée froide, piment &amp; coriandre</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STORY ===== -->
+<section class="story">
+  <div class="wrap">
+    <div>
+      <h2 data-i18n="story.title">Un vrai comptoir chinois, près de la Gare <span class="cn">北之寳</span></h2>
+      <p class="lede" data-i18n="story.lede">Bak Gi Bo — 北之寳, « le Trésor du Nord » — est une cantine chinoise sans chichis à quelques pas de la Gare Centrale. On y vient pour des plats régionaux, généreux et faits maison : Canton, Sichuan et Dongbei réunis sous un même toit.</p>
+    </div>
+    <div class="story-points">
+      <div class="sp"><h4 data-i18n="story.1.t">Régional, pas générique</h4><p data-i18n="story.1.p">Abats parfumés, raviolis du Dongbei, poisson bouilli du Sichuan — la vraie cuisine que la communauté chinoise vient chercher.</p></div>
+      <div class="sp"><h4 data-i18n="story.2.t">Rapide &amp; copieux</h4><p data-i18n="story.2.p">Format comptoir : on commande, on est servi vite, les portions sont pensées pour rassasier.</p></div>
+      <div class="sp"><h4 data-i18n="story.3.t">Une clientèle fidèle</h4><p data-i18n="story.3.p">Employés du quartier de la Gare le midi, habitués venus pour les plats maison le soir.</p></div>
+      <div class="sp"><h4 data-i18n="story.4.t">Prix justes</h4><p data-i18n="story.4.p">Une cuisine authentique et abondante à prix doux — environ 10–20 € (à confirmer).</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISIT ===== -->
+<section class="sec visit" style="background:var(--porcelain-lt)">
+  <div class="wrap">
+    <div class="card">
+      <div class="sec-head" style="margin-bottom:6px">
+        <span class="seal" style="background:var(--porcelain)">访</span>
+        <div>
+          <div class="eyebrow" style="color:var(--porcelain)" data-i18n="visit.eyebrow">Nous trouver</div>
+          <h2 class="sec-title" style="font-size:34px;color:var(--porcelain)" data-i18n="visit.title">Venir &amp; commander</h2>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="ic">址</div>
+        <div><h5 data-i18n="visit.addr.l">Adresse</h5><p>15 Rue André Duchscher<br>L-1424 Luxembourg — Gare</p></div>
+      </div>
+      <div class="info-row">
+        <div class="ic">电</div>
+        <div><h5 data-i18n="visit.phone.l">Téléphone</h5>
+          <p><a href="tel:+35226845468">+352 26 84 54 68</a><br>
+          <a href="tel:+352691892289">+352 691 89 22 89</a>
+          <span class="tag-ac" style="margin-left:6px" data-i18n="visit.phone.ac">à confirmer</span></p></div>
+      </div>
+      <div class="info-row">
+        <div class="ic">时</div>
+        <div style="flex:1">
+          <h5 data-i18n="visit.hours.l">Horaires <span class="tag-ac">à confirmer</span></h5>
+          <ul class="hours-list">
+            <li><span data-i18n="day.mon">Lundi</span><span data-i18n="visit.hours.mon">à confirmer</span></li>
+            <li><span data-i18n="day.tuefri">Mardi – Vendredi</span><span>≈ 11h30 – 15h · 18h – 22h</span></li>
+            <li><span data-i18n="day.sat">Samedi</span><span data-i18n="visit.hours.sat">à confirmer</span></li>
+            <li><span data-i18n="day.sun">Dimanche</span><span>≈ 11h30 – 15h</span></li>
+          </ul>
+          <p style="font-size:12.5px;color:var(--ink-soft);margin-top:10px" data-i18n="visit.hours.note">Les sources en ligne divergent — merci de confirmer les horaires réels avec l'établissement.</p>
+        </div>
+      </div>
+    </div>
+    <div class="mapbox">
+      <iframe title="Carte — Bak Gi Bo, 15 Rue André Duchscher, Luxembourg" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=15+Rue+Andr%C3%A9+Duchscher,+L-1424+Luxembourg&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="grad"></div>
+  <div class="wrap">
+    <div class="f-brand">
+      <div class="wordmark">Bak Gi Bo</div>
+      <span class="cn">北之寳</span>
+      <p data-i18n="foot.about">Cuisine chinoise régionale — Canton, Sichuan &amp; Dongbei. Généreuse, authentique, servie depuis le comptoir, à deux pas de la Gare Centrale.</p>
+    </div>
+    <div>
+      <h5 data-i18n="foot.contact">Contact</h5>
+      <a href="tel:+35226845468">+352 26 84 54 68</a>
+      <a href="tel:+352691892289">+352 691 89 22 89</a>
+      <p class="small">15 Rue André Duchscher<br>L-1424 Luxembourg</p>
+    </div>
+    <div>
+      <h5 data-i18n="foot.explore">Découvrir</h5>
+      <a href="#register" data-i18n="foot.menu">Les spécialités</a>
+      <a href="#" data-i18n="foot.gallery">La galerie</a>
+      <a href="https://www.google.com/maps?q=15+Rue+Andr%C3%A9+Duchscher,+L-1424+Luxembourg" target="_blank" rel="noopener" data-i18n="foot.map">Itinéraire</a>
+    </div>
+  </div>
+  <div class="disclaimer">
+    <span data-i18n="foot.disclaimer">Site de démonstration — maquette non officielle, créée à des fins de présentation. Menu, prix, horaires et coordonnées à confirmer avec l'établissement. Photographies : galerie du restaurant (2020).</span>
+    <span class="han"> · 北之寳</span>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  fr:{
+    "util.note":"Commande au comptoir · à emporter & sur place · Luxembourg-Gare",
+    "mast.kicker":"Cuisine chinoise régionale · depuis le comptoir",
+    "mast.rom":"« Le Trésor du Nord »",
+    "mast.tagline":"Le trésor du Nord, à deux pas de la Gare — généreux, authentique, servi vite.",
+    "mast.badge.rating":"Note RestaurantGuru","mast.badge.open":"Ouverture · à confirmer","mast.badge.region":"Canton · Sichuan · Dongbei",
+    "mast.cta.menu":"Voir les spécialités","mast.cta.call":"Commander : +352 26 84 54 68","mast.photo":"Porc croustillant, sauce aigre-douce",
+    "counter.1.t":"On commande au comptoir","counter.1.p":"Pas de chichis : on choisit, on paie, on s'installe. Le service va vite.",
+    "counter.2.t":"Portions généreuses","counter.2.p":"Des assiettes copieuses, pensées pour être partagées à table.",
+    "counter.3.t":"À emporter, vite prêt","counter.3.p":"Beaucoup de plats sont déjà prêts : idéal pour la pause déjeuner près de la Gare.",
+    "counter.4.t":"Le vrai goût régional","counter.4.p":"Des plats maison de Canton, du Sichuan et du Dongbei que l'on trouve rarement ailleurs.",
+    "reg.eyebrow":"Le registre des trésors","reg.title":"Les spécialités de la maison",
+    "reg.intro":"Un aperçu des plats régionaux servis chez Bak Gi Bo, classés par région d'origine. Plats et disponibilités selon la carte chinoise de la maison — orthographe, disponibilité et prix <b>à confirmer avec l'établissement.</b>",
+    "reg.canton.h":"Canton","reg.canton.s":"Cantonais · classiques",
+    "reg.sichuan.h":"Sichuan","reg.sichuan.s":"Épicé · « mala »",
+    "reg.dongbei.h":"Dongbei","reg.dongbei.s":"Nord-Est · maison",
+    "d.baizhan.n":"Poulet « bai zhan » poché","d.baizhan.d":"Poulet poché tendre, sauce gingembre-oignon.",
+    "d.lotus.n":"Poulet au riz gluant, feuille de lotus","d.lotus.d":"Riz gluant parfumé cuit à la vapeur en feuille de lotus.",
+    "d.hofun.n":"Nouilles de riz sautées au bœuf","d.hofun.d":"Ho fun au wok, bœuf et germes de soja — un incontournable.",
+    "d.duck.n":"Canard rôti à la peau croustillante","d.duck.d":"Canard laqué, peau dorée et croustillante.",
+    "d.feet.n":"Pattes de poulet, sauce aux haricots noirs","d.feet.d":"Dim sum classique, mijoté en sauce de soja fermentée.",
+    "d.fish.n":"Poisson bouilli à la sichuanaise <span class='chili'>🌶🌶</span>","d.fish.d":"Filets de poisson dans un bouillon d'huile pimentée et poivre du Sichuan.",
+    "d.tripe.n":"Tripes émincées « mala » <span class='chili'>🌶🌶</span>","d.tripe.d":"Tripes finement coupées, sauce pimentée engourdissante.",
+    "d.prawns.n":"Gambas au wok sec <span class='chili'>🌶</span>","d.prawns.d":"Grosses crevettes sautées, piment séché et aromates.",
+    "d.ear.n":"Salade froide d'oreille de porc <span class='chili'>🌶</span>","d.ear.d":"Émincé croquant, coriandre, huile pimentée et vinaigre.",
+    "d.dumpling.n":"Raviolis poêlés du Nord-Est","d.dumpling.d":"Gros raviolis dorés à la poêle, farce généreuse.",
+    "d.pork.n":"Poitrine de porc braisée, moutarde conservée","d.pork.d":"Porc fondant en sauce soja foncée, légume mei cai.",
+    "d.intestine.n":"Intestin de porc sauté","d.intestine.d":"Spécialité rustique très recherchée par les habitués.",
+    "d.hotpot.n":"Fondue chinoise (hot pot)","d.hotpot.d":"Bouillon parfumé, à partager. Sur demande — à confirmer.",
+    "reg.also":"Aussi à la carte","reg.chip1":"Rouleaux de printemps","reg.chip2":"Riz cantonais","reg.chip3":"Nouilles sautées","reg.chip4":"Légumes chinois à l'ail",
+    "reg.note":"Prix indicatifs : environ 10–20 € par personne (moyenne ≈ 20 €). La carte complète et les prix exacts doivent être confirmés avec l'établissement avant publication. Le niveau d'épice 🌶 est indiqué à titre indicatif.",
+    "gal.eyebrow":"Dans l'assiette","gal.title":"Photographié chez Bak Gi Bo",
+    "gal.hofun":"Bœuf ho fun sauté au wok","gal.pork":"Porc braisé, soja foncé","gal.greens":"Légumes verts à l'ail","gal.ear":"Salade froide épicée, coriandre","gal.cold":"Entrée froide, piment & coriandre",
+    "story.title":"Un vrai comptoir chinois, près de la Gare","story.lede":"Bak Gi Bo — 北之寳, « le Trésor du Nord » — est une cantine chinoise sans chichis à quelques pas de la Gare Centrale. On y vient pour des plats régionaux, généreux et faits maison : Canton, Sichuan et Dongbei réunis sous un même toit.",
+    "story.1.t":"Régional, pas générique","story.1.p":"Abats parfumés, raviolis du Dongbei, poisson bouilli du Sichuan — la vraie cuisine que la communauté chinoise vient chercher.",
+    "story.2.t":"Rapide & copieux","story.2.p":"Format comptoir : on commande, on est servi vite, les portions sont pensées pour rassasier.",
+    "story.3.t":"Une clientèle fidèle","story.3.p":"Employés du quartier de la Gare le midi, habitués venus pour les plats maison le soir.",
+    "story.4.t":"Prix justes","story.4.p":"Une cuisine authentique et abondante à prix doux — environ 10–20 € (à confirmer).",
+    "visit.eyebrow":"Nous trouver","visit.title":"Venir & commander",
+    "visit.addr.l":"Adresse","visit.phone.l":"Téléphone","visit.phone.ac":"à confirmer",
+    "visit.hours.l":"Horaires <span class='tag-ac'>à confirmer</span>","visit.hours.mon":"à confirmer","visit.hours.sat":"à confirmer",
+    "visit.hours.note":"Les sources en ligne divergent — merci de confirmer les horaires réels avec l'établissement.",
+    "day.mon":"Lundi","day.tuefri":"Mardi – Vendredi","day.sat":"Samedi","day.sun":"Dimanche",
+    "foot.about":"Cuisine chinoise régionale — Canton, Sichuan & Dongbei. Généreuse, authentique, servie depuis le comptoir, à deux pas de la Gare Centrale.",
+    "foot.contact":"Contact","foot.explore":"Découvrir","foot.menu":"Les spécialités","foot.gallery":"La galerie","foot.map":"Itinéraire",
+    "foot.disclaimer":"Site de démonstration — maquette non officielle, créée à des fins de présentation. Menu, prix, horaires et coordonnées à confirmer avec l'établissement. Photographies : galerie du restaurant (2020)."
+  },
+  de:{
+    "util.note":"Bestellung am Tresen · zum Mitnehmen & vor Ort · Luxemburg-Bahnhof",
+    "mast.kicker":"Regionale chinesische Küche · vom Tresen",
+    "mast.rom":"„Der Schatz des Nordens“",
+    "mast.tagline":"Der Schatz des Nordens, nur ein paar Schritte vom Bahnhof — großzügig, authentisch, schnell serviert.",
+    "mast.badge.rating":"RestaurantGuru-Note","mast.badge.open":"Öffnung · zu bestätigen","mast.badge.region":"Kanton · Sichuan · Dongbei",
+    "mast.cta.menu":"Spezialitäten ansehen","mast.cta.call":"Bestellen: +352 26 84 54 68","mast.photo":"Knuspriges Schweinefleisch, süß-sauer",
+    "counter.1.t":"Bestellung am Tresen","counter.1.p":"Ganz unkompliziert: auswählen, zahlen, Platz nehmen. Es geht schnell.",
+    "counter.2.t":"Großzügige Portionen","counter.2.p":"Reichliche Teller, zum Teilen am Tisch gedacht.",
+    "counter.3.t":"Zum Mitnehmen, schnell fertig","counter.3.p":"Viele Gerichte sind schon fertig — ideal für die Mittagspause am Bahnhof.",
+    "counter.4.t":"Echter regionaler Geschmack","counter.4.p":"Hausgemachte Gerichte aus Kanton, Sichuan und Dongbei, die man selten anderswo findet.",
+    "reg.eyebrow":"Das Register der Schätze","reg.title":"Die Spezialitäten des Hauses",
+    "reg.intro":"Ein Überblick über die regionalen Gerichte bei Bak Gi Bo, nach Herkunftsregion geordnet. Gerichte und Verfügbarkeit gemäß der chinesischen Hauskarte — Schreibweise, Verfügbarkeit und Preise <b>mit dem Lokal zu bestätigen.</b>",
+    "reg.canton.h":"Kanton","reg.canton.s":"Kantonesisch · Klassiker",
+    "reg.sichuan.h":"Sichuan","reg.sichuan.s":"Scharf · „mala“",
+    "reg.dongbei.h":"Dongbei","reg.dongbei.s":"Nordosten · hausgemacht",
+    "d.baizhan.n":"Pochiertes Hähnchen „bai zhan“","d.baizhan.d":"Zartes pochiertes Hähnchen, Ingwer-Frühlingszwiebel-Sauce.",
+    "d.lotus.n":"Klebreis-Hähnchen im Lotusblatt","d.lotus.d":"Duftender Klebreis, im Lotusblatt gedämpft.",
+    "d.hofun.n":"Gebratene Reisnudeln mit Rind","d.hofun.d":"Ho fun aus dem Wok, Rind und Sojasprossen — ein Muss.",
+    "d.duck.n":"Knusprig gebratene Ente","d.duck.d":"Lackierte Ente mit goldener, knuspriger Haut.",
+    "d.feet.n":"Hühnerfüße in Schwarzbohnensauce","d.feet.d":"Dim-Sum-Klassiker, geschmort in fermentierter Sojasauce.",
+    "d.fish.n":"Sichuan-Fisch in Chiliöl <span class='chili'>🌶🌶</span>","d.fish.d":"Fischfilets in Chiliöl-Brühe mit Sichuan-Pfeffer.",
+    "d.tripe.n":"Feine Kutteln „mala“ <span class='chili'>🌶🌶</span>","d.tripe.d":"Fein geschnittene Kutteln, betäubend scharfe Sauce.",
+    "d.prawns.n":"Trockentopf-Garnelen <span class='chili'>🌶</span>","d.prawns.d":"Große Garnelen, gebraten mit getrockneter Chili und Gewürzen.",
+    "d.ear.n":"Kalter Schweineohr-Salat <span class='chili'>🌶</span>","d.ear.d":"Knackig geschnitten, Koriander, Chiliöl und Essig.",
+    "d.dumpling.n":"Gebratene Teigtaschen aus dem Nordosten","d.dumpling.d":"Große, in der Pfanne goldbraune Teigtaschen, reichlich gefüllt.",
+    "d.pork.n":"Geschmorter Schweinebauch mit Senfgemüse","d.pork.d":"Zarter Schweinebauch in dunkler Sojasauce, mei cai.",
+    "d.intestine.n":"Gebratener Schweinedarm","d.intestine.d":"Rustikale Spezialität, sehr beliebt bei Stammgästen.",
+    "d.hotpot.n":"Chinesisches Fondue (Hot Pot)","d.hotpot.d":"Aromatische Brühe zum Teilen. Auf Anfrage — zu bestätigen.",
+    "reg.also":"Ebenfalls auf der Karte","reg.chip1":"Frühlingsrollen","reg.chip2":"Kantonesischer Reis","reg.chip3":"Gebratene Nudeln","reg.chip4":"Chinesisches Gemüse mit Knoblauch",
+    "reg.note":"Richtpreise: etwa 10–20 € pro Person (Durchschnitt ≈ 20 €). Vollständige Karte und genaue Preise sind vor Veröffentlichung mit dem Lokal zu bestätigen. Die Schärfe 🌶 dient nur als Anhaltspunkt.",
+    "gal.eyebrow":"Auf dem Teller","gal.title":"Fotografiert bei Bak Gi Bo",
+    "gal.hofun":"Rind-Ho-Fun aus dem Wok","gal.pork":"Geschmorter Schweinebauch, dunkle Soja","gal.greens":"Grünes Gemüse mit Knoblauch","gal.ear":"Kalter scharfer Salat, Koriander","gal.cold":"Kalte Vorspeise, Chili & Koriander",
+    "story.title":"Ein echter chinesischer Tresen, nahe dem Bahnhof","story.lede":"Bak Gi Bo — 北之寳, „der Schatz des Nordens“ — ist eine unkomplizierte chinesische Kantine nur ein paar Schritte vom Hauptbahnhof. Man kommt für regionale, großzügige, hausgemachte Gerichte: Kanton, Sichuan und Dongbei unter einem Dach.",
+    "story.1.t":"Regional, nicht generisch","story.1.p":"Aromatische Innereien, Dongbei-Teigtaschen, Sichuan-Fisch — die echte Küche, die die chinesische Gemeinschaft sucht.",
+    "story.2.t":"Schnell & reichlich","story.2.p":"Tresen-Format: bestellen, schnell serviert, sättigende Portionen.",
+    "story.3.t":"Treue Stammkundschaft","story.3.p":"Mittags Beschäftigte aus dem Bahnhofsviertel, abends Stammgäste für die Hausgerichte.",
+    "story.4.t":"Faire Preise","story.4.p":"Authentische, reichliche Küche zu sanften Preisen — etwa 10–20 € (zu bestätigen).",
+    "visit.eyebrow":"So finden Sie uns","visit.title":"Anfahrt & Bestellung",
+    "visit.addr.l":"Adresse","visit.phone.l":"Telefon","visit.phone.ac":"zu bestätigen",
+    "visit.hours.l":"Öffnungszeiten <span class='tag-ac'>zu bestätigen</span>","visit.hours.mon":"zu bestätigen","visit.hours.sat":"zu bestätigen",
+    "visit.hours.note":"Die Angaben im Internet weichen ab — bitte die tatsächlichen Zeiten mit dem Lokal bestätigen.",
+    "day.mon":"Montag","day.tuefri":"Dienstag – Freitag","day.sat":"Samstag","day.sun":"Sonntag",
+    "foot.about":"Regionale chinesische Küche — Kanton, Sichuan & Dongbei. Großzügig, authentisch, vom Tresen serviert, nur ein paar Schritte vom Hauptbahnhof.",
+    "foot.contact":"Kontakt","foot.explore":"Entdecken","foot.menu":"Die Spezialitäten","foot.gallery":"Die Galerie","foot.map":"Route",
+    "foot.disclaimer":"Demo-Website — inoffizielle Vorschau zu Präsentationszwecken. Menü, Preise, Öffnungszeiten und Kontaktdaten mit dem Lokal zu bestätigen. Fotos: Galerie des Restaurants (2020)."
+  },
+  en:{
+    "util.note":"Order at the counter · takeaway & dine-in · Luxembourg-Gare",
+    "mast.kicker":"Regional Chinese cooking · from the counter",
+    "mast.rom":"“The Northern Treasure”",
+    "mast.tagline":"The treasure of the North, steps from the station — generous, authentic, served fast.",
+    "mast.badge.rating":"RestaurantGuru rating","mast.badge.open":"Opens · to be confirmed","mast.badge.region":"Canton · Sichuan · Dongbei",
+    "mast.cta.menu":"See the specialties","mast.cta.call":"Order: +352 26 84 54 68","mast.photo":"Crispy sweet & sour pork",
+    "counter.1.t":"Order at the counter","counter.1.p":"No fuss: choose, pay, sit down. Service is quick.",
+    "counter.2.t":"Generous portions","counter.2.p":"Hearty plates, made to be shared around the table.",
+    "counter.3.t":"Takeaway, ready fast","counter.3.p":"Many dishes are ready to go — perfect for a lunch break near the station.",
+    "counter.4.t":"The real regional taste","counter.4.p":"Home-style dishes from Canton, Sichuan and Dongbei you rarely find elsewhere.",
+    "reg.eyebrow":"The register of treasures","reg.title":"House specialties",
+    "reg.intro":"A glimpse of the regional dishes served at Bak Gi Bo, grouped by region of origin. Dishes and availability per the venue's Chinese menu — spelling, availability and prices <b>to be confirmed with the establishment.</b>",
+    "reg.canton.h":"Canton","reg.canton.s":"Cantonese · classics",
+    "reg.sichuan.h":"Sichuan","reg.sichuan.s":"Spicy · “mala”",
+    "reg.dongbei.h":"Dongbei","reg.dongbei.s":"North-East · home-style",
+    "d.baizhan.n":"Poached “bai zhan” chicken","d.baizhan.d":"Tender poached chicken, ginger-scallion sauce.",
+    "d.lotus.n":"Glutinous rice chicken in lotus leaf","d.lotus.d":"Fragrant sticky rice steamed in a lotus leaf.",
+    "d.hofun.n":"Stir-fried beef flat rice noodles","d.hofun.d":"Wok ho fun with beef and bean sprouts — a must.",
+    "d.duck.n":"Crispy-skin roast duck","d.duck.d":"Lacquered duck with golden, crackling skin.",
+    "d.feet.n":"Chicken feet in black bean sauce","d.feet.d":"Dim sum classic, braised in fermented soy.",
+    "d.fish.n":"Sichuan boiled fish <span class='chili'>🌶🌶</span>","d.fish.d":"Fish fillets in chilli-oil broth with Sichuan pepper.",
+    "d.tripe.n":"Shredded “mala” tripe <span class='chili'>🌶🌶</span>","d.tripe.d":"Finely sliced tripe in numbing spicy sauce.",
+    "d.prawns.n":"Dry-pot prawns <span class='chili'>🌶</span>","d.prawns.d":"Large prawns stir-fried with dried chilli and aromatics.",
+    "d.ear.n":"Cold pork-ear salad <span class='chili'>🌶</span>","d.ear.d":"Crunchy sliced, coriander, chilli oil and vinegar.",
+    "d.dumpling.n":"North-Eastern pan-fried dumplings","d.dumpling.d":"Big golden pan-fried dumplings, generous filling.",
+    "d.pork.n":"Braised pork belly with preserved greens","d.pork.d":"Melting pork belly in dark soy with mei cai.",
+    "d.intestine.n":"Sautéed pork intestine","d.intestine.d":"Rustic specialty much sought after by regulars.",
+    "d.hotpot.n":"Chinese hot pot (fondue)","d.hotpot.d":"Fragrant broth to share. On request — to be confirmed.",
+    "reg.also":"Also on the menu","reg.chip1":"Spring rolls","reg.chip2":"Cantonese fried rice","reg.chip3":"Fried noodles","reg.chip4":"Chinese greens with garlic",
+    "reg.note":"Indicative prices: about €10–20 per person (average ≈ €20). The full menu and exact prices must be confirmed with the establishment before publishing. The spice level 🌶 is shown for guidance only.",
+    "gal.eyebrow":"On the plate","gal.title":"Photographed at Bak Gi Bo",
+    "gal.hofun":"Wok-fried beef ho fun","gal.pork":"Braised pork, dark soy","gal.greens":"Garlic green vegetables","gal.ear":"Cold spicy salad, coriander","gal.cold":"Cold starter, chilli & coriander",
+    "story.title":"A real Chinese counter, by the station","story.lede":"Bak Gi Bo — 北之寳, “the Northern Treasure” — is a no-frills Chinese canteen steps from the Central Station. People come for regional, generous, home-cooked dishes: Canton, Sichuan and Dongbei under one roof.",
+    "story.1.t":"Regional, not generic","story.1.p":"Fragrant offal, Dongbei dumplings, Sichuan boiled fish — the real cooking the Chinese community comes for.",
+    "story.2.t":"Fast & filling","story.2.p":"Counter format: order, get served quickly, portions built to satisfy.",
+    "story.3.t":"A loyal crowd","story.3.p":"Station-district workers at lunch, regulars back for the home-style plates at night.",
+    "story.4.t":"Fair prices","story.4.p":"Authentic, abundant cooking at gentle prices — around €10–20 (to be confirmed).",
+    "visit.eyebrow":"Find us","visit.title":"Come & order",
+    "visit.addr.l":"Address","visit.phone.l":"Phone","visit.phone.ac":"to be confirmed",
+    "visit.hours.l":"Opening hours <span class='tag-ac'>to be confirmed</span>","visit.hours.mon":"to be confirmed","visit.hours.sat":"to be confirmed",
+    "visit.hours.note":"Online sources disagree — please confirm the actual hours with the establishment.",
+    "day.mon":"Monday","day.tuefri":"Tuesday – Friday","day.sat":"Saturday","day.sun":"Sunday",
+    "foot.about":"Regional Chinese cooking — Canton, Sichuan & Dongbei. Generous, authentic, served from the counter, steps from the Central Station.",
+    "foot.contact":"Contact","foot.explore":"Explore","foot.menu":"The specialties","foot.gallery":"The gallery","foot.map":"Directions",
+    "foot.disclaimer":"Demonstration website — unofficial mock-up made for presentation purposes. Menu, prices, hours and contact details to be confirmed with the establishment. Photos: restaurant gallery (2020)."
+  }
+};
+const LANG_META={fr:{label:"« Le Trésor du Nord »"},de:{},en:{}};
+function setLang(lang){
+  const dict=I18N[lang]; if(!dict) return;
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k=el.getAttribute("data-i18n");
+    if(dict[k]!==undefined) el.innerHTML=dict[k];
+  });
+  document.querySelectorAll(".lang button").forEach(b=>{
+    b.setAttribute("aria-pressed", b.dataset.lang===lang ? "true":"false");
+  });
+  try{localStorage.setItem("bgb-lang",lang);}catch(e){}
+}
+document.querySelectorAll(".lang button").forEach(b=>{
+  b.addEventListener("click",()=>setLang(b.dataset.lang));
+});
+(function(){
+  let saved=null; try{saved=localStorage.getItem("bgb-lang");}catch(e){}
+  if(saved&&saved!=="fr") setLang(saved);
+})();
+</script>
+</body>
+</html>

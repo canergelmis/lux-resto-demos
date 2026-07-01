@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Café de la Place — Larochette · brasserie de village au pied du château</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#221f1a;
+  --azul:#153761;        /* deep azulejo cobalt */
+  --azul2:#2f6db0;       /* bright ceramic blue  */
+  --azul-line:#3b78bd;
+  --cream:#f4efe1;       /* ceramic white        */
+  --paper:#fbf8ef;
+  --terra:#bd6238;       /* terracotta / Lux stone */
+  --terra2:#d98a53;
+  --stone:#9a8c74;
+  --glaze:#e8dfc8;
+  --shadow:0 24px 60px -30px rgba(21,55,97,.55);
+  --tilepat:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Crect width='84' height='84' fill='%23fbf8ef'/%3E%3Cg fill='none' stroke='%232f6db0' stroke-width='1.25' opacity='0.5'%3E%3Cpath d='M42 6C55 19 65 29 78 42 65 55 55 65 42 78 29 65 19 55 6 42 19 29 29 19 42 6Z'/%3E%3Ccircle cx='42' cy='42' r='7'/%3E%3Cpath d='M42 18 L46 42 L42 66 L38 42 Z'/%3E%3Cpath d='M18 42 L42 46 L66 42 L42 38 Z'/%3E%3C/g%3E%3Cg fill='%23153761' opacity='0.45'%3E%3Ccircle cx='0' cy='0' r='3.6'/%3E%3Ccircle cx='84' cy='0' r='3.6'/%3E%3Ccircle cx='0' cy='84' r='3.6'/%3E%3Ccircle cx='84' cy='84' r='3.6'/%3E%3Ccircle cx='42' cy='42' r='2'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Inter",system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.55;
+}
+h1,h2,h3,.disp{font-family:"Fraunces",Georgia,serif;font-weight:900;line-height:1.02;margin:0}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:1360px;margin:0 auto;padding:0 34px}
+
+/* ceramic tile frame used across the page */
+.tile{
+  position:relative;
+  background:var(--paper);
+  border:2px solid var(--azul);
+  box-shadow:0 0 0 5px var(--paper),0 0 0 7px var(--glaze),var(--shadow);
+}
+.tile::after{content:"";position:absolute;inset:6px;border:1px solid rgba(47,109,176,.35);pointer-events:none}
+
+.ey{font:600 12.5px/1 "Inter";letter-spacing:.28em;text-transform:uppercase;color:var(--azul2)}
+.ey.terra{color:var(--terra)}
+
+/* ---------- plaque bar (top utility strip) ---------- */
+.plaque{
+  position:sticky;top:0;z-index:60;
+  background:var(--azul);
+  color:var(--cream);
+  border-bottom:3px solid var(--terra);
+}
+.plaque .wrap{display:flex;align-items:center;gap:20px;min-height:56px;flex-wrap:wrap}
+.pmark{font-family:"Fraunces",serif;font-weight:900;font-size:20px;letter-spacing:.01em;white-space:nowrap}
+.pmark span{color:var(--terra2)}
+.ploc{font-size:12.5px;letter-spacing:.06em;color:#cfe0f2;flex:1;min-width:200px}
+.ploc b{color:var(--cream);font-weight:600}
+.plinks{display:flex;gap:4px;align-items:center}
+.plinks a.tel{
+  font:700 13px "Inter";text-decoration:none;color:var(--azul);
+  background:var(--cream);padding:9px 15px;border-radius:2px;white-space:nowrap;
+}
+.plinks a.tel:hover{background:var(--terra2);color:#fff}
+.lang{display:flex;gap:0;border:1px solid rgba(255,255,255,.4);border-radius:2px;overflow:hidden}
+.lang button{
+  border:0;background:transparent;color:#cfe0f2;font:700 12px "Inter";
+  letter-spacing:.08em;padding:8px 11px;cursor:pointer;transition:.15s;
+}
+.lang button+button{border-left:1px solid rgba(255,255,255,.28)}
+.lang button.on{background:var(--cream);color:var(--azul)}
+.lang button:hover:not(.on){color:#fff}
+
+/* ---------- HERO : facade panel, 3-column ---------- */
+.hero{background:var(--azul);color:var(--cream);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:var(--tilepat);opacity:.10;mix-blend-mode:screen}
+.hero .grid{
+  position:relative;display:grid;
+  grid-template-columns:1.15fr .95fr .55fr;
+  gap:0;min-height:78vh;
+}
+.hcell{padding:56px 44px;display:flex;flex-direction:column;justify-content:center}
+.hcell+.hcell{border-left:1px solid rgba(207,224,242,.22)}
+.badge2{
+  display:inline-flex;align-items:center;gap:12px;align-self:flex-start;
+  font:700 12px "Inter";letter-spacing:.22em;text-transform:uppercase;
+  color:var(--cream);border:1px solid rgba(207,224,242,.5);
+  padding:8px 15px;border-radius:2px;margin-bottom:26px;
+}
+.badge2 i{width:7px;height:7px;background:var(--terra2);border-radius:50%;font-style:normal}
+.hero h1{font-size:clamp(46px,5.6vw,86px);letter-spacing:-.01em}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--terra2)}
+.htag{font-size:19px;color:#dbe6f3;max-width:30ch;margin:22px 0 34px;line-height:1.45}
+.hactions{display:flex;gap:14px;flex-wrap:wrap}
+.btn{
+  font:700 13.5px "Inter";letter-spacing:.04em;text-decoration:none;
+  padding:15px 26px;border-radius:2px;display:inline-flex;align-items:center;gap:9px;transition:.18s;
+}
+.btn.solid{background:var(--terra);color:#fff}
+.btn.solid:hover{background:var(--terra2)}
+.btn.ghost{border:1.5px solid var(--cream);color:var(--cream)}
+.btn.ghost:hover{background:var(--cream);color:var(--azul)}
+
+.hphoto{padding:0;position:relative}
+.hphoto img{width:100%;height:100%;object-fit:cover;min-height:340px}
+.hphoto figcaption{
+  position:absolute;left:16px;bottom:16px;right:16px;
+  background:rgba(21,55,97,.82);color:var(--cream);
+  font:500 12px "Inter";letter-spacing:.04em;padding:9px 13px;border-radius:2px;
+}
+
+.hstat{background:var(--terra);color:#fff;justify-content:space-between}
+.hstat .row{padding:0}
+.hstat .k{font:700 11px "Inter";letter-spacing:.2em;text-transform:uppercase;opacity:.85}
+.hstat .v{font-family:"Fraunces",serif;font-weight:900;font-size:34px;line-height:1.05;margin-top:4px}
+.hstat .sep{height:1px;background:rgba(255,255,255,.35);margin:22px 0}
+.hstat small{display:block;font-size:12px;opacity:.9;margin-top:5px}
+
+/* ---------- section frame ---------- */
+section{padding:78px 0}
+.sechead{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:40px;flex-wrap:wrap}
+.sechead h2{font-size:clamp(30px,3.6vw,50px);color:var(--azul)}
+.sechead p{max-width:44ch;color:#5c5648;font-size:15.5px;margin:0}
+
+/* ---------- TWO CUISINES : facing panels ---------- */
+.duo{background:var(--cream)}
+.duo .panels{display:grid;grid-template-columns:1fr auto 1fr;align-items:stretch;gap:0}
+.cul{background:var(--paper);padding:44px 40px;border:2px solid var(--azul);position:relative}
+.cul.lu{border-right:0}
+.cul.pt{border-left:0}
+.cul h3{font-size:30px;color:var(--azul);margin-bottom:6px}
+.cul .flagword{font:700 12px "Inter";letter-spacing:.2em;text-transform:uppercase;color:var(--terra);margin-bottom:20px}
+.cul ul{list-style:none;margin:22px 0 0;padding:0}
+.cul li{padding:15px 0;border-top:1px dashed rgba(21,55,97,.28);display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+.cul li:first-child{border-top:0}
+.dish{font-family:"Fraunces",serif;font-weight:600;font-size:18px;color:var(--ink)}
+.dish small{display:block;font-family:"Inter";font-weight:400;font-size:13px;color:#6d6656;margin-top:3px;letter-spacing:0}
+.price{font:700 15px "Inter";color:var(--azul2);white-space:nowrap}
+.seam{
+  width:74px;background:var(--azul);color:var(--cream);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  writing-mode:vertical-rl;text-orientation:mixed;
+  font:900 20px "Fraunces";letter-spacing:.24em;text-transform:uppercase;
+}
+.seam .dot{width:9px;height:9px;background:var(--terra2);border-radius:50%}
+
+/* ---------- CARTE : mosaic of dish tiles ---------- */
+.carte{background:var(--paper)}
+.mosaic{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.mtile{
+  background:var(--cream);border:2px solid var(--azul);padding:22px 20px;
+  display:flex;flex-direction:column;min-height:150px;position:relative;
+}
+.mtile::before{content:"";position:absolute;left:10px;right:10px;top:10px;bottom:10px;border:1px solid rgba(47,109,176,.3);pointer-events:none}
+.mtile .cat{font:700 11px "Inter";letter-spacing:.18em;text-transform:uppercase;color:var(--terra)}
+.mtile h4{font-family:"Fraunces",serif;font-weight:600;font-size:20px;color:var(--azul);margin:10px 0 8px}
+.mtile p{font-size:13.5px;color:#635c4d;margin:0 0 auto;line-height:1.5}
+.mtile .price{margin-top:14px;font-size:16px}
+.mtile.wide{grid-column:span 2}
+.mtile.blue{background:var(--azul);border-color:var(--azul)}
+.mtile.blue::before{border-color:rgba(207,224,242,.35)}
+.mtile.blue .cat{color:var(--terra2)}
+.mtile.blue h4,.mtile.blue p,.mtile.blue .price{color:var(--cream)}
+.mtile.blue p{color:#cfe0f2}
+.legend{margin-top:22px;font-size:13px;color:#6d6656}
+.legend b{color:var(--terra)}
+
+/* ---------- RHYTHM frieze ---------- */
+.rhythm{background:var(--azul);color:var(--cream);position:relative;overflow:hidden}
+.rhythm::before{content:"";position:absolute;inset:0;background:var(--tilepat);opacity:.09;mix-blend-mode:screen}
+.rhythm .sechead h2{color:var(--cream)}
+.rhythm .sechead p{color:#cfe0f2}
+.frieze{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.rcell{padding:34px 26px;border-left:1px solid rgba(207,224,242,.22)}
+.rcell:first-child{border-left:0}
+.rcell .hr{font-family:"Fraunces",serif;font-weight:900;font-size:15px;color:var(--terra2);letter-spacing:.12em}
+.rcell h3{font-size:26px;margin:8px 0 12px}
+.rcell p{font-size:14px;color:#cfe0f2;margin:0}
+
+/* ---------- AMBIANCE gallery ---------- */
+.amb{background:var(--cream)}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;gap:14px}
+.gal figure{margin:0;position:relative;border:2px solid var(--azul);overflow:hidden;background:var(--glaze)}
+.gal figure::after{content:"";position:absolute;inset:5px;border:1px solid rgba(255,255,255,.5);pointer-events:none;z-index:2}
+.gal img{width:100%;height:100%;object-fit:cover}
+.gal .big{grid-column:span 2;grid-row:span 2}
+.gal .note{
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  background:var(--paper);padding:20px;color:#6d6656;font-size:13px;
+}
+.gal .note b{font-family:"Fraunces",serif;color:var(--azul);font-size:17px;display:block;margin-bottom:8px}
+
+/* ---------- VISIT ---------- */
+.visit{background:var(--paper)}
+.vgrid{display:grid;grid-template-columns:.85fr .55fr 1.1fr;gap:22px;align-items:stretch}
+.card{background:var(--cream);border:2px solid var(--azul);padding:34px 30px;position:relative}
+.card::after{content:"";position:absolute;inset:7px;border:1px solid rgba(47,109,176,.3);pointer-events:none}
+.card h3{font-size:24px;color:var(--azul);margin-bottom:18px}
+.info{list-style:none;margin:0;padding:0;font-size:14.5px}
+.info li{padding:11px 0;border-top:1px dashed rgba(21,55,97,.25)}
+.info li:first-child{border-top:0}
+.info .lbl{font:700 11px "Inter";letter-spacing:.16em;text-transform:uppercase;color:var(--terra);display:block;margin-bottom:3px}
+.info a{color:var(--azul2);text-decoration:none;font-weight:600}
+.hrs{display:flex;justify-content:space-between;padding:9px 0;border-top:1px dashed rgba(21,55,97,.25);font-size:14px}
+.hrs:first-of-type{border-top:0}
+.hrs.closed{color:#9a8c74}
+.hrs b{color:var(--azul);font-weight:600}
+.tag-cf{display:inline-block;font:700 10px "Inter";letter-spacing:.12em;text-transform:uppercase;color:var(--terra);background:rgba(189,98,56,.12);padding:3px 8px;border-radius:2px;margin-left:6px;vertical-align:middle}
+.mapbox{border:2px solid var(--azul);overflow:hidden;min-height:340px;position:relative}
+.mapbox iframe{width:100%;height:100%;min-height:340px;border:0;display:block;filter:saturate(.9)}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--azul);color:var(--cream);padding:56px 0 34px;position:relative;overflow:hidden}
+footer::before{content:"";position:absolute;inset:0;background:var(--tilepat);opacity:.08;mix-blend-mode:screen}
+.fgrid{position:relative;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start}
+.fmark{font-family:"Fraunces",serif;font-weight:900;font-size:30px}
+.fmark span{color:var(--terra2)}
+footer p{color:#cfe0f2;font-size:14px;max-width:40ch}
+.fcol h5{font:700 11px "Inter";letter-spacing:.2em;text-transform:uppercase;color:var(--terra2);margin:0 0 14px}
+.fcol a,.fcol div{display:block;color:#dbe6f3;text-decoration:none;font-size:14px;margin-bottom:9px}
+.fcol a:hover{color:#fff}
+.disc{position:relative;margin-top:36px;padding-top:20px;border-top:1px solid rgba(207,224,242,.25);font-size:12px;color:#a9c1db;line-height:1.6}
+.disc b{color:var(--terra2)}
+
+/* ---------- responsive ---------- */
+@media(max-width:1080px){
+  .hero .grid{grid-template-columns:1fr 1fr}
+  .hstat{grid-column:1 / -1;flex-direction:row;gap:30px;flex-wrap:wrap}
+  .hstat .sep{display:none}
+  .mosaic{grid-template-columns:repeat(2,1fr)}
+  .frieze{grid-template-columns:repeat(2,1fr)}
+  .rcell:nth-child(3){border-left:0}
+  .rcell:nth-child(n+3){border-top:1px solid rgba(207,224,242,.22)}
+  .gal{grid-template-columns:repeat(3,1fr)}
+  .vgrid{grid-template-columns:1fr 1fr}
+  .mapbox{grid-column:1 / -1}
+  .fgrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  .wrap{padding:0 20px}
+  .hero .grid{grid-template-columns:1fr}
+  .hcell{padding:40px 24px}
+  .hcell+.hcell{border-left:0;border-top:1px solid rgba(207,224,242,.22)}
+  .hphoto img{min-height:300px}
+  .duo .panels{grid-template-columns:1fr}
+  .cul.lu{border-right:2px solid var(--azul);border-bottom:0}
+  .cul.pt{border-left:2px solid var(--azul)}
+  .seam{width:auto;writing-mode:horizontal-tb;padding:14px;flex-direction:row}
+  .mosaic{grid-template-columns:1fr}
+  .mtile.wide{grid-column:span 1}
+  .frieze{grid-template-columns:1fr}
+  .rcell{border-left:0;border-top:1px solid rgba(207,224,242,.22)}
+  .rcell:first-child{border-top:0}
+  .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+  .gal .big{grid-column:span 2;grid-row:span 1}
+  .vgrid{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr}
+  .plaque .wrap{padding-top:10px;padding-bottom:10px}
+  .ploc{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ PLAQUE BAR ============ -->
+<div class="plaque">
+  <div class="wrap">
+    <div class="pmark">Café de la <span>Place</span></div>
+    <div class="ploc" data-i18n="loc"><b>5 Place du Marché</b> · Larochette · au pied du château</div>
+    <div class="plinks">
+      <div class="lang" role="group" aria-label="Langue">
+        <button data-lang="fr" class="on">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a class="tel" href="tel:+35226813294">+352 26 81 32 94</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="grid">
+    <div class="hcell">
+      <span class="badge2"><i></i><span data-i18n="badge">Lëtzebuerg × Portugal · depuis 2012</span></span>
+      <h1><span data-i18n="h1a">Sur la place,</span><br><em data-i18n="h1b">au pied du château.</em></h1>
+      <p class="htag" data-i18n="htag">Brasserie de village à Larochette. Cuisine luxembourgeoise généreuse et spécialités portugaises, servies en terrasse face à la place et aux ruines du château.</p>
+      <div class="hactions">
+        <a class="btn solid" href="#carte" data-i18n="cta1">Voir la carte</a>
+        <a class="btn ghost" href="tel:+35226813294" data-i18n="cta2">Réserver une table</a>
+      </div>
+    </div>
+    <figure class="hphoto">
+      <img src="assets/hero.jpg" alt="Entrecôte grillée, salade et frites servies en terrasse au Café de la Place">
+      <figcaption data-i18n="hcap">L'entrecôte grillée, salade & frites — servie en terrasse.</figcaption>
+    </figure>
+    <div class="hcell hstat">
+      <div class="row">
+        <div class="k" data-i18n="s1k">Sur la place depuis</div>
+        <div class="v">2012</div>
+        <small data-i18n="s1s">Convivialité & simplicité.</small>
+      </div>
+      <div class="sep"></div>
+      <div class="row">
+        <div class="k" data-i18n="s2k">Avis clients</div>
+        <div class="v">4,1<span style="font-size:18px">/5</span></div>
+        <small data-i18n="s2s">~279 avis · Google</small>
+      </div>
+      <div class="sep"></div>
+      <div class="row">
+        <div class="k" data-i18n="s3k">Cadre</div>
+        <div class="v" style="font-size:26px" data-i18n="s3v">Terrasse<br>sur la place</div>
+        <small data-i18n="s3s">Mullerthal · Petite Suisse</small>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ TWO CUISINES ============ -->
+<section class="duo">
+  <div class="wrap">
+    <div class="sechead">
+      <div>
+        <span class="ey terra" data-i18n="duoey">La table</span>
+        <h2 data-i18n="duoh">Deux cuisines, une même table.</h2>
+      </div>
+      <p data-i18n="duop">La famille qui tient la maison parle français et portugais — et cela se goûte. D'un côté les classiques du pays ; de l'autre, la morue et les douceurs du Portugal.</p>
+    </div>
+    <div class="panels">
+      <div class="cul lu">
+        <div class="flagword" data-i18n="luflag">Lëtzebuerg · le pays</div>
+        <h3 data-i18n="luh">Les classiques</h3>
+        <ul>
+          <li><span class="dish">Kniddelen<small data-i18n="lu1">Quenelles, lard fumé & oignons caramélisés</small></span><span class="price">16 €*</span></li>
+          <li><span class="dish">Escalope viennoise<small data-i18n="lu2">Panée, frites maison</small></span><span class="price">18 €*</span></li>
+          <li><span class="dish">Entrecôte grillée<small data-i18n="lu3">Salade, frites, sauce au choix</small></span><span class="price">24 €*</span></li>
+          <li><span class="dish">Escalope champignons<small data-i18n="lu4">Sauce crème & champignons, frites</small></span><span class="price">19 €*</span></li>
+        </ul>
+      </div>
+      <div class="seam"><span class="dot"></span>×<span class="dot"></span></div>
+      <div class="cul pt">
+        <div class="flagword" data-i18n="ptflag">Portugal · l'accent</div>
+        <h3 data-i18n="pth">Les spécialités</h3>
+        <ul>
+          <li><span class="dish">Morue à la portugaise<small data-i18n="pt1">Bacalhau — le plat signature de la maison</small></span><span class="price">20 €*</span></li>
+          <li><span class="dish">Pastéis de nata<small data-i18n="pt2">Flans pâtissiers portugais</small></span><span class="price">3,50 €*</span></li>
+          <li><span class="dish">Grillades du jour<small data-i18n="pt3">Viandes marinées, riz & salade</small></span><span class="price">19 €*</span></li>
+          <li><span class="dish">Vinho & apéritifs<small data-i18n="pt4">Sélection de vins portugais</small></span><span class="price">—</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CARTE MOSAIC ============ -->
+<section class="carte" id="carte">
+  <div class="wrap">
+    <div class="sechead">
+      <div>
+        <span class="ey" data-i18n="carey">La carte</span>
+        <h2 data-i18n="carh">De la salade au plat du jour.</h2>
+      </div>
+      <p data-i18n="carp">Une carte de brasserie, simple et copieuse — du café du matin au dîner. Le midi, le plat du jour change au fil de la semaine.</p>
+    </div>
+    <div class="mosaic">
+      <div class="mtile blue wide">
+        <span class="cat" data-i18n="m0c">Le midi</span>
+        <h4 data-i18n="m0h">Plat du jour</h4>
+        <p data-i18n="m0p">Notre suggestion du midi, plus douce que la carte. Annoncée à l'ardoise chaque jour.</p>
+        <span class="price" data-i18n="m0pr">à partir de 12 €*</span>
+      </div>
+      <div class="mtile">
+        <span class="cat" data-i18n="m1c">Pâtes</span>
+        <h4 data-i18n="m1h">Spaghetti & lasagne</h4>
+        <p data-i18n="m1p">Bolognese, carbonara, lasagne maison.</p>
+        <span class="price">14 €*</span>
+      </div>
+      <div class="mtile">
+        <span class="cat" data-i18n="m2c">Le grill</span>
+        <h4 data-i18n="m2h">Rumsteak grillé</h4>
+        <p data-i18n="m2p">Salade, frites maison, sauce au choix.</p>
+        <span class="price">23 €*</span>
+      </div>
+      <div class="mtile">
+        <span class="cat" data-i18n="m3c">Fait maison</span>
+        <h4 data-i18n="m3h">Burgers</h4>
+        <p data-i18n="m3p">Burger maison servi avec frites.</p>
+        <span class="price">16 €*</span>
+      </div>
+      <div class="mtile">
+        <span class="cat" data-i18n="m4c">Frais</span>
+        <h4 data-i18n="m4h">Salades</h4>
+        <p data-i18n="m4p">Salade César et compositions du marché.</p>
+        <span class="price">13 €*</span>
+      </div>
+      <div class="mtile">
+        <span class="cat" data-i18n="m5c">Douceurs</span>
+        <h4 data-i18n="m5h">Desserts</h4>
+        <p data-i18n="m5p">Pastéis de nata, gâteau aux noix, glaces.</p>
+        <span class="price">4 €*</span>
+      </div>
+      <div class="mtile">
+        <span class="cat" data-i18n="m6c">Au comptoir</span>
+        <h4 data-i18n="m6h">Café & boissons</h4>
+        <p data-i18n="m6p">Cafés, bières, vins, apéritifs & jus.</p>
+        <span class="price">—</span>
+      </div>
+    </div>
+    <p class="legend" data-i18n="carleg"><b>*</b> Plats et prix reconstitués à titre indicatif — <b>à confirmer avec l'établissement.</b></p>
+  </div>
+</section>
+
+<!-- ============ RHYTHM OF THE SQUARE ============ -->
+<section class="rhythm">
+  <div class="wrap">
+    <div class="sechead">
+      <div>
+        <span class="ey" style="color:var(--terra2)" data-i18n="rhey">Le rythme de la place</span>
+        <h2 data-i18n="rhh">Du café du matin au dîner.</h2>
+      </div>
+      <p data-i18n="rhp">Ici la journée ne s'arrête pas entre deux services. On passe pour un café, on reste pour le plat du jour, on revient pour l'apéro.</p>
+    </div>
+    <div class="frieze">
+      <div class="rcell">
+        <div class="hr" data-i18n="r1t">09h — Le matin</div>
+        <h3 data-i18n="r1h">Le café</h3>
+        <p data-i18n="r1p">Un expresso au comptoir ou en terrasse, avant la balade dans le Mullerthal.</p>
+      </div>
+      <div class="rcell">
+        <div class="hr" data-i18n="r2t">12h — Le midi</div>
+        <h3 data-i18n="r2h">Le plat du jour</h3>
+        <p data-i18n="r2p">La suggestion du midi, généreuse et à petit prix, pour les habitués comme pour les randonneurs.</p>
+      </div>
+      <div class="rcell">
+        <div class="hr" data-i18n="r3t">16h — L'après-midi</div>
+        <h3 data-i18n="r3h">La terrasse</h3>
+        <p data-i18n="r3p">Une bière, un pastel de nata et la vie du village qui passe sur la place.</p>
+      </div>
+      <div class="rcell">
+        <div class="hr" data-i18n="r4t">19h — Le soir</div>
+        <h3 data-i18n="r4h">Le dîner & les soirées</h3>
+        <p data-i18n="r4p">Le grill, la morue, et régulièrement des soirées à thème. <span class="tag-cf" data-i18n="cf">à confirmer</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AMBIANCE ============ -->
+<section class="amb">
+  <div class="wrap">
+    <div class="sechead">
+      <div>
+        <span class="ey terra" data-i18n="ambey">L'ambiance</span>
+        <h2 data-i18n="ambh">La place, la terrasse, le château.</h2>
+      </div>
+      <p data-i18n="ambp">Un café-brasserie de village, familial et sans façon, au cœur de la Petite Suisse luxembourgeoise.</p>
+    </div>
+    <div class="gal">
+      <figure class="big"><img src="assets/terrace-diners.jpg" alt="Convives en terrasse au Café de la Place"></figure>
+      <figure><img src="assets/village-castle.jpg" alt="Le village de Larochette et son château"></figure>
+      <figure><img src="assets/terrace-burger.jpg" alt="Burger et frites en terrasse"></figure>
+      <figure><img src="assets/food-escalope.jpg" alt="Escalope sauce champignons et frites"></figure>
+      <figure><img src="assets/food-spaghetti.jpg" alt="Spaghetti bolognese"></figure>
+      <figure class="note"><div><b data-i18n="galnb">Vos plus belles photos ici</b><span data-i18n="galns">Photos haute résolution à fournir par l'établissement.</span></div></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<section class="visit">
+  <div class="wrap">
+    <div class="sechead">
+      <div>
+        <span class="ey" data-i18n="visey">Nous trouver</span>
+        <h2 data-i18n="vish">5, Place du Marché.</h2>
+      </div>
+      <p data-i18n="visp">En plein centre de Larochette, sur la place du marché, face au château. Parking à proximité.</p>
+    </div>
+    <div class="vgrid">
+      <div class="card">
+        <h3 data-i18n="coord">Coordonnées</h3>
+        <ul class="info">
+          <li><span class="lbl" data-i18n="ci1">Adresse</span>5 Place du Marché, L-7610 Larochette</li>
+          <li><span class="lbl" data-i18n="ci2">Téléphone</span><a href="tel:+35226813294">+352 26 81 32 94</a></li>
+          <li><span class="lbl" data-i18n="ci3">Langues</span><span data-i18n="ci3v">Français · Português</span></li>
+          <li><span class="lbl" data-i18n="ci4">Paiement</span><span data-i18n="ci4v">Mastercard & espèces</span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 data-i18n="hoursh">Horaires <span class="tag-cf" data-i18n="cf2">à confirmer</span></h3>
+        <div class="hrs closed"><b data-i18n="d1">Lundi</b><span data-i18n="hcl">Fermé</span></div>
+        <div class="hrs"><b data-i18n="d2">Mardi</b><span>09:00 – 24:00</span></div>
+        <div class="hrs"><b data-i18n="d3">Mercredi</b><span>09:00 – 24:00</span></div>
+        <div class="hrs"><b data-i18n="d4">Jeudi</b><span>09:00 – 24:00</span></div>
+        <div class="hrs"><b data-i18n="d5">Vendredi</b><span>09:00 – 24:00</span></div>
+        <div class="hrs"><b data-i18n="d6">Samedi</b><span>09:00 – 24:00</span></div>
+        <div class="hrs"><b data-i18n="d7">Dimanche</b><span>09:00 – 24:00</span></div>
+      </div>
+      <div class="mapbox">
+        <iframe title="Carte — Café de la Place, Larochette" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=5+Place+du+March%C3%A9,+7610+Larochette,+Luxembourg&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="fmark">Café de la <span>Place</span></div>
+        <p data-i18n="foot" style="margin-top:14px">Brasserie de village au pied du château de Larochette. Cuisine luxembourgeoise & spécialités portugaises, en terrasse sur la place.</p>
+      </div>
+      <div class="fcol">
+        <h5 data-i18n="fc1">Contact</h5>
+        <div>5 Place du Marché</div>
+        <div>L-7610 Larochette</div>
+        <a href="tel:+35226813294">+352 26 81 32 94</a>
+      </div>
+      <div class="fcol">
+        <h5 data-i18n="fc2">La maison</h5>
+        <a href="#carte" data-i18n="fl1">La carte</a>
+        <div data-i18n="fl2">Terrasse · Parking</div>
+        <div data-i18n="fl3">Plat du jour · Soirées à thème</div>
+      </div>
+    </div>
+    <div class="disc">
+      <span data-i18n="disc1"><b>Site de démonstration.</b> Maquette réalisée à titre indicatif pour Café de la Place — non affiliée à ce stade.</span><br>
+      <span data-i18n="disc2">Horaires, carte et prix reconstitués depuis des sources publiques et <b>à confirmer avec l'établissement</b> avant toute publication.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  fr:{
+    loc:'<b>5 Place du Marché</b> · Larochette · au pied du château',
+    badge:'Lëtzebuerg × Portugal · depuis 2012',
+    h1a:'Sur la place,', h1b:'au pied du château.',
+    htag:"Brasserie de village à Larochette. Cuisine luxembourgeoise généreuse et spécialités portugaises, servies en terrasse face à la place et aux ruines du château.",
+    cta1:'Voir la carte', cta2:'Réserver une table',
+    hcap:"L'entrecôte grillée, salade & frites — servie en terrasse.",
+    s1k:'Sur la place depuis', s1s:'Convivialité & simplicité.',
+    s2k:'Avis clients', s2s:'~279 avis · Google',
+    s3k:'Cadre', s3v:'Terrasse<br>sur la place', s3s:'Mullerthal · Petite Suisse',
+    duoey:'La table', duoh:'Deux cuisines, une même table.',
+    duop:"La famille qui tient la maison parle français et portugais — et cela se goûte. D'un côté les classiques du pays ; de l'autre, la morue et les douceurs du Portugal.",
+    luflag:'Lëtzebuerg · le pays', luh:'Les classiques',
+    lu1:'Quenelles, lard fumé & oignons caramélisés', lu2:'Panée, frites maison', lu3:'Salade, frites, sauce au choix', lu4:'Sauce crème & champignons, frites',
+    ptflag:"Portugal · l'accent", pth:'Les spécialités',
+    pt1:'Bacalhau — le plat signature de la maison', pt2:'Flans pâtissiers portugais', pt3:'Viandes marinées, riz & salade', pt4:'Sélection de vins portugais',
+    carey:'La carte', carh:'De la salade au plat du jour.',
+    carp:"Une carte de brasserie, simple et copieuse — du café du matin au dîner. Le midi, le plat du jour change au fil de la semaine.",
+    m0c:'Le midi', m0h:'Plat du jour', m0p:"Notre suggestion du midi, plus douce que la carte. Annoncée à l'ardoise chaque jour.", m0pr:'à partir de 12 €*',
+    m1c:'Pâtes', m1h:'Spaghetti & lasagne', m1p:'Bolognese, carbonara, lasagne maison.',
+    m2c:'Le grill', m2h:'Rumsteak grillé', m2p:'Salade, frites maison, sauce au choix.',
+    m3c:'Fait maison', m3h:'Burgers', m3p:'Burger maison servi avec frites.',
+    m4c:'Frais', m4h:'Salades', m4p:'Salade César et compositions du marché.',
+    m5c:'Douceurs', m5h:'Desserts', m5p:'Pastéis de nata, gâteau aux noix, glaces.',
+    m6c:'Au comptoir', m6h:'Café & boissons', m6p:'Cafés, bières, vins, apéritifs & jus.',
+    carleg:'<b>*</b> Plats et prix reconstitués à titre indicatif — <b>à confirmer avec l\'établissement.</b>',
+    rhey:'Le rythme de la place', rhh:'Du café du matin au dîner.',
+    rhp:"Ici la journée ne s'arrête pas entre deux services. On passe pour un café, on reste pour le plat du jour, on revient pour l'apéro.",
+    r1t:'09h — Le matin', r1h:'Le café', r1p:'Un expresso au comptoir ou en terrasse, avant la balade dans le Mullerthal.',
+    r2t:'12h — Le midi', r2h:'Le plat du jour', r2p:'La suggestion du midi, généreuse et à petit prix, pour les habitués comme pour les randonneurs.',
+    r3t:"16h — L'après-midi", r3h:'La terrasse', r3p:'Une bière, un pastel de nata et la vie du village qui passe sur la place.',
+    r4t:'19h — Le soir', r4h:'Le dîner & les soirées', r4p:'Le grill, la morue, et régulièrement des soirées à thème.',
+    cf:'à confirmer', cf2:'à confirmer',
+    ambey:"L'ambiance", ambh:'La place, la terrasse, le château.',
+    ambp:'Un café-brasserie de village, familial et sans façon, au cœur de la Petite Suisse luxembourgeoise.',
+    galnb:'Vos plus belles photos ici', galns:"Photos haute résolution à fournir par l'établissement.",
+    visey:'Nous trouver', vish:'5, Place du Marché.',
+    visp:'En plein centre de Larochette, sur la place du marché, face au château. Parking à proximité.',
+    coord:'Coordonnées', ci1:'Adresse', ci2:'Téléphone', ci3:'Langues', ci3v:'Français · Português', ci4:'Paiement', ci4v:'Mastercard & espèces',
+    hoursh:'Horaires', hcl:'Fermé',
+    d1:'Lundi', d2:'Mardi', d3:'Mercredi', d4:'Jeudi', d5:'Vendredi', d6:'Samedi', d7:'Dimanche',
+    foot:'Brasserie de village au pied du château de Larochette. Cuisine luxembourgeoise & spécialités portugaises, en terrasse sur la place.',
+    fc1:'Contact', fc2:'La maison', fl1:'La carte', fl2:'Terrasse · Parking', fl3:'Plat du jour · Soirées à thème',
+    disc1:'<b>Site de démonstration.</b> Maquette réalisée à titre indicatif pour Café de la Place — non affiliée à ce stade.',
+    disc2:'Horaires, carte et prix reconstitués depuis des sources publiques et <b>à confirmer avec l\'établissement</b> avant toute publication.'
+  },
+  de:{
+    loc:'<b>5 Place du Marché</b> · Larochette · am Fuße der Burg',
+    badge:'Luxemburg × Portugal · seit 2012',
+    h1a:'Auf dem Platz,', h1b:'am Fuße der Burg.',
+    htag:'Dorfbrasserie in Larochette. Herzhafte luxemburgische Küche und portugiesische Spezialitäten, serviert auf der Terrasse mit Blick auf den Platz und die Burgruine.',
+    cta1:'Zur Karte', cta2:'Tisch reservieren',
+    hcap:'Gegrilltes Entrecôte, Salat & Pommes — auf der Terrasse serviert.',
+    s1k:'Auf dem Platz seit', s1s:'Geselligkeit & Einfachheit.',
+    s2k:'Gästebewertung', s2s:'~279 Bewertungen · Google',
+    s3k:'Ambiente', s3v:'Terrasse<br>am Platz', s3s:'Müllerthal · Kleine Schweiz',
+    duoey:'Der Tisch', duoh:'Zwei Küchen, ein Tisch.',
+    duop:'Die Familie des Hauses spricht Französisch und Portugiesisch — und das schmeckt man. Auf der einen Seite die Landesklassiker, auf der anderen Kabeljau und portugiesische Süßspeisen.',
+    luflag:'Lëtzebuerg · das Land', luh:'Die Klassiker',
+    lu1:'Klöße, geräucherter Speck & karamellisierte Zwiebeln', lu2:'Paniert, hausgemachte Pommes', lu3:'Salat, Pommes, Sauce nach Wahl', lu4:'Rahm-Champignon-Sauce, Pommes',
+    ptflag:'Portugal · der Akzent', pth:'Die Spezialitäten',
+    pt1:'Bacalhau — das Signature-Gericht des Hauses', pt2:'Portugiesische Puddingtörtchen', pt3:'Mariniertes Fleisch, Reis & Salat', pt4:'Auswahl portugiesischer Weine',
+    carey:'Die Karte', carh:'Vom Salat bis zum Tagesgericht.',
+    carp:'Eine einfache, reichhaltige Brasserie-Karte — vom Morgenkaffee bis zum Abendessen. Mittags wechselt das Tagesgericht.',
+    m0c:'Mittags', m0h:'Tagesgericht', m0p:'Unsere Mittagsempfehlung, günstiger als die Karte. Täglich an der Tafel angekündigt.', m0pr:'ab 12 €*',
+    m1c:'Pasta', m1h:'Spaghetti & Lasagne', m1p:'Bolognese, Carbonara, hausgemachte Lasagne.',
+    m2c:'Vom Grill', m2h:'Gegrilltes Rumpsteak', m2p:'Salat, hausgemachte Pommes, Sauce nach Wahl.',
+    m3c:'Hausgemacht', m3h:'Burger', m3p:'Hausburger mit Pommes serviert.',
+    m4c:'Frisch', m4h:'Salate', m4p:'Caesar Salat und Kompositionen vom Markt.',
+    m5c:'Süßes', m5h:'Desserts', m5p:'Pastéis de nata, Nusskuchen, Eis.',
+    m6c:'An der Theke', m6h:'Kaffee & Getränke', m6p:'Kaffee, Bier, Wein, Aperitifs & Säfte.',
+    carleg:'<b>*</b> Gerichte und Preise beispielhaft rekonstruiert — <b>mit dem Betrieb zu bestätigen.</b>',
+    rhey:'Der Rhythmus des Platzes', rhh:'Vom Morgenkaffee bis zum Abendessen.',
+    rhp:'Hier ruht der Tag nicht zwischen den Services. Man kommt für einen Kaffee, bleibt für das Tagesgericht, kehrt für den Aperitif zurück.',
+    r1t:'09 Uhr — Morgens', r1h:'Der Kaffee', r1p:'Ein Espresso an der Theke oder auf der Terrasse, vor der Wanderung im Müllerthal.',
+    r2t:'12 Uhr — Mittags', r2h:'Das Tagesgericht', r2p:'Die Mittagsempfehlung, reichhaltig und günstig, für Stammgäste wie für Wanderer.',
+    r3t:'16 Uhr — Nachmittags', r3h:'Die Terrasse', r3p:'Ein Bier, ein Pastel de Nata und das Dorfleben, das über den Platz zieht.',
+    r4t:'19 Uhr — Abends', r4h:'Abendessen & Themenabende', r4p:'Der Grill, der Kabeljau und regelmäßig Themenabende.',
+    cf:'zu bestätigen', cf2:'zu bestätigen',
+    ambey:'Das Ambiente', ambh:'Der Platz, die Terrasse, die Burg.',
+    ambp:'Eine familiäre, unkomplizierte Dorfbrasserie im Herzen der Luxemburger Kleinen Schweiz.',
+    galnb:'Ihre schönsten Fotos hier', galns:'Hochauflösende Fotos vom Betrieb bereitzustellen.',
+    visey:'So finden Sie uns', vish:'5, Place du Marché.',
+    visp:'Im Zentrum von Larochette, am Marktplatz, gegenüber der Burg. Parkplatz in der Nähe.',
+    coord:'Kontakt', ci1:'Adresse', ci2:'Telefon', ci3:'Sprachen', ci3v:'Französisch · Português', ci4:'Zahlung', ci4v:'Mastercard & Bargeld',
+    hoursh:'Öffnungszeiten', hcl:'Geschlossen',
+    d1:'Montag', d2:'Dienstag', d3:'Mittwoch', d4:'Donnerstag', d5:'Freitag', d6:'Samstag', d7:'Sonntag',
+    foot:'Dorfbrasserie am Fuße der Burg von Larochette. Luxemburgische Küche & portugiesische Spezialitäten, auf der Terrasse am Platz.',
+    fc1:'Kontakt', fc2:'Das Haus', fl1:'Die Karte', fl2:'Terrasse · Parkplatz', fl3:'Tagesgericht · Themenabende',
+    disc1:'<b>Demo-Website.</b> Beispielhafte Maquette für Café de la Place — bislang nicht affiliiert.',
+    disc2:'Öffnungszeiten, Karte und Preise aus öffentlichen Quellen rekonstruiert und <b>vor jeder Veröffentlichung mit dem Betrieb zu bestätigen.</b>'
+  },
+  en:{
+    loc:'<b>5 Place du Marché</b> · Larochette · at the foot of the castle',
+    badge:'Luxembourg × Portugal · since 2012',
+    h1a:'On the square,', h1b:'at the castle’s foot.',
+    htag:'A village brasserie in Larochette. Hearty Luxembourgish cooking and Portuguese specialities, served on the terrace facing the square and the castle ruins.',
+    cta1:'See the menu', cta2:'Book a table',
+    hcap:'The grilled ribeye, salad & fries — served on the terrace.',
+    s1k:'On the square since', s1s:'Warmth & simplicity.',
+    s2k:'Guest rating', s2s:'~279 reviews · Google',
+    s3k:'Setting', s3v:'Terrace<br>on the square', s3s:'Mullerthal · Little Switzerland',
+    duoey:'The table', duoh:'Two kitchens, one table.',
+    duop:'The family who runs the house speaks French and Portuguese — and you can taste it. On one side the country classics; on the other, cod and Portuguese sweets.',
+    luflag:'Lëtzebuerg · the country', luh:'The classics',
+    lu1:'Dumplings, smoked bacon & caramelised onions', lu2:'Breaded, homemade fries', lu3:'Salad, fries, sauce of your choice', lu4:'Cream & mushroom sauce, fries',
+    ptflag:'Portugal · the accent', pth:'The specialities',
+    pt1:'Bacalhau — the house signature dish', pt2:'Portuguese custard tarts', pt3:'Marinated meats, rice & salad', pt4:'Selection of Portuguese wines',
+    carey:'The menu', carh:'From salad to the dish of the day.',
+    carp:'A simple, generous brasserie menu — from the morning coffee to dinner. At lunch, the dish of the day changes through the week.',
+    m0c:'Lunch', m0h:'Dish of the day', m0p:'Our lunchtime suggestion, gentler than the à la carte. Announced on the board each day.', m0pr:'from 12 €*',
+    m1c:'Pasta', m1h:'Spaghetti & lasagne', m1p:'Bolognese, carbonara, homemade lasagne.',
+    m2c:'The grill', m2h:'Grilled rump steak', m2p:'Salad, homemade fries, sauce of your choice.',
+    m3c:'Homemade', m3h:'Burgers', m3p:'House burger served with fries.',
+    m4c:'Fresh', m4h:'Salads', m4p:'Caesar salad and market compositions.',
+    m5c:'Sweets', m5h:'Desserts', m5p:'Pastéis de nata, walnut cake, ice cream.',
+    m6c:'At the bar', m6h:'Coffee & drinks', m6p:'Coffees, beers, wines, aperitifs & juices.',
+    carleg:'<b>*</b> Dishes and prices reconstructed for illustration — <b>to be confirmed with the establishment.</b>',
+    rhey:'The rhythm of the square', rhh:'From morning coffee to dinner.',
+    rhp:'Here the day never pauses between services. Drop in for a coffee, stay for the dish of the day, come back for the aperitif.',
+    r1t:'9am — Morning', r1h:'The coffee', r1p:'An espresso at the bar or on the terrace, before the walk in the Mullerthal.',
+    r2t:'12pm — Lunch', r2h:'The dish of the day', r2p:'The lunchtime suggestion, generous and good value, for regulars and hikers alike.',
+    r3t:'4pm — Afternoon', r3h:'The terrace', r3p:'A beer, a pastel de nata and village life drifting across the square.',
+    r4t:'7pm — Evening', r4h:'Dinner & themed nights', r4p:'The grill, the cod, and regular themed evenings.',
+    cf:'to confirm', cf2:'to confirm',
+    ambey:'The atmosphere', ambh:'The square, the terrace, the castle.',
+    ambp:'A family-run, unfussy village café-brasserie in the heart of Luxembourg’s Little Switzerland.',
+    galnb:'Your best photos here', galns:'High-resolution photos to be provided by the establishment.',
+    visey:'Find us', vish:'5, Place du Marché.',
+    visp:'In the centre of Larochette, on the market square, facing the castle. Parking nearby.',
+    coord:'Details', ci1:'Address', ci2:'Phone', ci3:'Languages', ci3v:'French · Português', ci4:'Payment', ci4v:'Mastercard & cash',
+    hoursh:'Opening hours', hcl:'Closed',
+    d1:'Monday', d2:'Tuesday', d3:'Wednesday', d4:'Thursday', d5:'Friday', d6:'Saturday', d7:'Sunday',
+    foot:'A village brasserie at the foot of Larochette’s castle. Luxembourgish cooking & Portuguese specialities, on the terrace on the square.',
+    fc1:'Contact', fc2:'The house', fl1:'The menu', fl2:'Terrace · Parking', fl3:'Dish of the day · Themed nights',
+    disc1:'<b>Demonstration site.</b> Sample mock-up for Café de la Place — not affiliated at this stage.',
+    disc2:'Hours, menu and prices reconstructed from public sources and <b>to be confirmed with the establishment</b> before any publication.'
+  }
+};
+function setLang(lang){
+  const d=I18N[lang]||I18N.fr;
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const v=d[el.getAttribute('data-i18n')];
+    if(v!==undefined) el.innerHTML=v;
+  });
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+</script>
+</body>
+</html>

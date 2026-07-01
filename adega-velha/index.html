@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Café Restaurant Adega Velha — Spécialités Portugaises · Mersch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#7A1F2B; --wine-deep:#5E1620; --char:#2B2B2B; --ink:#221d1d;
+    --grey:#9A9A9A; --cream:#FAF7F2; --paper:#FFFFFF; --terra:#B5502F;
+    --ochre:#C97B4A; --line:#e4dccf; --line-strong:#d4c7b3;
+    --serif:"Fraunces",Georgia,"Times New Roman",serif;
+    --sans:"Archivo","Segoe UI",system-ui,-apple-system,sans-serif;
+    --maxw:1440px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans); color:var(--ink); background:var(--cream);
+    -webkit-font-smoothing:antialiased; line-height:1.55;
+    /* subtle cellar-counter paper texture */
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(122,31,43,.035), transparent 32%),
+      radial-gradient(circle at 88% 68%, rgba(181,80,47,.04), transparent 38%);
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 46px}
+  .serif{font-family:var(--serif)}
+  .eyebrow{
+    font-family:var(--sans); text-transform:uppercase; letter-spacing:.32em;
+    font-size:11px; font-weight:600; color:var(--wine);
+  }
+  .muted{color:var(--grey)}
+
+  /* ---- wine-ring device (the signature) ---- */
+  .ring-bg{position:absolute;pointer-events:none;opacity:.5;z-index:0}
+
+  /* ========== MASTHEAD ========== */
+  .top{border-bottom:1px solid var(--line-strong); background:linear-gradient(180deg,#fff, #fdfbf7)}
+  .masthead{
+    display:grid; grid-template-columns:auto 1fr auto; align-items:center;
+    gap:36px; padding:22px 0 20px;
+  }
+  .wordmark{display:flex;flex-direction:column;line-height:1}
+  .wm-row{display:flex;align-items:center;gap:.22em;position:relative}
+  .wm-adega{font-family:var(--sans);font-weight:400;letter-spacing:.18em;color:var(--grey);font-size:34px}
+  .wm-velha{font-family:var(--sans);font-weight:700;letter-spacing:.14em;color:var(--char);font-size:34px;position:relative}
+  .wm-ring{width:46px;height:46px;margin-left:-10px}
+  .wm-sub{font-family:var(--sans);letter-spacing:.34em;font-size:10px;color:var(--grey);margin-top:8px;text-transform:uppercase}
+  .mast-mid{display:flex;flex-direction:column;gap:5px;align-items:flex-start;justify-self:start;padding-left:30px;border-left:1px solid var(--line)}
+  .mast-mid .l1{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--wine)}
+  .mast-mid .l2{font-size:12.5px;color:var(--char)}
+  .mast-right{display:flex;align-items:center;gap:22px}
+  .langs{display:flex;gap:4px;background:#f2ebe0;border:1px solid var(--line);border-radius:40px;padding:4px}
+  .langs button{
+    font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.08em;
+    border:none;background:transparent;color:var(--grey);cursor:pointer;
+    padding:5px 11px;border-radius:40px;text-transform:uppercase;transition:.15s;
+  }
+  .langs button.on{background:var(--wine);color:#fff}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);
+    font-weight:600;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;
+    padding:13px 22px;border-radius:2px;cursor:pointer;transition:.18s;border:1px solid transparent;
+  }
+  .btn-wine{background:var(--wine);color:#fff}
+  .btn-wine:hover{background:var(--wine-deep)}
+  .btn-ghost{border-color:var(--char);color:var(--char);background:transparent}
+  .btn-ghost:hover{background:var(--char);color:#fff}
+
+  /* ========== HERO ========== */
+  .hero{position:relative;overflow:hidden;padding:66px 0 74px}
+  .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:60px;align-items:center;position:relative;z-index:2}
+  .hero-h1{font-family:var(--serif);font-weight:900;font-size:clamp(42px,4.6vw,72px);line-height:1.02;color:var(--char);letter-spacing:-.01em;margin:20px 0 8px}
+  .hero-h1 em{font-style:italic;font-weight:500;color:var(--wine)}
+  .hero-tag-note{font-size:11px;color:var(--grey);letter-spacing:.03em;margin-bottom:22px}
+  .hero-lede{font-size:17px;max-width:34em;color:#4a4240;margin-bottom:26px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+  .rating-chip{display:inline-flex;align-items:center;gap:12px;padding:11px 16px;background:#fff;border:1px solid var(--line);border-radius:3px}
+  .stars{color:var(--ochre);font-size:15px;letter-spacing:2px}
+  .rating-chip b{font-family:var(--serif);font-size:16px}
+  .rating-chip span{font-size:11.5px;color:var(--grey)}
+
+  /* photo cluster — overlapping wine-ring "stains" holding real photos */
+  .cluster{position:relative;height:520px}
+  .plate{position:absolute;border-radius:50%;overflow:hidden;border:3px solid #fff;box-shadow:0 18px 40px rgba(43,20,20,.22)}
+  .plate img{width:100%;height:100%;object-fit:cover;display:block}
+  .plate.p1{width:290px;height:290px;top:20px;right:34px;z-index:3}
+  .plate.p2{width:184px;height:184px;top:250px;right:250px;z-index:4;border-width:4px}
+  .plate.p3{width:150px;height:150px;top:40px;right:300px;z-index:2}
+  .plate-cap{position:absolute;font-family:var(--serif);font-style:italic;font-size:13px;color:var(--wine);background:#fff;padding:3px 12px;border-radius:20px;border:1px solid var(--line);z-index:6}
+  .cluster .ring-a{width:360px;height:360px;top:-6px;right:0;z-index:1}
+  .cluster .ring-b{width:150px;height:150px;top:330px;right:200px;z-index:5}
+
+  /* ========== FAIXA / brand band divider ========== */
+  .faixa{background:var(--wine);color:#fff;text-align:center;padding:16px 0}
+  .faixa span{font-family:var(--sans);letter-spacing:.42em;font-size:13px;text-transform:uppercase;font-weight:500}
+
+  /* ========== A CARTA — cellar ledger ========== */
+  .carta{padding:78px 0 40px;position:relative}
+  .carta-grid{display:grid;grid-template-columns:.7fr 2fr;gap:56px}
+  .carta-side{position:relative}
+  .carta-side .lbl{font-family:var(--serif);font-weight:900;font-size:60px;line-height:.92;color:var(--char)}
+  .carta-side .lbl em{display:block;font-style:italic;font-weight:500;font-size:34px;color:var(--wine)}
+  .carta-side p{font-size:13.5px;color:#5a5250;margin-top:20px;max-width:22em}
+  .carta-side .confirm{margin-top:18px;font-size:12px;color:var(--grey);border-left:2px solid var(--ochre);padding-left:12px}
+  .ledger{display:grid;grid-template-columns:1fr 1fr;gap:26px 48px}
+  .lg-block h3{
+    font-family:var(--sans);text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:700;
+    color:var(--wine);padding-bottom:9px;margin-bottom:10px;border-bottom:2px solid var(--line-strong);
+    display:flex;align-items:center;gap:9px;
+  }
+  .lg-block h3::before{content:"";width:9px;height:9px;border-radius:50%;border:2px solid var(--wine);flex:none}
+  .item{display:flex;align-items:baseline;gap:8px;padding:8px 0;border-bottom:1px dotted var(--line-strong)}
+  .item .nm{font-family:var(--serif);font-size:16.5px;color:var(--char);white-space:nowrap}
+  .item .ds{font-size:11.5px;color:var(--grey);font-style:italic;overflow:hidden;flex:1}
+  .item .leader{flex:1;border-bottom:1px dotted #cbbfa9;transform:translateY(-4px);min-width:14px}
+  .item .pr{font-family:var(--serif);font-size:15px;color:var(--wine);font-weight:600;white-space:nowrap}
+  .item .pr.tbc{color:var(--grey);font-style:italic;font-weight:400;font-size:12px}
+  .item-full{display:block}
+  .item-full .ds{display:block;margin-top:2px;flex:none}
+
+  /* ========== ESPECIALIDADES — terracotta plates row ========== */
+  .espec{background:linear-gradient(180deg,#fbf6ee,#f6efe3);padding:74px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .espec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:40px}
+  .espec-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(30px,3vw,46px);color:var(--char);line-height:1}
+  .espec-head h2 em{font-style:italic;font-weight:500;color:var(--wine)}
+  .espec-head p{max-width:30em;font-size:14px;color:#5a5250}
+  .plates{display:grid;grid-template-columns:repeat(4,1fr) 0.82fr;gap:26px;align-items:start}
+  .dish{text-align:center}
+  .dish .disc{width:100%;aspect-ratio:1;border-radius:50%;overflow:hidden;border:5px solid #fff;box-shadow:0 14px 30px rgba(43,20,20,.16);position:relative}
+  .dish .disc img{width:100%;height:100%;object-fit:cover;display:block}
+  .dish .dn{font-family:var(--serif);font-size:19px;color:var(--char);margin-top:16px}
+  .dish .dsub{font-size:12px;color:var(--grey);margin-top:3px;line-height:1.4}
+  /* tall espetada feature */
+  .skewer{background:var(--char);color:#fff;border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+  .skewer .simg{height:230px;overflow:hidden}
+  .skewer .simg img{width:100%;height:100%;object-fit:cover;display:block}
+  .skewer .stx{padding:16px 16px 20px}
+  .skewer .stx .k{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--ochre)}
+  .skewer .stx .t{font-family:var(--serif);font-size:21px;margin:5px 0 7px}
+  .skewer .stx p{font-size:11.5px;color:#c9bfbc;line-height:1.5}
+
+  /* ========== A CASA + INFO ========== */
+  .casa{padding:82px 0}
+  .casa-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:56px;align-items:start}
+  .casa-story .eyebrow{margin-bottom:14px;display:block}
+  .casa-story h2{font-family:var(--serif);font-weight:900;font-size:clamp(30px,3.1vw,50px);line-height:1.04;color:var(--char);margin-bottom:22px}
+  .casa-story h2 em{font-style:italic;font-weight:500;color:var(--wine)}
+  .casa-story p{font-size:16px;color:#4a4240;max-width:38em;margin-bottom:16px}
+  .pull{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--wine);border-left:3px solid var(--ochre);padding-left:20px;margin:26px 0}
+  .casa-mini{display:flex;gap:34px;margin-top:30px}
+  .casa-mini .m .n{font-family:var(--serif);font-size:30px;color:var(--char);font-weight:900}
+  .casa-mini .m .l{font-size:11px;color:var(--grey);text-transform:uppercase;letter-spacing:.14em}
+
+  .info-card{background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px rgba(43,20,20,.08)}
+  .info-card .ic-head{background:var(--wine);color:#fff;padding:16px 22px;font-family:var(--sans);letter-spacing:.24em;text-transform:uppercase;font-size:12px;font-weight:600}
+  .info-body{padding:22px}
+  .irow{padding:13px 0;border-bottom:1px solid var(--line)}
+  .irow:last-child{border-bottom:none}
+  .irow .k{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-bottom:4px}
+  .irow .v{font-size:14.5px;color:var(--char)}
+  .irow .v a{color:var(--wine);font-weight:500}
+  .tbc-tag{display:inline-block;font-size:10px;letter-spacing:.05em;color:var(--ochre);border:1px solid var(--ochre);border-radius:20px;padding:1px 8px;margin-left:6px;vertical-align:middle}
+  .hours-two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+  .hcol{background:#faf6ef;border:1px solid var(--line);border-radius:4px;padding:10px}
+  .hcol .ht{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--wine);font-weight:700;margin-bottom:6px}
+  .hcol .hl{font-size:12px;color:#524a48;line-height:1.5}
+  .map-box{height:200px;border-top:1px solid var(--line)}
+  .map-box iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(.15)}
+
+  /* ========== FOOTER ========== */
+  footer{background:var(--char);color:#e8ded9}
+  .foot-brand-band{background:var(--wine);text-align:center;padding:14px 0}
+  .foot-brand-band span{letter-spacing:.42em;text-transform:uppercase;font-size:12px;color:#fff;font-weight:500}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding:52px 0 34px}
+  .foot-grid .fwm{font-family:var(--sans);letter-spacing:.16em;font-size:22px;font-weight:700}
+  .foot-grid .fwm .g{color:var(--grey);font-weight:400}
+  .foot-grid p{font-size:13px;color:#b6a9a3;margin-top:12px;max-width:26em}
+  .foot-col h4{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ochre);margin-bottom:14px}
+  .foot-col a,.foot-col div{display:block;font-size:13.5px;color:#d8cdc7;padding:4px 0}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{border-top:1px solid #443b3b;padding:16px 0 34px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:11.5px;color:#8f8480}
+  .demo-note{background:#3a3030;border:1px dashed #5c4f4f;border-radius:4px;padding:9px 14px;color:#c9bcb6;font-size:11.5px;max-width:520px}
+
+  /* ========== responsive ========== */
+  @media(max-width:1080px){
+    .hero-grid{grid-template-columns:1fr;gap:36px}
+    .cluster{height:440px;max-width:520px}
+    .carta-grid{grid-template-columns:1fr;gap:34px}
+    .plates{grid-template-columns:repeat(2,1fr);gap:30px}
+    .skewer{grid-column:span 2;flex-direction:row}
+    .skewer .simg{height:auto;width:44%}
+    .casa-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:720px){
+    .wrap{padding:0 22px}
+    .masthead{grid-template-columns:1fr;gap:18px}
+    .mast-mid{border-left:none;padding-left:0}
+    .mast-right{flex-wrap:wrap}
+    .wm-adega,.wm-velha{font-size:27px}
+    .ledger{grid-template-columns:1fr}
+    .espec-head{flex-direction:column;align-items:flex-start}
+    .plates{grid-template-columns:1fr 1fr}
+    .skewer{grid-column:span 2;flex-direction:column}
+    .skewer .simg{width:100%;height:200px}
+    .hours-two{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .item .nm{white-space:normal}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== MASTHEAD ===== -->
+<div class="top">
+  <div class="wrap">
+    <div class="masthead">
+      <a href="#top" class="wordmark" id="top">
+        <div class="wm-row">
+          <span class="wm-adega">ADEGA</span><span class="wm-velha">VELHA</span>
+          <svg class="wm-ring" viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#7A1F2B" stroke-width="5.5" opacity=".85"/>
+            <circle cx="50" cy="50" r="33" fill="none" stroke="#7A1F2B" stroke-width="1.8" opacity=".4"/>
+            <path d="M50 90 q4 8 8 3" stroke="#7A1F2B" stroke-width="3" fill="none" opacity=".6"/>
+          </svg>
+        </div>
+        <span class="wm-sub">Café · Restaurant</span>
+      </a>
+
+      <div class="mast-mid">
+        <span class="l1" data-i18n="mast_tag">Spécialités portugaises</span>
+        <span class="l2" data-i18n="mast_loc">44 Rue Nicolas Welter · L-7570 Mersch</span>
+      </div>
+
+      <div class="mast-right">
+        <div class="langs" id="langs">
+          <button data-lang="fr" class="on">FR</button>
+          <button data-lang="de">DE</button>
+          <button data-lang="en">EN</button>
+        </div>
+        <a href="tel:+35227521448" class="btn btn-wine" data-i18n="mast_reserve">Réserver une table</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow" data-i18n="hero_eyebrow">Cozinha Tradicional Portuguesa · Mersch</span>
+        <h1 class="hero-h1"><span data-i18n="hero_h1a">La table portugaise,</span><br><em data-i18n="hero_h1b">au cœur de Mersch.</em></h1>
+        <p class="hero-tag-note" data-i18n="hero_note">Accroche proposée par le studio — à valider avec l'établissement.</p>
+        <p class="hero-lede" data-i18n="hero_lede">Une maison familiale où l'on partage une vraie passion des produits portugais&nbsp;: généreuses assiettes servies sur la terre cuite, vins du pays et une terrasse à deux pas du château de Mersch.</p>
+        <div class="hero-cta">
+          <a href="#carta" class="btn btn-wine" data-i18n="hero_cta1">Voir la carte</a>
+          <a href="#casa" class="btn btn-ghost" data-i18n="hero_cta2">Nous trouver</a>
+        </div>
+        <div class="rating-chip">
+          <span class="stars">★★★★<span style="opacity:.4">★</span></span>
+          <div><b>4,3 / 5</b> <span data-i18n="hero_reviews">· 381 avis (RestaurantGuru, agrégé)</span></div>
+        </div>
+      </div>
+
+      <div class="cluster">
+        <svg class="ring-bg ring-a" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="44" fill="none" stroke="#7A1F2B" stroke-width="2.4" opacity=".5"/><circle cx="50" cy="50" r="47" fill="none" stroke="#B5502F" stroke-width="1" opacity=".35"/></svg>
+        <svg class="ring-bg ring-b" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="44" fill="none" stroke="#7A1F2B" stroke-width="3" opacity=".45"/></svg>
+        <div class="plate p1"><img src="assets/food-picanha.jpg" alt="Picanha grillée sur riz, assiette en terre cuite"></div>
+        <div class="plate p2"><img src="assets/exterior-terrace-espetada.jpg" alt="Espetada suspendue en terrasse"></div>
+        <div class="plate p3"><img src="assets/food-cozido.jpg" alt="Cozido à Portuguesa et vin rouge"></div>
+        <span class="plate-cap" style="top:8px;right:0" data-i18n="cap_picanha">Picanha</span>
+        <span class="plate-cap" style="top:452px;right:220px" data-i18n="cap_espetada">Espetada, en terrasse</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- brand band -->
+<div class="faixa"><span data-i18n="band1">Feito com paixão · Fait avec passion · Mit Leidenschaft gemacht</span></div>
+
+<!-- ===== A CARTA (cellar ledger) ===== -->
+<section class="carta" id="carta">
+  <div class="wrap">
+    <div class="carta-grid">
+      <div class="carta-side">
+        <div class="lbl">A Carta<em data-i18n="carta_sub">Le livre de cave</em></div>
+        <p data-i18n="carta_intro">Quelques spécialités de la maison, dans l'esprit d'un vieux registre de cave. Assiettes copieuses, produits portugais, à accompagner d'un verre de rouge.</p>
+        <div class="confirm" data-i18n="carta_confirm">Plats et prix donnés à titre indicatif — à confirmer avec l'établissement.</div>
+      </div>
+
+      <div class="ledger">
+        <div class="lg-block">
+          <h3 data-i18n="cat_entradas">Para Começar · Pour commencer</h3>
+          <div class="item"><span class="nm" data-i18n="d_ameijoas">Amêijoas à Bulhão Pato</span><span class="ds" data-i18n="d_ameijoas_d">palourdes, ail, vin blanc, coriandre</span><span class="leader"></span><span class="pr tbc" data-i18n="tbc">à conf.</span></div>
+          <div class="item"><span class="nm" data-i18n="d_camaroes">Camarões com molho guijo</span><span class="ds" data-i18n="d_camaroes_d">crevettes sauce à l'ail</span><span class="leader"></span><span class="pr tbc" data-i18n="tbc">à conf.</span></div>
+          <div class="item"><span class="nm" data-i18n="d_frita">Frita à portuguesa</span><span class="ds" data-i18n="d_frita_d">friture à la portugaise</span><span class="leader"></span><span class="pr tbc" data-i18n="tbc">à conf.</span></div>
+        </div>
+
+        <div class="lg-block">
+          <h3 data-i18n="cat_tradic">Pratos Tradicionais · Traditions</h3>
+          <div class="item"><span class="nm" data-i18n="d_cozido">Cozido à Portuguesa</span><span class="ds" data-i18n="d_cozido_d">pot-au-feu de viandes & légumes</span><span class="leader"></span><span class="pr tbc" data-i18n="tbc">à conf.</span></div>
+          <div class="item"><span class="nm" data-i18n="d_franc">Francesinha</span><span class="ds" data-i18n="d_franc_d">le sandwich de Porto, œuf au plat</span><span class="leader"></span><span class="pr tbc" data-i18n="tbc">à conf.</span></div>
+          <div class="item"><span class="nm" data-i18n="d_feij">Feijoada</span><span class="ds" data-i18n="d_feij_d">haricots & viandes, frites</span><span class="leader"></span><span class="pr tbc" data-i18n="tbc">à conf.</span></div>
+        </div>
+
+        <div class="lg-block">
+          <h3 data-i18n="cat_grelhados">Grelhados · Grillades</h3>
+          <div class="item"><span class="nm" data-i18n="d_picanha">Picanha Laminada</span><span class="ds" data-i18n="d_picanha_d">bœuf grillé, tranché</span><span class="leader"></span><span class="pr">≈ 28 €</span></div>
+          <div class="item"><span class="nm" data-i18n="d_espetada">Espetada</span><span class="ds" data-i18n="d_espetada_d">brochette suspendue</span><span class="leader"></span><span class="pr tbc" data-i18n="tbc">à conf.</span></div>
+          <div class="item"><span class="nm" data-i18n="d_filet">Filet de bœuf</span><span class="ds" data-i18n="d_filet_d">grillé</span><span class="leader"></span><span class="pr">≈ 26 €</span></div>
+          <div class="item"><span class="nm" data-i18n="d_cote">Côte à l'os</span><span class="ds" data-i18n="d_cote_d">pour les belles faims</span><span class="leader"></span><span class="pr">≈ 32 €</span></div>
+        </div>
+
+        <div class="lg-block">
+          <h3 data-i18n="cat_partilhar">Para Partilhar · À partager</h3>
+          <div class="item item-full"><span class="nm" data-i18n="d_tabua">Tábua Terra e Mar</span> <span class="pr" style="float:right">≈ 74 €</span><span class="ds" data-i18n="d_tabua_d">planche terre & mer, pour deux</span></div>
+          <div class="confirm" style="margin-top:14px;font-size:11.5px;border-color:var(--ochre)" data-i18n="carta_wine">Belle sélection de vins portugais au verre et à la bouteille — carte à confirmer.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ESPECIALIDADES ===== -->
+<section class="espec">
+  <div class="wrap">
+    <div class="espec-head">
+      <h2 data-i18n="espec_h">Sur la <em>terre cuite</em></h2>
+      <p data-i18n="espec_p">Les plats servis comme au pays, sur les assiettes en terre cuite du Portugal. Photos réelles de la maison — clichés haute résolution à fournir par l'établissement.</p>
+    </div>
+    <div class="plates">
+      <div class="dish">
+        <div class="disc"><img src="assets/food-cozido.jpg" alt="Cozido à Portuguesa"></div>
+        <div class="dn" data-i18n="pl_cozido">Cozido à Portuguesa</div>
+        <div class="dsub" data-i18n="pl_cozido_d">Viandes & légumes mijotés</div>
+      </div>
+      <div class="dish">
+        <div class="disc"><img src="assets/food-francesinha.jpg" alt="Francesinha"></div>
+        <div class="dn" data-i18n="pl_franc">Francesinha</div>
+        <div class="dsub" data-i18n="pl_franc_d">Le classique de Porto</div>
+      </div>
+      <div class="dish">
+        <div class="disc"><img src="assets/food-picanha.jpg" alt="Picanha"></div>
+        <div class="dn" data-i18n="pl_picanha">Picanha</div>
+        <div class="dsub" data-i18n="pl_picanha_d">Bœuf grillé sur riz</div>
+      </div>
+      <div class="dish">
+        <div class="disc"><img src="assets/food-feijoada.jpg" alt="Feijoada"></div>
+        <div class="dn" data-i18n="pl_feij">Feijoada</div>
+        <div class="dsub" data-i18n="pl_feij_d">Haricots, viandes & frites</div>
+      </div>
+      <div class="skewer">
+        <div class="simg"><img src="assets/exterior-terrace-espetada.jpg" alt="Espetada suspendue en terrasse"></div>
+        <div class="stx">
+          <div class="k" data-i18n="sk_k">En terrasse</div>
+          <div class="t" data-i18n="sk_t">A Espetada</div>
+          <p data-i18n="sk_p">La brochette suspendue, servie à table quand le soleil est de la partie.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== A CASA + INFO ===== -->
+<section class="casa" id="casa">
+  <div class="wrap">
+    <div class="casa-grid">
+      <div class="casa-story">
+        <span class="eyebrow" data-i18n="casa_eyebrow">A Casa · La maison</span>
+        <h2 data-i18n="casa_h">Une <em>adega</em> de famille, à Mersch.</h2>
+        <p data-i18n="casa_p1">« Adega Velha » veut dire la vieille cave à vin. C'est l'esprit de la maison&nbsp;: chaleureuse, sans façon, portée par une famille qui aime recevoir et faire goûter le vrai Portugal.</p>
+        <p class="pull" data-i18n="casa_pull">« On y vient manger après avoir admiré le château de Mersch. »</p>
+        <p data-i18n="casa_p2">Le service est attentif, les portions généreuses, les prix raisonnables — et la terrasse s'ouvre dès les beaux jours. On y sert le voisinage de Mersch, la communauté portugaise et les familles, midi et soir.</p>
+        <div class="casa-mini">
+          <div class="m"><div class="n">4,3★</div><div class="l" data-i18n="mini1">381 avis</div></div>
+          <div class="m"><div class="n">#12</div><div class="l" data-i18n="mini2">/ 35 à Mersch</div></div>
+          <div class="m"><div class="n">7/7</div><div class="l" data-i18n="mini3">livraison (à conf.)</div></div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="ic-head" data-i18n="info_head">Nous rendre visite</div>
+        <div class="info-body">
+          <div class="irow">
+            <div class="k" data-i18n="info_addr">Adresse</div>
+            <div class="v">44 Rue Nicolas Welter<br>L-7570 Mersch, Luxembourg</div>
+          </div>
+          <div class="irow">
+            <div class="k" data-i18n="info_phone">Téléphone <span class="tbc-tag" data-i18n="info_tbc">à confirmer</span></div>
+            <div class="v"><a href="tel:+35227521448">+352 27 52 14 48</a> &nbsp;/&nbsp; <a href="tel:+35228773205">+352 28 77 32 05</a></div>
+          </div>
+          <div class="irow">
+            <div class="k" data-i18n="info_online">En ligne</div>
+            <div class="v"><a href="https://www.instagram.com/adegavelha1/" target="_blank" rel="noopener">Instagram @adegavelha1</a> · <span data-i18n="info_email">info@adega-velha.lu (à conf.)</span></div>
+          </div>
+          <div class="irow">
+            <div class="k" data-i18n="info_hours">Horaires <span class="tbc-tag" data-i18n="info_tbc">à confirmer</span></div>
+            <div class="hours-two">
+              <div class="hcol">
+                <div class="ht" data-i18n="h_va">Version A</div>
+                <div class="hl" data-i18n="h_va_l">Mar–Dim 11h30–14h30 · 18h30–22h30<br>Lundi fermé</div>
+              </div>
+              <div class="hcol">
+                <div class="ht" data-i18n="h_vb">Version B</div>
+                <div class="hl" data-i18n="h_vb_l">Jeu–Mar 12h–14h · 18h30–22h<br>Mercredi fermé</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="map-box">
+          <iframe title="Carte — Adega Velha, Mersch" loading="lazy" src="https://www.google.com/maps?q=44+Rue+Nicolas+Welter,+L-7570+Mersch,+Luxembourg&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="foot-brand-band"><span>Spécialités Portugaises</span></div>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="fwm"><span class="g">ADEGA</span> VELHA</div>
+        <p data-i18n="foot_p">Café-restaurant portugais familial à Mersch. Cuisine traditionnelle, terrasse et vins du Portugal.</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot_nav">Naviguer</h4>
+        <a href="#carta" data-i18n="hero_cta1">Voir la carte</a>
+        <a href="#casa" data-i18n="foot_visit">Nous rendre visite</a>
+        <a href="https://www.instagram.com/adegavelha1/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot_contact">Contact</h4>
+        <div>44 Rue Nicolas Welter</div>
+        <div>L-7570 Mersch</div>
+        <a href="tel:+35227521448">+352 27 52 14 48</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="demo-note" data-i18n="foot_demo">Site de démonstration réalisé pour présentation — contenus, horaires et prix à confirmer avec l'établissement. Aucune réservation réelle n'est traitée.</div>
+      <div>© 2026 Café Restaurant Adega Velha · Mersch</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  fr:{
+    mast_tag:"Spécialités portugaises", mast_loc:"44 Rue Nicolas Welter · L-7570 Mersch",
+    mast_reserve:"Réserver une table",
+    hero_eyebrow:"Cozinha Tradicional Portuguesa · Mersch",
+    hero_h1a:"La table portugaise,", hero_h1b:"au cœur de Mersch.",
+    hero_note:"Accroche proposée par le studio — à valider avec l'établissement.",
+    hero_lede:"Une maison familiale où l'on partage une vraie passion des produits portugais : généreuses assiettes servies sur la terre cuite, vins du pays et une terrasse à deux pas du château de Mersch.",
+    hero_cta1:"Voir la carte", hero_cta2:"Nous trouver",
+    hero_reviews:"· 381 avis (RestaurantGuru, agrégé)",
+    cap_picanha:"Picanha", cap_espetada:"Espetada, en terrasse",
+    band1:"Feito com paixão · Fait avec passion · Mit Leidenschaft gemacht",
+    carta_sub:"Le livre de cave",
+    carta_intro:"Quelques spécialités de la maison, dans l'esprit d'un vieux registre de cave. Assiettes copieuses, produits portugais, à accompagner d'un verre de rouge.",
+    carta_confirm:"Plats et prix donnés à titre indicatif — à confirmer avec l'établissement.",
+    cat_entradas:"Para Começar · Pour commencer",
+    d_ameijoas:"Amêijoas à Bulhão Pato", d_ameijoas_d:"palourdes, ail, vin blanc, coriandre",
+    d_camaroes:"Camarões com molho guijo", d_camaroes_d:"crevettes sauce à l'ail",
+    d_frita:"Frita à portuguesa", d_frita_d:"friture à la portugaise",
+    cat_tradic:"Pratos Tradicionais · Traditions",
+    d_cozido:"Cozido à Portuguesa", d_cozido_d:"pot-au-feu de viandes & légumes",
+    d_franc:"Francesinha", d_franc_d:"le sandwich de Porto, œuf au plat",
+    d_feij:"Feijoada", d_feij_d:"haricots & viandes, frites",
+    cat_grelhados:"Grelhados · Grillades",
+    d_picanha:"Picanha Laminada", d_picanha_d:"bœuf grillé, tranché",
+    d_espetada:"Espetada", d_espetada_d:"brochette suspendue",
+    d_filet:"Filet de bœuf", d_filet_d:"grillé",
+    d_cote:"Côte à l'os", d_cote_d:"pour les belles faims",
+    cat_partilhar:"Para Partilhar · À partager",
+    d_tabua:"Tábua Terra e Mar", d_tabua_d:"planche terre & mer, pour deux",
+    carta_wine:"Belle sélection de vins portugais au verre et à la bouteille — carte à confirmer.",
+    tbc:"à conf.",
+    espec_h:"Sur la <em>terre cuite</em>",
+    espec_p:"Les plats servis comme au pays, sur les assiettes en terre cuite du Portugal. Photos réelles de la maison — clichés haute résolution à fournir par l'établissement.",
+    pl_cozido:"Cozido à Portuguesa", pl_cozido_d:"Viandes & légumes mijotés",
+    pl_franc:"Francesinha", pl_franc_d:"Le classique de Porto",
+    pl_picanha:"Picanha", pl_picanha_d:"Bœuf grillé sur riz",
+    pl_feij:"Feijoada", pl_feij_d:"Haricots, viandes & frites",
+    sk_k:"En terrasse", sk_t:"A Espetada", sk_p:"La brochette suspendue, servie à table quand le soleil est de la partie.",
+    casa_eyebrow:"A Casa · La maison",
+    casa_h:"Une <em>adega</em> de famille, à Mersch.",
+    casa_p1:"« Adega Velha » veut dire la vieille cave à vin. C'est l'esprit de la maison : chaleureuse, sans façon, portée par une famille qui aime recevoir et faire goûter le vrai Portugal.",
+    casa_pull:"« On y vient manger après avoir admiré le château de Mersch. »",
+    casa_p2:"Le service est attentif, les portions généreuses, les prix raisonnables — et la terrasse s'ouvre dès les beaux jours. On y sert le voisinage de Mersch, la communauté portugaise et les familles, midi et soir.",
+    mini1:"381 avis", mini2:"/ 35 à Mersch", mini3:"livraison (à conf.)",
+    info_head:"Nous rendre visite", info_addr:"Adresse",
+    info_phone:"Téléphone", info_tbc:"à confirmer",
+    info_online:"En ligne", info_email:"info@adega-velha.lu (à conf.)",
+    info_hours:"Horaires", h_va:"Version A", h_va_l:"Mar–Dim 11h30–14h30 · 18h30–22h30<br>Lundi fermé",
+    h_vb:"Version B", h_vb_l:"Jeu–Mar 12h–14h · 18h30–22h<br>Mercredi fermé",
+    foot_p:"Café-restaurant portugais familial à Mersch. Cuisine traditionnelle, terrasse et vins du Portugal.",
+    foot_nav:"Naviguer", foot_visit:"Nous rendre visite", foot_contact:"Contact",
+    foot_demo:"Site de démonstration réalisé pour présentation — contenus, horaires et prix à confirmer avec l'établissement. Aucune réservation réelle n'est traitée."
+  },
+  de:{
+    mast_tag:"Portugiesische Spezialitäten", mast_loc:"44 Rue Nicolas Welter · L-7570 Mersch",
+    mast_reserve:"Tisch reservieren",
+    hero_eyebrow:"Traditionelle portugiesische Küche · Mersch",
+    hero_h1a:"Portugal auf dem Teller,", hero_h1b:"mitten in Mersch.",
+    hero_note:"Vom Studio vorgeschlagener Slogan — mit dem Lokal abzustimmen.",
+    hero_lede:"Ein familiengeführtes Haus mit echter Leidenschaft für portugiesische Produkte: großzügige Portionen auf Terrakotta, Weine aus dem Land und eine Terrasse nahe dem Schloss Mersch.",
+    hero_cta1:"Zur Speisekarte", hero_cta2:"So finden Sie uns",
+    hero_reviews:"· 381 Bewertungen (RestaurantGuru, aggregiert)",
+    cap_picanha:"Picanha", cap_espetada:"Espetada, auf der Terrasse",
+    band1:"Feito com paixão · Mit Leidenschaft gemacht · Fait avec passion",
+    carta_sub:"Das Kellerbuch",
+    carta_intro:"Einige Spezialitäten des Hauses, im Geist eines alten Kellerbuchs. Reichliche Teller, portugiesische Produkte, dazu ein Glas Rotwein.",
+    carta_confirm:"Gerichte und Preise als Richtwerte — mit dem Lokal zu bestätigen.",
+    cat_entradas:"Para Começar · Zum Anfang",
+    d_ameijoas:"Amêijoas à Bulhão Pato", d_ameijoas_d:"Venusmuscheln, Knoblauch, Weißwein, Koriander",
+    d_camaroes:"Camarões com molho guijo", d_camaroes_d:"Garnelen in Knoblauchsauce",
+    d_frita:"Frita à portuguesa", d_frita_d:"Frittiertes nach portugiesischer Art",
+    cat_tradic:"Pratos Tradicionais · Traditionen",
+    d_cozido:"Cozido à Portuguesa", d_cozido_d:"Eintopf aus Fleisch & Gemüse",
+    d_franc:"Francesinha", d_franc_d:"das Sandwich aus Porto, Spiegelei",
+    d_feij:"Feijoada", d_feij_d:"Bohnen & Fleisch, Pommes",
+    cat_grelhados:"Grelhados · Vom Grill",
+    d_picanha:"Picanha Laminada", d_picanha_d:"gegrilltes Rind, aufgeschnitten",
+    d_espetada:"Espetada", d_espetada_d:"hängender Spieß",
+    d_filet:"Rinderfilet", d_filet_d:"gegrillt",
+    d_cote:"Kotelett am Knochen", d_cote_d:"für den großen Hunger",
+    cat_partilhar:"Para Partilhar · Zum Teilen",
+    d_tabua:"Tábua Terra e Mar", d_tabua_d:"Platte Land & Meer, für zwei",
+    carta_wine:"Schöne Auswahl portugiesischer Weine, glasweise und in Flaschen — Karte zu bestätigen.",
+    tbc:"t.b.c.",
+    espec_h:"Auf der <em>Terrakotta</em>",
+    espec_p:"Die Gerichte wie zu Hause serviert, auf portugiesischen Terrakotta-Tellern. Echte Fotos des Hauses — hochauflösende Bilder vom Lokal bereitzustellen.",
+    pl_cozido:"Cozido à Portuguesa", pl_cozido_d:"Fleisch & Gemüse geschmort",
+    pl_franc:"Francesinha", pl_franc_d:"Der Klassiker aus Porto",
+    pl_picanha:"Picanha", pl_picanha_d:"Gegrilltes Rind auf Reis",
+    pl_feij:"Feijoada", pl_feij_d:"Bohnen, Fleisch & Pommes",
+    sk_k:"Auf der Terrasse", sk_t:"A Espetada", sk_p:"Der hängende Spieß, am Tisch serviert, wenn die Sonne scheint.",
+    casa_eyebrow:"A Casa · Das Haus",
+    casa_h:"Eine <em>Adega</em> der Familie, in Mersch.",
+    casa_p1:"„Adega Velha“ heißt der alte Weinkeller. Genau das ist der Geist des Hauses: herzlich, unkompliziert, getragen von einer Familie, die gerne bewirtet und das echte Portugal zeigt.",
+    casa_pull:"„Man kommt hierher zum Essen, nachdem man das Schloss Mersch bestaunt hat.“",
+    casa_p2:"Der Service ist aufmerksam, die Portionen großzügig, die Preise fair — und die Terrasse öffnet bei schönem Wetter. Bedient werden die Nachbarschaft von Mersch, die portugiesische Gemeinde und Familien, mittags und abends.",
+    mini1:"381 Bewertungen", mini2:"/ 35 in Mersch", mini3:"Lieferung (t.b.c.)",
+    info_head:"Besuchen Sie uns", info_addr:"Adresse",
+    info_phone:"Telefon", info_tbc:"zu bestätigen",
+    info_online:"Online", info_email:"info@adega-velha.lu (t.b.c.)",
+    info_hours:"Öffnungszeiten", h_va:"Version A", h_va_l:"Di–So 11:30–14:30 · 18:30–22:30<br>Montag geschlossen",
+    h_vb:"Version B", h_vb_l:"Do–Di 12:00–14:00 · 18:30–22:00<br>Mittwoch geschlossen",
+    foot_p:"Familiäres portugiesisches Café-Restaurant in Mersch. Traditionelle Küche, Terrasse und Weine aus Portugal.",
+    foot_nav:"Navigation", foot_visit:"Besuchen Sie uns", foot_contact:"Kontakt",
+    foot_demo:"Demo-Website zur Präsentation — Inhalte, Öffnungszeiten und Preise mit dem Lokal zu bestätigen. Es werden keine echten Reservierungen verarbeitet."
+  },
+  en:{
+    mast_tag:"Portuguese specialities", mast_loc:"44 Rue Nicolas Welter · L-7570 Mersch",
+    mast_reserve:"Book a table",
+    hero_eyebrow:"Traditional Portuguese Cooking · Mersch",
+    hero_h1a:"The Portuguese table,", hero_h1b:"in the heart of Mersch.",
+    hero_note:"Tagline proposed by the studio — to be confirmed with the venue.",
+    hero_lede:"A family house sharing a genuine love of Portuguese produce: generous plates served on terracotta, wines from home and a terrace a short walk from Mersch Castle.",
+    hero_cta1:"See the menu", hero_cta2:"Find us",
+    hero_reviews:"· 381 reviews (RestaurantGuru, aggregated)",
+    cap_picanha:"Picanha", cap_espetada:"Espetada, on the terrace",
+    band1:"Feito com paixão · Made with passion · Fait avec passion",
+    carta_sub:"The cellar book",
+    carta_intro:"A handful of house specialities, in the spirit of an old cellar ledger. Generous plates, Portuguese produce, best with a glass of red.",
+    carta_confirm:"Dishes and prices are indicative — to be confirmed with the venue.",
+    cat_entradas:"Para Começar · To start",
+    d_ameijoas:"Amêijoas à Bulhão Pato", d_ameijoas_d:"clams, garlic, white wine, coriander",
+    d_camaroes:"Camarões com molho guijo", d_camaroes_d:"garlic prawns",
+    d_frita:"Frita à portuguesa", d_frita_d:"Portuguese-style fried dish",
+    cat_tradic:"Pratos Tradicionais · Traditions",
+    d_cozido:"Cozido à Portuguesa", d_cozido_d:"mixed meat & vegetable stew",
+    d_franc:"Francesinha", d_franc_d:"the Porto sandwich, fried egg",
+    d_feij:"Feijoada", d_feij_d:"beans & meats, fries",
+    cat_grelhados:"Grelhados · From the grill",
+    d_picanha:"Picanha Laminada", d_picanha_d:"grilled beef, sliced",
+    d_espetada:"Espetada", d_espetada_d:"hanging skewer",
+    d_filet:"Beef fillet", d_filet_d:"grilled",
+    d_cote:"Rib on the bone", d_cote_d:"for hearty appetites",
+    cat_partilhar:"Para Partilhar · To share",
+    d_tabua:"Tábua Terra e Mar", d_tabua_d:"surf & turf board, for two",
+    carta_wine:"A fine selection of Portuguese wines by the glass and bottle — list to be confirmed.",
+    tbc:"t.b.c.",
+    espec_h:"On the <em>terracotta</em>",
+    espec_p:"Dishes served as they are back home, on Portuguese terracotta plates. Real photos of the house — high-resolution images to be supplied by the venue.",
+    pl_cozido:"Cozido à Portuguesa", pl_cozido_d:"Slow-cooked meats & vegetables",
+    pl_franc:"Francesinha", pl_franc_d:"The Porto classic",
+    pl_picanha:"Picanha", pl_picanha_d:"Grilled beef on rice",
+    pl_feij:"Feijoada", pl_feij_d:"Beans, meats & fries",
+    sk_k:"On the terrace", sk_t:"A Espetada", sk_p:"The hanging skewer, served at the table when the sun is out.",
+    casa_eyebrow:"A Casa · The house",
+    casa_h:"A family <em>adega</em>, in Mersch.",
+    casa_p1:"\"Adega Velha\" means the old wine cellar. That is the spirit of the house: warm, unpretentious, run by a family that loves to host and to share the real Portugal.",
+    casa_pull:"\"Come here to eat after gazing at Mersch Castle.\"",
+    casa_p2:"Service is attentive, portions generous, prices fair — and the terrace opens with the first fine days. It serves the Mersch neighbourhood, the Portuguese community and families, at lunch and dinner.",
+    mini1:"381 reviews", mini2:"/ 35 in Mersch", mini3:"delivery (t.b.c.)",
+    info_head:"Visit us", info_addr:"Address",
+    info_phone:"Phone", info_tbc:"to confirm",
+    info_online:"Online", info_email:"info@adega-velha.lu (t.b.c.)",
+    info_hours:"Opening hours", h_va:"Version A", h_va_l:"Tue–Sun 11:30–14:30 · 18:30–22:30<br>Closed Monday",
+    h_vb:"Version B", h_vb_l:"Thu–Tue 12:00–14:00 · 18:30–22:00<br>Closed Wednesday",
+    foot_p:"A family Portuguese café-restaurant in Mersch. Traditional cooking, a terrace and wines from Portugal.",
+    foot_nav:"Navigate", foot_visit:"Visit us", foot_contact:"Contact",
+    foot_demo:"Demonstration website for presentation — content, hours and prices to be confirmed with the venue. No real reservations are processed."
+  }
+};
+const withHTML = new Set(["espec_h","casa_h","h_va_l","h_vb_l"]);
+function setLang(l){
+  const d=I18N[l]; if(!d) return;
+  document.documentElement.lang=l;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k=el.getAttribute("data-i18n");
+    if(d[k]!==undefined){ if(withHTML.has(k)) el.innerHTML=d[k]; else el.textContent=d[k]; }
+  });
+  document.querySelectorAll("#langs button").forEach(b=>b.classList.toggle("on",b.dataset.lang===l));
+}
+document.querySelectorAll("#langs button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+</script>
+</body>
+</html>

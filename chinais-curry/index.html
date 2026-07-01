@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Chinai's Curry — Curry japonais · Luxembourg-Gare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --curry:#E8A13A;
+    --curry-deep:#C97E1F;
+    --cream:#FBF6EE;
+    --paper:#FFFDF9;
+    --pink:#F6C9D3;
+    --pink-soft:#FBE3E9;
+    --mint:#E4EFD4;
+    --mint-soft:#EFF5E4;
+    --char:#2A2622;
+    --rim:#2A2622;
+    --muted:#7A716A;
+    --shadow:0 18px 40px -22px rgba(42,38,34,.45);
+    --ring:2px solid var(--rim);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Zen Kaku Gothic New",system-ui,sans-serif;
+    color:var(--char);
+    background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+  h1,h2,h3,.disp{font-family:"Zen Maru Gothic",system-ui,sans-serif}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .kata{font-family:"Zen Maru Gothic";letter-spacing:.18em}
+
+  /* ---------- tray edge / top rail ---------- */
+  .rail{
+    position:sticky;top:0;z-index:60;
+    display:flex;align-items:center;justify-content:space-between;gap:18px;
+    padding:12px clamp(18px,3.2vw,48px);
+    background:var(--char);
+    color:var(--cream);
+    border-bottom:4px solid var(--curry);
+  }
+  .brand{display:flex;align-items:baseline;gap:12px}
+  .brand .mark{font-family:"Zen Maru Gothic";font-weight:900;font-size:1.42rem;letter-spacing:.01em;color:var(--cream)}
+  .brand .mark b{color:var(--curry)}
+  .brand .jp{font-size:.72rem;color:var(--pink);letter-spacing:.32em;text-transform:uppercase}
+  .rail-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+  .rail nav{display:flex;gap:6px}
+  .rail nav a{font-size:.82rem;font-weight:500;color:#e9dfce;padding:6px 10px;border-radius:999px;opacity:.85;transition:.2s}
+  .rail nav a:hover{opacity:1;background:rgba(232,161,58,.18);color:#fff}
+  .lang{display:flex;border:1.5px solid rgba(251,246,238,.35);border-radius:999px;overflow:hidden}
+  .lang button{
+    font-family:inherit;font-size:.74rem;font-weight:700;letter-spacing:.04em;
+    background:transparent;color:#e9dfce;border:0;padding:6px 11px;cursor:pointer;transition:.15s
+  }
+  .lang button[aria-pressed="true"]{background:var(--curry);color:var(--char)}
+  .wolt{
+    font-weight:700;font-size:.8rem;padding:8px 15px;border-radius:999px;
+    background:var(--curry);color:var(--char);white-space:nowrap;transition:.2s
+  }
+  .wolt:hover{background:var(--pink);transform:translateY(-1px)}
+
+  /* ---------- bento shell ---------- */
+  .tray{
+    max-width:1440px;margin:0 auto;
+    padding:clamp(18px,2.4vw,34px) clamp(14px,3vw,48px) 0;
+  }
+  .bento{
+    display:grid;grid-template-columns:repeat(12,1fr);
+    gap:clamp(12px,1.3vw,20px);
+  }
+  .well{
+    background:var(--paper);
+    border:var(--ring);
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    position:relative;overflow:hidden;
+  }
+  .pad{padding:clamp(20px,2vw,34px)}
+  .tag{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--curry-deep);
+  }
+  .tag::before{content:"";width:20px;height:2px;background:var(--curry);border-radius:2px}
+
+  /* ---------- hero compartment ---------- */
+  .c-hero{grid-column:span 8;background:var(--mint);border:var(--ring);border-radius:22px;box-shadow:var(--shadow);
+    display:grid;grid-template-columns:1.05fr .95fr;min-height:430px;overflow:hidden}
+  .hero-copy{padding:clamp(26px,2.6vw,44px);display:flex;flex-direction:column;justify-content:center;gap:16px}
+  .hero-copy h1{font-weight:900;font-size:clamp(2.1rem,3.4vw,3.35rem);line-height:1.02;letter-spacing:-.01em}
+  .hero-copy h1 em{font-style:normal;color:var(--curry-deep);position:relative;white-space:nowrap}
+  .hero-copy h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.14em;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='10' viewBox='0 0 120 10'><path d='M2 6 Q 30 1 60 6 T 118 6' fill='none' stroke='%23E8A13A' stroke-width='3' stroke-linecap='round'/></svg>") repeat-x;background-size:auto 100%}
+  .lede{font-size:1.02rem;color:#4d453e;max-width:44ch}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+  .btn{font-family:"Zen Maru Gothic";font-weight:700;font-size:.92rem;padding:13px 22px;border-radius:14px;
+    border:var(--ring);cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:8px}
+  .btn-primary{background:var(--curry);color:var(--char)}
+  .btn-primary:hover{background:var(--curry-deep);color:var(--cream);transform:translateY(-2px)}
+  .btn-ghost{background:var(--paper)}
+  .btn-ghost:hover{background:var(--pink-soft);transform:translateY(-2px)}
+  .hero-pic{position:relative;background:radial-gradient(120% 90% at 60% 30%,#eef6de,#dbe8c2)}
+  .hero-pic img{width:100%;height:100%;object-fit:cover;object-position:center}
+  .hero-badge{position:absolute;left:16px;bottom:16px;background:var(--char);color:var(--cream);
+    font-size:.68rem;font-weight:600;letter-spacing:.04em;padding:6px 11px;border-radius:999px}
+
+  /* right stacked compartments */
+  .c-side{grid-column:span 4;display:grid;grid-template-rows:auto 1fr;gap:clamp(12px,1.3vw,20px)}
+  .c-spice{background:var(--pink-soft);border:var(--ring);border-radius:22px;box-shadow:var(--shadow);padding:clamp(20px,1.8vw,28px)}
+  .c-spice h3{font-size:1.15rem;font-weight:700;margin:8px 0 4px}
+  .c-spice p{font-size:.86rem;color:#5c534c}
+  .heat{display:flex;gap:7px;margin-top:14px}
+  .heat span{width:100%;height:11px;border-radius:6px;background:#f0d3da;border:1.5px solid var(--rim)}
+  .heat span.on{background:linear-gradient(90deg,var(--curry),#e2622f)}
+  .c-info{background:var(--char);color:var(--cream);border-radius:22px;box-shadow:var(--shadow);padding:clamp(20px,1.8vw,28px);display:flex;flex-direction:column;justify-content:center;gap:12px}
+  .c-info .tag{color:var(--pink)}
+  .c-info .tag::before{background:var(--pink)}
+  .info-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:.9rem;border-bottom:1px dashed rgba(251,246,238,.22);padding-bottom:9px}
+  .info-row:last-child{border-bottom:0;padding-bottom:0}
+  .info-row b{font-weight:500;color:#cbbfae}
+  .info-row span{font-family:"Zen Maru Gothic";font-weight:700;color:var(--curry)}
+
+  /* ---------- wave divider ---------- */
+  .omuline{width:100%;height:34px;margin:clamp(20px,2.2vw,32px) 0 clamp(6px,1vw,12px);color:var(--curry);display:block}
+  .omuline svg{width:100%;height:100%}
+
+  /* ---------- section head ---------- */
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin:clamp(26px,3vw,44px) 4px clamp(14px,1.6vw,22px)}
+  .sec-head h2{font-size:clamp(1.7rem,2.6vw,2.5rem);font-weight:900;letter-spacing:-.01em;line-height:1}
+  .sec-head p{color:var(--muted);font-size:.92rem;max-width:40ch}
+
+  /* ---------- menu tabs + bento cards ---------- */
+  .tabs{display:flex;gap:8px;flex-wrap:wrap}
+  .tabs button{font-family:"Zen Maru Gothic";font-weight:700;font-size:.83rem;padding:9px 16px;border-radius:999px;
+    border:var(--ring);background:var(--paper);cursor:pointer;transition:.18s}
+  .tabs button[aria-pressed="true"]{background:var(--char);color:var(--cream)}
+  .tabs button:hover{transform:translateY(-1px)}
+  .menu-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,1.3vw,20px)}
+  .dish{grid-column:span 3;background:var(--paper);border:var(--ring);border-radius:20px;overflow:hidden;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;transition:.2s}
+  .dish:hover{transform:translateY(-4px)}
+  .dish .ph{height:160px;position:relative;overflow:hidden}
+  .dish .ph img{width:100%;height:100%;object-fit:cover}
+  .dish .ph.pink{background:var(--pink-soft)}
+  .dish .ph.mint{background:var(--mint-soft)}
+  .dish .ph.cream{background:#f4ecdd}
+  .ph-glyph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:"Zen Maru Gothic";
+    font-weight:900;font-size:2.1rem;color:rgba(42,38,34,.16);text-align:center;padding:10px;line-height:1.05}
+  .dish .body{padding:15px 16px 17px;display:flex;flex-direction:column;gap:5px;flex:1}
+  .dish h3{font-size:1rem;font-weight:700;line-height:1.15}
+  .dish .desc{font-size:.78rem;color:var(--muted);flex:1}
+  .dish .price{font-family:"Zen Maru Gothic";font-weight:900;color:var(--curry-deep);font-size:1.05rem;margin-top:4px}
+  .dish .price small{font-weight:500;font-size:.62rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+  .hide{display:none!important}
+
+  /* ---------- story band ---------- */
+  .band{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,1.3vw,20px);margin-top:clamp(14px,1.6vw,22px)}
+  .c-photo{grid-column:span 6;border:var(--ring);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);min-height:360px}
+  .c-photo img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
+  .c-story{grid-column:span 6;background:var(--paper);border:var(--ring);border-radius:22px;box-shadow:var(--shadow);
+    padding:clamp(26px,2.4vw,40px);display:flex;flex-direction:column;justify-content:center;gap:14px}
+  .c-story h2{font-size:clamp(1.6rem,2.3vw,2.15rem);font-weight:900;line-height:1.05}
+  .c-story p{color:#4d453e;font-size:.97rem}
+  .pillrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+  .pill{font-size:.76rem;font-weight:700;padding:7px 13px;border-radius:999px;border:var(--ring);background:var(--mint)}
+  .pill.pk{background:var(--pink)}
+  .pill.am{background:var(--curry)}
+
+  /* ---------- visit band ---------- */
+  .c-hours{grid-column:span 4;background:var(--char);color:var(--cream);border:var(--ring);border-radius:22px;box-shadow:var(--shadow);padding:clamp(22px,2vw,32px)}
+  .c-hours h2{color:var(--cream);font-size:1.5rem;font-weight:900;margin:8px 0 14px}
+  .hrow{display:flex;justify-content:space-between;gap:12px;font-size:.88rem;padding:9px 0;border-bottom:1px dashed rgba(251,246,238,.2)}
+  .hrow:last-child{border-bottom:0}
+  .hrow b{font-weight:500;color:#d8cdbc}
+  .hrow span{font-family:"Zen Maru Gothic";font-weight:700;text-align:right;color:var(--curry)}
+  .note{font-size:.72rem;color:#b7ab99;margin-top:12px;font-style:italic}
+  .c-contact{grid-column:span 4;background:var(--pink-soft);border:var(--ring);border-radius:22px;box-shadow:var(--shadow);padding:clamp(22px,2vw,32px);display:flex;flex-direction:column;gap:16px}
+  .c-contact h2{font-size:1.5rem;font-weight:900;margin-top:6px}
+  .cline{display:flex;flex-direction:column;gap:2px}
+  .cline b{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--curry-deep);font-weight:700}
+  .cline a,.cline span{font-size:1rem;font-weight:500}
+  .c-map{grid-column:span 4;border:var(--ring);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);min-height:300px}
+  .c-map iframe{width:100%;height:100%;min-height:300px;border:0;filter:saturate(1.05)}
+
+  /* ---------- footer ---------- */
+  footer{max-width:1440px;margin:clamp(22px,3vw,40px) auto 0;padding:clamp(22px,2.4vw,36px) clamp(14px,3vw,48px) 40px}
+  .foot{background:var(--char);color:var(--cream);border-radius:22px;padding:clamp(24px,2.4vw,36px);
+    display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
+  .foot .mark{font-family:"Zen Maru Gothic";font-weight:900;font-size:1.5rem}
+  .foot .mark b{color:var(--curry)}
+  .foot p{font-size:.82rem;color:#c3b8a7;max-width:46ch;margin-top:8px}
+  .disc{font-size:.72rem;color:#8f8474;margin-top:14px;line-height:1.5}
+  .foot-links{display:flex;flex-direction:column;gap:6px;font-size:.86rem}
+  .foot-links a:hover{color:var(--curry)}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:1080px){
+    .c-hero{grid-column:span 12}
+    .c-side{grid-column:span 12;grid-template-columns:1fr 1fr;grid-template-rows:none}
+    .dish{grid-column:span 4}
+    .c-photo,.c-story{grid-column:span 12}
+    .c-photo{min-height:280px}
+    .c-hours,.c-contact,.c-map{grid-column:span 6}
+  }
+  @media(max-width:720px){
+    .rail{flex-wrap:wrap;gap:10px}
+    .rail nav{display:none}
+    .c-hero{grid-template-columns:1fr}
+    .hero-pic{min-height:240px}
+    .c-side{grid-template-columns:1fr}
+    .dish{grid-column:span 6}
+    .c-hours,.c-contact,.c-map{grid-column:span 12}
+    .c-map{min-height:260px}
+    .foot{flex-direction:column;align-items:flex-start}
+  }
+  @media(max-width:460px){
+    .dish{grid-column:span 12}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== tray edge rail ===== -->
+<header class="rail">
+  <div class="brand">
+    <span class="mark">Chinai's<b>.</b> Curry</span>
+    <span class="jp kata">チナイ カレー</span>
+  </div>
+  <div class="rail-right">
+    <nav>
+      <a href="#carte" data-i18n="nav.menu">La carte</a>
+      <a href="#lieu" data-i18n="nav.about">Le lieu</a>
+      <a href="#visite" data-i18n="nav.visit">Visite</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Langue">
+      <button data-lang="fr" aria-pressed="true">FR</button>
+      <button data-lang="de" aria-pressed="false">DE</button>
+      <button data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="wolt" href="https://wolt.com/en/lux/luxembourg/restaurant/chinais-curry-lux" target="_blank" rel="noopener" data-i18n="cta.order">Commander sur Wolt</a>
+  </div>
+</header>
+
+<main class="tray">
+
+  <!-- ===== bento: hero + side compartments ===== -->
+  <section class="bento" id="haut">
+    <div class="c-hero">
+      <div class="hero-copy">
+        <span class="tag" data-i18n="hero.kicker">Curry japonais · Luxembourg-Gare</span>
+        <h1 data-i18n-html="hero.title">Le vrai <em>curry japonais</em>,<br>au cœur de la Gare.</h1>
+        <p class="lede" data-i18n="hero.lede">Un roux épais et parfumé, du riz, une omelette omurice fondante et une pièce croustillante. Réconfortant, authentique, préparé avec soin.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#carte" data-i18n="hero.ctaMenu">Voir la carte</a>
+          <a class="btn btn-ghost" href="https://wolt.com/en/lux/luxembourg/restaurant/chinais-curry-lux" target="_blank" rel="noopener" data-i18n="hero.ctaOrder">Commander en livraison</a>
+        </div>
+      </div>
+      <div class="hero-pic">
+        <img src="assets/hero.jpg" alt="Trois plats de curry omurice — poulet katsu, saucisse, tempura de crevettes">
+        <span class="hero-badge" data-i18n="hero.badge">Photos : les plats signature du restaurant</span>
+      </div>
+    </div>
+
+    <div class="c-side">
+      <div class="c-spice">
+        <span class="tag" data-i18n="spice.kicker">La chauffe</span>
+        <h3 data-i18n="spice.title">Le curry monte en intensité</h3>
+        <p data-i18n="spice.body">Doux en bouche, puis franchement chaleureux. Ici l'épice se prend au sérieux — dites-nous votre niveau.</p>
+        <div class="heat" aria-hidden="true">
+          <span class="on"></span><span class="on"></span><span class="on"></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="c-info">
+        <span class="tag" data-i18n="quick.kicker">En un coup d'œil</span>
+        <div class="info-row"><b data-i18n="quick.style">Style</b><span data-i18n="quick.styleV">Curry · Ramen · Udon</span></div>
+        <div class="info-row"><b data-i18n="quick.today">Aujourd'hui</b><span>10:30 – 20:00 *</span></div>
+        <div class="info-row"><b data-i18n="quick.spot">Le coin</b><span data-i18n="quick.spotV">Rue Joseph Junck</span></div>
+        <div class="info-row"><b data-i18n="quick.deliv">Livraison</b><span>Wolt</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- omurice line divider -->
+  <div class="omuline" aria-hidden="true">
+    <svg viewBox="0 0 1400 34" preserveAspectRatio="none"><path d="M0 24 Q 175 6 350 24 T 700 24 T 1050 24 T 1400 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+  </div>
+
+  <!-- ===== la carte : bento of dishes ===== -->
+  <section id="carte">
+    <div class="sec-head">
+      <div>
+        <span class="tag" data-i18n="menu.kicker">Le menu bento</span>
+        <h2 data-i18n="menu.title">La carte</h2>
+      </div>
+      <p data-i18n="menu.note">Plats et prix relevés sur Wolt — à confirmer avec l'établissement.</p>
+    </div>
+
+    <div class="tabs" role="group" aria-label="Catégories">
+      <button data-cat="curry" aria-pressed="true" data-i18n="tab.curry">Curry signature</button>
+      <button data-cat="ramen" aria-pressed="false" data-i18n="tab.ramen">Ramen &amp; Udon</button>
+      <button data-cat="sides" aria-pressed="false" data-i18n="tab.sides">À côté</button>
+      <button data-cat="drinks" aria-pressed="false" data-i18n="tab.drinks">Boissons</button>
+    </div>
+
+    <div class="menu-grid" style="margin-top:16px">
+      <!-- CURRY -->
+      <article class="dish" data-cat="curry">
+        <div class="ph"><img src="assets/food-katsu-curry.jpg" alt="Tonkatsu porc curry omurice"></div>
+        <div class="body">
+          <h3>Tonkatsu (porc) · omurice</h3>
+          <p class="desc" data-i18n="d.tonkatsu">Escalope de porc panée croustillante, omelette omurice, curry.</p>
+          <div class="price">18,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+      <article class="dish" data-cat="curry">
+        <div class="ph"><img src="assets/food-beef-curry.jpg" alt="Bœuf entrecôte au curry"></div>
+        <div class="body">
+          <h3>Bœuf entrecôte · omurice</h3>
+          <p class="desc" data-i18n="d.entrecote">Entrecôte de bœuf saisie, riz, omurice et roux de curry.</p>
+          <div class="price">20,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+      <article class="dish" data-cat="curry">
+        <div class="ph"><img src="assets/food-brisket-curry.jpg" alt="Poitrine de bœuf au curry"></div>
+        <div class="body">
+          <h3>Poitrine de bœuf · omurice</h3>
+          <p class="desc" data-i18n="d.brisket">Poitrine de bœuf fondante mijotée dans le curry.</p>
+          <div class="price">18,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+      <article class="dish" data-cat="curry">
+        <div class="ph"><img src="assets/food-popcorn-curry.jpg" alt="Poulet popcorn au curry"></div>
+        <div class="body">
+          <h3>Poulet popcorn · omurice</h3>
+          <p class="desc" data-i18n="d.popcornc">Bouchées de poulet croustillantes sur curry et omurice.</p>
+          <div class="price">18,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+      <article class="dish" data-cat="curry">
+        <div class="ph pink"><div class="ph-glyph">鶏カツ</div></div>
+        <div class="body">
+          <h3>Katsu au poulet · omurice</h3>
+          <p class="desc" data-i18n="d.katsu">Poulet pané, croustillant, l'incontournable du katsu curry.</p>
+          <div class="price">18,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+      <article class="dish" data-cat="curry">
+        <div class="ph mint"><div class="ph-glyph">鴨</div></div>
+        <div class="body">
+          <h3>Canard croustillant · curry</h3>
+          <p class="desc" data-i18n="d.duck">Canard croustillant, roux de curry riche et parfumé.</p>
+          <div class="price">18,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+      <article class="dish" data-cat="curry">
+        <div class="ph cream"><div class="ph-glyph">海老天</div></div>
+        <div class="body">
+          <h3>Tempura de crevettes · curry</h3>
+          <p class="desc" data-i18n="d.shrimp">Crevettes en tempura légère, curry japonais.</p>
+          <div class="price">24,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+      <article class="dish" data-cat="curry">
+        <div class="ph pink"><div class="ph-glyph">野菜</div></div>
+        <div class="body">
+          <h3>Végé au curry</h3>
+          <p class="desc" data-i18n="d.veg">Version végétarienne, légumes et roux de curry.</p>
+          <div class="price">17,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+
+      <!-- RAMEN -->
+      <article class="dish hide" data-cat="ramen">
+        <div class="ph cream"><div class="ph-glyph">ラーメン</div></div>
+        <div class="body">
+          <h3>Ramen Tonkatsu Chashu</h3>
+          <p class="desc" data-i18n="d.rmchashu">Bouillon, nouilles ramen, porc chashu.</p>
+          <div class="price">18,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+      <article class="dish hide" data-cat="ramen">
+        <div class="ph mint"><div class="ph-glyph">牛ラーメン</div></div>
+        <div class="body">
+          <h3>Ramen bœuf entrecôte</h3>
+          <p class="desc" data-i18n="d.rmbeef">Ramen garni d'entrecôte de bœuf.</p>
+          <div class="price">20,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+      <article class="dish hide" data-cat="ramen">
+        <div class="ph pink"><div class="ph-glyph">うどん</div></div>
+        <div class="body">
+          <h3>Udon katsu poulet</h3>
+          <p class="desc" data-i18n="d.udkatsu">Nouilles udon épaisses, poulet katsu.</p>
+          <div class="price">18,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+      <article class="dish hide" data-cat="ramen">
+        <div class="ph cream"><div class="ph-glyph">海老天うどん</div></div>
+        <div class="body">
+          <h3>Udon tempura crevettes</h3>
+          <p class="desc" data-i18n="d.udshrimp">Udon et tempura de crevettes.</p>
+          <div class="price">24,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+
+      <!-- SIDES -->
+      <article class="dish hide" data-cat="sides">
+        <div class="ph"><img src="assets/food-karaage.jpg" alt="Poulet frit karaage"></div>
+        <div class="body">
+          <h3>Katsu poulet (à côté)</h3>
+          <p class="desc" data-i18n="d.sidekatsu">Poulet pané croustillant, à partager.</p>
+          <div class="price">13,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+      <article class="dish hide" data-cat="sides">
+        <div class="ph"><img src="assets/food-popcorn-chicken.jpg" alt="Poulet popcorn"></div>
+        <div class="body">
+          <h3>Poulet popcorn</h3>
+          <p class="desc" data-i18n="d.sidepop">Bouchées de poulet dorées et croustillantes.</p>
+          <div class="price">6,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+      <article class="dish hide" data-cat="sides">
+        <div class="ph mint"><div class="ph-glyph">餃子</div></div>
+        <div class="body">
+          <h3>Gyoza poulet (6 pièces)</h3>
+          <p class="desc" data-i18n="d.gyoza">Raviolis japonais poêlés au poulet.</p>
+          <div class="price">7,90 € <small>à confirmer</small></div>
+        </div>
+      </article>
+      <article class="dish hide" data-cat="sides">
+        <div class="ph pink"><div class="ph-glyph">手羽先</div></div>
+        <div class="body">
+          <h3>Chicken wings (5 pièces)</h3>
+          <p class="desc" data-i18n="d.wings">Ailes de poulet croustillantes.</p>
+          <div class="price">6,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+      <article class="dish hide" data-cat="sides">
+        <div class="ph cream"><div class="ph-glyph">味噌汁</div></div>
+        <div class="body">
+          <h3>Soupe miso</h3>
+          <p class="desc" data-i18n="d.miso">Bouillon miso réconfortant.</p>
+          <div class="price">4,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+
+      <!-- DRINKS -->
+      <article class="dish hide" data-cat="drinks">
+        <div class="ph pink"><div class="ph-glyph">ビール</div></div>
+        <div class="body">
+          <h3>Bières asiatiques</h3>
+          <p class="desc" data-i18n="d.beer">Asahi &amp; Qingdao — 4,70 € · Bofferding — 3,60 €.</p>
+          <div class="price">3,60 – 4,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+      <article class="dish hide" data-cat="drinks">
+        <div class="ph mint"><div class="ph-glyph">お茶</div></div>
+        <div class="body">
+          <h3>Boissons asiatiques</h3>
+          <p class="desc" data-i18n="d.asian">Thé Wanglaoji, litchi &amp; canne Foco, aloe, lait de coco.</p>
+          <div class="price">3,60 – 4,70 € <small>à confirmer</small></div>
+        </div>
+      </article>
+      <article class="dish hide" data-cat="drinks">
+        <div class="ph cream"><div class="ph-glyph">ソフト</div></div>
+        <div class="body">
+          <h3>Softs</h3>
+          <p class="desc" data-i18n="d.soft">Sodas et boissons fraîches.</p>
+          <div class="price">3,10 € <small>à confirmer</small></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== le lieu : story band ===== -->
+  <section class="band" id="lieu">
+    <div class="c-photo">
+      <img src="assets/interior-1.jpg" alt="Assiette de katsu curry omurice sur plateau en bois, en salle">
+    </div>
+    <div class="c-story">
+      <span class="tag" data-i18n="story.kicker">Le lieu</span>
+      <h2 data-i18n="story.title">On vient pour le décor, on reste pour le curry.</h2>
+      <p data-i18n="story.p1">Niché dans la Gare, Chinai's Curry mise sur un décor soigné, très « Instagram », et une cuisine de réconfort qui va droit au but : le curry japonais, épais et parfumé, servi sur un riz nappé d'une omelette omurice.</p>
+      <p data-i18n="story.p2">La signature ? Cette ligne verte dessinée sur l'omurice, et la pièce croustillante posée dans le roux. Simple, généreux, réconfortant.</p>
+      <div class="pillrow">
+        <span class="pill am" data-i18n="story.t1">Omurice signature</span>
+        <span class="pill pk" data-i18n="story.t2">Katsu croustillant</span>
+        <span class="pill" data-i18n="story.t3">Roux maison</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== visite : hours / contact / map ===== -->
+  <section class="band" id="visite" style="margin-top:clamp(12px,1.3vw,20px)">
+    <div class="c-hours">
+      <span class="tag" data-i18n="visit.kicker">Horaires</span>
+      <h2 data-i18n="visit.hoursT">Ouvert</h2>
+      <div class="hrow"><b data-i18n="day.monfri">Lun – Ven</b><span>10:30 – 20:00</span></div>
+      <div class="hrow"><b data-i18n="day.sat">Samedi</b><span>11:30 – 14:00 · 17:30 – 21:45</span></div>
+      <div class="hrow"><b data-i18n="day.sun">Dimanche</b><span>12:15 – 19:45</span></div>
+      <p class="note" data-i18n="visit.hoursNote">* Horaires relevés sur Wolt (peuvent refléter la livraison) — à confirmer avec l'établissement.</p>
+    </div>
+
+    <div class="c-contact">
+      <span class="tag" data-i18n="visit.kicker2">Nous trouver</span>
+      <h2 data-i18n="visit.contactT">Contact</h2>
+      <div class="cline">
+        <b data-i18n="visit.addr">Adresse</b>
+        <span>29 Rue Joseph Junck, L-1839 Luxembourg</span>
+        <span style="font-size:.8rem;color:var(--muted)" data-i18n="visit.addrNote">Quartier Gare · à confirmer (n°)</span>
+      </div>
+      <div class="cline">
+        <b data-i18n="visit.phone">Téléphone</b>
+        <a href="tel:+35226481808">+352 26 48 18 08</a>
+      </div>
+      <div class="cline">
+        <b data-i18n="visit.deliv">Livraison</b>
+        <a href="https://wolt.com/en/lux/luxembourg/restaurant/chinais-curry-lux" target="_blank" rel="noopener">Wolt →</a>
+      </div>
+      <a class="btn btn-primary" style="align-self:flex-start" href="https://www.google.com/maps?q=29+Rue+Joseph+Junck+L-1839+Luxembourg" target="_blank" rel="noopener" data-i18n="visit.route">Itinéraire</a>
+    </div>
+
+    <div class="c-map">
+      <iframe title="Carte — 29 Rue Joseph Junck, Luxembourg" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=29+Rue+Joseph+Junck+L-1839+Luxembourg&output=embed"></iframe>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot">
+    <div>
+      <div class="mark">Chinai's<b>.</b> Curry</div>
+      <p data-i18n="foot.tag">Curry japonais, ramen &amp; udon — au cœur de la Gare, Luxembourg.</p>
+      <p class="disc" data-i18n="foot.disc">Site de démonstration — maquette non officielle. Textes, plats, prix et horaires relevés sur des sources publiques (Wolt) et à confirmer avec l'établissement. Aucune commande n'est traitée sur cette page.</p>
+    </div>
+    <div class="foot-links">
+      <a href="#carte" data-i18n="nav.menu">La carte</a>
+      <a href="#lieu" data-i18n="nav.about">Le lieu</a>
+      <a href="#visite" data-i18n="nav.visit">Visite</a>
+      <a href="https://wolt.com/en/lux/luxembourg/restaurant/chinais-curry-lux" target="_blank" rel="noopener">Wolt</a>
+      <a href="tel:+35226481808">+352 26 48 18 08</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  fr:{
+    "nav.menu":"La carte","nav.about":"Le lieu","nav.visit":"Visite",
+    "cta.order":"Commander sur Wolt",
+    "hero.kicker":"Curry japonais · Luxembourg-Gare",
+    "hero.title":"Le vrai <em>curry japonais</em>,<br>au cœur de la Gare.",
+    "hero.lede":"Un roux épais et parfumé, du riz, une omelette omurice fondante et une pièce croustillante. Réconfortant, authentique, préparé avec soin.",
+    "hero.ctaMenu":"Voir la carte","hero.ctaOrder":"Commander en livraison",
+    "hero.badge":"Photos : les plats signature du restaurant",
+    "spice.kicker":"La chauffe","spice.title":"Le curry monte en intensité",
+    "spice.body":"Doux en bouche, puis franchement chaleureux. Ici l'épice se prend au sérieux — dites-nous votre niveau.",
+    "quick.kicker":"En un coup d'œil","quick.style":"Style","quick.styleV":"Curry · Ramen · Udon",
+    "quick.today":"Aujourd'hui","quick.spot":"Le coin","quick.spotV":"Rue Joseph Junck","quick.deliv":"Livraison",
+    "menu.kicker":"Le menu bento","menu.title":"La carte",
+    "menu.note":"Plats et prix relevés sur Wolt — à confirmer avec l'établissement.",
+    "tab.curry":"Curry signature","tab.ramen":"Ramen & Udon","tab.sides":"À côté","tab.drinks":"Boissons",
+    "d.tonkatsu":"Escalope de porc panée croustillante, omelette omurice, curry.",
+    "d.entrecote":"Entrecôte de bœuf saisie, riz, omurice et roux de curry.",
+    "d.brisket":"Poitrine de bœuf fondante mijotée dans le curry.",
+    "d.popcornc":"Bouchées de poulet croustillantes sur curry et omurice.",
+    "d.katsu":"Poulet pané, croustillant, l'incontournable du katsu curry.",
+    "d.duck":"Canard croustillant, roux de curry riche et parfumé.",
+    "d.shrimp":"Crevettes en tempura légère, curry japonais.",
+    "d.veg":"Version végétarienne, légumes et roux de curry.",
+    "d.rmchashu":"Bouillon, nouilles ramen, porc chashu.",
+    "d.rmbeef":"Ramen garni d'entrecôte de bœuf.",
+    "d.udkatsu":"Nouilles udon épaisses, poulet katsu.",
+    "d.udshrimp":"Udon et tempura de crevettes.",
+    "d.sidekatsu":"Poulet pané croustillant, à partager.",
+    "d.sidepop":"Bouchées de poulet dorées et croustillantes.",
+    "d.gyoza":"Raviolis japonais poêlés au poulet.",
+    "d.wings":"Ailes de poulet croustillantes.",
+    "d.miso":"Bouillon miso réconfortant.",
+    "d.beer":"Asahi & Qingdao — 4,70 € · Bofferding — 3,60 €.",
+    "d.asian":"Thé Wanglaoji, litchi & canne Foco, aloe, lait de coco.",
+    "d.soft":"Sodas et boissons fraîches.",
+    "story.kicker":"Le lieu","story.title":"On vient pour le décor, on reste pour le curry.",
+    "story.p1":"Niché dans la Gare, Chinai's Curry mise sur un décor soigné, très « Instagram », et une cuisine de réconfort qui va droit au but : le curry japonais, épais et parfumé, servi sur un riz nappé d'une omelette omurice.",
+    "story.p2":"La signature ? Cette ligne verte dessinée sur l'omurice, et la pièce croustillante posée dans le roux. Simple, généreux, réconfortant.",
+    "story.t1":"Omurice signature","story.t2":"Katsu croustillant","story.t3":"Roux maison",
+    "visit.kicker":"Horaires","visit.hoursT":"Ouvert",
+    "day.monfri":"Lun – Ven","day.sat":"Samedi","day.sun":"Dimanche",
+    "visit.hoursNote":"* Horaires relevés sur Wolt (peuvent refléter la livraison) — à confirmer avec l'établissement.",
+    "visit.kicker2":"Nous trouver","visit.contactT":"Contact",
+    "visit.addr":"Adresse","visit.addrNote":"Quartier Gare · à confirmer (n°)",
+    "visit.phone":"Téléphone","visit.deliv":"Livraison","visit.route":"Itinéraire",
+    "foot.tag":"Curry japonais, ramen & udon — au cœur de la Gare, Luxembourg.",
+    "foot.disc":"Site de démonstration — maquette non officielle. Textes, plats, prix et horaires relevés sur des sources publiques (Wolt) et à confirmer avec l'établissement. Aucune commande n'est traitée sur cette page."
+  },
+  de:{
+    "nav.menu":"Speisekarte","nav.about":"Das Lokal","nav.visit":"Besuch",
+    "cta.order":"Auf Wolt bestellen",
+    "hero.kicker":"Japanisches Curry · Luxemburg-Bahnhof",
+    "hero.title":"Echtes <em>japanisches Curry</em>,<br>mitten im Bahnhofsviertel.",
+    "hero.lede":"Eine dicke, aromatische Roux, Reis, ein zartes Omurice-Omelett und eine knusprige Einlage. Wohltuend, authentisch, mit Sorgfalt zubereitet.",
+    "hero.ctaMenu":"Zur Karte","hero.ctaOrder":"Lieferung bestellen",
+    "hero.badge":"Fotos: die Signature-Gerichte des Restaurants",
+    "spice.kicker":"Die Schärfe","spice.title":"Das Curry wird immer intensiver",
+    "spice.body":"Mild am Anfang, dann richtig wärmend. Schärfe wird hier ernst genommen — sag uns deine Stufe.",
+    "quick.kicker":"Auf einen Blick","quick.style":"Stil","quick.styleV":"Curry · Ramen · Udon",
+    "quick.today":"Heute","quick.spot":"Die Ecke","quick.spotV":"Rue Joseph Junck","quick.deliv":"Lieferung",
+    "menu.kicker":"Das Bento-Menü","menu.title":"Die Karte",
+    "menu.note":"Gerichte und Preise von Wolt — mit dem Lokal zu bestätigen.",
+    "tab.curry":"Signature-Curry","tab.ramen":"Ramen & Udon","tab.sides":"Beilagen","tab.drinks":"Getränke",
+    "d.tonkatsu":"Knuspriges paniertes Schweineschnitzel, Omurice-Omelett, Curry.",
+    "d.entrecote":"Gebratenes Rinder-Entrecôte, Reis, Omurice und Curry-Roux.",
+    "d.brisket":"Zarte Rinderbrust, im Curry geschmort.",
+    "d.popcornc":"Knusprige Hähnchen-Häppchen auf Curry und Omurice.",
+    "d.katsu":"Paniertes Hähnchen, knusprig — der Klassiker des Katsu-Currys.",
+    "d.duck":"Knusprige Ente, reichhaltige, aromatische Curry-Roux.",
+    "d.shrimp":"Garnelen im leichten Tempura, japanisches Curry.",
+    "d.veg":"Vegetarische Variante, Gemüse und Curry-Roux.",
+    "d.rmchashu":"Brühe, Ramen-Nudeln, Chashu-Schwein.",
+    "d.rmbeef":"Ramen mit Rinder-Entrecôte.",
+    "d.udkatsu":"Dicke Udon-Nudeln, Hähnchen-Katsu.",
+    "d.udshrimp":"Udon mit Garnelen-Tempura.",
+    "d.sidekatsu":"Knuspriges paniertes Hähnchen, zum Teilen.",
+    "d.sidepop":"Goldene, knusprige Hähnchen-Häppchen.",
+    "d.gyoza":"Gebratene japanische Teigtaschen mit Hähnchen.",
+    "d.wings":"Knusprige Chicken Wings.",
+    "d.miso":"Wohltuende Miso-Brühe.",
+    "d.beer":"Asahi & Qingdao — 4,70 € · Bofferding — 3,60 €.",
+    "d.asian":"Wanglaoji-Tee, Litschi & Zuckerrohr Foco, Aloe, Kokosmilch.",
+    "d.soft":"Softdrinks und kühle Getränke.",
+    "story.kicker":"Das Lokal","story.title":"Man kommt für das Dekor, man bleibt für das Curry.",
+    "story.p1":"Im Bahnhofsviertel setzt Chinai's Curry auf ein sorgfältiges, sehr „instagrammbares“ Dekor und eine Wohlfühlküche, die auf den Punkt kommt: japanisches Curry, dick und aromatisch, auf Reis mit einem Omurice-Omelett.",
+    "story.p2":"Das Markenzeichen? Die grüne Linie auf dem Omurice und die knusprige Einlage in der Roux. Schlicht, großzügig, wohltuend.",
+    "story.t1":"Signature-Omurice","story.t2":"Knuspriges Katsu","story.t3":"Hausgemachte Roux",
+    "visit.kicker":"Öffnungszeiten","visit.hoursT":"Geöffnet",
+    "day.monfri":"Mo – Fr","day.sat":"Samstag","day.sun":"Sonntag",
+    "visit.hoursNote":"* Zeiten von Wolt (können Lieferzeiten sein) — mit dem Lokal zu bestätigen.",
+    "visit.kicker2":"So findest du uns","visit.contactT":"Kontakt",
+    "visit.addr":"Adresse","visit.addrNote":"Bahnhofsviertel · Nr. zu bestätigen",
+    "visit.phone":"Telefon","visit.deliv":"Lieferung","visit.route":"Route",
+    "foot.tag":"Japanisches Curry, Ramen & Udon — mitten im Bahnhofsviertel, Luxemburg.",
+    "foot.disc":"Demo-Website — inoffizielles Mockup. Texte, Gerichte, Preise und Zeiten stammen aus öffentlichen Quellen (Wolt) und sind mit dem Lokal zu bestätigen. Über diese Seite werden keine Bestellungen bearbeitet."
+  },
+  en:{
+    "nav.menu":"Menu","nav.about":"The place","nav.visit":"Visit",
+    "cta.order":"Order on Wolt",
+    "hero.kicker":"Japanese curry · Luxembourg-Gare",
+    "hero.title":"Real <em>Japanese curry</em>,<br>in the heart of the Gare.",
+    "hero.lede":"A thick, fragrant roux, rice, a soft omurice omelette and a crispy topping. Comforting, authentic, made with care.",
+    "hero.ctaMenu":"See the menu","hero.ctaOrder":"Order delivery",
+    "hero.badge":"Photos: the restaurant's signature dishes",
+    "spice.kicker":"The heat","spice.title":"The curry builds in intensity",
+    "spice.body":"Gentle at first, then genuinely warming. Spice is taken seriously here — tell us your level.",
+    "quick.kicker":"At a glance","quick.style":"Style","quick.styleV":"Curry · Ramen · Udon",
+    "quick.today":"Today","quick.spot":"The spot","quick.spotV":"Rue Joseph Junck","quick.deliv":"Delivery",
+    "menu.kicker":"The bento menu","menu.title":"The menu",
+    "menu.note":"Dishes and prices taken from Wolt — to confirm with the venue.",
+    "tab.curry":"Signature curry","tab.ramen":"Ramen & Udon","tab.sides":"Sides","tab.drinks":"Drinks",
+    "d.tonkatsu":"Crispy breaded pork cutlet, omurice omelette, curry.",
+    "d.entrecote":"Seared beef entrecôte, rice, omurice and curry roux.",
+    "d.brisket":"Tender beef brisket simmered in the curry.",
+    "d.popcornc":"Crispy chicken bites over curry and omurice.",
+    "d.katsu":"Breaded chicken, crispy — the katsu curry essential.",
+    "d.duck":"Crispy duck, rich and fragrant curry roux.",
+    "d.shrimp":"Shrimp in light tempura, Japanese curry.",
+    "d.veg":"Vegetarian version, vegetables and curry roux.",
+    "d.rmchashu":"Broth, ramen noodles, chashu pork.",
+    "d.rmbeef":"Ramen topped with beef entrecôte.",
+    "d.udkatsu":"Thick udon noodles, chicken katsu.",
+    "d.udshrimp":"Udon with shrimp tempura.",
+    "d.sidekatsu":"Crispy breaded chicken, to share.",
+    "d.sidepop":"Golden, crispy chicken bites.",
+    "d.gyoza":"Pan-fried Japanese chicken dumplings.",
+    "d.wings":"Crispy chicken wings.",
+    "d.miso":"Comforting miso broth.",
+    "d.beer":"Asahi & Qingdao — €4.70 · Bofferding — €3.60.",
+    "d.asian":"Wanglaoji tea, Foco lychee & sugarcane, aloe, coconut milk.",
+    "d.soft":"Sodas and cold drinks.",
+    "story.kicker":"The place","story.title":"Come for the decor, stay for the curry.",
+    "story.p1":"Tucked into the Gare, Chinai's Curry pairs a carefully styled, very Instagram-ready decor with straight-to-the-point comfort food: Japanese curry, thick and fragrant, served over rice draped with an omurice omelette.",
+    "story.p2":"The signature? That green line drawn on the omurice, and the crispy topping resting in the roux. Simple, generous, comforting.",
+    "story.t1":"Signature omurice","story.t2":"Crispy katsu","story.t3":"House roux",
+    "visit.kicker":"Hours","visit.hoursT":"Open",
+    "day.monfri":"Mon – Fri","day.sat":"Saturday","day.sun":"Sunday",
+    "visit.hoursNote":"* Hours taken from Wolt (may reflect delivery) — to confirm with the venue.",
+    "visit.kicker2":"Find us","visit.contactT":"Contact",
+    "visit.addr":"Address","visit.addrNote":"Gare district · number to confirm",
+    "visit.phone":"Phone","visit.deliv":"Delivery","visit.route":"Directions",
+    "foot.tag":"Japanese curry, ramen & udon — in the heart of the Gare, Luxembourg.",
+    "foot.disc":"Demonstration site — unofficial mockup. Text, dishes, prices and hours taken from public sources (Wolt) and to be confirmed with the venue. No orders are processed on this page."
+  }
+};
+
+function setLang(lang){
+  const dict = I18N[lang] || I18N.fr;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[k]!==undefined) el.textContent = dict[k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const k = el.getAttribute('data-i18n-html');
+    if(dict[k]!==undefined) el.innerHTML = dict[k];
+  });
+  document.querySelectorAll('.lang button').forEach(b=>{
+    b.setAttribute('aria-pressed', b.dataset.lang===lang ? 'true':'false');
+  });
+}
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.dataset.lang));
+});
+
+// menu tabs
+const tabs = document.querySelectorAll('.tabs button');
+tabs.forEach(t=>{
+  t.addEventListener('click',()=>{
+    const cat = t.dataset.cat;
+    tabs.forEach(x=>x.setAttribute('aria-pressed', x===t?'true':'false'));
+    document.querySelectorAll('.dish').forEach(d=>{
+      d.classList.toggle('hide', d.dataset.cat!==cat);
+    });
+  });
+});
+</script>
+</body>
+</html>

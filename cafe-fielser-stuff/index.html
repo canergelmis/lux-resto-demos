@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Café Fielser Stuff — Churrasco au feu de braise · Larochette</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --char:#241C18;        /* charcoal */
+    --char2:#1A1411;       /* deeper */
+    --ember:#C0392B;       /* live coal red */
+    --gold:#E0A73E;        /* roasted gold */
+    --gold-d:#C4872A;
+    --cream:#F5EFE3;       /* linen */
+    --cream2:#EEE5D2;
+    --herb:#5B7247;        /* rosemary */
+    --ink:#2A211C;
+    --line:rgba(36,28,24,.16);
+    --disp:'Zilla Slab',Georgia,serif;
+    --cond:'Barlow Condensed',sans-serif;
+    --body:'Source Sans 3',system-ui,sans-serif;
+    --maxw:1400px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);color:var(--ink);background:var(--cream);
+    -webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
+  h1,h2,h3{font-family:var(--disp);line-height:1.02;font-weight:700}
+  .cond{font-family:var(--cond);text-transform:uppercase;letter-spacing:.06em}
+
+  /* ---- grate rule: the structural motif (bars of a grill grate) ---- */
+  .grate{height:14px;width:100%;
+    background:
+      repeating-linear-gradient(90deg,var(--gold) 0 30px,transparent 30px 46px);
+    opacity:.55;
+  }
+  .grate.dark{background:repeating-linear-gradient(90deg,rgba(224,167,62,.5) 0 30px,transparent 30px 46px)}
+
+  /* ================= STATION HEADER ================= */
+  .topbar{
+    position:sticky;top:0;z-index:60;background:rgba(26,20,17,.96);
+    backdrop-filter:blur(6px);border-bottom:1px solid rgba(224,167,62,.25);
+    color:var(--cream);
+  }
+  .topbar .wrap{display:flex;align-items:center;gap:24px;height:66px}
+  .brandmark{display:flex;align-items:center;gap:12px;margin-right:auto}
+  .flame{width:26px;height:32px;flex:0 0 auto}
+  .brandmark .nm{font-family:var(--disp);font-weight:700;font-size:20px;letter-spacing:.01em;line-height:1}
+  .brandmark .nm small{display:block;font-family:var(--cond);letter-spacing:.34em;font-size:9.5px;color:var(--gold);margin-top:3px}
+  .nav{display:flex;gap:26px}
+  .nav a{font-family:var(--cond);font-size:13.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--cream);opacity:.82;transition:.2s}
+  .nav a:hover{opacity:1;color:var(--gold)}
+  .tools{display:flex;align-items:center;gap:14px}
+  .langsw{display:flex;border:1px solid rgba(224,167,62,.4);border-radius:2px;overflow:hidden}
+  .langsw button{background:transparent;border:0;color:var(--cream);font-family:var(--cond);
+    font-size:12px;letter-spacing:.08em;padding:6px 9px;cursor:pointer;transition:.15s}
+  .langsw button.on{background:var(--gold);color:var(--char)}
+  .callbtn{font-family:var(--cond);letter-spacing:.06em;font-size:13px;
+    background:var(--ember);color:#fff;padding:9px 16px;border-radius:2px;white-space:nowrap}
+  .callbtn:hover{background:#a5301f}
+
+  /* ================= MASTHEAD / HERO ================= */
+  .mast{position:relative;background:var(--char2);color:var(--cream);overflow:hidden}
+  .mast::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(120% 90% at 82% 8%,rgba(192,57,43,.34),transparent 55%),
+               radial-gradient(90% 80% at 8% 100%,rgba(224,167,62,.18),transparent 60%);
+    pointer-events:none}
+  .mast .wrap{position:relative;display:grid;grid-template-columns:1.05fr 1.15fr;gap:0;
+    align-items:stretch;padding-top:0;padding-bottom:0}
+  /* left: the station board */
+  .board{padding:56px 48px 48px 0;display:flex;flex-direction:column;justify-content:center}
+  .eyebrow{font-family:var(--cond);letter-spacing:.34em;font-size:12.5px;color:var(--gold);margin-bottom:22px}
+  .board h1{font-size:clamp(46px,5.6vw,86px);letter-spacing:-.01em}
+  .board h1 .l2{color:var(--gold)}
+  .board h1 .l3{font-style:italic;font-weight:500;color:var(--ember);display:block;font-size:.62em;margin-top:6px}
+  .tagline{font-size:20px;max-width:30ch;margin:26px 0 30px;color:rgba(245,239,227,.86);font-weight:300}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{font-family:var(--cond);letter-spacing:.06em;font-size:14.5px;padding:13px 24px;border-radius:2px;cursor:pointer;transition:.2s;display:inline-block}
+  .btn.solid{background:var(--gold);color:var(--char)}
+  .btn.solid:hover{background:#f0b955}
+  .btn.ghost{border:1px solid rgba(245,239,227,.4);color:var(--cream)}
+  .btn.ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .est{font-family:var(--cond);letter-spacing:.14em;font-size:13px;color:rgba(245,239,227,.55);margin-top:34px}
+  .est b{color:var(--gold)}
+  /* right: photo tower */
+  .phototower{position:relative;display:grid;grid-template-rows:1.6fr 1fr;gap:8px;padding:22px 0 22px 12px}
+  .phototower .big{position:relative;border-radius:3px;overflow:hidden}
+  .phototower .big img{width:100%;height:100%;object-fit:cover}
+  .phototower .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .phototower .row2 figure{position:relative;border-radius:3px;overflow:hidden}
+  .phototower .row2 img{width:100%;height:100%;object-fit:cover}
+  .smokecap{position:absolute;left:0;bottom:0;right:0;padding:16px 18px;
+    background:linear-gradient(to top,rgba(20,15,12,.86),transparent);
+    font-family:var(--cond);letter-spacing:.08em;font-size:12.5px;color:var(--cream)}
+  .statuschip{position:absolute;top:16px;left:16px;z-index:3;display:flex;align-items:center;gap:8px;
+    background:rgba(26,20,17,.72);border:1px solid rgba(224,167,62,.4);border-radius:40px;
+    padding:6px 13px;font-family:var(--cond);letter-spacing:.08em;font-size:11.5px;color:var(--cream)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--ember);box-shadow:0 0 0 0 rgba(192,57,43,.6);animation:pulse 2.2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(192,57,43,.55)}70%{box-shadow:0 0 0 10px rgba(192,57,43,0)}100%{box-shadow:0 0 0 0 rgba(192,57,43,0)}}
+
+  /* ================= NUMBERS BAND (across the grate) ================= */
+  .figures{background:var(--char);color:var(--cream);position:relative}
+  .figures .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding-top:0;padding-bottom:0}
+  .fig{padding:34px 30px;border-right:1px solid rgba(224,167,62,.18);position:relative}
+  .fig:last-child{border-right:0}
+  .fig .n{font-family:var(--disp);font-weight:700;font-size:clamp(34px,3.4vw,50px);color:var(--gold);line-height:1}
+  .fig .n span{color:var(--ember)}
+  .fig .k{font-family:var(--cond);letter-spacing:.1em;font-size:12.5px;margin-top:10px;color:rgba(245,239,227,.72)}
+
+  /* ================= STREET GRILL FEATURE ================= */
+  .street{padding:84px 0 74px;background:var(--cream)}
+  .sect-head{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:end;margin-bottom:40px}
+  .sect-num{font-family:var(--disp);font-style:italic;font-weight:500;font-size:26px;color:var(--ember)}
+  .sect-head h2{font-size:clamp(32px,3.6vw,52px);color:var(--char)}
+  .sect-head .lead{font-size:17px;max-width:46ch;color:#5a4d43;padding-bottom:6px}
+  .street-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:26px;align-items:stretch}
+  .street-main{position:relative;border-radius:4px;overflow:hidden;min-height:440px}
+  .street-main img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .street-side{display:flex;flex-direction:column;gap:22px}
+  .quote{background:var(--char);color:var(--cream);border-radius:4px;padding:30px 28px;position:relative;overflow:hidden}
+  .quote::before{content:"“";position:absolute;top:-14px;right:14px;font-family:var(--disp);font-size:120px;color:rgba(224,167,62,.16);line-height:1}
+  .quote p{font-family:var(--disp);font-style:italic;font-size:21px;line-height:1.3;position:relative}
+  .quote cite{display:block;margin-top:16px;font-family:var(--cond);letter-spacing:.1em;font-style:normal;font-size:12.5px;color:var(--gold)}
+  .side-pic{position:relative;border-radius:4px;overflow:hidden;flex:1;min-height:180px}
+  .side-pic img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+
+  /* ================= MENU: THE BON (deli ticket) + à la carte ================= */
+  .menu{padding:80px 0;background:var(--char2);color:var(--cream);position:relative}
+  .menu::before{content:"";position:absolute;inset:0;background:radial-gradient(80% 60% at 90% 0,rgba(192,57,43,.16),transparent 60%);pointer-events:none}
+  .menu .sect-head h2{color:var(--cream)}
+  .menu .sect-head .lead{color:rgba(245,239,227,.72)}
+  .menu-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:34px;align-items:start;position:relative}
+  /* the bon / ticket */
+  .bon{background:var(--cream);color:var(--ink);border-radius:3px;padding:30px 30px 26px;position:relative;
+    box-shadow:0 26px 60px rgba(0,0,0,.4);
+    /* torn/perforated bottom edge */
+    -webkit-mask:radial-gradient(circle 8px at 8px 100%,transparent 96%,#000) 0 100%/16px 16px repeat-x;
+    mask:radial-gradient(circle 8px at 8px 100%,transparent 96%,#000) 0 100%/16px 16px repeat-x;
+    padding-bottom:40px}
+  .bon-top{text-align:center;border-bottom:2px dashed var(--line);padding-bottom:16px;margin-bottom:16px}
+  .bon-top .h{font-family:var(--disp);font-weight:700;font-size:26px;color:var(--char)}
+  .bon-top .s{font-family:var(--cond);letter-spacing:.18em;font-size:11.5px;color:var(--ember);margin-top:4px}
+  .bon-row{display:flex;align-items:baseline;gap:10px;padding:11px 0;border-bottom:1px dotted var(--line)}
+  .bon-row .it{font-weight:600;font-size:16.5px;color:var(--char)}
+  .bon-row .it em{display:block;font-style:normal;font-weight:400;font-size:13px;color:#7a6b5f;margin-top:1px}
+  .dots{flex:1;border-bottom:1px dotted #b9a893;transform:translateY(-4px)}
+  .bon-row .pr{font-family:var(--cond);font-weight:600;font-size:17px;color:var(--ember);white-space:nowrap}
+  .bon-foot{margin-top:16px;text-align:center;font-family:var(--cond);letter-spacing:.1em;font-size:11px;color:#8a7a6c}
+  .conf{font-style:italic;font-family:var(--body);letter-spacing:0;text-transform:none;color:var(--herb);font-size:12px}
+  /* à la carte photo cards */
+  .carte{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .dish{background:rgba(245,239,227,.05);border:1px solid rgba(224,167,62,.18);border-radius:4px;overflow:hidden}
+  .dish .ph{position:relative;height:150px;overflow:hidden}
+  .dish .ph img{width:100%;height:100%;object-fit:cover;transition:.5s}
+  .dish:hover .ph img{transform:scale(1.06)}
+  .dish .tx{padding:14px 16px 16px}
+  .dish .tx h4{font-family:var(--disp);font-size:19px;color:var(--gold);margin-bottom:4px}
+  .dish .tx p{font-size:13.5px;color:rgba(245,239,227,.72);line-height:1.4}
+  .jour{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;
+    background:linear-gradient(90deg,var(--ember),#8f2418);border-radius:4px;padding:20px 26px;margin-top:2px}
+  .jour .lab{font-family:var(--disp);font-weight:700;font-size:22px;color:#fff}
+  .jour .lab small{display:block;font-family:var(--cond);letter-spacing:.14em;font-size:11px;color:rgba(255,255,255,.8);font-weight:500;margin-top:3px}
+  .jour .pz{display:flex;gap:26px}
+  .jour .pz div{text-align:center}
+  .jour .pz .p{font-family:var(--disp);font-weight:700;font-size:26px;color:#fff}
+  .jour .pz .l{font-family:var(--cond);letter-spacing:.08em;font-size:11px;color:rgba(255,255,255,.8)}
+
+  /* ================= STORY / TIMELINE ================= */
+  .story{padding:88px 0;background:var(--cream)}
+  .story-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+  .rail{position:relative;padding-left:30px;border-left:2px solid var(--gold)}
+  .tl{position:relative;margin-bottom:34px}
+  .tl:last-child{margin-bottom:0}
+  .tl::before{content:"";position:absolute;left:-38px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--ember);border:3px solid var(--cream);box-shadow:0 0 0 2px var(--ember)}
+  .tl .yr{font-family:var(--disp);font-weight:700;font-size:22px;color:var(--char)}
+  .tl .tt{font-size:14.5px;color:#5a4d43;margin-top:2px;max-width:34ch}
+  .story-body h2{font-size:clamp(30px,3.2vw,46px);color:var(--char);margin-bottom:8px}
+  .story-body .sub{font-family:var(--disp);font-style:italic;font-size:20px;color:var(--ember);margin-bottom:22px}
+  .story-cols{columns:2;column-gap:34px}
+  .story-cols p{margin-bottom:14px;font-size:15.5px;color:#443a32;break-inside:avoid}
+  .story-cols p:first-child::first-letter{font-family:var(--disp);font-weight:700;font-size:56px;float:left;line-height:.82;padding:6px 10px 0 0;color:var(--ember)}
+  .secret{margin-top:22px;background:var(--char);color:var(--cream);border-left:4px solid var(--gold);padding:16px 20px;border-radius:0 4px 4px 0;font-size:14.5px}
+  .secret b{color:var(--gold)}
+
+  /* ================= VISIT / ORDER ================= */
+  .visit{background:var(--char2);color:var(--cream);padding:0}
+  .visit .grid{display:grid;grid-template-columns:1fr 1.15fr}
+  .visit-info{padding:70px 56px 60px}
+  .visit-info h2{font-size:clamp(30px,3.2vw,46px);color:var(--cream);margin-bottom:8px}
+  .visit-info .sub{font-family:var(--disp);font-style:italic;color:var(--gold);font-size:19px;margin-bottom:30px}
+  .ico-row{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid rgba(224,167,62,.16);align-items:start}
+  .ico-row svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.6;margin-top:2px}
+  .ico-row .k{font-family:var(--cond);letter-spacing:.12em;font-size:11.5px;color:var(--gold);margin-bottom:3px}
+  .ico-row .v{font-size:16px;color:var(--cream)}
+  .ico-row .v small{display:block;color:rgba(245,239,227,.6);font-size:13px}
+  .visit-map{position:relative;min-height:520px}
+  .visit-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.25) contrast(1.05)}
+  .maptag{position:absolute;top:18px;left:18px;background:var(--ember);color:#fff;font-family:var(--cond);letter-spacing:.08em;font-size:12px;padding:8px 14px;border-radius:2px;z-index:2}
+
+  /* ================= FOOTER ================= */
+  footer{background:#140F0C;color:var(--cream);padding:52px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start}
+  .foot-brand .nm{font-family:var(--disp);font-weight:700;font-size:26px}
+  .foot-brand .nm small{display:block;font-family:var(--cond);letter-spacing:.3em;font-size:10px;color:var(--gold);margin-top:5px}
+  .foot-brand p{margin-top:16px;color:rgba(245,239,227,.6);font-size:14px;max-width:38ch}
+  .foot-col h5{font-family:var(--cond);letter-spacing:.14em;font-size:12px;color:var(--gold);margin-bottom:14px}
+  .foot-col p{font-size:14px;color:rgba(245,239,227,.72);margin-bottom:7px}
+  .foot-col a:hover{color:var(--gold)}
+  .foot-bot{margin-top:40px;padding-top:20px;border-top:1px solid rgba(224,167,62,.16);
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    font-size:12.5px;color:rgba(245,239,227,.5)}
+  .demo{color:var(--gold)}
+
+  [data-i18n]{transition:opacity .15s}
+
+  /* ================= RESPONSIVE ================= */
+  @media(max-width:1080px){
+    .wrap{padding:0 26px}
+    .mast .wrap{grid-template-columns:1fr}
+    .board{padding:48px 0 30px}
+    .phototower{padding:0 0 34px;grid-template-rows:auto}
+    .phototower .big{min-height:300px}
+    .figures .wrap{grid-template-columns:1fr 1fr}
+    .fig{border-bottom:1px solid rgba(224,167,62,.18)}
+    .fig:nth-child(2){border-right:0}
+    .street-grid{grid-template-columns:1fr}
+    .menu-grid{grid-template-columns:1fr}
+    .story-grid{grid-template-columns:1fr;gap:38px}
+    .visit .grid{grid-template-columns:1fr}
+    .visit-map{min-height:360px}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:640px){
+    .nav{display:none}
+    .topbar .wrap{gap:12px;height:60px}
+    .board h1{font-size:42px}
+    .carte{grid-template-columns:1fr}
+    .story-cols{columns:1}
+    .jour{flex-direction:column;align-items:flex-start}
+    .foot-grid{grid-template-columns:1fr}
+    .figures .wrap{grid-template-columns:1fr 1fr}
+    .visit-info{padding:44px 26px}
+    .callbtn{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ STATION HEADER ============ -->
+<header class="topbar">
+  <div class="wrap">
+    <a class="brandmark" href="#top" aria-label="Café Fielser Stuff">
+      <svg class="flame" viewBox="0 0 26 32" aria-hidden="true">
+        <path d="M13 1C13 8 6 9 6 17a7 7 0 0 0 14 0c0-3-2-5-3-7-1 2-1 4-3 4 0-6 2-8 2-13z" fill="#C0392B"/>
+        <path d="M13 12c0 4-3 4-3 8a3 3 0 0 0 6 0c0-2-1-3-1.5-4.5C14 17 14 15 13 12z" fill="#E0A73E"/>
+      </svg>
+      <span class="nm">Fielser Stuff<small>CAFÉ · CHURRASCO · LAROCHETTE</small></span>
+    </a>
+    <nav class="nav">
+      <a href="#braise" data-i18n="nav_grill">Le grill</a>
+      <a href="#carte" data-i18n="nav_menu">La carte</a>
+      <a href="#histoire" data-i18n="nav_story">L'histoire</a>
+      <a href="#venir" data-i18n="nav_visit">Nous trouver</a>
+    </nav>
+    <div class="tools">
+      <div class="langsw" role="group" aria-label="Langue">
+        <button data-lang="fr" class="on">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a class="callbtn" href="tel:+3528370 86">+352 83 70 86</a>
+    </div>
+  </div>
+</header>
+<div class="grate" aria-hidden="true"></div>
+
+<!-- ============ MASTHEAD / HERO ============ -->
+<section class="mast" id="top">
+  <div class="wrap">
+    <div class="board">
+      <div class="eyebrow" data-i18n="hero_eyebrow">MAISON MENDES · EN FAMILLE DEPUIS 1983</div>
+      <h1>
+        <span data-i18n="hero_l1">Le churrasco</span><br>
+        <span class="l2" data-i18n="hero_l2">du village,</span>
+        <span class="l3" data-i18n="hero_l3">au feu de braise.</span>
+      </h1>
+      <p class="tagline" data-i18n="hero_tag">Poulet, travers, chouriço et poisson entier, tournés sur la braise — chaque week-end, en pleine rue de Larochette.</p>
+      <div class="cta-row">
+        <a class="btn solid" href="#carte" data-i18n="hero_cta1">Voir le grill</a>
+        <a class="btn ghost" href="#venir" data-i18n="hero_cta2">Passer commander</a>
+      </div>
+      <div class="est" data-i18n="hero_est">Depuis <b>1983</b> · Frango à la mode de l'Algarve · Larochette, Mullerthal</div>
+    </div>
+
+    <div class="phototower">
+      <div class="big">
+        <div class="statuschip"><span class="dot"></span><span data-i18n="hero_status">Grill du week-end · horaires à confirmer</span></div>
+        <img src="assets/hero-grill.jpg" alt="Grill au charbon chargé de poulet, travers, chouriço et poisson">
+        <div class="smokecap" data-i18n="hero_cap1">La braise en action — vendredi au dimanche</div>
+      </div>
+      <div class="row2">
+        <figure>
+          <img src="assets/exterior-grill-street.jpg" alt="Le grill installé dans la rue à Larochette">
+          <div class="smokecap" data-i18n="hero_cap2">Le grill de rue</div>
+        </figure>
+        <figure>
+          <img src="assets/terrace-table.jpg" alt="Table en terrasse — pain, bière locale, rosé">
+          <div class="smokecap" data-i18n="hero_cap3">La terrasse</div>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUMBERS BAND ============ -->
+<section class="figures">
+  <div class="wrap">
+    <div class="fig"><div class="n">1983</div><div class="k" data-i18n="fig1">La maison Mendes, en famille</div></div>
+    <div class="fig"><div class="n">200<span>–</span>250</div><div class="k" data-i18n="fig2">Poulets grillés par jour de week-end</div></div>
+    <div class="fig"><div class="n">~800<span>g</span></div><div class="k" data-i18n="fig3">Le poids maison du frango</div></div>
+    <div class="fig"><div class="n">100<span>m</span></div><div class="k" data-i18n="fig4">La file du dimanche pour l'à-emporter</div></div>
+  </div>
+</section>
+
+<!-- ============ STREET GRILL FEATURE ============ -->
+<section class="street" id="braise">
+  <div class="wrap">
+    <div class="sect-head">
+      <div class="sect-num">01</div>
+      <div>
+        <h2 data-i18n="street_h">Le grill descend dans la rue</h2>
+      </div>
+      <div class="lead" data-i18n="street_lead">Chaque week-end, une immense rôtissoire au charbon s'installe devant le café. Au milieu de la fumée, on tourne le poulet, les travers, le chouriço et le poisson entier — à emporter ou sur place.</div>
+    </div>
+    <div class="street-grid">
+      <div class="street-main">
+        <img src="assets/exterior-grill-street.jpg" alt="António « Rambo » Abreu au grill dans la rue de Larochette">
+        <div class="smokecap" style="font-size:13.5px;padding:22px 24px" data-i18n="street_cap">Rue de Larochette, un week-end au grill — António « Rambo » Abreu aux commandes.</div>
+      </div>
+      <div class="street-side">
+        <div class="quote">
+          <p data-i18n="street_q">« Il est arrivé il y a quinze ans, à griller en marcel et pantalon militaire par −5 °C. On l'appelle Rambo. »</p>
+          <cite data-i18n="street_qc">— La légende du grill, Fielser Stuff</cite>
+        </div>
+        <div class="side-pic">
+          <img src="assets/hero-grill.jpg" alt="Poisson, travers et poulet sur la braise">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="grate" aria-hidden="true"></div>
+
+<!-- ============ MENU: THE BON + CARTE ============ -->
+<section class="menu" id="carte">
+  <div class="wrap">
+    <div class="sect-head">
+      <div class="sect-num" style="color:var(--gold)">02</div>
+      <div><h2 data-i18n="menu_h">Au grill &amp; à la carte</h2></div>
+      <div class="lead" data-i18n="menu_lead">La signature, c'est la braise. Autour, une cuisine portugaise et française de maison — servie avec frites et salade. Prix et plats à confirmer avec la maison.</div>
+    </div>
+
+    <div class="menu-grid">
+      <!-- The bon / grill ticket -->
+      <div class="bon">
+        <div class="bon-top">
+          <div class="h" data-i18n="bon_h">Le grill au charbon</div>
+          <div class="s" data-i18n="bon_s">LA SIGNATURE · VENDREDI → DIMANCHE</div>
+        </div>
+        <div class="bon-row"><span class="it">Frango de churrasco<em data-i18n="bon_i1">Poulet grillé au charbon, marinade maison</em></span><span class="dots"></span><span class="pr">10,50&nbsp;€</span></div>
+        <div class="bon-row"><span class="it" data-i18n="bon_i2n">Poulet + travers<em data-i18n="bon_i2">Le duo du week-end</em></span><span class="dots"></span><span class="pr">12,00&nbsp;€</span></div>
+        <div class="bon-row"><span class="it" data-i18n="bon_i3n">Travers de porc<em data-i18n="bon_i3">Spare ribs sur la braise</em></span><span class="dots"></span><span class="pr">13,00&nbsp;€</span></div>
+        <div class="bon-row"><span class="it" data-i18n="bon_i4n">Grillade mixte<em data-i18n="bon_i4">Assortiment du grill</em></span><span class="dots"></span><span class="pr">9,50&nbsp;€</span></div>
+        <div class="bon-row"><span class="it" data-i18n="bon_i5n">Chouriço &amp; poisson entier<em data-i18n="bon_i5">Au grill de rue, selon arrivage</em></span><span class="dots"></span><span class="pr conf" data-i18n="bon_i5p">selon jour</span></div>
+        <div class="bon-foot"><span class="conf" data-i18n="bon_foot">Prix indicatifs — à confirmer avec l'établissement. À emporter ou sur place.</span></div>
+      </div>
+
+      <!-- carte photo cards -->
+      <div class="carte">
+        <div class="dish">
+          <div class="ph"><img src="assets/food-bacalhau.jpg" alt="Bacalhau — morue, pois chiches, pomme de terre, œuf"></div>
+          <div class="tx"><h4>Bacalhau</h4><p data-i18n="d_bacalhau">Morue pochée, pois chiches, pomme de terre, œuf et olives — le classique portugais.</p></div>
+        </div>
+        <div class="dish">
+          <div class="ph"><img src="assets/food-gambas.jpg" alt="Gambas grillées au citron"></div>
+          <div class="tx"><h4>Gambas grelhadas</h4><p data-i18n="d_gambas">Grosses gambas grillées, citron et huile d'olive.</p></div>
+        </div>
+        <div class="dish">
+          <div class="ph"><img src="assets/food-escalope-champignons.jpg" alt="Escalope à la crème de champignons"></div>
+          <div class="tx"><h4 data-i18n="d_esc_h">Escalope aux champignons</h4><p data-i18n="d_esc">Escalope poêlée, sauce crémeuse aux champignons.</p></div>
+        </div>
+        <div class="dish">
+          <div class="ph"><img src="assets/food-terrace-dish.jpg" alt="Plat en sauce tomate-poivron servi en terrasse"></div>
+          <div class="tx"><h4 data-i18n="d_ter_h">Plat en terrasse</h4><p data-i18n="d_ter">Généreux plat maison, sauce tomate-poivron. Desserts maison très appréciés.</p></div>
+        </div>
+
+        <div class="jour">
+          <div class="lab" data-i18n="jour_h">Menu du jour<small data-i18n="jour_s">SOUPE · PLAT · DESSERT — LUN → SAM</small></div>
+          <div class="pz">
+            <div><div class="p">9,50&nbsp;€</div><div class="l" data-i18n="jour_l1">formule</div></div>
+            <div><div class="p">11,50&nbsp;€</div><div class="l" data-i18n="jour_l2">formule +</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY / TIMELINE ============ -->
+<section class="story" id="histoire">
+  <div class="wrap">
+    <div class="story-grid">
+      <div class="rail">
+        <div class="tl"><div class="yr">1983</div><div class="tt" data-i18n="tl1">La famille Mendes reprend le café du village de Larochette.</div></div>
+        <div class="tl"><div class="yr" data-i18n="tl2y">~2005</div><div class="tt" data-i18n="tl2">Ana Maria met le frango de churrasco à la carte — l'Algarve arrive à table.</div></div>
+        <div class="tl"><div class="yr" data-i18n="tl3y">Il y a 15 ans</div><div class="tt" data-i18n="tl3">« Rambo » prend les commandes du grill de rue, hiver comme été.</div></div>
+        <div class="tl"><div class="yr" data-i18n="tl4y">Aujourd'hui</div><div class="tt" data-i18n="tl4">On vient de tout le Luxembourg — et d'ailleurs — pour la braise du week-end.</div></div>
+      </div>
+      <div class="story-body">
+        <h2 data-i18n="story_h">Une histoire de famille, de braise et d'Algarve</h2>
+        <div class="sub" data-i18n="story_sub">Le frango da Guia, planté au cœur du Mullerthal.</div>
+        <div class="story-cols">
+          <p data-i18n="story_p1">Le Fielser Stuff appartient à la famille Mendes depuis 1983. Il y a une vingtaine d'années, Ana Maria Mendes — nourrie de ses racines de l'Algarve et de la fameuse tradition du frango da Guia — a mis le poulet de churrasco à la carte. Un café de village tranquille est devenu une institution régionale.</p>
+          <p data-i18n="story_p2">La maison a fixé ses repères : des volailles d'environ 800 grammes et une marinade de vin, ail, piripiri et sel — plus un ingrédient que la maison garde pour elle.</p>
+          <p data-i18n="story_p3">Le visage du grill, c'est António Abreu, un Madérien surnommé « Rambo ». Chaque week-end, il commande une énorme rôtissoire dressée dans la rue, tournant poulet, travers, chouriço et poisson dans des nuages de fumée. Le dimanche, la file pour les poulets à emporter dépasse cent mètres.</p>
+        </div>
+        <div class="secret" data-i18n="story_secret"><b>Le secret de la marinade :</b> vin, ail, piripiri, sel… et un ingrédient que « Rambo » ne dira jamais.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="grate" aria-hidden="true"></div>
+
+<!-- ============ VISIT / ORDER ============ -->
+<section class="visit" id="venir">
+  <div class="grid">
+    <div class="visit-info">
+      <h2 data-i18n="visit_h">Passer commander</h2>
+      <div class="sub" data-i18n="visit_sub">5, rue de Mersch · L-7680 Larochette</div>
+
+      <div class="ico-row">
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <div><div class="k" data-i18n="visit_addr_k">ADRESSE</div><div class="v">5, rue de Mersch<small>L-7680 Larochette · Mullerthal, Petite Suisse</small></div></div>
+      </div>
+      <div class="ico-row">
+        <svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+        <div><div class="k" data-i18n="visit_tel_k">TÉLÉPHONE</div><div class="v"><a href="tel:+3528370 86">+352 83 70 86</a><small data-i18n="visit_tel_s">Réservations &amp; commandes à emporter</small></div></div>
+      </div>
+      <div class="ico-row">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div><div class="k" data-i18n="visit_hrs_k">HORAIRES · À CONFIRMER</div><div class="v" data-i18n="visit_hrs_v">Tous les jours ≈ 09:00 – 01:00<small data-i18n="visit_hrs_s">Fermeture le mardi soir · grill au charbon vendredi → dimanche — à confirmer avec la maison</small></div></div>
+      </div>
+      <div class="ico-row">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16v12H4z"/><path d="M4 20h16"/><path d="M8 8h8M8 12h5"/></svg>
+        <div><div class="k" data-i18n="visit_take_k">L'À-EMPORTER DU DIMANCHE</div><div class="v" data-i18n="visit_take_v">Les frangos partent vite — appelez pour réserver vos poulets.</div></div>
+      </div>
+    </div>
+    <div class="visit-map">
+      <div class="maptag" data-i18n="visit_maptag">LAROCHETTE · MULLERTHAL</div>
+      <iframe title="Café Fielser Stuff — 5 rue de Mersch, Larochette"
+        src="https://www.google.com/maps?q=Caf%C3%A9%20Fielser%20Stuff%2C%205%20rue%20de%20Mersch%2C%207680%20Larochette&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="nm">Café Fielser Stuff<small>CHURRASCO AU FEU DE BRAISE · DEPUIS 1983</small></div>
+        <p data-i18n="foot_p">Café-grill portugais de Larochette. La braise du week-end, la cuisine de maison, l'esprit de l'Algarve au cœur du Mullerthal.</p>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_c1">NOUS TROUVER</h5>
+        <p>5, rue de Mersch<br>L-7680 Larochette</p>
+        <p><a href="tel:+3528370 86">+352 83 70 86</a></p>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_c2">LA MAISON</h5>
+        <p><a href="#braise" data-i18n="nav_grill">Le grill</a></p>
+        <p><a href="#carte" data-i18n="nav_menu">La carte</a></p>
+        <p><a href="#histoire" data-i18n="nav_story">L'histoire</a></p>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span class="demo" data-i18n="foot_demo">● Site de démonstration — contenu, prix et horaires à confirmer avec l'établissement. Photos : clientèle / à remplacer par les visuels haute résolution de la maison.</span>
+      <span>© 2026 Café Fielser Stuff · Larochette</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  fr:{
+    nav_grill:"Le grill",nav_menu:"La carte",nav_story:"L'histoire",nav_visit:"Nous trouver",
+    hero_eyebrow:"MAISON MENDES · EN FAMILLE DEPUIS 1983",
+    hero_l1:"Le churrasco",hero_l2:"du village,",hero_l3:"au feu de braise.",
+    hero_tag:"Poulet, travers, chouriço et poisson entier, tournés sur la braise — chaque week-end, en pleine rue de Larochette.",
+    hero_cta1:"Voir le grill",hero_cta2:"Passer commander",
+    hero_est:"Depuis <b>1983</b> · Frango à la mode de l'Algarve · Larochette, Mullerthal",
+    hero_status:"Grill du week-end · horaires à confirmer",
+    hero_cap1:"La braise en action — vendredi au dimanche",hero_cap2:"Le grill de rue",hero_cap3:"La terrasse",
+    fig1:"La maison Mendes, en famille",fig2:"Poulets grillés par jour de week-end",fig3:"Le poids maison du frango",fig4:"La file du dimanche pour l'à-emporter",
+    street_h:"Le grill descend dans la rue",
+    street_lead:"Chaque week-end, une immense rôtissoire au charbon s'installe devant le café. Au milieu de la fumée, on tourne le poulet, les travers, le chouriço et le poisson entier — à emporter ou sur place.",
+    street_cap:"Rue de Larochette, un week-end au grill — António « Rambo » Abreu aux commandes.",
+    street_q:"« Il est arrivé il y a quinze ans, à griller en marcel et pantalon militaire par −5 °C. On l'appelle Rambo. »",
+    street_qc:"— La légende du grill, Fielser Stuff",
+    menu_h:"Au grill & à la carte",
+    menu_lead:"La signature, c'est la braise. Autour, une cuisine portugaise et française de maison — servie avec frites et salade. Prix et plats à confirmer avec la maison.",
+    bon_h:"Le grill au charbon",bon_s:"LA SIGNATURE · VENDREDI → DIMANCHE",
+    bon_i1:"Poulet grillé au charbon, marinade maison",
+    bon_i2n:"Poulet + travers",bon_i2:"Le duo du week-end",
+    bon_i3n:"Travers de porc",bon_i3:"Spare ribs sur la braise",
+    bon_i4n:"Grillade mixte",bon_i4:"Assortiment du grill",
+    bon_i5n:"Chouriço & poisson entier",bon_i5:"Au grill de rue, selon arrivage",bon_i5p:"selon jour",
+    bon_foot:"Prix indicatifs — à confirmer avec l'établissement. À emporter ou sur place.",
+    d_bacalhau:"Morue pochée, pois chiches, pomme de terre, œuf et olives — le classique portugais.",
+    d_gambas:"Grosses gambas grillées, citron et huile d'olive.",
+    d_esc_h:"Escalope aux champignons",d_esc:"Escalope poêlée, sauce crémeuse aux champignons.",
+    d_ter_h:"Plat en terrasse",d_ter:"Généreux plat maison, sauce tomate-poivron. Desserts maison très appréciés.",
+    jour_h:"Menu du jour",jour_s:"SOUPE · PLAT · DESSERT — LUN → SAM",jour_l1:"formule",jour_l2:"formule +",
+    tl1:"La famille Mendes reprend le café du village de Larochette.",
+    tl2y:"~2005",tl2:"Ana Maria met le frango de churrasco à la carte — l'Algarve arrive à table.",
+    tl3y:"Il y a 15 ans",tl3:"« Rambo » prend les commandes du grill de rue, hiver comme été.",
+    tl4y:"Aujourd'hui",tl4:"On vient de tout le Luxembourg — et d'ailleurs — pour la braise du week-end.",
+    story_h:"Une histoire de famille, de braise et d'Algarve",
+    story_sub:"Le frango da Guia, planté au cœur du Mullerthal.",
+    story_p1:"Le Fielser Stuff appartient à la famille Mendes depuis 1983. Il y a une vingtaine d'années, Ana Maria Mendes — nourrie de ses racines de l'Algarve et de la fameuse tradition du frango da Guia — a mis le poulet de churrasco à la carte. Un café de village tranquille est devenu une institution régionale.",
+    story_p2:"La maison a fixé ses repères : des volailles d'environ 800 grammes et une marinade de vin, ail, piripiri et sel — plus un ingrédient que la maison garde pour elle.",
+    story_p3:"Le visage du grill, c'est António Abreu, un Madérien surnommé « Rambo ». Chaque week-end, il commande une énorme rôtissoire dressée dans la rue, tournant poulet, travers, chouriço et poisson dans des nuages de fumée. Le dimanche, la file pour les poulets à emporter dépasse cent mètres.",
+    story_secret:"<b>Le secret de la marinade :</b> vin, ail, piripiri, sel… et un ingrédient que « Rambo » ne dira jamais.",
+    visit_h:"Passer commander",visit_sub:"5, rue de Mersch · L-7680 Larochette",
+    visit_addr_k:"ADRESSE",visit_tel_k:"TÉLÉPHONE",visit_tel_s:"Réservations & commandes à emporter",
+    visit_hrs_k:"HORAIRES · À CONFIRMER",visit_hrs_v:"Tous les jours ≈ 09:00 – 01:00",
+    visit_hrs_s:"Fermeture le mardi soir · grill au charbon vendredi → dimanche — à confirmer avec la maison",
+    visit_take_k:"L'À-EMPORTER DU DIMANCHE",visit_take_v:"Les frangos partent vite — appelez pour réserver vos poulets.",
+    visit_maptag:"LAROCHETTE · MULLERTHAL",
+    foot_p:"Café-grill portugais de Larochette. La braise du week-end, la cuisine de maison, l'esprit de l'Algarve au cœur du Mullerthal.",
+    foot_c1:"NOUS TROUVER",foot_c2:"LA MAISON",
+    foot_demo:"● Site de démonstration — contenu, prix et horaires à confirmer avec l'établissement. Photos : clientèle / à remplacer par les visuels haute résolution de la maison."
+  },
+  de:{
+    nav_grill:"Der Grill",nav_menu:"Die Karte",nav_story:"Geschichte",nav_visit:"Anfahrt",
+    hero_eyebrow:"FAMILIE MENDES · SEIT 1983 IN FAMILIENHAND",
+    hero_l1:"Churrasco",hero_l2:"aus dem Dorf,",hero_l3:"über der Glut.",
+    hero_tag:"Hähnchen, Rippchen, Chouriço und ganzer Fisch, über der Holzkohle gedreht — jedes Wochenende mitten auf der Straße von Larochette.",
+    hero_cta1:"Zum Grill",hero_cta2:"Bestellen",
+    hero_est:"Seit <b>1983</b> · Frango nach Algarve-Art · Larochette, Müllerthal",
+    hero_status:"Wochenend-Grill · Zeiten zu bestätigen",
+    hero_cap1:"Die Glut in Aktion — Freitag bis Sonntag",hero_cap2:"Der Straßengrill",hero_cap3:"Die Terrasse",
+    fig1:"Familie Mendes, in Familienhand",fig2:"Hähnchen pro Wochenendtag vom Grill",fig3:"Das Hausgewicht des Frango",fig4:"Die Sonntagsschlange fürs Mitnehmen",
+    street_h:"Der Grill geht auf die Straße",
+    street_lead:"Jedes Wochenende steht ein riesiger Holzkohlegrill vor dem Café. Mitten im Rauch drehen sich Hähnchen, Rippchen, Chouriço und ganzer Fisch — zum Mitnehmen oder vor Ort.",
+    street_cap:"Straße von Larochette, ein Wochenende am Grill — António „Rambo“ Abreu am Werk.",
+    street_q:"„Er kam vor fünfzehn Jahren, grillte im Muskelshirt und Militärhose bei −5 °C. Man nennt ihn Rambo.“",
+    street_qc:"— Die Grill-Legende, Fielser Stuff",
+    menu_h:"Vom Grill & à la carte",
+    menu_lead:"Das Markenzeichen ist die Glut. Drumherum portugiesische und französische Hausmannskost — mit Pommes und Salat. Preise und Gerichte mit dem Haus zu bestätigen.",
+    bon_h:"Der Holzkohlegrill",bon_s:"DAS MARKENZEICHEN · FREITAG → SONNTAG",
+    bon_i1:"Hähnchen über Holzkohle, hausgemachte Marinade",
+    bon_i2n:"Hähnchen + Rippchen",bon_i2:"Das Wochenend-Duo",
+    bon_i3n:"Schweinerippchen",bon_i3:"Spare Ribs über der Glut",
+    bon_i4n:"Gemischter Grillteller",bon_i4:"Auswahl vom Grill",
+    bon_i5n:"Chouriço & ganzer Fisch",bon_i5:"Vom Straßengrill, je nach Angebot",bon_i5p:"je nach Tag",
+    bon_foot:"Richtpreise — mit dem Haus zu bestätigen. Zum Mitnehmen oder vor Ort.",
+    d_bacalhau:"Pochierter Stockfisch, Kichererbsen, Kartoffel, Ei und Oliven — der portugiesische Klassiker.",
+    d_gambas:"Große gegrillte Gambas, Zitrone und Olivenöl.",
+    d_esc_h:"Schnitzel mit Champignons",d_esc:"Gebratenes Schnitzel in cremiger Champignonsauce.",
+    d_ter_h:"Terrassen-Gericht",d_ter:"Großzügiges Hausgericht in Tomaten-Paprika-Sauce. Hausgemachte Desserts sehr beliebt.",
+    jour_h:"Tagesmenü",jour_s:"SUPPE · HAUPTGANG · DESSERT — MO → SA",jour_l1:"Menü",jour_l2:"Menü +",
+    tl1:"Die Familie Mendes übernimmt das Dorfcafé von Larochette.",
+    tl2y:"~2005",tl2:"Ana Maria setzt den Frango de churrasco auf die Karte — die Algarve kommt an den Tisch.",
+    tl3y:"Vor 15 Jahren",tl3:"„Rambo“ übernimmt den Straßengrill, Sommer wie Winter.",
+    tl4y:"Heute",tl4:"Man kommt aus ganz Luxemburg — und weiter — für die Wochenend-Glut.",
+    story_h:"Eine Geschichte von Familie, Glut und Algarve",
+    story_sub:"Der Frango da Guia, mitten im Müllerthal.",
+    story_p1:"Das Fielser Stuff gehört seit 1983 der Familie Mendes. Vor rund zwanzig Jahren setzte Ana Maria Mendes — geprägt von ihren Algarve-Wurzeln und der berühmten Frango-da-Guia-Tradition — das Churrasco-Hähnchen auf die Karte. Aus einem stillen Dorfcafé wurde eine regionale Institution.",
+    story_p2:"Das Haus fand sein Maß: Hähnchen von rund 800 Gramm und eine Marinade aus Wein, Knoblauch, Piripiri und Salz — plus eine Zutat, die das Haus für sich behält.",
+    story_p3:"Das Gesicht des Grills ist António Abreu, ein Madeirer mit dem Spitznamen „Rambo“. Jedes Wochenende bedient er eine riesige Rotisserie mitten auf der Straße und dreht Hähnchen, Rippchen, Chouriço und Fisch im Rauch. Sonntags ist die Schlange fürs Hähnchen zum Mitnehmen über hundert Meter lang.",
+    story_secret:"<b>Das Geheimnis der Marinade:</b> Wein, Knoblauch, Piripiri, Salz… und eine Zutat, die „Rambo“ nie verrät.",
+    visit_h:"Bestellen & besuchen",visit_sub:"5, rue de Mersch · L-7680 Larochette",
+    visit_addr_k:"ADRESSE",visit_tel_k:"TELEFON",visit_tel_s:"Reservierungen & Bestellungen zum Mitnehmen",
+    visit_hrs_k:"ÖFFNUNGSZEITEN · ZU BESTÄTIGEN",visit_hrs_v:"Täglich ≈ 09:00 – 01:00 Uhr",
+    visit_hrs_s:"Dienstagabend geschlossen · Holzkohlegrill Freitag → Sonntag — mit dem Haus zu bestätigen",
+    visit_take_k:"MITNAHME AM SONNTAG",visit_take_v:"Die Frangos sind schnell weg — rufen Sie an und reservieren Sie Ihre Hähnchen.",
+    visit_maptag:"LAROCHETTE · MÜLLERTHAL",
+    foot_p:"Portugiesisches Café-Grill in Larochette. Die Wochenend-Glut, Hausmannskost und der Geist der Algarve mitten im Müllerthal.",
+    foot_c1:"ANFAHRT",foot_c2:"DAS HAUS",
+    foot_demo:"● Demo-Website — Inhalte, Preise und Zeiten mit dem Betrieb zu bestätigen. Fotos: Gäste / durch hochauflösende Bilder des Hauses zu ersetzen."
+  },
+  en:{
+    nav_grill:"The grill",nav_menu:"The menu",nav_story:"Our story",nav_visit:"Find us",
+    hero_eyebrow:"THE MENDES FAMILY · RUN AS A FAMILY SINCE 1983",
+    hero_l1:"Village churrasco,",hero_l2:"over live charcoal.",hero_l3:"since 1983.",
+    hero_tag:"Chicken, spare ribs, chouriço and whole fish, turned over the coals — every weekend, right on the street in Larochette.",
+    hero_cta1:"See the grill",hero_cta2:"Order & visit",
+    hero_est:"Since <b>1983</b> · Frango the Algarve way · Larochette, Mullerthal",
+    hero_status:"Weekend grill · hours to be confirmed",
+    hero_cap1:"The coals in action — Friday to Sunday",hero_cap2:"The street grill",hero_cap3:"The terrace",
+    fig1:"The Mendes family, run as a family",fig2:"Chickens grilled per weekend day",fig3:"The house weight of the frango",fig4:"Sunday's takeaway queue",
+    street_h:"The grill takes to the street",
+    street_lead:"Every weekend a huge charcoal rotisserie is set up in front of the café. In the smoke, they turn chicken, spare ribs, chouriço and whole fish — takeaway or dine-in.",
+    street_cap:"A Larochette street, a weekend at the grill — António “Rambo” Abreu at the coals.",
+    street_q:"“He showed up fifteen years ago, grilling in a sleeveless shirt and army trousers at −5 °C. They call him Rambo.”",
+    street_qc:"— The grill legend, Fielser Stuff",
+    menu_h:"From the grill & à la carte",
+    menu_lead:"The signature is the fire. Around it, home-style Portuguese and French cooking — served with fries and salad. Prices and dishes to be confirmed with the house.",
+    bon_h:"The charcoal grill",bon_s:"THE SIGNATURE · FRIDAY → SUNDAY",
+    bon_i1:"Charcoal-grilled chicken, house marinade",
+    bon_i2n:"Chicken + spare ribs",bon_i2:"The weekend duo",
+    bon_i3n:"Spare ribs",bon_i3:"Pork ribs over the coals",
+    bon_i4n:"Mixed grill",bon_i4:"An assortment from the grill",
+    bon_i5n:"Chouriço & whole fish",bon_i5:"From the street grill, as available",bon_i5p:"day price",
+    bon_foot:"Indicative prices — to be confirmed with the establishment. Takeaway or dine-in.",
+    d_bacalhau:"Poached salt cod, chickpeas, potato, egg and olives — the Portuguese classic.",
+    d_gambas:"Large grilled king prawns, lemon and olive oil.",
+    d_esc_h:"Escalope with mushrooms",d_esc:"Pan escalope in a creamy mushroom sauce.",
+    d_ter_h:"Terrace plate",d_ter:"A generous house plate in tomato-pepper sauce. Homemade desserts much loved.",
+    jour_h:"Menu of the day",jour_s:"SOUP · MAIN · DESSERT — MON → SAT",jour_l1:"set menu",jour_l2:"set menu +",
+    tl1:"The Mendes family takes over the village café in Larochette.",
+    tl2y:"~2005",tl2:"Ana Maria puts frango de churrasco on the menu — the Algarve comes to the table.",
+    tl3y:"15 years ago",tl3:"“Rambo” takes charge of the street grill, winter and summer alike.",
+    tl4y:"Today",tl4:"People drive in from across Luxembourg — and beyond — for the weekend coals.",
+    story_h:"A story of family, live coals and the Algarve",
+    story_sub:"The frango da Guia, planted in the heart of the Mullerthal.",
+    story_p1:"The Fielser Stuff has been in the Mendes family since 1983. About twenty years ago Ana Maria Mendes — drawing on her Algarve roots and the famous frango da Guia tradition — put churrasco chicken on the menu. A quiet village café became a regional institution.",
+    story_p2:"The house settled on its markers: birds of around 800 grams and a marinade of wine, garlic, piripiri and salt — plus one ingredient the house keeps to itself.",
+    story_p3:"The face of the grill is António Abreu, a Madeiran nicknamed “Rambo”. Every weekend he commands a huge rotisserie set up in the street, turning chicken, spare ribs, chouriço and fish in clouds of smoke. On Sundays the queue for takeaway chickens runs over a hundred metres.",
+    story_secret:"<b>The secret of the marinade:</b> wine, garlic, piripiri, salt… and one ingredient “Rambo” will never reveal.",
+    visit_h:"Order & visit",visit_sub:"5, rue de Mersch · L-7680 Larochette",
+    visit_addr_k:"ADDRESS",visit_tel_k:"PHONE",visit_tel_s:"Reservations & takeaway orders",
+    visit_hrs_k:"HOURS · TO BE CONFIRMED",visit_hrs_v:"Daily ≈ 09:00 – 01:00",
+    visit_hrs_s:"Closed Tuesday evening · charcoal grill Friday → Sunday — to be confirmed with the house",
+    visit_take_k:"THE SUNDAY TAKEAWAY",visit_take_v:"The frangos go fast — call ahead to reserve your chickens.",
+    visit_maptag:"LAROCHETTE · MULLERTHAL",
+    foot_p:"A Portuguese café-grill in Larochette. The weekend coals, home-style cooking and the spirit of the Algarve in the heart of the Mullerthal.",
+    foot_c1:"FIND US",foot_c2:"THE HOUSE",
+    foot_demo:"● Demonstration site — content, prices and hours to be confirmed with the establishment. Photos: patrons / to be replaced with the house's high-resolution images."
+  }
+};
+const buttons=document.querySelectorAll('.langsw button');
+function setLang(lang){
+  const dict=I18N[lang]||I18N.fr;
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(dict[k]!==undefined) el.innerHTML=dict[k];
+  });
+  buttons.forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+}
+buttons.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+// default stays FR (already in HTML) — no forced re-render on load
+</script>
+</body>
+</html>

@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>La Table de Joe — Bistro franco-italien · Kirchberg, Luxembourg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --sage:#7c8c5a;
+    --sage-deep:#5a6a3d;
+    --forest:#3b472c;
+    --canopy:#48562f;
+    --parchment:#f4efe1;
+    --parchment-2:#faf6ec;
+    --paper:#fbfaf3;
+    --ink:#2a2822;
+    --ink-soft:#5b584d;
+    --rattan:#c19a5b;
+    --amber:#b3803f;
+    --line:#d9d2be;
+    --line-soft:#e5dfcd;
+    --shadow:0 22px 55px -30px rgba(59,71,44,.55);
+    --shadow-sm:0 12px 30px -22px rgba(59,71,44,.5);
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Archivo",-apple-system,Segoe UI,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--parchment);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* paper grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;
+    background-image:radial-gradient(rgba(90,106,61,.05) 1px,transparent 1.4px);
+    background-size:5px 5px;mix-blend-mode:multiply;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .lbl{
+    font-family:var(--sans);font-weight:600;font-size:.66rem;letter-spacing:.32em;
+    text-transform:uppercase;
+  }
+  .wrap{max-width:1400px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
+  .ital{font-family:var(--serif);font-style:italic;font-weight:400}
+
+  /* ============ HERBARIUM SPINE (fixed left rail, desktop) ============ */
+  .spine{
+    position:fixed;top:0;left:0;height:100vh;width:52px;z-index:40;
+    background:linear-gradient(var(--forest),var(--canopy));
+    color:#e9ecdc;display:flex;flex-direction:column;align-items:center;
+    justify-content:space-between;padding:22px 0;
+    border-right:1px solid rgba(0,0,0,.25);
+    box-shadow:6px 0 24px -18px rgba(0,0,0,.6);
+  }
+  .spine .stitch{width:1px;flex:1;margin:14px 0;
+    background:repeating-linear-gradient(var(--rattan) 0 6px,transparent 6px 13px);opacity:.55}
+  .spine .vert{writing-mode:vertical-rl;transform:rotate(180deg);
+    letter-spacing:.42em;font-size:.66rem;font-weight:600;text-transform:uppercase;color:#dfe4cf}
+  .spine .mono{writing-mode:vertical-rl;transform:rotate(180deg);
+    font-family:var(--serif);font-style:italic;font-size:.85rem;color:#c9d0b2}
+  .shell{margin-left:52px}
+
+  /* ============ TOP RIBBON ============ */
+  header.ribbon{
+    position:sticky;top:0;z-index:30;
+    background:rgba(244,239,225,.9);backdrop-filter:blur(9px);
+    border-bottom:1px solid var(--line);
+  }
+  .ribbon-in{display:flex;align-items:center;gap:28px;padding:13px clamp(20px,4vw,64px);max-width:1400px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:13px}
+  .brand img{width:42px;height:42px;object-fit:contain}
+  .brand .bt{font-family:var(--serif);font-weight:600;font-size:1.15rem;line-height:1;letter-spacing:.01em}
+  .brand .bs{font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:var(--sage-deep);font-weight:600;margin-top:3px}
+  nav.mainnav{display:flex;gap:26px;margin-left:auto}
+  nav.mainnav a{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);
+    padding-bottom:4px;border-bottom:2px solid transparent;transition:.2s}
+  nav.mainnav a:hover{color:var(--forest);border-color:var(--rattan)}
+  .lang{display:flex;gap:2px;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--paper)}
+  .lang button{font-family:var(--sans);border:0;background:none;cursor:pointer;font-size:.64rem;font-weight:700;
+    letter-spacing:.12em;color:var(--ink-soft);padding:5px 10px;border-radius:999px;transition:.18s}
+  .lang button.on{background:var(--forest);color:#f1efe1}
+  .resv{background:var(--forest);color:#f1efe1;padding:9px 17px;border-radius:999px;font-size:.66rem;
+    letter-spacing:.16em;text-transform:uppercase;font-weight:700;transition:.2s;white-space:nowrap}
+  .resv:hover{background:var(--sage-deep)}
+
+  /* ============ HERO SPECIMEN SHEET ============ */
+  .hero{padding:clamp(30px,4vw,54px) 0 clamp(34px,4vw,58px)}
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr 1.32fr;gap:clamp(22px,3vw,52px);align-items:stretch;
+  }
+  .hero-left{display:flex;flex-direction:column;justify-content:space-between;
+    border:1px solid var(--line);background:var(--paper);border-radius:4px;padding:clamp(24px,2.4vw,40px);
+    box-shadow:var(--shadow-sm);position:relative}
+  .hero-left::after{content:"";position:absolute;top:14px;right:14px;bottom:14px;left:14px;
+    border:1px solid var(--line-soft);border-radius:2px;pointer-events:none}
+  .taxo{display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--sage-deep)}
+  .taxo span{position:relative;padding-left:16px}
+  .taxo span::before{content:"";position:absolute;left:0;top:50%;width:9px;height:9px;transform:translateY(-50%) rotate(45deg);
+    border:1px solid var(--sage);}
+  .htitle{font-family:var(--serif);font-weight:500;line-height:.94;letter-spacing:-.01em;
+    font-size:clamp(3.1rem,6.3vw,6rem);margin:22px 0 6px}
+  .htitle em{font-style:italic;color:var(--sage-deep);display:block;font-size:.52em;font-weight:400;margin-top:6px}
+  .hlead{font-family:var(--serif);font-size:clamp(1.05rem,1.5vw,1.32rem);color:var(--ink-soft);max-width:38ch;font-style:italic}
+  .specimen-row{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line);margin-top:26px}
+  .specimen-row div{padding:15px 4px 2px}
+  .specimen-row div+div{border-left:1px solid var(--line);padding-left:18px}
+  .specimen-row .k{color:var(--sage-deep);margin-bottom:5px}
+  .specimen-row .v{font-family:var(--serif);font-size:1.02rem;line-height:1.3}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+  .btn{padding:12px 22px;border-radius:999px;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;transition:.2s;cursor:pointer;border:1px solid var(--forest)}
+  .btn.solid{background:var(--forest);color:#f1efe1}
+  .btn.solid:hover{background:var(--sage-deep)}
+  .btn.ghost{background:none;color:var(--forest)}
+  .btn.ghost:hover{background:var(--forest);color:#f1efe1}
+
+  .hero-plate{position:relative;border-radius:4px;overflow:hidden;min-height:480px;box-shadow:var(--shadow);
+    border:1px solid rgba(59,71,44,.2)}
+  .hero-plate img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .plate-tag{position:absolute;left:18px;bottom:18px;z-index:2;background:rgba(244,239,225,.94);
+    border:1px solid var(--line);border-radius:3px;padding:11px 15px;max-width:250px;box-shadow:var(--shadow-sm)}
+  .plate-tag .t{font-family:var(--serif);font-style:italic;font-size:1.02rem;line-height:1.2}
+  .plate-tag .c{color:var(--sage-deep);margin-top:5px}
+  .tape{position:absolute;z-index:3;width:88px;height:26px;background:rgba(193,154,91,.42);
+    border:1px dashed rgba(122,92,44,.4);top:-9px;left:50%;transform:translateX(-50%) rotate(-3deg)}
+
+  /* botanical sprig */
+  .sprig{position:absolute;z-index:2;pointer-events:none;opacity:.5}
+
+  /* ============ BAND: seasonal manifesto ============ */
+  .manifesto{background:linear-gradient(120deg,var(--forest),var(--canopy));color:#eef0e2;
+    border-top:1px solid rgba(0,0,0,.2);border-bottom:1px solid rgba(0,0,0,.2);position:relative;overflow:hidden}
+  .manifesto .wrap{padding:clamp(46px,5vw,76px) clamp(20px,4vw,64px);position:relative;z-index:2}
+  .manifesto .lbl{color:var(--rattan)}
+  .manifesto h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,3.4vw,3rem);line-height:1.18;
+    max-width:22ch;margin:16px 0 0}
+  .manifesto h2 em{font-style:italic;color:#dfe4c6}
+  .radius-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:44px;
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.16)}
+  .radius-strip div{background:linear-gradient(120deg,var(--forest),var(--canopy));padding:22px 20px}
+  .radius-strip .n{font-family:var(--serif);font-size:2rem;line-height:1;color:#f2f4e5}
+  .radius-strip .d{font-size:.72rem;letter-spacing:.05em;color:#cdd3b6;margin-top:9px}
+  .manifesto .bgsprig{position:absolute;right:-40px;top:-30px;width:360px;opacity:.14;z-index:1}
+
+  /* ============ CARTE — menu as botanical plates ============ */
+  .carte{padding:clamp(52px,6vw,92px) 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:8px}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4vw,3.4rem);line-height:1;letter-spacing:-.01em}
+  .sec-head .lbl{color:var(--sage-deep)}
+  .sec-note{font-family:var(--serif);font-style:italic;color:var(--ink-soft);max-width:34ch;font-size:1rem}
+  .rule{height:1px;background:var(--line);margin:26px 0 40px;position:relative}
+  .rule::before{content:"❧";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    background:var(--parchment);padding:0 14px;color:var(--sage);font-size:1.1rem}
+
+  .carte-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.2vw,40px)}
+  .family{display:flex;flex-direction:column}
+  .family-head{display:flex;align-items:baseline;gap:12px;padding-bottom:12px;border-bottom:2px solid var(--forest);margin-bottom:8px}
+  .family-head .no{font-family:var(--serif);font-style:italic;color:var(--rattan);font-size:1.4rem}
+  .family-head h3{font-family:var(--serif);font-weight:500;font-size:1.55rem}
+  .fam-photo{height:190px;border-radius:3px;overflow:hidden;margin:14px 0 6px;border:1px solid var(--line);position:relative}
+  .fam-photo img{width:100%;height:100%;object-fit:cover}
+  .fam-photo .cap{position:absolute;left:0;bottom:0;right:0;background:linear-gradient(transparent,rgba(42,40,34,.82));
+    color:#f2efe2;font-family:var(--serif);font-style:italic;font-size:.86rem;padding:22px 12px 9px}
+  .dish{padding:14px 0;border-bottom:1px dotted var(--line)}
+  .dish:last-child{border-bottom:0}
+  .dish .dt{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+  .dish .dn{font-family:var(--serif);font-size:1.14rem;font-weight:500}
+  .dish .dp{font-family:var(--serif);font-style:italic;color:var(--sage-deep);white-space:nowrap;font-size:.98rem}
+  .dish .dd{font-size:.86rem;color:var(--ink-soft);margin-top:3px;max-width:40ch}
+  .dish .prov{display:inline-block;margin-top:7px;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+    font-weight:600;color:var(--amber);border:1px solid var(--line);border-radius:999px;padding:3px 9px}
+  .conf-note{margin-top:34px;font-size:.8rem;color:var(--ink-soft);font-style:italic;text-align:center;font-family:var(--serif)}
+
+  /* ============ PROVENANCE MAP ============ */
+  .prov-sec{background:var(--parchment-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:clamp(52px,6vw,90px) 0}
+  .prov-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(26px,3.5vw,64px);align-items:center}
+  .mapcard{background:var(--paper);border:1px solid var(--line);border-radius:5px;padding:22px;box-shadow:var(--shadow-sm);position:relative}
+  .mapcard svg{width:100%;height:auto;display:block}
+  .maplegend-note{position:absolute;right:26px;bottom:22px;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-soft);font-weight:600}
+  .prod-list{list-style:none}
+  .prod-list li{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:start}
+  .prod-list li:last-child{border-bottom:0}
+  .prod-pin{width:34px;height:34px;border-radius:50%;background:var(--forest);color:#f2efe2;display:grid;place-items:center;
+    font-family:var(--serif);font-style:italic;font-size:1rem;flex-shrink:0}
+  .prod-list .pn{font-family:var(--serif);font-size:1.2rem;font-weight:500}
+  .prod-list .pd{font-size:.85rem;color:var(--ink-soft)}
+
+  /* ============ SALLE — interior editorial ============ */
+  .salle{padding:clamp(52px,6vw,92px) 0}
+  .salle-grid{display:grid;grid-template-columns:1.25fr .95fr;gap:clamp(24px,3vw,56px);align-items:stretch}
+  .salle-photo{border-radius:5px;overflow:hidden;min-height:440px;position:relative;box-shadow:var(--shadow);border:1px solid rgba(59,71,44,.18)}
+  .salle-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .salle-txt{align-self:center}
+  .salle-txt h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,3rem);line-height:1.05;margin:14px 0 18px}
+  .salle-txt p{color:var(--ink-soft);margin-bottom:15px;max-width:46ch}
+  .salle-txt p strong{color:var(--ink);font-weight:600}
+  .quote{border-left:3px solid var(--rattan);padding-left:18px;margin-top:26px;font-family:var(--serif);
+    font-style:italic;font-size:1.15rem;color:var(--forest)}
+  .quote .src{display:block;font-family:var(--sans);font-style:normal;font-size:.66rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--sage-deep);margin-top:9px;font-weight:600}
+
+  /* ============ VISIT — almanac ledger ============ */
+  .visit{background:linear-gradient(160deg,var(--parchment-2),var(--parchment));padding:clamp(52px,6vw,90px) 0;border-top:1px solid var(--line)}
+  .visit-grid{display:grid;grid-template-columns:.85fr .85fr 1.3fr;gap:clamp(20px,2.4vw,44px)}
+  .vcard{background:var(--paper);border:1px solid var(--line);border-radius:5px;padding:26px;box-shadow:var(--shadow-sm)}
+  .vcard h3{font-family:var(--serif);font-weight:500;font-size:1.4rem;margin:10px 0 16px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+  .hrow{display:flex;justify-content:space-between;gap:12px;padding:8px 0;font-size:.9rem}
+  .hrow .d{color:var(--ink-soft);font-weight:500}
+  .hrow .h{font-family:var(--serif)}
+  .hrow.closed .h{color:var(--amber);font-style:italic}
+  .flag{margin-top:14px;font-size:.72rem;font-style:italic;color:var(--amber);font-family:var(--serif)}
+  .vcard address{font-style:normal;font-size:.95rem;line-height:1.7;color:var(--ink-soft)}
+  .vcard address strong{color:var(--ink);font-family:var(--serif);font-size:1.05rem;font-weight:500}
+  .backnote{margin-top:12px;background:var(--parchment);border:1px dashed var(--sage);border-radius:4px;padding:11px 13px;
+    font-size:.8rem;color:var(--sage-deep)}
+  .cinfo{font-size:.92rem;line-height:1.9}
+  .cinfo a{border-bottom:1px solid var(--line);transition:.2s}
+  .cinfo a:hover{border-color:var(--forest);color:var(--forest)}
+  .mapembed{grid-column:1/-1;margin-top:8px;border-radius:5px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+  .mapembed iframe{width:100%;height:340px;border:0;display:block;filter:saturate(.9)}
+
+  /* ============ FOOTER ============ */
+  footer{background:var(--forest);color:#dfe4cf;padding:clamp(44px,5vw,72px) 0 26px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;align-items:start}
+  .foot-brand .fw{font-family:var(--serif);font-size:1.7rem;color:#f2efe2}
+  .foot-brand p{color:#c3cbab;margin-top:12px;max-width:38ch;font-size:.92rem}
+  footer h4{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--rattan);margin-bottom:14px;font-weight:700}
+  footer .fl{display:block;color:#d3d9be;padding:5px 0;font-size:.9rem;transition:.2s}
+  footer .fl:hover{color:#fff}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.16);margin-top:40px;padding-top:20px;
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.74rem;color:#aeb795}
+  .demo-badge{background:rgba(193,154,91,.2);border:1px solid rgba(193,154,91,.4);border-radius:999px;
+    padding:6px 14px;color:#e8d3ac;font-size:.72rem;letter-spacing:.06em}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:1080px){
+    .hero-grid,.salle-grid,.prov-grid{grid-template-columns:1fr}
+    .carte-grid{grid-template-columns:1fr 1fr}
+    .visit-grid{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .radius-strip{grid-template-columns:1fr 1fr}
+    .hero-plate{min-height:380px}
+  }
+  @media (max-width:760px){
+    .spine{display:none}.shell{margin-left:0}
+    nav.mainnav{display:none}
+    .ribbon-in{gap:14px}
+    .carte-grid,.visit-grid,.foot-grid{grid-template-columns:1fr}
+    .radius-strip{grid-template-columns:1fr 1fr}
+    .specimen-row{grid-template-columns:1fr}
+    .specimen-row div+div{border-left:0;border-top:1px solid var(--line);padding-left:4px}
+    .hero-plate{min-height:320px}
+  }
+  @media (max-width:420px){.radius-strip{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- HERBARIUM SPINE -->
+<div class="spine" aria-hidden="true">
+  <span class="mono">L'herbier</span>
+  <div class="stitch"></div>
+  <span class="vert" data-i18n="spine">Bistro franco-italien · Kirchberg</span>
+  <div class="stitch"></div>
+  <span class="mono">Saison 2026</span>
+</div>
+
+<div class="shell">
+
+  <!-- RIBBON -->
+  <header class="ribbon">
+    <div class="ribbon-in">
+      <a class="brand" href="#top">
+        <img src="assets/logo.png" alt="La Table de Joe" />
+        <span>
+          <span class="bt">La Table de Joe</span><br>
+          <span class="bs">Kirchberg · Luxembourg</span>
+        </span>
+      </a>
+      <nav class="mainnav">
+        <a href="#carte" data-i18n="nav_carte">La carte</a>
+        <a href="#terroir" data-i18n="nav_terroir">Nos producteurs</a>
+        <a href="#salle" data-i18n="nav_salle">La salle</a>
+        <a href="#visit" data-i18n="nav_visit">Nous trouver</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Langue">
+        <button data-lang="fr" class="on">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a class="resv" href="#visit" data-i18n="reserve">Réserver</a>
+    </div>
+  </header>
+
+  <!-- HERO SPECIMEN SHEET -->
+  <section class="hero wrap" id="top">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <div>
+          <div class="taxo lbl">
+            <span data-i18n="tx1">Cuisine maison</span>
+            <span data-i18n="tx2">De saison</span>
+            <span data-i18n="tx3">Produits d'ici</span>
+          </div>
+          <h1 class="htitle">La Table<br>de Joe<em data-i18n="hero_em">le bistro franco-italien de Kirchberg</em></h1>
+          <p class="hlead" data-i18n="hero_lead">Une table discrète et chaleureuse au cœur du plateau, où la cuisine se fait maison, au fil des saisons, à partir de produits frais et locaux.</p>
+        </div>
+        <div>
+          <div class="specimen-row">
+            <div>
+              <div class="k lbl" data-i18n="sp_k1">Origine</div>
+              <div class="v" data-i18n="sp_v1">Produits sourcés dans un rayon d'environ 30 km</div>
+            </div>
+            <div>
+              <div class="k lbl" data-i18n="sp_k2">Note du guide</div>
+              <div class="v">TripAdvisor 5,0 · Google 4,8</div>
+            </div>
+          </div>
+          <div class="hero-cta">
+            <a class="btn solid" href="#visit" data-i18n="hero_cta1">Réserver une table</a>
+            <a class="btn ghost" href="#carte" data-i18n="hero_cta2">Découvrir la carte</a>
+          </div>
+        </div>
+        <svg class="sprig" style="right:26px;bottom:22px;width:120px" viewBox="0 0 120 120" fill="none" stroke="#7c8c5a" stroke-width="1.4">
+          <path d="M60 118 C60 80 60 40 60 6"/>
+          <path d="M60 96 C40 92 26 78 22 58 M60 96 C80 92 94 78 98 58"/>
+          <path d="M60 70 C44 66 33 54 30 38 M60 70 C76 66 87 54 90 38"/>
+          <path d="M60 46 C48 42 40 32 38 20 M60 46 C72 42 80 32 82 20"/>
+          <ellipse cx="60" cy="10" rx="5" ry="9"/>
+        </svg>
+      </div>
+
+      <div class="hero-plate">
+        <span class="tape"></span>
+        <img src="assets/hero.jpg" alt="Salle de La Table de Joe — plafond vert sauge, suspensions en rotin" />
+        <div class="plate-tag">
+          <div class="t" data-i18n="plate_t">La salle sous le plafond sauge</div>
+          <div class="c lbl" data-i18n="plate_c">Spécimen · intérieur, lumière du jour</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO BAND -->
+  <section class="manifesto">
+    <svg class="bgsprig" viewBox="0 0 200 200" fill="none" stroke="#dfe4c6" stroke-width="1.2">
+      <path d="M100 200 L100 10"/>
+      <path d="M100 150 C60 140 40 110 36 74 M100 150 C140 140 160 110 164 74"/>
+      <path d="M100 100 C66 92 50 66 48 38 M100 100 C134 92 150 66 152 38"/>
+      <circle cx="100" cy="18" r="9"/>
+    </svg>
+    <div class="wrap">
+      <div class="lbl" data-i18n="man_lbl">Notre manière de faire</div>
+      <h2 data-i18n="man_h">Nous cuisinons ce que la saison nous donne — et ce que nos artisans, à quelques kilomètres d'ici, <em>récoltent, pétrissent et élèvent.</em></h2>
+      <div class="radius-strip">
+        <div><div class="n">~30<span style="font-size:1rem"> km</span></div><div class="d" data-i18n="rs1">Rayon de sourcing autour du plateau</div></div>
+        <div><div class="n">4</div><div class="d" data-i18n="rs2">Artisans partenaires mis à l'honneur</div></div>
+        <div><div class="n">100%</div><div class="d" data-i18n="rs3">Cuisine faite maison, chaque jour</div></div>
+        <div><div class="n">FR·IT</div><div class="d" data-i18n="rs4">Deux cuisines, une même table</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARTE -->
+  <section class="carte wrap" id="carte">
+    <div class="sec-head">
+      <div>
+        <div class="lbl" data-i18n="carte_lbl">Carte de saison · planche des spécimens</div>
+        <h2 data-i18n="carte_h">La carte</h2>
+      </div>
+      <p class="sec-note" data-i18n="carte_note">Une carte courte qui tourne au rythme des saisons. Plats, noms et prix indicatifs — à confirmer avec l'établissement.</p>
+    </div>
+    <div class="rule"></div>
+
+    <div class="carte-grid">
+      <!-- ENTREES -->
+      <div class="family">
+        <div class="family-head"><span class="no">01</span><h3 data-i18n="fam1">Entrées</h3></div>
+        <div class="fam-photo">
+          <img src="assets/food-1-tartare-terrace.jpg" alt="Entrée dressée, fleur comestible, en terrasse" />
+          <div class="cap" data-i18n="cap1">Dressage du jour, en terrasse</div>
+        </div>
+        <div class="dish">
+          <div class="dt"><span class="dn">Mi-cuit de thon</span><span class="dp" data-i18n="price">à conf.</span></div>
+          <div class="dd" data-i18n="d_thon">Thon mi-cuit, sésame, légumes fondants.</div>
+        </div>
+        <div class="dish">
+          <div class="dt"><span class="dn">Carpaccio de bœuf</span><span class="dp" data-i18n="price">à conf.</span></div>
+          <div class="dd" data-i18n="d_carp">Huile d'olive vierge, copeaux de parmesan.</div>
+        </div>
+        <div class="dish">
+          <div class="dt"><span class="dn">Tapas de saison</span><span class="dp" data-i18n="price">à conf.</span></div>
+          <div class="dd" data-i18n="d_tapas">Assortiment à partager, certains soirs.</div>
+          <span class="prov" data-i18n="prov_soir">Le soir</span>
+        </div>
+      </div>
+
+      <!-- PLATS -->
+      <div class="family">
+        <div class="family-head"><span class="no">02</span><h3 data-i18n="fam2">Plats</h3></div>
+        <div class="fam-photo">
+          <img src="assets/food-2-fish-main.jpg" alt="Poisson de saison, purée de carotte, légumes" />
+          <div class="cap" data-i18n="cap2">Poisson de saison, purée de carotte</div>
+        </div>
+        <div class="dish">
+          <div class="dt"><span class="dn">Risotto aux champignons sauvages</span><span class="dp" data-i18n="price">à conf.</span></div>
+          <div class="dd" data-i18n="d_riso">Champignons sauvages, vin blanc, parmesan.</div>
+          <span class="prov" data-i18n="prov_sig">Signature</span>
+        </div>
+        <div class="dish">
+          <div class="dt"><span class="dn">Escalope milanaise</span><span class="dp" data-i18n="price">à conf.</span></div>
+          <div class="dd" data-i18n="d_mila">Panée à l'italienne, garniture de saison.</div>
+        </div>
+        <div class="dish">
+          <div class="dt"><span class="dn">Parmigiana d'aubergine</span><span class="dp" data-i18n="price">à conf.</span></div>
+          <div class="dd" data-i18n="d_parm">Aubergine, tomate, mozzarella, basilic.</div>
+        </div>
+        <div class="dish">
+          <div class="dt"><span class="dn">Poisson de saison</span><span class="dp" data-i18n="price">à conf.</span></div>
+          <div class="dd" data-i18n="d_fish">Ligne du jour, purée de carotte, légumes de saison.</div>
+        </div>
+      </div>
+
+      <!-- DESSERTS -->
+      <div class="family">
+        <div class="family-head"><span class="no">03</span><h3 data-i18n="fam3">Desserts maison</h3></div>
+        <div class="fam-photo">
+          <img src="assets/food-5-dessert.jpg" alt="Dessert dressé, crème mangue et feuilles de filo" />
+          <div class="cap" data-i18n="cap3">Pâtisserie de saison, crème & filo</div>
+        </div>
+        <div class="dish">
+          <div class="dt"><span class="dn">Tiramisù maison</span><span class="dp" data-i18n="price">à conf.</span></div>
+          <div class="dd" data-i18n="d_tira">Recette maison, mascarpone & café.</div>
+        </div>
+        <div class="dish">
+          <div class="dt"><span class="dn">Crème brûlée</span><span class="dp" data-i18n="price">à conf.</span></div>
+          <div class="dd" data-i18n="d_creme">Vanille, caramel craquant.</div>
+        </div>
+        <div class="dish">
+          <div class="dt"><span class="dn">Cheesecake</span><span class="dp" data-i18n="price">à conf.</span></div>
+          <div class="dd" data-i18n="d_cheese">Onctueux, coulis de saison.</div>
+        </div>
+        <div class="dish">
+          <div class="dt"><span class="dn">Pâtisserie de saison</span><span class="dp" data-i18n="price">à conf.</span></div>
+          <div class="dd" data-i18n="d_patis">Création du chef, au gré du marché.</div>
+        </div>
+      </div>
+    </div>
+    <p class="conf-note" data-i18n="conf">La carte tourne selon les saisons et les arrivages. Plats, disponibilités et prix indicatifs, à confirmer avec l'établissement.</p>
+  </section>
+
+  <!-- PROVENANCE MAP -->
+  <section class="prov-sec" id="terroir">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom:34px">
+        <div>
+          <div class="lbl" data-i18n="prov_lbl">Carte du terroir · rayon ~30 km</div>
+          <h2 data-i18n="prov_h">Nos producteurs</h2>
+        </div>
+        <p class="sec-note" data-i18n="prov_note">La plupart de nos produits viennent d'à côté. Voici les mains qui les font pousser, les pétrissent et les élèvent.</p>
+      </div>
+      <div class="prov-grid">
+        <div class="mapcard">
+          <svg viewBox="0 0 520 420" role="img" aria-label="Carte illustrative du rayon de sourcing autour de Kirchberg">
+            <defs>
+              <radialGradient id="rg" cx="50%" cy="50%" r="55%">
+                <stop offset="0%" stop-color="#eef0e2"/><stop offset="100%" stop-color="#e3e0cd"/>
+              </radialGradient>
+            </defs>
+            <rect x="0" y="0" width="520" height="420" fill="url(#rg)"/>
+            <!-- illustrative rivers/roads -->
+            <path d="M40 60 C160 120 200 220 130 380" stroke="#c7cbb2" stroke-width="6" fill="none" opacity=".6"/>
+            <path d="M500 90 C400 160 360 250 420 390" stroke="#c7cbb2" stroke-width="6" fill="none" opacity=".6"/>
+            <path d="M20 250 H500" stroke="#cdd1b8" stroke-width="2" stroke-dasharray="3 8" opacity=".7"/>
+            <!-- radius rings -->
+            <circle cx="260" cy="210" r="170" fill="none" stroke="#7c8c5a" stroke-width="1.3" stroke-dasharray="4 7" opacity=".7"/>
+            <circle cx="260" cy="210" r="110" fill="none" stroke="#7c8c5a" stroke-width="1.3" stroke-dasharray="4 7" opacity=".55"/>
+            <circle cx="260" cy="210" r="60"  fill="none" stroke="#7c8c5a" stroke-width="1.3" stroke-dasharray="4 7" opacity=".4"/>
+            <text x="260" y="52" text-anchor="middle" font-family="Archivo" font-size="10" letter-spacing="2" fill="#5a6a3d">~30 KM</text>
+            <!-- center: restaurant -->
+            <g>
+              <circle cx="260" cy="210" r="13" fill="#3b472c"/>
+              <path d="M260 210 v14" stroke="#3b472c" stroke-width="2"/>
+              <text x="260" y="215" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="12" fill="#f2efe2">J</text>
+              <text x="260" y="248" text-anchor="middle" font-family="Archivo" font-size="10" font-weight="700" fill="#2a2822">KIRCHBERG</text>
+              <text x="260" y="261" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="10" fill="#5a6a3d">La Table de Joe</text>
+            </g>
+            <!-- producer pins -->
+            <g font-family="Fraunces" font-style="italic" font-size="11" fill="#f2efe2">
+              <g><circle cx="140" cy="120" r="11" fill="#5a6a3d"/><text x="140" y="124" text-anchor="middle">1</text></g>
+              <g><circle cx="390" cy="130" r="11" fill="#5a6a3d"/><text x="390" y="134" text-anchor="middle">2</text></g>
+              <g><circle cx="130" cy="310" r="11" fill="#5a6a3d"/><text x="130" y="314" text-anchor="middle">3</text></g>
+              <g><circle cx="400" cy="315" r="11" fill="#5a6a3d"/><text x="400" y="319" text-anchor="middle">4</text></g>
+            </g>
+            <g font-family="Archivo" font-size="9.5" fill="#2a2822">
+              <text x="140" y="146" text-anchor="middle">Boulangerie Hubert</text>
+              <text x="390" y="156" text-anchor="middle">Les Paniers de Sandrine</text>
+              <text x="130" y="336" text-anchor="middle">Geoffroy Vigneron</text>
+              <text x="400" y="341" text-anchor="middle">Miel & ferme</text>
+            </g>
+          </svg>
+          <span class="maplegend-note" data-i18n="map_note">Carte illustrative</span>
+        </div>
+        <ul class="prod-list">
+          <li>
+            <span class="prod-pin">1</span>
+            <span><span class="pn">Boulangerie Hubert</span><br><span class="pd" data-i18n="pr1">Pains et viennoiseries artisanaux, cuits chaque jour.</span></span>
+          </li>
+          <li>
+            <span class="prod-pin">2</span>
+            <span><span class="pn">Les Paniers de Sandrine</span><br><span class="pd" data-i18n="pr2">Légumes frais de saison, cueillis à maturité.</span></span>
+          </li>
+          <li>
+            <span class="prod-pin">3</span>
+            <span><span class="pn">Geoffroy Vigneron</span><br><span class="pd" data-i18n="pr3">Produits de la ferme et vins de la région.</span></span>
+          </li>
+          <li>
+            <span class="prod-pin">4</span>
+            <span><span class="pn" data-i18n="pr4n">Miel & produits fermiers locaux</span><br><span class="pd" data-i18n="pr4">Le sucré du terroir, des ruches d'à côté.</span></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SALLE -->
+  <section class="salle wrap" id="salle">
+    <div class="salle-grid">
+      <div class="salle-photo">
+        <img src="assets/interior-2.jpg" alt="Salle baignée de lumière, herbes de la pampa, grandes baies vitrées" />
+      </div>
+      <div class="salle-txt">
+        <div class="lbl" style="color:var(--sage-deep)" data-i18n="salle_lbl">La salle</div>
+        <h2 data-i18n="salle_h">Un écrin boho-bistro, sous un ciel de sauge</h2>
+        <p data-i18n="salle_p1">Plafond vert sauge, bois clair, suspensions en rotin et herbes de la pampa : la salle est baignée de lumière le jour, chaleureuse et intime le soir. Une adresse <strong>élégante mais sans chichis</strong>.</p>
+        <p data-i18n="salle_p2">Idéale pour un déjeuner d'affaires à deux pas des bureaux, un dîner en tête-à-tête ou une petite tablée entre amis. Un espace privatif accueille aussi vos repas d'entreprise et évènements sur mesure.</p>
+        <div class="quote">
+          « Le risotto, le service attentif et l'ambiance chaleureuse reviennent dans presque tous les avis. »
+          <span class="src" data-i18n="quote_src">D'après les avis clients · TripAdvisor & Google</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="visit" id="visit">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom:34px">
+        <div>
+          <div class="lbl" data-i18n="visit_lbl">Almanach pratique</div>
+          <h2 data-i18n="visit_h">Nous trouver</h2>
+        </div>
+        <p class="sec-note" data-i18n="visit_note">Au cœur de Kirchberg. L'entrée se trouve à l'arrière du bâtiment — un détail utile à connaître.</p>
+      </div>
+      <div class="visit-grid">
+        <!-- HOURS -->
+        <div class="vcard">
+          <div class="lbl" style="color:var(--sage-deep)" data-i18n="h_lbl">Horaires</div>
+          <h3 data-i18n="h_h">Service</h3>
+          <div class="hrow"><span class="d" data-i18n="day_mo">Lundi</span><span class="h" data-i18n="lunch">Déjeuner</span></div>
+          <div class="hrow"><span class="d" data-i18n="day_tu">Mardi</span><span class="h" data-i18n="lunch">Déjeuner</span></div>
+          <div class="hrow"><span class="d" data-i18n="day_we">Mercredi</span><span class="h" data-i18n="l_and_d">Déj. & dîner</span></div>
+          <div class="hrow"><span class="d" data-i18n="day_th">Jeudi</span><span class="h" data-i18n="l_and_d">Déj. & dîner</span></div>
+          <div class="hrow"><span class="d" data-i18n="day_fr">Vendredi</span><span class="h" data-i18n="l_and_d">Déj. & dîner</span></div>
+          <div class="hrow closed"><span class="d" data-i18n="day_sa">Samedi</span><span class="h" data-i18n="closed">Fermé</span></div>
+          <div class="hrow closed"><span class="d" data-i18n="day_su">Dimanche</span><span class="h" data-i18n="closed">Fermé</span></div>
+          <p class="flag" data-i18n="h_flag">Horaires exacts à confirmer avec l'établissement.</p>
+        </div>
+        <!-- ADDRESS -->
+        <div class="vcard">
+          <div class="lbl" style="color:var(--sage-deep)" data-i18n="a_lbl">Adresse</div>
+          <h3 data-i18n="a_h">Sur le plateau</h3>
+          <address>
+            <strong>La Table de Joe</strong><br>
+            15 Rue Edward Steichen<br>
+            L-2540 Luxembourg<br>
+            <span data-i18n="a_dist">Kirchberg · Neudorf-Weimershof</span>
+          </address>
+          <div class="backnote" data-i18n="a_back">↩︎ Bon à savoir : l'entrée se situe à l'arrière du bâtiment.</div>
+        </div>
+        <!-- CONTACT -->
+        <div class="vcard">
+          <div class="lbl" style="color:var(--sage-deep)" data-i18n="c_lbl">Contact & réservation</div>
+          <h3 data-i18n="c_h">Réserver</h3>
+          <div class="cinfo">
+            <span data-i18n="c_tel">Téléphone</span> · <a href="tel:+3524271 15">+352 42 71 15</a><br>
+            <span data-i18n="c_mail">E-mail</span> · <a href="mailto:latabledejoe.lu@gmail.com">latabledejoe.lu@gmail.com</a><br>
+            <span data-i18n="c_soc">Réseaux</span> · <a href="https://www.instagram.com/latabledejoe/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/latabledejoe/" target="_blank" rel="noopener">Facebook</a>
+          </div>
+          <p style="margin-top:16px;font-size:.86rem;color:var(--ink-soft)" data-i18n="c_pay">Cartes, Apple Pay, espèces & chèques-repas (Sodexo, Ticket Restaurant, Pluxee) acceptés — à confirmer.</p>
+          <a class="btn solid" style="display:inline-block;margin-top:16px" href="tel:+3524271 15" data-i18n="c_cta">Appeler pour réserver</a>
+        </div>
+
+        <div class="mapembed">
+          <iframe title="Carte — 15 Rue Edward Steichen, Luxembourg" loading="lazy"
+            src="https://maps.google.com/maps?q=15%20Rue%20Edward%20Steichen%2C%20L-2540%20Luxembourg&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <div class="fw">La Table de Joe</div>
+          <p data-i18n="foot_p">Bistro franco-italien de Kirchberg. Cuisine maison, de saison, à partir de produits frais et locaux.</p>
+        </div>
+        <div>
+          <h4 data-i18n="foot_nav">Naviguer</h4>
+          <a class="fl" href="#carte" data-i18n="nav_carte">La carte</a>
+          <a class="fl" href="#terroir" data-i18n="nav_terroir">Nos producteurs</a>
+          <a class="fl" href="#salle" data-i18n="nav_salle">La salle</a>
+          <a class="fl" href="#visit" data-i18n="nav_visit">Nous trouver</a>
+        </div>
+        <div>
+          <h4 data-i18n="foot_contact">Contact</h4>
+          <a class="fl" href="tel:+3524271 15">+352 42 71 15</a>
+          <a class="fl" href="mailto:latabledejoe.lu@gmail.com">latabledejoe.lu@gmail.com</a>
+          <span class="fl">15 Rue Edward Steichen, L-2540</span>
+          <a class="fl" href="https://www.instagram.com/latabledejoe/" target="_blank" rel="noopener">Instagram · Facebook</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span class="demo-badge" data-i18n="demo">Site de démonstration — contenus, horaires et prix à confirmer avec l'établissement.</span>
+        <span>© 2026 La Table de Joe · <span data-i18n="foot_by">Maquette proposée par Webwerk</span></span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+const I18N = {
+  fr:{
+    spine:"Bistro franco-italien · Kirchberg", nav_carte:"La carte", nav_terroir:"Nos producteurs",
+    nav_salle:"La salle", nav_visit:"Nous trouver", reserve:"Réserver",
+    tx1:"Cuisine maison", tx2:"De saison", tx3:"Produits d'ici",
+    hero_em:"le bistro franco-italien de Kirchberg",
+    hero_lead:"Une table discrète et chaleureuse au cœur du plateau, où la cuisine se fait maison, au fil des saisons, à partir de produits frais et locaux.",
+    sp_k1:"Origine", sp_v1:"Produits sourcés dans un rayon d'environ 30 km",
+    sp_k2:"Note du guide", hero_cta1:"Réserver une table", hero_cta2:"Découvrir la carte",
+    plate_t:"La salle sous le plafond sauge", plate_c:"Spécimen · intérieur, lumière du jour",
+    man_lbl:"Notre manière de faire",
+    man_h:"Nous cuisinons ce que la saison nous donne — et ce que nos artisans, à quelques kilomètres d'ici, <em>récoltent, pétrissent et élèvent.</em>",
+    rs1:"Rayon de sourcing autour du plateau", rs2:"Artisans partenaires mis à l'honneur",
+    rs3:"Cuisine faite maison, chaque jour", rs4:"Deux cuisines, une même table",
+    carte_lbl:"Carte de saison · planche des spécimens", carte_h:"La carte",
+    carte_note:"Une carte courte qui tourne au rythme des saisons. Plats, noms et prix indicatifs — à confirmer avec l'établissement.",
+    fam1:"Entrées", fam2:"Plats", fam3:"Desserts maison",
+    cap1:"Dressage du jour, en terrasse", cap2:"Poisson de saison, purée de carotte", cap3:"Pâtisserie de saison, crème & filo",
+    price:"à conf.",
+    d_thon:"Thon mi-cuit, sésame, légumes fondants.", d_carp:"Huile d'olive vierge, copeaux de parmesan.",
+    d_tapas:"Assortiment à partager, certains soirs.", prov_soir:"Le soir",
+    d_riso:"Champignons sauvages, vin blanc, parmesan.", prov_sig:"Signature",
+    d_mila:"Panée à l'italienne, garniture de saison.", d_parm:"Aubergine, tomate, mozzarella, basilic.",
+    d_fish:"Ligne du jour, purée de carotte, légumes de saison.",
+    d_tira:"Recette maison, mascarpone & café.", d_creme:"Vanille, caramel craquant.",
+    d_cheese:"Onctueux, coulis de saison.", d_patis:"Création du chef, au gré du marché.",
+    conf:"La carte tourne selon les saisons et les arrivages. Plats, disponibilités et prix indicatifs, à confirmer avec l'établissement.",
+    prov_lbl:"Carte du terroir · rayon ~30 km", prov_h:"Nos producteurs",
+    prov_note:"La plupart de nos produits viennent d'à côté. Voici les mains qui les font pousser, les pétrissent et les élèvent.",
+    map_note:"Carte illustrative",
+    pr1:"Pains et viennoiseries artisanaux, cuits chaque jour.", pr2:"Légumes frais de saison, cueillis à maturité.",
+    pr3:"Produits de la ferme et vins de la région.", pr4n:"Miel & produits fermiers locaux", pr4:"Le sucré du terroir, des ruches d'à côté.",
+    salle_lbl:"La salle", salle_h:"Un écrin boho-bistro, sous un ciel de sauge",
+    salle_p1:"Plafond vert sauge, bois clair, suspensions en rotin et herbes de la pampa : la salle est baignée de lumière le jour, chaleureuse et intime le soir. Une adresse <strong>élégante mais sans chichis</strong>.",
+    salle_p2:"Idéale pour un déjeuner d'affaires à deux pas des bureaux, un dîner en tête-à-tête ou une petite tablée entre amis. Un espace privatif accueille aussi vos repas d'entreprise et évènements sur mesure.",
+    quote_src:"D'après les avis clients · TripAdvisor & Google",
+    visit_lbl:"Almanach pratique", visit_h:"Nous trouver",
+    visit_note:"Au cœur de Kirchberg. L'entrée se trouve à l'arrière du bâtiment — un détail utile à connaître.",
+    h_lbl:"Horaires", h_h:"Service", lunch:"Déjeuner", l_and_d:"Déj. & dîner", closed:"Fermé",
+    day_mo:"Lundi", day_tu:"Mardi", day_we:"Mercredi", day_th:"Jeudi", day_fr:"Vendredi", day_sa:"Samedi", day_su:"Dimanche",
+    h_flag:"Horaires exacts à confirmer avec l'établissement.",
+    a_lbl:"Adresse", a_h:"Sur le plateau", a_dist:"Kirchberg · Neudorf-Weimershof",
+    a_back:"↩︎ Bon à savoir : l'entrée se situe à l'arrière du bâtiment.",
+    c_lbl:"Contact & réservation", c_h:"Réserver", c_tel:"Téléphone", c_mail:"E-mail", c_soc:"Réseaux",
+    c_pay:"Cartes, Apple Pay, espèces & chèques-repas (Sodexo, Ticket Restaurant, Pluxee) acceptés — à confirmer.",
+    c_cta:"Appeler pour réserver",
+    foot_p:"Bistro franco-italien de Kirchberg. Cuisine maison, de saison, à partir de produits frais et locaux.",
+    foot_nav:"Naviguer", foot_contact:"Contact",
+    demo:"Site de démonstration — contenus, horaires et prix à confirmer avec l'établissement.",
+    foot_by:"Maquette proposée par Webwerk"
+  },
+  de:{
+    spine:"Französisch-italienisches Bistro · Kirchberg", nav_carte:"Speisekarte", nav_terroir:"Unsere Erzeuger",
+    nav_salle:"Der Saal", nav_visit:"So finden Sie uns", reserve:"Reservieren",
+    tx1:"Hausgemacht", tx2:"Saisonal", tx3:"Aus der Region",
+    hero_em:"das französisch-italienische Bistro in Kirchberg",
+    hero_lead:"Ein diskretes, herzliches Lokal mitten auf dem Plateau, in dem hausgemacht, saisonal und aus frischen regionalen Produkten gekocht wird.",
+    sp_k1:"Herkunft", sp_v1:"Produkte aus einem Umkreis von rund 30 km",
+    sp_k2:"Bewertung", hero_cta1:"Tisch reservieren", hero_cta2:"Zur Speisekarte",
+    plate_t:"Der Saal unter der salbeigrünen Decke", plate_c:"Exemplar · Innenraum, Tageslicht",
+    man_lbl:"Unsere Art zu kochen",
+    man_h:"Wir kochen, was die Saison uns schenkt — und was unsere Handwerker wenige Kilometer entfernt <em>ernten, backen und aufziehen.</em>",
+    rs1:"Bezugsradius rund um das Plateau", rs2:"Vorgestellte Partner-Handwerker",
+    rs3:"Jeden Tag hausgemacht", rs4:"Zwei Küchen, ein Tisch",
+    carte_lbl:"Saisonkarte · Exemplartafel", carte_h:"Speisekarte",
+    carte_note:"Eine kurze Karte, die mit den Saisonen wechselt. Gerichte, Namen und Preise sind Richtwerte — mit dem Haus zu bestätigen.",
+    fam1:"Vorspeisen", fam2:"Hauptgerichte", fam3:"Hausgemachte Desserts",
+    cap1:"Anrichten des Tages, auf der Terrasse", cap2:"Fisch der Saison, Karottenpüree", cap3:"Saisonales Gebäck, Creme & Filo",
+    price:"a. A.",
+    d_thon:"Thunfisch halbgar, Sesam, zartes Gemüse.", d_carp:"Natives Olivenöl, Parmesanspäne.",
+    d_tapas:"Zum Teilen, an bestimmten Abenden.", prov_soir:"Abends",
+    d_riso:"Waldpilze, Weißwein, Parmesan.", prov_sig:"Signature",
+    d_mila:"Italienisch paniert, saisonale Beilage.", d_parm:"Aubergine, Tomate, Mozzarella, Basilikum.",
+    d_fish:"Fang des Tages, Karottenpüree, Saisongemüse.",
+    d_tira:"Hausrezept, Mascarpone & Kaffee.", d_creme:"Vanille, knuspriger Karamell.",
+    d_cheese:"Cremig, Coulis der Saison.", d_patis:"Kreation des Küchenchefs, je nach Markt.",
+    conf:"Die Karte wechselt je nach Saison und Anlieferung. Gerichte, Verfügbarkeit und Preise sind Richtwerte, mit dem Haus zu bestätigen.",
+    prov_lbl:"Terroir-Karte · Umkreis ~30 km", prov_h:"Unsere Erzeuger",
+    prov_note:"Das meiste kommt von nebenan. Hier die Hände, die es anbauen, backen und aufziehen.",
+    map_note:"Illustrative Karte",
+    pr1:"Handwerkliches Brot und Gebäck, täglich frisch.", pr2:"Frisches Saisongemüse, reif geerntet.",
+    pr3:"Hofprodukte und Weine aus der Region.", pr4n:"Honig & lokale Hofprodukte", pr4:"Das Süße aus der Region, aus Bienenstöcken nebenan.",
+    salle_lbl:"Der Saal", salle_h:"Ein Boho-Bistro unter salbeigrünem Himmel",
+    salle_p1:"Salbeigrüne Decke, helles Holz, Rattanleuchten und Pampasgras: tagsüber lichtdurchflutet, abends warm und intim. Eine <strong>elegante, aber unprätentiöse</strong> Adresse.",
+    salle_p2:"Ideal für ein Geschäftsessen nahe den Büros, ein Dinner zu zweit oder eine kleine Tafel unter Freunden. Ein Séparée bietet auch Raum für Firmenessen und Veranstaltungen nach Maß.",
+    quote_src:"Nach Gästebewertungen · TripAdvisor & Google",
+    visit_lbl:"Praktischer Almanach", visit_h:"So finden Sie uns",
+    visit_note:"Mitten in Kirchberg. Der Eingang liegt an der Rückseite des Gebäudes — gut zu wissen.",
+    h_lbl:"Öffnungszeiten", h_h:"Service", lunch:"Mittags", l_and_d:"Mittag & Abend", closed:"Geschlossen",
+    day_mo:"Montag", day_tu:"Dienstag", day_we:"Mittwoch", day_th:"Donnerstag", day_fr:"Freitag", day_sa:"Samstag", day_su:"Sonntag",
+    h_flag:"Genaue Zeiten mit dem Haus zu bestätigen.",
+    a_lbl:"Adresse", a_h:"Auf dem Plateau", a_dist:"Kirchberg · Neudorf-Weimershof",
+    a_back:"↩︎ Gut zu wissen: Der Eingang befindet sich an der Rückseite des Gebäudes.",
+    c_lbl:"Kontakt & Reservierung", c_h:"Reservieren", c_tel:"Telefon", c_mail:"E-Mail", c_soc:"Netzwerke",
+    c_pay:"Karten, Apple Pay, Bargeld & Essensgutscheine (Sodexo, Ticket Restaurant, Pluxee) — zu bestätigen.",
+    c_cta:"Zum Reservieren anrufen",
+    foot_p:"Französisch-italienisches Bistro in Kirchberg. Hausgemacht, saisonal, aus frischen regionalen Produkten.",
+    foot_nav:"Navigation", foot_contact:"Kontakt",
+    demo:"Demo-Website — Inhalte, Öffnungszeiten und Preise mit dem Haus zu bestätigen.",
+    foot_by:"Entwurf von Webwerk"
+  },
+  en:{
+    spine:"French-Italian bistro · Kirchberg", nav_carte:"The menu", nav_terroir:"Our producers",
+    nav_salle:"The room", nav_visit:"Find us", reserve:"Book a table",
+    tx1:"Homemade", tx2:"Seasonal", tx3:"Local produce",
+    hero_em:"the French-Italian bistro of Kirchberg",
+    hero_lead:"A discreet, warm neighbourhood table in the heart of the plateau, where the cooking is homemade, seasonal and built on fresh local produce.",
+    sp_k1:"Provenance", sp_v1:"Produce sourced within roughly 30 km",
+    sp_k2:"Guide rating", hero_cta1:"Book a table", hero_cta2:"See the menu",
+    plate_t:"The room beneath the sage ceiling", plate_c:"Specimen · interior, daylight",
+    man_lbl:"How we work",
+    man_h:"We cook what the season gives us — and what our artisans, just a few kilometres away, <em>grow, bake and raise.</em>",
+    rs1:"Sourcing radius around the plateau", rs2:"Partner artisans in the spotlight",
+    rs3:"Made from scratch, every day", rs4:"Two cuisines, one table",
+    carte_lbl:"Seasonal menu · specimen plate", carte_h:"The menu",
+    carte_note:"A short menu that turns with the seasons. Dishes, names and prices are indicative — to be confirmed with the restaurant.",
+    fam1:"Starters", fam2:"Mains", fam3:"Homemade desserts",
+    cap1:"Today's plating, on the terrace", cap2:"Seasonal fish, carrot purée", cap3:"Seasonal pastry, cream & filo",
+    price:"tbc",
+    d_thon:"Seared tuna, sesame, tender vegetables.", d_carp:"Virgin olive oil, parmesan shavings.",
+    d_tapas:"To share, on selected evenings.", prov_soir:"Evenings",
+    d_riso:"Wild mushrooms, white wine, parmesan.", prov_sig:"Signature",
+    d_mila:"Italian-style breaded, seasonal garnish.", d_parm:"Aubergine, tomato, mozzarella, basil.",
+    d_fish:"Line-caught catch, carrot purée, seasonal vegetables.",
+    d_tira:"House recipe, mascarpone & coffee.", d_creme:"Vanilla, crisp caramel.",
+    d_cheese:"Creamy, seasonal coulis.", d_patis:"Chef's creation, guided by the market.",
+    conf:"The menu turns with the seasons and daily deliveries. Dishes, availability and prices are indicative, to be confirmed with the restaurant.",
+    prov_lbl:"Terroir map · ~30 km radius", prov_h:"Our producers",
+    prov_note:"Most of what we serve comes from nearby. These are the hands that grow it, bake it and raise it.",
+    map_note:"Illustrative map",
+    pr1:"Artisan breads and pastries, baked daily.", pr2:"Fresh seasonal vegetables, picked ripe.",
+    pr3:"Farm products and regional wines.", pr4n:"Honey & local farm products", pr4:"The sweetness of the terroir, from hives nearby.",
+    salle_lbl:"The room", salle_h:"A boho-bistro haven under a sage-green sky",
+    salle_p1:"Sage-green ceiling, pale wood, rattan pendants and pampas grass: light-filled by day, warm and intimate by evening. An <strong>elegant yet unpretentious</strong> address.",
+    salle_p2:"Ideal for a business lunch steps from the offices, a dinner for two, or a small gathering of friends. A private room also hosts corporate meals and bespoke events.",
+    quote_src:"From guest reviews · TripAdvisor & Google",
+    visit_lbl:"Practical almanac", visit_h:"Find us",
+    visit_note:"In the heart of Kirchberg. The entrance is at the back of the building — a handy thing to know.",
+    h_lbl:"Opening hours", h_h:"Service", lunch:"Lunch", l_and_d:"Lunch & dinner", closed:"Closed",
+    day_mo:"Monday", day_tu:"Tuesday", day_we:"Wednesday", day_th:"Thursday", day_fr:"Friday", day_sa:"Saturday", day_su:"Sunday",
+    h_flag:"Exact hours to be confirmed with the restaurant.",
+    a_lbl:"Address", a_h:"On the plateau", a_dist:"Kirchberg · Neudorf-Weimershof",
+    a_back:"↩︎ Good to know: the entrance is at the back of the building.",
+    c_lbl:"Contact & booking", c_h:"Book", c_tel:"Phone", c_mail:"Email", c_soc:"Social",
+    c_pay:"Cards, Apple Pay, cash & meal vouchers (Sodexo, Ticket Restaurant, Pluxee) accepted — to be confirmed.",
+    c_cta:"Call to book",
+    foot_p:"The French-Italian bistro of Kirchberg. Homemade, seasonal cooking from fresh local produce.",
+    foot_nav:"Navigate", foot_contact:"Contact",
+    demo:"Demonstration site — content, hours and prices to be confirmed with the restaurant.",
+    foot_by:"Mock-up proposed by Webwerk"
+  }
+};
+function setLang(lang){
+  const d=I18N[lang]; if(!d) return;
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(d[k]!==undefined) el.innerHTML=d[k];
+  });
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+}
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.dataset.lang));
+});
+</script>
+</body>
+</html>

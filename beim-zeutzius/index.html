@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Beim Zeutzius — Cents Café · Éng richteg Lëtzebuerger Stuff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wood-dark:#2b1a10;--wood:#42291a;--wood-warm:#6a4227;
+    --burgundy:#7c2230;--burgundy-deep:#571522;
+    --cream:#f5edd9;--cream-2:#ecdfc3;--parch:#efe6cf;
+    --brass:#c1904a;--brass-lt:#e3bd7d;
+    --slate:#22241d;--slate-2:#2b2e25;--chalk:#efe9d8;
+    --ink:#291f17;
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    --cond:'Oswald','Arial Narrow',sans-serif;
+    --body:'Inter',system-ui,-apple-system,sans-serif;
+    --rail:154px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);color:var(--ink);background:var(--parch);
+    background-image:
+      radial-gradient(circle at 18% 12%, #fff6e2 0, transparent 42%),
+      radial-gradient(circle at 82% 88%, #e6d8b8 0, transparent 46%),
+      repeating-linear-gradient(0deg, #00000006 0 1px, transparent 1px 4px);
+    line-height:1.55;-webkit-font-smoothing:antialiased;
+    padding-left:var(--rail);
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  .cond{font-family:var(--cond)}
+
+  /* ---------- BAR RAIL ---------- */
+  .rail{
+    position:fixed;left:0;top:0;bottom:0;width:var(--rail);z-index:50;
+    background:
+      linear-gradient(90deg,#1c1009 0, #3a2415 42%, #4a2e1b 78%, #2c1a0f 100%);
+    box-shadow:6px 0 26px #0006, inset -3px 0 0 var(--brass);
+    display:flex;flex-direction:column;align-items:center;
+    padding:16px 8px 14px;color:var(--cream);
+  }
+  .rail::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(0deg,#0000 0 26px,#00000022 26px 27px);opacity:.5}
+  .monogram{
+    width:56px;height:56px;border-radius:50%;flex:none;position:relative;z-index:2;
+    display:grid;place-items:center;font-family:var(--serif);font-weight:800;font-size:1.35rem;
+    color:var(--burgundy-deep);
+    background:radial-gradient(circle at 38% 32%,#fff8ea,#e6d6b4);
+    border:3px solid #1c120b;
+    box-shadow:inset 0 0 0 2px #fff9, inset 0 3px 8px #0003, 0 5px 14px #0006;
+  }
+  .rail-mark{
+    flex:1;display:flex;align-items:center;justify-content:center;z-index:2;
+    writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);
+    font-family:var(--serif);font-weight:800;letter-spacing:.04em;
+    font-size:2.35rem;line-height:1;color:var(--cream);
+    text-shadow:0 2px 0 #0007, 0 0 14px #0005;padding:18px 0;
+  }
+  .rail-mark small{font-family:var(--cond);font-weight:500;font-size:.62rem;letter-spacing:.42em;
+    text-transform:uppercase;color:var(--brass-lt);writing-mode:vertical-rl}
+  .rnav{display:flex;flex-direction:column;gap:2px;z-index:2;width:100%;margin-bottom:12px}
+  .rnav a{
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:.66rem;
+    text-align:center;padding:6px 2px;text-decoration:none;color:#e9dcc2;border-radius:5px;
+    transition:.2s}
+  .rnav a:hover{background:#ffffff18;color:#fff}
+  .lang{display:flex;gap:3px;z-index:2;margin-bottom:10px;background:#00000030;padding:4px;border-radius:8px}
+  .lang button{
+    font-family:var(--cond);font-size:.64rem;letter-spacing:.08em;border:none;cursor:pointer;
+    background:transparent;color:#d8c6a4;padding:4px 6px;border-radius:5px;transition:.2s}
+  .lang button.on{background:var(--brass);color:#1c120b;font-weight:600}
+  .rtel{z-index:2;font-family:var(--cond);font-size:.68rem;letter-spacing:.06em;color:var(--brass-lt);
+    text-decoration:none;text-align:center;line-height:1.3}
+  .rtel span{display:block;font-size:.55rem;letter-spacing:.28em;color:#b9a683;text-transform:uppercase}
+
+  /* ---------- shared plaque / enamel ---------- */
+  .enamel{
+    position:relative;background:linear-gradient(158deg,#f7efdd,#e7d9bd);
+    border:3px solid #211812;border-radius:16px;color:var(--ink);
+    box-shadow:inset 0 0 0 2px #ffffffcc, inset 0 2px 7px #0002, 0 8px 22px #0004;
+    background-image:
+      radial-gradient(circle at 13px 13px,#00000030 1.6px,transparent 2.6px),
+      radial-gradient(circle at calc(100% - 13px) 13px,#00000030 1.6px,transparent 2.6px),
+      radial-gradient(circle at 13px calc(100% - 13px),#00000030 1.6px,transparent 2.6px),
+      radial-gradient(circle at calc(100% - 13px) calc(100% - 13px),#00000030 1.6px,transparent 2.6px),
+      linear-gradient(158deg,#f7efdd,#e7d9bd);
+  }
+  .eyebrow{font-family:var(--cond);text-transform:uppercase;letter-spacing:.34em;font-size:.72rem;
+    color:var(--burgundy);font-weight:600}
+  .h-serif{font-family:var(--serif);font-weight:800;line-height:1.02;letter-spacing:-.01em}
+  .aconf{font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;font-size:.6rem;
+    color:#fff;background:var(--burgundy);padding:2px 7px;border-radius:20px;display:inline-block;
+    vertical-align:middle;font-weight:500}
+
+  /* photo boxes — quadrant crop from RestaurantGuru collages (avoids cartoon overlays) */
+  .ph{background-repeat:no-repeat;background-size:200% 200%;background-color:#2a2018;
+    background-position:center}
+
+  section{padding:76px 60px}
+  .wrap{max-width:1320px;margin:0 auto}
+
+  /* ---------- VITRINE ---------- */
+  #vitrine{padding:0;background:var(--wood-dark)}
+  .vit{display:grid;grid-template-columns:0.92fr 1.08fr;min-height:88vh}
+  .vit-left{
+    background:
+      radial-gradient(circle at 70% 20%,#fff7e6 0,transparent 55%),
+      linear-gradient(160deg,#f6eedb,#e3d3b3);
+    padding:64px 58px 52px;display:flex;flex-direction:column;justify-content:center;position:relative}
+  .vit-left::after{content:"";position:absolute;top:0;right:0;bottom:0;width:12px;
+    background:linear-gradient(var(--brass),#8a6229);box-shadow:-2px 0 8px #0002}
+  .vit-tag{font-family:var(--cond);text-transform:uppercase;letter-spacing:.4em;font-size:.72rem;
+    color:var(--burgundy);font-weight:600;margin-bottom:20px}
+  .vit-title{font-family:var(--serif);font-weight:800;font-size:clamp(3rem,6vw,5.6rem);
+    line-height:.94;color:var(--wood-dark);letter-spacing:-.02em}
+  .vit-title em{font-style:italic;font-weight:500;color:var(--burgundy);display:block;
+    font-size:.42em;letter-spacing:0;margin-top:.35em}
+  .vit-lede{font-size:1.05rem;max-width:38ch;margin:26px 0 30px;color:#4a3a2b}
+  .vit-plaques{display:flex;gap:14px;flex-wrap:wrap}
+  .mini{padding:12px 18px;font-family:var(--cond);letter-spacing:.05em;font-size:.82rem;
+    display:flex;flex-direction:column;line-height:1.25}
+  .mini b{font-size:1.02rem;color:var(--burgundy-deep);letter-spacing:.02em}
+  .mini span{font-size:.62rem;text-transform:uppercase;letter-spacing:.24em;color:#8a6a45}
+  .vit-cta{margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:.82rem;
+    text-decoration:none;padding:14px 26px;border-radius:10px;font-weight:600;transition:.2s;display:inline-block}
+  .btn-solid{background:var(--burgundy);color:#fff;box-shadow:0 6px 16px #7c223055}
+  .btn-solid:hover{background:var(--burgundy-deep);transform:translateY(-2px)}
+  .btn-ghost{border:2px solid var(--wood-warm);color:var(--wood-dark)}
+  .btn-ghost:hover{background:var(--wood-warm);color:var(--cream)}
+  .vit-right{position:relative;overflow:hidden}
+  .vit-photo{position:absolute;inset:0}
+  .vit-badge{position:absolute;right:28px;bottom:28px;z-index:3;text-align:center;
+    padding:16px 20px;border-radius:14px;background:linear-gradient(150deg,#7c2230,#571522);
+    color:var(--cream);border:3px solid #1c120b;box-shadow:0 10px 26px #0007}
+  .vit-badge b{font-family:var(--serif);font-size:1.5rem;display:block;line-height:1}
+  .vit-badge span{font-family:var(--cond);text-transform:uppercase;letter-spacing:.22em;font-size:.58rem;color:var(--brass-lt)}
+  .vit-grad{position:absolute;inset:0;background:linear-gradient(90deg,#2b1a1055 0,transparent 40%);z-index:2}
+
+  /* ---------- COMPTOIR (drinks) ---------- */
+  #comptoir{background:linear-gradient(180deg,#3a2415,#2b1a10);color:var(--cream);position:relative}
+  #comptoir::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(90deg,#0000 0 118px,#00000026 118px 120px);opacity:.6}
+  .cmp-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+    flex-wrap:wrap;margin-bottom:34px;position:relative;z-index:2}
+  .cmp-head .eyebrow{color:var(--brass-lt)}
+  .cmp-head h2{font-size:clamp(2rem,4vw,3.2rem);color:var(--cream)}
+  .cmp-head p{max-width:40ch;color:#d9c9ac;font-size:.95rem}
+  .taps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative;z-index:2}
+  .tap{padding:20px 18px 16px;text-align:center}
+  .tap .nm{font-family:var(--serif);font-weight:600;font-size:1.15rem;color:var(--wood-dark)}
+  .tap .vol{font-family:var(--cond);text-transform:uppercase;letter-spacing:.18em;font-size:.6rem;color:#8a6a45;margin:3px 0 8px}
+  .tap .pr{font-family:var(--cond);font-weight:700;font-size:1.7rem;color:var(--burgundy)}
+  .cmp-note{position:relative;z-index:2;margin-top:22px;font-family:var(--cond);letter-spacing:.05em;
+    font-size:.8rem;color:#c9b790;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+
+  /* ---------- CARTE ---------- */
+  #carte{background:var(--parch)}
+  .carte-top{display:grid;grid-template-columns:1.4fr 1fr;gap:34px;align-items:stretch;margin-bottom:40px}
+  .carte-intro .eyebrow{margin-bottom:12px}
+  .carte-intro h2{font-size:clamp(2.1rem,4vw,3.4rem);color:var(--wood-dark)}
+  .carte-intro p{max-width:46ch;margin-top:16px;color:#4a3a2b}
+  .easel{background:linear-gradient(#23251d,#191b15);border:9px solid #5a3a22;border-radius:8px;
+    color:var(--chalk);padding:26px 28px;display:flex;flex-direction:column;justify-content:center;
+    box-shadow:inset 0 0 50px #000a, 0 14px 30px #0005;position:relative}
+  .easel .k{font-family:var(--cond);text-transform:uppercase;letter-spacing:.3em;font-size:.66rem;color:var(--brass-lt)}
+  .easel h3{font-family:var(--serif);font-style:italic;font-weight:500;font-size:2rem;margin:6px 0 10px;color:#fff}
+  .easel p{font-size:.9rem;color:#cfc6ad}
+  .easel .price{font-family:var(--cond);font-weight:700;font-size:1.5rem;color:var(--brass-lt);margin-top:12px}
+
+  .sig{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:44px}
+  .sigcard{position:relative;border-radius:14px;overflow:hidden;border:3px solid #211812;
+    box-shadow:0 12px 28px #0004}
+  .sigcard .ph{height:300px}
+  .sigcard .cap{position:absolute;left:0;right:0;bottom:0;padding:40px 20px 16px;
+    background:linear-gradient(transparent,#1c1009f2);color:var(--cream)}
+  .sigcard .cap .t{font-family:var(--serif);font-weight:700;font-size:1.35rem;line-height:1.1}
+  .sigcard .cap .d{font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;font-size:.62rem;
+    color:var(--brass-lt);margin-top:5px}
+
+  .board{background:
+      radial-gradient(circle at 30% 15%,#2f322800 60%,#0006 100%),
+      linear-gradient(160deg,#262820,#1a1c16);
+    border:12px solid #5a3a22;border-radius:10px;color:var(--chalk);
+    box-shadow:inset 0 0 70px #000c, 0 18px 40px #0006;padding:44px 48px;position:relative}
+  .board::after{content:"";position:absolute;inset:8px;border:1px solid #ffffff14;border-radius:4px;pointer-events:none}
+  .board-head{text-align:center;margin-bottom:30px}
+  .board-head .k{font-family:var(--cond);text-transform:uppercase;letter-spacing:.4em;font-size:.7rem;color:var(--brass-lt)}
+  .board-head h3{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.8rem,3.4vw,2.8rem);color:#fff;margin-top:6px}
+  .board-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px 54px}
+  .cat h4{font-family:var(--cond);text-transform:uppercase;letter-spacing:.2em;font-size:1rem;
+    color:var(--brass-lt);border-bottom:1px dashed #ffffff33;padding-bottom:8px;margin-bottom:14px}
+  .dish{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dotted #ffffff1a}
+  .dish .di .n{font-family:var(--serif);font-weight:600;font-size:1.08rem;color:#f6f0dd}
+  .dish .di .s{font-size:.82rem;color:#c3bba2;margin-top:2px}
+  .dish .pp{font-family:var(--cond);font-weight:600;font-size:.95rem;color:var(--brass-lt);white-space:nowrap}
+  .board-foot{text-align:center;margin-top:26px;font-family:var(--cond);letter-spacing:.06em;font-size:.78rem;color:#bcb298}
+
+  /* ---------- STUFF (room) ---------- */
+  #stuff{background:linear-gradient(180deg,#efe6cf,#e6d8bb)}
+  .rail-line{height:14px;background:linear-gradient(var(--wood-warm),#3a2415);border-radius:3px;
+    box-shadow:0 5px 12px #0003;margin-bottom:6px}
+  .rail-caption{font-family:var(--cond);text-transform:uppercase;letter-spacing:.34em;font-size:.66rem;
+    color:var(--wood-warm);text-align:center;margin-bottom:30px}
+  .stuff-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:16px}
+  .frame{border:5px solid #2b1a10;background:#2b1a10;border-radius:4px;overflow:hidden;position:relative;
+    box-shadow:0 12px 26px #0004}
+  .frame .ph{width:100%;height:100%}
+  .frame figcaption{position:absolute;left:0;bottom:0;right:0;font-family:var(--cond);
+    text-transform:uppercase;letter-spacing:.14em;font-size:.6rem;color:var(--cream);
+    background:linear-gradient(transparent,#1c1009e0);padding:22px 12px 8px}
+  .a1{grid-column:span 2;grid-row:span 2}
+  .a2{grid-column:span 2;grid-row:span 1}
+  .a3{grid-column:span 1;grid-row:span 2}
+  .a4{grid-column:span 1;grid-row:span 1}
+  .story{grid-column:span 2;grid-row:span 1;display:flex;align-items:center;padding:26px 30px}
+  .story .k{font-family:var(--cond);text-transform:uppercase;letter-spacing:.3em;font-size:.62rem;color:var(--burgundy)}
+  .story p{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.12rem;line-height:1.45;color:var(--wood-dark);margin-top:6px}
+
+  /* ---------- VISITE ---------- */
+  #visite{background:var(--wood-dark);color:var(--cream)}
+  .vis{display:grid;grid-template-columns:1fr 1.15fr;gap:36px;align-items:stretch}
+  .vis-info .eyebrow{color:var(--brass-lt)}
+  .vis-info h2{font-size:clamp(2rem,4vw,3.1rem);margin:8px 0 26px;color:var(--cream)}
+  .hours{margin-bottom:26px}
+  .hours .row{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px dotted #ffffff2a}
+  .hours .row .d{font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:#e7d9bd}
+  .hours .row .h{font-family:var(--serif);font-size:.98rem;color:#fff}
+  .hours .sub{font-family:var(--cond);text-transform:uppercase;letter-spacing:.24em;font-size:.64rem;
+    color:var(--brass-lt);margin:16px 0 4px}
+  .vis-facts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .fact{padding:16px 18px}
+  .fact .k{font-family:var(--cond);text-transform:uppercase;letter-spacing:.18em;font-size:.6rem;color:#8a6a45}
+  .fact .v{font-family:var(--serif);font-weight:600;font-size:1.02rem;color:var(--burgundy-deep);margin-top:3px}
+  .fact .v a{text-decoration:none}
+  .map-wrap{border:6px solid var(--wood-warm);border-radius:12px;overflow:hidden;min-height:440px;
+    box-shadow:0 14px 30px #0006}
+  .map-wrap iframe{width:100%;height:100%;min-height:440px;border:0;display:block;filter:sepia(.12) saturate(1.05)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#1c1009;color:#d8c6a4;padding:44px 60px;position:relative}
+  footer::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--burgundy),var(--brass),var(--burgundy))}
+  .foot{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap;align-items:flex-start;max-width:1320px;margin:0 auto}
+  .foot-mark{font-family:var(--serif);font-weight:800;font-size:1.9rem;color:var(--cream);line-height:1}
+  .foot-mark span{display:block;font-family:var(--cond);text-transform:uppercase;letter-spacing:.34em;
+    font-size:.6rem;color:var(--brass-lt);margin-top:6px}
+  .foot a{color:var(--brass-lt);text-decoration:none}
+  .foot-col{font-size:.86rem;line-height:1.7}
+  .disc{max-width:1320px;margin:26px auto 0;padding-top:18px;border-top:1px solid #ffffff1a;
+    font-size:.72rem;color:#9a8869;line-height:1.6}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:1080px){
+    .vit{grid-template-columns:1fr}
+    .vit-right{min-height:52vh}
+    .taps{grid-template-columns:repeat(2,1fr)}
+    .carte-top,.vis{grid-template-columns:1fr}
+    .sig{grid-template-columns:1fr 1fr}
+    .stuff-grid{grid-template-columns:repeat(2,1fr)}
+    .a1,.a2,.a3,.a4,.story{grid-column:span 2;grid-row:span 1}
+    .a1 .ph{height:100%}
+    .stuff-grid{grid-auto-rows:200px}
+  }
+  @media(max-width:760px){
+    :root{--rail:0px}
+    body{padding-left:0;padding-top:104px}
+    .rail{flex-direction:row;bottom:auto;height:auto;width:100%;padding:8px 10px;
+      box-shadow:0 5px 20px #0007, inset 0 -3px 0 var(--brass);gap:8px;flex-wrap:wrap;justify-content:space-between}
+    .rail::before{display:none}
+    .monogram{width:44px;height:44px;font-size:1.05rem}
+    .rail-mark{writing-mode:horizontal-tb;transform:none;flex:1;font-size:1.5rem;padding:0;justify-content:flex-start}
+    .rail-mark small{writing-mode:horizontal-tb;display:block;font-size:.55rem}
+    .rnav{flex-direction:row;flex-wrap:wrap;justify-content:center;width:auto;margin:0;order:5;gap:0}
+    .rnav a{font-size:.6rem;padding:5px 7px}
+    .lang{margin:0;order:3}
+    .rtel{order:4}.rtel span{display:none}
+    section{padding:52px 22px}
+    .sig{grid-template-columns:1fr}
+    .stuff-grid{grid-template-columns:1fr;grid-auto-rows:210px}
+    .board-cols{grid-template-columns:1fr;gap:26px}
+    .board{padding:28px 22px}
+    .vis-facts{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ BAR RAIL ============ -->
+<nav class="rail" aria-label="Navigation">
+  <div class="monogram">BZ</div>
+  <div class="rail-mark">Beim&nbsp;Zeutzius<small>Cents&nbsp;Café</small></div>
+  <div class="rnav">
+    <a href="#vitrine" data-i18n="nav_home">Accueil</a>
+    <a href="#comptoir" data-i18n="nav_bar">Comptoir</a>
+    <a href="#carte" data-i18n="nav_carte">La Carte</a>
+    <a href="#stuff" data-i18n="nav_stuff">La Stuff</a>
+    <a href="#visite" data-i18n="nav_visit">Visite</a>
+  </div>
+  <div class="lang" role="group" aria-label="Langue">
+    <button data-lang="fr" class="on">FR</button>
+    <button data-lang="de">DE</button>
+    <button data-lang="en">EN</button>
+  </div>
+  <a class="rtel" href="tel:+35226430031"><span data-i18n="rail_call">Réserver</span>26&nbsp;43&nbsp;00&nbsp;31</a>
+</nav>
+
+<main>
+
+  <!-- ============ VITRINE ============ -->
+  <section id="vitrine">
+    <div class="vit">
+      <div class="vit-left">
+        <div class="vit-tag" data-i18n="vit_tag">Cents · Luxembourg · depuis toujours le café du quartier</div>
+        <h1 class="vit-title">Beim Zeutzius<em data-i18n="vit_sub">Éng richteg Lëtzebuerger Stuff zu Cents</em></h1>
+        <p class="vit-lede" data-i18n="vit_lede">Un vrai bout de vieux Luxembourg, glissé dans le quartier résidentiel de Cents. On y vient pour une Clausel pression et un plat de jarret ou de kniddelen — cuisine de chez nous, sans chichis.</p>
+        <div class="vit-plaques">
+          <div class="mini enamel"><span data-i18n="mini1_k">Bière pression</span><b>Clausel</b></div>
+          <div class="mini enamel"><span data-i18n="mini2_k">Spécialité</span><b data-i18n="mini2_v">Jarret de porc</b></div>
+          <div class="mini enamel"><span data-i18n="mini3_k">Aux beaux jours</span><b data-i18n="mini3_v">Grande terrasse</b></div>
+        </div>
+        <div class="vit-cta">
+          <a class="btn btn-solid" href="#carte" data-i18n="cta_carte">Voir la carte</a>
+          <a class="btn btn-ghost" href="tel:+35226430031" data-i18n="cta_call">Appeler +352 26 43 00 31</a>
+        </div>
+      </div>
+      <div class="vit-right">
+        <div class="vit-photo ph" style="background-image:url('assets/interior-2.jpg');background-position:100% 0%" role="img" aria-label="Façade du Cents Café — Beim Zeutzius"></div>
+        <div class="vit-grad"></div>
+        <div class="vit-badge"><b>Cents</b><span>71 rue de Trèves</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMPTOIR (drinks) ============ -->
+  <section id="comptoir">
+    <div class="wrap">
+      <div class="cmp-head">
+        <div>
+          <div class="eyebrow" data-i18n="cmp_eyebrow">Um Comptoir · au comptoir</div>
+          <h2 class="h-serif" data-i18n="cmp_title">La bière est fraîche, la maison est ouverte</h2>
+        </div>
+        <p data-i18n="cmp_lede">On s'accoude au comptoir comme au village : pression maison, panaché, Picon et un choix de softs. Le cœur de la Stuff, c'est ici.</p>
+      </div>
+      <div class="taps">
+        <div class="tap enamel"><div class="nm">Clausel</div><div class="vol">50 cl</div><div class="pr">4,50 €</div></div>
+        <div class="tap enamel"><div class="nm">Panaché</div><div class="vol">50 cl</div><div class="pr">4,70 €</div></div>
+        <div class="tap enamel"><div class="nm">Grand Cru</div><div class="vol">33 cl</div><div class="pr">4,20 €</div></div>
+        <div class="tap enamel"><div class="nm">Picon</div><div class="vol">25 cl</div><div class="pr">4,50 €</div></div>
+        <div class="tap enamel"><div class="nm" data-i18n="tap_nab">Bière sans alcool</div><div class="vol">33 cl</div><div class="pr">2,80 €</div></div>
+        <div class="tap enamel"><div class="nm" data-i18n="tap_soft">Softs &amp; sirops</div><div class="vol" data-i18n="tap_soft_v">Coca · Fanta · Sprite</div><div class="pr">2,50 €</div></div>
+        <div class="tap enamel"><div class="nm">Red Bull</div><div class="vol">25 cl</div><div class="pr">3,50 €</div></div>
+        <div class="tap enamel"><div class="nm" data-i18n="tap_coffee">Café &amp; boissons chaudes</div><div class="vol" data-i18n="tap_coffee_v">au comptoir</div><div class="pr" data-i18n="tap_coffee_p">à conf.</div></div>
+      </div>
+      <div class="cmp-note"><span class="aconf" data-i18n="badge_conf">à confirmer</span><span data-i18n="cmp_note">Prix relevés via Schlouk-Map — susceptibles d'avoir évolué, à confirmer avec l'établissement.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ CARTE ============ -->
+  <section id="carte">
+    <div class="wrap">
+      <div class="carte-top">
+        <div class="carte-intro">
+          <div class="eyebrow" data-i18n="carte_eyebrow">D'Kaart · la carte</div>
+          <h2 class="h-serif" data-i18n="carte_title">Les classiques luxembourgeois, faits comme il faut</h2>
+          <p data-i18n="carte_lede">Jarret de porc, kniddelen sous toutes leurs formes, treipen, schnitzel — plus des salades généreuses, des tartines et des omelettes servies tout au long de la journée. La cuisine de chez nous, sans détour.</p>
+        </div>
+        <div class="easel">
+          <div class="k" data-i18n="easel_k">Chaque midi · ardoise</div>
+          <h3 data-i18n="easel_h">Plat du jour</h3>
+          <p data-i18n="easel_p">Le déjeuner du quartier : une suggestion chaude changée chaque jour, annoncée sur l'ardoise du comptoir.</p>
+          <div class="price"><span data-i18n="easel_ask">Demandez l'ardoise</span> · <span class="aconf" data-i18n="badge_conf2">à confirmer</span></div>
+        </div>
+      </div>
+
+      <!-- signature trio -->
+      <div class="sig">
+        <figure class="sigcard">
+          <div class="ph" style="background-image:url('assets/food-1.jpg');background-position:0% 100%"></div>
+          <figcaption class="cap"><div class="t">Jarret de porc</div><div class="d" data-i18n="sig1">Le plat le plus recommandé de la maison</div></figcaption>
+        </figure>
+        <figure class="sigcard">
+          <div class="ph" style="background-image:url('assets/food-3.jpg');background-position:100% 100%"></div>
+          <figcaption class="cap"><div class="t">Treipen</div><div class="d" data-i18n="sig2">Boudin noir luxembourgeois, pommes sautées</div></figcaption>
+        </figure>
+        <figure class="sigcard">
+          <div class="ph" style="background-image:url('assets/food-2-dumplings.jpg');background-position:0% 100%"></div>
+          <figcaption class="cap"><div class="t">Kniddelen mat Wäinzoossis</div><div class="d" data-i18n="sig3">Quenelles de pomme de terre, saucisse au vin blanc</div></figcaption>
+        </figure>
+      </div>
+
+      <!-- slate board -->
+      <div class="board">
+        <div class="board-head">
+          <div class="k" data-i18n="board_k">Sur l'ardoise</div>
+          <h3 data-i18n="board_h">La Stuff vous sert</h3>
+        </div>
+        <div class="board-cols">
+          <div class="cat">
+            <h4 data-i18n="cat1">Les classiques Lëtzebuerger</h4>
+            <div class="dish"><div class="di"><div class="n">Jarret de porc</div><div class="s" data-i18n="d_jarret">Rôti, pommes de terre sautées</div></div><div class="pp">—</div></div>
+            <div class="dish"><div class="di"><div class="n">Mielkniddelen mat Speck</div><div class="s" data-i18n="d_miel">Quenelles au lard &amp; crème</div></div><div class="pp">—</div></div>
+            <div class="dish"><div class="di"><div class="n">Kniddelen Royal</div><div class="s" data-i18n="d_royal">La version copieuse de la maison</div></div><div class="pp">—</div></div>
+            <div class="dish"><div class="di"><div class="n">Kniddelen mat Wäinzoossis</div><div class="s" data-i18n="d_wein">Saucisse au vin blanc</div></div><div class="pp">—</div></div>
+            <div class="dish"><div class="di"><div class="n">Treipen</div><div class="s" data-i18n="d_treipen">Boudin noir, compote de pommes</div></div><div class="pp">—</div></div>
+            <div class="dish"><div class="di"><div class="n">Schnitzel · Cordon bleu</div><div class="s" data-i18n="d_schnitzel">Sauce aux champignons</div></div><div class="pp">—</div></div>
+          </div>
+          <div class="cat">
+            <h4 data-i18n="cat2">Salades · tartines · œufs</h4>
+            <div class="dish"><div class="di"><div class="n">Salade paysanne</div><div class="s" data-i18n="d_paysanne">Généreuse, en assiette complète</div></div><div class="pp">—</div></div>
+            <div class="dish"><div class="di"><div class="n" data-i18n="d_cold_n">Assiettes froides</div><div class="s" data-i18n="d_cold">Charcuterie &amp; jambon du pays</div></div><div class="pp">—</div></div>
+            <div class="dish"><div class="di"><div class="n" data-i18n="d_tart_n">Tartines</div><div class="s" data-i18n="d_tart">Servies toute la journée</div></div><div class="pp">—</div></div>
+            <div class="dish"><div class="di"><div class="n" data-i18n="d_om_n">Omelettes</div><div class="s" data-i18n="d_om">Nature ou garnies</div></div><div class="pp">—</div></div>
+            <div class="dish"><div class="di"><div class="n" data-i18n="d_steak_n">Entrecôte grillée</div><div class="s" data-i18n="d_steak">Salade de tomates, garniture</div></div><div class="pp">—</div></div>
+            <div class="dish"><div class="di"><div class="n" data-i18n="d_jour_n">Plat du jour</div><div class="s" data-i18n="d_jour">Suggestion du midi sur ardoise</div></div><div class="pp">—</div></div>
+          </div>
+        </div>
+        <div class="board-foot"><span class="aconf" data-i18n="badge_conf3">à confirmer</span> &nbsp;<span data-i18n="board_foot">Plats reconstitués à partir d'avis et d'annuaires — aucun menu officiel publié. Comptez ± 20–30 € par personne pour un repas complet. Prix &amp; disponibilités à confirmer.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STUFF (room) ============ -->
+  <section id="stuff">
+    <div class="wrap">
+      <div class="rail-line"></div>
+      <div class="rail-caption" data-i18n="stuff_caption">D'Stuff · la salle, comme si vous y étiez</div>
+      <div class="stuff-grid">
+        <figure class="frame a1"><div class="ph" style="background-image:url('assets/interior-1.jpg');background-position:0% 0%"></div><figcaption data-i18n="g1">Le comptoir &amp; les pompes à bière</figcaption></figure>
+        <figure class="frame a2"><div class="ph" style="background-image:url('assets/interior-1.jpg');background-position:100% 100%"></div><figcaption data-i18n="g2">Banquettes &amp; affiches émaillées d'époque</figcaption></figure>
+        <figure class="frame a4"><div class="ph" style="background-image:url('assets/hero.jpg');background-position:100% 0%"></div><figcaption data-i18n="g3">Tables en bois</figcaption></figure>
+        <div class="frame story enamel">
+          <div>
+            <div class="k" data-i18n="story_k">Beim Zeutzius — « chez Zeutzius »</div>
+            <p data-i18n="story_p">« Le café de village où l'on connaît son voisin : bois patiné, habitués fidèles et une grande terrasse au soleil. Ici, le charme, c'est l'authenticité — pas la mise en scène. »</p>
+          </div>
+        </div>
+        <figure class="frame a4"><div class="ph" style="background-image:url('assets/interior-2.jpg');background-position:0% 0%"></div><figcaption data-i18n="g4">Les habitués, un verre à la main</figcaption></figure>
+        <figure class="frame a2"><div class="ph" style="background-image:url('assets/interior-2.jpg');background-position:0% 100%"></div><figcaption data-i18n="g5">La terrasse aux beaux jours</figcaption></figure>
+        <figure class="frame a4"><div class="ph" style="background-image:url('assets/hero.jpg');background-position:100% 100%"></div><figcaption data-i18n="g6">La salle</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VISITE ============ -->
+  <section id="visite">
+    <div class="wrap">
+      <div class="vis">
+        <div class="vis-info">
+          <div class="eyebrow" data-i18n="vis_eyebrow">Visite · Besuch · Visit</div>
+          <h2 class="h-serif" data-i18n="vis_title">Passez à Cents</h2>
+          <div class="hours">
+            <div class="sub" data-i18n="hours_bar">Café / brasserie <span class="aconf" data-i18n="badge_conf4">à confirmer</span></div>
+            <div class="row"><span class="d" data-i18n="days_monsat">Lun – Sam</span><span class="h">11:00 – 01:00</span></div>
+            <div class="row"><span class="d" data-i18n="days_sun">Dimanche</span><span class="h" data-i18n="closed">Fermé</span></div>
+            <div class="sub" data-i18n="hours_kitchen">Service en cuisine <span class="aconf" data-i18n="badge_conf5">à confirmer</span></div>
+            <div class="row"><span class="d" data-i18n="days_monthu">Lun – Jeu</span><span class="h">12:00–14:00 · 18:30–22:30</span></div>
+            <div class="row"><span class="d" data-i18n="days_frisat">Ven – Sam</span><span class="h" data-i18n="until23">jusqu'à ~23:00</span></div>
+          </div>
+          <div class="vis-facts">
+            <div class="fact enamel"><div class="k" data-i18n="fact_addr">Adresse</div><div class="v">71, rue de Trèves<br>L-2630 Luxembourg</div></div>
+            <div class="fact enamel"><div class="k" data-i18n="fact_tel">Téléphone</div><div class="v"><a href="tel:+35226430031">+352 26 43 00 31</a></div></div>
+            <div class="fact enamel"><div class="k" data-i18n="fact_pay">Paiement</div><div class="v" data-i18n="fact_pay_v">VISA · Mastercard</div></div>
+            <div class="fact enamel"><div class="k" data-i18n="fact_fb">Facebook</div><div class="v"><a href="https://www.facebook.com/p/Beim-Zeutzius-100054628172149/" target="_blank" rel="noopener">@BeimZeutzius</a></div></div>
+          </div>
+        </div>
+        <div class="map-wrap">
+          <iframe title="Plan — Beim Zeutzius, 71 rue de Trèves, Luxembourg" loading="lazy" src="https://www.google.com/maps?q=71+rue+de+Tr%C3%A8ves,+L-2630+Luxembourg&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot">
+    <div class="foot-mark">Beim Zeutzius<span>Cents Café · Luxembourg</span></div>
+    <div class="foot-col">
+      71, rue de Trèves<br>L-2630 Luxembourg (Cents)<br>
+      <a href="tel:+35226430031">+352 26 43 00 31</a><br>
+      <a href="https://www.facebook.com/p/Beim-Zeutzius-100054628172149/" target="_blank" rel="noopener">Facebook</a>
+    </div>
+    <div class="foot-col">
+      <span data-i18n="foot_hours">Lun–Sam dès 11:00 · Dim fermé</span><br>
+      <span data-i18n="foot_conf">Horaires &amp; carte à confirmer</span>
+    </div>
+  </div>
+  <div class="disc" data-i18n="disclaimer">Site de démonstration réalisé à des fins de présentation — non affilié officiellement à l'établissement. Les horaires, plats, prix et éléments de marque (logo, couleurs, typographie) sont proposés à titre indicatif et doivent être confirmés par l'établissement avant toute mise en ligne. Photographies : galeries publiques du restaurant.</div>
+</footer>
+
+<script>
+const I18N={
+  fr:{
+    nav_home:"Accueil",nav_bar:"Comptoir",nav_carte:"La Carte",nav_stuff:"La Stuff",nav_visit:"Visite",rail_call:"Réserver",
+    vit_tag:"Cents · Luxembourg · depuis toujours le café du quartier",
+    vit_sub:"Éng richteg Lëtzebuerger Stuff zu Cents",
+    vit_lede:"Un vrai bout de vieux Luxembourg, glissé dans le quartier résidentiel de Cents. On y vient pour une Clausel pression et un plat de jarret ou de kniddelen — cuisine de chez nous, sans chichis.",
+    mini1_k:"Bière pression",mini2_k:"Spécialité",mini2_v:"Jarret de porc",mini3_k:"Aux beaux jours",mini3_v:"Grande terrasse",
+    cta_carte:"Voir la carte",cta_call:"Appeler +352 26 43 00 31",
+    cmp_eyebrow:"Um Comptoir · au comptoir",cmp_title:"La bière est fraîche, la maison est ouverte",
+    cmp_lede:"On s'accoude au comptoir comme au village : pression maison, panaché, Picon et un choix de softs. Le cœur de la Stuff, c'est ici.",
+    tap_nab:"Bière sans alcool",tap_soft:"Softs & sirops",tap_soft_v:"Coca · Fanta · Sprite",tap_coffee:"Café & boissons chaudes",tap_coffee_v:"au comptoir",tap_coffee_p:"à conf.",
+    badge_conf:"à confirmer",cmp_note:"Prix relevés via Schlouk-Map — susceptibles d'avoir évolué, à confirmer avec l'établissement.",
+    carte_eyebrow:"D'Kaart · la carte",carte_title:"Les classiques luxembourgeois, faits comme il faut",
+    carte_lede:"Jarret de porc, kniddelen sous toutes leurs formes, treipen, schnitzel — plus des salades généreuses, des tartines et des omelettes servies tout au long de la journée. La cuisine de chez nous, sans détour.",
+    easel_k:"Chaque midi · ardoise",easel_h:"Plat du jour",easel_p:"Le déjeuner du quartier : une suggestion chaude changée chaque jour, annoncée sur l'ardoise du comptoir.",easel_ask:"Demandez l'ardoise",badge_conf2:"à confirmer",
+    sig1:"Le plat le plus recommandé de la maison",sig2:"Boudin noir luxembourgeois, pommes sautées",sig3:"Quenelles de pomme de terre, saucisse au vin blanc",
+    board_k:"Sur l'ardoise",board_h:"La Stuff vous sert",cat1:"Les classiques Lëtzebuerger",cat2:"Salades · tartines · œufs",
+    d_jarret:"Rôti, pommes de terre sautées",d_miel:"Quenelles au lard & crème",d_royal:"La version copieuse de la maison",d_wein:"Saucisse au vin blanc",d_treipen:"Boudin noir, compote de pommes",d_schnitzel:"Sauce aux champignons",
+    d_paysanne:"Généreuse, en assiette complète",d_cold_n:"Assiettes froides",d_cold:"Charcuterie & jambon du pays",d_tart_n:"Tartines",d_tart:"Servies toute la journée",d_om_n:"Omelettes",d_om:"Nature ou garnies",d_steak_n:"Entrecôte grillée",d_steak:"Salade de tomates, garniture",d_jour_n:"Plat du jour",d_jour:"Suggestion du midi sur ardoise",
+    badge_conf3:"à confirmer",board_foot:"Plats reconstitués à partir d'avis et d'annuaires — aucun menu officiel publié. Comptez ± 20–30 € par personne pour un repas complet. Prix & disponibilités à confirmer.",
+    stuff_caption:"D'Stuff · la salle, comme si vous y étiez",
+    g1:"Le comptoir & les pompes à bière",g2:"Banquettes & affiches émaillées d'époque",g3:"Tables en bois",g4:"Les habitués, un verre à la main",g5:"La terrasse aux beaux jours",g6:"La salle",
+    story_k:"Beim Zeutzius — « chez Zeutzius »",story_p:"« Le café de village où l'on connaît son voisin : bois patiné, habitués fidèles et une grande terrasse au soleil. Ici, le charme, c'est l'authenticité — pas la mise en scène. »",
+    vis_eyebrow:"Visite · Besuch · Visit",vis_title:"Passez à Cents",
+    hours_bar:'Café / brasserie <span class="aconf">à confirmer</span>',hours_kitchen:'Service en cuisine <span class="aconf">à confirmer</span>',
+    days_monsat:"Lun – Sam",days_sun:"Dimanche",closed:"Fermé",days_monthu:"Lun – Jeu",days_frisat:"Ven – Sam",until23:"jusqu'à ~23:00",
+    badge_conf4:"à confirmer",badge_conf5:"à confirmer",
+    fact_addr:"Adresse",fact_tel:"Téléphone",fact_pay:"Paiement",fact_pay_v:"VISA · Mastercard",fact_fb:"Facebook",
+    foot_hours:"Lun–Sam dès 11:00 · Dim fermé",foot_conf:"Horaires & carte à confirmer",
+    disclaimer:"Site de démonstration réalisé à des fins de présentation — non affilié officiellement à l'établissement. Les horaires, plats, prix et éléments de marque (logo, couleurs, typographie) sont proposés à titre indicatif et doivent être confirmés par l'établissement avant toute mise en ligne. Photographies : galeries publiques du restaurant."
+  },
+  de:{
+    nav_home:"Start",nav_bar:"Theke",nav_carte:"Karte",nav_stuff:"D'Stuff",nav_visit:"Besuch",rail_call:"Reservieren",
+    vit_tag:"Cents · Luxemburg · das Café des Viertels seit jeher",
+    vit_sub:"Éng richteg Lëtzebuerger Stuff zu Cents",
+    vit_lede:"Ein echtes Stück altes Luxemburg, mitten im Wohnviertel Cents. Man kommt für ein Clausel vom Fass und einen Teller Eisbein oder Kniddelen — Hausmannskost, ganz ohne Schnickschnack.",
+    mini1_k:"Bier vom Fass",mini2_k:"Spezialität",mini2_v:"Schweinshaxe",mini3_k:"Bei schönem Wetter",mini3_v:"Große Terrasse",
+    cta_carte:"Zur Karte",cta_call:"Anrufen +352 26 43 00 31",
+    cmp_eyebrow:"Um Comptoir · an der Theke",cmp_title:"Das Bier ist frisch, das Haus ist offen",
+    cmp_lede:"Man lehnt sich an die Theke wie im Dorf: Fassbier, Panaché, Picon und eine Auswahl an Softdrinks. Hier schlägt das Herz der Stuff.",
+    tap_nab:"Alkoholfreies Bier",tap_soft:"Softdrinks & Sirup",tap_soft_v:"Coca · Fanta · Sprite",tap_coffee:"Kaffee & Heißgetränke",tap_coffee_v:"an der Theke",tap_coffee_p:"n. Best.",
+    badge_conf:"zu bestätigen",cmp_note:"Preise über Schlouk-Map erfasst — können sich geändert haben, bitte im Lokal bestätigen.",
+    carte_eyebrow:"D'Kaart · die Karte",carte_title:"Luxemburger Klassiker, richtig gemacht",
+    carte_lede:"Schweinshaxe, Kniddelen in allen Varianten, Treipen, Schnitzel — dazu üppige Salate, Tartines und Omeletts, den ganzen Tag serviert. Küche von hier, ganz direkt.",
+    easel_k:"Jeden Mittag · Tafel",easel_h:"Tagesgericht",easel_p:"Der Mittagstisch des Viertels: ein warmes Gericht, täglich wechselnd, an der Tafel an der Theke angekündigt.",easel_ask:"Nach der Tafel fragen",badge_conf2:"zu bestätigen",
+    sig1:"Das meistempfohlene Gericht des Hauses",sig2:"Luxemburger Blutwurst, Bratkartoffeln",sig3:"Kartoffelklöße, Weißweinwurst",
+    board_k:"Auf der Tafel",board_h:"D'Stuff serviert",cat1:"Die Lëtzebuerger Klassiker",cat2:"Salate · Tartines · Eier",
+    d_jarret:"Gebraten, Bratkartoffeln",d_miel:"Klöße mit Speck & Sahne",d_royal:"Die üppige Version des Hauses",d_wein:"Weißweinwurst",d_treipen:"Blutwurst, Apfelmus",d_schnitzel:"Champignonsauce",
+    d_paysanne:"Üppig, als komplette Platte",d_cold_n:"Kalte Platten",d_cold:"Aufschnitt & heimischer Schinken",d_tart_n:"Tartines",d_tart:"Den ganzen Tag serviert",d_om_n:"Omeletts",d_om:"Natur oder gefüllt",d_steak_n:"Gegrilltes Entrecôte",d_steak:"Tomatensalat, Beilage",d_jour_n:"Tagesgericht",d_jour:"Mittagsempfehlung auf der Tafel",
+    badge_conf3:"zu bestätigen",board_foot:"Gerichte aus Bewertungen und Verzeichnissen rekonstruiert — keine offizielle Karte veröffentlicht. Rechnen Sie mit ± 20–30 € pro Person für eine volle Mahlzeit. Preise & Verfügbarkeit zu bestätigen.",
+    stuff_caption:"D'Stuff · der Saal, als wären Sie dabei",
+    g1:"Die Theke & die Bierzapfhähne",g2:"Bänke & alte Emailplakate",g3:"Holztische",g4:"Die Stammgäste, ein Glas in der Hand",g5:"Die Terrasse bei schönem Wetter",g6:"Der Saal",
+    story_k:"Beim Zeutzius — „bei Zeutzius“",story_p:"„Das Dorfcafé, in dem man seinen Nachbarn kennt: patiniertes Holz, treue Stammgäste und eine große Terrasse in der Sonne. Der Charme hier ist die Echtheit — keine Inszenierung.“",
+    vis_eyebrow:"Visite · Besuch · Visit",vis_title:"Kommen Sie nach Cents",
+    hours_bar:'Café / Brasserie <span class="aconf">zu bestätigen</span>',hours_kitchen:'Küchenservice <span class="aconf">zu bestätigen</span>',
+    days_monsat:"Mo – Sa",days_sun:"Sonntag",closed:"Geschlossen",days_monthu:"Mo – Do",days_frisat:"Fr – Sa",until23:"bis ~23:00",
+    badge_conf4:"zu bestätigen",badge_conf5:"zu bestätigen",
+    fact_addr:"Adresse",fact_tel:"Telefon",fact_pay:"Zahlung",fact_pay_v:"VISA · Mastercard",fact_fb:"Facebook",
+    foot_hours:"Mo–Sa ab 11:00 · So geschlossen",foot_conf:"Öffnungszeiten & Karte zu bestätigen",
+    disclaimer:"Demonstrations-Website zu Präsentationszwecken — nicht offiziell mit dem Lokal verbunden. Öffnungszeiten, Gerichte, Preise und Markenelemente (Logo, Farben, Typografie) sind unverbindliche Vorschläge und müssen vor einer Veröffentlichung vom Lokal bestätigt werden. Fotos: öffentliche Galerien des Restaurants."
+  },
+  en:{
+    nav_home:"Home",nav_bar:"The Bar",nav_carte:"Menu",nav_stuff:"The Room",nav_visit:"Visit",rail_call:"Book",
+    vit_tag:"Cents · Luxembourg · the neighbourhood café, always",
+    vit_sub:"Éng richteg Lëtzebuerger Stuff zu Cents — a real Luxembourg pub",
+    vit_lede:"A genuine slice of old Luxembourg, tucked into the residential Cents quarter. People come for a Clausel on tap and a plate of pork knuckle or kniddelen — honest home cooking, no fuss.",
+    mini1_k:"On tap",mini2_k:"Specialty",mini2_v:"Pork knuckle",mini3_k:"In warm weather",mini3_v:"Large terrace",
+    cta_carte:"See the menu",cta_call:"Call +352 26 43 00 31",
+    cmp_eyebrow:"Um Comptoir · at the bar",cmp_title:"The beer is cold, the house is open",
+    cmp_lede:"Lean on the bar like in the village: house draught, shandy, Picon and a choice of soft drinks. This is the heart of the Stuff.",
+    tap_nab:"Alcohol-free beer",tap_soft:"Softs & cordials",tap_soft_v:"Coke · Fanta · Sprite",tap_coffee:"Coffee & hot drinks",tap_coffee_v:"at the bar",tap_coffee_p:"TBC",
+    badge_conf:"to confirm",cmp_note:"Prices captured via Schlouk-Map — may have changed, to be confirmed with the venue.",
+    carte_eyebrow:"D'Kaart · the menu",carte_title:"Luxembourg classics, done properly",
+    carte_lede:"Pork knuckle, kniddelen in every form, treipen, schnitzel — plus generous salads, open sandwiches and omelettes served throughout the day. Cooking from here, straight up.",
+    easel_k:"Every lunchtime · board",easel_h:"Dish of the day",easel_p:"The neighbourhood lunch: one hot suggestion, changed daily, chalked on the board at the bar.",easel_ask:"Ask for the board",badge_conf2:"to confirm",
+    sig1:"The most-recommended dish in the house",sig2:"Luxembourgish black pudding, sautéed potatoes",sig3:"Potato dumplings, white-wine sausage",
+    board_k:"On the board",board_h:"The Stuff serves you",cat1:"The Lëtzebuerger classics",cat2:"Salads · tartines · eggs",
+    d_jarret:"Roasted, sautéed potatoes",d_miel:"Dumplings with bacon & cream",d_royal:"The hearty house version",d_wein:"White-wine sausage",d_treipen:"Black pudding, apple sauce",d_schnitzel:"Mushroom sauce",
+    d_paysanne:"Generous, as a full plate",d_cold_n:"Cold plates",d_cold:"Charcuterie & local ham",d_tart_n:"Open sandwiches",d_tart:"Served all day",d_om_n:"Omelettes",d_om:"Plain or filled",d_steak_n:"Grilled sirloin",d_steak:"Tomato salad, side",d_jour_n:"Dish of the day",d_jour:"Lunch suggestion on the board",
+    badge_conf3:"to confirm",board_foot:"Dishes reconstructed from reviews and directories — no official menu published. Expect ± €20–30 per person for a full meal. Prices & availability to be confirmed.",
+    stuff_caption:"D'Stuff · the room, as if you were there",
+    g1:"The bar & the beer taps",g2:"Benches & vintage enamel posters",g3:"Wooden tables",g4:"The regulars, glass in hand",g5:"The terrace in warm weather",g6:"The dining room",
+    story_k:"Beim Zeutzius — “at Zeutzius's place”",story_p:"“The village café where you know your neighbour: worn wood, loyal regulars and a big sun-facing terrace. The charm here is authenticity — not a set piece.”",
+    vis_eyebrow:"Visite · Besuch · Visit",vis_title:"Come to Cents",
+    hours_bar:'Café / brasserie <span class="aconf">to confirm</span>',hours_kitchen:'Kitchen service <span class="aconf">to confirm</span>',
+    days_monsat:"Mon – Sat",days_sun:"Sunday",closed:"Closed",days_monthu:"Mon – Thu",days_frisat:"Fri – Sat",until23:"until ~23:00",
+    badge_conf4:"to confirm",badge_conf5:"to confirm",
+    fact_addr:"Address",fact_tel:"Phone",fact_pay:"Payment",fact_pay_v:"VISA · Mastercard",fact_fb:"Facebook",
+    foot_hours:"Mon–Sat from 11:00 · Sun closed",foot_conf:"Hours & menu to be confirmed",
+    disclaimer:"Demonstration website created for presentation purposes — not officially affiliated with the venue. Opening hours, dishes, prices and brand elements (logo, colours, typography) are indicative proposals and must be confirmed by the venue before going live. Photos: the restaurant's public galleries."
+  }
+};
+const btns=document.querySelectorAll('.lang button');
+function setLang(l){
+  document.documentElement.lang=l;
+  const dict=I18N[l];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(dict[k]!==undefined) el.innerHTML=dict[k];
+  });
+  btns.forEach(b=>b.classList.toggle('on',b.dataset.lang===l));
+}
+btns.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+// default is French (already in HTML); ensure state consistency
+setLang('fr');
+</script>
+</body>
+</html>
