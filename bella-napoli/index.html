@@ -1,417 +1,846 @@
 <!DOCTYPE html>
-<!--
-  BELLA NAPOLI — closing-grade teaser (sales demo) — ON-BRAND, TRILINGUAL (FR default · DE · EN).
-  Luxembourg's oldest pizzeria — family-run (Balestri) since 1976, wood-fired, by the Gare.
-  OVERHAUL PITCH: venue currently runs a basic DIY Wix site (pizzeria-bellanapoli.lu) and a broken old
-  domain (bellanapoli.lu, SSL mismatch). This demo shows a custom site that does justice to 50 years of legacy.
-  Real photos from TripAdvisor (assets/). Story + tagline from their Wix site / supermiro.lu.
-  Menu/prices from Wolt — MAY INCLUDE PLATFORM MARKUP; CONFIRM WITH OWNER before publishing.
-  Hours conflict between sources (Monday + Saturday lunch unconfirmed). Brand palette ESTIMATED from
-  placemat branding; no logo asset found → typographic wordmark used.
--->
 <html lang="fr">
 <head>
-<script>document.documentElement.classList.add('js');</script>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="robots" content="noindex, nofollow" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>Bella Napoli — Pizzeria napolitaine depuis 1976 · Luxembourg</title>
-<meta name="description" content="Restaurant Pizzeria Bella Napoli — la plus ancienne pizzeria de Luxembourg, une histoire de famille depuis 1976. Pizzas au feu de bois, pâtes fraîches maison, recettes napolitaines. 4 rue de Strasbourg, quartier Gare." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<meta name="description" content="Bella Napoli, la plus ancienne pizzeria de Luxembourg. Pizzas au feu de bois, pâtes faites maison — une histoire de famille depuis 1976. 4 rue de Strasbourg, réservation par téléphone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!--
+  INTERNAL BUILD NOTES (not shown to visitor):
+  - Menu prices sourced from Wolt — CONFIRM in-house prices with owner (Wolt may carry platform markup).
+  - Opening hours: Monday open/closed and Saturday LUNCH are UNCONFIRMED — flagged "à confirmer" on page; do not assert as fact in pitch.
+  - Wordmark + oven-seal are a DESIGN PROPOSAL crafted from the placemat branding — swap for owner's real logo when supplied.
+  - Palette ESTIMATED from placemat — confirm with owner.
+  - Excluded per venue note: _IRRELEVANT_wix_platform_logo.png and any Wix/platform asset.
+-->
 <style>
   :root{
-    --coral:#c26050; --coral-deep:#a44a3c; --ink:#2c2218; --paper:#fffaf2; --cream:#f5ede0; --cream2:#ece0cd;
-    --green:#2d5016; --gold:#c79a3e; --line:#e7dcc8; --muted:#857664; --maxw:1180px;
+    --terra:#C26050;      /* terracotta — rail / primary */
+    --terra-deep:#A8483A; /* deep terracotta — rail depth / hovers */
+    --cream:#F5EDE0;       /* warm cream — page bg */
+    --ivory:#FBF6EC;       /* ivory — raised ledger surfaces */
+    --ink:#2C2218;         /* charcoal-brown — body text */
+    --olive:#2D5016;       /* Italian olive-green — accents */
+    --ember:#E0A24E;       /* ember amber — wood-fire glow / focus */
+    --rail-w:300px;
+    --field-pad:56px;
+    --skel:#e7d9c4;        /* image skeleton to avoid layout shift */
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Hanken Grotesk",system-ui,sans-serif;
+    --mono:"Spline Sans Mono",ui-monospace,monospace;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;
-    font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
-  a{color:inherit;text-decoration:none}
-  .serif{font-family:'Fraunces',Georgia,serif}
-  .eyebrow{font-size:.76rem;letter-spacing:.26em;text-transform:uppercase;color:var(--coral-deep);font-weight:600}
-
-  .btn{display:inline-flex;align-items:center;gap:.5em;font-family:'Inter',sans-serif;font-weight:600;
-    font-size:.96rem;letter-spacing:.01em;padding:.78em 1.7em;border-radius:100px;border:1.5px solid transparent;transition:.22s;cursor:pointer;white-space:nowrap}
-  .btn-coral{background:var(--coral);color:#fff}
-  .btn-coral:hover{background:var(--coral-deep);transform:translateY(-2px);box-shadow:0 14px 28px -12px var(--coral)}
-  .btn-ghost{border-color:var(--coral);color:var(--ink)}
-  .btn-ghost:hover{background:var(--coral);color:#fff}
-  .btn-ghost-light{border-color:rgba(255,255,255,.55);color:#fff}
-  .btn-ghost-light:hover{background:#fff;color:var(--coral-deep)}
-  .btn-white{background:#fff;color:var(--coral-deep)}
-  .btn-white:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(0,0,0,.4)}
-
-  header{position:sticky;top:0;z-index:100;background:rgba(255,250,242,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:80px;gap:14px}
-  .brand{display:flex;flex-direction:column;line-height:1}
-  .brand .wm{font-family:'Fraunces',serif;font-weight:700;font-size:1.55rem;letter-spacing:.01em;color:var(--coral-deep)}
-  .brand small{font-family:'Inter';font-weight:600;font-size:.56rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:3px}
-  .nav-links{display:flex;gap:32px;align-items:center}
-  .nav-links a{font-weight:500;font-size:.96rem;color:#5e5343;transition:.2s}
-  .nav-links a:hover{color:var(--coral-deep)}
-  .nav-cta{display:flex;gap:14px;align-items:center}
-  .lang-switch{display:flex;border:1px solid var(--line);border-radius:100px;overflow:hidden;flex:none}
-  .lang-switch button{font-family:'Inter',sans-serif;font-weight:600;font-size:.76rem;letter-spacing:.03em;
-    padding:.46em .68em;background:none;border:0;cursor:pointer;color:var(--muted);transition:.18s}
-  .lang-switch button.active{background:var(--coral);color:#fff}
-  .lang-switch button:not(.active):hover{color:var(--coral-deep)}
-  .burger-ico{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer}
-  .burger-ico span{width:26px;height:2.5px;background:var(--ink);border-radius:2px}
-
-  /* hero */
-  .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;
-    background:linear-gradient(180deg,rgba(44,34,24,.15),rgba(44,34,24,.8)),url('assets/hero.jpg') center/cover no-repeat;color:#fff}
-  .hero .wrap{padding-top:90px;padding-bottom:66px;width:100%}
-  .hero .eyebrow{color:#f0c9a0}
-  .hero .est{display:inline-block;font-family:'Fraunces',serif;font-style:italic;font-size:.95rem;color:#23303f;
-    background:var(--gold);padding:.34em .9em;border-radius:100px;margin-bottom:18px;color:#3a2c12;font-weight:600}
-  .hero h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(2.9rem,7vw,5.8rem);line-height:1.0;letter-spacing:-.01em;margin:.12em 0 .26em}
-  .hero h1 em{font-style:italic;color:#f3b27e}
-  .hero p.lead{font-size:clamp(1.05rem,1.9vw,1.32rem);color:#f5e7d8;max-width:46ch;margin-bottom:1.7em}
-  .hero-cta{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:24px}
-  .addr{display:flex;align-items:center;gap:10px;color:#ecd9c5;font-size:.95rem;font-weight:500}
-  .addr .dot{width:8px;height:8px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 4px rgba(194,96,80,.3);flex:none}
-
-  section{padding:clamp(56px,7.5vw,104px) 0}
-  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:44px;flex-wrap:wrap}
-  .sec-head h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(2.1rem,5vw,3.7rem)}
-  .sec-head h2 em{font-style:italic;color:var(--coral-deep)}
-  .sec-head p{color:var(--muted);max-width:38ch}
-
-  /* story */
-  .story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
-  .story-photo{width:100%;border-radius:18px;aspect-ratio:4/4.4;object-fit:cover;box-shadow:0 30px 64px -32px rgba(44,34,24,.55)}
-  .story h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(2rem,4.6vw,3.3rem);margin:.1em 0 .5em;line-height:1.05}
-  .story h2 em{font-style:italic;color:var(--coral-deep)}
-  .story p.body{color:#5e5343;font-size:1.08rem;margin-bottom:1.4em}
-  .pillars{display:grid;gap:14px;margin-top:6px}
-  .pillar{display:flex;gap:16px;align-items:flex-start}
-  .pillar .ico{font-size:1.4rem;background:var(--cream);border:1px solid var(--line);
-    width:48px;height:48px;display:grid;place-items:center;border-radius:50%;flex:none}
-  .pillar h3{font-family:'Fraunces',serif;font-weight:600;font-size:1.2rem;margin-bottom:2px}
-  .pillar p{color:var(--muted);font-size:.97rem}
-
-  /* menu */
-  .menu{background:var(--cream)}
-  .mcat{margin-bottom:42px}
-  .mcat:last-child{margin-bottom:0}
-  .mcat-head{display:flex;align-items:baseline;gap:16px;margin-bottom:14px}
-  .mcat-head h3{font-family:'Fraunces',serif;font-weight:600;font-style:italic;font-size:1.6rem;color:var(--coral-deep)}
-  .mcat-head .ln{flex:1;height:1px;background:var(--line)}
-  .mitems{display:grid;grid-template-columns:1fr 1fr;gap:2px 46px}
-  .mitem{display:flex;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
-  .mitem .ml{flex:1}
-  .mitem .nm{font-family:'Fraunces',serif;font-weight:600;font-size:1.14rem}
-  .mitem .ds{color:var(--muted);font-size:.88rem;margin-top:0}
-  .mitem .mp{font-family:'Fraunces',serif;font-weight:600;font-size:1.1rem;white-space:nowrap;color:var(--coral-deep)}
-  .pill{font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.2em .5em;border-radius:100px;margin-left:7px;vertical-align:middle;background:#e6efdd;color:var(--green);border:1px solid #cfe0bf}
-  .menu-note{margin-top:8px;color:var(--muted);font-size:.92rem}
-  .menu-note b{color:var(--ink)}
-  @media(max-width:760px){.mitems{grid-template-columns:1fr;gap:0}}
-
-  /* band */
-  .band{background:linear-gradient(150deg,var(--coral),var(--coral-deep));color:#fff;text-align:center}
-  .band .inner{max-width:760px;margin:0 auto}
-  .band h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(2rem,5.2vw,3.7rem);margin-bottom:.32em}
-  .band h2 em{font-style:italic;color:#ffe0c2}
-  .band p{color:#fbe7da;font-size:1.1rem;max-width:48ch;margin:0 auto 1.6em}
-  .taglist{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
-  .tag{font-size:.76rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.55em .95em;border:1.5px solid rgba(255,255,255,.42);border-radius:100px}
-
-  /* gallery */
-  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .gallery img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
-
-  /* visit */
-  .visit{background:var(--cream)}
-  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:stretch}
-  .info{display:flex;flex-direction:column;gap:18px}
-  .info-row{display:flex;gap:16px;align-items:flex-start;padding-bottom:18px;border-bottom:1px solid var(--line)}
-  .info-row .k{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-deep);font-weight:700;min-width:94px;padding-top:5px}
-  .info-row .val{font-size:1.04rem}
-  .info-row .val a{color:var(--coral-deep);font-weight:600}
-  .info-row .val .small{color:var(--muted);font-size:.9rem;display:block;margin-top:3px}
-  .map{border-radius:14px;overflow:hidden;border:1px solid var(--line);min-height:360px}
-  .map iframe{width:100%;height:100%;min-height:360px;border:0}
-
-  footer{background:#241b13;color:#cbbba6;padding:50px 0 38px}
-  .foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-  .foot .fb .wm{font-family:'Fraunces',serif;color:#fff;font-size:1.4rem;font-weight:700}
-  .foot .fb small{display:block;font-size:.82rem;color:#cbbba6;margin-top:3px}
-  .foot p{font-size:.9rem;text-align:right}
-  .foot a{color:#f0c9a0}
-
-  .js .reveal{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.2,1)}
-  .js .reveal.in{opacity:1;transform:none}
-
-  @media(max-width:880px){
-    .nav-links{display:none}.nav-cta .btn-ghost{display:none}.burger-ico{display:flex}
-    .story-grid{grid-template-columns:1fr;gap:30px}.story-photo{aspect-ratio:16/11;order:-1}
-    .gallery{grid-template-columns:1fr 1fr}.visit-grid{grid-template-columns:1fr}
-    .mobile-open .nav-links{display:flex;position:absolute;top:80px;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:8px 28px 20px}
-    .mobile-open .nav-links a{padding:14px 0;border-bottom:1px solid var(--line)}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
   }
-  @media(max-width:480px){ .nav-cta .btn-coral{display:none} .foot{flex-direction:column;text-align:center}.foot p{text-align:center} }
+  a{color:inherit}
+  img{display:block}
+  ::selection{background:var(--ember);color:var(--ink)}
+  :focus-visible{outline:3px solid var(--ember);outline-offset:3px;border-radius:2px}
+
+  /* ============ PERSISTENT LEFT RAIL ============ */
+  .rail{
+    position:fixed;top:0;left:0;height:100vh;width:var(--rail-w);
+    background:var(--terra);
+    color:var(--cream);
+    display:flex;flex-direction:column;
+    padding:34px 30px 30px;
+    z-index:60;
+    overflow:hidden;
+    box-shadow:2px 0 0 rgba(0,0,0,.08), 24px 0 60px -40px rgba(44,34,24,.5);
+  }
+  .rail::before{ /* baked-in oven grain */
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(circle at 80% 12%, rgba(224,162,78,.22), transparent 45%),
+      linear-gradient(180deg, rgba(0,0,0,.03), rgba(0,0,0,.12));
+  }
+  .rail>*{position:relative;z-index:1}
+
+  /* --- ember scroll progress line --- */
+  .ember-track{
+    position:absolute;top:0;right:0;width:3px;height:100%;
+    background:rgba(0,0,0,.14);
+  }
+  .ember-fill{position:absolute;top:0;left:0;width:100%;height:0%;
+    background:linear-gradient(180deg,var(--ember),#f2c785);}
+  .ember-dot{
+    position:absolute;left:50%;top:0;transform:translate(-50%,-50%);
+    width:11px;height:11px;border-radius:50%;
+    background:var(--ember);
+    box-shadow:0 0 0 3px rgba(224,162,78,.35), 0 0 14px 3px rgba(224,162,78,.9);
+  }
+
+  /* --- rail brand block --- */
+  .brand{display:flex;flex-direction:column;gap:14px}
+  .seal{width:78px;height:78px;flex:none}
+  .seal-ring{fill:none;stroke:var(--cream);stroke-width:2}
+  .seal text{fill:var(--cream);font-family:var(--mono);font-size:8.1px;letter-spacing:2px;font-weight:500}
+  .wordmark{font-family:var(--serif);font-weight:600;line-height:.92;letter-spacing:-.01em}
+  .wordmark .l1{display:block;font-size:2.5rem}
+  .wordmark .l2{display:block;font-size:2.5rem;color:#f3d9b4}
+  .rail-kicker{font-family:var(--mono);font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;color:#f3d9b4;margin-top:2px}
+
+  /* --- vertical 1976 in rail middle --- */
+  .rail-year{
+    flex:1;display:flex;align-items:center;justify-content:flex-start;
+    margin:8px 0;
+  }
+  .rail-year span{
+    font-family:var(--mono);font-weight:500;
+    font-size:clamp(3.4rem,9vh,5.2rem);
+    letter-spacing:.05em;
+    color:rgba(255,255,255,.16);
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    user-select:none;
+  }
+
+  /* --- rail footer: call + lang --- */
+  .rail-foot{display:flex;flex-direction:column;gap:16px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-family:var(--sans);font-weight:700;font-size:.98rem;
+    padding:15px 20px;border-radius:11px;border:none;cursor:pointer;
+    text-decoration:none;line-height:1.15;transition:transform .15s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .btn-call{
+    background:var(--cream);color:var(--terra-deep);
+    box-shadow:0 8px 24px -10px rgba(0,0,0,.5);width:100%;
+  }
+  .btn-call:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(0,0,0,.55)}
+  .btn-call .num{font-family:var(--mono);font-weight:600;font-size:.86rem;letter-spacing:.02em}
+  .btn-call .stack{display:flex;flex-direction:column;align-items:flex-start;gap:1px}
+  .btn-call .lab{font-size:.9rem}
+
+  .langs{display:flex;gap:6px;align-items:center}
+  .lang{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;
+    background:transparent;border:1px solid rgba(255,255,255,.4);
+    color:var(--cream);padding:6px 11px;border-radius:7px;cursor:pointer;
+    transition:background .15s,color .15s;text-transform:uppercase;
+  }
+  .lang:hover{background:rgba(255,255,255,.14)}
+  .lang.active{background:var(--cream);color:var(--terra-deep);border-color:var(--cream);font-weight:600}
+
+  /* ============ CONTENT FIELD ============ */
+  .field{
+    margin-left:var(--rail-w);
+    max-width:1160px;
+    padding:0 var(--field-pad) 0 var(--field-pad);
+  }
+  section{padding:96px 0}
+  .kicker{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--terra-deep);display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;
+  }
+  .kicker::before{content:"";width:34px;height:2px;background:var(--olive)}
+  h2{font-family:var(--serif);font-weight:600;line-height:1.02;letter-spacing:-.015em;font-size:clamp(2.1rem,4.2vw,3.3rem)}
+  .lead{font-size:1.14rem;max-width:60ch}
+
+  /* --- MASTHEAD --- */
+  .mast{padding-top:70px;position:relative}
+  .mast-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:54px;align-items:center}
+  .mast-eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--terra-deep);margin-bottom:20px}
+  .mast h1{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(2.6rem,5.2vw,4.3rem);line-height:.98;letter-spacing:-.02em;
+    margin-bottom:22px;
+  }
+  .mast h1 em{font-style:italic;color:var(--terra)}
+  .mast .lead{margin-bottom:32px;color:#4a3d2e}
+  .mast-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn-primary{background:var(--terra);color:var(--cream);box-shadow:0 12px 30px -12px rgba(168,72,58,.75)}
+  .btn-primary:hover{background:var(--terra-deep);transform:translateY(-2px)}
+  .btn-primary .num{font-family:var(--mono);font-weight:600;font-size:.85rem;opacity:.92}
+  .btn-primary .stack{display:flex;flex-direction:column;align-items:flex-start;gap:1px}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid rgba(44,34,24,.28);font-weight:600}
+  .btn-ghost:hover{border-color:var(--terra);color:var(--terra-deep)}
+
+  .hero-frame{
+    position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;
+    background:var(--skel);box-shadow:0 30px 60px -30px rgba(44,34,24,.6);
+    border:1px solid rgba(44,34,24,.06);
+  }
+  .hero-frame img{width:100%;height:100%;object-fit:cover}
+  .hero-cap{
+    position:absolute;left:14px;bottom:14px;right:14px;
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:var(--cream);
+    background:rgba(44,34,24,.5);backdrop-filter:blur(3px);
+    padding:8px 12px;border-radius:8px;
+  }
+  /* oversized bleeding numeral behind masthead */
+  .mast-numeral{
+    position:absolute;top:-6px;right:calc(-1 * var(--field-pad));
+    font-family:var(--serif);font-weight:700;font-size:clamp(9rem,22vw,20rem);
+    line-height:.8;color:rgba(194,96,80,.10);z-index:-1;pointer-events:none;
+    letter-spacing:-.04em;
+  }
+
+  /* --- HERITAGE (Cinquant'anni) --- */
+  .heritage{position:relative}
+  .heritage-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px;align-items:center}
+  .big-num{
+    font-family:var(--serif);font-weight:700;line-height:.82;letter-spacing:-.03em;color:var(--terra);
+    font-size:clamp(6rem,15vw,12rem);
+  }
+  .big-num small{display:block;font-family:var(--mono);font-weight:500;font-size:.9rem;letter-spacing:.3em;
+    color:var(--olive);text-transform:uppercase;margin-top:14px;padding-left:6px}
+  .heritage-body{border-left:3px solid var(--olive);padding-left:28px}
+  .heritage-body h2{margin-bottom:20px}
+  .heritage-body p{font-size:1.08rem;color:#4a3d2e;max-width:52ch}
+  .heritage-body p+p{margin-top:16px}
+
+  /* --- WOOD-FIRED full-bleed charcoal band --- */
+  .forno{
+    background:var(--ink);color:var(--cream);
+    margin:0 calc(-1 * var(--field-pad));
+    padding:0;border-radius:20px;overflow:hidden;
+    position:relative;
+  }
+  .forno-grid{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+  .forno-text{padding:74px 52px 74px 56px;display:flex;flex-direction:column;justify-content:center}
+  .forno .kicker{color:var(--ember)}
+  .forno .kicker::before{background:var(--ember)}
+  .forno h2{
+    color:var(--cream);margin-bottom:20px;
+    text-shadow:0 0 26px rgba(224,162,78,.28);
+  }
+  .forno h2 .glow{color:var(--ember)}
+  .forno p{color:#e8ddca;font-size:1.08rem;max-width:44ch;margin-bottom:30px}
+  .forno-points{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;
+    border:1px solid rgba(224,162,78,.5);color:var(--ember);
+    padding:8px 14px;border-radius:30px;
+  }
+  .forno-img{position:relative;min-height:420px;background:var(--skel)}
+  .forno-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .forno-img::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(44,34,24,.55),transparent 40%);}
+  /* ember glow accent on the band */
+  .forno-glow{
+    position:absolute;width:280px;height:280px;border-radius:50%;
+    left:44%;top:-90px;pointer-events:none;
+    background:radial-gradient(circle,rgba(224,162,78,.35),transparent 70%);
+    animation:shimmer 5s ease-in-out infinite;
+  }
+  @keyframes shimmer{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.9;transform:scale(1.08)}}
+
+  /* --- MENU ledger --- */
+  .menu-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:44px}
+  .menu-head .txt{max-width:60ch}
+  .menu-head .lead{margin-top:14px;color:#4a3d2e}
+  .price-flag{font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;color:var(--terra-deep);
+    background:var(--ivory);border:1px dashed rgba(168,72,58,.4);padding:8px 13px;border-radius:8px;white-space:nowrap}
+  .ledger{display:grid;grid-template-columns:repeat(3,1fr);gap:38px}
+  .ledger-col{background:var(--ivory);border:1px solid rgba(44,34,24,.08);border-radius:14px;padding:30px 28px;
+    box-shadow:0 18px 40px -32px rgba(44,34,24,.6)}
+  .ledger-col h3{font-family:var(--serif);font-weight:600;font-size:1.42rem;color:var(--terra-deep);
+    margin-bottom:22px;padding-bottom:12px;border-bottom:2px solid rgba(194,96,80,.25)}
+  .dish{margin-bottom:20px}
+  .dish:last-child{margin-bottom:0}
+  .dish-line{display:flex;align-items:baseline;gap:8px}
+  .dish-name{font-weight:600;font-size:1.02rem;white-space:nowrap}
+  .dish-dots{flex:1;border-bottom:1.5px dotted rgba(44,34,24,.32);transform:translateY(-4px)}
+  .dish-price{font-family:var(--mono);font-weight:600;font-size:.95rem;color:var(--ink)}
+  .dish-desc{font-size:.9rem;color:#6b5c48;margin-top:3px;line-height:1.45}
+
+  /* --- IN FAMIGLIA overlap --- */
+  .fam-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .fam-imgs{position:relative;min-height:460px}
+  .fam-a{
+    position:absolute;top:0;left:0;width:74%;aspect-ratio:5/4;border-radius:14px;overflow:hidden;
+    background:var(--skel);box-shadow:0 26px 54px -28px rgba(44,34,24,.6);border:4px solid var(--cream);z-index:2;
+  }
+  .fam-b{
+    position:absolute;bottom:0;right:0;width:56%;aspect-ratio:1/1;border-radius:14px;overflow:hidden;
+    background:var(--skel) center/200% 200% no-repeat;
+    background-image:url("assets/interior.jpg");
+    background-position:0% 0%;
+    box-shadow:0 26px 54px -28px rgba(44,34,24,.55);border:4px solid var(--cream);z-index:1;
+  }
+  .fam-a img{width:100%;height:100%;object-fit:cover}
+  .fam-text .lead{color:#4a3d2e;margin-top:20px}
+  .fam-text h2{margin-top:0}
+
+  /* --- PRENOTA reserve --- */
+  .prenota{background:var(--ivory);margin:0 calc(-1 * var(--field-pad));padding:80px var(--field-pad);border-radius:20px;
+    border:1px solid rgba(44,34,24,.07)}
+  .prenota-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+  .reserve-phone{
+    font-family:var(--mono);font-weight:600;font-size:clamp(2rem,4.6vw,3.1rem);letter-spacing:.01em;
+    color:var(--terra-deep);text-decoration:none;display:inline-block;margin:18px 0 26px;line-height:1;
+  }
+  .reserve-phone:hover{color:var(--terra)}
+  .prenota .lead{color:#4a3d2e}
+  .res-cta{display:flex;flex-wrap:wrap;gap:13px;margin-top:8px}
+  .res-tertiary{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px}
+  .res-tertiary a{font-family:var(--mono);font-size:.82rem;letter-spacing:.04em;color:var(--terra-deep);
+    text-decoration:none;border-bottom:1.5px solid rgba(168,72,58,.35);padding-bottom:2px}
+  .res-tertiary a:hover{border-color:var(--terra)}
+  .hours{background:var(--cream);border-radius:14px;padding:28px 30px;border:1px solid rgba(44,34,24,.08)}
+  .hours h3{font-family:var(--serif);font-weight:600;font-size:1.3rem;margin-bottom:18px;color:var(--ink)}
+  .hours-row{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px dotted rgba(44,34,24,.2);font-size:.96rem}
+  .hours-row:last-of-type{border-bottom:none}
+  .hours-row .day{font-weight:600}
+  .hours-row .time{font-family:var(--mono);font-size:.86rem;color:#4a3d2e;text-align:right}
+  .hours-note{margin-top:14px;font-size:.8rem;color:var(--terra-deep);font-style:italic}
+
+  /* --- FOOTER --- */
+  footer{background:var(--ink);color:var(--cream);margin-left:var(--rail-w);}
+  .foot-inner{max-width:1160px;padding:70px var(--field-pad) 40px;}
+  .foot-grid{display:grid;grid-template-columns:1.1fr 1fr 1.3fr;gap:48px;align-items:start}
+  .foot-brand .wm{font-family:var(--serif);font-weight:600;font-size:1.9rem;line-height:1;color:var(--cream)}
+  .foot-brand .wm em{color:var(--ember);font-style:normal}
+  .foot-brand .tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:#c7b393;margin-top:10px}
+  .foot-brand p{color:#c7b393;font-size:.86rem;margin-top:18px;max-width:34ch}
+  .foot-h{font-family:var(--mono);font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ember);margin-bottom:16px}
+  .foot-block p{font-size:.95rem;color:#e8ddca;margin-bottom:6px}
+  .foot-block a{color:#e8ddca;text-decoration:none}
+  .foot-block a:hover{color:var(--ember)}
+  .foot-park{font-size:.82rem !important;color:#c7b393 !important;margin-top:10px}
+  .foot-social{display:flex;gap:16px;margin-top:14px;font-family:var(--mono);font-size:.82rem}
+  .foot-social a{border-bottom:1px solid rgba(224,162,78,.4);padding-bottom:2px}
+  .map-frame{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:var(--skel);height:200px}
+  .map-frame iframe{width:100%;height:100%;border:0;display:block}
+  .foot-bar{margin-left:var(--rail-w);background:#241b12;color:#a3907a}
+  .foot-bar-in{max-width:1160px;padding:20px var(--field-pad);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-size:.76rem;font-family:var(--mono);letter-spacing:.03em}
+  .foot-bar-in .propose{color:#7d6b57}
+
+  /* mobile-only elements hidden on desktop */
+  .topbar,.mobile-callbar{display:none}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:1024px){
+    :root{--rail-w:220px;--field-pad:40px}
+    .rail{padding:26px 22px 24px}
+    .wordmark .l1,.wordmark .l2{font-size:2rem}
+    .seal{width:64px;height:64px}
+    .mast-grid,.heritage-grid,.forno-grid,.fam-grid,.prenota-grid{gap:38px}
+    .ledger{grid-template-columns:1fr;gap:24px}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:36px}
+    .map-frame{grid-column:1/-1;height:220px}
+  }
+
+  @media (max-width:760px){
+    :root{--rail-w:0px;--field-pad:22px}
+    /* rail unpins -> top bar */
+    .rail{display:none}
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      position:sticky;top:0;z-index:70;background:var(--terra);color:var(--cream);
+      padding:12px 18px;box-shadow:0 6px 20px -12px rgba(0,0,0,.5);
+    }
+    .topbar .tb-wm{font-family:var(--serif);font-weight:600;font-size:1.35rem;line-height:1}
+    .topbar .tb-wm small{display:block;font-family:var(--mono);font-size:.52rem;letter-spacing:.22em;color:#f3d9b4}
+    .topbar .langs{gap:5px}
+    .topbar .lang{padding:5px 8px;font-size:.66rem}
+    .field{margin-left:0;max-width:100%;padding:0 var(--field-pad)}
+    section{padding:60px 0}
+    .mast{padding-top:40px}
+    .mast-grid{grid-template-columns:1fr;gap:34px}
+    .mast-numeral{font-size:38vw;top:auto;bottom:0;right:-6px}
+    .hero-frame{aspect-ratio:4/5}
+    .heritage-grid{grid-template-columns:1fr;gap:24px}
+    .big-num{font-size:clamp(5rem,32vw,8rem)}
+    .heritage-body{border-left:none;border-top:3px solid var(--olive);padding-left:0;padding-top:22px}
+    .forno,.prenota{margin:0 calc(-1 * var(--field-pad))}
+    .forno-grid,.prenota-grid,.fam-grid{grid-template-columns:1fr}
+    .forno-text{padding:48px 26px}
+    .forno-img{min-height:280px}
+    .forno-img img{position:relative}
+    .fam-imgs{min-height:0;display:grid;grid-template-columns:1fr;gap:16px}
+    .fam-a,.fam-b{position:relative;width:100%;top:auto;left:auto;right:auto;bottom:auto}
+    .fam-a{aspect-ratio:5/4}
+    .fam-b{aspect-ratio:4/3;min-height:220px}
+    .prenota{padding:56px var(--field-pad) 84px}
+    footer,.foot-bar{margin-left:0}
+    .foot-grid{grid-template-columns:1fr;gap:32px}
+    .foot-inner{padding:56px var(--field-pad) 30px}
+    /* sticky bottom tap-to-call */
+    .mobile-callbar{
+      display:flex;position:fixed;left:0;right:0;bottom:0;z-index:80;
+      background:var(--terra-deep);padding:10px 14px;gap:10px;
+      box-shadow:0 -8px 24px -12px rgba(0,0,0,.55);
+    }
+    .mobile-callbar a{
+      flex:1;display:flex;align-items:center;justify-content:center;gap:8px;
+      background:var(--cream);color:var(--terra-deep);font-weight:700;
+      padding:14px;border-radius:11px;text-decoration:none;font-size:1rem;
+    }
+    .mobile-callbar .num{font-family:var(--mono);font-size:.8rem;font-weight:600}
+    .foot-bar-in{flex-direction:column}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto}
+    .forno-glow{animation:none}
+    .btn,.btn-call{transition:none}
+  }
 </style>
 </head>
 <body>
 
-<header id="top">
-  <div class="wrap nav">
-    <a href="#top" class="brand" aria-label="Bella Napoli">
-      <span class="wm serif">Bella Napoli</span>
-      <small data-i18n="brand_tag">Pizzeria napolitaine · 1976</small>
+<!-- ============ PERSISTENT LEFT RAIL ============ -->
+<aside class="rail" aria-label="Bella Napoli">
+  <div class="ember-track" aria-hidden="true">
+    <div class="ember-fill" id="emberFill"></div>
+    <div class="ember-dot" id="emberDot"></div>
+  </div>
+
+  <div class="brand">
+    <!-- Oven-seal: crafted proposal from placemat branding -->
+    <svg class="seal" viewBox="0 0 100 100" role="img" aria-label="Sceau Pizzeria dal 1976 Luxembourg">
+      <circle class="seal-ring" cx="50" cy="50" r="47"/>
+      <circle class="seal-ring" cx="50" cy="50" r="33" style="opacity:.55"/>
+      <!-- wood-fired oven arch line-art -->
+      <path d="M35 60 A15 15 0 0 1 65 60 Z" fill="none" stroke="#f3d9b4" stroke-width="2"/>
+      <line x1="35" y1="60" x2="65" y2="60" stroke="#f3d9b4" stroke-width="2"/>
+      <path d="M44 60 v-4 M50 60 v-6 M56 60 v-4" stroke="#f3d9b4" stroke-width="1.6"/>
+      <defs><path id="arc" d="M50 50 m-38 0 a38 38 0 1 1 76 0" /></defs>
+      <text><textPath href="#arc" startOffset="4%">PIZZERIA · DAL 1976 · LUXEMBOURG</textPath></text>
+    </svg>
+    <div class="wordmark">
+      <span class="l1">Bella</span>
+      <span class="l2">Napoli</span>
+    </div>
+    <div class="rail-kicker">Pizzeria napoletana</div>
+  </div>
+
+  <div class="rail-year"><span>1976</span></div>
+
+  <div class="rail-foot">
+    <a class="btn btn-call" href="tel:+352493367" aria-label="Appeler Bella Napoli pour réserver">
+      <span class="stack">
+        <span class="lab" data-i18n="rail.call">Appeler pour réserver</span>
+        <span class="num">+352 49 33 67</span>
+      </span>
     </a>
-    <nav class="nav-links">
-      <a href="#story" data-i18n="nav_story">La Famille</a>
-      <a href="#menu" data-i18n="nav_menu">La Carte</a>
-      <a href="#visit" data-i18n="nav_visit">Nous Trouver</a>
-    </nav>
-    <div class="nav-cta">
-      <div class="lang-switch" role="group" aria-label="Langue">
-        <button data-lang="fr" class="active">FR</button>
-        <button data-lang="de">DE</button>
-        <button data-lang="en">EN</button>
-      </div>
-      <a href="tel:+3524933 67" class="btn btn-coral" data-i18n="btn_book">Réserver</a>
-      <button class="burger-ico" aria-label="Menu" onclick="document.body.classList.toggle('mobile-open')"><span></span><span></span><span></span></button>
+    <div class="langs" role="group" aria-label="Langue / Sprache / Language">
+      <button class="lang active" data-lang="fr">FR</button>
+      <button class="lang" data-lang="de">DE</button>
+      <button class="lang" data-lang="en">EN</button>
     </div>
   </div>
-</header>
+</aside>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap">
-    <span class="est reveal" data-i18n="hero_est">Depuis 1976 · 50 ans</span>
-    <p class="eyebrow reveal" data-i18n="hero_eyebrow">Luxembourg · Quartier Gare</p>
-    <h1 class="reveal" data-i18n-html="hero_h1">Une histoire de famille,<em> au feu de bois.</em></h1>
-    <p class="lead reveal" data-i18n="hero_lead">La plus ancienne pizzeria de Luxembourg. Depuis 1976, la famille Balestri pétrit, garnit et cuit au feu de bois — fidèle aux recettes napolitaines.</p>
-    <div class="hero-cta reveal">
-      <a href="tel:+3524933 67" class="btn btn-coral" data-i18n="btn_book_table">Réserver une table</a>
-      <a href="#menu" class="btn btn-ghost-light" data-i18n="btn_seemenu">Voir la carte</a>
-    </div>
-    <p class="addr reveal"><span class="dot"></span> <span data-i18n="hero_addr">4 rue de Strasbourg, L-2560 Luxembourg · à deux pas de la Gare</span></p>
+<!-- ============ MOBILE TOP BAR ============ -->
+<div class="topbar">
+  <div class="tb-wm">Bella Napoli<small>Dal 1976</small></div>
+  <div class="langs" role="group" aria-label="Langue">
+    <button class="lang active" data-lang="fr">FR</button>
+    <button class="lang" data-lang="de">DE</button>
+    <button class="lang" data-lang="en">EN</button>
   </div>
-</section>
+</div>
 
-<!-- STORY -->
-<section class="story" id="story">
-  <div class="wrap story-grid">
-    <img class="story-photo reveal" src="assets/food1.jpg" alt="Convives à table chez Bella Napoli" />
-    <div>
-      <p class="eyebrow reveal" data-i18n="story_eyebrow">La Famille Balestri</p>
-      <h2 class="serif reveal" data-i18n-html="story_h2">La plus ancienne pizzeria<em> de Luxembourg.</em></h2>
-      <p class="body reveal" data-i18n="story_body">L'une des premières pizzerias du Luxembourg, et aujourd'hui la plus ancienne, Bella Napoli est une affaire de famille depuis 1976. La famille Balestri prépare avec passion des pizzas cuites au feu de bois, des pâtes fraîches faites maison et des sauces artisanales fidèles aux recettes napolitaines, à deux pas de la Gare.</p>
-      <div class="pillars">
-        <div class="pillar reveal"><div class="ico">🔥</div><div><h3 data-i18n="p1_h">Le feu de bois</h3><p data-i18n="p1_p">Des pizzas cuites au four à bois, comme à Naples — la croûte, la braise, le geste.</p></div></div>
-        <div class="pillar reveal"><div class="ico">🍝</div><div><h3 data-i18n="p2_h">Pâtes &amp; sauces maison</h3><p data-i18n="p2_p">Pâtes fraîches faites maison et sauces artisanales, fidèles à la tradition napolitaine.</p></div></div>
-        <div class="pillar reveal"><div class="ico">👨‍👩‍👧</div><div><h3 data-i18n="p3_h">Une famille, depuis 1976</h3><p data-i18n="p3_p">Cinquante ans d'accueil. La même famille, la même passion, la même adresse.</p></div></div>
+<!-- ============ CONTENT FIELD ============ -->
+<main class="field">
+
+  <!-- MASTHEAD -->
+  <section class="mast" id="top">
+    <div class="mast-numeral" aria-hidden="true">1976</div>
+    <div class="mast-grid">
+      <div>
+        <div class="mast-eyebrow" data-i18n="mast.eyebrow">Pizzeria napolitaine · Quartier Gare · Luxembourg</div>
+        <h1 data-i18n="mast.title">Une histoire de famille <em>depuis 1976</em></h1>
+        <p class="lead" data-i18n="mast.sub">La plus ancienne pizzeria de la ville. Pizzas cuites au feu de bois, pâtes fraîches faites maison et sauces artisanales — préparées par la famille Balestri, comme au premier jour.</p>
+        <div class="mast-cta">
+          <a class="btn btn-primary" href="tel:+352493367">
+            <span class="stack">
+              <span data-i18n="rail.call">Appeler pour réserver</span>
+              <span class="num">+352 49 33 67</span>
+            </span>
+          </a>
+          <a class="btn btn-ghost" href="#carta" data-i18n="mast.menu">Voir la carte</a>
+        </div>
+      </div>
+      <figure class="hero-frame">
+        <img src="assets/hero.jpg" alt="Le pizzaiolo façonne la pâte devant le four à bois chez Bella Napoli" loading="eager">
+        <figcaption class="hero-cap" data-i18n="mast.heroCap">Le pizzaiolo au four à bois</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- HERITAGE / CINQUANT'ANNI -->
+  <section class="heritage" id="histoire">
+    <div class="heritage-grid">
+      <div class="big-num">50
+        <small>Dal 1976</small>
+      </div>
+      <div class="heritage-body">
+        <div class="kicker">Cinquant'anni</div>
+        <h2 data-i18n="her.title">La plus ancienne pizzeria de Luxembourg</h2>
+        <p data-i18n="her.p1">L'une des premières pizzerias du Luxembourg, et aujourd'hui la plus ancienne de la ville. Depuis 1976, la famille Balestri prépare avec la même passion des pizzas au feu de bois, des pâtes fraîches faites maison et des sauces artisanales fidèles aux recettes napolitaines.</p>
+        <p data-i18n="her.p2">À deux pas de la Gare, une cuisine italienne authentique dans une atmosphère chaleureuse — un lieu où l'on revient, de génération en génération.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- MENU -->
-<section class="menu" id="menu">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="serif" data-i18n-html="menu_h2">La <em>carte</em></h2>
-      <p data-i18n="menu_intro">Pizzas au feu de bois, pâtes fraîches faites maison et spécialités. Une sélection — la carte complète vous attend à table.</p>
-    </div>
-
-    <div class="mcat reveal">
-      <div class="mcat-head"><h3 class="serif">Pizze al forno a legna</h3><span class="ln"></span></div>
-      <div class="mitems">
-        <div class="mitem"><div class="ml"><div class="nm serif">Margherita</div><div class="ds" data-i18n="d_margherita">Tomate, mozzarella, basilic</div></div><div class="mp">€15.10</div></div>
-        <div class="mitem"><div class="ml"><div class="nm serif">Bella Napoli</div><div class="ds" data-i18n="d_bella">La signature de la maison</div></div><div class="mp">€18.40</div></div>
-        <div class="mitem"><div class="ml"><div class="nm serif">Capricciosa</div><div class="ds" data-i18n="d_capricciosa">Jambon, champignons, artichauts, olives</div></div><div class="mp">€18.50</div></div>
-        <div class="mitem"><div class="ml"><div class="nm serif">Alla Diavola</div><div class="ds" data-i18n="d_diavola">Salami piquant</div></div><div class="mp">€18.80</div></div>
-        <div class="mitem"><div class="ml"><div class="nm serif">Ai 4 Formaggi</div><div class="ds" data-i18n="d_4formaggi">Quatre fromages</div></div><div class="mp">€21.00</div></div>
-        <div class="mitem"><div class="ml"><div class="nm serif">Al Prosciutto e Funghi</div><div class="ds" data-i18n="d_prosciutto">Jambon &amp; champignons</div></div><div class="mp">€18.40</div></div>
+  <!-- WOOD-FIRED BAND -->
+  <section id="forno" style="padding-top:0">
+    <div class="forno">
+      <div class="forno-glow" aria-hidden="true"></div>
+      <div class="forno-grid">
+        <div class="forno-text">
+          <div class="kicker">Al forno a legna</div>
+          <h2><span class="glow" data-i18n="wf.title">Envie d'une pizza cuite au feu de bois ?</span></h2>
+          <p data-i18n="wf.body">Le four à bois n'a jamais cessé de brûler. Pâtes pétries chaque matin, sauces mijotées maison, recettes napolitaines transmises depuis 1976 — le vrai goût, sans raccourci.</p>
+          <div class="forno-points">
+            <span class="chip" data-i18n="wf.c1">Feu de bois</span>
+            <span class="chip" data-i18n="wf.c2">Pâtes faites maison</span>
+            <span class="chip" data-i18n="wf.c3">Sauces artisanales</span>
+          </div>
+        </div>
+        <div class="forno-img">
+          <img src="assets/food2_pasta.jpg" alt="Assiette de pâtes à la sauce tomate, basilic et parmesan">
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="mcat reveal">
-      <div class="mcat-head"><h3 class="serif">Pasta fatta in casa</h3><span class="ln"></span></div>
-      <div class="mitems">
-        <div class="mitem"><div class="ml"><div class="nm serif">Spaghetti Carbonara</div><div class="ds" data-i18n="d_carbonara">—</div></div><div class="mp">€19.20</div></div>
-        <div class="mitem"><div class="ml"><div class="nm serif">Gnocchi Bella Napoli</div><div class="ds" data-i18n="d_gnocchi">Gnocchi maison</div></div><div class="mp">€22.10</div></div>
-        <div class="mitem"><div class="ml"><div class="nm serif">Strozzapreti alla Salsiccia</div><div class="ds" data-i18n="d_strozzapreti">Saucisse italienne</div></div><div class="mp">€22.40</div></div>
-        <div class="mitem"><div class="ml"><div class="nm serif">Ravioloni Ricotta e Spinaci</div><div class="ds" data-i18n="d_ravioloni">Ricotta &amp; épinards</div></div><div class="mp">€24.10</div></div>
+  <!-- MENU / LA CARTA -->
+  <section id="carta">
+    <div class="menu-head">
+      <div class="txt">
+        <div class="kicker">La carta</div>
+        <h2 data-i18n="menu.title">Quelques pages de la carte</h2>
+        <p class="lead" data-i18n="menu.sub">Une sélection de la maison — la carte complète vous attend à table.</p>
+      </div>
+      <span class="price-flag" data-i18n="menu.flag">Prix indicatifs — à confirmer</span>
+    </div>
+    <div class="ledger">
+      <!-- PIZZE -->
+      <div class="ledger-col">
+        <h3 data-i18n="menu.pizze">Pizze</h3>
+        <div class="dish">
+          <div class="dish-line"><span class="dish-name">Margherita</span><span class="dish-dots"></span><span class="dish-price">15,10 €</span></div>
+          <div class="dish-desc" data-i18n="d.margherita">Tomate, mozzarella, basilic frais</div>
+        </div>
+        <div class="dish">
+          <div class="dish-line"><span class="dish-name">Bella Napoli</span><span class="dish-dots"></span><span class="dish-price">18,40 €</span></div>
+          <div class="dish-desc" data-i18n="d.bellanapoli">La spécialité de la maison</div>
+        </div>
+        <div class="dish">
+          <div class="dish-line"><span class="dish-name">Alla Diavola</span><span class="dish-dots"></span><span class="dish-price">18,80 €</span></div>
+          <div class="dish-desc" data-i18n="d.diavola">Salami piquant, du caractère</div>
+        </div>
+        <div class="dish">
+          <div class="dish-line"><span class="dish-name">Ai 4 Formaggi</span><span class="dish-dots"></span><span class="dish-price">21,00 €</span></div>
+          <div class="dish-desc" data-i18n="d.quattro">Quatre fromages fondants</div>
+        </div>
+      </div>
+      <!-- PASTE & SPECIALITÀ -->
+      <div class="ledger-col">
+        <h3 data-i18n="menu.paste">Paste &amp; Specialità</h3>
+        <div class="dish">
+          <div class="dish-line"><span class="dish-name">Spaghetti Carbonara</span><span class="dish-dots"></span><span class="dish-price">19,20 €</span></div>
+          <div class="dish-desc" data-i18n="d.carbonara">Œuf, guanciale, pecorino</div>
+        </div>
+        <div class="dish">
+          <div class="dish-line"><span class="dish-name">Gnocchi Bella Napoli</span><span class="dish-dots"></span><span class="dish-price">22,10 €</span></div>
+          <div class="dish-desc" data-i18n="d.gnocchi">Gnocchi maison, sauce de la maison</div>
+        </div>
+        <div class="dish">
+          <div class="dish-line"><span class="dish-name">Risotto alla Truffe</span><span class="dish-dots"></span><span class="dish-price">21,80 €</span></div>
+          <div class="dish-desc" data-i18n="d.risotto">Champignons, huile de truffe</div>
+        </div>
+        <div class="dish">
+          <div class="dish-line"><span class="dish-name">Spaghetti agli Scampi</span><span class="dish-dots"></span><span class="dish-price">29,50 €</span></div>
+          <div class="dish-desc" data-i18n="d.scampi">Langoustines, ail, tomate fraîche</div>
+        </div>
+      </div>
+      <!-- ANTIPASTI & DOLCI -->
+      <div class="ledger-col">
+        <h3 data-i18n="menu.dolci">Antipasti &amp; Dolci</h3>
+        <div class="dish">
+          <div class="dish-line"><span class="dish-name">Caprese di Bufala</span><span class="dish-dots"></span><span class="dish-price">17,40 €</span></div>
+          <div class="dish-desc" data-i18n="d.caprese">Mozzarella de bufflonne, tomate, basilic</div>
+        </div>
+        <div class="dish">
+          <div class="dish-line"><span class="dish-name">Carpaccio di Manzo</span><span class="dish-dots"></span><span class="dish-price">22,50 €</span></div>
+          <div class="dish-desc" data-i18n="d.carpaccio">Carpaccio de bœuf, salade verte</div>
+        </div>
+        <div class="dish">
+          <div class="dish-line"><span class="dish-name">Tiramisù</span><span class="dish-dots"></span><span class="dish-price">7,40 €</span></div>
+          <div class="dish-desc" data-i18n="d.tiramisu">Le classique, fait maison</div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="mcat reveal" style="margin-bottom:0">
-      <div class="mcat-head"><h3 class="serif">Specialità &amp; Antipasti</h3><span class="ln"></span></div>
-      <div class="mitems">
-        <div class="mitem"><div class="ml"><div class="nm serif">Risotto à la Truffe</div><div class="ds" data-i18n="d_risotto">Champignons &amp; huile de truffe</div></div><div class="mp">€21.80</div></div>
-        <div class="mitem"><div class="ml"><div class="nm serif">Spaghetti agli Scampi</div><div class="ds" data-i18n="d_scampi">—</div></div><div class="mp">€29.50</div></div>
-        <div class="mitem"><div class="ml"><div class="nm serif">Mozzarella di Bufala Caprese</div><div class="ds" data-i18n="d_caprese">Mozzarella de bufflonne, tomate, basilic</div></div><div class="mp">€17.40</div></div>
-        <div class="mitem"><div class="ml"><div class="nm serif">Tiramisù della Casa</div><div class="ds" data-i18n="d_tiramisu">Tiramisu maison</div></div><div class="mp">€7.40</div></div>
+  <!-- IN FAMIGLIA -->
+  <section id="famiglia">
+    <div class="fam-grid">
+      <div class="fam-imgs">
+        <figure class="fam-a"><img src="assets/food1.jpg" alt="Deux convives partagent pâtes et pizza chez Bella Napoli"></figure>
+        <div class="fam-b" role="img" aria-label="La salle de restaurant de Bella Napoli, nappes blanches"></div>
+      </div>
+      <div class="fam-text">
+        <div class="kicker">In famiglia</div>
+        <h2 data-i18n="fam.title">Comme à la maison, depuis 50 ans</h2>
+        <p class="lead" data-i18n="fam.body">Nappes blanches, accueil chaleureux, habitués de toujours et voyageurs de passage venus de la Gare voisine. On vient comme on est — la table vous attend.</p>
       </div>
     </div>
+  </section>
 
-    <p class="menu-note reveal" style="margin-top:28px" data-i18n-html="menu_note"><b>Une sélection.</b> Carte complète et prix en salle — tarifs à confirmer avec le restaurant.</p>
-  </div>
-</section>
-
-<!-- BAND -->
-<section class="band">
-  <div class="wrap inner reveal">
-    <h2 class="serif" data-i18n-html="band_h2">Envie d'une pizza <em>cuite au feu de bois ?</em></h2>
-    <p data-i18n="band_p">Cinquante ans qu'on allume le four. La même pâte, le même feu, la même famille. Venez goûter — ou faites-vous livrer.</p>
-    <div class="taglist">
-      <span class="tag" data-i18n="tag1">Feu de bois</span>
-      <span class="tag" data-i18n="tag2">Pâtes maison</span>
-      <span class="tag" data-i18n="tag3">Depuis 1976</span>
-    </div>
-    <a href="https://wolt.com/en/lux/luxembourg/restaurant/restaurant-bella-napoli" target="_blank" rel="noopener" class="btn btn-white" data-i18n="btn_order">Commander sur Wolt →</a>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section style="padding-bottom:0">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="serif" data-i18n-html="gal_h2">À <em>table.</em></h2>
-      <p data-i18n="gal_intro">Le four, la salle et l'assiette.</p>
-    </div>
-    <div class="gallery">
-      <img class="reveal" src="assets/food2_pasta.jpg" alt="Pâtes Bella Napoli" />
-      <img class="reveal" src="assets/interior.jpg" alt="Salle du restaurant Bella Napoli" />
-      <img class="reveal" src="assets/hero.jpg" alt="Pizzaïolo au four à bois, Bella Napoli" />
-    </div>
-  </div>
-</section>
-
-<!-- VISIT -->
-<section class="visit" id="visit">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="serif" data-i18n-html="visit_h2">Nous <em>trouver.</em></h2>
-      <p data-i18n="visit_intro">À deux pas de la Gare de Luxembourg. Réservez par téléphone.</p>
-    </div>
-    <div class="visit-grid">
-      <div class="info reveal">
-        <div class="info-row"><div class="k" data-i18n="lbl_where">Adresse</div><div class="val">4 rue de Strasbourg<span class="small" data-i18n="where_small">L-2560 Luxembourg · quartier Gare</span></div></div>
-        <div class="info-row"><div class="k" data-i18n="lbl_hours">Horaires</div><div class="val"><span data-i18n="hours_val">Tous les jours · midi &amp; soir</span><span class="small" data-i18n-html="hours_small">Déj. 12h–14h · dîner 18h–22h (ven &amp; sam 22h30) — <em>jours &amp; service à confirmer avec le restaurant</em></span></div></div>
-        <div class="info-row"><div class="k" data-i18n="lbl_book">Réserver</div><div class="val"><a href="tel:+3524933 67">+352 49 33 67</a><span class="small" data-i18n="book_small">Réservez votre table — service du midi très demandé</span></div></div>
-        <div class="info-row" style="border-bottom:0"><div class="k" data-i18n="lbl_delivery">Livraison</div><div class="val"><a href="https://wolt.com/en/lux/luxembourg/restaurant/restaurant-bella-napoli" target="_blank" rel="noopener" data-i18n="btn_order">Commander sur Wolt →</a><span class="small"><a href="https://www.facebook.com/p/Bella-Napoli-100054311090013/" target="_blank" rel="noopener">Facebook</a> · info@bellanapoli.lu</span></div></div>
-        <a href="tel:+3524933 67" class="btn btn-coral" style="align-self:flex-start;margin-top:4px" data-i18n="btn_book_table">Réserver une table</a>
-      </div>
-      <div class="map reveal">
-        <iframe title="Plan vers Bella Napoli" loading="lazy" src="https://www.google.com/maps?q=4+rue+de+Strasbourg+Luxembourg&output=embed"></iframe>
+  <!-- PRENOTA -->
+  <section id="reserver" style="padding-bottom:40px">
+    <div class="prenota">
+      <div class="prenota-grid">
+        <div>
+          <div class="kicker">Prenota</div>
+          <h2 data-i18n="res.title">Réservez par téléphone</h2>
+          <a class="reserve-phone" href="tel:+352493367">+352 49 33 67</a>
+          <p class="lead" data-i18n="res.body">La réservation se fait par téléphone — un vrai contact, comme il se doit. Nous vous garderons la meilleure table.</p>
+          <div class="res-cta">
+            <a class="btn btn-primary" href="tel:+352493367">
+              <span class="stack">
+                <span data-i18n="rail.call">Appeler pour réserver</span>
+                <span class="num">+352 49 33 67</span>
+              </span>
+            </a>
+          </div>
+          <div class="res-tertiary">
+            <a href="https://wolt.com/en/lux/luxembourg/restaurant/restaurant-bella-napoli" target="_blank" rel="noopener" data-i18n="res.wolt">Commander sur Wolt</a>
+            <a href="https://maps.google.com/maps?daddr=4+Rue+de+Strasbourg,+Luxembourg" target="_blank" rel="noopener" data-i18n="res.dir">Itinéraire</a>
+          </div>
+        </div>
+        <div class="hours">
+          <h3 data-i18n="res.hoursTitle">Horaires</h3>
+          <div class="hours-row"><span class="day" data-i18n="h.sunthu">Dimanche – Jeudi</span><span class="time">12:00–14:00 · 18:00–22:00</span></div>
+          <div class="hours-row"><span class="day" data-i18n="h.frisat">Vendredi – Samedi</span><span class="time">12:00–14:00 · 18:00–22:30</span></div>
+          <div class="hours-row"><span class="day" data-i18n="h.mon">Lundi</span><span class="time" data-i18n="h.monval">à confirmer</span></div>
+          <p class="hours-note" data-i18n="res.hoursNote">Lundi et samedi midi : horaires à confirmer avec le restaurant.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+</main>
+
+<!-- ============ FOOTER ============ -->
 <footer>
-  <div class="wrap foot">
-    <div class="fb">
-      <span class="wm serif">Bella Napoli</span>
-      <small>4 rue de Strasbourg · L-2560 Luxembourg · +352 49 33 67</small>
+  <div class="foot-inner">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="wm">Bella <em>Napoli</em></div>
+        <div class="tag">Pizzeria · Dal 1976</div>
+        <p data-i18n="foot.blurb">La plus ancienne pizzeria de Luxembourg. Une histoire de famille depuis 1976.</p>
+      </div>
+      <div class="foot-block">
+        <div class="foot-h" data-i18n="foot.contact">Contact</div>
+        <p>4 rue de Strasbourg<br>L-2560 Luxembourg</p>
+        <p><a href="tel:+352493367">+352 49 33 67</a></p>
+        <p><a href="mailto:info@bellanapoli.lu">info@bellanapoli.lu</a></p>
+        <p class="foot-park" data-i18n="foot.parking">Parkings Fort Wedell &amp; Fort Neipperg à proximité.</p>
+        <div class="foot-social">
+          <a href="https://www.facebook.com/p/Bella-Napoli-100054311090013/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://wolt.com/en/lux/luxembourg/restaurant/restaurant-bella-napoli" target="_blank" rel="noopener">Wolt</a>
+        </div>
+      </div>
+      <div class="foot-block">
+        <div class="foot-h" data-i18n="foot.find">Nous trouver</div>
+        <div class="map-frame">
+          <iframe title="Carte — Bella Napoli, 4 rue de Strasbourg, Luxembourg"
+            src="https://maps.google.com/maps?q=4%20rue%20de%20Strasbourg,%20L-2560%20Luxembourg&t=&z=16&ie=UTF8&iwloc=&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
     </div>
-    <p>© Bella Napoli · <span data-i18n="foot_since">une histoire de famille depuis 1976</span><br>
-      <a href="https://wolt.com/en/lux/luxembourg/restaurant/restaurant-bella-napoli" target="_blank" rel="noopener" data-i18n="btn_order">Commander sur Wolt</a> ·
-      <a href="https://www.facebook.com/p/Bella-Napoli-100054311090013/" target="_blank" rel="noopener">Facebook</a>
-    </p>
+  </div>
+  <div class="foot-bar">
+    <div class="foot-bar-in">
+      <span data-i18n="foot.rights">© 1976–2026 Restaurant Pizzeria Bella Napoli</span>
+      <span class="propose" data-i18n="foot.propose">Marque &amp; sceau conçus d'après votre set de table — proposition de design.</span>
+    </div>
   </div>
 </footer>
 
-<script>
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%6*70)+'ms';io.observe(el);});
-  document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('mobile-open')));
+<!-- ============ MOBILE STICKY CALL BAR ============ -->
+<div class="mobile-callbar">
+  <a href="tel:+352493367">
+    <span data-i18n="rail.call">Appeler pour réserver</span>
+    <span class="num">+352 49 33 67</span>
+  </a>
+</div>
 
-  // ---------- i18n (FR default · DE · EN) ----------
-  const I18N={
-    fr:{},
-    de:{
-      brand_tag:"Neapolitanische Pizzeria · 1976",
-      nav_story:"Die Familie", nav_menu:"Karte", nav_visit:"Finden",
-      btn_book:"Reservieren", btn_book_table:"Tisch reservieren", btn_seemenu:"Zur Karte", btn_order:"Auf Wolt bestellen →",
-      hero_est:"Seit 1976 · 50 Jahre",
-      hero_eyebrow:"Luxemburg · Bahnhofsviertel",
-      hero_h1:"Eine Familiengeschichte,<em> aus dem Holzofen.</em>",
-      hero_lead:"Die älteste Pizzeria Luxemburgs. Seit 1976 knetet, belegt und backt die Familie Balestri im Holzofen — treu den neapolitanischen Rezepten.",
-      hero_addr:"4 rue de Strasbourg, L-2560 Luxemburg · nahe dem Bahnhof",
-      story_eyebrow:"Familie Balestri", story_h2:"Die älteste Pizzeria<em> Luxemburgs.</em>",
-      story_body:"Eine der ersten und heute die älteste Pizzeria Luxemburgs — Bella Napoli ist seit 1976 ein Familienunternehmen. Die Familie Balestri bereitet mit Leidenschaft Holzofenpizzen, frische hausgemachte Pasta und handwerkliche Saucen nach neapolitanischen Rezepten zu, nur wenige Schritte vom Bahnhof.",
-      p1_h:"Der Holzofen", p1_p:"Pizzen aus dem Holzofen, wie in Neapel — die Kruste, die Glut, die Handarbeit.",
-      p2_h:"Pasta &amp; Saucen hausgemacht", p2_p:"Frische hausgemachte Pasta und handwerkliche Saucen, treu der neapolitanischen Tradition.",
-      p3_h:"Eine Familie, seit 1976", p3_p:"Fünfzig Jahre Gastfreundschaft. Dieselbe Familie, dieselbe Leidenschaft, dieselbe Adresse.",
-      menu_h2:"Die <em>Karte</em>",
-      menu_intro:"Holzofenpizzen, frische hausgemachte Pasta und Spezialitäten. Eine Auswahl — die ganze Karte erwartet Sie am Tisch.",
-      d_margherita:"Tomate, Mozzarella, Basilikum", d_bella:"Das Signature-Gericht des Hauses",
-      d_capricciosa:"Schinken, Champignons, Artischocken, Oliven", d_diavola:"Scharfe Salami", d_4formaggi:"Vier Käsesorten",
-      d_prosciutto:"Schinken &amp; Champignons",
-      d_carbonara:"—", d_gnocchi:"Hausgemachte Gnocchi", d_strozzapreti:"Italienische Wurst", d_ravioloni:"Ricotta &amp; Spinat",
-      d_risotto:"Champignons &amp; Trüffelöl", d_scampi:"—", d_caprese:"Büffelmozzarella, Tomate, Basilikum", d_tiramisu:"Hausgemachtes Tiramisù",
-      menu_note:"<b>Eine Auswahl.</b> Vollständige Karte und Preise im Lokal — bitte beim Restaurant bestätigen.",
-      band_h2:"Lust auf eine Pizza <em>aus dem Holzofen?</em>",
-      band_p:"Seit fünfzig Jahren brennt der Ofen. Derselbe Teig, dasselbe Feuer, dieselbe Familie. Kommen Sie vorbei — oder lassen Sie liefern.",
-      tag1:"Holzofen", tag2:"Hausgemachte Pasta", tag3:"Seit 1976",
-      gal_h2:"Zu <em>Tisch.</em>", gal_intro:"Der Ofen, der Saal und der Teller.",
-      visit_h2:"So <em>finden Sie uns.</em>", visit_intro:"Nur wenige Schritte vom Luxemburger Bahnhof. Reservierung per Telefon.",
-      lbl_where:"Adresse", lbl_hours:"Öffnungszeiten", lbl_book:"Reservieren", lbl_delivery:"Lieferung",
-      where_small:"L-2560 Luxemburg · Bahnhofsviertel",
-      hours_val:"Täglich · mittags &amp; abends",
-      hours_small:"Mittag 12–14 · Abend 18–22 Uhr (Fr &amp; Sa 22:30) — <em>Tage &amp; Service bitte beim Restaurant bestätigen</em>",
-      book_small:"Reservieren Sie Ihren Tisch — Mittagsservice sehr gefragt", foot_since:"eine Familiengeschichte seit 1976"
-    },
-    en:{
-      brand_tag:"Neapolitan pizzeria · 1976",
-      nav_story:"The Family", nav_menu:"Menu", nav_visit:"Visit",
-      btn_book:"Book", btn_book_table:"Reserve a table", btn_seemenu:"See the menu", btn_order:"Order on Wolt →",
-      hero_est:"Since 1976 · 50 years",
-      hero_eyebrow:"Luxembourg · Station quarter",
-      hero_h1:"A family story,<em> from the wood-fired oven.</em>",
-      hero_lead:"Luxembourg's oldest pizzeria. Since 1976 the Balestri family has kneaded, topped and fired in the wood oven — faithful to Neapolitan recipes.",
-      hero_addr:"4 rue de Strasbourg, L-2560 Luxembourg · steps from the station",
-      story_eyebrow:"The Balestri Family", story_h2:"Luxembourg's oldest<em> pizzeria.</em>",
-      story_body:"One of Luxembourg's first and today its oldest pizzeria, Bella Napoli has been a family business since 1976. The Balestri family passionately prepares wood-fired pizzas, fresh handmade pasta and artisan sauces faithful to Neapolitan recipes, just steps from the station.",
-      p1_h:"The wood-fired oven", p1_p:"Pizzas from the wood oven, just like Naples — the crust, the embers, the craft.",
-      p2_h:"Pasta &amp; sauces, house-made", p2_p:"Fresh homemade pasta and artisan sauces, faithful to the Neapolitan tradition.",
-      p3_h:"One family, since 1976", p3_p:"Fifty years of welcome. The same family, the same passion, the same address.",
-      menu_h2:"The <em>menu</em>",
-      menu_intro:"Wood-fired pizzas, fresh homemade pasta and specialities. A selection — the full menu awaits you at the table.",
-      d_margherita:"Tomato, mozzarella, basil", d_bella:"The house signature",
-      d_capricciosa:"Ham, mushrooms, artichokes, olives", d_diavola:"Spicy salami", d_4formaggi:"Four cheeses",
-      d_prosciutto:"Ham &amp; mushrooms",
-      d_carbonara:"—", d_gnocchi:"House-made gnocchi", d_strozzapreti:"Italian sausage", d_ravioloni:"Ricotta &amp; spinach",
-      d_risotto:"Mushrooms &amp; truffle oil", d_scampi:"—", d_caprese:"Buffalo mozzarella, tomato, basil", d_tiramisu:"House-made tiramisù",
-      menu_note:"<b>A selection.</b> Full menu and prices in-house — please confirm with the restaurant.",
-      band_h2:"Craving a <em>wood-fired pizza?</em>",
-      band_p:"Fifty years of firing the oven. The same dough, the same fire, the same family. Come and taste — or have it delivered.",
-      tag1:"Wood-fired", tag2:"Homemade pasta", tag3:"Since 1976",
-      gal_h2:"To <em>the table.</em>", gal_intro:"The oven, the room and the plate.",
-      visit_h2:"Find <em>us.</em>", visit_intro:"Steps from Luxembourg station. Reserve by phone.",
-      lbl_where:"Address", lbl_hours:"Hours", lbl_book:"Book", lbl_delivery:"Delivery",
-      where_small:"L-2560 Luxembourg · station quarter",
-      hours_val:"Every day · lunch &amp; dinner",
-      hours_small:"Lunch 12–14 · dinner 18–22h (Fri &amp; Sat 22:30) — <em>days &amp; service to confirm with the restaurant</em>",
-      book_small:"Reserve your table — lunch service in high demand", foot_since:"a family story since 1976"
-    }
-  };
-  const FR={};
-  document.querySelectorAll('[data-i18n]').forEach(el=>{FR[el.getAttribute('data-i18n')]=el.textContent;});
-  document.querySelectorAll('[data-i18n-html]').forEach(el=>{FR['__h_'+el.getAttribute('data-i18n-html')]=el.innerHTML;});
-  function setLang(l){
-    const d = l==='fr' ? null : I18N[l];
-    document.documentElement.lang=l;
-    document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');const v=d?d[k]:FR[k];if(v!=null)el.textContent=v;});
-    document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');const v=d?d[k]:FR['__h_'+k];if(v!=null)el.innerHTML=v;});
-    document.querySelectorAll('.lang-switch button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
-    try{localStorage.setItem('bn_lang',l);}catch(e){}
+<script>
+/* ---------- i18n ---------- */
+const I18N = {
+  fr:{
+    "rail.call":"Appeler pour réserver",
+    "mast.eyebrow":"Pizzeria napolitaine · Quartier Gare · Luxembourg",
+    "mast.title":"Une histoire de famille <em>depuis 1976</em>",
+    "mast.sub":"La plus ancienne pizzeria de la ville. Pizzas cuites au feu de bois, pâtes fraîches faites maison et sauces artisanales — préparées par la famille Balestri, comme au premier jour.",
+    "mast.menu":"Voir la carte",
+    "mast.heroCap":"Le pizzaiolo au four à bois",
+    "her.title":"La plus ancienne pizzeria de Luxembourg",
+    "her.p1":"L'une des premières pizzerias du Luxembourg, et aujourd'hui la plus ancienne de la ville. Depuis 1976, la famille Balestri prépare avec la même passion des pizzas au feu de bois, des pâtes fraîches faites maison et des sauces artisanales fidèles aux recettes napolitaines.",
+    "her.p2":"À deux pas de la Gare, une cuisine italienne authentique dans une atmosphère chaleureuse — un lieu où l'on revient, de génération en génération.",
+    "wf.title":"Envie d'une pizza cuite au feu de bois ?",
+    "wf.body":"Le four à bois n'a jamais cessé de brûler. Pâtes pétries chaque matin, sauces mijotées maison, recettes napolitaines transmises depuis 1976 — le vrai goût, sans raccourci.",
+    "wf.c1":"Feu de bois","wf.c2":"Pâtes faites maison","wf.c3":"Sauces artisanales",
+    "menu.title":"Quelques pages de la carte",
+    "menu.sub":"Une sélection de la maison — la carte complète vous attend à table.",
+    "menu.flag":"Prix indicatifs — à confirmer",
+    "menu.pizze":"Pizze","menu.paste":"Paste &amp; Specialità","menu.dolci":"Antipasti &amp; Dolci",
+    "d.margherita":"Tomate, mozzarella, basilic frais",
+    "d.bellanapoli":"La spécialité de la maison",
+    "d.diavola":"Salami piquant, du caractère",
+    "d.quattro":"Quatre fromages fondants",
+    "d.carbonara":"Œuf, guanciale, pecorino",
+    "d.gnocchi":"Gnocchi maison, sauce de la maison",
+    "d.risotto":"Champignons, huile de truffe",
+    "d.scampi":"Langoustines, ail, tomate fraîche",
+    "d.caprese":"Mozzarella de bufflonne, tomate, basilic",
+    "d.carpaccio":"Carpaccio de bœuf, salade verte",
+    "d.tiramisu":"Le classique, fait maison",
+    "fam.title":"Comme à la maison, depuis 50 ans",
+    "fam.body":"Nappes blanches, accueil chaleureux, habitués de toujours et voyageurs de passage venus de la Gare voisine. On vient comme on est — la table vous attend.",
+    "res.title":"Réservez par téléphone",
+    "res.body":"La réservation se fait par téléphone — un vrai contact, comme il se doit. Nous vous garderons la meilleure table.",
+    "res.wolt":"Commander sur Wolt","res.dir":"Itinéraire",
+    "res.hoursTitle":"Horaires",
+    "res.hoursNote":"Lundi et samedi midi : horaires à confirmer avec le restaurant.",
+    "h.sunthu":"Dimanche – Jeudi","h.frisat":"Vendredi – Samedi","h.mon":"Lundi","h.monval":"à confirmer",
+    "foot.blurb":"La plus ancienne pizzeria de Luxembourg. Une histoire de famille depuis 1976.",
+    "foot.contact":"Contact","foot.find":"Nous trouver",
+    "foot.parking":"Parkings Fort Wedell &amp; Fort Neipperg à proximité.",
+    "foot.rights":"© 1976–2026 Restaurant Pizzeria Bella Napoli",
+    "foot.propose":"Marque &amp; sceau conçus d'après votre set de table — proposition de design."
+  },
+  de:{
+    "rail.call":"Reservieren",
+    "mast.eyebrow":"Neapolitanische Pizzeria · Bahnhofsviertel · Luxemburg",
+    "mast.title":"Eine Familiengeschichte <em>seit 1976</em>",
+    "mast.sub":"Die älteste Pizzeria der Stadt. Holzofenpizza, frisch hausgemachte Pasta und handwerkliche Saucen — von der Familie Balestri zubereitet, wie am ersten Tag.",
+    "mast.menu":"Zur Karte",
+    "mast.heroCap":"Der Pizzaiolo am Holzofen",
+    "her.title":"Die älteste Pizzeria Luxemburgs",
+    "her.p1":"Eine der ersten und heute die älteste Pizzeria der Stadt. Seit 1976 bereitet die Familie Balestri mit derselben Leidenschaft Holzofenpizza, frische hausgemachte Pasta und handwerkliche Saucen nach originalneapolitanischen Rezepten zu.",
+    "her.p2":"Nur wenige Schritte vom Bahnhof entfernt: authentische italienische Küche in herzlicher Atmosphäre — ein Ort, an den man Generation für Generation zurückkehrt.",
+    "wf.title":"Lust auf eine Holzofenpizza?",
+    "wf.body":"Der Holzofen brennt seit jeher. Pasta täglich frisch geknetet, Saucen hausgemacht geköchelt, neapolitanische Rezepte seit 1976 weitergegeben — echter Geschmack, ohne Abkürzung.",
+    "wf.c1":"Holzofen","wf.c2":"Hausgemachte Pasta","wf.c3":"Handwerkliche Saucen",
+    "menu.title":"Ein Auszug aus der Karte",
+    "menu.sub":"Eine Auswahl des Hauses — die vollständige Karte erwartet Sie am Tisch.",
+    "menu.flag":"Richtpreise — bitte bestätigen",
+    "menu.pizze":"Pizze","menu.paste":"Paste &amp; Specialità","menu.dolci":"Antipasti &amp; Dolci",
+    "d.margherita":"Tomate, Mozzarella, frisches Basilikum",
+    "d.bellanapoli":"Die Spezialität des Hauses",
+    "d.diavola":"Scharfe Salami, mit Charakter",
+    "d.quattro":"Vier geschmolzene Käsesorten",
+    "d.carbonara":"Ei, Guanciale, Pecorino",
+    "d.gnocchi":"Hausgemachte Gnocchi, Sauce des Hauses",
+    "d.risotto":"Champignons, Trüffelöl",
+    "d.scampi":"Scampi, Knoblauch, frische Tomate",
+    "d.caprese":"Büffelmozzarella, Tomate, Basilikum",
+    "d.carpaccio":"Rindercarpaccio, grüner Salat",
+    "d.tiramisu":"Der Klassiker, hausgemacht",
+    "fam.title":"Wie zu Hause, seit 50 Jahren",
+    "fam.body":"Weiße Tischdecken, herzlicher Empfang, langjährige Stammgäste und Reisende vom nahen Bahnhof. Kommen Sie, wie Sie sind — der Tisch wartet auf Sie.",
+    "res.title":"Reservieren Sie telefonisch",
+    "res.body":"Reserviert wird telefonisch — ein echter Kontakt, so wie es sein soll. Wir halten Ihnen den besten Tisch frei.",
+    "res.wolt":"Auf Wolt bestellen","res.dir":"Route",
+    "res.hoursTitle":"Öffnungszeiten",
+    "res.hoursNote":"Montag und Samstagmittag: Zeiten bitte mit dem Restaurant bestätigen.",
+    "h.sunthu":"Sonntag – Donnerstag","h.frisat":"Freitag – Samstag","h.mon":"Montag","h.monval":"bitte bestätigen",
+    "foot.blurb":"Die älteste Pizzeria Luxemburgs. Eine Familiengeschichte seit 1976.",
+    "foot.contact":"Kontakt","foot.find":"So finden Sie uns",
+    "foot.parking":"Parkhäuser Fort Wedell &amp; Fort Neipperg in der Nähe.",
+    "foot.rights":"© 1976–2026 Restaurant Pizzeria Bella Napoli",
+    "foot.propose":"Wortmarke &amp; Siegel nach Ihrem Tischset gestaltet — Designvorschlag."
+  },
+  en:{
+    "rail.call":"Call to reserve",
+    "mast.eyebrow":"Neapolitan pizzeria · Station quarter · Luxembourg",
+    "mast.title":"A family story <em>since 1976</em>",
+    "mast.sub":"The city's oldest pizzeria. Wood-fired pizzas, fresh handmade pasta and artisan sauces — prepared by the Balestri family, just as on day one.",
+    "mast.menu":"See the menu",
+    "mast.heroCap":"The pizzaiolo at the wood-fired oven",
+    "her.title":"Luxembourg's oldest pizzeria",
+    "her.p1":"One of Luxembourg's first, and today the oldest pizzeria in the city. Since 1976 the Balestri family has prepared, with the same passion, wood-fired pizzas, fresh handmade pasta and artisan sauces faithful to authentic Neapolitan recipes.",
+    "her.p2":"Steps from the station, genuine Italian cooking in a warm, welcoming room — a place people return to, generation after generation.",
+    "wf.title":"Craving a wood-fired pizza?",
+    "wf.body":"The wood-fired oven has never stopped burning. Pasta kneaded every morning, sauces simmered in-house, Neapolitan recipes passed down since 1976 — real flavour, no shortcuts.",
+    "wf.c1":"Wood-fired","wf.c2":"Handmade pasta","wf.c3":"Artisan sauces",
+    "menu.title":"A few pages from the menu",
+    "menu.sub":"A selection from the house — the full menu awaits you at the table.",
+    "menu.flag":"Indicative prices — to confirm",
+    "menu.pizze":"Pizze","menu.paste":"Paste &amp; Specialità","menu.dolci":"Antipasti &amp; Dolci",
+    "d.margherita":"Tomato, mozzarella, fresh basil",
+    "d.bellanapoli":"The house speciality",
+    "d.diavola":"Spicy salami, real character",
+    "d.quattro":"Four melting cheeses",
+    "d.carbonara":"Egg, guanciale, pecorino",
+    "d.gnocchi":"House gnocchi, house sauce",
+    "d.risotto":"Mushrooms, truffle oil",
+    "d.scampi":"Langoustines, garlic, fresh tomato",
+    "d.caprese":"Buffalo mozzarella, tomato, basil",
+    "d.carpaccio":"Beef carpaccio, green salad",
+    "d.tiramisu":"The classic, homemade",
+    "fam.title":"Like home, for 50 years",
+    "fam.body":"White tablecloths, a warm welcome, lifelong regulars and travellers passing from the nearby station. Come as you are — the table is waiting.",
+    "res.title":"Reserve by phone",
+    "res.body":"Reservations are by phone — a real conversation, as it should be. We'll keep the best table for you.",
+    "res.wolt":"Order on Wolt","res.dir":"Directions",
+    "res.hoursTitle":"Opening hours",
+    "res.hoursNote":"Monday and Saturday lunch: hours to be confirmed with the restaurant.",
+    "h.sunthu":"Sunday – Thursday","h.frisat":"Friday – Saturday","h.mon":"Monday","h.monval":"to confirm",
+    "foot.blurb":"Luxembourg's oldest pizzeria. A family story since 1976.",
+    "foot.contact":"Contact","foot.find":"Find us",
+    "foot.parking":"Fort Wedell &amp; Fort Neipperg car parks nearby.",
+    "foot.rights":"© 1976–2026 Restaurant Pizzeria Bella Napoli",
+    "foot.propose":"Wordmark &amp; seal designed from your placemat — a design proposal."
   }
-  document.querySelectorAll('.lang-switch button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
-  let saved='fr'; try{saved=localStorage.getItem('bn_lang')||'fr';}catch(e){}
-  if(saved!=='fr') setLang(saved);
+};
+
+function setLang(lang){
+  const dict = I18N[lang] || I18N.fr;
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k = el.getAttribute("data-i18n");
+    if(dict[k] !== undefined) el.innerHTML = dict[k];
+  });
+  document.querySelectorAll(".lang").forEach(b=>{
+    b.classList.toggle("active", b.dataset.lang === lang);
+  });
+  try{ localStorage.setItem("bn_lang", lang); }catch(e){}
+}
+document.querySelectorAll(".lang").forEach(btn=>{
+  btn.addEventListener("click", ()=> setLang(btn.dataset.lang));
+});
+(function(){
+  let saved = "fr";
+  try{ saved = localStorage.getItem("bn_lang") || "fr"; }catch(e){}
+  if(saved !== "fr") setLang(saved);
+})();
+
+/* ---------- ember scroll indicator ---------- */
+const fill = document.getElementById("emberFill");
+const dot  = document.getElementById("emberDot");
+function updateEmber(){
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  const p = h > 0 ? Math.min(1, window.scrollY / h) : 0;
+  fill.style.height = (p*100) + "%";
+  dot.style.top = (p*100) + "%";
+}
+window.addEventListener("scroll", updateEmber, {passive:true});
+window.addEventListener("resize", updateEmber);
+updateEmber();
 </script>
 </body>
 </html>

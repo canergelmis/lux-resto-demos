@@ -1,715 +1,1053 @@
 <!DOCTYPE html>
-<!--
-  BISTROT DE LA PRESSE — closing-grade teaser (sales demo) — ON-BRAND, TRILINGUAL (FR default · DE · EN).
-  Traditional Luxembourgish brasserie-bistro, Ville-Haute, face au Palais Grand-Ducal. Nickname: "Beim Heidi".
-  SALES DEMO: venue has no working own website (bistrotdelapresse.lu + bistrotpresse.lu both NXDOMAIN as of 2026-06-26).
-  Sources: menu.lu (hours + contact), Wolt platform (menu + prices), TripAdvisor, Facebook/Instagram.
-  Real photos sourced from Sluurpy CDN (aggregated user photos) — thumbnails only (~275×207 px), NOT production quality.
-  Tagline + brand palette are PROPOSED (no logo or brand guide found) — confirm or override with owner.
-  Menu/prices from Wolt (dine-in column) — CONFIRM WITH OWNER before publishing.
-  Opening hours from menu.lu — CONFIRM WITH OWNER before publishing.
-  Phone: +352 46 66 69 (menu.lu primary; +352 27 74 30 60 also appears on Wolt — confirm which is correct).
-  Email: contact@bistrotpresse.lu (menu.lu — domain is dead, may need updating).
--->
 <html lang="fr">
 <head>
-<script>document.documentElement.classList.add('js');</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
-<title>Bistrot de la Presse — Cuisine luxembourgeoise · Luxembourg Ville-Haute</title>
-<meta name="description" content="Bistrot de la Presse (Beim Heidi) — cuisine luxembourgeoise traditionnelle face au Palais Grand-Ducal. Bouneschlupp, Judd mat Gaardebounen, portions généreuses. 24 Rue du Marché-aux-Herbes, L-1728 Luxembourg." />
+<title>Bistrot de la Presse — Beim Heidi · Luxembourg-Ville</title>
+<meta name="description" content="Bistrot de la Presse — Beim Heidi. Maison centenaire face au Palais grand-ducal. Cuisine luxembourgeoise et brasserie. 24 Rue du Marché-aux-Herbes, Luxembourg-Ville." />
+
+<!--
+  ============================================================================
+  DEMO / MOCKUP — Bistrot de la Presse ("Beim Heidi"), Luxembourg-Ville
+  Self-contained single file. No build step, no external JS frameworks.
+  Concept: "The Broadsheet" — the page is laid out as the front page of a
+  neighbourhood newspaper (the venue is literally "de la Presse").
+
+  HANDOFF FLAGS — items marked PROPOSED are NOT real brand material:
+    * Tagline ("Le vieux Luxembourg, servi avec honnêteté." / "Old Luxembourg,
+      honestly served.") — PROPOSED.
+    * Palette (printer's red #6E1A18, amber gold #B98A2E, newsprint ivory
+      #F4ECDD, press ink #1C1A17, myrtle #2E5E50) — PROPOSED.
+    * Fonts (DM Serif Display + Source Serif 4 + Saira Condensed) — PROPOSED.
+    * "Beim Heidi" nickname framing — verified nickname, framing is editorial.
+
+  UNCONFIRMED FACTS (surfaced on-page where shown):
+    * PHONE: tel: link uses +352 46 66 69 (menu.lu / gastronomie.lu, likely
+      primary). A SECOND number +352 27 74 30 60 also circulates (Wolt).
+      >>> CONFIRM CORRECT NUMBER WITH OWNER before any production launch. <<<
+    * HOURS: Tue–Sat kitchen 11:30–21:30, bar to ~01:00; Mon & Sun closed
+      (source menu.lu). Aggregators conflict. Labelled "horaires à confirmer".
+    * PRICES: sourced from Wolt dine-in column; labelled "prix à confirmer".
+    * NO email shown anywhere — domain (bistrotpresse.lu) is NXDOMAIN/dead.
+    * NO booking widget — no reservation system exists.
+
+  ASSETS: rebuild/assets/ holds 6 watermarked low-res thumbnails, all
+    mislabeled and none usable in production (acceptance criterion #6).
+    This concept is intentionally photo-free, so NO images ship.
+    >>> REQUEST hi-res owner photos / schedule a photo visit for real build. <<<
+  ============================================================================
+-->
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Saira+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
 <style>
-  :root {
-    --rouge:#5C1B1B; --rouge-deep:#461414;
-    --ambre:#C9972D; --ambre-deep:#a87c22;
-    --oak:#3D2B1F; --oak-dark:#2A1E15;
-    --paper:#FAF5EC; --cream:#F3EBD8; --cream2:#EAE0C4;
-    --ink:#1A1A1A; --muted:#6B5B4E; --line:#DDD1BC;
-    --maxw:1180px;
+  :root{
+    --paper:#F4ECDD;        /* newsprint ivory */
+    --ink:#1C1A17;          /* press ink */
+    --red:#6E1A18;          /* printer's red */
+    --gold:#B98A2E;         /* amber gold */
+    --grey:#9A9081;         /* warm grey hairlines / leader dots */
+    --myrtle:#2E5E50;       /* open / Wolt state ONLY */
+    --paper-2:#EFE5D2;      /* faint panel tint */
+    --serif:"DM Serif Display",Georgia,serif;
+    --body:"Source Serif 4",Georgia,serif;
+    --cond:"Saira Condensed","Arial Narrow",sans-serif;
+    --sheet:1140px;
+    --rule:1px solid var(--ink);
+    --hair:1px solid var(--grey);
   }
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--paper);color:var(--ink);font-family:'Lato',system-ui,sans-serif;
-    font-weight:400;font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
-  a{color:inherit;text-decoration:none}
-  .serif{font-family:'Playfair Display',Georgia,serif}
-  .eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
-    color:var(--ambre-deep);font-weight:700;font-family:'Lato',sans-serif}
 
-  .btn{display:inline-flex;align-items:center;gap:.5em;font-family:'Lato',sans-serif;
-    font-weight:700;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;
-    padding:.82em 1.9em;border-radius:0;border:2px solid transparent;
-    transition:.22s;cursor:pointer;white-space:nowrap}
-  .btn-rouge{background:var(--rouge);color:#fff;border-color:var(--rouge)}
-  .btn-rouge:hover{background:var(--rouge-deep);border-color:var(--rouge-deep);
-    transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(92,27,27,.5)}
-  .btn-ghost{border-color:var(--ambre);color:#FAF5EC}
-  .btn-ghost:hover{background:var(--ambre);color:#fff}
-  .btn-white{background:#fff;color:var(--rouge);border-color:#fff}
-  .btn-white:hover{background:transparent;color:#fff;border-color:#fff;transform:translateY(-2px)}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:#ddd2bd;
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:18px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
 
-  /* ── Header ── */
-  header{position:sticky;top:0;z-index:100;background:rgba(250,245,236,.95);
-    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:14px}
-  .brand{display:flex;flex-direction:column;line-height:1}
-  .brand .wm{font-family:'Playfair Display',serif;font-weight:800;font-size:1.28rem;
-    letter-spacing:.01em;color:var(--rouge);line-height:1.1}
-  .brand small{font-family:'Lato',sans-serif;font-weight:700;font-size:.57rem;
-    letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-top:5px}
-  .nav-links{display:flex;gap:34px;align-items:center}
-  .nav-links a{font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--muted);transition:.2s}
-  .nav-links a:hover{color:var(--rouge)}
-  .nav-cta{display:flex;gap:12px;align-items:center}
-  .lang-switch{display:flex;border:1px solid var(--line);overflow:hidden;flex:none}
-  .lang-switch button{font-family:'Lato',sans-serif;font-weight:700;font-size:.76rem;
-    letter-spacing:.06em;text-transform:uppercase;padding:.48em .72em;
-    background:none;border:0;cursor:pointer;color:var(--muted);transition:.18s}
-  .lang-switch button.active{background:var(--rouge);color:#fff}
-  .lang-switch button:not(.active):hover{color:var(--rouge)}
-  .burger-ico{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer}
-  .burger-ico span{width:26px;height:2.5px;background:var(--ink)}
+  /* faint newsprint fibre texture, behind everything */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    background-image:
+      radial-gradient(rgba(28,26,23,.025) 1px,transparent 1px),
+      radial-gradient(rgba(28,26,23,.02) 1px,transparent 1px);
+    background-size:3px 3px,7px 7px;background-position:0 0,1px 2px;
+  }
 
-  /* ── Hero ── */
-  .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;
-    background:linear-gradient(180deg,rgba(26,10,10,.2) 0%,rgba(26,10,10,.86) 100%),
-    url('assets/exterior.jpg') center/cover no-repeat;color:#fff}
-  .hero .wrap{padding-top:90px;padding-bottom:72px;width:100%}
-  .hero .eyebrow{color:var(--ambre)}
-  .hero h1{font-family:'Playfair Display',serif;font-weight:800;
-    font-size:clamp(2.6rem,6.4vw,5.2rem);line-height:1.05;letter-spacing:-.01em;
-    margin:.24em 0 .34em}
-  .hero h1 em{font-style:italic;color:var(--ambre)}
-  .hero p.lead{font-size:clamp(1.05rem,1.9vw,1.25rem);font-weight:300;
-    color:#f0e6d8;max-width:50ch;margin-bottom:1.8em;line-height:1.7}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px}
-  .addr{display:flex;align-items:center;gap:10px;color:#e0d0bc;font-size:.9rem;font-weight:400}
-  .addr .dot{width:7px;height:7px;background:var(--ambre);flex:none;
-    box-shadow:0 0 0 4px rgba(201,151,45,.25)}
+  a{color:var(--red);text-underline-offset:2px;}
+  a:focus-visible,button:focus-visible,[tabindex]:focus-visible{
+    outline:3px solid var(--gold);outline-offset:2px;border-radius:1px;
+  }
 
-  section{padding:clamp(60px,7.5vw,108px) 0}
-  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;
-    gap:30px;margin-bottom:50px;flex-wrap:wrap}
-  .sec-head h2{font-family:'Playfair Display',serif;font-weight:800;
-    font-size:clamp(2rem,4.8vw,3.4rem)}
-  .sec-head h2 em{font-style:italic;color:var(--rouge)}
-  .sec-head p{color:var(--muted);max-width:40ch;font-weight:300}
+  .sheet{
+    position:relative;z-index:1;
+    max-width:var(--sheet);margin:0 auto;background:var(--paper);
+    padding:0 clamp(14px,3.5vw,46px);
+    box-shadow:0 0 0 1px rgba(28,26,23,.08), 0 22px 60px rgba(28,26,23,.18);
+  }
 
-  /* ── Story ── */
-  .story-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:64px;align-items:center}
-  .story-photo{width:100%;aspect-ratio:4/4.8;object-fit:cover;
-    box-shadow:10px 10px 0 var(--ambre),0 32px 64px -28px rgba(61,43,31,.55)}
-  .story h2{font-family:'Playfair Display',serif;font-weight:800;
-    font-size:clamp(1.9rem,4.4vw,3rem);margin:.2em 0 .6em;line-height:1.08}
-  .story h2 em{font-style:italic;color:var(--rouge)}
-  .story p.body{color:#5a4a3a;font-size:1.05rem;margin-bottom:1.6em;
-    font-weight:300;line-height:1.78}
-  .pillars{display:grid;gap:18px;margin-top:10px}
-  .pillar{display:flex;gap:18px;align-items:flex-start}
-  .pillar .ico{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;
-    color:#fff;background:var(--rouge);width:44px;height:44px;
-    display:grid;place-items:center;flex:none;font-size:.95rem;letter-spacing:0}
-  .pillar h3{font-family:'Playfair Display',serif;font-weight:700;
-    font-size:1.08rem;margin-bottom:3px;color:var(--oak)}
-  .pillar p{color:var(--muted);font-size:.94rem;font-weight:300}
+  /* skip link */
+  .skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--paper);
+    padding:10px 16px;font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;z-index:200;}
+  .skip:focus{left:8px;top:8px;}
 
-  /* ── Menu ── */
-  .menu{background:var(--cream)}
-  .mcat{margin-bottom:46px}
-  .mcat:last-child{margin-bottom:0}
-  .mcat-head{display:flex;align-items:baseline;gap:16px;margin-bottom:18px}
-  .mcat-head h3{font-family:'Playfair Display',serif;font-weight:700;font-style:italic;
-    font-size:1.48rem;color:var(--rouge)}
-  .mcat-head .ln{flex:1;height:1px;background:var(--line)}
-  .mitems{display:grid;grid-template-columns:1fr 1fr;gap:4px 48px}
-  .mitem{display:flex;align-items:baseline;gap:12px;padding:14px 0;
-    border-bottom:1px solid var(--line)}
-  .mitem .ml{flex:1}
-  .mitem .nm{font-family:'Playfair Display',serif;font-weight:700;
-    font-size:1.06rem;color:var(--oak)}
-  .mitem .ds{color:var(--muted);font-size:.87rem;margin-top:2px;font-weight:300}
-  .mitem .mp{font-family:'Lato',sans-serif;font-weight:700;font-size:.98rem;
-    white-space:nowrap;color:var(--ambre-deep)}
-  .menu-note{margin-top:28px;color:var(--muted);font-size:.88rem;font-weight:300;
-    border-top:1px solid var(--line);padding-top:16px}
-  .menu-note b{color:var(--ink);font-weight:700}
-  @media(max-width:760px){.mitems{grid-template-columns:1fr;gap:0}}
+  /* ---------------- kickers / shared type ---------------- */
+  .kicker{
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.22em;
+    font-weight:600;font-size:.72rem;color:var(--red);line-height:1;
+  }
+  .kicker .num{color:var(--gold);}
+  .dbl-rule{border:none;border-top:3px double var(--ink);margin:0;}
+  .thin-rule{border:none;border-top:var(--rule);margin:0;}
+  .hair-rule{border:none;border-top:var(--hair);margin:0;}
 
-  /* ── Band ── */
-  .band{background:linear-gradient(135deg,var(--oak),var(--oak-dark));
-    color:#fff;text-align:center}
-  .band .inner{max-width:760px;margin:0 auto}
-  .band h2{font-family:'Playfair Display',serif;font-weight:800;
-    font-size:clamp(2rem,5vw,3.6rem);margin-bottom:.36em}
-  .band h2 em{font-style:italic;color:var(--ambre)}
-  .band p{color:#d4c4ae;font-size:1.06rem;max-width:52ch;
-    margin:0 auto 1.8em;font-weight:300}
-  .taglist{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:30px}
-  .tag{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-    padding:.55em 1em;border:1.5px solid rgba(201,151,45,.45);color:var(--ambre)}
+  /* ================= MASTHEAD ================= */
+  .masthead{padding-top:14px;}
+  .ears{
+    display:flex;justify-content:space-between;align-items:flex-end;gap:14px;
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;
+    font-size:.72rem;color:var(--ink);padding-bottom:8px;
+  }
+  .ear-left{max-width:42%;line-height:1.45;}
+  .ear-left b{color:var(--red);}
+  .ear-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right;}
 
-  /* ── Gallery ── */
-  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  .gallery-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;
-    display:block;border:1px solid var(--line)}
+  /* ink stamp */
+  .stamp{
+    --stamp-col:var(--red);
+    border:2.5px solid var(--stamp-col);color:var(--stamp-col);
+    border-radius:50%;width:96px;height:96px;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:2px;text-align:center;
+    font-family:var(--cond);font-weight:700;text-transform:uppercase;
+    transform:rotate(-8deg);position:relative;
+    box-shadow:inset 0 0 0 1.5px var(--stamp-col);
+    mix-blend-mode:multiply;
+  }
+  .stamp .s-status{font-size:1.18rem;letter-spacing:.06em;line-height:.95;}
+  .stamp .s-top,.stamp .s-bot{font-size:.5rem;letter-spacing:.16em;opacity:.85;}
+  .stamp.is-open{--stamp-col:var(--myrtle);}
+  /* ink-bleed roughen */
+  .stamp::after{
+    content:"";position:absolute;inset:-3px;border-radius:50%;
+    box-shadow:inset 0 0 6px 1px rgba(0,0,0,.18);
+    opacity:.5;pointer-events:none;
+    -webkit-mask-image:radial-gradient(circle,transparent 60%,#000 78%);
+            mask-image:radial-gradient(circle,transparent 60%,#000 78%);
+  }
+  .stamp.press{animation:press .26s cubic-bezier(.3,1.5,.5,1) both;}
+  @keyframes press{
+    0%{transform:rotate(-22deg) scale(1.5);opacity:0;}
+    60%{transform:rotate(-4deg) scale(.92);opacity:1;}
+    100%{transform:rotate(-8deg) scale(1);}
+  }
+  .stamp-flag{font-size:.6rem;letter-spacing:.1em;color:var(--grey);max-width:130px;}
 
-  /* ── Visit ── */
-  .visit{background:var(--cream)}
-  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:stretch}
-  .info{display:flex;flex-direction:column}
-  .info-row{display:flex;gap:18px;align-items:flex-start;
-    padding:18px 0;border-bottom:1px solid var(--line)}
-  .info-row .k{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
-    color:var(--ambre-deep);font-weight:700;font-family:'Lato',sans-serif;
-    min-width:96px;padding-top:4px;flex:none}
-  .info-row .val{font-size:1rem;font-weight:400}
-  .info-row .val a{color:var(--rouge);font-weight:700}
-  .info-row .val .small{color:var(--muted);font-size:.87rem;display:block;
-    margin-top:4px;font-weight:300}
-  .visit .btn{margin-top:22px;align-self:flex-start}
-  .map{overflow:hidden;border:1px solid var(--line);min-height:380px}
-  .map iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+  /* nameplate */
+  .nameplate{text-align:center;padding:6px 0 4px;}
+  .slogan-ear{
+    font-family:var(--serif);font-style:italic;font-size:clamp(1rem,2.6vw,1.45rem);
+    color:var(--red);margin:0 0 -2px;
+  }
+  .wordmark{
+    font-family:var(--serif);font-weight:400;color:var(--ink);
+    font-size:clamp(2.6rem,9vw,6.4rem);line-height:.92;margin:.05em 0 .04em;
+    letter-spacing:.005em;
+  }
+  .wordmark .la{font-style:italic;color:var(--red);}
+  .underdeck{
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.34em;
+    font-size:clamp(.6rem,1.5vw,.82rem);color:var(--ink);font-weight:500;
+    padding:2px 0 2px;
+  }
+  .tagline-line{
+    font-family:var(--body);font-style:italic;color:var(--ink);opacity:.85;
+    font-size:.95rem;margin-top:6px;
+  }
+  .tagline-line .proposed{font-style:normal;}
+  .proposed{
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;
+    font-size:.58rem;color:#fff;background:var(--gold);padding:1px 5px;
+    border-radius:2px;vertical-align:middle;margin-left:5px;white-space:nowrap;
+  }
+  .proposed.flag{background:var(--red);}
 
-  /* ── Footer ── */
-  footer{background:var(--oak-dark);color:#c4b09a;padding:52px 0 36px}
-  .foot{display:flex;justify-content:space-between;align-items:center;
-    gap:24px;flex-wrap:wrap}
-  .foot .fb .wm{font-family:'Playfair Display',serif;color:#fff;
-    font-size:1.2rem;font-weight:800}
-  .foot .fb small{display:block;font-size:.78rem;color:#c4b09a;margin-top:5px}
-  .foot p{font-size:.86rem;text-align:right;font-weight:300}
-  .foot a{color:var(--ambre);font-weight:700}
-  .foot-demo{text-align:center;margin-top:26px;padding-top:22px;
-    border-top:1px solid rgba(255,255,255,.1);
-    color:#7a6050;font-size:.78rem;font-weight:300}
+  /* folio line (becomes running head on scroll) */
+  .folio{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    flex-wrap:wrap;
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;
+    font-size:.74rem;color:var(--ink);padding:8px 0;
+  }
+  .folio .f-mid{text-align:center;flex:1 1 240px;color:var(--red);}
+  .folio .f-left,.folio .f-right{flex:0 0 auto;display:flex;align-items:center;gap:10px;}
+  /* edition tabs */
+  .editions{display:flex;align-items:center;gap:0;}
+  .editions .ed-label{margin-right:8px;color:var(--grey);}
+  .ed-tab{
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;
+    font-size:.74rem;font-weight:600;background:none;border:none;cursor:pointer;
+    color:var(--ink);padding:3px 8px;position:relative;
+  }
+  .ed-tab+.ed-tab{border-left:var(--hair);}
+  .ed-tab[aria-pressed="true"]{color:var(--red);}
+  .ed-tab[aria-pressed="true"]::after{
+    content:"";position:absolute;left:8px;right:8px;bottom:-1px;height:2px;background:var(--red);
+  }
 
-  /* ── Reveal ── */
-  .js .reveal{opacity:0;transform:translateY(22px);transition:.65s cubic-bezier(.2,.7,.2,1)}
-  .js .reveal.in{opacity:1;transform:none}
+  /* running head (sticky on scroll) */
+  .runhead{
+    position:fixed;top:0;left:0;right:0;z-index:120;
+    background:var(--paper);border-bottom:var(--rule);
+    transform:translateY(-110%);transition:transform .18s ease;
+    box-shadow:0 4px 14px rgba(28,26,23,.14);
+  }
+  .runhead.show{transform:translateY(0);}
+  .runhead-inner{
+    max-width:var(--sheet);margin:0 auto;display:flex;align-items:center;
+    justify-content:space-between;gap:12px;
+    padding:7px clamp(14px,3.5vw,46px);
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;font-size:.74rem;
+  }
+  .runhead .rh-name{font-family:var(--serif);text-transform:none;letter-spacing:0;font-size:1.15rem;}
+  .runhead .rh-name .la{font-style:italic;color:var(--red);}
+  .rh-sec{color:var(--grey);flex:1;text-align:center;}
+  .rh-status{font-weight:700;color:var(--red);display:flex;align-items:center;gap:6px;}
+  .rh-status.is-open{color:var(--myrtle);}
+  .rh-dot{width:9px;height:9px;border-radius:50%;background:currentColor;display:inline-block;}
 
-  /* ── Responsive ── */
+  /* ================= ABOVE-THE-FOLD BODY ================= */
+  .fold{
+    display:grid;grid-template-columns:1.7fr 1fr;gap:0;
+    border-top:3px double var(--ink);border-bottom:var(--rule);
+  }
+  .lead-col{padding:18px 26px 22px 0;border-right:var(--rule);}
+  .lead-col .lead-head{
+    font-family:var(--serif);font-size:clamp(1.6rem,3.6vw,2.5rem);
+    line-height:1.02;margin:.18em 0 .35em;
+  }
+  .lead-col p{margin:.4em 0;}
+  .lead-col .standfirst{font-size:1.06rem;}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:18px;}
+
+  .btn{
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;
+    font-weight:600;text-decoration:none;cursor:pointer;border:var(--rule);
+    background:var(--paper);color:var(--ink);padding:13px 22px;font-size:.92rem;
+    display:inline-flex;align-items:center;gap:9px;line-height:1;
+    transition:background .14s ease,color .14s ease,transform .05s ease;
+  }
+  .btn svg{width:16px;height:16px;flex:0 0 auto;}
+  .btn:hover{background:var(--ink);color:var(--paper);}
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--red);border-color:var(--red);color:#fff;font-size:1.02rem;padding:15px 28px;}
+  .btn-primary:hover{background:#561312;color:#fff;}
+  .btn-wolt{border-color:var(--myrtle);color:var(--myrtle);}
+  .btn-wolt:hover{background:var(--myrtle);color:#fff;}
+  .btn-ghost{background:transparent;}
+
+  .call-note{font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;
+    font-size:.62rem;color:var(--grey);flex-basis:100%;}
+
+  /* almanac box (paper's weather/almanac corner) */
+  .almanac{padding:18px 0 22px 26px;}
+  .almanac h2{
+    font-family:var(--serif);font-size:1.5rem;margin:.1em 0 .1em;line-height:1;
+  }
+  .almanac .alm-sub{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;
+    font-size:.66rem;color:var(--grey);margin-bottom:12px;}
+  .hours{width:100%;border-collapse:collapse;font-size:.95rem;}
+  .hours th,.hours td{text-align:left;padding:6px 0;border-bottom:var(--hair);vertical-align:baseline;}
+  .hours td.h-time{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .hours tr.today{background:var(--paper-2);}
+  .hours tr.today td,.hours tr.today th{font-weight:600;}
+  .hours .closed{color:var(--red);font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;}
+  .today-tag{font-family:var(--cond);font-size:.55rem;letter-spacing:.12em;color:#fff;background:var(--gold);
+    padding:1px 5px;border-radius:2px;margin-left:7px;text-transform:uppercase;vertical-align:middle;}
+  .bar-note{font-size:.86rem;font-style:italic;margin:10px 0 0;}
+  .confirm-cap{font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;
+    font-size:.62rem;color:var(--grey);margin-top:10px;display:flex;align-items:center;gap:6px;}
+  .confirm-cap::before{content:"";width:8px;height:8px;border:1.5px solid var(--gold);border-radius:50%;flex:0 0 auto;}
+
+  /* section heading band */
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+    border-bottom:3px double var(--ink);padding:18px 0 8px;margin-top:0;flex-wrap:wrap;}
+  .sec-head h2{font-family:var(--serif);font-size:clamp(1.7rem,4vw,2.6rem);margin:0;line-height:1;}
+  .sec-head .sec-note{font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;
+    font-size:.64rem;color:var(--grey);max-width:50%;text-align:right;}
+
+  /* ================= MENU (centre spread, agate listings) ================= */
+  .menu-wrap{padding:6px 0 8px;}
+  .menu-cols{columns:3;column-gap:34px;column-rule:var(--hair);padding-top:16px;}
+  .menu-group{break-inside:avoid;margin:0 0 22px;}
+  .menu-group h3{
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;
+    font-size:.82rem;font-weight:700;color:var(--red);margin:0 0 4px;
+    border-bottom:var(--rule);padding-bottom:5px;
+  }
+  .menu-group h3 .star{color:var(--gold);}
+  .item{display:flex;align-items:baseline;gap:6px;margin:9px 0 0;line-height:1.2;}
+  .item .nm{font-weight:600;}
+  .item .leader{flex:1 1 auto;border-bottom:2px dotted var(--grey);transform:translateY(-3px);min-width:14px;}
+  .item .pr{font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .item .gloss{display:block;font-size:.82rem;font-style:italic;color:var(--ink);opacity:.72;margin-top:1px;}
+  .item-wrap{break-inside:avoid;margin-top:9px;}
+  .item-wrap .item{margin-top:0;}
+  .menu-foot{font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;
+    font-size:.66rem;color:var(--grey);border-top:var(--rule);padding-top:10px;margin-top:6px;
+    display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center;}
+
+  /* ================= LEAD FEATURE (heritage) ================= */
+  .feature{display:grid;grid-template-columns:2fr 1fr;gap:0;border-top:var(--rule);}
+  .feature-main{padding:18px 30px 24px 0;border-right:var(--rule);}
+  .feature-main h2{font-family:var(--serif);font-size:clamp(1.7rem,4vw,2.7rem);line-height:1.02;margin:.1em 0 .1em;}
+  .byline{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:.66rem;color:var(--grey);margin-bottom:14px;}
+  .feature-main p{margin:.6em 0;}
+  .feature-main .body-cols{columns:2;column-gap:30px;}
+  .dropcap::first-letter{
+    font-family:var(--serif);float:left;color:var(--gold);font-size:4.4rem;line-height:.72;
+    padding:6px 10px 0 0;
+  }
+  .feature-side{padding:18px 0 24px 30px;}
+  .pull{
+    font-family:var(--serif);font-size:1.5rem;line-height:1.18;color:var(--ink);
+    border-top:3px double var(--ink);border-bottom:3px double var(--ink);
+    padding:18px 0;margin:6px 0 18px;position:relative;
+  }
+  .pull .stars{color:var(--gold);font-size:1.05rem;letter-spacing:.05em;display:block;margin-bottom:8px;}
+  .pull cite{display:block;font-family:var(--cond);font-style:normal;text-transform:uppercase;
+    letter-spacing:.12em;font-size:.64rem;color:var(--grey);margin-top:10px;}
+  .side-note{font-size:.92rem;}
+  .side-note h4{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;
+    color:var(--red);margin:0 0 6px;}
+
+  /* ================= CARNET D'ADRESSES ================= */
+  .carnet{border-top:3px double var(--ink);}
+  .carnet-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:0;}
+  .carnet-info{padding:18px 30px 26px 0;border-right:var(--rule);}
+  .carnet-info dl{margin:0;}
+  .carnet-info dt{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;
+    font-size:.66rem;color:var(--red);margin-top:16px;}
+  .carnet-info dd{margin:3px 0 0;font-size:1.02rem;}
+  .carnet-info dd .flagtxt{font-family:var(--cond);text-transform:uppercase;letter-spacing:.08em;
+    font-size:.6rem;color:var(--grey);display:block;margin-top:2px;}
+  .social-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;}
+  .social-row a{display:inline-flex;align-items:center;gap:7px;text-decoration:none;border:var(--rule);
+    padding:8px 13px;font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-size:.74rem;color:var(--ink);}
+  .social-row a:hover{background:var(--ink);color:var(--paper);}
+  .social-row a svg{width:15px;height:15px;}
+  .carnet-map{padding:18px 0 26px 30px;}
+  .map-frame{border:var(--rule);width:100%;height:340px;display:block;filter:grayscale(.25) sepia(.12);}
+  .map-cap{font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-size:.64rem;
+    color:var(--grey);margin-top:8px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+
+  /* ================= COLOPHON FOOTER ================= */
+  .colophon{border-top:3px double var(--ink);padding:22px 0 120px;}
+  .colophon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+  .colophon h4{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;
+    color:var(--red);margin:0 0 8px;border-bottom:var(--hair);padding-bottom:6px;}
+  .colophon p,.colophon li{font-size:.9rem;margin:.3em 0;}
+  .colophon ul{list-style:none;padding:0;margin:0;}
+  .colophon a{color:var(--ink);}
+  .disclosure{grid-column:1 / -1;border-top:var(--rule);padding-top:14px;margin-top:6px;
+    font-size:.78rem;color:var(--ink);opacity:.85;line-height:1.55;}
+  .disclosure b{font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:var(--red);}
+  .imprint{font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;font-size:.62rem;
+    color:var(--grey);text-align:center;margin-top:18px;}
+
+  /* ================= STICKY NEWSSTAND STRIP (mobile) ================= */
+  .newsstand{
+    position:fixed;left:0;right:0;bottom:0;z-index:130;display:none;
+    background:var(--ink);border-top:3px solid var(--red);
+    grid-template-columns:1.6fr 1fr 1fr;
+    box-shadow:0 -6px 18px rgba(0,0,0,.25);
+  }
+  .newsstand a{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+    text-decoration:none;color:var(--paper);padding:10px 4px;min-height:58px;
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;
+    border-left:1px solid rgba(244,236,221,.18);text-align:center;line-height:1.05;
+  }
+  .newsstand a:first-child{border-left:none;}
+  .newsstand a svg{width:18px;height:18px;}
+  .newsstand .ns-primary{background:var(--red);font-size:.82rem;font-weight:600;}
+  .newsstand .ns-stamp{
+    width:18px;height:18px;border:1.5px solid currentColor;border-radius:50%;
+    display:inline-flex;align-items:center;justify-content:center;font-size:.5rem;
+    transform:rotate(-8deg);
+  }
+  .ns-open{color:#7fd3bd;}
+
+  /* ================= RESPONSIVE ================= */
   @media(max-width:880px){
-    .nav-links{display:none}
-    .burger-ico{display:flex}
-    .story-grid{grid-template-columns:1fr;gap:32px}
-    .story-photo{aspect-ratio:16/10;order:-1}
-    .gallery-grid{grid-template-columns:1fr 1fr}
-    .visit-grid{grid-template-columns:1fr}
-    .mobile-open .nav-links{display:flex;position:absolute;top:76px;left:0;right:0;
-      flex-direction:column;gap:0;background:var(--paper);
-      border-bottom:1px solid var(--line);padding:8px 28px 20px}
-    .mobile-open .nav-links a{padding:14px 0;border-bottom:1px solid var(--line)}
+    body{font-size:17px;}
+    .fold{grid-template-columns:1fr;}
+    .lead-col{border-right:none;border-bottom:var(--rule);padding:16px 0 20px;}
+    .almanac{padding:18px 0 8px;}
+    .menu-cols{columns:2;}
+    .feature{grid-template-columns:1fr;}
+    .feature-main{border-right:none;border-bottom:var(--rule);padding:16px 0 22px;}
+    .feature-main .body-cols{columns:1;}
+    .feature-side{padding:18px 0 8px;}
+    .carnet-grid{grid-template-columns:1fr;}
+    .carnet-info{border-right:none;border-bottom:var(--rule);padding:16px 0 22px;}
+    .carnet-map{padding:18px 0 8px;}
+    .colophon-grid{grid-template-columns:1fr 1fr;}
+    .colophon{padding-bottom:120px;}
+    .newsstand{display:grid;}
+    .runhead .rh-sec{display:none;}
   }
-  @media(max-width:480px){
-    .nav-cta .btn-rouge{display:none}
-    .foot{flex-direction:column;text-align:center}
-    .foot p{text-align:center}
+  @media(max-width:560px){
+    .ears{flex-direction:column-reverse;align-items:center;text-align:center;gap:14px;}
+    .ear-left,.ear-right{max-width:100%;align-items:center;text-align:center;}
+    .menu-cols{columns:1;}
+    .colophon-grid{grid-template-columns:1fr;}
+    .folio{justify-content:center;text-align:center;}
+    .folio .f-left,.folio .f-right{width:100%;justify-content:center;}
+    .sec-head .sec-note{max-width:100%;text-align:left;}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .stamp.press{animation:none;}
+    .runhead{transition:none;}
+  }
+  @media print{
+    body{background:#fff;}
+    .runhead,.newsstand,.skip{display:none!important;}
+    .sheet{box-shadow:none;}
   }
 </style>
 </head>
+
 <body>
+<a class="skip" href="#menu" data-i18n="skip">Aller au menu</a>
 
-<header id="top">
-  <div class="wrap nav">
-    <a href="#top" class="brand" aria-label="Bistrot de la Presse">
-      <span class="wm serif">Bistrot de la Presse</span>
-      <small data-i18n="brand_tag">Cuisine luxembourgeoise · Ville-Haute</small>
-    </a>
-    <nav class="nav-links">
-      <a href="#story" data-i18n="nav_story">La Maison</a>
-      <a href="#menu" data-i18n="nav_menu">La Carte</a>
-      <a href="#visit" data-i18n="nav_visit">Nous Trouver</a>
-    </nav>
-    <div class="nav-cta">
-      <div class="lang-switch" role="group" aria-label="Langue">
-        <button data-lang="fr" class="active">FR</button>
-        <button data-lang="de">DE</button>
-        <button data-lang="en">EN</button>
-      </div>
-      <a href="tel:+352466669" class="btn btn-rouge" data-i18n="btn_book">Réserver</a>
-      <button class="burger-ico" aria-label="Menu"
-        onclick="document.body.classList.toggle('mobile-open')">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+<!-- ===== RUNNING HEAD (sticky inner-page title bar) ===== -->
+<div class="runhead" id="runhead" aria-hidden="true">
+  <div class="runhead-inner">
+    <span class="rh-name">Bistrot de <span class="la">la</span> Presse</span>
+    <span class="rh-sec" id="rhSec" data-i18n="rh_default">Édition du jour</span>
+    <span class="rh-status" id="rhStatus"><span class="rh-dot"></span><span id="rhStatusTxt">—</span></span>
   </div>
-</header>
+</div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap">
-    <p class="eyebrow reveal" data-i18n="hero_eyebrow">Luxembourg · Face au Palais Grand-Ducal</p>
-    <h1 class="reveal" data-i18n-html="hero_h1">Le vieux Luxembourg, <em>servi avec honnêteté.</em></h1>
-    <p class="lead reveal" data-i18n="hero_lead">Face au Palais Grand-Ducal, une maison centenaire où les classiques luxembourgeois réchauffent les fidèles depuis des générations.</p>
-    <div class="hero-cta reveal">
-      <a href="tel:+352466669" class="btn btn-rouge" data-i18n="btn_book_table">Réserver une table</a>
-      <a href="#menu" class="btn btn-ghost" data-i18n="btn_seemenu">Voir la carte</a>
-    </div>
-    <p class="addr reveal">
-      <span class="dot"></span>
-      <span data-i18n="hero_addr">24 Rue du Marché-aux-Herbes, L-1728 Luxembourg</span>
-    </p>
-  </div>
-</section>
+<div class="sheet">
 
-<!-- STORY -->
-<section class="story" id="story">
-  <div class="wrap story-grid">
-    <div>
-      <p class="eyebrow reveal" data-i18n="story_eyebrow">La Maison</p>
-      <h2 class="serif reveal" data-i18n-html="story_h2">Une adresse qui <em>a traversé les générations.</em></h2>
-      <p class="body reveal" data-i18n="story_body">Installé dans une maison centenaire face au Palais Grand-Ducal, le Bistrot de la Presse est le rendez-vous où le vrai Luxembourg se retrouve autour d'une cuisine sincère et généreuse. Boiseries de chêne, murs jaunes, cheminée ancienne et portraits de la famille grand-ducale composent un décor chaleureux pour les grands classiques luxembourgeois — Bouneschlupp, Kniddelen mat Speck, Judd mat Gaardebounen — qui réchauffent habitués et parlementaires depuis des générations. Ici, point de prétention : juste des portions copieuses, des prix justes et l'accueil inimitable qui vaut à la maison son surnom affectueux Beim Heidi.</p>
-      <div class="pillars">
-        <div class="pillar reveal">
-          <div class="ico serif">I</div>
-          <div>
-            <h3 data-i18n="p1_h">Face au Palais Grand-Ducal</h3>
-            <p data-i18n="p1_p">En plein cœur de la Ville-Haute, voisins du Parlement et du Palais depuis des décennies.</p>
-          </div>
-        </div>
-        <div class="pillar reveal">
-          <div class="ico serif">II</div>
-          <div>
-            <h3 data-i18n="p2_h">Cuisine luxembourgeoise authentique</h3>
-            <p data-i18n="p2_p">Bouneschlupp, Kniddelen mat Speck, Judd mat Gaardebounen — les classiques, préparés avec soin et générosité.</p>
-          </div>
-        </div>
-        <div class="pillar reveal">
-          <div class="ico serif">III</div>
-          <div>
-            <h3 data-i18n="p3_h">L'accueil Beim Heidi</h3>
-            <p data-i18n="p3_p">Heidi accueille ses hôtes comme des habitués — avec chaleur, sans chichi et sans prétention.</p>
-          </div>
-        </div>
+  <!-- =================== MASTHEAD =================== -->
+  <header class="masthead" role="banner">
+    <div class="ears">
+      <div class="ear-left">
+        <span data-i18n="ear_left_1">Maison centenaire</span> ·
+        <b data-i18n="ear_left_2">Ville-Haute, Luxembourg</b><br />
+        <span data-i18n="ear_left_3">Face au Palais grand-ducal</span>
       </div>
-    </div>
-    <img class="story-photo reveal" src="assets/interior.jpg"
-      alt="Salle intérieure du Bistrot de la Presse, Luxembourg" />
-  </div>
-</section>
-
-<!-- MENU -->
-<section class="menu" id="menu">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="serif" data-i18n-html="menu_h2">La <em>carte</em></h2>
-      <p data-i18n="menu_intro">Classiques luxembourgeois, viandes, poissons, pinsa et desserts. Une sélection — la carte complète vous attend à table.</p>
-    </div>
-
-    <div class="mcat reveal">
-      <div class="mcat-head">
-        <h3 class="serif" data-i18n="cat_lux">Spécialités luxembourgeoises</h3>
-        <span class="ln"></span>
-      </div>
-      <div class="mitems">
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Bouneschlupp</div>
-            <div class="ds" data-i18n="d_bouneschlupp">Soupe aux haricots verts, la classique grand-ducale</div>
-          </div>
-          <div class="mp">€19.00</div>
+      <div class="ear-right">
+        <div class="stamp" id="stamp" role="status" aria-live="polite">
+          <span class="s-top" data-i18n="stamp_top">Bistrot</span>
+          <span class="s-status" id="stampStatus">—</span>
+          <span class="s-bot" id="stampBot">—</span>
         </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Kniddelen mat Speck</div>
-            <div class="ds" data-i18n="d_kniddelen">Boulettes de pâte au lard fumé</div>
-          </div>
-          <div class="mp">€23.00</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Judd mat Gaardebounen</div>
-            <div class="ds" data-i18n="d_judd">Collet de porc fumé aux fèves — le plat national</div>
-          </div>
-          <div class="mp">€35.00</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Gromperenkichelscher</div>
-            <div class="ds" data-i18n="d_gromper">Galettes de pommes de terre traditionnelles</div>
-          </div>
-          <div class="mp">€21.00</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Paschtéit</div>
-            <div class="ds" data-i18n="d_paschtet">Pâté en croûte à la luxembourgeoise</div>
-          </div>
-          <div class="mp">€28.90</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Vegetaresch Kniddelen</div>
-            <div class="ds" data-i18n="d_veg_kniddelen">Boulettes de pâte, version végétarienne</div>
-          </div>
-          <div class="mp">€21.00</div>
-        </div>
+        <div class="stamp-flag" data-i18n="stamp_flag">horaires à confirmer</div>
       </div>
     </div>
 
-    <div class="mcat reveal">
-      <div class="mcat-head">
-        <h3 class="serif" data-i18n="cat_meat">Viandes</h3>
-        <span class="ln"></span>
-      </div>
-      <div class="mitems">
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Tartare de Bœuf</div>
-            <div class="ds" data-i18n="d_tartare">Tartare de bœuf maison, frites et salade</div>
-          </div>
-          <div class="mp">€30.50</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Cordon Bleu de Veau</div>
-            <div class="ds" data-i18n="d_cordon">Escalope de veau farcie, sauce crème</div>
-          </div>
-          <div class="mp">€28.90</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Filet Mignon</div>
-            <div class="ds" data-i18n="d_filet">Filet de bœuf, pommes de terre et légumes</div>
-          </div>
-          <div class="mp">€42.00</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Beef Burger</div>
-            <div class="ds" data-i18n="d_burger">Burger bœuf, fromage, frites maison</div>
-          </div>
-          <div class="mp">€23.90</div>
-        </div>
-      </div>
+    <hr class="dbl-rule" />
+    <div class="nameplate">
+      <p class="slogan-ear">Beim Heidi</p>
+      <h1 class="wordmark">Bistrot de <span class="la">la</span> Presse</h1>
+      <div class="underdeck" data-i18n="underdeck">Cuisine luxembourgeoise &amp; brasserie · depuis des générations</div>
+      <p class="tagline-line"><span id="tagline">Le vieux Luxembourg, servi avec honnêteté.</span><span class="proposed" data-i18n="tag_proposed">slogan proposé</span></p>
     </div>
+    <hr class="dbl-rule" />
 
-    <div class="mcat reveal">
-      <div class="mcat-head">
-        <h3 class="serif" data-i18n="cat_fish">Poissons</h3>
-        <span class="ln"></span>
+    <!-- FOLIO LINE (date · editions · place) -->
+    <div class="folio">
+      <div class="f-left">
+        <nav class="editions" aria-label="Éditions / langue">
+          <span class="ed-label" data-i18n="editions">Éditions :</span>
+          <button class="ed-tab" data-lang="fr" aria-pressed="true" lang="fr">FR</button>
+          <button class="ed-tab" data-lang="de" aria-pressed="false" lang="de">DE</button>
+          <button class="ed-tab" data-lang="en" aria-pressed="false" lang="en">EN</button>
+        </nav>
       </div>
-      <div class="mitems">
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Saumon Grillé</div>
-            <div class="ds" data-i18n="d_salmon">Filet de saumon grillé, légumes et riz</div>
-          </div>
-          <div class="mp">€31.80</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Fish &amp; Chips</div>
-            <div class="ds" data-i18n="d_fishchips">Fish &amp; chips maison, sauce tartare</div>
-          </div>
-          <div class="mp">€28.90</div>
-        </div>
-      </div>
+      <div class="f-mid" id="folioDate">—</div>
+      <div class="f-right"><span data-i18n="folio_place">Luxembourg-Ville · No 1</span></div>
     </div>
+    <hr class="thin-rule" />
+  </header>
 
-    <div class="mcat reveal" style="margin-bottom:0">
-      <div class="mcat-head">
-        <h3 class="serif" data-i18n="cat_pinsa">Pinsa &amp; Desserts</h3>
-        <span class="ln"></span>
-      </div>
-      <div class="mitems">
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Pinsa Margherita</div>
-            <div class="ds" data-i18n="d_pinsa">Pinsa tomate, mozzarella, basilic</div>
-          </div>
-          <div class="mp">€15.00</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Grand Duke Salad</div>
-            <div class="ds" data-i18n="d_salad">Salade signature de la maison</div>
-          </div>
-          <div class="mp">€24.00</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Gâteau au Chocolat</div>
-            <div class="ds" data-i18n="d_choco">Moelleux au chocolat, crème anglaise</div>
-          </div>
-          <div class="mp">€10.90</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Gâteau au Fromage</div>
-            <div class="ds" data-i18n="d_fromage">Gâteau au fromage frais, coulis de framboises</div>
-          </div>
-          <div class="mp">€10.90</div>
+  <main id="main">
+
+    <!-- =================== ABOVE THE FOLD =================== -->
+    <section class="fold" aria-label="Édition du jour">
+      <div class="lead-col">
+        <p class="kicker" data-i18n="fold_kicker">À la une — édition du jour</p>
+        <h2 class="lead-head" data-i18n="fold_head">Le vrai Luxembourg, à table, face au Palais.</h2>
+        <p class="standfirst" data-i18n="fold_stand">Une maison centenaire où l’on pousse la porte sans réserver : boiseries de chêne, murs jaunes, portraits de la famille grand-ducale, et l’accueil de Heidi. On vient pour la carte, on reste pour l’ambiance.</p>
+        <p data-i18n="fold_body">Habitués, parlementaires et voyageurs de passage s’y croisent autour des grands classiques — Bouneschlupp, Kniddelen, Judd mat Gaardebounen. Lisez l’édition du jour : la carte est ci-dessous.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#menu" data-i18n="cta_menu">Lire le menu</a>
+          <!-- PHONE UNCONFIRMED — primary +352 46 66 69 (a second number circulates). Confirm with owner. -->
+          <a class="btn" href="tel:+352466669" data-i18n="cta_call" aria-describedby="callNote">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Appeler
+          </a>
+          <a class="btn btn-ghost" href="#carnet" data-i18n="cta_find">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Nous trouver
+          </a>
+          <span class="call-note" id="callNote" data-i18n="call_note">Tél. à confirmer avec la maison</span>
         </div>
       </div>
-    </div>
 
-    <p class="menu-note reveal" data-i18n-html="menu_note"><b>Une sélection.</b> Prix et carte complète à confirmer avec le restaurant avant publication — données issues de Wolt et menu.lu.</p>
-  </div>
-</section>
+      <aside class="almanac" aria-labelledby="almTitle">
+        <p class="alm-sub" data-i18n="alm_sub">L’almanach — aujourd’hui</p>
+        <h2 id="almTitle" data-i18n="alm_title">Aujourd’hui</h2>
+        <table class="hours" id="hoursTable">
+          <caption class="sr-only" data-i18n="alm_caption" style="position:absolute;left:-9999px;">Horaires d’ouverture</caption>
+          <tbody>
+            <tr data-day="1"><th scope="row" data-i18n="day_mon">Lundi</th><td class="h-time"><span class="closed" data-i18n="closed">fermé</span></td></tr>
+            <tr data-day="2"><th scope="row" data-i18n="day_tue">Mardi</th><td class="h-time">11:30–21:30</td></tr>
+            <tr data-day="3"><th scope="row" data-i18n="day_wed">Mercredi</th><td class="h-time">11:30–21:30</td></tr>
+            <tr data-day="4"><th scope="row" data-i18n="day_thu">Jeudi</th><td class="h-time">11:30–21:30</td></tr>
+            <tr data-day="5"><th scope="row" data-i18n="day_fri">Vendredi</th><td class="h-time">11:30–21:30</td></tr>
+            <tr data-day="6"><th scope="row" data-i18n="day_sat">Samedi</th><td class="h-time">11:30–21:30</td></tr>
+            <tr data-day="0"><th scope="row" data-i18n="day_sun">Dimanche</th><td class="h-time"><span class="closed" data-i18n="closed">fermé</span></td></tr>
+          </tbody>
+        </table>
+        <p class="bar-note" data-i18n="alm_bar">Cuisine 11:30–21:30 · le bar veille jusque vers 01:00 (mar.–sam.).</p>
+        <p class="confirm-cap" data-i18n="alm_confirm">Horaires sous réserve — à confirmer avec la maison.</p>
+      </aside>
+    </section>
 
-<!-- BAND -->
-<section class="band">
-  <div class="wrap inner reveal">
-    <h2 class="serif" data-i18n-html="band_h2">Beim Heidi — <em>on est entre nous.</em></h2>
-    <p data-i18n="band_p">Un bistrot centenaire face au Palais Grand-Ducal, une cuisine luxembourgeoise sincère et des portions généreuses. Réservez votre table.</p>
-    <div class="taglist">
-      <span class="tag" data-i18n="tag1">Cuisine luxembourgeoise</span>
-      <span class="tag" data-i18n="tag2">Portions généreuses</span>
-      <span class="tag" data-i18n="tag3">Cœur de Luxembourg-Ville</span>
-    </div>
-    <a href="tel:+352466669" class="btn btn-white" data-i18n="btn_book_table">Réserver une table</a>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery" style="padding-bottom:0">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="serif" data-i18n-html="gal_h2">Chez <em>nous.</em></h2>
-      <p data-i18n="gal_intro">Quelques images de la maison et de l'assiette.</p>
-    </div>
-    <div class="gallery-grid">
-      <img class="reveal" src="assets/exterior.jpg"
-        alt="Devanture du Bistrot de la Presse, Rue du Marché-aux-Herbes" />
-      <img class="reveal" src="assets/interior.jpg"
-        alt="Salle chaleureuse du Bistrot de la Presse" />
-      <img class="reveal" src="assets/food1.jpg"
-        alt="Plat du jour au Bistrot de la Presse" />
-      <img class="reveal" src="assets/food2.jpg"
-        alt="Assiette maison au Bistrot de la Presse" />
-      <img class="reveal" src="assets/sluurpy_big1.jpg"
-        alt="Le Bistrot de la Presse, Luxembourg" />
-      <img class="reveal" src="assets/sluurpy_big2.jpg"
-        alt="Ambiance du Bistrot de la Presse" />
-    </div>
-  </div>
-</section>
-
-<!-- VISIT -->
-<section class="visit" id="visit">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="serif" data-i18n-html="visit_h2">Nous <em>trouver.</em></h2>
-      <p data-i18n="visit_intro">Face au Palais Grand-Ducal, en plein cœur de la Ville-Haute.</p>
-    </div>
-    <div class="visit-grid">
-      <div class="info reveal">
-        <div class="info-row">
-          <div class="k" data-i18n="lbl_where">Adresse</div>
-          <div class="val">
-            24 Rue du Marché-aux-Herbes
-            <span class="small" data-i18n="where_small">L-1728 Luxembourg · Ville-Haute</span>
-          </div>
-        </div>
-        <div class="info-row">
-          <div class="k" data-i18n="lbl_hours">Horaires</div>
-          <div class="val">
-            <span data-i18n="hours_val">Mar–Sam 11:30–21:30 (cuisine)</span>
-            <span class="small" data-i18n-html="hours_small">Lun &amp; Dim fermés · Bar Mar–Sam jusqu'à ~01:00 — <em>à confirmer avec le restaurant</em></span>
-          </div>
-        </div>
-        <div class="info-row">
-          <div class="k" data-i18n="lbl_book">Réserver</div>
-          <div class="val">
-            <a href="tel:+352466669">+352 46 66 69</a>
-            <span class="small" data-i18n="book_small">Réservation recommandée</span>
-          </div>
-        </div>
-        <div class="info-row" style="border-bottom:0">
-          <div class="k" data-i18n="lbl_contact">Contact</div>
-          <div class="val">
-            <a href="mailto:contact@bistrotpresse.lu">contact@bistrotpresse.lu</a>
-            <span class="small">
-              <a href="https://www.facebook.com/pages/Bistrot-de-La-Presse/163294833726279"
-                target="_blank" rel="noopener">Facebook</a> ·
-              <a href="https://www.instagram.com/bistrot_delapresse/"
-                target="_blank" rel="noopener">Instagram</a>
-            </span>
-          </div>
-        </div>
-        <a href="tel:+352466669" class="btn btn-rouge" data-i18n="btn_book_table">Réserver une table</a>
+    <!-- =================== LE MENU =================== -->
+    <section id="menu" aria-labelledby="menuTitle" class="menu-wrap" tabindex="-1">
+      <div class="sec-head">
+        <h2 id="menuTitle" data-i18n="menu_title">Le Menu</h2>
+        <p class="sec-note" data-i18n="menu_note">La carte — prix indicatifs, à confirmer (source Wolt)</p>
       </div>
-      <div class="map reveal">
-        <iframe
-          title="Plan vers le Bistrot de la Presse"
-          loading="lazy"
-          src="https://www.google.com/maps?q=Bistrot+de+la+Presse+24+Rue+du+March%C3%A9-aux-Herbes+Luxembourg&output=embed">
-        </iframe>
-      </div>
-    </div>
-  </div>
-</section>
 
-<footer>
-  <div class="wrap foot">
-    <div class="fb">
-      <span class="wm serif">Bistrot de la Presse</span>
-      <small>24 Rue du Marché-aux-Herbes · L-1728 Luxembourg · +352 46 66 69</small>
+      <div class="menu-cols" id="menuCols">
+        <!-- Group 1: Luxembourgish classics first -->
+        <div class="menu-group">
+          <h3><span class="star">✶</span> <span data-i18n="grp_lux">Spécialités luxembourgeoises</span></h3>
+          <div class="item-wrap">
+            <p class="item"><span class="nm">Bouneschlupp</span><span class="leader" aria-hidden="true"></span><span class="pr">€19,00</span></p>
+            <span class="gloss" data-i18n="g_boune">Soupe paysanne aux haricots verts &amp; lard</span>
+          </div>
+          <div class="item-wrap">
+            <p class="item"><span class="nm">Kniddelen mat Speck</span><span class="leader" aria-hidden="true"></span><span class="pr">€23,00</span></p>
+            <span class="gloss" data-i18n="g_kniddel">Quenelles luxembourgeoises au lard</span>
+          </div>
+          <div class="item-wrap">
+            <p class="item"><span class="nm">Vegetaresch Kniddelen</span><span class="leader" aria-hidden="true"></span><span class="pr">€21,00</span></p>
+            <span class="gloss" data-i18n="g_kniddel_veg">Quenelles, version végétarienne</span>
+          </div>
+          <div class="item-wrap">
+            <p class="item"><span class="nm">Judd mat Gaardebounen</span><span class="leader" aria-hidden="true"></span><span class="pr">€35,00</span></p>
+            <span class="gloss" data-i18n="g_judd">Collet de porc fumé &amp; fèves des marais — le plat national</span>
+          </div>
+          <div class="item-wrap">
+            <p class="item"><span class="nm">Gromperenkichelcher</span><span class="leader" aria-hidden="true"></span><span class="pr">€21,00</span></p>
+            <span class="gloss" data-i18n="g_gromp">Galettes de pommes de terre croustillantes</span>
+          </div>
+          <div class="item-wrap">
+            <p class="item"><span class="nm">Paschtéit</span><span class="leader" aria-hidden="true"></span><span class="pr">€28,90</span></p>
+            <span class="gloss" data-i18n="g_pascht">Bouchée à la reine luxembourgeoise</span>
+          </div>
+        </div>
+
+        <!-- Group 2: Brasserie / mains -->
+        <div class="menu-group">
+          <h3><span data-i18n="grp_brass">Brasserie &amp; plats</span></h3>
+          <div class="item-wrap"><p class="item"><span class="nm">Tartare de Bœuf</span><span class="leader" aria-hidden="true"></span><span class="pr">€30,50</span></p></div>
+          <div class="item-wrap"><p class="item"><span class="nm">Cordon Bleu de Veau</span><span class="leader" aria-hidden="true"></span><span class="pr">€28,90</span></p></div>
+          <div class="item-wrap"><p class="item"><span class="nm">Escalope de Veau Panée</span><span class="leader" aria-hidden="true"></span><span class="pr">€29,90</span></p></div>
+          <div class="item-wrap"><p class="item"><span class="nm">Filet Mignon</span><span class="leader" aria-hidden="true"></span><span class="pr">€42,00</span></p></div>
+          <div class="item-wrap"><p class="item"><span class="nm">Saumon grillé</span><span class="leader" aria-hidden="true"></span><span class="pr">€31,80</span></p></div>
+          <div class="item-wrap"><p class="item"><span class="nm">Fish &amp; Chips</span><span class="leader" aria-hidden="true"></span><span class="pr">€28,90</span></p></div>
+        </div>
+
+        <!-- Group 3: Burgers, pinsa & salads -->
+        <div class="menu-group">
+          <h3><span data-i18n="grp_burg">Burgers, pinsa &amp; salades</span></h3>
+          <div class="item-wrap"><p class="item"><span class="nm">Beef Burger</span><span class="leader" aria-hidden="true"></span><span class="pr">€23,90</span></p></div>
+          <div class="item-wrap"><p class="item"><span class="nm">Chicken Burger</span><span class="leader" aria-hidden="true"></span><span class="pr">€21,00</span></p></div>
+          <div class="item-wrap"><p class="item"><span class="nm">Vegetarian Burger</span><span class="leader" aria-hidden="true"></span><span class="pr">€19,00</span></p></div>
+          <div class="item-wrap"><p class="item"><span class="nm">Pinsa Margherita</span><span class="leader" aria-hidden="true"></span><span class="pr">€15,00</span></p></div>
+          <div class="item-wrap"><p class="item"><span class="nm">Pinsa San Daniele</span><span class="leader" aria-hidden="true"></span><span class="pr">€23,00</span></p></div>
+          <div class="item-wrap"><p class="item"><span class="nm">Pinsa Bufala</span><span class="leader" aria-hidden="true"></span><span class="pr">€22,90</span></p></div>
+          <div class="item-wrap"><p class="item"><span class="nm">Grand Duke Salad</span><span class="leader" aria-hidden="true"></span><span class="pr">€24,00</span></p></div>
+          <div class="item-wrap"><p class="item"><span class="nm">Cesar Salad</span><span class="leader" aria-hidden="true"></span><span class="pr">€23,00</span></p></div>
+        </div>
+
+        <!-- Group 4: Desserts -->
+        <div class="menu-group">
+          <h3><span data-i18n="grp_dess">Desserts</span></h3>
+          <div class="item-wrap"><p class="item"><span class="nm">Gâteau au Chocolat</span><span class="leader" aria-hidden="true"></span><span class="pr">€10,90</span></p></div>
+          <div class="item-wrap"><p class="item"><span class="nm">Gâteau au Fromage</span><span class="leader" aria-hidden="true"></span><span class="pr">€10,90</span></p></div>
+          <div class="item-wrap"><p class="item"><span class="nm">Charcuterie &amp; Fromage</span><span class="leader" aria-hidden="true"></span><span class="pr">€26,50</span></p></div>
+        </div>
+      </div>
+
+      <div class="menu-foot">
+        <span data-i18n="menu_foot_1">Carte non exhaustive · sélection représentative</span>
+        <a class="btn btn-wolt" href="https://wolt.com/en/lux/luxembourg/restaurant/bistrot-de-la-presse-luxembourg" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h2.2l2.4 12.4a2 2 0 0 0 2 1.6h8.8a2 2 0 0 0 2-1.6L22 7H6"/></svg>
+          <span data-i18n="wolt">Commander sur Wolt</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- =================== LEAD FEATURE (heritage) =================== -->
+    <section class="feature" aria-labelledby="featTitle">
+      <article class="feature-main">
+        <p class="kicker" data-i18n="feat_kicker">Le portrait — patrimoine</p>
+        <h2 id="featTitle" data-i18n="feat_title">Beim Heidi : une maison centenaire face au Palais</h2>
+        <p class="byline" data-i18n="feat_byline">Luxembourg-Ville · Rue du Marché-aux-Herbes</p>
+        <div class="body-cols">
+          <p class="dropcap" data-i18n="feat_p1">Installé dans une maison centenaire face au Palais grand-ducal, le Bistrot de la Presse est le rendez-vous où le vrai Luxembourg se retrouve autour d’une cuisine sincère et généreuse. Boiseries de chêne, murs jaunes, cheminée ancienne et portraits de la famille grand-ducale composent un décor chaleureux.</p>
+          <p data-i18n="feat_p2">Les grands classiques luxembourgeois — Bouneschlupp, Kniddelen mat Speck, Judd mat Gaardebounen — y réchauffent habitués et parlementaires depuis des générations. Ici, point de prétention : juste des portions copieuses, des prix justes et un accueil inimitable.</p>
+          <p data-i18n="feat_p3">C’est cet accueil, signé Heidi qui salue chaque table en personne, qui vaut à la maison son surnom affectueux — <em>Beim Heidi</em>. On ne réserve pas : on pousse la porte, en face du Palais, et l’on s’attable.</p>
+        </div>
+      </article>
+      <aside class="feature-side">
+        <blockquote class="pull">
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <span data-i18n="pull_q">« L’adresse des habitués face au Palais — copieux, sincère, sans chichis. »</span>
+          <cite data-i18n="pull_cite">4,6 / 5 · 469 avis Google</cite>
+        </blockquote>
+        <div class="side-note">
+          <h4 data-i18n="side_h">Bon à savoir</h4>
+          <p data-i18n="side_p">Pas de réservation en ligne ni de formulaire. La maison se visite à pied, ou se commande sur Wolt. Le téléphone reste le contact direct (numéro à confirmer).</p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- =================== CARNET D'ADRESSES =================== -->
+    <section id="carnet" class="carnet" aria-labelledby="carnetTitle" tabindex="-1">
+      <div class="sec-head">
+        <h2 id="carnetTitle" data-i18n="carnet_title">Carnet d’adresses</h2>
+        <p class="sec-note" data-i18n="carnet_note">Nous trouver, nous appeler, commander</p>
+      </div>
+      <div class="carnet-grid">
+        <div class="carnet-info">
+          <dl>
+            <dt data-i18n="c_addr">Adresse</dt>
+            <dd>24 Rue du Marché-aux-Herbes<br />L-1728 Luxembourg (Ville-Haute)<br />
+              <span class="flagtxt" data-i18n="c_addr_note">Face au Palais grand-ducal</span></dd>
+
+            <dt data-i18n="c_phone">Téléphone</dt>
+            <!-- PHONE UNCONFIRMED — see top-of-file note. Second line: +352 27 74 30 60 -->
+            <dd><a href="tel:+352466669">+352 46 66 69</a>
+              <span class="flagtxt" data-i18n="c_phone_note">Numéro à confirmer avec la maison</span></dd>
+
+            <dt data-i18n="c_order">Commander</dt>
+            <dd><a href="https://wolt.com/en/lux/luxembourg/restaurant/bistrot-de-la-presse-luxembourg" target="_blank" rel="noopener" data-i18n="c_wolt">Livraison sur Wolt</a></dd>
+
+            <dt data-i18n="c_social">Réseaux</dt>
+            <dd>
+              <div class="social-row">
+                <a href="https://www.facebook.com/pages/Bistrot-de-La-Presse/163294833726279" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg>
+                  Facebook</a>
+                <a href="https://www.instagram.com/bistrot_delapresse/" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
+                  Instagram</a>
+              </div>
+            </dd>
+          </dl>
+        </div>
+        <div class="carnet-map">
+          <iframe class="map-frame" title="Carte — 24 Rue du Marché-aux-Herbes, Luxembourg"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Bistrot%20de%20la%20Presse%2024%20Rue%20du%20March%C3%A9-aux-Herbes%20Luxembourg&output=embed"></iframe>
+          <div class="map-cap">
+            <span data-i18n="map_cap">Ville-Haute · à 2 min à pied du Palais</span>
+            <a href="https://www.google.com/maps/search/Bistrot+de+la+Presse+24+Rue+du+March%C3%A9-aux-Herbes+Luxembourg" target="_blank" rel="noopener" data-i18n="map_dir">Itinéraire ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =================== COLOPHON =================== -->
+  <footer class="colophon" role="contentinfo">
+    <div class="colophon-grid">
+      <div>
+        <h4 data-i18n="col_hours">Horaires</h4>
+        <ul>
+          <li data-i18n="col_hours_1">Mar.–Sam. : 11:30–21:30 (bar ~01:00)</li>
+          <li data-i18n="col_hours_2">Lun. &amp; Dim. : fermé</li>
+          <li style="color:var(--grey)" data-i18n="col_hours_3">Horaires à confirmer</li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="col_find">Adresse</h4>
+        <p>24 Rue du Marché-aux-Herbes<br />L-1728 Luxembourg</p>
+        <p><a href="https://www.google.com/maps/search/Bistrot+de+la+Presse+24+Rue+du+March%C3%A9-aux-Herbes+Luxembourg" target="_blank" rel="noopener" data-i18n="col_dir">Itinéraire ↗</a></p>
+      </div>
+      <div>
+        <h4 data-i18n="col_contact">Contact</h4>
+        <p><a href="tel:+352466669">+352 46 66 69</a><br /><span style="color:var(--grey);font-size:.78rem" data-i18n="col_phone_note">numéro à confirmer</span></p>
+        <p><a href="https://wolt.com/en/lux/luxembourg/restaurant/bistrot-de-la-presse-luxembourg" target="_blank" rel="noopener" data-i18n="col_wolt">Commander sur Wolt</a></p>
+      </div>
+      <div>
+        <h4 data-i18n="col_follow">Suivre</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/pages/Bistrot-de-La-Presse/163294833726279" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/bistrot_delapresse/" target="_blank" rel="noopener">Instagram · @bistrot_delapresse</a></li>
+        </ul>
+      </div>
+      <p class="disclosure">
+        <b data-i18n="disc_label">Ours / mentions :</b>
+        <span data-i18n="disc_text"> Maquette de démonstration. Le slogan, la palette et les polices sont des propositions — non issues d’une charte existante. Horaires et prix (source Wolt) à confirmer avec la maison ; numéro de téléphone à vérifier ; aucune adresse e-mail ni réservation en ligne (pas de système). Aucune photographie : visuels haute définition à demander au propriétaire pour la version finale.</span>
+      </p>
     </div>
-    <p>
-      <a href="https://www.facebook.com/pages/Bistrot-de-La-Presse/163294833726279"
-        target="_blank" rel="noopener">Facebook</a> ·
-      <a href="https://www.instagram.com/bistrot_delapresse/"
-        target="_blank" rel="noopener">Instagram</a><br>
-      <span data-i18n="foot_since">Cuisine luxembourgeoise · Ville-Haute</span>
-    </p>
-  </div>
-  <div class="wrap foot-demo" data-i18n="foot_demo">Démonstration commerciale — données non vérifiées. Tarifs et horaires à confirmer avec le propriétaire.</div>
-</footer>
+    <p class="imprint">Bistrot de la Presse · Beim Heidi · Luxembourg-Ville — <span data-i18n="imprint">édition de démonstration</span></p>
+  </footer>
+
+</div><!-- /.sheet -->
+
+<!-- =================== STICKY NEWSSTAND STRIP (mobile) =================== -->
+<nav class="newsstand" aria-label="Actions rapides">
+  <a class="ns-primary" href="#menu" data-i18n="ns_menu">Lire le menu</a>
+  <!-- PHONE UNCONFIRMED — see top-of-file note -->
+  <a href="tel:+352466669">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <span data-i18n="ns_call">Appeler</span>
+  </a>
+  <a href="https://www.google.com/maps/search/Bistrot+de+la+Presse+24+Rue+du+March%C3%A9-aux-Herbes+Luxembourg" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <span data-i18n="ns_dir">Itinéraire</span>
+  </a>
+</nav>
 
 <script>
-// ── Reveal on scroll ──
-const io = new IntersectionObserver((es) => {
-  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: .12 });
-document.querySelectorAll('.reveal').forEach((el, i) => {
-  el.style.transitionDelay = (i % 6 * 65) + 'ms';
-  io.observe(el);
-});
-document.querySelectorAll('.nav-links a').forEach(a =>
-  a.addEventListener('click', () => document.body.classList.remove('mobile-open')));
+(function(){
+  "use strict";
 
-// ── i18n (FR default · DE · EN) ──
-const I18N = {
-  fr: {},
-  de: {
-    brand_tag:"Luxemburger Küche · Ville-Haute",
-    nav_story:"Das Haus", nav_menu:"Speisekarte", nav_visit:"Finden",
-    btn_book:"Reservieren", btn_book_table:"Tisch reservieren", btn_seemenu:"Zur Karte",
-    hero_eyebrow:"Luxemburg · Gegenüber dem Großherzoglichen Palais",
-    hero_h1:"Das alte Luxemburg — <em>unverfälscht auf den Tisch.</em>",
-    hero_lead:"Gegenüber dem Großherzoglichen Palais, in einem Jahrhunderthaus, wo luxemburgische Klassiker Stammgäste seit Generationen wärmen.",
-    hero_addr:"24 Rue du Marché-aux-Herbes, L-1728 Luxemburg",
-    story_eyebrow:"Das Haus",
-    story_h2:"Eine Adresse, die <em>Generationen überdauert hat.</em>",
-    story_body:"In einem Haus aus der Jahrhundertwende, direkt gegenüber dem Großherzoglichen Palais, ist das Bistrot de la Presse der Ort, an dem sich Luxemburg trifft — für ehrliche, herzhafte Küche ohne Schnörkel. Eichenholzvertäfelung, gelbe Wände, ein alter Kamin und Porträts der Großherzogsfamilie rahmen Klassiker wie Bouneschlupp, Kniddelen mat Speck und Judd mat Gaardebounen, die Generationen von Stammgästen und Parlamentariern erwärmt haben. Keine Kompromisse — nur üppige Portionen, faire Preise und der herzliche Empfang, der dem Haus seinen liebevollen Spitznamen Beim Heidi eingebracht hat.",
-    p1_h:"Gegenüber dem Großherzoglichen Palais",
-    p1_p:"Mitten in der Oberstadt, unmittelbare Nachbarn von Parlament und Palais seit Jahrzehnten.",
-    p2_h:"Authentische Luxemburger Küche",
-    p2_p:"Bouneschlupp, Kniddelen mat Speck, Judd mat Gaardebounen — die Klassiker, mit Sorgfalt und Großzügigkeit zubereitet.",
-    p3_h:"Der Empfang Beim Heidi",
-    p3_p:"Heidi begrüßt ihre Gäste wie Stammgäste — herzlich, unkompliziert und ohne Aufhebens.",
-    menu_h2:"Die <em>Karte</em>",
-    menu_intro:"Luxemburger Klassiker, Fleisch, Fisch, Pinsa und Desserts. Eine Auswahl — die vollständige Karte erwartet Sie am Tisch.",
-    cat_lux:"Luxemburger Spezialitäten", cat_meat:"Fleisch", cat_fish:"Fisch", cat_pinsa:"Pinsa &amp; Desserts",
-    d_bouneschlupp:"Grüne-Bohnen-Suppe, der große Klassiker",
-    d_kniddelen:"Nudelklöße mit geräuchertem Speck",
-    d_judd:"Geräuchertes Schweinefleisch mit Saubohnen — das Nationalgericht",
-    d_gromper:"Traditionelle Kartoffelpuffer",
-    d_paschtet:"Pastete im Teigmantel nach Luxemburger Art",
-    d_veg_kniddelen:"Nudelklöße, vegetarische Version",
-    d_tartare:"Hausgemachtes Beef-Tartare, Pommes und Salat",
-    d_cordon:"Gefülltes Kalbsschnitzel, Rahmsauce",
-    d_filet:"Rinderfilet, Kartoffeln und Gemüse",
-    d_burger:"Rinderburger, Käse, hausgemachte Pommes",
-    d_salmon:"Gegrilltes Lachsfilet, Gemüse und Reis",
-    d_fishchips:"Hausgemachter Fish &amp; Chips, Remoulade",
-    d_pinsa:"Pinsa Tomate, Mozzarella, Basilikum",
-    d_salad:"Signature-Salat des Hauses",
-    d_choco:"Schokoladenfondant, Vanillesauce",
-    d_fromage:"Frischkäsekuchen, Himbeercoulis",
-    menu_note:"<b>Eine Auswahl.</b> Preise und vollständige Karte beim Restaurant zu bestätigen — Daten von Wolt und menu.lu.",
-    band_h2:"Beim Heidi — <em>hier kennt man sich.</em>",
-    band_p:"Ein Jahrhundertbistrot gegenüber dem Großherzoglichen Palais, ehrliche Luxemburger Küche und großzügige Portionen. Reservieren Sie Ihren Tisch.",
-    tag1:"Luxemburger Küche", tag2:"Üppige Portionen", tag3:"Herz von Luxemburg-Stadt",
-    gal_h2:"Bei <em>uns.</em>", gal_intro:"Ein paar Bilder vom Haus und vom Teller.",
-    visit_h2:"So <em>finden Sie uns.</em>",
-    visit_intro:"Gegenüber dem Großherzoglichen Palais, mitten in der Oberstadt.",
-    lbl_where:"Adresse", lbl_hours:"Öffnungszeiten", lbl_book:"Reservieren", lbl_contact:"Kontakt",
-    where_small:"L-1728 Luxemburg · Oberstadt",
-    hours_val:"Di–Sa 11:30–21:30 (Küche)",
-    hours_small:"Mo &amp; So geschlossen · Bar Di–Sa bis ~01:00 — <em>bitte beim Restaurant bestätigen</em>",
-    book_small:"Reservierung empfohlen",
-    foot_since:"Luxemburger Küche · Ville-Haute",
-    foot_demo:"Verkaufsdemo — nicht verifizierte Daten. Preise und Öffnungszeiten beim Eigentümer bestätigen."
-  },
-  en: {
-    brand_tag:"Luxembourgish cuisine · Ville-Haute",
-    nav_story:"The House", nav_menu:"Menu", nav_visit:"Visit",
-    btn_book:"Book", btn_book_table:"Reserve a table", btn_seemenu:"See the menu",
-    hero_eyebrow:"Luxembourg · Opposite the Grand Ducal Palace",
-    hero_h1:"Old Luxembourg, <em>honestly served.</em>",
-    hero_lead:"Opposite the Grand Ducal Palace, a century-old house where Luxembourgish classics have warmed regulars for generations.",
-    hero_addr:"24 Rue du Marché-aux-Herbes, L-1728 Luxembourg",
-    story_eyebrow:"The House",
-    story_h2:"An address that has <em>outlasted the generations.</em>",
-    story_body:"Tucked into a century-old house directly opposite the Grand Ducal Palace, Bistrot de la Presse is where Luxembourg comes together over honest, unfussy cooking. Oak panelling, yellow walls, an antique fireplace, and framed portraits of the Grand Ducal family set the scene for hearty Luxembourgish classics — Bouneschlupp, Kniddelen mat Speck, Judd mat Gaardebounen — that have warmed locals and parliamentarians alike for generations. Nothing pretentious: just generous portions, fair prices, and the kind of welcome that earns a place its nickname Beim Heidi.",
-    p1_h:"Facing the Grand Ducal Palace",
-    p1_p:"Set in the heart of the Ville-Haute, neighbours to Parliament and the Palace for decades.",
-    p2_h:"Authentic Luxembourgish cooking",
-    p2_p:"Bouneschlupp, Kniddelen mat Speck, Judd mat Gaardebounen — the great classics, prepared with care and generosity.",
-    p3_h:"The Beim Heidi welcome",
-    p3_p:"Heidi greets every guest like a regular — warmly, without fuss, and without pretension.",
-    menu_h2:"The <em>menu</em>",
-    menu_intro:"Luxembourgish classics, meat, fish, pinsa and desserts. A selection — the full menu awaits you at the table.",
-    cat_lux:"Luxembourgish specialities", cat_meat:"Meat", cat_fish:"Fish", cat_pinsa:"Pinsa &amp; Desserts",
-    d_bouneschlupp:"Green bean soup, the grand-ducal classic",
-    d_kniddelen:"Dough dumplings with smoked bacon",
-    d_judd:"Smoked collar of pork with broad beans — the national dish",
-    d_gromper:"Traditional potato fritters",
-    d_paschtet:"Pastry-wrapped pâté, Luxembourgish style",
-    d_veg_kniddelen:"Dough dumplings, vegetarian version",
-    d_tartare:"House-made beef tartare, fries and salad",
-    d_cordon:"Stuffed veal escalope, cream sauce",
-    d_filet:"Beef fillet, potatoes and vegetables",
-    d_burger:"Beef burger, cheese, house fries",
-    d_salmon:"Grilled salmon fillet, vegetables and rice",
-    d_fishchips:"House fish &amp; chips, tartare sauce",
-    d_pinsa:"Pinsa tomato, mozzarella, basil",
-    d_salad:"The house signature salad",
-    d_choco:"Chocolate fondant, crème anglaise",
-    d_fromage:"Cream cheese cake, raspberry coulis",
-    menu_note:"<b>A selection.</b> Prices and full menu to be confirmed with the restaurant — data from Wolt and menu.lu.",
-    band_h2:"Beim Heidi — <em>you're among friends.</em>",
-    band_p:"A century-old bistro opposite the Grand Ducal Palace, honest Luxembourgish cooking and generous portions. Reserve your table.",
-    tag1:"Luxembourgish cuisine", tag2:"Generous portions", tag3:"Heart of Luxembourg City",
-    gal_h2:"At <em>home.</em>", gal_intro:"A few images of the house and the plate.",
-    visit_h2:"Find <em>us.</em>",
-    visit_intro:"Opposite the Grand Ducal Palace, in the heart of the Ville-Haute.",
-    lbl_where:"Address", lbl_hours:"Hours", lbl_book:"Book", lbl_contact:"Contact",
-    where_small:"L-1728 Luxembourg · Ville-Haute",
-    hours_val:"Tue–Sat 11:30–21:30 (kitchen)",
-    hours_small:"Mon &amp; Sun closed · Bar Tue–Sat until ~01:00 — <em>please confirm with the restaurant</em>",
-    book_small:"Booking recommended",
-    foot_since:"Luxembourgish cuisine · Ville-Haute",
-    foot_demo:"Sales demo — unverified data. Prices and hours to be confirmed with the owner."
+  /* ---------------- i18n dictionary ---------------- */
+  var I18N = {
+    fr:{
+      skip:"Aller au menu",
+      ear_left_1:"Maison centenaire", ear_left_2:"Ville-Haute, Luxembourg", ear_left_3:"Face au Palais grand-ducal",
+      stamp_top:"Bistrot", stamp_flag:"horaires à confirmer",
+      underdeck:"Cuisine luxembourgeoise & brasserie · depuis des générations",
+      tag_proposed:"slogan proposé",
+      editions:"Éditions :", folio_place:"Luxembourg-Ville · No 1", rh_default:"Édition du jour",
+      fold_kicker:"À la une — édition du jour",
+      fold_head:"Le vrai Luxembourg, à table, face au Palais.",
+      fold_stand:"Une maison centenaire où l’on pousse la porte sans réserver : boiseries de chêne, murs jaunes, portraits de la famille grand-ducale, et l’accueil de Heidi. On vient pour la carte, on reste pour l’ambiance.",
+      fold_body:"Habitués, parlementaires et voyageurs de passage s’y croisent autour des grands classiques — Bouneschlupp, Kniddelen, Judd mat Gaardebounen. Lisez l’édition du jour : la carte est ci-dessous.",
+      cta_menu:"Lire le menu", cta_call:"Appeler", cta_find:"Nous trouver",
+      call_note:"Tél. à confirmer avec la maison",
+      alm_sub:"L’almanach — aujourd’hui", alm_title:"Aujourd’hui", alm_caption:"Horaires d’ouverture",
+      alm_bar:"Cuisine 11:30–21:30 · le bar veille jusque vers 01:00 (mar.–sam.).",
+      alm_confirm:"Horaires sous réserve — à confirmer avec la maison.",
+      day_mon:"Lundi", day_tue:"Mardi", day_wed:"Mercredi", day_thu:"Jeudi", day_fri:"Vendredi", day_sat:"Samedi", day_sun:"Dimanche",
+      closed:"fermé",
+      menu_title:"Le Menu", menu_note:"La carte — prix indicatifs, à confirmer (source Wolt)",
+      grp_lux:"Spécialités luxembourgeoises", grp_brass:"Brasserie & plats", grp_burg:"Burgers, pinsa & salades", grp_dess:"Desserts & planches",
+      g_boune:"Soupe paysanne aux haricots verts & lard", g_kniddel:"Quenelles luxembourgeoises au lard",
+      g_kniddel_veg:"Quenelles, version végétarienne", g_judd:"Collet de porc fumé & fèves des marais — le plat national",
+      g_gromp:"Galettes de pommes de terre croustillantes", g_pascht:"Bouchée à la reine luxembourgeoise",
+      menu_foot_1:"Carte non exhaustive · sélection représentative", wolt:"Commander sur Wolt",
+      feat_kicker:"Le portrait — patrimoine", feat_title:"Beim Heidi : une maison centenaire face au Palais",
+      feat_byline:"Luxembourg-Ville · Rue du Marché-aux-Herbes",
+      feat_p1:"Installé dans une maison centenaire face au Palais grand-ducal, le Bistrot de la Presse est le rendez-vous où le vrai Luxembourg se retrouve autour d’une cuisine sincère et généreuse. Boiseries de chêne, murs jaunes, cheminée ancienne et portraits de la famille grand-ducale composent un décor chaleureux.",
+      feat_p2:"Les grands classiques luxembourgeois — Bouneschlupp, Kniddelen mat Speck, Judd mat Gaardebounen — y réchauffent habitués et parlementaires depuis des générations. Ici, point de prétention : juste des portions copieuses, des prix justes et un accueil inimitable.",
+      feat_p3:"C’est cet accueil, signé Heidi qui salue chaque table en personne, qui vaut à la maison son surnom affectueux — Beim Heidi. On ne réserve pas : on pousse la porte, en face du Palais, et l’on s’attable.",
+      pull_q:"« L’adresse des habitués face au Palais — copieux, sincère, sans chichis. »",
+      pull_cite:"4,6 / 5 · 469 avis Google",
+      side_h:"Bon à savoir",
+      side_p:"Pas de réservation en ligne ni de formulaire. La maison se visite à pied, ou se commande sur Wolt. Le téléphone reste le contact direct (numéro à confirmer).",
+      carnet_title:"Carnet d’adresses", carnet_note:"Nous trouver, nous appeler, commander",
+      c_addr:"Adresse", c_addr_note:"Face au Palais grand-ducal", c_phone:"Téléphone", c_phone_note:"Numéro à confirmer avec la maison",
+      c_order:"Commander", c_wolt:"Livraison sur Wolt", c_social:"Réseaux",
+      map_cap:"Ville-Haute · à 2 min à pied du Palais", map_dir:"Itinéraire ↗",
+      col_hours:"Horaires", col_hours_1:"Mar.–Sam. : 11:30–21:30 (bar ~01:00)", col_hours_2:"Lun. & Dim. : fermé", col_hours_3:"Horaires à confirmer",
+      col_find:"Adresse", col_dir:"Itinéraire ↗", col_contact:"Contact", col_phone_note:"numéro à confirmer", col_wolt:"Commander sur Wolt",
+      col_follow:"Suivre",
+      disc_label:"Ours / mentions :",
+      disc_text:" Maquette de démonstration. Le slogan, la palette et les polices sont des propositions — non issues d’une charte existante. Horaires et prix (source Wolt) à confirmer avec la maison ; numéro de téléphone à vérifier ; aucune adresse e-mail ni réservation en ligne (pas de système). Aucune photographie : visuels haute définition à demander au propriétaire pour la version finale.",
+      imprint:"édition de démonstration",
+      ns_menu:"Lire le menu", ns_call:"Appeler", ns_dir:"Itinéraire",
+      tagline:"Le vieux Luxembourg, servi avec honnêteté.",
+      st_open:"Ouvert", st_closed:"Fermé", st_bot_open:"service en cours", st_bot_closed:"revenez bientôt",
+      rh_menu:"Le Menu", rh_carnet:"Carnet d’adresses", rh_feature:"Le portrait", rh_today:"Édition du jour"
+    },
+    de:{
+      skip:"Zur Karte springen",
+      ear_left_1:"Hundertjähriges Haus", ear_left_2:"Oberstadt, Luxemburg", ear_left_3:"Gegenüber dem Großherzoglichen Palais",
+      stamp_top:"Bistrot", stamp_flag:"Öffnungszeiten bestätigen",
+      underdeck:"Luxemburger Küche & Brasserie · seit Generationen",
+      tag_proposed:"Slogan-Vorschlag",
+      editions:"Ausgaben:", folio_place:"Luxemburg-Stadt · Nr. 1", rh_default:"Tagesausgabe",
+      fold_kicker:"Titelseite — Tagesausgabe",
+      fold_head:"Das echte Luxemburg, zu Tisch, gegenüber dem Palais.",
+      fold_stand:"Ein hundertjähriges Haus, in das man ohne Reservierung eintritt: Eichenholz, gelbe Wände, Porträts der großherzoglichen Familie und Heidis Empfang. Man kommt für die Karte und bleibt für die Atmosphäre.",
+      fold_body:"Stammgäste, Abgeordnete und Reisende treffen sich hier bei den Klassikern — Bouneschlupp, Kniddelen, Judd mat Gaardebounen. Lesen Sie die Tagesausgabe: die Karte steht unten.",
+      cta_menu:"Zur Karte", cta_call:"Anrufen", cta_find:"Anfahrt",
+      call_note:"Rufnummer mit dem Haus bestätigen",
+      alm_sub:"Der Almanach — heute", alm_title:"Heute", alm_caption:"Öffnungszeiten",
+      alm_bar:"Küche 11:30–21:30 · die Bar bis ca. 01:00 Uhr (Di.–Sa.).",
+      alm_confirm:"Zeiten unter Vorbehalt — mit dem Haus bestätigen.",
+      day_mon:"Montag", day_tue:"Dienstag", day_wed:"Mittwoch", day_thu:"Donnerstag", day_fri:"Freitag", day_sat:"Samstag", day_sun:"Sonntag",
+      closed:"geschlossen",
+      menu_title:"Die Karte", menu_note:"Speisekarte — Richtpreise, zu bestätigen (Quelle Wolt)",
+      grp_lux:"Luxemburger Spezialitäten", grp_brass:"Brasserie & Hauptgerichte", grp_burg:"Burger, Pinsa & Salate", grp_dess:"Desserts & Platten",
+      g_boune:"Bäuerliche Bohnensuppe mit Speck", g_kniddel:"Luxemburger Klöße mit Speck",
+      g_kniddel_veg:"Klöße, vegetarisch", g_judd:"Geräucherter Schweinekamm & Saubohnen — das Nationalgericht",
+      g_gromp:"Knusprige Kartoffelpuffer", g_pascht:"Luxemburger Königinpastete",
+      menu_foot_1:"Auswahl · nicht vollständig", wolt:"Auf Wolt bestellen",
+      feat_kicker:"Das Porträt — Tradition", feat_title:"Beim Heidi: ein hundertjähriges Haus gegenüber dem Palais",
+      feat_byline:"Luxemburg-Stadt · Rue du Marché-aux-Herbes",
+      feat_p1:"In einem Haus aus der Jahrhundertwende, direkt gegenüber dem Großherzoglichen Palais, ist das Bistrot de la Presse der Ort, an dem sich Luxemburg trifft — für ehrliche, herzhafte Küche ohne Schnörkel. Eichenholzvertäfelung, gelbe Wände, ein alter Kamin und Porträts der Großherzogsfamilie rahmen das warme Ambiente.",
+      feat_p2:"Klassiker wie Bouneschlupp, Kniddelen mat Speck und Judd mat Gaardebounen wärmen Stammgäste und Parlamentarier seit Generationen. Keine Allüren — nur üppige Portionen, faire Preise und ein unnachahmlicher Empfang.",
+      feat_p3:"Es ist dieser Empfang von Heidi, die jeden Tisch persönlich begrüßt, der dem Haus den liebevollen Spitznamen Beim Heidi eingebracht hat. Man reserviert nicht — man tritt ein, gegenüber dem Palais, und setzt sich.",
+      pull_q:"„Die Adresse der Stammgäste gegenüber dem Palais — reichlich, ehrlich, ohne Schnickschnack.“",
+      pull_cite:"4,6 / 5 · 469 Google-Bewertungen",
+      side_h:"Gut zu wissen",
+      side_p:"Keine Online-Reservierung, kein Formular. Das Haus besucht man zu Fuß oder bestellt über Wolt. Das Telefon ist der direkte Kontakt (Nummer zu bestätigen).",
+      carnet_title:"Adressbuch", carnet_note:"Finden, anrufen, bestellen",
+      c_addr:"Adresse", c_addr_note:"Gegenüber dem Großherzoglichen Palais", c_phone:"Telefon", c_phone_note:"Nummer mit dem Haus bestätigen",
+      c_order:"Bestellen", c_wolt:"Lieferung über Wolt", c_social:"Soziale Medien",
+      map_cap:"Oberstadt · 2 Min. zu Fuß vom Palais", map_dir:"Route ↗",
+      col_hours:"Öffnungszeiten", col_hours_1:"Di.–Sa.: 11:30–21:30 (Bar ~01:00)", col_hours_2:"Mo. & So.: geschlossen", col_hours_3:"Zeiten zu bestätigen",
+      col_find:"Adresse", col_dir:"Route ↗", col_contact:"Kontakt", col_phone_note:"Nummer zu bestätigen", col_wolt:"Auf Wolt bestellen",
+      col_follow:"Folgen",
+      disc_label:"Impressum / Hinweise:",
+      disc_text:" Demo-Entwurf. Slogan, Farbpalette und Schriften sind Vorschläge — nicht aus einem bestehenden Markenleitfaden. Öffnungszeiten und Preise (Quelle Wolt) mit dem Haus zu bestätigen; Telefonnummer zu prüfen; keine E-Mail-Adresse, keine Online-Reservierung (kein System). Keine Fotos: hochauflösende Bilder beim Inhaber für die finale Version anfragen.",
+      imprint:"Demo-Ausgabe",
+      ns_menu:"Zur Karte", ns_call:"Anrufen", ns_dir:"Route",
+      tagline:"Das alte Luxemburg — unverfälscht auf den Tisch.",
+      st_open:"Geöffnet", st_closed:"Geschl.", st_bot_open:"Service läuft", st_bot_closed:"bald wieder da",
+      rh_menu:"Die Karte", rh_carnet:"Adressbuch", rh_feature:"Das Porträt", rh_today:"Tagesausgabe"
+    },
+    en:{
+      skip:"Skip to the menu",
+      ear_left_1:"A century-old house", ear_left_2:"Ville-Haute, Luxembourg", ear_left_3:"Opposite the Grand Ducal Palace",
+      stamp_top:"Bistrot", stamp_flag:"hours to be confirmed",
+      underdeck:"Luxembourgish cuisine & brasserie · for generations",
+      tag_proposed:"proposed tagline",
+      editions:"Editions:", folio_place:"Luxembourg City · No. 1", rh_default:"Today’s edition",
+      fold_kicker:"Front page — today’s edition",
+      fold_head:"The real Luxembourg, at table, across from the Palace.",
+      fold_stand:"A century-old house you walk into without booking: oak panelling, yellow walls, portraits of the Grand Ducal family, and Heidi’s welcome. Come for the menu, stay for the room.",
+      fold_body:"Regulars, parliamentarians and passing travellers meet here over the classics — Bouneschlupp, Kniddelen, Judd mat Gaardebounen. Read today’s edition: the menu is below.",
+      cta_menu:"Read the menu", cta_call:"Call", cta_find:"Find us",
+      call_note:"Phone number to be confirmed with the house",
+      alm_sub:"The almanac — today", alm_title:"Today", alm_caption:"Opening hours",
+      alm_bar:"Kitchen 11:30–21:30 · the bar stays up to ~01:00 (Tue–Sat).",
+      alm_confirm:"Hours subject to confirmation with the house.",
+      day_mon:"Monday", day_tue:"Tuesday", day_wed:"Wednesday", day_thu:"Thursday", day_fri:"Friday", day_sat:"Saturday", day_sun:"Sunday",
+      closed:"closed",
+      menu_title:"The Menu", menu_note:"The bill of fare — prices indicative, to confirm (source Wolt)",
+      grp_lux:"Luxembourgish specialities", grp_brass:"Brasserie & mains", grp_burg:"Burgers, pinsa & salads", grp_dess:"Desserts & boards",
+      g_boune:"Hearty green-bean & bacon soup", g_kniddel:"Luxembourg dumplings with bacon",
+      g_kniddel_veg:"Dumplings, vegetarian", g_judd:"Smoked pork collar & broad beans — the national dish",
+      g_gromp:"Crisp potato fritters", g_pascht:"Luxembourg vol-au-vent",
+      menu_foot_1:"A representative selection · not the full card", wolt:"Order on Wolt",
+      feat_kicker:"The profile — heritage", feat_title:"Beim Heidi: a century-old house facing the Palace",
+      feat_byline:"Luxembourg City · Rue du Marché-aux-Herbes",
+      feat_p1:"Tucked into a century-old house directly opposite the Grand Ducal Palace, Bistrot de la Presse is where Luxembourg comes together over honest, unfussy cooking. Oak panelling, yellow walls, an antique fireplace and framed portraits of the Grand Ducal family set a warm scene.",
+      feat_p2:"Hearty Luxembourgish classics — Bouneschlupp, Kniddelen mat Speck, Judd mat Gaardebounen — have warmed locals and parliamentarians alike for generations. Nothing pretentious here: just generous portions, fair prices and an inimitable welcome.",
+      feat_p3:"It is that welcome — Heidi greeting every table in person — that earns the house its affectionate nickname, Beim Heidi. You don’t book: you push the door, across from the Palace, and sit down.",
+      pull_q:"“The regulars’ table across from the Palace — generous, honest, no fuss.”",
+      pull_cite:"4.6 / 5 · 469 Google reviews",
+      side_h:"Good to know",
+      side_p:"No online booking and no form. Visit on foot, or order on Wolt. The phone is the direct line (number to be confirmed).",
+      carnet_title:"Address book", carnet_note:"Find us, call us, order",
+      c_addr:"Address", c_addr_note:"Opposite the Grand Ducal Palace", c_phone:"Telephone", c_phone_note:"Number to be confirmed with the house",
+      c_order:"Order", c_wolt:"Delivery on Wolt", c_social:"Social",
+      map_cap:"Ville-Haute · a 2-min walk from the Palace", map_dir:"Directions ↗",
+      col_hours:"Hours", col_hours_1:"Tue–Sat: 11:30–21:30 (bar ~01:00)", col_hours_2:"Mon & Sun: closed", col_hours_3:"Hours to be confirmed",
+      col_find:"Address", col_dir:"Directions ↗", col_contact:"Contact", col_phone_note:"number to be confirmed", col_wolt:"Order on Wolt",
+      col_follow:"Follow",
+      disc_label:"Imprint / notes:",
+      disc_text:" Demonstration mock-up. The tagline, palette and fonts are proposals — not from any existing brand guide. Hours and prices (source Wolt) to be confirmed with the house; phone number to be verified; no email address and no online booking (no system exists). No photography: request hi-res owner images for the final build.",
+      imprint:"demonstration edition",
+      ns_menu:"Read the menu", ns_call:"Call", ns_dir:"Directions",
+      tagline:"Old Luxembourg, honestly served.",
+      st_open:"Open", st_closed:"Closed", st_bot_open:"now serving", st_bot_closed:"back soon",
+      rh_menu:"The Menu", rh_carnet:"Address book", rh_feature:"The profile", rh_today:"Today’s edition"
+    }
+  };
+
+  var LOCALE = {fr:"fr-FR", de:"de-DE", en:"en-GB"};
+  var current = "fr";
+
+  /* hours model: index = JS getDay() (0=Sun). null = closed */
+  var HOURS = {1:null, 2:[11.5,21.5], 3:[11.5,21.5], 4:[11.5,21.5], 5:[11.5,21.5], 6:[11.5,21.5], 0:null};
+
+  function t(key){ return (I18N[current] && I18N[current][key]) || I18N.fr[key] || key; }
+
+  /* ---------------- apply translations ---------------- */
+  function applyLang(lang, animate){
+    if(!I18N[lang]) lang = "fr";
+    current = lang;
+    document.documentElement.lang = lang;
+
+    var nodes = document.querySelectorAll("[data-i18n]");
+    for(var i=0;i<nodes.length;i++){
+      var key = nodes[i].getAttribute("data-i18n");
+      var val = t(key);
+      if(val != null) nodes[i].textContent = val;
+    }
+    document.getElementById("tagline").textContent = t("tagline");
+
+    // edition tabs state
+    var tabs = document.querySelectorAll(".ed-tab");
+    for(var j=0;j<tabs.length;j++){
+      var on = tabs[j].getAttribute("data-lang")===lang;
+      tabs[j].setAttribute("aria-pressed", on?"true":"false");
+    }
+
+    updateFolioDate();
+    updateStamp(false);
+    updateRunheadSection();
+
+    // 120ms cross-fade between editions (motion-safe)
+    if(animate && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+      var sheet = document.querySelector(".sheet");
+      sheet.style.transition = "opacity .12s ease";
+      sheet.style.opacity = ".35";
+      requestAnimationFrame(function(){
+        setTimeout(function(){ sheet.style.opacity = "1"; }, 120);
+      });
+    }
+    try{ localStorage.setItem("bdlp_lang", lang); }catch(e){}
   }
-};
 
-const FR = {};
-document.querySelectorAll('[data-i18n]').forEach(el => { FR[el.getAttribute('data-i18n')] = el.textContent; });
-document.querySelectorAll('[data-i18n-html]').forEach(el => { FR['__h_' + el.getAttribute('data-i18n-html')] = el.innerHTML; });
+  /* ---------------- folio date ---------------- */
+  function updateFolioDate(){
+    var d = new Date();
+    var opts = {weekday:"long", day:"numeric", month:"long", year:"numeric"};
+    var s = d.toLocaleDateString(LOCALE[current]||"fr-FR", opts);
+    s = s.charAt(0).toUpperCase()+s.slice(1);
+    document.getElementById("folioDate").textContent = s;
+  }
 
-function setLang(l) {
-  const d = l === 'fr' ? null : I18N[l];
-  document.documentElement.lang = l;
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const k = el.getAttribute('data-i18n');
-    const v = d ? d[k] : FR[k];
-    if (v != null) el.textContent = v;
+  /* ---------------- open/closed computation ---------------- */
+  function computeOpen(now){
+    now = now || new Date();
+    var day = now.getDay();
+    var h = now.getHours() + now.getMinutes()/60;
+    var win = HOURS[day];
+    if(win && h>=win[0] && h<win[1]) return true;
+    return false;
+  }
+
+  function updateStamp(doPress){
+    var open = computeOpen();
+    var stamp = document.getElementById("stamp");
+    var statusEl = document.getElementById("stampStatus");
+    var botEl = document.getElementById("stampBot");
+
+    statusEl.textContent = open ? t("st_open") : t("st_closed");
+    botEl.textContent = open ? t("st_bot_open") : t("st_bot_closed");
+    stamp.classList.toggle("is-open", open);
+    stamp.setAttribute("aria-label",
+      (open ? t("st_open") : t("st_closed")) + " — " + t("stamp_flag"));
+
+    // running head status
+    var rh = document.getElementById("rhStatus");
+    var rhTxt = document.getElementById("rhStatusTxt");
+    rh.classList.toggle("is-open", open);
+    rhTxt.textContent = open ? t("st_open") : t("st_closed");
+
+    // highlight today's row
+    var today = new Date().getDay();
+    var rows = document.querySelectorAll("#hoursTable tr[data-day]");
+    for(var i=0;i<rows.length;i++){
+      var isToday = parseInt(rows[i].getAttribute("data-day"),10)===today;
+      rows[i].classList.toggle("today", isToday);
+      // add/refresh "today" tag
+      var th = rows[i].querySelector("th");
+      var old = th.querySelector(".today-tag");
+      if(old) old.remove();
+      if(isToday){
+        var tag = document.createElement("span");
+        tag.className = "today-tag";
+        tag.textContent = ({fr:"auj.",de:"heute",en:"today"})[current];
+        th.appendChild(tag);
+      }
+    }
+
+    if(doPress && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+      stamp.classList.remove("press");
+      void stamp.offsetWidth; // reflow to restart animation
+      stamp.classList.add("press");
+    }
+  }
+
+  /* ---------------- running head (sticky) + section ---------------- */
+  var runhead = document.getElementById("runhead");
+  var masthead = document.querySelector(".masthead");
+  function onScroll(){
+    var trigger = masthead.offsetHeight - 40;
+    if(window.scrollY > trigger){ runhead.classList.add("show"); runhead.setAttribute("aria-hidden","false"); }
+    else { runhead.classList.remove("show"); runhead.setAttribute("aria-hidden","true"); }
+  }
+  var curSecKey = "rh_today";
+  function updateRunheadSection(){
+    document.getElementById("rhSec").textContent = t(curSecKey);
+  }
+  // observe sections to set running-head section label
+  var secMap = [
+    {id:"menu", key:"rh_menu"},
+    {id:"carnet", key:"rh_carnet"}
+  ];
+  var featureEl = document.querySelector(".feature");
+  if("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          var id = en.target.id;
+          if(id==="menu") curSecKey="rh_menu";
+          else if(id==="carnet") curSecKey="rh_carnet";
+          else curSecKey="rh_feature";
+          updateRunheadSection();
+        }
+      });
+    }, {rootMargin:"-45% 0px -45% 0px"});
+    secMap.forEach(function(s){ var el=document.getElementById(s.id); if(el) io.observe(el); });
+    if(featureEl) io.observe(featureEl);
+  }
+
+  /* ---------------- wire up ---------------- */
+  document.querySelectorAll(".ed-tab").forEach(function(tab){
+    tab.addEventListener("click", function(){ applyLang(tab.getAttribute("data-lang"), true); });
   });
-  document.querySelectorAll('[data-i18n-html]').forEach(el => {
-    const k = el.getAttribute('data-i18n-html');
-    const v = d ? d[k] : FR['__h_' + k];
-    if (v != null) el.innerHTML = v;
-  });
-  document.querySelectorAll('.lang-switch button').forEach(b =>
-    b.classList.toggle('active', b.dataset.lang === l));
-  try { localStorage.setItem('bistrot-de-la-presse_lang', l); } catch(e) {}
-}
 
-document.querySelectorAll('.lang-switch button').forEach(b =>
-  b.addEventListener('click', () => setLang(b.dataset.lang)));
-let saved = 'fr';
-try { saved = localStorage.getItem('bistrot-de-la-presse_lang') || 'fr'; } catch(e) {}
-if (saved !== 'fr') setLang(saved);
+  window.addEventListener("scroll", onScroll, {passive:true});
+
+  // init language (saved pref -> browser -> fr)
+  var initLang = "fr";
+  try{
+    var saved = localStorage.getItem("bdlp_lang");
+    if(saved && I18N[saved]) initLang = saved;
+    else { var nav=(navigator.language||"fr").slice(0,2); if(I18N[nav]) initLang=nav; }
+  }catch(e){}
+
+  applyLang(initLang, false);
+  onScroll();
+  // press the stamp onto the masthead on load
+  window.addEventListener("load", function(){ updateStamp(true); });
+  // keep status fresh while the page is open
+  setInterval(function(){ updateStamp(false); }, 60000);
+
+})();
 </script>
 </body>
 </html>

@@ -1,637 +1,918 @@
 <!DOCTYPE html>
-<!--
-  BALI BEACH — sales demo (closing-grade teaser) — TRILINGUAL (FR default · DE · EN).
-  Indonesian + Thai restaurant. Upper floor, 8 rue de Louvigny, L-1946 Luxembourg-Ville.
-  Sources: menu.lu (7 photos + menu PDF dated 09/10/2014), gastronomie.lu, resto.lu,
-  yellow.lu, wedely.com (Maharaja co-tenant confirms venue active June 2026), facebook.com.
-  Menu/prices/hours to be confirmed with owner — prices sourced from a 2014 PDF listing.
-  No official logo or brand guide found — typographic wordmark used; colours proposed from
-  photo sampling (Ocean Blue #3D7EC4, Bali Coral #C23535, Balinese Gold #C88532).
--->
 <html lang="fr">
 <head>
-<script>document.documentElement.classList.add('js');</script>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="robots" content="noindex, nofollow" />
-<title>Bali Beach — Cuisine indonésienne &amp; thaïlandaise · Luxembourg</title>
-<meta name="description" content="Bali Beach — cuisine indonésienne et thaïlandaise au premier étage du 8 rue de Louvigny, Luxembourg-Ville. Rendang, saté, tom yam, pad thai. +352 24 17 45." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Bali Beach — Cuisine indonésienne & thaï · Luxembourg-Centre</title>
+<meta name="description" content="Bali Beach — cuisine indonésienne et thaï au cœur de Luxembourg-Ville, 8 rue de Louvigny. Réservez par téléphone : +352 24 17 45. Informations indicatives, à confirmer avec le restaurant.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --blue:#3D7EC4; --blue-deep:#2d62a0; --blue-pale:#e8f0f9;
-    --coral:#C23535; --coral-deep:#a22828;
-    --gold:#C88532; --gold-deep:#a86d20;
-    --sand:#FAF5EE; --sand2:#F0E9DD;
-    --teak:#1A120A; --teak2:#3a2a1e;
-    --muted:#7a6a5e; --line:#e0d5c5; --maxw:1180px;
+    --blue:#2F6FB0;
+    --coral:#C4463A;
+    --gold:#C88532;
+    --sand:#F6EFE4;
+    --sand-deep:#ECE0CC;
+    --teak:#17110A;
+    --teak-soft:#3a2f22;
+    --paper:#FBF6EC;
+    --rail-w:clamp(300px,26vw,360px);
+    --frame:1280px;
+    --disp:'Fraunces',Georgia,serif;
+    --ui:'Archivo','Segoe UI',system-ui,sans-serif;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--sand);color:var(--teak);font-family:'Raleway',system-ui,sans-serif;
-    font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
-  a{color:inherit;text-decoration:none}
-  .serif{font-family:'Cormorant Garamond',Georgia,serif}
-  .eyebrow{font-size:.75rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);font-weight:700}
-
-  .btn{display:inline-flex;align-items:center;gap:.5em;font-family:'Raleway',sans-serif;font-weight:700;
-    font-size:.84rem;letter-spacing:.08em;padding:.78em 1.7em;border-radius:2px;
-    border:1.5px solid transparent;transition:.22s;cursor:pointer;white-space:nowrap;text-transform:uppercase}
-  .btn-coral{background:var(--coral);color:#fff}
-  .btn-coral:hover{background:var(--coral-deep);transform:translateY(-2px);box-shadow:0 14px 28px -12px var(--coral)}
-  .btn-blue{background:var(--blue);color:#fff}
-  .btn-blue:hover{background:var(--blue-deep);transform:translateY(-2px);box-shadow:0 14px 28px -12px var(--blue)}
-  .btn-ghost{border-color:rgba(255,255,255,.65);color:#fff}
-  .btn-ghost:hover{background:rgba(255,255,255,.12);border-color:#fff}
-  .btn-white{background:#fff;color:var(--blue)}
-  .btn-white:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(0,0,0,.4)}
-
-  /* ── NAV ── */
-  header{position:sticky;top:0;z-index:100;background:rgba(250,245,238,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:80px;gap:14px}
-  .brand{display:flex;flex-direction:column;line-height:1}
-  .brand .wm{font-family:'Cormorant Garamond',serif;font-weight:700;font-style:italic;
-    font-size:1.75rem;letter-spacing:.02em;color:var(--blue)}
-  .brand small{font-family:'Raleway';font-weight:600;font-size:.56rem;letter-spacing:.28em;
-    text-transform:uppercase;color:var(--muted);margin-top:5px}
-  .nav-links{display:flex;gap:32px;align-items:center}
-  .nav-links a{font-weight:700;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--teak2);transition:.2s}
-  .nav-links a:hover{color:var(--blue)}
-  .nav-cta{display:flex;gap:14px;align-items:center}
-  .lang-switch{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden;flex:none}
-  .lang-switch button{font-family:'Raleway',sans-serif;font-weight:700;font-size:.72rem;
-    letter-spacing:.06em;text-transform:uppercase;padding:.46em .68em;background:none;
-    border:0;cursor:pointer;color:var(--muted);transition:.18s}
-  .lang-switch button.active{background:var(--blue);color:#fff}
-  .lang-switch button:not(.active):hover{color:var(--blue)}
-  .burger-ico{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer}
-  .burger-ico span{width:26px;height:2.5px;background:var(--teak);border-radius:2px}
-
-  /* ── HERO ── */
-  .hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;
-    background:linear-gradient(160deg,rgba(26,18,10,.72) 0%,rgba(13,38,80,.90) 100%),
-    url('assets/photo2.jpg') center/cover no-repeat;color:#fff}
-  .hero .wrap{padding-top:90px;padding-bottom:72px;width:100%}
-  .hero .eyebrow{color:var(--gold)}
-  .hero h1{font-family:'Cormorant Garamond',serif;font-weight:600;
-    font-size:clamp(2.9rem,7vw,5.6rem);line-height:1.06;letter-spacing:-.01em;margin:.22em 0 .28em}
-  .hero h1 em{font-style:italic;color:var(--gold)}
-  .hero p.lead{font-size:clamp(1rem,1.85vw,1.22rem);color:#e8d8c0;max-width:50ch;
-    margin-bottom:1.8em;font-weight:400;line-height:1.72}
-  .hero-cta{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:26px}
-  .addr{display:flex;align-items:center;gap:10px;color:#d8c8b0;font-size:.82rem;
-    font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-  .addr .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);
-    box-shadow:0 0 0 4px rgba(200,133,50,.28);flex:none}
-
-  section{padding:clamp(56px,7.5vw,104px) 0}
-  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;
-    margin-bottom:46px;flex-wrap:wrap}
-  .sec-head h2{font-family:'Cormorant Garamond',serif;font-weight:700;
-    font-size:clamp(2.2rem,5vw,3.8rem)}
-  .sec-head h2 em{font-style:italic;color:var(--blue)}
-  .sec-head p{color:var(--muted);max-width:40ch;font-size:.96rem}
-
-  /* ── STORY ── */
-  .story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-  .story-photo{width:100%;border-radius:4px;aspect-ratio:4/4.6;object-fit:cover;
-    box-shadow:0 30px 64px -32px rgba(26,18,10,.48)}
-  .story h2{font-family:'Cormorant Garamond',serif;font-weight:700;
-    font-size:clamp(2rem,4.5vw,3.2rem);margin:.12em 0 .55em;line-height:1.06}
-  .story h2 em{font-style:italic;color:var(--blue)}
-  .story p.body{color:var(--teak2);font-size:1.04rem;margin-bottom:1.6em;line-height:1.78}
-  .pillars{display:grid;gap:16px;margin-top:6px}
-  .pillar{display:flex;gap:16px;align-items:flex-start}
-  .pillar .ico{font-family:'Cormorant Garamond',serif;font-weight:700;color:#fff;
-    background:var(--blue);width:44px;height:44px;display:grid;place-items:center;
-    border-radius:50%;flex:none;font-size:1.1rem}
-  .pillar h3{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.18rem;
-    margin-bottom:3px}
-  .pillar p{color:var(--muted);font-size:.93rem}
-
-  /* ── MENU ── */
-  .menu{background:var(--sand2)}
-  .mcat{margin-bottom:44px}
-  .mcat:last-child{margin-bottom:0}
-  .mcat-head{display:flex;align-items:baseline;gap:16px;margin-bottom:18px}
-  .mcat-head h3{font-family:'Cormorant Garamond',serif;font-weight:700;font-style:italic;
-    font-size:1.6rem;color:var(--blue)}
-  .mcat-head .ln{flex:1;height:1px;background:var(--line)}
-  .mitems{display:grid;grid-template-columns:1fr 1fr;gap:4px 48px}
-  .mitem{display:flex;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
-  .mitem .ml{flex:1}
-  .mitem .nm{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.1rem}
-  .mitem .ds{color:var(--muted);font-size:.87rem;margin-top:2px}
-  .mitem .mp{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.05rem;
-    white-space:nowrap;color:var(--gold-deep)}
-  .menu-note{margin-top:32px;padding:16px 20px;background:var(--blue-pale);
-    border-left:3px solid var(--blue);border-radius:0 4px 4px 0;
-    color:var(--teak2);font-size:.88rem;line-height:1.65}
-  .menu-note b{color:var(--blue)}
-  @media(max-width:760px){.mitems{grid-template-columns:1fr;gap:0}}
-
-  /* ── BAND ── */
-  .band{background:linear-gradient(135deg,var(--blue),var(--blue-deep));color:#fff;text-align:center}
-  .band .inner{max-width:760px;margin:0 auto}
-  .band h2{font-family:'Cormorant Garamond',serif;font-weight:700;
-    font-size:clamp(2rem,5.2vw,3.8rem);margin-bottom:.34em;line-height:1.1}
-  .band h2 em{font-style:italic;color:var(--gold)}
-  .band p{color:rgba(255,255,255,.84);font-size:1.05rem;max-width:50ch;
-    margin:0 auto 1.6em;line-height:1.72}
-  .taglist{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
-  .tag{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-    padding:.55em .95em;border:1.5px solid rgba(255,255,255,.42);border-radius:100px;color:#fff}
-
-  /* ── GALLERY ── */
-  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .gallery img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;
-    border-radius:4px;border:1px solid var(--line)}
-
-  /* ── VISIT ── */
-  .visit{background:var(--sand2)}
-  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:stretch}
-  .info{display:flex;flex-direction:column;gap:18px}
-  .info-row{display:flex;gap:16px;align-items:flex-start;padding-bottom:18px;
-    border-bottom:1px solid var(--line)}
-  .info-row .k{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--blue);font-weight:700;min-width:100px;padding-top:5px}
-  .info-row .val{font-size:1.02rem;line-height:1.62}
-  .info-row .val a{color:var(--coral);font-weight:600}
-  .info-row .val .small{color:var(--muted);font-size:.87rem;display:block;margin-top:4px}
-  .map{border-radius:4px;overflow:hidden;border:1px solid var(--line);min-height:360px}
-  .map iframe{width:100%;height:100%;min-height:360px;border:0}
-
-  footer{background:#0d1e38;color:#a8bcd0;padding:50px 0 38px}
-  .foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-  .foot .fb .wm{font-family:'Cormorant Garamond',serif;color:#fff;
-    font-size:1.55rem;font-weight:700;font-style:italic}
-  .foot .fb small{display:block;font-size:.82rem;color:#a8bcd0;margin-top:4px}
-  .foot p{font-size:.9rem;text-align:right}
-  .foot a{color:var(--gold)}
-
-  .js .reveal{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.2,1)}
-  .js .reveal.in{opacity:1;transform:none}
-
-  @media(max-width:880px){
-    .nav-links{display:none}.burger-ico{display:flex}
-    .story-grid{grid-template-columns:1fr;gap:30px}.story-photo{aspect-ratio:16/10;order:-1}
-    .gallery{grid-template-columns:1fr 1fr}.visit-grid{grid-template-columns:1fr}
-    .mobile-open .nav-links{display:flex;position:absolute;top:80px;left:0;right:0;
-      flex-direction:column;gap:0;background:var(--sand);border-bottom:1px solid var(--line);
-      padding:8px 28px 20px}
-    .mobile-open .nav-links a{padding:14px 0;border-bottom:1px solid var(--line)}
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--ui);
+    color:var(--teak);
+    background:var(--sand);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
   }
-  @media(max-width:480px){
-    .nav-cta .btn-coral{display:none}
-    .foot{flex-direction:column;text-align:center}.foot p{text-align:center}
+  img{display:block;max-width:100%;}
+  a{color:inherit;}
+  h1,h2,h3{font-family:var(--disp);font-weight:600;line-height:1.05;margin:0;}
+  .kicker{
+    font-family:var(--ui);
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    font-size:.68rem;
+    color:var(--coral);
+  }
+  .flag{
+    font-size:.66rem;
+    letter-spacing:.04em;
+    color:var(--teak-soft);
+    font-style:italic;
+    opacity:.85;
+  }
+
+  /* ============ SHELL: two-track composition ============ */
+  .shell{
+    max-width:var(--frame);
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:var(--rail-w) 1fr;
+    align-items:start;
+    background:var(--sand);
+  }
+
+  /* ============ CONCIERGE RAIL (persistent) ============ */
+  .rail{
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
+    background:var(--paper);
+    border-right:1px solid var(--sand-deep);
+    padding:26px 26px 30px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+  .rail::-webkit-scrollbar{width:8px;}
+  .rail::-webkit-scrollbar-thumb{background:var(--sand-deep);border-radius:8px;}
+
+  /* seal / wordmark */
+  .seal{display:flex;gap:12px;align-items:flex-start;}
+  .medallion{flex:0 0 44px;width:44px;height:44px;margin-top:2px;}
+  .wordmark{font-family:var(--disp);font-weight:600;font-size:1.9rem;line-height:.95;letter-spacing:.01em;}
+  .wordmark .bali{color:var(--blue);}
+  .wordmark .beach{color:var(--gold);}
+  .seal .kicker{display:block;margin-top:7px;font-size:.6rem;line-height:1.4;}
+  .seal-note{display:block;margin-top:5px;}
+
+  /* language switcher */
+  .langs{display:flex;gap:4px;}
+  .langs button{
+    font-family:var(--ui);font-weight:600;font-size:.72rem;letter-spacing:.08em;
+    padding:5px 9px;border:1px solid var(--sand-deep);background:transparent;
+    color:var(--teak-soft);border-radius:6px;cursor:pointer;transition:.15s;
+  }
+  .langs button:hover{border-color:var(--gold);color:var(--teak);}
+  .langs button[aria-pressed="true"]{background:var(--teak);color:var(--sand);border-color:var(--teak);}
+
+  /* open-now status pill (signature device) */
+  .status{
+    display:block;text-decoration:none;
+    border-radius:12px;padding:13px 15px;
+    border:1px solid var(--sand-deep);
+    background:var(--sand);
+    transition:.3s;
+  }
+  .status.is-open{
+    background:linear-gradient(135deg,#fff6e5,#f4e4c2);
+    border-color:var(--gold);
+    box-shadow:0 0 0 1px rgba(200,133,50,.25),0 6px 22px -12px rgba(200,133,50,.9);
+  }
+  .status.is-closed{background:#efe7da;border-color:#d9ccb6;}
+  .status-head{display:flex;align-items:center;gap:9px;}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--teak-soft);flex:0 0 9px;}
+  .is-open .dot{background:#2f9e44;box-shadow:0 0 0 4px rgba(47,158,68,.18);}
+  .is-closed .dot{background:var(--coral);}
+  .status-label{font-weight:700;font-size:.98rem;letter-spacing:.01em;}
+  .status-detail{display:block;margin-top:3px;font-size:.82rem;color:var(--teak-soft);}
+  .status-caveat{display:block;margin-top:7px;font-size:.64rem;letter-spacing:.03em;color:var(--teak-soft);font-style:italic;}
+
+  /* call button */
+  .call-lead{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--teak-soft);}
+  .call-btn{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-decoration:none;text-align:center;
+    background:var(--coral);color:#fff;
+    border-radius:14px;padding:16px 14px;
+    box-shadow:0 10px 26px -14px rgba(196,70,58,.95);
+    transition:.18s;
+  }
+  .call-btn:hover{transform:translateY(-2px);background:#b03a2f;}
+  .call-btn .cb-top{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;opacity:.85;font-weight:600;}
+  .call-btn .cb-num{font-family:var(--disp);font-weight:600;font-size:1.5rem;margin-top:2px;letter-spacing:.02em;}
+
+  /* rail info blocks */
+  .rblock{border-top:1px solid var(--sand-deep);padding-top:16px;}
+  .rblock h3{font-size:.72rem;font-family:var(--ui);font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);margin-bottom:9px;}
+  .addr{font-style:normal;font-size:.92rem;line-height:1.5;}
+  .addr strong{font-weight:600;}
+  .dir-link{display:inline-flex;align-items:center;gap:6px;margin-top:9px;font-weight:600;font-size:.85rem;color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(47,111,176,.35);padding-bottom:1px;}
+  .dir-link:hover{color:var(--teak);border-color:var(--gold);}
+
+  .hours{width:100%;border-collapse:collapse;font-size:.83rem;}
+  .hours td{padding:3px 0;vertical-align:top;}
+  .hours .d{color:var(--teak-soft);white-space:nowrap;padding-right:10px;}
+  .hours .h{text-align:right;font-variant-numeric:tabular-nums;font-feature-settings:"tnum";}
+  .hours tr.now td{color:var(--teak);font-weight:700;}
+  .hours tr.now .d::before{content:"›";color:var(--gold);margin-right:4px;}
+
+  .fb-link{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:.85rem;text-decoration:none;color:var(--teak);}
+  .fb-link:hover{color:var(--blue);}
+  .fb-link svg{flex:0 0 16px;}
+
+  /* ============ STAGE (scrolling story) ============ */
+  .stage{
+    min-width:0;
+    background:linear-gradient(180deg,
+      var(--sand) 0%,
+      #e7d8bf 22%,
+      #cdb496 46%,
+      #6c7f7a 70%,
+      #33403f 88%,
+      #232d2c 100%);
+  }
+  .panel{padding:clamp(48px,6vw,96px) clamp(28px,5vw,72px);}
+  .panel-max{max-width:900px;}
+
+  /* STAGE 1 — diptych threshold hero */
+  .hero{display:grid;grid-template-columns:0.9fr 1.1fr;min-height:100vh;}
+  .hero-stone{
+    background:linear-gradient(160deg,#dccfb6,#bfae90);
+    position:relative;
+    display:flex;flex-direction:column;justify-content:space-between;
+    padding:34px 26px 30px 34px;
+    color:var(--teak);
+  }
+  .hero-stone .place{writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:.32em;font-weight:600;font-size:.72rem;text-transform:uppercase;color:var(--teak-soft);}
+  .hero-stone .stone-copy{max-width:15ch;}
+  .hero-stone .stone-copy h2{font-size:clamp(1.5rem,2.6vw,2.3rem);line-height:1.02;}
+  .hero-stone .stone-copy p{font-size:.9rem;color:var(--teak-soft);margin:14px 0 0;}
+  .hero-photo{position:relative;overflow:hidden;border-left:5px solid var(--gold);}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;}
+  .hero-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,30,55,.7) 0%,rgba(15,30,55,.28) 45%,rgba(15,30,55,.55) 100%);}
+  .hero-vline{
+    position:absolute;left:26px;top:50%;transform:translateY(-50%);
+    writing-mode:vertical-rl;
+    font-family:var(--disp);font-weight:500;
+    font-size:clamp(1.05rem,1.5vw,1.4rem);
+    color:#fff;letter-spacing:.02em;text-shadow:0 2px 18px rgba(0,0,0,.6);
+    height:auto;
+  }
+  .hero-badge{
+    position:absolute;right:24px;bottom:26px;
+    background:rgba(23,17,10,.6);backdrop-filter:blur(3px);
+    color:var(--sand);padding:12px 16px;border-radius:12px;border:1px solid rgba(200,133,50,.5);
+    max-width:280px;
+  }
+  .hero-badge .kicker{color:var(--gold);}
+  .hero-badge p{margin:5px 0 0;font-size:.82rem;line-height:1.4;}
+
+  /* STAGE 2 — rarity statement */
+  .rarity h2{font-size:clamp(1.8rem,3.4vw,3rem);color:var(--teak);max-width:16ch;}
+  .rarity .rule{width:64px;height:4px;background:var(--coral);margin:20px 0 24px;border-radius:2px;}
+  .rarity p{font-size:clamp(1.02rem,1.4vw,1.22rem);max-width:60ch;color:var(--teak-soft);}
+  .rarity p .hl{color:var(--blue);font-weight:600;}
+  .rarity .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+  .rarity .tags span{border:1px solid var(--gold);color:var(--teak-soft);border-radius:999px;padding:6px 15px;font-size:.82rem;letter-spacing:.03em;}
+
+  /* STAGE 3 — La Salle filmstrip */
+  .salle .kicker{color:var(--gold);}
+  .salle h2{color:var(--sand);font-size:clamp(1.7rem,3vw,2.6rem);margin-top:8px;}
+  .salle .lede{color:#eadfce;max-width:56ch;margin:14px 0 30px;font-size:1.02rem;}
+  .film{
+    display:grid;
+    grid-template-columns:1.6fr 1fr;
+    grid-template-rows:220px 200px;
+    gap:16px;
+  }
+  .film figure{margin:0;position:relative;overflow:hidden;border-radius:14px;background:#222;}
+  .film .big{grid-row:1 / span 2;}
+  .film img{width:100%;height:100%;object-fit:cover;}
+  .film figcaption{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:22px 14px 12px;font-size:.78rem;color:#fff;letter-spacing:.02em;
+    background:linear-gradient(transparent,rgba(0,0,0,.65));
+  }
+  .film .medal-pin{
+    position:relative;overflow:hidden;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid rgba(200,133,50,.55);background:#1a1410;
+  }
+  .film .medal-pin img{width:100%;height:100%;object-fit:cover;opacity:.92;}
+  .film .medal-tag{position:absolute;bottom:10px;left:12px;right:12px;font-size:.72rem;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-weight:600;text-shadow:0 1px 6px #000;}
+
+  /* STAGE 4 — La carte courte */
+  .carte{background:var(--paper);border-radius:0;}
+  .carte h2{color:var(--teak);font-size:clamp(1.7rem,3vw,2.6rem);}
+  .carte .sub{color:var(--teak-soft);margin:10px 0 4px;}
+  .menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:30px;}
+  .menu-cols h3{font-family:var(--ui);font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.8rem;color:var(--coral);border-bottom:2px solid var(--sand-deep);padding-bottom:8px;margin-bottom:16px;}
+  .dish{padding:12px 0;border-bottom:1px dotted var(--sand-deep);}
+  .dish .dn{font-family:var(--disp);font-weight:600;font-size:1.18rem;color:var(--teak);}
+  .dish .dg{font-size:.86rem;color:var(--teak-soft);margin-top:2px;}
+  .price-note{margin-top:22px;display:inline-flex;align-items:center;gap:8px;background:var(--sand);border:1px dashed var(--gold);border-radius:10px;padding:9px 14px;font-size:.82rem;color:var(--teak-soft);}
+  .price-note strong{color:var(--teak);font-weight:600;}
+
+  /* STAGE 5 — two brands plaque */
+  .plaque{background:transparent;}
+  .plaque-inner{
+    display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;
+    background:rgba(23,17,10,.55);
+    border:1px solid rgba(200,133,50,.4);
+    border-radius:16px;padding:28px 30px;
+  }
+  .plaque .marks{display:flex;flex-direction:column;gap:8px;text-align:right;padding-right:26px;border-right:1px solid rgba(200,133,50,.35);}
+  .plaque .m1{font-family:var(--disp);font-size:1.5rem;font-weight:600;color:var(--sand);}
+  .plaque .m1 b{color:var(--gold);font-weight:600;}
+  .plaque .m2{font-family:var(--disp);font-size:1.25rem;color:#eadfce;}
+  .plaque .m2 span{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teak-soft);}
+  .plaque .mm{font-size:.72rem;color:#c8bda9;}
+  .plaque p{color:#eadfce;font-size:.98rem;max-width:52ch;margin:0;}
+
+  /* STAGE 6 — emporter */
+  .emporter{padding-top:0;}
+  .emporter-inner{display:flex;flex-wrap:wrap;align-items:center;gap:20px;justify-content:space-between;
+    background:rgba(35,45,44,.5);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:22px 26px;}
+  .emporter h3{color:var(--sand);font-family:var(--disp);font-weight:600;font-size:1.3rem;}
+  .emporter p{color:#d6cdb9;font-size:.88rem;margin:6px 0 0;max-width:46ch;}
+  .wolt-btn{border:1px solid var(--gold);color:var(--gold);background:transparent;text-decoration:none;padding:11px 20px;border-radius:10px;font-weight:600;font-size:.9rem;white-space:nowrap;}
+  .wolt-btn:hover{background:var(--gold);color:var(--teak);}
+  .wolt-flag{display:block;margin-top:6px;font-size:.66rem;color:#b3a892;font-style:italic;}
+
+  /* ============ FOOTER ============ */
+  .foot{background:var(--teak);color:var(--sand);}
+  .foot-grid{max-width:var(--frame);margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:0;}
+  .foot-map{min-height:340px;border:0;width:100%;height:100%;filter:saturate(.9);}
+  .foot-info{padding:clamp(34px,4vw,56px);}
+  .foot-info .wordmark{font-size:1.6rem;}
+  .foot-info .kicker{color:var(--gold);margin-top:8px;display:block;}
+  .foot-row{margin-top:22px;}
+  .foot-row h4{font-family:var(--ui);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;color:var(--gold);margin:0 0 6px;}
+  .foot-row a{color:var(--sand);text-decoration:none;border-bottom:1px solid rgba(246,239,228,.25);}
+  .foot-row a:hover{border-color:var(--gold);}
+  .foot-hours{font-size:.86rem;color:#cabfa9;line-height:1.7;}
+  .foot-call{display:inline-block;margin-top:6px;background:var(--coral);color:#fff;padding:12px 20px;border-radius:12px;text-decoration:none;font-weight:700;border:0;}
+  .foot-call:hover{background:#b03a2f;}
+  .foot-disc{margin-top:26px;padding-top:18px;border-top:1px solid rgba(246,239,228,.15);font-size:.74rem;color:#a99e88;line-height:1.6;}
+
+  /* mobile top header + bottom bar (hidden on desktop) */
+  .m-header,.m-bar{display:none;}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:1080px){
+    .hero{grid-template-columns:0.8fr 1.2fr;}
+  }
+  @media (max-width:860px){
+    .shell{grid-template-columns:1fr;}
+    /* rail unpins → compact top identity header */
+    .rail{
+      position:static;height:auto;overflow:visible;
+      border-right:0;border-bottom:1px solid var(--sand-deep);
+      flex-direction:column;gap:16px;padding:20px 18px 22px;
+    }
+    /* on mobile: hide the giant call block + status from the flow header,
+       they live in the fixed bottom bar instead */
+    .rail .call-lead,.rail .call-btn{display:none;}
+    .hero{grid-template-columns:1fr;min-height:auto;}
+    .hero-stone{padding:22px;flex-direction:row;align-items:center;gap:16px;}
+    .hero-stone .place{writing-mode:horizontal-tb;transform:none;}
+    .hero-photo{min-height:360px;border-left:0;border-top:5px solid var(--gold);}
+    .hero-vline{writing-mode:horizontal-tb;left:20px;right:20px;top:auto;bottom:22px;transform:none;max-width:18ch;}
+    .film{grid-template-columns:1fr 1fr;grid-template-rows:180px 160px 160px;}
+    .film .big{grid-column:1 / span 2;grid-row:1;}
+    .menu-cols{grid-template-columns:1fr;gap:22px;}
+    .plaque-inner{grid-template-columns:1fr;}
+    .plaque .marks{text-align:left;border-right:0;border-bottom:1px solid rgba(200,133,50,.35);padding:0 0 12px;}
+    .foot-grid{grid-template-columns:1fr;}
+    .foot-map{min-height:280px;}
+    body{padding-bottom:74px;} /* room for bottom bar */
+    /* fixed bottom thumb bar */
+    .m-bar{
+      display:flex;position:fixed;bottom:0;left:0;right:0;z-index:50;
+      background:var(--paper);border-top:1px solid var(--sand-deep);
+      box-shadow:0 -6px 22px -12px rgba(0,0,0,.4);
+      padding:8px 10px;gap:10px;align-items:stretch;
+    }
+    .m-bar .m-status{
+      flex:1;display:flex;flex-direction:column;justify-content:center;
+      border-radius:10px;padding:7px 11px;border:1px solid var(--sand-deep);background:var(--sand);
+      text-decoration:none;
+    }
+    .m-bar .m-status.is-open{background:linear-gradient(135deg,#fff6e5,#f4e4c2);border-color:var(--gold);}
+    .m-bar .m-status.is-closed{background:#efe7da;border-color:#d9ccb6;}
+    .m-bar .m-status .ms-l{font-weight:700;font-size:.82rem;display:flex;align-items:center;gap:6px;}
+    .m-bar .m-status .ms-l .dot{width:8px;height:8px;}
+    .m-bar .m-status .ms-d{font-size:.66rem;color:var(--teak-soft);}
+    .m-bar .m-call{
+      flex:1.1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      background:var(--coral);color:#fff;border-radius:10px;text-decoration:none;padding:8px;
+    }
+    .m-bar .m-call .t{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;opacity:.9;}
+    .m-bar .m-call .n{font-family:var(--disp);font-weight:600;font-size:1.05rem;}
+  }
+  @media (max-width:460px){
+    .wordmark{font-size:1.6rem;}
+    .panel{padding:40px 20px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none!important;}
   }
 </style>
 </head>
 <body>
 
-<header id="top">
-  <div class="wrap nav">
-    <a href="#top" class="brand" aria-label="Bali Beach">
-      <span class="wm serif">Bali Beach</span>
-      <small data-i18n="brand_tag">Cuisine indonésienne &amp; thaïlandaise</small>
+<!-- ========================= SHELL ========================= -->
+<div class="shell">
+
+  <!-- ============ CONCIERGE RAIL ============ -->
+  <aside class="rail" aria-label="Réception — informations pratiques">
+
+    <div class="seal">
+      <svg class="medallion" viewBox="0 0 44 44" role="img" aria-label="Emblème Bali Beach">
+        <circle cx="22" cy="22" r="21" fill="none" stroke="#C88532" stroke-width="1.4"/>
+        <circle cx="22" cy="22" r="15.5" fill="none" stroke="#C88532" stroke-width="1"/>
+        <g fill="#C88532">
+          <circle cx="22" cy="22" r="4.4"/>
+          <path d="M22 3.5l2.4 5.2-2.4 2-2.4-2z"/>
+          <path d="M22 40.5l2.4-5.2-2.4-2-2.4 2z"/>
+          <path d="M3.5 22l5.2-2.4 2 2.4-2 2.4z"/>
+          <path d="M40.5 22l-5.2-2.4-2 2.4 2 2.4z"/>
+          <path d="M9 9l4.8 1.6.6 3-3-.6z"/>
+          <path d="M35 9l-4.8 1.6-.6 3 3-.6z"/>
+          <path d="M9 35l4.8-1.6.6-3-3 .6z"/>
+          <path d="M35 35l-4.8-1.6-.6-3 3 .6z"/>
+        </g>
+      </svg>
+      <div>
+        <div class="wordmark"><span class="bali">Bali</span> <span class="beach">Beach</span></div>
+        <span class="kicker" data-i18n="seal_kicker">Cuisine indonésienne &amp; thaï · Luxembourg</span>
+        <span class="flag seal-note" data-i18n="logo_note">logo à confirmer</span>
+      </div>
+    </div>
+
+    <div class="langs" role="group" aria-label="Langue">
+      <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+      <button type="button" data-lang="de" aria-pressed="false">DE</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+
+    <!-- SIGNATURE DEVICE: live open-now status -->
+    <a class="status" id="status" href="#horaires">
+      <span class="status-head">
+        <span class="dot"></span>
+        <span class="status-label" id="status-label" data-i18n="status_fallback_label">Voir les horaires</span>
+      </span>
+      <span class="status-detail" id="status-detail" data-i18n="status_fallback_detail">Horaires ci-dessous</span>
+      <span class="status-caveat" data-i18n="hours_caveat">horaires à confirmer</span>
     </a>
-    <nav class="nav-links">
-      <a href="#story" data-i18n="nav_story">La Maison</a>
-      <a href="#menu" data-i18n="nav_menu">La Carte</a>
-      <a href="#visit" data-i18n="nav_visit">Nous Trouver</a>
-    </nav>
-    <div class="nav-cta">
-      <div class="lang-switch" role="group" aria-label="Langue">
-        <button data-lang="fr" class="active">FR</button>
-        <button data-lang="de">DE</button>
-        <button data-lang="en">EN</button>
-      </div>
-      <a href="tel:+352241745" class="btn btn-coral" data-i18n="btn_book">Réserver</a>
-      <button class="burger-ico" aria-label="Menu" onclick="document.body.classList.toggle('mobile-open')">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </div>
-</header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap">
-    <p class="eyebrow reveal" data-i18n="hero_eyebrow">Luxembourg · Rue de Louvigny</p>
-    <h1 class="reveal" data-i18n-html="hero_h1">De Bali à votre assiette — <em>au cœur de Luxembourg.</em></h1>
-    <p class="lead reveal" data-i18n="hero_lead">Cuisine indonésienne et thaïlandaise au cœur de la ville — rendang, saté, tom yam et pad thai, à deux pas du Palais Grand-Ducal.</p>
-    <div class="hero-cta reveal">
-      <a href="tel:+352241745" class="btn btn-coral" data-i18n="btn_book_table">Réserver une table</a>
-      <a href="#menu" class="btn btn-ghost" data-i18n="btn_seemenu">Voir la carte</a>
-    </div>
-    <p class="addr reveal"><span class="dot"></span> <span data-i18n="hero_addr">8, rue de Louvigny, L-1946 Luxembourg-Ville</span></p>
-  </div>
-</section>
-
-<!-- STORY -->
-<section class="story" id="story">
-  <div class="wrap story-grid">
-    <img class="story-photo reveal" src="assets/photo4.jpg" alt="Intérieur de Bali Beach — panneaux de Bouddha balinais sculptés et murs bleu océan" />
     <div>
-      <p class="eyebrow reveal" data-i18n="story_eyebrow">La Maison</p>
-      <h2 class="serif reveal" data-i18n-html="story_h2">L'Asie du Sud-Est, <em>au cœur de la ville.</em></h2>
-      <p class="body reveal" data-i18n="story_body">Bali Beach occupe le premier étage du 8 rue de Louvigny, à deux pas du Palais Grand-Ducal, au cœur de Luxembourg-Ville. La salle, habillée d'un bleu océan intense et ornée de panneaux de Bouddha balinais sculptés, vous transporte à Ubud dès le premier regard. La cuisine, fondée sur des produits frais et de saison, propose une carte généreuse alliant les classiques indonésiens (rendang, saté, gado-gado) aux incontournables thaïlandais (tom yam, pad thai, currys rouge et vert). La vente à emporter et la livraison sont également disponibles.</p>
-      <div class="pillars">
-        <div class="pillar reveal">
-          <div class="ico serif">1</div>
-          <div>
-            <h3 data-i18n="p1_h">Indonésien &amp; Thaïlandais</h3>
-            <p data-i18n="p1_p">Une carte généreuse alliant les classiques indonésiens et les incontournables thaïlandais.</p>
-          </div>
-        </div>
-        <div class="pillar reveal">
-          <div class="ico serif">2</div>
-          <div>
-            <h3 data-i18n="p2_h">Décor balinais authentique</h3>
-            <p data-i18n="p2_p">Murs bleu océan et panneaux de Bouddha sculptés — dépaysement assuré dès le premier regard.</p>
-          </div>
-        </div>
-        <div class="pillar reveal">
-          <div class="ico serif">3</div>
-          <div>
-            <h3 data-i18n="p3_h">Livraison &amp; emporter</h3>
-            <p data-i18n="p3_p">Commandez via Wolt ou directement — les saveurs de l'île livrées chez vous.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MENU -->
-<section class="menu" id="menu">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="serif" data-i18n-html="menu_h2">La <em>carte</em></h2>
-      <p data-i18n="menu_intro">Une sélection de nos plats indonésiens et thaïlandais — la carte complète vous attend sur place.</p>
+      <span class="call-lead" data-i18n="call_lead">Réserver · commander</span>
+      <a class="call-btn" href="tel:+352241745" style="margin-top:8px">
+        <span class="cb-top" data-i18n="call_top">Appelez le restaurant</span>
+        <span class="cb-num">+352 24 17 45</span>
+      </a>
     </div>
 
-    <!-- Starters -->
-    <div class="mcat reveal">
-      <div class="mcat-head">
-        <h3 class="serif" data-i18n="cat_starters">Entrées &amp; Soupe</h3>
-        <span class="ln"></span>
-      </div>
-      <div class="mitems">
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Gado Gado</div>
-            <div class="ds" data-i18n="d_gado">Salade de légumes mixtes, épinards, haricots, tofu frit et sauce cacahuète</div>
-          </div>
-          <div class="mp">€6.50</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Lemper Jawa — Poulet</div>
-            <div class="ds" data-i18n="d_lemper">Rouleau de riz gluant farci au poulet émincé, enveloppé de feuille de bananier</div>
-          </div>
-          <div class="mp">€7.50</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Pergedel Udang</div>
-            <div class="ds" data-i18n="d_pergedel">Galettes de crevettes frites, sauce chilli pimentée et salade</div>
-          </div>
-          <div class="mp">€9.75</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Tom Yam Kung</div>
-            <div class="ds" data-i18n="d_tomyam">Soupe épicée aux crevettes, citronnelle et herbes thaïlandaises</div>
-          </div>
-          <div class="mp">€13.50</div>
-        </div>
-      </div>
+    <div class="rblock">
+      <h3 data-i18n="addr_h">Adresse</h3>
+      <address class="addr">
+        <strong>Bali Beach</strong><br>
+        8, rue de Louvigny<br>
+        <span data-i18n="addr_city">L-1946 Luxembourg-Centre</span>
+      </address>
+      <a class="dir-link" href="https://maps.google.com/?q=8+rue+de+Louvigny+Luxembourg" target="_blank" rel="noopener">
+        <span data-i18n="directions">Itinéraire</span> →
+      </a>
     </div>
 
-    <!-- Indonesian mains -->
-    <div class="mcat reveal">
-      <div class="mcat-head">
-        <h3 class="serif" data-i18n="cat_indonesian">Spécialités Indonésiennes</h3>
-        <span class="ln"></span>
-      </div>
-      <div class="mitems">
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Sate-Ayam</div>
-            <div class="ds" data-i18n="d_sate">Saté de poulet selon une ancienne recette familiale</div>
-          </div>
-          <div class="mp">€17.50</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Rendang Daging</div>
-            <div class="ds" data-i18n="d_rendang">Poitrine de bœuf mijotée épicée, style Sumatra occidental</div>
-          </div>
-          <div class="mp">€17.50</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Ikan Goreng</div>
-            <div class="ds" data-i18n="d_ikan">Dorade entière frite (600–800g), piment et ail émincé</div>
-          </div>
-          <div class="mp">€20.75</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Nasi Goreng — Crevettes</div>
-            <div class="ds" data-i18n="d_nasi">Riz frit aux légumes, servi avec saté de crevettes</div>
-          </div>
-          <div class="mp">€18.50</div>
-        </div>
-      </div>
+    <div class="rblock" id="horaires">
+      <h3 data-i18n="hours_h">Horaires</h3>
+      <table class="hours" id="hours-table">
+        <tr data-day="1"><td class="d" data-i18n="day_mon">Lundi</td><td class="h">11:45–15:00 · 18:00–23:00</td></tr>
+        <tr data-day="2"><td class="d" data-i18n="day_tue">Mardi</td><td class="h">11:45–15:00 · 18:00–23:00</td></tr>
+        <tr data-day="3"><td class="d" data-i18n="day_wed">Mercredi</td><td class="h">11:45–15:00 · 18:00–23:00</td></tr>
+        <tr data-day="4"><td class="d" data-i18n="day_thu">Jeudi</td><td class="h">11:45–15:00 · 18:00–23:00</td></tr>
+        <tr data-day="5"><td class="d" data-i18n="day_fri">Vendredi</td><td class="h">11:45–15:00 · 18:00–23:00</td></tr>
+        <tr data-day="6"><td class="d" data-i18n="day_sat">Samedi</td><td class="h">11:45–15:00 · 18:00–23:00</td></tr>
+        <tr data-day="0"><td class="d" data-i18n="day_sun">Dimanche</td><td class="h" data-i18n="sun_hours">11:45–15:00 (déjeuner)</td></tr>
+      </table>
+      <p class="flag" style="margin:10px 0 0" data-i18n="hours_note">Informations indicatives — horaires à confirmer avec le restaurant.</p>
     </div>
 
-    <!-- Thai mains -->
-    <div class="mcat reveal" style="margin-bottom:0">
-      <div class="mcat-head">
-        <h3 class="serif" data-i18n="cat_thai">Spécialités Thaïlandaises</h3>
-        <span class="ln"></span>
+    <div class="rblock">
+      <a class="fb-link" href="https://www.facebook.com/pages/Bali-Beach/466867343358564" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg>
+        Facebook
+      </a>
+    </div>
+
+  </aside>
+
+  <!-- ============ SCROLLING STAGE ============ -->
+  <main class="stage">
+
+    <!-- STAGE 1 — diptych threshold hero -->
+    <section class="hero" aria-label="Bienvenue">
+      <div class="hero-stone">
+        <span class="place" data-i18n="hero_place">Luxembourg-Ville · Ville-Haute</span>
+        <div class="stone-copy">
+          <h2 data-i18n="hero_stone_h">La capitale de pierre.</h2>
+          <p data-i18n="hero_stone_p">À deux pas du Palais Grand-Ducal.</p>
+        </div>
+        <span class="place" aria-hidden="true" style="visibility:hidden">·</span>
       </div>
-      <div class="mitems">
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Kang Dang Gai</div>
-            <div class="ds" data-i18n="d_kang">Poulet au curry rouge et lait de coco, aubergine thaïlandaise</div>
-          </div>
-          <div class="mp">€17.50</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Pad Talay</div>
-            <div class="ds" data-i18n="d_padtalay">Fruits de mer sautés (crevettes, encornet, poisson), légumes et curry rouge</div>
-          </div>
-          <div class="mp">€20.75</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Pad Thai Kung</div>
-            <div class="ds" data-i18n="d_padthai">Nouilles sautées aux crevettes</div>
-          </div>
-          <div class="mp">€18.75</div>
-        </div>
-        <div class="mitem">
-          <div class="ml">
-            <div class="nm serif">Khao Neaw Mamuang</div>
-            <div class="ds" data-i18n="d_mango">Mangue thaïlandaise, riz gluant et lait de coco</div>
-          </div>
-          <div class="mp">€6.50</div>
+      <div class="hero-photo">
+        <img src="assets/photo2.jpg" alt="Salle de Bali Beach — murs bleu océan et chaises rouges">
+        <div class="hero-scrim"></div>
+        <div class="hero-vline" data-i18n="hero_vline">Cuisine indonésienne &amp; thaï, au cœur de Luxembourg-Ville</div>
+        <div class="hero-badge">
+          <span class="kicker" data-i18n="hero_badge_k">Une salle qui dépayse</span>
+          <p data-i18n="hero_badge_p">Bleu océan, panneaux de Bouddha sculptés — le dépaysement dès la porte.</p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="menu-note reveal" data-i18n-html="menu_note"><b>Une sélection.</b> La carte complète (44+ plats indonésiens, 27+ thaïlandais) vous attend sur place. Prix tirés du menu source 2014 — <em>à confirmer avec le restaurant avant toute commande.</em></div>
-  </div>
-</section>
-
-<!-- BAND -->
-<section class="band">
-  <div class="wrap inner reveal">
-    <h2 class="serif" data-i18n-html="band_h2">Un voyage culinaire <em>sans quitter Luxembourg.</em></h2>
-    <p data-i18n="band_p">Rendang fumé, satay grillé, soupe tom yam parfumée — les saveurs d'Indonésie et de Thaïlande, au cœur de la capitale.</p>
-    <div class="taglist">
-      <span class="tag" data-i18n="tag1">Cuisine indonésienne</span>
-      <span class="tag" data-i18n="tag2">Spécialités thaïlandaises</span>
-      <span class="tag" data-i18n="tag3">Livraison Wolt</span>
-    </div>
-    <a href="tel:+352241745" class="btn btn-white" data-i18n="btn_book_table">Réserver une table</a>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section style="padding-bottom:0">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="serif" data-i18n-html="gal_h2">L'<em>ambiance.</em></h2>
-      <p data-i18n="gal_intro">Intérieurs balinais, art sculpté et couleurs de l'île.</p>
-    </div>
-    <div class="gallery">
-      <img class="reveal" src="assets/photo1.jpg" alt="Bali Beach — enseigne extérieure et plats de la maison" />
-      <img class="reveal" src="assets/photo3.jpg" alt="Salle intérieure de Bali Beach — murs bleu océan, chaises rouges" />
-      <img class="reveal" src="assets/photo7.jpg" alt="Médaillon balinais sculpté — décoration de Bali Beach" />
-    </div>
-  </div>
-</section>
-
-<!-- VISIT -->
-<section class="visit" id="visit">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <h2 class="serif" data-i18n-html="visit_h2">Nous <em>trouver.</em></h2>
-      <p data-i18n="visit_intro">Au premier étage du 8 rue de Louvigny, à deux pas du Palais Grand-Ducal.</p>
-    </div>
-    <div class="visit-grid">
-      <div class="info reveal">
-        <div class="info-row">
-          <div class="k" data-i18n="lbl_where">Adresse</div>
-          <div class="val">8, rue de Louvigny
-            <span class="small" data-i18n="where_small">L-1946 Luxembourg-Ville · 1er étage (au-dessus de Maharaja)</span>
-          </div>
-        </div>
-        <div class="info-row">
-          <div class="k" data-i18n="lbl_hours">Horaires</div>
-          <div class="val">
-            <span data-i18n="hours_val">Déj. 11h45–15h00 · dîner 18h00–23h00</span>
-            <span class="small" data-i18n-html="hours_small">Lun–Sam · dim. midi uniquement — <em>à confirmer avec le restaurant</em></span>
-          </div>
-        </div>
-        <div class="info-row">
-          <div class="k" data-i18n="lbl_book">Réserver</div>
-          <div class="val">
-            <a href="tel:+352241745">+352 24 17 45</a>
-            <span class="small" data-i18n="book_small">Également par SMS : +352 621 73 16 08</span>
-          </div>
-        </div>
-        <div class="info-row" style="border-bottom:0">
-          <div class="k" data-i18n="lbl_contact">Contact</div>
-          <div class="val">
-            <a href="https://www.facebook.com/pages/Bali-Beach/466867343358564" target="_blank" rel="noopener">Facebook</a>
-            <span class="small" data-i18n="delivery_note">Livraison disponible via Wolt</span>
-          </div>
-        </div>
-        <a href="tel:+352241745" class="btn btn-blue" style="align-self:flex-start;margin-top:4px" data-i18n="btn_book_table">Réserver une table</a>
+    <!-- STAGE 2 — Pourquoi ici / rarity -->
+    <section class="panel rarity" aria-label="Pourquoi ici">
+      <span class="kicker" data-i18n="rarity_k">Pourquoi ici</span>
+      <h2 data-i18n="rarity_h">Une rareté au cœur de la ville.</h2>
+      <div class="rule"></div>
+      <p data-i18n="rarity_p">La cuisine <span class="hl">indonésienne</span> est réellement rare à Luxembourg. Ici, le rendang de Sumatra, le gado-gado et le saté « recette de famille » côtoient les grands classiques thaï — un vrai voyage des îles, à quelques pas du Palais.</p>
+      <div class="tags">
+        <span data-i18n="tag1">Indonésien</span>
+        <span data-i18n="tag2">Thaïlandais</span>
+        <span data-i18n="tag3">Déjeuner en centre-ville</span>
+        <span data-i18n="tag4">À emporter</span>
       </div>
-      <div class="map reveal">
-        <iframe title="Plan vers Bali Beach" loading="lazy"
-          src="https://www.google.com/maps?q=8+rue+de+Louvigny+Luxembourg&output=embed"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<footer>
-  <div class="wrap foot">
-    <div class="fb">
-      <span class="wm serif">Bali Beach</span>
-      <small>8, rue de Louvigny · L-1946 Luxembourg-Ville · +352 24 17 45</small>
+    <!-- STAGE 3 — La Salle filmstrip -->
+    <section class="panel salle" aria-label="La salle">
+      <span class="kicker" data-i18n="salle_k">La salle</span>
+      <h2 data-i18n="salle_h">Un dépaysement tropical, en pleine ville.</h2>
+      <p class="lede" data-i18n="salle_lede">Murs bleu océan, chaises rouges, panneaux de Bouddha balinais sculptés et un médaillon doré : la salle est le vrai atout de la maison.</p>
+      <div class="film">
+        <figure class="big">
+          <img src="assets/photo4.jpg" alt="Trois panneaux muraux de Bouddha balinais sculptés, au-dessus de chaises rouges">
+          <figcaption data-i18n="cap_buddha">Panneaux de Bouddha balinais sculptés</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/photo3.jpg" alt="Salle à manger — murs bleus, chaises rouges">
+          <figcaption data-i18n="cap_room">La salle bleu océan</figcaption>
+        </figure>
+        <div class="film medal-pin">
+          <img src="assets/photo7.jpg" alt="Médaillon balinais sculpté doré">
+          <span class="medal-tag" data-i18n="cap_medal">Médaillon doré</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 4 — La carte courte -->
+    <section class="panel carte" aria-label="La carte">
+      <span class="kicker" data-i18n="carte_k">La carte courte</span>
+      <h2 data-i18n="carte_h">Quelques signatures.</h2>
+      <p class="sub" data-i18n="carte_sub">Un aperçu — la carte complète compte bien davantage de plats.</p>
+      <div class="menu-cols">
+        <div>
+          <h3 data-i18n="col_indo">Indonésie</h3>
+          <div class="dish"><div class="dn">Rendang Daging</div><div class="dg" data-i18n="d_rendang">Bœuf de Sumatra longuement mijoté, épices</div></div>
+          <div class="dish"><div class="dn">Gado Gado</div><div class="dg" data-i18n="d_gado">Légumes, tofu frit, sauce cacahuète</div></div>
+          <div class="dish"><div class="dn">Sate-Ayam</div><div class="dg" data-i18n="d_sate">Brochettes de poulet, recette de famille</div></div>
+        </div>
+        <div>
+          <h3 data-i18n="col_thai">Thaïlande</h3>
+          <div class="dish"><div class="dn">Tom Yam Kung</div><div class="dg" data-i18n="d_tom">Soupe de crevettes, citronnelle, herbes thaï</div></div>
+          <div class="dish"><div class="dn">Pad Thai Kung</div><div class="dg" data-i18n="d_pad">Nouilles sautées aux crevettes</div></div>
+          <div class="dish"><div class="dn">Khao Neaw Mamuang</div><div class="dg" data-i18n="d_khao">Riz gluant, mangue, lait de coco</div></div>
+        </div>
+      </div>
+      <div class="price-note">
+        <span data-i18n="price_note"><strong>Prix indicatifs</strong> — carte et prix à confirmer avec le restaurant.</span>
+      </div>
+    </section>
+
+    <!-- STAGE 5 — Deux tables, une adresse -->
+    <section class="panel plaque" aria-label="Deux tables, une adresse">
+      <div class="plaque-inner">
+        <div class="marks">
+          <div class="m1"><b>Bali</b> Beach</div>
+          <div class="mm" data-i18n="plaque_bb">Indonésien &amp; thaï</div>
+          <div class="m2" style="margin-top:8px">Maharaja</div>
+          <div class="mm" data-i18n="plaque_mh">Indien</div>
+        </div>
+        <div>
+          <span class="kicker" style="color:var(--gold)" data-i18n="plaque_k">Deux tables, une adresse</span>
+          <p style="margin-top:10px" data-i18n="plaque_p">Bali Beach (indonésien &amp; thaï) et Maharaja (indien) partagent le même exploitant, la même adresse et le même téléphone au 8 rue de Louvigny. Un seul appel, deux cuisines.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGE 6 — Emporter -->
+    <section class="panel emporter" aria-label="À emporter">
+      <div class="emporter-inner">
+        <div>
+          <h3 data-i18n="emp_h">À emporter &amp; livraison</h3>
+          <p data-i18n="emp_p">Déjà conquis ? Retrouvez vos plats chez vous. Le plus sûr reste l'appel direct au restaurant.</p>
+        </div>
+        <div style="text-align:right">
+          <a class="wolt-btn" href="tel:+352241745" data-i18n="emp_btn">Commander par téléphone</a>
+          <span class="wolt-flag" data-i18n="emp_flag">Wolt / livraison : lien à confirmer</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ========================= FOOTER ========================= -->
+<footer class="foot" aria-label="Contact et accès">
+  <div class="foot-grid">
+    <iframe class="foot-map" title="Carte — 8 rue de Louvigny, Luxembourg"
+      src="https://maps.google.com/maps?q=8+rue+de+Louvigny+Luxembourg&output=embed"
+      loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="foot-info">
+      <div class="wordmark"><span class="bali">Bali</span> <span class="beach">Beach</span></div>
+      <span class="kicker" data-i18n="seal_kicker">Cuisine indonésienne &amp; thaï · Luxembourg</span>
+
+      <div class="foot-row">
+        <h4 data-i18n="addr_h">Adresse</h4>
+        <address class="addr" style="font-style:normal">8, rue de Louvigny · <span data-i18n="addr_city">L-1946 Luxembourg-Centre</span><br>
+        <a href="https://maps.google.com/?q=8+rue+de+Louvigny+Luxembourg" target="_blank" rel="noopener"><span data-i18n="directions">Itinéraire</span> →</a></address>
+      </div>
+
+      <div class="foot-row">
+        <h4 data-i18n="hours_h">Horaires</h4>
+        <div class="foot-hours">
+          <span data-i18n="foot_hours_week">Lun – Sam : 11:45–15:00 · 18:00–23:00</span><br>
+          <span data-i18n="foot_hours_sun">Dim : 11:45–15:00 (déjeuner)</span>
+        </div>
+      </div>
+
+      <div class="foot-row">
+        <h4 data-i18n="foot_reserve_h">Réservation</h4>
+        <a class="foot-call" href="tel:+352241745">+352 24 17 45</a>
+      </div>
+
+      <div class="foot-row">
+        <a class="fb-link" style="color:var(--sand)" href="https://www.facebook.com/pages/Bali-Beach/466867343358564" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg>
+          Facebook
+        </a>
+      </div>
+
+      <p class="foot-disc" data-i18n="footer_disc">Informations indicatives — horaires, prix, carte et logo à confirmer avec le restaurant. Site de démonstration, non indexé. Ni site officiel, ni réservation en ligne : la réservation se fait par téléphone.</p>
     </div>
-    <p>© Bali Beach · <span data-i18n="foot_since">cuisine indonésienne &amp; thaïlandaise · Luxembourg</span><br>
-      <a href="https://www.facebook.com/pages/Bali-Beach/466867343358564" target="_blank" rel="noopener">Facebook</a>
-    </p>
   </div>
 </footer>
 
+<!-- ========================= MOBILE BOTTOM BAR ========================= -->
+<div class="m-bar" role="group" aria-label="Actions rapides">
+  <a class="m-status is-closed" id="m-status" href="#horaires">
+    <span class="ms-l"><span class="dot"></span><span id="m-status-label" data-i18n="status_fallback_label">Voir les horaires</span></span>
+    <span class="ms-d" id="m-status-detail" data-i18n="hours_caveat">horaires à confirmer</span>
+  </a>
+  <a class="m-call" href="tel:+352241745">
+    <span class="t" data-i18n="m_call_top">Appeler</span>
+    <span class="n">+352 24 17 45</span>
+  </a>
+</div>
+
 <script>
-  // reveal on scroll
-  const io=new IntersectionObserver((es)=>{
-    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-  },{threshold:.12});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{
-    el.style.transitionDelay=(i%6*70)+'ms';io.observe(el);
-  });
-  document.querySelectorAll('.nav-links a').forEach(a=>
-    a.addEventListener('click',()=>document.body.classList.remove('mobile-open'))
-  );
+/* ================= i18n ================= */
+const I18N = {
+  fr:{
+    seal_kicker:"Cuisine indonésienne & thaï · Luxembourg",
+    logo_note:"logo à confirmer",
+    status_fallback_label:"Voir les horaires",
+    status_fallback_detail:"Horaires ci-dessous",
+    hours_caveat:"horaires à confirmer",
+    call_lead:"Réserver · commander",
+    call_top:"Appelez le restaurant",
+    addr_h:"Adresse", addr_city:"L-1946 Luxembourg-Centre",
+    directions:"Itinéraire",
+    hours_h:"Horaires",
+    day_mon:"Lundi",day_tue:"Mardi",day_wed:"Mercredi",day_thu:"Jeudi",day_fri:"Vendredi",day_sat:"Samedi",day_sun:"Dimanche",
+    sun_hours:"11:45–15:00 (déjeuner)",
+    hours_note:"Informations indicatives — horaires à confirmer avec le restaurant.",
+    hero_place:"Luxembourg-Ville · Ville-Haute",
+    hero_stone_h:"La capitale de pierre.",
+    hero_stone_p:"À deux pas du Palais Grand-Ducal.",
+    hero_vline:"Cuisine indonésienne & thaï, au cœur de Luxembourg-Ville",
+    hero_badge_k:"Une salle qui dépayse",
+    hero_badge_p:"Bleu océan, panneaux de Bouddha sculptés — le dépaysement dès la porte.",
+    rarity_k:"Pourquoi ici",
+    rarity_h:"Une rareté au cœur de la ville.",
+    rarity_p:'La cuisine <span class="hl">indonésienne</span> est réellement rare à Luxembourg. Ici, le rendang de Sumatra, le gado-gado et le saté « recette de famille » côtoient les grands classiques thaï — un vrai voyage des îles, à quelques pas du Palais.',
+    tag1:"Indonésien",tag2:"Thaïlandais",tag3:"Déjeuner en centre-ville",tag4:"À emporter",
+    salle_k:"La salle",
+    salle_h:"Un dépaysement tropical, en pleine ville.",
+    salle_lede:"Murs bleu océan, chaises rouges, panneaux de Bouddha balinais sculptés et un médaillon doré : la salle est le vrai atout de la maison.",
+    cap_buddha:"Panneaux de Bouddha balinais sculptés",
+    cap_room:"La salle bleu océan",
+    cap_medal:"Médaillon doré",
+    carte_k:"La carte courte",
+    carte_h:"Quelques signatures.",
+    carte_sub:"Un aperçu — la carte complète compte bien davantage de plats.",
+    col_indo:"Indonésie",col_thai:"Thaïlande",
+    d_rendang:"Bœuf de Sumatra longuement mijoté, épices",
+    d_gado:"Légumes, tofu frit, sauce cacahuète",
+    d_sate:"Brochettes de poulet, recette de famille",
+    d_tom:"Soupe de crevettes, citronnelle, herbes thaï",
+    d_pad:"Nouilles sautées aux crevettes",
+    d_khao:"Riz gluant, mangue, lait de coco",
+    price_note:"<strong>Prix indicatifs</strong> — carte et prix à confirmer avec le restaurant.",
+    plaque_bb:"Indonésien & thaï",plaque_mh:"Indien",
+    plaque_k:"Deux tables, une adresse",
+    plaque_p:"Bali Beach (indonésien & thaï) et Maharaja (indien) partagent le même exploitant, la même adresse et le même téléphone au 8 rue de Louvigny. Un seul appel, deux cuisines.",
+    emp_h:"À emporter & livraison",
+    emp_p:"Déjà conquis ? Retrouvez vos plats chez vous. Le plus sûr reste l'appel direct au restaurant.",
+    emp_btn:"Commander par téléphone",
+    emp_flag:"Wolt / livraison : lien à confirmer",
+    foot_hours_week:"Lun – Sam : 11:45–15:00 · 18:00–23:00",
+    foot_hours_sun:"Dim : 11:45–15:00 (déjeuner)",
+    foot_reserve_h:"Réservation",
+    footer_disc:"Informations indicatives — horaires, prix, carte et logo à confirmer avec le restaurant. Site de démonstration, non indexé. Ni site officiel, ni réservation en ligne : la réservation se fait par téléphone.",
+    m_call_top:"Appeler",
+    /* status templates */
+    st_open:"Ouvert", st_closed:"Fermé",
+    st_closesAt:t=>"ferme à "+t,
+    st_opensAt:t=>"ouvre à "+t,
+    st_opensDay:(d,t)=>"ouvre "+d+" à "+t,
+    st_tomorrow:"demain",
+    st_days:["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"]
+  },
+  de:{
+    seal_kicker:"Indonesische & thailändische Küche · Luxemburg",
+    logo_note:"Logo noch zu bestätigen",
+    status_fallback_label:"Öffnungszeiten ansehen",
+    status_fallback_detail:"Zeiten weiter unten",
+    hours_caveat:"Öffnungszeiten zu bestätigen",
+    call_lead:"Reservieren · bestellen",
+    call_top:"Restaurant anrufen",
+    addr_h:"Adresse", addr_city:"L-1946 Luxemburg-Zentrum",
+    directions:"Route",
+    hours_h:"Öffnungszeiten",
+    day_mon:"Montag",day_tue:"Dienstag",day_wed:"Mittwoch",day_thu:"Donnerstag",day_fri:"Freitag",day_sat:"Samstag",day_sun:"Sonntag",
+    sun_hours:"11:45–15:00 (Mittag)",
+    hours_note:"Angaben ohne Gewähr — Öffnungszeiten mit dem Restaurant abklären.",
+    hero_place:"Luxemburg-Stadt · Oberstadt",
+    hero_stone_h:"Die steinerne Hauptstadt.",
+    hero_stone_p:"Nur wenige Schritte vom Großherzoglichen Palast.",
+    hero_vline:"Indonesische & thailändische Küche, mitten in Luxemburg-Stadt",
+    hero_badge_k:"Ein Raum, der entführt",
+    hero_badge_p:"Ozeanblau, geschnitzte Buddha-Tafeln — Fernweh gleich an der Tür.",
+    rarity_k:"Warum hier",
+    rarity_h:"Eine Seltenheit im Herzen der Stadt.",
+    rarity_p:'<span class="hl">Indonesische</span> Küche ist in Luxemburg wirklich selten. Hier treffen Sumatra-Rendang, Gado-Gado und Saté nach Familienrezept auf die großen Thai-Klassiker — eine echte Inselreise, ein paar Schritte vom Palast entfernt.',
+    tag1:"Indonesisch",tag2:"Thailändisch",tag3:"Mittagessen im Zentrum",tag4:"Zum Mitnehmen",
+    salle_k:"Der Gastraum",
+    salle_h:"Tropisches Fernweh, mitten in der Stadt.",
+    salle_lede:"Ozeanblaue Wände, rote Stühle, geschnitzte balinesische Buddha-Tafeln und ein goldenes Medaillon: der Raum ist der wahre Trumpf des Hauses.",
+    cap_buddha:"Geschnitzte balinesische Buddha-Tafeln",
+    cap_room:"Der ozeanblaue Gastraum",
+    cap_medal:"Goldenes Medaillon",
+    carte_k:"Die kurze Karte",
+    carte_h:"Einige Signature-Gerichte.",
+    carte_sub:"Ein Auszug — die vollständige Karte umfasst weit mehr.",
+    col_indo:"Indonesien",col_thai:"Thailand",
+    d_rendang:"Sumatra-Rind, lange geschmort, Gewürze",
+    d_gado:"Gemüse, gebratener Tofu, Erdnusssauce",
+    d_sate:"Hähnchenspieße, Familienrezept",
+    d_tom:"Garnelensuppe, Zitronengras, Thai-Kräuter",
+    d_pad:"Gebratene Nudeln mit Garnelen",
+    d_khao:"Klebreis, Mango, Kokosmilch",
+    price_note:"<strong>Richtpreise</strong> — Karte und Preise mit dem Restaurant abklären.",
+    plaque_bb:"Indonesisch & thai",plaque_mh:"Indisch",
+    plaque_k:"Zwei Tische, eine Adresse",
+    plaque_p:"Bali Beach (indonesisch & thai) und Maharaja (indisch) teilen sich Betreiber, Adresse und Telefon in der 8 rue de Louvigny. Ein Anruf, zwei Küchen.",
+    emp_h:"Mitnehmen & Lieferung",
+    emp_p:"Schon überzeugt? Genießen Sie Ihre Gerichte zu Hause. Am sichersten ist der direkte Anruf.",
+    emp_btn:"Telefonisch bestellen",
+    emp_flag:"Wolt / Lieferung: Link zu bestätigen",
+    foot_hours_week:"Mo – Sa: 11:45–15:00 · 18:00–23:00",
+    foot_hours_sun:"So: 11:45–15:00 (Mittag)",
+    foot_reserve_h:"Reservierung",
+    footer_disc:"Angaben ohne Gewähr — Öffnungszeiten, Preise, Karte und Logo mit dem Restaurant abklären. Demo-Seite, nicht indexiert. Keine offizielle Website, keine Online-Reservierung: Reservierung per Telefon.",
+    m_call_top:"Anrufen",
+    st_open:"Geöffnet", st_closed:"Geschlossen",
+    st_closesAt:t=>"schließt um "+t,
+    st_opensAt:t=>"öffnet um "+t,
+    st_opensDay:(d,t)=>"öffnet "+d+" um "+t,
+    st_tomorrow:"morgen",
+    st_days:["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"]
+  },
+  en:{
+    seal_kicker:"Indonesian & Thai cuisine · Luxembourg",
+    logo_note:"logo to be confirmed",
+    status_fallback_label:"See opening hours",
+    status_fallback_detail:"Hours below",
+    hours_caveat:"hours to be confirmed",
+    call_lead:"Book · order",
+    call_top:"Call the restaurant",
+    addr_h:"Address", addr_city:"L-1946 Luxembourg-Centre",
+    directions:"Directions",
+    hours_h:"Opening hours",
+    day_mon:"Monday",day_tue:"Tuesday",day_wed:"Wednesday",day_thu:"Thursday",day_fri:"Friday",day_sat:"Saturday",day_sun:"Sunday",
+    sun_hours:"11:45–15:00 (lunch)",
+    hours_note:"Indicative information — hours to be confirmed with the restaurant.",
+    hero_place:"Luxembourg City · Upper Town",
+    hero_stone_h:"The city of stone.",
+    hero_stone_p:"Steps from the Grand-Ducal Palace.",
+    hero_vline:"Indonesian & Thai cuisine, in the heart of Luxembourg City",
+    hero_badge_k:"A room that transports you",
+    hero_badge_p:"Ocean blue, carved Buddha panels — a getaway the moment you step in.",
+    rarity_k:"Why here",
+    rarity_h:"A rarity in the heart of the city.",
+    rarity_p:'<span class="hl">Indonesian</span> cuisine is genuinely rare in Luxembourg. Here, Sumatra rendang, gado-gado and family-recipe satay sit beside the great Thai classics — a real island journey, steps from the Palace.',
+    tag1:"Indonesian",tag2:"Thai",tag3:"City-centre lunch",tag4:"Takeaway",
+    salle_k:"The room",
+    salle_h:"A tropical escape, right in the city.",
+    salle_lede:"Ocean-blue walls, red chairs, carved Balinese Buddha panels and a golden medallion: the room is the house's real asset.",
+    cap_buddha:"Carved Balinese Buddha panels",
+    cap_room:"The ocean-blue room",
+    cap_medal:"Golden medallion",
+    carte_k:"The short menu",
+    carte_h:"A few signatures.",
+    carte_sub:"A taster — the full menu holds many more dishes.",
+    col_indo:"Indonesia",col_thai:"Thailand",
+    d_rendang:"Slow-cooked Sumatra beef, spices",
+    d_gado:"Vegetables, fried tofu, peanut sauce",
+    d_sate:"Chicken skewers, family recipe",
+    d_tom:"Prawn soup, lemongrass, Thai herbs",
+    d_pad:"Fried noodles with prawns",
+    d_khao:"Sticky rice, mango, coconut milk",
+    price_note:"<strong>Indicative prices</strong> — menu and prices to be confirmed with the restaurant.",
+    plaque_bb:"Indonesian & Thai",plaque_mh:"Indian",
+    plaque_k:"Two tables, one address",
+    plaque_p:"Bali Beach (Indonesian & Thai) and Maharaja (Indian) share the same operator, address and phone at 8 rue de Louvigny. One call, two kitchens.",
+    emp_h:"Takeaway & delivery",
+    emp_p:"Already sold? Enjoy your dishes at home. The surest way is still a direct call.",
+    emp_btn:"Order by phone",
+    emp_flag:"Wolt / delivery: link to be confirmed",
+    foot_hours_week:"Mon – Sat: 11:45–15:00 · 18:00–23:00",
+    foot_hours_sun:"Sun: 11:45–15:00 (lunch)",
+    foot_reserve_h:"Reservations",
+    footer_disc:"Indicative information — hours, prices, menu and logo to be confirmed with the restaurant. Demo site, not indexed. Not an official website and no online booking: reservations are by phone.",
+    m_call_top:"Call",
+    st_open:"Open", st_closed:"Closed",
+    st_closesAt:t=>"closes at "+t,
+    st_opensAt:t=>"opens at "+t,
+    st_opensDay:(d,t)=>"opens "+d+" at "+t,
+    st_tomorrow:"tomorrow",
+    st_days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+  }
+};
 
-  // ── i18n (FR default · DE · EN) ──
-  const I18N={
-    fr:{},
-    de:{
-      brand_tag:"Indonesische & Thailändische Küche",
-      nav_story:"Das Haus", nav_menu:"Speisekarte", nav_visit:"Anfahrt",
-      btn_book:"Reservieren", btn_book_table:"Tisch reservieren", btn_seemenu:"Zur Karte",
-      hero_eyebrow:"Luxemburg · Rue de Louvigny",
-      hero_h1:"Von Bali auf Ihren Teller — <em>mitten im Herzen Luxemburgs.</em>",
-      hero_lead:"Indonesische und Thailändische Küche im Herzen der Stadt — Rendang, Saté, Tom Yam und Pad Thai, wenige Schritte vom Großherzoglichen Palast.",
-      hero_addr:"8, rue de Louvigny, L-1946 Luxemburg-Stadt",
-      story_eyebrow:"Das Haus",
-      story_h2:"Südostasien, <em>mitten in der Stadt.</em>",
-      story_body:"Bali Beach liegt im Obergeschoss des Hauses Rue de Louvigny 8, nur wenige Schritte vom Großherzoglichen Palast entfernt, mitten im Herzen von Luxemburg-Stadt. Der in lebhaftem Ozeanblau gehaltene Gastraum, geschmückt mit geschnitzten balinesischen Buddha-Tafeln, versetzt Gäste beim Eintreten sofort nach Ubud. Die Küche setzt auf frische, saisonale Zutaten und bietet eine üppige Karte mit indonesischen Klassikern (Rendang, Saté, Gado-Gado) und Thai-Favoriten (Tom Yam, Pad Thai, rote und grüne Currys). Gerichte sind auch zum Mitnehmen und zur Lieferung erhältlich.",
-      p1_h:"Indonesisch & Thailändisch",
-      p1_p:"Eine üppige Karte mit indonesischen Klassikern und Thai-Favoriten in großzügiger Auswahl.",
-      p2_h:"Authentisches balinesisches Dekor",
-      p2_p:"Ozeanblue Wände und geschnitzte Buddha-Tafeln — Urlaubsgefühl vom ersten Augenblick an.",
-      p3_h:"Lieferung & Abholung",
-      p3_p:"Bestellen Sie über Wolt oder direkt — die Aromen der Insel zu Ihnen nach Hause.",
-      menu_h2:"Die <em>Karte</em>",
-      menu_intro:"Eine Auswahl unserer indonesischen und Thai-Gerichte — die vollständige Karte erwartet Sie vor Ort.",
-      cat_starters:"Vorspeisen & Suppe",
-      cat_indonesian:"Indonesische Spezialitäten",
-      cat_thai:"Thailändische Spezialitäten",
-      d_gado:"Gemischter Gemüsesalat mit Spinat, langen Bohnen, Chayote, Tofu und Erdnussdressing",
-      d_lemper:"Gedämpfte Klebreisrolle mit Hähnchenfüllung in Bananenblatt",
-      d_pergedel:"Gebratene Garnelenklöße mit scharfer Chilisauce und Salat",
-      d_tomyam:"Scharfe Garnelensuppe mit Zitronengras und Thai-Kräutern",
-      d_sate:"Hähnchen-Saté nach einem alten Familienrezept",
-      d_rendang:"Rinderbrust, heiß und würzig nach weststyle-sumatraischer Art",
-      d_ikan:"Ganze gebratene Dorade (600–800g), Chili und Knoblauchscheiben",
-      d_nasi:"Gebratener Reis mit Gemüse, serviert mit Garnelenspieß",
-      d_kang:"Hähnchen im roten Curry mit Kokosmilch und Thai-Aubergine",
-      d_padtalay:"Gebratene Meeresfrüchte (Garnelen, Tintenfisch, Fisch) mit Gemüse und roter Currysauce",
-      d_padthai:"Gebratene Nudeln mit Garnelen",
-      d_mango:"Thaimango mit Klebreis und Kokosmilch",
-      menu_note:"<b>Eine Auswahl.</b> Die vollständige Karte (44+ indonesische, 27+ Thai-Gerichte) erwartet Sie vor Ort. Preise basieren auf der Speisekarte von 2014 — <em>bitte beim Restaurant bestätigen.</em>",
-      band_h2:"Eine kulinarische Reise <em>ohne Luxemburg zu verlassen.</em>",
-      band_p:"Geräuchertes Rendang, gegrilltes Saté, duftige Tom-Yam-Suppe — die Aromen Indonesiens und Thailands, mitten in der Hauptstadt.",
-      tag1:"Indonesische Küche", tag2:"Thailändische Spezialitäten", tag3:"Wolt-Lieferung",
-      gal_h2:"Das <em>Ambiente.</em>",
-      gal_intro:"Balinesische Innenräume, Schnitzkunst und Inselfarben.",
-      visit_h2:"So <em>finden Sie uns.</em>",
-      visit_intro:"Im Obergeschoss der Rue de Louvigny 8, wenige Schritte vom Großherzoglichen Palast.",
-      lbl_where:"Adresse", lbl_hours:"Öffnungszeiten", lbl_book:"Reservieren", lbl_contact:"Kontakt",
-      where_small:"L-1946 Luxemburg-Stadt · 1. Etage (über Maharaja)",
-      hours_val:"Mittag 11:45–15:00 · Abend 18:00–23:00 Uhr",
-      hours_small:"Mo–Sa · So nur Mittag — <em>bitte beim Restaurant bestätigen</em>",
-      book_small:"Auch per SMS: +352 621 73 16 08",
-      delivery_note:"Lieferung über Wolt verfügbar",
-      foot_since:"indonesische & Thailändische Küche · Luxemburg"
-    },
-    en:{
-      brand_tag:"Indonesian & Thai Cuisine",
-      nav_story:"The House", nav_menu:"Menu", nav_visit:"Visit",
-      btn_book:"Book", btn_book_table:"Reserve a table", btn_seemenu:"See the menu",
-      hero_eyebrow:"Luxembourg · Rue de Louvigny",
-      hero_h1:"Bali to your plate — <em>in the heart of Luxembourg.</em>",
-      hero_lead:"Indonesian and Thai cuisine in the heart of the city — rendang, satay, tom yam and pad thai, steps from the Grand-Ducal Palace.",
-      hero_addr:"8, rue de Louvigny, L-1946 Luxembourg-Ville",
-      story_eyebrow:"The House",
-      story_h2:"South-East Asia, <em>in the heart of the city.</em>",
-      story_body:"Bali Beach occupies the upper floor of 8 rue de Louvigny, steps from the Grand-Ducal Palace in the heart of Luxembourg-Ville. The dining room — painted in vivid ocean blue and adorned with carved Balinese Buddha panels — transports diners to the island of Ubud the moment they arrive. The kitchen draws on fresh, seasonal produce to deliver a generous menu spanning Indonesian classics (rendang, satay, gado-gado) and Thai favourites (tom yam, pad thai, red and green curries). Takeaway and delivery are also available.",
-      p1_h:"Indonesian & Thai",
-      p1_p:"A generous menu spanning Indonesian classics and Thai favourites in abundant variety.",
-      p2_h:"Authentic Balinese décor",
-      p2_p:"Ocean-blue walls and carved Balinese Buddha panels — you'll feel a world away from the moment you arrive.",
-      p3_h:"Delivery & takeaway",
-      p3_p:"Order via Wolt or directly — the flavours of the island delivered to your door.",
-      menu_h2:"The <em>menu</em>",
-      menu_intro:"A selection of our Indonesian and Thai dishes — the full menu awaits you in-house.",
-      cat_starters:"Starters & Soup",
-      cat_indonesian:"Indonesian Specialities",
-      cat_thai:"Thai Specialities",
-      d_gado:"Mixed vegetable salad with spinach, long beans, chayote, fried tofu and peanut dressing",
-      d_lemper:"Steamed sticky rice roll filled with minced chicken, wrapped in banana leaf",
-      d_pergedel:"Fried prawn cakes with hot chilli sauce and salad",
-      d_tomyam:"Spicy prawn soup with lemongrass and Thai herbs",
-      d_sate:"Chicken satay after an old family recipe",
-      d_rendang:"Brisket of beef cooked hot and spicy in West Sumatra style",
-      d_ikan:"Whole fried dorade (600–800g), chilli and sliced garlic",
-      d_nasi:"Fried rice with vegetables, served with prawn satay",
-      d_kang:"Chicken in red curry and coconut milk with Thai aubergine",
-      d_padtalay:"Fried seafood (prawns, squid, fish) with vegetables and red curry sauce",
-      d_padthai:"Fried noodles with prawns",
-      d_mango:"Thai mango with sticky rice and coconut milk",
-      menu_note:"<b>A selection.</b> The full menu (44+ Indonesian, 27+ Thai dishes) awaits you in-house. Prices sourced from a 2014 menu — <em>please confirm with the restaurant before ordering.</em>",
-      band_h2:"A culinary journey <em>without leaving Luxembourg.</em>",
-      band_p:"Smoky rendang, grilled satay, fragrant tom yam soup — the flavours of Indonesia and Thailand, at the heart of the capital.",
-      tag1:"Indonesian cuisine", tag2:"Thai specialities", tag3:"Wolt delivery",
-      gal_h2:"The <em>atmosphere.</em>",
-      gal_intro:"Balinese interiors, carved art and island colours.",
-      visit_h2:"Find <em>us.</em>",
-      visit_intro:"On the upper floor at 8 rue de Louvigny, steps from the Grand-Ducal Palace.",
-      lbl_where:"Address", lbl_hours:"Hours", lbl_book:"Book", lbl_contact:"Contact",
-      where_small:"L-1946 Luxembourg-Ville · upper floor (above Maharaja)",
-      hours_val:"Lunch 11:45–15:00 · dinner 18:00–23:00",
-      hours_small:"Mon–Sat · Sunday lunch only — <em>please confirm with the restaurant</em>",
-      book_small:"Also by SMS: +352 621 73 16 08",
-      delivery_note:"Delivery available via Wolt",
-      foot_since:"Indonesian & Thai cuisine · Luxembourg"
-    }
-  };
+let currentLang = "fr";
 
-  // Capture FR defaults from HTML
-  const FR={};
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    FR[el.getAttribute('data-i18n')]=el.textContent;
+function applyLang(lang){
+  currentLang = lang;
+  const dict = I18N[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k = el.getAttribute("data-i18n");
+    if(dict[k]!==undefined && typeof dict[k]==="string"){ el.innerHTML = dict[k]; }
   });
-  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
-    FR['__h_'+el.getAttribute('data-i18n-html')]=el.innerHTML;
+  document.querySelectorAll(".langs button").forEach(b=>{
+    b.setAttribute("aria-pressed", b.dataset.lang===lang ? "true":"false");
   });
+  renderStatus(); // status strings depend on language
+}
 
-  function setLang(l){
-    const d=l==='fr'?null:I18N[l];
-    document.documentElement.lang=l;
-    document.querySelectorAll('[data-i18n]').forEach(el=>{
-      const k=el.getAttribute('data-i18n');
-      const v=d?d[k]:FR[k];
-      if(v!=null)el.textContent=v;
-    });
-    document.querySelectorAll('[data-i18n-html]').forEach(el=>{
-      const k=el.getAttribute('data-i18n-html');
-      const v=d?d[k]:FR['__h_'+k];
-      if(v!=null)el.innerHTML=v;
-    });
-    document.querySelectorAll('.lang-switch button').forEach(b=>
-      b.classList.toggle('active',b.dataset.lang===l)
-    );
-    try{localStorage.setItem('bali-beach_lang',l);}catch(e){}
+document.querySelectorAll(".langs button").forEach(b=>{
+  b.addEventListener("click", ()=>applyLang(b.dataset.lang));
+});
+
+/* ================= SIGNATURE DEVICE: live open-now ================= */
+/* Service windows (UNVERIFIED — see disclaimer). Minutes since midnight. */
+const WINDOWS = {
+  0:[[705,900]],                     // Sun 11:45–15:00
+  1:[[705,900],[1080,1380]],         // Mon
+  2:[[705,900],[1080,1380]],
+  3:[[705,900],[1080,1380]],
+  4:[[705,900],[1080,1380]],
+  5:[[705,900],[1080,1380]],
+  6:[[705,900],[1080,1380]]          // Sat 11:45–15:00 / 18:00–23:00
+};
+function fmtMin(m){ const h=Math.floor(m/60), mm=m%60; return (h<10?"0":"")+h+":"+(mm<10?"0":"")+mm; }
+
+function luxNow(){
+  try{
+    const parts = new Intl.DateTimeFormat("en-GB",{
+      timeZone:"Europe/Luxembourg", weekday:"short", hour:"2-digit", minute:"2-digit", hour12:false
+    }).formatToParts(new Date());
+    const map={}; parts.forEach(p=>map[p.type]=p.value);
+    const wd={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[map.weekday];
+    let h=parseInt(map.hour,10)%24, m=parseInt(map.minute,10);
+    if(isNaN(wd)||isNaN(h)||isNaN(m)) return null;
+    return {day:wd, min:h*60+m};
+  }catch(e){ return null; }
+}
+
+function computeState(){
+  const now = luxNow();
+  if(!now) return null;
+  const todays = WINDOWS[now.day]||[];
+  for(const [s,e] of todays){
+    if(now.min>=s && now.min<e) return {open:true, closesAt:e};
+    if(now.min<s) return {open:false, sameDay:true, opensAt:s};
+  }
+  // nothing left today → find next open day
+  for(let i=1;i<=7;i++){
+    const d=(now.day+i)%7; const w=WINDOWS[d];
+    if(w && w.length){ return {open:false, sameDay:false, offset:i, day:d, opensAt:w[0][0]}; }
+  }
+  return null;
+}
+
+function renderStatus(){
+  const dict = I18N[currentLang];
+  const st = computeState();
+
+  const railEl=document.getElementById("status");
+  const railLabel=document.getElementById("status-label");
+  const railDetail=document.getElementById("status-detail");
+  const mEl=document.getElementById("m-status");
+  const mLabel=document.getElementById("m-status-label");
+  const mDetail=document.getElementById("m-status-detail");
+
+  // safe degrade
+  if(!st){
+    [railEl,mEl].forEach(el=>{el.classList.remove("is-open");el.classList.add("is-closed");});
+    railLabel.textContent = dict.status_fallback_label;
+    railDetail.textContent = dict.status_fallback_detail;
+    mLabel.textContent = dict.status_fallback_label;
+    mDetail.textContent = dict.hours_caveat;
+    return;
   }
 
-  document.querySelectorAll('.lang-switch button').forEach(b=>
-    b.addEventListener('click',()=>setLang(b.dataset.lang))
-  );
+  let label, detail;
+  if(st.open){
+    label = dict.st_open;
+    detail = dict.st_closesAt(fmtMin(st.closesAt));
+  } else {
+    label = dict.st_closed;
+    if(st.sameDay){
+      detail = dict.st_opensAt(fmtMin(st.opensAt));
+    } else {
+      const dayWord = st.offset===1 ? dict.st_tomorrow : dict.st_days[st.day];
+      detail = dict.st_opensDay(dayWord, fmtMin(st.opensAt));
+    }
+  }
 
-  let saved='fr';
-  try{saved=localStorage.getItem('bali-beach_lang')||'fr';}catch(e){}
-  if(saved!=='fr')setLang(saved);
+  [railEl,mEl].forEach(el=>{
+    el.classList.toggle("is-open", st.open);
+    el.classList.toggle("is-closed", !st.open);
+  });
+  railLabel.textContent = label; railDetail.textContent = detail;
+  mLabel.textContent = label; mDetail.textContent = detail;
+
+  // highlight today's row in hours grid
+  const now = luxNow();
+  document.querySelectorAll("#hours-table tr").forEach(tr=>{
+    tr.classList.toggle("now", now && parseInt(tr.dataset.day,10)===now.day);
+  });
+}
+
+/* init */
+applyLang("fr");
+renderStatus();
+setInterval(renderStatus, 60000);
 </script>
 </body>
 </html>
