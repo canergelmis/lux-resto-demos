@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>MOON Steak &amp; Grill — Grillades halal au feu de bois · Differdange</title>
+<style>
+  :root{
+    --night:#0a0e1c;
+    --night-2:#111834;
+    --night-3:#182247;
+    --gold:#e8b968;
+    --gold-2:#f2cf88;
+    --amber:#d9832c;
+    --cream:#f5ede0;
+    --cream-2:#ede2cf;
+    --charcoal:#1a1611;
+    --ink:#241d14;
+    --muted:#9aa4c4;
+    --line:rgba(232,185,104,.24);
+    --disc:120px;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SFMono-Regular","Cascadia Code",Consolas,"Liberation Mono",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--night);
+    color:var(--cream);
+    font-family:var(--sans);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  .wrap{max-width:1340px;margin:0 auto;padding:0 40px}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+  .disc{border-radius:50%;overflow:hidden;position:relative;background:var(--charcoal)}
+  .disc::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 0 1px var(--line), inset 22px -26px 60px rgba(0,0,0,.55)}
+
+  /* ---------- starfield ---------- */
+  .starfield{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+  .starfield::before,.starfield::after{
+    content:"";position:absolute;inset:-50%;
+    background-image:
+      radial-gradient(1.4px 1.4px at 20% 30%, rgba(255,255,255,.8), transparent),
+      radial-gradient(1.2px 1.2px at 70% 20%, rgba(255,255,255,.6), transparent),
+      radial-gradient(1.6px 1.6px at 40% 70%, rgba(242,207,136,.7), transparent),
+      radial-gradient(1px 1px at 85% 60%, rgba(255,255,255,.55), transparent),
+      radial-gradient(1.3px 1.3px at 55% 45%, rgba(255,255,255,.5), transparent),
+      radial-gradient(1px 1px at 12% 80%, rgba(255,255,255,.5), transparent),
+      radial-gradient(1.5px 1.5px at 90% 88%, rgba(242,207,136,.6), transparent),
+      radial-gradient(1px 1px at 32% 15%, rgba(255,255,255,.5), transparent);
+    background-repeat:repeat;background-size:520px 520px;opacity:.5;
+  }
+  .starfield::after{background-size:340px 340px;opacity:.3;animation:drift 120s linear infinite}
+  @keyframes drift{to{transform:translateY(-80px)}}
+
+  /* ---------- top nav ---------- */
+  header.top{position:sticky;top:0;z-index:40;background:rgba(10,14,28,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .topbar{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brandmark{display:flex;align-items:center;gap:12px;font-family:var(--serif)}
+  .brandmark .name{font-size:1.35rem;letter-spacing:.28em;font-weight:600}
+  .brandmark .name b{color:var(--gold)}
+  .moonglyph{width:26px;height:26px;flex:none}
+  .nav-links{display:flex;gap:30px;font-family:var(--mono);font-size:.74rem;letter-spacing:.18em;text-transform:uppercase}
+  .nav-links a{color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--gold)}
+  .toolset{display:flex;align-items:center;gap:20px}
+  .langsw{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em}
+  .langsw button{background:transparent;color:var(--muted);border:0;padding:7px 12px;cursor:pointer;transition:.2s;font:inherit}
+  .langsw button.active{background:var(--gold);color:var(--night)}
+  .call-btn{border:1px solid var(--gold);color:var(--gold);padding:9px 18px;border-radius:999px;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;transition:.2s;white-space:nowrap}
+  .call-btn:hover{background:var(--gold);color:var(--night)}
+
+  /* ---------- masthead ---------- */
+  .masthead{position:relative;background:radial-gradient(140% 120% at 78% -10%, var(--night-3) 0%, var(--night-2) 40%, var(--night) 80%);padding:70px 0 0;overflow:hidden}
+  .mast-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .mast-copy h1{font-family:var(--serif);font-weight:600;font-size:clamp(3rem,6.2vw,5.6rem);line-height:.98;letter-spacing:.01em;margin:18px 0 8px}
+  .mast-copy h1 .lunar{display:block;color:var(--gold);letter-spacing:.14em}
+  .mast-copy .lede{font-size:1.12rem;color:#d8dcec;max-width:40ch;margin:20px 0 30px}
+  .mast-cta{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .btn-solid{background:var(--gold);color:var(--night);padding:14px 26px;border-radius:999px;font-family:var(--mono);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;transition:.2s;box-shadow:0 10px 30px -10px rgba(232,185,104,.6)}
+  .btn-solid:hover{background:var(--gold-2);transform:translateY(-2px)}
+  .btn-ghost{border:1px solid var(--line);color:var(--cream);padding:14px 24px;border-radius:999px;font-family:var(--mono);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;transition:.2s}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+  /* moon hero disc */
+  .mast-visual{position:relative;display:flex;justify-content:center;align-items:center;min-height:440px}
+  .moon-hero{width:min(430px,40vw);aspect-ratio:1;border-radius:50%;overflow:hidden;position:relative;
+    box-shadow:0 0 0 1px var(--line), 0 0 90px -10px rgba(232,185,104,.45), 0 40px 80px -30px #000;}
+  .moon-hero img{filter:saturate(1.05) contrast(1.03)}
+  .moon-hero::after{content:"";position:absolute;inset:0;border-radius:50%;
+    background:linear-gradient(210deg,transparent 46%, rgba(10,14,28,.55) 90%);box-shadow:inset -30px 34px 70px rgba(0,0,0,.5)}
+  .halal-badge{position:absolute;top:6%;right:2%;width:96px;height:96px;border-radius:50%;
+    background:var(--night);border:1px solid var(--gold);color:var(--gold);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    font-family:var(--mono);z-index:3;box-shadow:0 12px 30px -8px #000}
+  .halal-badge b{font-size:1.4rem;letter-spacing:.04em}
+  .halal-badge span{font-size:.56rem;letter-spacing:.22em}
+  .orbit{position:absolute;inset:-4% ;border:1px dashed var(--line);border-radius:50%;pointer-events:none;z-index:1}
+
+  /* ---------- almanac ribbon ---------- */
+  .ribbon{position:relative;z-index:3;margin-top:64px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(17,24,52,.55)}
+  .ribbon-grid{display:grid;grid-template-columns:repeat(4,1fr);font-family:var(--mono)}
+  .ribbon-cell{padding:20px 26px;border-left:1px solid var(--line)}
+  .ribbon-cell:first-child{border-left:0}
+  .ribbon-cell .k{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+  .ribbon-cell .v{font-size:.98rem;color:var(--gold-2);margin-top:6px;letter-spacing:.04em}
+
+  /* ---------- section frame ---------- */
+  section{position:relative}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:44px}
+  .sec-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,3.6vw,3rem);line-height:1;letter-spacing:.01em}
+  .sec-head .rule{flex:1;height:1px;background:var(--line);margin-bottom:12px}
+
+  /* ---------- menu / phases ---------- */
+  .menu{padding:96px 0;background:linear-gradient(180deg,var(--night) 0%, #0c1124 100%)}
+  .phase-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:26px}
+  .phase{background:linear-gradient(180deg,rgba(24,34,71,.55),rgba(17,24,52,.35));border:1px solid var(--line);border-radius:18px;padding:30px 30px 34px;position:relative;overflow:hidden}
+  .phase .ph-top{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+  .ph-moon{width:34px;height:34px;flex:none}
+  .phase h3{font-family:var(--serif);font-size:1.5rem;font-weight:600;line-height:1.05}
+  .phase .ph-fr{font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:4px}
+  .p-croissant{grid-column:span 4}
+  .p-quartier{grid-column:span 8}
+  .p-pleine{grid-column:span 7}
+  .p-decroissante{grid-column:span 5}
+  .dish{display:flex;justify-content:space-between;gap:16px;align-items:baseline;padding:12px 0;border-top:1px dotted rgba(232,185,104,.18)}
+  .dish:first-of-type{border-top:0}
+  .dish .d-main{flex:1}
+  .dish .d-name{font-size:1rem;color:var(--cream)}
+  .dish .d-desc{font-size:.82rem;color:var(--muted);margin-top:3px}
+  .dish .d-price{font-family:var(--mono);color:var(--gold-2);white-space:nowrap;font-size:.92rem}
+  .grillades-list{columns:2;column-gap:34px}
+  .grillades-list .dish{break-inside:avoid}
+
+  /* signature planche panel inside pleine lune */
+  .signature{grid-column:span 12;display:grid;grid-template-columns:.9fr 1.1fr;gap:0;border:1px solid var(--gold);border-radius:22px;overflow:hidden;background:var(--night-2);position:relative}
+  .sig-photo{position:relative;min-height:360px}
+  .sig-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%, rgba(17,24,52,.85))}
+  .sig-body{padding:48px 52px;display:flex;flex-direction:column;justify-content:center}
+  .sig-body .tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+  .sig-body h3{font-family:var(--serif);font-size:2.4rem;font-weight:600;line-height:1.02;margin:14px 0 16px}
+  .sig-body p{color:#d8dcec;max-width:46ch}
+  .sig-meta{display:flex;gap:34px;margin-top:26px;font-family:var(--mono);font-size:.8rem}
+  .sig-meta b{color:var(--gold-2);display:block;font-size:1.3rem;font-weight:600}
+  .sig-meta span{color:var(--muted);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase}
+
+  .menu-note{margin-top:30px;font-family:var(--mono);font-size:.74rem;color:var(--muted);letter-spacing:.03em;text-align:center}
+
+  /* ---------- fire / story band ---------- */
+  .fire{padding:104px 0;background:
+     radial-gradient(80% 120% at 100% 0%, rgba(217,131,44,.14), transparent 55%),
+     radial-gradient(70% 100% at 0% 100%, rgba(232,185,104,.10), transparent 55%),
+     var(--charcoal);
+     border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .fire-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center}
+  .fire h2{font-family:var(--serif);font-size:clamp(2rem,3.8vw,3.2rem);font-weight:600;line-height:1.05;margin:16px 0 20px}
+  .fire p{color:#cdb99c;font-size:1.06rem;max-width:52ch;margin-bottom:16px}
+  .fire .pillars{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:34px}
+  .pillar{border:1px solid var(--line);border-radius:14px;padding:22px}
+  .pillar .pi{width:30px;height:30px;color:var(--gold);margin-bottom:10px}
+  .pillar h4{font-family:var(--serif);font-size:1.15rem;margin-bottom:6px}
+  .pillar p{font-size:.86rem;color:#b8a78d;margin:0}
+  .fire-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:16px}
+  .fire-photos .tall{grid-row:span 2;aspect-ratio:3/4.4}
+  .fire-photos figure{border-radius:16px;overflow:hidden;border:1px solid var(--line);aspect-ratio:1}
+  .fire-photos .tall{aspect-ratio:auto}
+
+  /* ---------- constellation gallery ---------- */
+  .gallery{padding:96px 0;background:linear-gradient(180deg,#0c1124,var(--night))}
+  .const{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:center}
+  .const figure{position:relative;overflow:hidden}
+  .const .g1{grid-column:span 5;border-radius:50%;aspect-ratio:1;border:1px solid var(--line)}
+  .const .g2{grid-column:span 4;border-radius:20px;aspect-ratio:4/5}
+  .const .g3{grid-column:span 3;border-radius:50%;aspect-ratio:1;border:1px solid var(--line)}
+  .const .g4{grid-column:span 7;border-radius:20px;aspect-ratio:16/9}
+  .const .caption{grid-column:span 5;padding-left:14px}
+  .const .caption p{color:var(--muted);font-size:1.02rem;max-width:34ch}
+  .const figure img{transition:transform .6s ease}
+  .const figure:hover img{transform:scale(1.06)}
+
+  /* ---------- visit ---------- */
+  .visit{padding:96px 0 0;background:var(--night)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .almanac{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:rgba(17,24,52,.4)}
+  .almanac .row{display:grid;grid-template-columns:150px 1fr;border-top:1px solid var(--line);font-family:var(--mono);font-size:.86rem}
+  .almanac .row:first-child{border-top:0}
+  .almanac .row .lab{padding:16px 22px;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-size:.68rem;border-right:1px solid var(--line);background:rgba(10,14,28,.4)}
+  .almanac .row .val{padding:16px 22px;color:var(--cream)}
+  .almanac .row .val small{color:var(--muted);display:block;font-size:.72rem;margin-top:3px}
+  .hours-line{display:flex;justify-content:space-between;padding:4px 0}
+  .hours-line span:last-child{color:var(--gold-2)}
+  .channels{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .channels a{border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--muted);transition:.2s}
+  .channels a:hover{border-color:var(--gold);color:var(--gold)}
+  .map-shell{border:1px solid var(--line);border-radius:18px;overflow:hidden;height:100%;min-height:520px;position:relative}
+  .map-shell iframe{width:100%;height:100%;border:0;filter:grayscale(.3) contrast(1.05) brightness(.92)}
+  .visit .sec-head{margin-bottom:36px}
+
+  /* ---------- footer ---------- */
+  footer{position:relative;background:var(--night-2);border-top:1px solid var(--line);padding:72px 0 34px;margin-top:96px;overflow:hidden}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px;position:relative;z-index:2}
+  .foot-brand .brandmark{margin-bottom:16px}
+  .foot-brand p{color:var(--muted);font-size:.9rem;max-width:38ch}
+  .foot-col h5{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .foot-col a,.foot-col p{display:block;color:#c3cae0;font-size:.92rem;margin-bottom:9px}
+  .foot-col a:hover{color:var(--gold)}
+  .foot-bottom{position:relative;z-index:2;margin-top:52px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:var(--muted)}
+  .disclaimer{color:var(--amber)}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:1080px){
+    .mast-grid{grid-template-columns:1fr;gap:40px}
+    .mast-visual{order:-1;min-height:340px}
+    .fire-grid{grid-template-columns:1fr;gap:44px}
+    .const .caption{grid-column:span 12}
+    .grillades-list{columns:1}
+  }
+  @media(max-width:860px){
+    .wrap{padding:0 22px}
+    .nav-links{display:none}
+    .ribbon-grid{grid-template-columns:1fr 1fr}
+    .ribbon-cell:nth-child(2n+1){border-left:0}
+    .ribbon-cell:nth-child(n+3){border-top:1px solid var(--line)}
+    .phase-grid{grid-template-columns:1fr}
+    .p-croissant,.p-quartier,.p-pleine,.p-decroissante,.signature{grid-column:auto}
+    .signature{grid-template-columns:1fr}
+    .sig-photo{min-height:260px}
+    .const{grid-template-columns:1fr}
+    .const .g1,.const .g2,.const .g3,.const .g4{grid-column:auto;aspect-ratio:16/10;border-radius:16px}
+    .const .g1,.const .g3{aspect-ratio:16/10}
+    .visit-grid{grid-template-columns:1fr}
+    .map-shell{min-height:340px}
+    .foot-grid{grid-template-columns:1fr}
+    .fire .pillars{grid-template-columns:1fr}
+  }
+  @media(max-width:560px){
+    .topbar{height:64px}
+    .brandmark .name{font-size:1.05rem;letter-spacing:.18em}
+    .call-btn{display:none}
+    .halal-badge{width:76px;height:76px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP NAV ============ -->
+<header class="top">
+  <div class="wrap topbar">
+    <a class="brandmark" href="#top" aria-label="MOON Steak & Grill">
+      <svg class="moonglyph" viewBox="0 0 32 32" aria-hidden="true">
+        <defs><radialGradient id="mg" cx="35%" cy="30%"><stop offset="0" stop-color="#f2cf88"/><stop offset="1" stop-color="#d9832c"/></radialGradient></defs>
+        <path d="M22 3a13 13 0 1 0 0 26 10 10 0 1 1 0-26z" fill="url(#mg)"/>
+      </svg>
+      <span class="name"><b>MOON</b> Steak &amp; Grill</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#menu" data-i18n="nav_menu">La carte</a>
+      <a href="#fire" data-i18n="nav_fire">Le feu de bois</a>
+      <a href="#gallery" data-i18n="nav_gallery">La table</a>
+      <a href="#visit" data-i18n="nav_visit">Nous trouver</a>
+    </nav>
+    <div class="toolset">
+      <div class="langsw" role="group" aria-label="Language">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a class="call-btn" href="tel:+35226582719" data-i18n="nav_call">Réserver · 26 58 27 19</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MASTHEAD ============ -->
+<section class="masthead" id="top">
+  <div class="starfield"></div>
+  <div class="wrap mast-grid">
+    <div class="mast-copy">
+      <span class="eyebrow" data-i18n="mast_eyebrow">Differdange · Steakhouse halal</span>
+      <h1><span data-i18n="mast_h1a">Le gril</span><span class="lunar" data-i18n="mast_h1b">au clair de lune</span></h1>
+      <p class="lede" data-i18n="mast_lede">Grillades halal au feu de bois, planches à partager et saveurs turco-orientales, au cœur de Differdange.</p>
+      <div class="mast-cta">
+        <a class="btn-solid" href="#menu" data-i18n="mast_cta1">Voir la carte</a>
+        <a class="btn-ghost" href="https://www.wedely.com/restaurant/213347-moon-steakampgrill" target="_blank" rel="noopener" data-i18n="mast_cta2">Commander · Wedely</a>
+      </div>
+    </div>
+    <div class="mast-visual">
+      <div class="orbit"></div>
+      <div class="moon-hero">
+        <img src="assets/hero.jpg" alt="Planche mixte grillée — steak, côtelette d'agneau, brochette de poulet et köfte" loading="eager">
+      </div>
+      <div class="halal-badge"><b>100%</b><span data-i18n="badge_halal">Halal</span></div>
+    </div>
+  </div>
+
+  <!-- almanac ribbon -->
+  <div class="wrap"><div class="ribbon"><div class="ribbon-grid">
+    <div class="ribbon-cell"><div class="k" data-i18n="rib_k1">Cuisson</div><div class="v" data-i18n="rib_v1">Au feu de bois</div></div>
+    <div class="ribbon-cell"><div class="k" data-i18n="rib_k2">Certifié</div><div class="v" data-i18n="rib_v2">100% halal</div></div>
+    <div class="ribbon-cell"><div class="k" data-i18n="rib_k3">Budget</div><div class="v" data-i18n="rib_v3">€€ · 20–30€ / pers.</div></div>
+    <div class="ribbon-cell"><div class="k" data-i18n="rib_k4">Coordonnées</div><div class="v">49.5°N · Differdange</div></div>
+  </div></div></div>
+</section>
+
+<!-- ============ MENU — LES PHASES DU FEU ============ -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" data-i18n="menu_eyebrow">La carte · à confirmer</span>
+        <h2 data-i18n="menu_h2">Les phases du feu</h2>
+      </div>
+      <div class="rule"></div>
+      <p style="max-width:34ch;color:var(--muted);font-size:.92rem" data-i18n="menu_intro">Une soirée au MOON se lit comme les phases de la lune — du premier mezze au dernier baklava.</p>
+    </div>
+
+    <div class="phase-grid">
+      <!-- Phase 1 -->
+      <div class="phase p-croissant">
+        <div class="ph-top">
+          <svg class="ph-moon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="#e8b968" stroke-width="1.5"/><path d="M16 2a14 14 0 0 1 0 28 9 14 0 0 0 0-28z" fill="#e8b968"/></svg>
+          <div><h3 data-i18n="ph1_h">Pour commencer</h3><div class="ph-fr" data-i18n="ph1_sub">Croissant de lune · Mezze</div></div>
+        </div>
+        <div class="dish"><div class="d-main"><div class="d-name" data-i18n="d_mezze_n">Mezze du chef</div><div class="d-desc" data-i18n="d_mezze_d">Assortiment à partager — ezme, houmous & co.</div></div><div class="d-price">12€</div></div>
+        <div class="dish"><div class="d-main"><div class="d-name" data-i18n="d_soup_n">Soupe du jour</div><div class="d-desc" data-i18n="d_soup_d">Préparée maison, selon le marché.</div></div><div class="d-price">6€</div></div>
+        <div class="dish"><div class="d-main"><div class="d-name" data-i18n="d_bread_n">Pain lavash & beurre</div><div class="d-desc" data-i18n="d_bread_d">Cuit et grillé sur place.</div></div><div class="d-price">4€</div></div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="phase p-quartier">
+        <div class="ph-top">
+          <svg class="ph-moon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="#e8b968" stroke-width="1.5"/><path d="M16 2a14 14 0 0 1 0 28z" fill="#e8b968"/></svg>
+          <div><h3 data-i18n="ph2_h">Du gril au feu de bois</h3><div class="ph-fr" data-i18n="ph2_sub">Premier quartier · Les grillades</div></div>
+        </div>
+        <div class="grillades-list">
+          <div class="dish"><div class="d-main"><div class="d-name" data-i18n="d_kofte_n">Assiette köfte grillée</div><div class="d-desc" data-i18n="d_kofte_d">Boulettes grillées, pilaf de boulgour, frites, poivron & lavash.</div></div><div class="d-price">18€</div></div>
+          <div class="dish"><div class="d-main"><div class="d-name" data-i18n="d_chick_n">Brochette de poulet (şiş)</div><div class="d-desc" data-i18n="d_chick_d">Mariné, grillé à la braise, accompagnements.</div></div><div class="d-price">17€</div></div>
+          <div class="dish"><div class="d-main"><div class="d-name" data-i18n="d_lamb_n">Côtelette d'agneau</div><div class="d-desc" data-i18n="d_lamb_d">Au charbon de bois, sel & herbes.</div></div><div class="d-price">24€</div></div>
+          <div class="dish"><div class="d-main"><div class="d-name" data-i18n="d_steak_n">Steak grillé</div><div class="d-desc" data-i18n="d_steak_d">Bœuf, cuisson au feu, accompagnements du jour.</div></div><div class="d-price">26€</div></div>
+          <div class="dish"><div class="d-main"><div class="d-name" data-i18n="d_kebab_n">Kebab grillé</div><div class="d-desc" data-i18n="d_kebab_d">Frites & sauces maison.</div></div><div class="d-price">16€</div></div>
+          <div class="dish"><div class="d-main"><div class="d-name" data-i18n="d_burger_n">Burger artisanal</div><div class="d-desc" data-i18n="d_burger_d">Steak haché maison, pain moelleux, frites.</div></div><div class="d-price">15€</div></div>
+        </div>
+      </div>
+
+      <!-- Signature — Pleine lune -->
+      <div class="signature">
+        <div class="sig-photo"><img src="assets/food-3.jpg" alt="Gros plan sur la planche mixte — brochette de poulet, köfte et lavash grillé"></div>
+        <div class="sig-body">
+          <span class="tag" data-i18n="sig_tag">Pleine lune · La signature</span>
+          <h3 data-i18n="sig_h">La Planche mixte MOON</h3>
+          <p data-i18n="sig_p">Steak, côtelette d'agneau, brochette de poulet et köfte réunis sur la planche, avec pommes de terre, épinards sautés, carottes glacées, ezme et pain. Le partage, comme une pleine lune autour de la table.</p>
+          <div class="sig-meta">
+            <div><b>2</b><span data-i18n="sig_m1">à partager</span></div>
+            <div><b>49€</b><span data-i18n="sig_m2">prix indicatif</span></div>
+            <div><b>4+</b><span data-i18n="sig_m3">grillades</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="phase p-decroissante" style="grid-column:span 12">
+        <div class="ph-top">
+          <svg class="ph-moon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="none" stroke="#e8b968" stroke-width="1.5"/><path d="M16 2a14 14 0 0 0 0 28 9 14 0 0 1 0-28z" fill="#e8b968"/></svg>
+          <div><h3 data-i18n="ph4_h">Douceurs orientales</h3><div class="ph-fr" data-i18n="ph4_sub">Lune décroissante · Desserts</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0 34px">
+          <div class="dish"><div class="d-main"><div class="d-name" data-i18n="d_bak_n">Baklava maison</div><div class="d-desc" data-i18n="d_bak_d">Pâte filo, pistache & sirop.</div></div><div class="d-price">7€</div></div>
+          <div class="dish"><div class="d-main"><div class="d-name" data-i18n="d_kad_n">Kadayıf</div><div class="d-desc" data-i18n="d_kad_d">Cheveux d'ange croustillants, noix.</div></div><div class="d-price">7€</div></div>
+          <div class="dish"><div class="d-main"><div class="d-name" data-i18n="d_tea_n">Thé / café turc</div><div class="d-desc" data-i18n="d_tea_d">Pour clore la soirée.</div></div><div class="d-price">3€</div></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="menu-note" data-i18n="menu_note">Carte, plats et prix donnés à titre indicatif — à confirmer avec l'établissement. Menu Iftar saisonnier (Ramadan) ~29,99€, boissons non incluses.</p>
+  </div>
+</section>
+
+<!-- ============ FIRE / STORY ============ -->
+<section class="fire" id="fire">
+  <div class="wrap fire-grid">
+    <div class="fire-text">
+      <span class="eyebrow" data-i18n="fire_eyebrow">Notre maison</span>
+      <h2 data-i18n="fire_h2">Une seule braise, mille saveurs</h2>
+      <p data-i18n="fire_p1">Au MOON, tout commence par le feu de bois. Viandes 100% halal, marinades maison, cuisson lente sur la braise : le geste du gril turc rencontre la générosité d'une table conviviale.</p>
+      <p data-i18n="fire_p2">Familles, amis, tablées du quartier — on vient au MOON pour se retrouver autour de planches à partager, dans une ambiance chaleureuse et détendue, en plein centre de Differdange.</p>
+      <div class="pillars">
+        <div class="pillar">
+          <svg class="pi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2c1.5 3-1 4 0 7 3-1 4-4 4-4 2 2 3 5 3 8a7 7 0 0 1-14 0c0-2 1-4 2-5 1 2 2 2 3 1-2-3 0-5 2-7z"/></svg>
+          <h4 data-i18n="pil1_h">Au feu de bois</h4><p data-i18n="pil1_p">Braise & charbon, comme il se doit.</p>
+        </div>
+        <div class="pillar">
+          <svg class="pi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12a8 8 0 1 0 8-8 6 6 0 1 1 0 16"/><path d="M12 4v16"/></svg>
+          <h4 data-i18n="pil2_h">100% halal</h4><p data-i18n="pil2_p">Toutes nos viandes, sans exception.</p>
+        </div>
+        <div class="pillar">
+          <svg class="pi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="3"/><circle cx="16" cy="14" r="4"/><path d="M2 21c1.5-3 4-4 7-4"/></svg>
+          <h4 data-i18n="pil3_h">Fait pour partager</h4><p data-i18n="pil3_p">Planches généreuses, en famille ou entre amis.</p>
+        </div>
+        <div class="pillar">
+          <svg class="pi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3v7a6 6 0 0 0 12 0V3"/><path d="M12 16v5"/></svg>
+          <h4 data-i18n="pil4_h">Turco-oriental</h4><p data-i18n="pil4_p">Kebabs, mezze & douceurs orientales.</p>
+        </div>
+      </div>
+    </div>
+    <div class="fire-photos">
+      <figure class="tall"><img src="assets/food-1.jpg" alt="Assiette köfte grillée avec boulgour, frites et poivron grillé"></figure>
+      <figure><img src="assets/food-4.jpg" alt="Accompagnements — épinards sautés, pommes de terre et carottes glacées"></figure>
+      <figure><img src="assets/hero.jpg" alt="Planche mixte sur planche en bois"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY — LA TABLE ============ -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow" data-i18n="gal_eyebrow">La table</span><h2 data-i18n="gal_h2">Une constellation d'assiettes</h2></div>
+      <div class="rule"></div>
+    </div>
+    <div class="const">
+      <figure class="g1"><img src="assets/food-1.jpg" alt="Köfte, boulgour et frites vus du dessus"></figure>
+      <figure class="g2"><img src="assets/food-3.jpg" alt="Brochette de poulet et köfte en gros plan"></figure>
+      <div class="caption"><span class="eyebrow" data-i18n="gal_cap_k">Au clair de braise</span><p data-i18n="gal_cap_p">Des photos réelles du MOON Steak &amp; Grill. Intérieur & équipe : visuels haute résolution à fournir par l'établissement.</p></div>
+      <figure class="g3"><img src="assets/food-4.jpg" alt="Épinards, pommes de terre et carottes"></figure>
+      <figure class="g4"><img src="assets/hero.jpg" alt="La planche mixte complète avec ses accompagnements"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow" data-i18n="visit_eyebrow">Nous trouver</span><h2 data-i18n="visit_h2">L'almanach du soir</h2></div>
+      <div class="rule"></div>
+    </div>
+    <div class="visit-grid">
+      <div>
+        <div class="almanac">
+          <div class="row"><div class="lab" data-i18n="alm_addr">Adresse</div><div class="val">45, rue Michel Rodange<small>L-4660 Differdange, Luxembourg</small></div></div>
+          <div class="row"><div class="lab" data-i18n="alm_phone">Réserver</div><div class="val"><a href="tel:+35226582719" style="color:var(--gold-2)">+352 26 58 27 19</a></div></div>
+          <div class="row"><div class="lab" data-i18n="alm_hours">Horaires</div><div class="val">
+            <div class="hours-line"><span data-i18n="alm_days">Lundi – Dimanche</span><span>12h–14h · 18h–22h</span></div>
+            <small data-i18n="alm_hours_note">Service midi & soir — horaires à confirmer avec l'établissement.</small>
+          </div></div>
+          <div class="row"><div class="lab" data-i18n="alm_deliv">Livraison</div><div class="val"><a href="https://www.wedely.com/restaurant/213347-moon-steakampgrill" target="_blank" rel="noopener" style="color:var(--gold-2)">Wedely — commande & livraison</a></div></div>
+        </div>
+        <div class="channels">
+          <a href="https://www.instagram.com/moon.steakgrill/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.facebook.com/people/MOON-Steak-Grill/61572396341380/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.tiktok.com/@moon.steakgrill" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.wedely.com/restaurant/213347-moon-steakampgrill" target="_blank" rel="noopener">Wedely</a>
+        </div>
+      </div>
+      <div class="map-shell">
+        <iframe title="Carte — MOON Steak & Grill, Differdange" src="https://www.google.com/maps?q=45+Rue+Michel+Rodange,+4660+Differdange,+Luxembourg&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="starfield"></div>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brandmark" href="#top">
+          <svg class="moonglyph" viewBox="0 0 32 32" aria-hidden="true"><path d="M22 3a13 13 0 1 0 0 26 10 10 0 1 1 0-26z" fill="url(#mg)"/></svg>
+          <span class="name"><b>MOON</b> Steak &amp; Grill</span>
+        </a>
+        <p data-i18n="foot_tag">Grillades halal au feu de bois — saveurs turco-orientales au cœur de Differdange.</p>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_visit">Visite</h5>
+        <p>45, rue Michel Rodange<br>L-4660 Differdange</p>
+        <a href="tel:+35226582719">+352 26 58 27 19</a>
+        <p data-i18n="foot_hours">Lun–Dim · 12h–14h & 18h–22h</p>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_follow">Suivre & commander</h5>
+        <a href="https://www.instagram.com/moon.steakgrill/" target="_blank" rel="noopener">Instagram · @moon.steakgrill</a>
+        <a href="https://www.facebook.com/people/MOON-Steak-Grill/61572396341380/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.tiktok.com/@moon.steakgrill" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.wedely.com/restaurant/213347-moon-steakampgrill" target="_blank" rel="noopener">Wedely</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> MOON Steak &amp; Grill · Differdange</span>
+      <span class="disclaimer" data-i18n="foot_demo">Site de démonstration — contenu & visuels à valider par l'établissement.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  fr:{
+    nav_menu:"La carte",nav_fire:"Le feu de bois",nav_gallery:"La table",nav_visit:"Nous trouver",nav_call:"Réserver · 26 58 27 19",
+    mast_eyebrow:"Differdange · Steakhouse halal",mast_h1a:"Le gril",mast_h1b:"au clair de lune",
+    mast_lede:"Grillades halal au feu de bois, planches à partager et saveurs turco-orientales, au cœur de Differdange.",
+    mast_cta1:"Voir la carte",mast_cta2:"Commander · Wedely",badge_halal:"Halal",
+    rib_k1:"Cuisson",rib_v1:"Au feu de bois",rib_k2:"Certifié",rib_v2:"100% halal",rib_k3:"Budget",rib_v3:"€€ · 20–30€ / pers.",rib_k4:"Coordonnées",
+    menu_eyebrow:"La carte · à confirmer",menu_h2:"Les phases du feu",
+    menu_intro:"Une soirée au MOON se lit comme les phases de la lune — du premier mezze au dernier baklava.",
+    ph1_h:"Pour commencer",ph1_sub:"Croissant de lune · Mezze",
+    d_mezze_n:"Mezze du chef",d_mezze_d:"Assortiment à partager — ezme, houmous & co.",
+    d_soup_n:"Soupe du jour",d_soup_d:"Préparée maison, selon le marché.",
+    d_bread_n:"Pain lavash & beurre",d_bread_d:"Cuit et grillé sur place.",
+    ph2_h:"Du gril au feu de bois",ph2_sub:"Premier quartier · Les grillades",
+    d_kofte_n:"Assiette köfte grillée",d_kofte_d:"Boulettes grillées, pilaf de boulgour, frites, poivron & lavash.",
+    d_chick_n:"Brochette de poulet (şiş)",d_chick_d:"Mariné, grillé à la braise, accompagnements.",
+    d_lamb_n:"Côtelette d'agneau",d_lamb_d:"Au charbon de bois, sel & herbes.",
+    d_steak_n:"Steak grillé",d_steak_d:"Bœuf, cuisson au feu, accompagnements du jour.",
+    d_kebab_n:"Kebab grillé",d_kebab_d:"Frites & sauces maison.",
+    d_burger_n:"Burger artisanal",d_burger_d:"Steak haché maison, pain moelleux, frites.",
+    sig_tag:"Pleine lune · La signature",sig_h:"La Planche mixte MOON",
+    sig_p:"Steak, côtelette d'agneau, brochette de poulet et köfte réunis sur la planche, avec pommes de terre, épinards sautés, carottes glacées, ezme et pain. Le partage, comme une pleine lune autour de la table.",
+    sig_m1:"à partager",sig_m2:"prix indicatif",sig_m3:"grillades",
+    ph4_h:"Douceurs orientales",ph4_sub:"Lune décroissante · Desserts",
+    d_bak_n:"Baklava maison",d_bak_d:"Pâte filo, pistache & sirop.",
+    d_kad_n:"Kadayıf",d_kad_d:"Cheveux d'ange croustillants, noix.",
+    d_tea_n:"Thé / café turc",d_tea_d:"Pour clore la soirée.",
+    menu_note:"Carte, plats et prix donnés à titre indicatif — à confirmer avec l'établissement. Menu Iftar saisonnier (Ramadan) ~29,99€, boissons non incluses.",
+    fire_eyebrow:"Notre maison",fire_h2:"Une seule braise, mille saveurs",
+    fire_p1:"Au MOON, tout commence par le feu de bois. Viandes 100% halal, marinades maison, cuisson lente sur la braise : le geste du gril turc rencontre la générosité d'une table conviviale.",
+    fire_p2:"Familles, amis, tablées du quartier — on vient au MOON pour se retrouver autour de planches à partager, dans une ambiance chaleureuse et détendue, en plein centre de Differdange.",
+    pil1_h:"Au feu de bois",pil1_p:"Braise & charbon, comme il se doit.",
+    pil2_h:"100% halal",pil2_p:"Toutes nos viandes, sans exception.",
+    pil3_h:"Fait pour partager",pil3_p:"Planches généreuses, en famille ou entre amis.",
+    pil4_h:"Turco-oriental",pil4_p:"Kebabs, mezze & douceurs orientales.",
+    gal_eyebrow:"La table",gal_h2:"Une constellation d'assiettes",gal_cap_k:"Au clair de braise",
+    gal_cap_p:"Des photos réelles du MOON Steak & Grill. Intérieur & équipe : visuels haute résolution à fournir par l'établissement.",
+    visit_eyebrow:"Nous trouver",visit_h2:"L'almanach du soir",
+    alm_addr:"Adresse",alm_phone:"Réserver",alm_hours:"Horaires",alm_days:"Lundi – Dimanche",
+    alm_hours_note:"Service midi & soir — horaires à confirmer avec l'établissement.",alm_deliv:"Livraison",
+    foot_tag:"Grillades halal au feu de bois — saveurs turco-orientales au cœur de Differdange.",
+    foot_visit:"Visite",foot_hours:"Lun–Dim · 12h–14h & 18h–22h",foot_follow:"Suivre & commander",
+    foot_demo:"Site de démonstration — contenu & visuels à valider par l'établissement."
+  },
+  de:{
+    nav_menu:"Die Karte",nav_fire:"Das Holzfeuer",nav_gallery:"Der Tisch",nav_visit:"Anfahrt",nav_call:"Reservieren · 26 58 27 19",
+    mast_eyebrow:"Differdingen · Halal-Steakhouse",mast_h1a:"Der Grill",mast_h1b:"im Mondlicht",
+    mast_lede:"Halal-Grillgerichte über dem Holzfeuer, Platten zum Teilen und türkisch-orientalische Aromen — im Herzen von Differdingen.",
+    mast_cta1:"Zur Karte",mast_cta2:"Bestellen · Wedely",badge_halal:"Halal",
+    rib_k1:"Zubereitung",rib_v1:"Über dem Holzfeuer",rib_k2:"Zertifiziert",rib_v2:"100% halal",rib_k3:"Budget",rib_v3:"€€ · 20–30€ / Pers.",rib_k4:"Koordinaten",
+    menu_eyebrow:"Die Karte · unbestätigt",menu_h2:"Die Phasen des Feuers",
+    menu_intro:"Ein Abend im MOON liest sich wie die Mondphasen — von der ersten Meze bis zum letzten Baklava.",
+    ph1_h:"Zum Beginn",ph1_sub:"Zunehmende Sichel · Meze",
+    d_mezze_n:"Meze des Küchenchefs",d_mezze_d:"Auswahl zum Teilen — Ezme, Hummus & mehr.",
+    d_soup_n:"Suppe des Tages",d_soup_d:"Hausgemacht, je nach Markt.",
+    d_bread_n:"Lavash-Brot & Butter",d_bread_d:"Frisch gebacken und gegrillt.",
+    ph2_h:"Vom Holzkohlegrill",ph2_sub:"Erstes Viertel · Die Grillgerichte",
+    d_kofte_n:"Gegrillte Köfte-Platte",d_kofte_d:"Grillbällchen, Bulgur-Pilaw, Pommes, Paprika & Lavash.",
+    d_chick_n:"Hähnchenspieß (Şiş)",d_chick_d:"Mariniert, über Glut gegrillt, mit Beilagen.",
+    d_lamb_n:"Lammkotelett",d_lamb_d:"Über Holzkohle, Salz & Kräuter.",
+    d_steak_n:"Gegrilltes Steak",d_steak_d:"Rind, über dem Feuer, mit Tagesbeilagen.",
+    d_kebab_n:"Gegrillter Kebab",d_kebab_d:"Pommes & hausgemachte Saucen.",
+    d_burger_n:"Hausburger",d_burger_d:"Hausgemachtes Patty, weiches Bun, Pommes.",
+    sig_tag:"Vollmond · Die Signatur",sig_h:"Die MOON Mixed-Platte",
+    sig_p:"Steak, Lammkotelett, Hähnchenspieß und Köfte auf einem Brett vereint, mit Kartoffeln, gebratenem Spinat, glasierten Karotten, Ezme und Brot. Teilen — wie ein Vollmond rund um den Tisch.",
+    sig_m1:"zum Teilen",sig_m2:"Richtpreis",sig_m3:"Grillsorten",
+    ph4_h:"Orientalische Süßspeisen",ph4_sub:"Abnehmender Mond · Desserts",
+    d_bak_n:"Hausgemachtes Baklava",d_bak_d:"Filoteig, Pistazie & Sirup.",
+    d_kad_n:"Kadayıf",d_kad_d:"Knuspriger Engelshaarteig, Nüsse.",
+    d_tea_n:"Türkischer Tee / Kaffee",d_tea_d:"Zum Abschluss des Abends.",
+    menu_note:"Karte, Gerichte und Preise sind Richtangaben — mit dem Restaurant zu bestätigen. Saisonales Iftar-Menü (Ramadan) ~29,99€, Getränke nicht inbegriffen.",
+    fire_eyebrow:"Unser Haus",fire_h2:"Eine Glut, tausend Aromen",
+    fire_p1:"Im MOON beginnt alles mit dem Holzfeuer. 100% halal Fleisch, hausgemachte Marinaden, langsames Garen über der Glut: die türkische Grillkunst trifft auf die Großzügigkeit einer geselligen Tafel.",
+    fire_p2:"Familien, Freunde, Nachbarn — man kommt ins MOON, um sich um Platten zum Teilen zu versammeln, in warmer, entspannter Atmosphäre, mitten in Differdingen.",
+    pil1_h:"Über dem Holzfeuer",pil1_p:"Glut & Holzkohle, wie es sein soll.",
+    pil2_h:"100% halal",pil2_p:"All unser Fleisch, ohne Ausnahme.",
+    pil3_h:"Zum Teilen gemacht",pil3_p:"Großzügige Platten, mit Familie oder Freunden.",
+    pil4_h:"Türkisch-orientalisch",pil4_p:"Kebabs, Meze & orientalische Süßspeisen.",
+    gal_eyebrow:"Der Tisch",gal_h2:"Eine Konstellation von Tellern",gal_cap_k:"Im Schein der Glut",
+    gal_cap_p:"Echte Fotos vom MOON Steak & Grill. Innenraum & Team: hochauflösende Bilder vom Restaurant bereitzustellen.",
+    visit_eyebrow:"Anfahrt",visit_h2:"Der Almanach des Abends",
+    alm_addr:"Adresse",alm_phone:"Reservieren",alm_hours:"Öffnungszeiten",alm_days:"Montag – Sonntag",
+    alm_hours_note:"Mittags & abends — Öffnungszeiten mit dem Restaurant zu bestätigen.",alm_deliv:"Lieferung",
+    foot_tag:"Halal-Grillgerichte über dem Holzfeuer — türkisch-orientalische Aromen im Herzen von Differdingen.",
+    foot_visit:"Besuch",foot_hours:"Mo–So · 12–14 & 18–22 Uhr",foot_follow:"Folgen & bestellen",
+    foot_demo:"Demo-Website — Inhalte & Bilder vom Restaurant zu bestätigen."
+  },
+  en:{
+    nav_menu:"The menu",nav_fire:"Wood fire",nav_gallery:"The table",nav_visit:"Find us",nav_call:"Book · 26 58 27 19",
+    mast_eyebrow:"Differdange · Halal steakhouse",mast_h1a:"The grill",mast_h1b:"by moonlight",
+    mast_lede:"Halal grills over the wood fire, sharing boards and Turkish-Oriental flavours, in the heart of Differdange.",
+    mast_cta1:"See the menu",mast_cta2:"Order · Wedely",badge_halal:"Halal",
+    rib_k1:"Cooking",rib_v1:"Over the wood fire",rib_k2:"Certified",rib_v2:"100% halal",rib_k3:"Budget",rib_v3:"€€ · 20–30€ / person",rib_k4:"Coordinates",
+    menu_eyebrow:"The menu · to confirm",menu_h2:"The phases of the fire",
+    menu_intro:"An evening at MOON reads like the phases of the moon — from the first meze to the last baklava.",
+    ph1_h:"To begin",ph1_sub:"Waxing crescent · Meze",
+    d_mezze_n:"Chef's meze",d_mezze_d:"Assortment to share — ezme, houmous & more.",
+    d_soup_n:"Soup of the day",d_soup_d:"House-made, market-led.",
+    d_bread_n:"Lavash bread & butter",d_bread_d:"Baked and grilled on the spot.",
+    ph2_h:"From the wood-fire grill",ph2_sub:"First quarter · The grills",
+    d_kofte_n:"Grilled köfte plate",d_kofte_d:"Grilled meatballs, bulgur pilaf, fries, pepper & lavash.",
+    d_chick_n:"Chicken skewer (şiş)",d_chick_d:"Marinated, grilled over embers, with sides.",
+    d_lamb_n:"Lamb chops",d_lamb_d:"Over charcoal, salt & herbs.",
+    d_steak_n:"Grilled steak",d_steak_d:"Beef, fire-cooked, with sides of the day.",
+    d_kebab_n:"Grilled kebab",d_kebab_d:"Fries & house sauces.",
+    d_burger_n:"Handcrafted burger",d_burger_d:"House patty, soft bun, fries.",
+    sig_tag:"Full moon · The signature",sig_h:"The MOON Mixed Board",
+    sig_p:"Steak, lamb chop, chicken skewer and köfte gathered on the board, with potatoes, sautéed spinach, glazed carrots, ezme and bread. Sharing — like a full moon around the table.",
+    sig_m1:"to share",sig_m2:"indicative price",sig_m3:"grills",
+    ph4_h:"Oriental sweets",ph4_sub:"Waning moon · Desserts",
+    d_bak_n:"House baklava",d_bak_d:"Filo pastry, pistachio & syrup.",
+    d_kad_n:"Kadayıf",d_kad_d:"Crisp angel-hair pastry, nuts.",
+    d_tea_n:"Turkish tea / coffee",d_tea_d:"To close the evening.",
+    menu_note:"Menu, dishes and prices are indicative — to be confirmed with the restaurant. Seasonal Iftar menu (Ramadan) ~29.99€, drinks not included.",
+    fire_eyebrow:"Our house",fire_h2:"One ember, a thousand flavours",
+    fire_p1:"At MOON, everything starts with the wood fire. 100% halal meats, house marinades, slow cooking over embers: the Turkish grill tradition meets the generosity of a convivial table.",
+    fire_p2:"Families, friends, neighbours — people come to MOON to gather around sharing boards, in a warm and relaxed atmosphere, right in the centre of Differdange.",
+    pil1_h:"Over the wood fire",pil1_p:"Embers & charcoal, as it should be.",
+    pil2_h:"100% halal",pil2_p:"All of our meats, without exception.",
+    pil3_h:"Made for sharing",pil3_p:"Generous boards, with family or friends.",
+    pil4_h:"Turkish-Oriental",pil4_p:"Kebabs, meze & oriental sweets.",
+    gal_eyebrow:"The table",gal_h2:"A constellation of plates",gal_cap_k:"By ember-light",
+    gal_cap_p:"Genuine photos of MOON Steak & Grill. Interior & team: high-resolution images to be provided by the restaurant.",
+    visit_eyebrow:"Find us",visit_h2:"The evening almanac",
+    alm_addr:"Address",alm_phone:"Book",alm_hours:"Hours",alm_days:"Monday – Sunday",
+    alm_hours_note:"Lunch & dinner service — hours to be confirmed with the restaurant.",alm_deliv:"Delivery",
+    foot_tag:"Halal grills over the wood fire — Turkish-Oriental flavours in the heart of Differdange.",
+    foot_visit:"Visit",foot_hours:"Mon–Sun · 12–2pm & 6–10pm",foot_follow:"Follow & order",
+    foot_demo:"Demonstration site — content & imagery to be validated by the restaurant."
+  }
+};
+function setLang(lang){
+  const dict=I18N[lang]||I18N.fr;
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(dict[k]!=null) el.textContent=dict[k];
+  });
+  document.querySelectorAll('.langsw button').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+}
+document.querySelectorAll('.langsw button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

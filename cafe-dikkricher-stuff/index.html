@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Dikkricher Stuff — Brasserie & terrasse sur la Place de la Libération, Diekirch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --sage:#5F7161;
+    --sage-2:#6B7D6A;
+    --sage-deep:#43524A;
+    --sage-ink:#33403A;
+    --cream:#F4EFE6;
+    --cream-2:#EAE1D2;
+    --cream-3:#E1D6C2;
+    --char:#2B2B2B;
+    --gold:#E8B44A;
+    --gold-deep:#C9922B;
+    --battin:#2E7D32;
+    --paper:#FBF8F1;
+    --line:#CDBFA7;
+    --shadow:0 22px 48px -28px rgba(43,43,43,.55);
+    --edge:1px solid rgba(43,43,43,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Work Sans",system-ui,sans-serif;
+    color:var(--char);
+    background:var(--cream);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  .fr-display{font-family:"Fraunces",Georgia,serif}
+  .blackletter{font-family:"Pirata One",serif}
+  .wrap{max-width:1360px;margin:0 auto;padding:0 40px}
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
+    font-weight:600;color:var(--sage-deep);
+  }
+
+  /* ===== paving texture used across "the square" ===== */
+  .cobbles{
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(43,43,43,.045) 0 2px, transparent 3px),
+      radial-gradient(circle at 70% 60%, rgba(43,43,43,.04) 0 2px, transparent 3px),
+      linear-gradient(rgba(43,43,43,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(43,43,43,.035) 1px, transparent 1px);
+    background-size:26px 26px, 34px 34px, 52px 52px, 52px 52px;
+  }
+
+  /* ===== MASTHEAD — enamel street plaque ===== */
+  .masthead{
+    position:sticky;top:0;z-index:60;
+    background:var(--sage);
+    border-bottom:3px solid var(--gold);
+    box-shadow:0 8px 24px -18px rgba(0,0,0,.6);
+  }
+  .masthead .bar{
+    display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:30px;
+    padding:12px 40px;max-width:1440px;margin:0 auto;
+  }
+  .brandmark{display:flex;align-items:center;gap:14px;color:var(--cream)}
+  .brandmark .donkey{width:40px;height:40px;flex:0 0 auto;filter:drop-shadow(0 2px 0 rgba(0,0,0,.25))}
+  .brandmark .donkey path,.brandmark .donkey circle{fill:var(--gold)}
+  .brandmark .txt{line-height:1}
+  .brandmark .name{font-size:1.5rem;letter-spacing:.02em;color:var(--cream)}
+  .brandmark .sub{font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;color:rgba(244,239,230,.72);margin-top:4px}
+  .mast-nav{display:flex;gap:26px;justify-content:center;flex-wrap:wrap}
+  .mast-nav a{
+    color:rgba(244,239,230,.85);font-weight:500;font-size:.82rem;
+    letter-spacing:.12em;text-transform:uppercase;padding:6px 2px;
+    border-bottom:2px solid transparent;transition:.2s;
+  }
+  .mast-nav a:hover{color:#fff;border-color:var(--gold)}
+  .mast-right{display:flex;align-items:center;gap:14px}
+  .lang{display:flex;border:1px solid rgba(244,239,230,.4);border-radius:2px;overflow:hidden}
+  .lang button{
+    background:transparent;color:rgba(244,239,230,.8);border:0;cursor:pointer;
+    font-family:inherit;font-weight:600;font-size:.72rem;letter-spacing:.1em;
+    padding:6px 10px;transition:.2s;
+  }
+  .lang button:hover{background:rgba(244,239,230,.14)}
+  .lang button.on{background:var(--gold);color:var(--char)}
+  .callchip{
+    display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--char);
+    font-weight:700;font-size:.82rem;padding:9px 16px;border-radius:2px;white-space:nowrap;
+    box-shadow:0 6px 14px -8px rgba(0,0,0,.5);transition:.2s;
+  }
+  .callchip:hover{background:#f2c766;transform:translateY(-1px)}
+  .menu-toggle{display:none}
+
+  /* ===== HERO — "Sur la Place" editorial split ===== */
+  .hero{
+    display:grid;grid-template-columns:minmax(430px,42%) 1fr;
+    background:var(--sage);color:var(--cream);position:relative;
+  }
+  .hero-left{
+    padding:74px 56px 64px;display:flex;flex-direction:column;justify-content:center;
+    position:relative;background:linear-gradient(160deg,var(--sage) 0%,var(--sage-deep) 100%);
+  }
+  .hero-left::after{
+    content:"";position:absolute;top:0;right:-1px;width:2px;height:100%;
+    background:var(--gold);opacity:.9;
+  }
+  .place-kicker{
+    display:inline-flex;align-items:center;gap:12px;font-size:.72rem;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:26px;
+  }
+  .place-kicker::before{content:"";width:38px;height:1px;background:var(--gold)}
+  .hero-title{
+    font-size:clamp(3.2rem,5.4vw,5.6rem);line-height:.9;font-weight:900;color:var(--cream);
+    letter-spacing:-.01em;
+  }
+  .hero-title .script{
+    display:block;font-family:"Pirata One",serif;font-weight:400;
+    font-size:clamp(3rem,5vw,5rem);color:var(--gold);letter-spacing:.01em;
+    margin-top:6px;
+  }
+  .hero-lede{
+    margin-top:28px;max-width:34ch;font-size:1.06rem;color:rgba(244,239,230,.9);
+    font-weight:300;line-height:1.65;
+  }
+  .hero-meta{
+    margin-top:34px;display:flex;gap:26px;flex-wrap:wrap;font-size:.82rem;
+    letter-spacing:.06em;color:rgba(244,239,230,.85);
+  }
+  .hero-meta b{display:block;color:var(--gold);font-size:1.02rem;letter-spacing:0;font-family:"Fraunces",serif;font-weight:600;margin-bottom:2px}
+  .hero-cta{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.9rem;
+    padding:14px 26px;border-radius:2px;transition:.2s;letter-spacing:.02em;
+  }
+  .btn-gold{background:var(--gold);color:var(--char)}
+  .btn-gold:hover{background:#f2c766;transform:translateY(-2px)}
+  .btn-ghost{border:1.5px solid rgba(244,239,230,.55);color:var(--cream)}
+  .btn-ghost:hover{border-color:var(--gold);color:#fff}
+
+  .hero-right{position:relative;min-height:560px;overflow:hidden}
+  .hero-right img{filter:saturate(1.02)}
+  .hero-right .awning{
+    position:absolute;top:0;left:0;right:0;height:64px;
+    background:repeating-linear-gradient(90deg,#3a3a3a 0 34px,#4a4a4a 34px 68px);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 16px -6px rgba(0,0,0,.5);z-index:2;
+  }
+  .hero-right .awning span{
+    font-family:"Pirata One",serif;color:#f3efe6;font-size:1.5rem;letter-spacing:.06em;
+    text-shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+  .hero-badge{
+    position:absolute;bottom:26px;right:26px;z-index:2;
+    background:var(--gold);color:var(--char);border-radius:50%;width:118px;height:118px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    box-shadow:var(--shadow);border:3px solid #fff;transform:rotate(-8deg);
+  }
+  .hero-badge .b1{font-family:"Pirata One",serif;font-size:1rem;line-height:1}
+  .hero-badge .b2{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-top:5px}
+
+  /* ===== SECTION HEADS ===== */
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:38px}
+  .sec-head h2{
+    font-family:"Fraunces",serif;font-weight:900;font-size:clamp(2rem,3.4vw,3rem);
+    line-height:1;color:var(--sage-deep);letter-spacing:-.01em;
+  }
+  .sec-head .h-note{max-width:38ch;color:#5c584f;font-size:.95rem}
+
+  /* ===== PLAZA MOSAIC — "Le plan de la Place" ===== */
+  .plaza{padding:84px 0 90px;background:var(--paper)}
+  .mosaic{
+    display:grid;grid-template-columns:repeat(12,1fr);
+    grid-auto-rows:150px;gap:14px;
+  }
+  .tile{
+    position:relative;overflow:hidden;border-radius:4px;border:var(--edge);
+    background:var(--cream-2);box-shadow:var(--shadow);
+  }
+  .tile .num{
+    position:absolute;top:10px;left:12px;z-index:3;font-family:"Fraunces",serif;
+    font-weight:600;font-size:.72rem;color:var(--cream);background:rgba(43,43,43,.55);
+    padding:3px 8px;border-radius:2px;letter-spacing:.12em;
+  }
+  .tile-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,43,43,0) 40%,rgba(43,43,43,.5))}
+  .tile-cap{position:absolute;bottom:14px;left:16px;right:16px;z-index:3;color:#fff}
+  .tile-cap .t{font-family:"Fraunces",serif;font-size:1.15rem;font-weight:600;line-height:1.1}
+  .tile-cap .d{font-size:.78rem;color:rgba(255,255,255,.85);margin-top:3px}
+
+  /* text tiles */
+  .tile-fill{display:flex;flex-direction:column;justify-content:center;padding:26px 28px}
+  .tile-sage{background:var(--sage);color:var(--cream)}
+  .tile-sage .k{color:var(--gold)}
+  .tile-cream{background:var(--cream-2)}
+  .tile-gold{background:var(--gold);color:var(--char)}
+  .tile-fill .k{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;font-weight:700;margin-bottom:12px}
+  .tile-fill .big{font-family:"Fraunces",serif;font-weight:600;font-size:1.35rem;line-height:1.15}
+  .tile-hours-row{display:flex;justify-content:space-between;font-size:.86rem;padding:5px 0;border-bottom:1px dashed rgba(244,239,230,.28)}
+  .tile-hours-row:last-child{border-bottom:0}
+  .tile-hours-row b{font-weight:600}
+  .tile-quote{font-family:"Fraunces",serif;font-style:italic;font-size:1.2rem;line-height:1.4}
+  .tile-quote .cite{display:block;font-style:normal;font-family:"Work Sans";font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;margin-top:14px;opacity:.8}
+
+  /* grid placement (desktop) */
+  .m-hero{grid-column:span 5;grid-row:span 3}
+  .m-hours{grid-column:span 3;grid-row:span 2}
+  .m-fountain{grid-column:span 4;grid-row:span 3}
+  .m-quote{grid-column:span 3;grid-row:span 1}
+  .m-terrace{grid-column:span 4;grid-row:span 2}
+  .m-batt{grid-column:span 3;grid-row:span 2}
+  .m-food{grid-column:span 5;grid-row:span 2}
+
+  /* ===== MENU — folded café card, two identities ===== */
+  .menu{padding:88px 0 96px;background:var(--sage-deep);color:var(--cream);position:relative}
+  .menu .sec-head h2{color:var(--cream)}
+  .menu .sec-head .h-note{color:rgba(244,239,230,.75)}
+  .menu-fold{display:grid;grid-template-columns:1fr 1fr;gap:0;box-shadow:var(--shadow);border-radius:6px;overflow:hidden}
+  .menu-col{padding:44px 46px;position:relative}
+  .menu-col.left{background:var(--cream);color:var(--char)}
+  .menu-col.right{background:var(--paper);color:var(--char);border-left:2px dashed var(--line)}
+  .menu-col h3{font-family:"Fraunces",serif;font-weight:900;font-size:1.8rem;color:var(--sage-deep);line-height:1}
+  .menu-col .col-k{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);font-weight:700;margin-bottom:10px}
+  .menu-col .col-note{font-size:.86rem;color:#6a655b;margin:10px 0 26px}
+  .dish{padding:15px 0;border-bottom:1px dotted var(--line)}
+  .dish:last-child{border-bottom:0}
+  .dish .dish-top{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+  .dish .dn{font-family:"Fraunces",serif;font-weight:600;font-size:1.12rem;color:var(--char)}
+  .dish .price{font-size:.72rem;color:var(--gold-deep);font-weight:600;letter-spacing:.08em;white-space:nowrap}
+  .dish .dd{font-size:.86rem;color:#6a655b;margin-top:4px;max-width:44ch}
+  .dish .flag{display:inline-block;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;background:var(--cream-3);color:#7a6f57;padding:2px 8px;border-radius:2px;margin-top:8px}
+  .sig-tag{display:inline-block;background:var(--gold);color:var(--char);font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:2px 8px;border-radius:2px;margin-left:8px;vertical-align:middle}
+  .menu-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+  .menu-photos .mp{height:150px;border-radius:4px;overflow:hidden;border:var(--edge)}
+  .menu-disclaim{margin-top:22px;font-size:.8rem;color:rgba(244,239,230,.7);text-align:center}
+
+  /* ===== TERRACE BAND ===== */
+  .terrace{position:relative;min-height:460px;display:grid;grid-template-columns:1.15fr 1fr;background:var(--char)}
+  .terrace-img{position:relative;overflow:hidden}
+  .terrace-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(43,43,43,0) 55%,rgba(43,43,43,.4))}
+  .terrace-txt{background:var(--sage);color:var(--cream);padding:66px 58px;display:flex;flex-direction:column;justify-content:center;position:relative}
+  .terrace-txt::before{content:"";position:absolute;top:0;left:0;width:100%;height:4px;background:var(--gold)}
+  .terrace-txt h2{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(2rem,3vw,2.8rem);line-height:1.02;margin:14px 0 20px}
+  .terrace-txt p{color:rgba(244,239,230,.9);font-weight:300;font-size:1.04rem;max-width:40ch}
+  .terrace-facts{display:flex;gap:36px;margin-top:34px;flex-wrap:wrap}
+  .terrace-facts div b{display:block;font-family:"Fraunces",serif;color:var(--gold);font-size:1.9rem;line-height:1}
+  .terrace-facts div span{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,239,230,.78)}
+
+  /* ===== VISIT — framed plan of the square + enamel info plaque ===== */
+  .visit{padding:88px 0 60px;background:var(--paper)}
+  .visit-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:34px;align-items:stretch}
+  .map-frame{border-radius:6px;overflow:hidden;border:6px solid var(--sage);box-shadow:var(--shadow);position:relative;min-height:420px}
+  .map-frame iframe{width:100%;height:100%;min-height:420px;border:0;filter:grayscale(.12) contrast(1.02)}
+  .map-tag{position:absolute;top:0;left:0;background:var(--sage);color:var(--cream);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding:8px 16px;z-index:2}
+  .plaque{
+    background:var(--sage);color:var(--cream);border-radius:6px;padding:40px 40px 34px;
+    box-shadow:var(--shadow);border:3px solid var(--sage-deep);position:relative;
+  }
+  .plaque::after{content:"";position:absolute;inset:8px;border:1px solid rgba(244,239,230,.28);border-radius:4px;pointer-events:none}
+  .plaque h3{font-family:"Fraunces",serif;font-weight:900;font-size:1.7rem;color:var(--cream);margin-bottom:22px}
+  .info-row{display:flex;gap:14px;padding:13px 0;border-bottom:1px dashed rgba(244,239,230,.22);position:relative}
+  .info-row:last-child{border-bottom:0}
+  .info-row .ico{color:var(--gold);flex:0 0 22px;margin-top:2px}
+  .info-row .lab{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(244,239,230,.7);font-weight:700}
+  .info-row .val{font-size:.98rem;color:var(--cream);font-weight:500}
+  .info-row .val small{display:block;font-weight:400;color:rgba(244,239,230,.72);font-size:.82rem;margin-top:2px}
+  .info-row a.val:hover{color:var(--gold)}
+  .hours-mini{margin-top:6px}
+  .hours-mini .hr{display:flex;justify-content:space-between;font-size:.9rem;padding:5px 0;border-bottom:1px dashed rgba(244,239,230,.18)}
+  .hours-mini .hr.closed{color:var(--gold)}
+  .aconf{font-size:.7rem;letter-spacing:.06em;color:var(--gold);text-transform:uppercase;font-weight:600}
+
+  /* ===== FOOTER ===== */
+  .foot{background:var(--sage-deep);color:rgba(244,239,230,.86);padding:56px 0 30px;border-top:4px solid var(--gold)}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start}
+  .foot .fmark{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+  .foot .fmark .donkey{width:44px;height:44px}
+  .foot .fmark .donkey path,.foot .fmark .donkey circle{fill:var(--gold)}
+  .foot .fmark .name{font-family:"Pirata One",serif;font-size:1.7rem;color:var(--cream)}
+  .foot p{font-size:.9rem;line-height:1.6;max-width:40ch}
+  .foot h4{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .foot a{color:rgba(244,239,230,.86)}
+  .foot a:hover{color:var(--gold)}
+  .foot ul{list-style:none;font-size:.92rem;line-height:2}
+  .foot-bottom{margin-top:40px;padding-top:22px;border-top:1px solid rgba(244,239,230,.16);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.78rem;color:rgba(244,239,230,.6)}
+  .demo-badge{background:var(--gold);color:var(--char);font-weight:700;font-size:.72rem;letter-spacing:.08em;padding:5px 12px;border-radius:2px}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:1080px){
+    .hero{grid-template-columns:1fr}
+    .hero-left{padding:60px 40px 50px}
+    .hero-right{min-height:420px}
+    .m-hero{grid-column:span 12;grid-row:span 3}
+    .m-hours{grid-column:span 6;grid-row:span 2}
+    .m-fountain{grid-column:span 6;grid-row:span 3}
+    .m-quote{grid-column:span 6;grid-row:span 1}
+    .m-terrace{grid-column:span 6;grid-row:span 2}
+    .m-batt{grid-column:span 6;grid-row:span 2}
+    .m-food{grid-column:span 12;grid-row:span 2}
+    .visit-grid{grid-template-columns:1fr}
+    .terrace{grid-template-columns:1fr}
+    .terrace-img{min-height:320px}
+  }
+  @media(max-width:760px){
+    .wrap{padding:0 22px}
+    .masthead .bar{grid-template-columns:1fr auto;padding:10px 22px;gap:14px}
+    .mast-nav{display:none;grid-column:1/-1;flex-direction:column;gap:4px;padding-top:8px}
+    .masthead.open .mast-nav{display:flex}
+    .menu-toggle{display:inline-flex;background:transparent;border:1px solid rgba(244,239,230,.4);color:var(--cream);border-radius:2px;padding:8px 12px;cursor:pointer;font-family:inherit;font-size:.8rem;font-weight:600}
+    .callchip span.calltext{display:none}
+    .mosaic{grid-auto-rows:120px}
+    .m-hero,.m-hours,.m-fountain,.m-quote,.m-terrace,.m-batt,.m-food{grid-column:span 12}
+    .m-hero{grid-row:span 2}.m-fountain{grid-row:span 2}
+    .menu-fold{grid-template-columns:1fr}
+    .menu-col.right{border-left:0;border-top:2px dashed var(--line)}
+    .menu-col{padding:36px 26px}
+    .foot-grid{grid-template-columns:1fr;gap:28px}
+    .hero-title{font-size:3rem}
+  }
+</style>
+</head>
+<body class="cobbles">
+
+<!-- ===== MASTHEAD ===== -->
+<header class="masthead" id="masthead">
+  <div class="bar">
+    <a class="brandmark" href="#top" aria-label="Dikkricher Stuff">
+      <svg class="donkey" viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M14 22c-3-4-2-9 1-9 2 0 3 2 3 4 3-2 8-3 12-3 2-3 5-5 8-5 1 0 1 1 0 2-2 1-3 3-3 4 4 1 8 4 10 8 3 0 6 1 8 3 1 1 0 2-1 2-2 0-4-1-5-1 1 3 1 6 0 9l3 10c1 2-2 3-3 1l-3-8c-2 1-5 2-8 2l1 8c0 2-3 2-3 0l-1-8h-6l-1 8c0 2-3 2-3 0l-1-9c-4-2-6-6-6-11 0-3 1-5 2-7z"/>
+        <circle cx="20" cy="21" r="1.6"/>
+      </svg>
+      <span class="txt">
+        <span class="name blackletter">Dikkricher Stuff</span>
+        <span class="sub" data-i18n="brand.sub">Brasserie · Place de la Libération · Dikrech</span>
+      </span>
+    </a>
+    <nav class="mast-nav" id="navlinks">
+      <a href="#place" data-i18n="nav.place">La Place</a>
+      <a href="#menu" data-i18n="nav.menu">La Carte</a>
+      <a href="#terrasse" data-i18n="nav.terrace">La Terrasse</a>
+      <a href="#visite" data-i18n="nav.visit">Nous trouver</a>
+    </nav>
+    <div class="mast-right">
+      <div class="lang" role="group" aria-label="Langue">
+        <button data-lang="fr" class="on">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a class="callchip" href="tel:+35226800803"><span aria-hidden="true">☎</span><span class="calltext" data-i18n="cta.call">26 80 08 03</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <span class="place-kicker" data-i18n="hero.kicker">Éislek · Dikrech · Grand-Duché</span>
+    <h1 class="hero-title">
+      <span data-i18n="hero.t1">Au cœur de</span>
+      <span class="script">la Place</span>
+    </h1>
+    <p class="hero-lede" data-i18n="hero.lede">La brasserie du village sur la Place de la Libération : kniddelen généreux, burgers réputés et la plus belle terrasse de Dikrech, à l'ombre du platane.</p>
+    <div class="hero-meta">
+      <div><b data-i18n="hero.m1b">Cuisine luxembourgeoise</b><span data-i18n="hero.m1s">& brasserie de comptoir</span></div>
+      <div><b data-i18n="hero.m2b">Grande terrasse</b><span data-i18n="hero.m2s">face à la fontaine</span></div>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-gold" href="tel:+35226800803" data-i18n="hero.cta1">Réserver par téléphone</a>
+      <a class="btn btn-ghost" href="#menu" data-i18n="hero.cta2">Voir la carte</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="awning"><span>Dikkricher Stuff</span></div>
+    <img src="./assets/hero.jpg" alt="La terrasse de la Dikkricher Stuff et son banc autour du platane, sur la Place de la Libération à Diekirch" />
+    <div class="hero-badge">
+      <span class="b1">Battin</span>
+      <span class="b2" data-i18n="hero.badge">Bière pression</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PLAZA MOSAIC ===== -->
+<section class="plaza" id="place">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" data-i18n="place.eyebrow">Op der Plaz · Sur la place</span>
+        <h2 class="fr-display" data-i18n="place.title">Le plan de la place</h2>
+      </div>
+      <p class="h-note" data-i18n="place.note">Un pavé, une table, une histoire. Voici la Stuff telle qu'on la vit : la façade verte, la fontaine à l'âne, la terrasse au soleil.</p>
+    </div>
+
+    <div class="mosaic">
+      <!-- storefront photo -->
+      <div class="tile tile-photo m-hero">
+        <span class="num">01</span>
+        <img src="./assets/storefront.jpg" alt="Façade verte de la Dikkricher Stuff, store gris avec l'enseigne en lettres gothiques et la terrasse animée" />
+        <div class="tile-cap">
+          <div class="t fr-display" data-i18n="tile1.t">La façade verte</div>
+          <div class="d" data-i18n="tile1.d">Store gris, enseigne gothique, l'âme d'un café de place</div>
+        </div>
+      </div>
+
+      <!-- hours tile -->
+      <div class="tile tile-fill tile-sage m-hours">
+        <span class="num">02</span>
+        <div class="k" data-i18n="tile2.k">Horaires · à confirmer</div>
+        <div class="tile-hours-row"><b data-i18n="day.montue">Lun – Mar</b><span>10:00 – 24:00</span></div>
+        <div class="tile-hours-row"><b data-i18n="day.wedsat">Mer – Sam</b><span>10:00 – 01:00</span></div>
+        <div class="tile-hours-row"><b data-i18n="day.sun">Dimanche</b><span data-i18n="closed">Fermé</span></div>
+      </div>
+
+      <!-- fountain photo -->
+      <div class="tile tile-photo m-fountain">
+        <span class="num">03</span>
+        <img src="./assets/square-fountain.jpg" alt="La place de la Libération et sa fontaine à l'âne, emblème de Diekirch, devant la terrasse" />
+        <div class="tile-cap">
+          <div class="t fr-display" data-i18n="tile3.t">La fontaine à l'âne</div>
+          <div class="d" data-i18n="tile3.d">L'emblème de Dikrech, juste devant la terrasse</div>
+        </div>
+      </div>
+
+      <!-- quote tile -->
+      <div class="tile tile-fill tile-gold m-quote">
+        <span class="num">04</span>
+        <div class="tile-quote"><span data-i18n="tile4.q">« Des frites d'une autre planète. »</span><span class="cite" data-i18n="tile4.c">Un habitué, sur la place</span></div>
+      </div>
+
+      <!-- terrace / exterior photo -->
+      <div class="tile tile-photo m-terrace">
+        <span class="num">05</span>
+        <img src="./assets/exterior.jpg" alt="La terrasse en soirée sous les parasols Battin vert et or, la fontaine et la place derrière" />
+        <div class="tile-cap">
+          <div class="t fr-display" data-i18n="tile5.t">Le soir, sous les parasols</div>
+          <div class="d" data-i18n="tile5.d">Un air de vacances au centre-ville</div>
+        </div>
+      </div>
+
+      <!-- battin / drink tile -->
+      <div class="tile tile-fill tile-cream m-batt">
+        <span class="num">06</span>
+        <div class="k" style="color:var(--battin)" data-i18n="tile6.k">Au comptoir</div>
+        <div class="big fr-display" data-i18n="tile6.t">La Battin à la pression, un café sur la place, l'apéro entre amis.</div>
+      </div>
+
+      <!-- food photo -->
+      <div class="tile tile-photo m-food">
+        <span class="num">07</span>
+        <img src="./assets/food-2.jpg" alt="Assiette de brasserie en terrasse : plat garni de frites maison et grande salade fraîche" />
+        <div class="tile-cap">
+          <div class="t fr-display" data-i18n="tile7.t">Généreux, franc, fait maison</div>
+          <div class="d" data-i18n="tile7.d">Assiettes de brasserie & frites maison réputées</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MENU ===== -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" style="color:var(--gold)" data-i18n="menu.eyebrow">D'Kaart · La carte</span>
+        <h2 class="fr-display" data-i18n="menu.title">Deux comptoirs, une même table</h2>
+      </div>
+      <p class="h-note" data-i18n="menu.note">D'un côté le Luxembourg des kniddelen, de l'autre la brasserie des burgers et des grandes salades. Sélection illustrative — carte et prix à confirmer avec l'établissement.</p>
+    </div>
+
+    <div class="menu-fold">
+      <!-- LEFT : Luxembourg -->
+      <div class="menu-col left">
+        <div class="col-k" data-i18n="menu.l.k">La Stuff · spécialités luxembourgeoises</div>
+        <h3 class="fr-display" data-i18n="menu.l.h">Du terroir, dans l'assiette</h3>
+        <p class="col-note" data-i18n="menu.l.note">Les classiques du pays, servis comme à la maison.</p>
+
+        <div class="dish">
+          <div class="dish-top"><span class="dn">Kniddelen<span class="sig-tag" data-i18n="menu.sig">Signature</span></span><span class="price aconf" data-i18n="price.conf">prix à confirmer</span></div>
+          <div class="dd" data-i18n="menu.d.kniddelen">Quenelles de farine luxembourgeoises, lard & crème. En version classique — ou revisitées au saumon.</div>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dn">Wäinzoossis</span><span class="price aconf" data-i18n="price.conf">prix à confirmer</span></div>
+          <div class="dd" data-i18n="menu.d.wain">Saucisse du pays, sauce moutarde crémeuse, accompagnée de kniddelen ou de purée.</div>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dn" data-i18n="menu.d.tartare.n">Steak tartare</span><span class="price aconf" data-i18n="price.conf">prix à confirmer</span></div>
+          <div class="dd" data-i18n="menu.d.tartare.d">Servi avec frites maison et petite salade — la brasserie dans sa version la plus franche.</div>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dn" data-i18n="menu.d.escalope.n">Escalope de veau aux champignons</span><span class="price aconf" data-i18n="price.conf">prix à confirmer</span></div>
+          <div class="dd" data-i18n="menu.d.escalope.d">Un grand classique de brasserie, sauce crémeuse aux champignons.</div>
+        </div>
+
+        <div class="menu-photos">
+          <div class="mp"><img src="./assets/food-3.jpg" alt="Steak tartare servi avec frites en panier et salade" /></div>
+          <div class="mp"><img src="./assets/food-2.jpg" alt="Plat de brasserie et grande salade fraîche en terrasse" /></div>
+        </div>
+      </div>
+
+      <!-- RIGHT : Brasserie -->
+      <div class="menu-col right">
+        <div class="col-k" data-i18n="menu.r.k">Le comptoir · burgers, salades & plats</div>
+        <h3 class="fr-display" data-i18n="menu.r.h">Le plaisir sans chichis</h3>
+        <p class="col-note" data-i18n="menu.r.note">Généreux, savoureux — la raison pour laquelle la place se remplit.</p>
+
+        <div class="dish">
+          <div class="dish-top"><span class="dn"><span data-i18n="menu.d.burger.n">Burger maison & frites</span><span class="sig-tag" data-i18n="menu.fav">Réputé</span></span><span class="price aconf" data-i18n="price.conf">prix à confirmer</span></div>
+          <div class="dd" data-i18n="menu.d.burger.d">Le favori de la maison : généreux, ingrédients de qualité, frites maison au mélange d'épices.</div>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dn" data-i18n="menu.d.salade.n">Grande salade composée</span><span class="price aconf" data-i18n="price.conf">prix à confirmer</span></div>
+          <div class="dd" data-i18n="menu.d.salade.d">Chèvre chaud ou poulet croustillant, produits frais — un repas complet et léger.</div>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dn" data-i18n="menu.d.cordon.n">Cordon bleu pané, sauce crème</span><span class="price aconf" data-i18n="price.conf">prix à confirmer</span></div>
+          <div class="dd" data-i18n="menu.d.cordon.d">Pané maison, fondant à cœur, sauce crème et frites.</div>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dn" data-i18n="menu.d.saumon.n">Filet de saumon à l'estragon</span><span class="price aconf" data-i18n="price.conf">prix à confirmer</span></div>
+          <div class="dd" data-i18n="menu.d.saumon.d">Côté poisson : filet de saumon, sauce légère à l'estragon.</div>
+        </div>
+        <div class="dish">
+          <div class="dish-top"><span class="dn" data-i18n="menu.d.frites.n">Frites maison</span><span class="price aconf" data-i18n="price.conf">prix à confirmer</span></div>
+          <div class="dd" data-i18n="menu.d.frites.d">« D'une autre planète », disent les habitués. Le mélange d'épices maison fait la différence.</div>
+          <span class="flag" data-i18n="menu.veg">Options végétariennes · à confirmer</span>
+        </div>
+      </div>
+    </div>
+    <p class="menu-disclaim" data-i18n="menu.disclaim">Carte indicative reconstituée à partir d'avis et de photos — aucune carte en ligne datée n'existe. Menu complet, plats du jour et prix à confirmer avec l'établissement.</p>
+  </div>
+</section>
+
+<!-- ===== TERRACE BAND ===== -->
+<section class="terrace" id="terrasse">
+  <div class="terrace-img">
+    <img src="./assets/storefront.jpg" alt="La terrasse animée de la Dikkricher Stuff le long de la façade verte, sur la place" />
+  </div>
+  <div class="terrace-txt">
+    <span class="eyebrow" style="color:var(--gold)" data-i18n="terrace.eyebrow">La terrasse</span>
+    <h2 class="fr-display" data-i18n="terrace.title">Le meilleur poste d'observation de Dikrech</h2>
+    <p data-i18n="terrace.p">Un café au soleil, une Battin bien fraîche, le platane pour ombrage et toute la place qui défile. C'est ici que Diekirch prend son temps.</p>
+    <div class="terrace-facts">
+      <div><b data-i18n="terrace.f1b">Plein sud</b><span data-i18n="terrace.f1s">sur la place</span></div>
+      <div><b data-i18n="terrace.f2b">À emporter</b><span data-i18n="terrace.f2s">par téléphone · à confirmer</span></div>
+      <div><b data-i18n="terrace.f3b">Familles</b><span data-i18n="terrace.f3s">& tous les âges bienvenus</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISIT ===== -->
+<section class="visit" id="visite">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" data-i18n="visit.eyebrow">Nous trouver</span>
+        <h2 class="fr-display" data-i18n="visit.title">Sur la Place de la Libération</h2>
+      </div>
+      <p class="h-note" data-i18n="visit.note">Au centre de Diekirch, côté fontaine. Repérez la façade verte et le store à l'enseigne gothique.</p>
+    </div>
+
+    <div class="visit-grid">
+      <div class="map-frame">
+        <span class="map-tag" data-i18n="visit.maptag">Plan de la place</span>
+        <iframe title="Carte — Dikkricher Stuff, 10 Place de la Libération, Diekirch" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=10+Place+de+la+Lib%C3%A9ration+9255+Diekirch+Luxembourg&output=embed"></iframe>
+      </div>
+
+      <div class="plaque">
+        <h3 class="fr-display" data-i18n="visit.info">Informations pratiques</h3>
+
+        <div class="info-row">
+          <span class="ico" aria-hidden="true">◈</span>
+          <div>
+            <div class="lab" data-i18n="visit.addr">Adresse</div>
+            <a class="val" href="https://www.google.com/maps?q=10+Place+de+la+Lib%C3%A9ration+9255+Diekirch+Luxembourg" target="_blank" rel="noopener">10 Place de la Libération<br />L-9255 Diekirch (Dikrech)</a>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <span class="ico" aria-hidden="true">☎</span>
+          <div>
+            <div class="lab" data-i18n="visit.phone">Téléphone</div>
+            <a class="val" href="tel:+35226800803">+352 26 80 08 03<small data-i18n="visit.phone2">2ᵉ ligne possible : 26 80 08 04 · à confirmer</small></a>
+          </div>
+        </div>
+
+        <div class="info-row" style="flex-direction:column;gap:6px">
+          <div class="lab" data-i18n="visit.hours">Horaires <span class="aconf">· à confirmer</span></div>
+          <div class="hours-mini" style="width:100%">
+            <div class="hr"><span data-i18n="day.montue">Lun – Mar</span><span>10:00 – 24:00</span></div>
+            <div class="hr"><span data-i18n="day.wedsat">Mer – Sam</span><span>10:00 – 01:00</span></div>
+            <div class="hr closed"><span data-i18n="day.sun">Dimanche</span><span data-i18n="closed">Fermé</span></div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <span class="ico" aria-hidden="true">✦</span>
+          <div>
+            <div class="lab" data-i18n="visit.good">Bon à savoir</div>
+            <div class="val" style="font-weight:400" data-i18n="visit.good2">Terrasse · à emporter · cartes acceptées · réservations — <span class="aconf">à confirmer</span></div>
+          </div>
+        </div>
+
+        <div class="info-row">
+          <span class="ico" aria-hidden="true">❦</span>
+          <div>
+            <div class="lab" data-i18n="visit.social">Suivre</div>
+            <a class="val" href="https://www.facebook.com/people/Dikkricher-Stuff/100034346145910/" target="_blank" rel="noopener">Facebook · Dikkricher Stuff</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="fmark">
+          <svg class="donkey" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M14 22c-3-4-2-9 1-9 2 0 3 2 3 4 3-2 8-3 12-3 2-3 5-5 8-5 1 0 1 1 0 2-2 1-3 3-3 4 4 1 8 4 10 8 3 0 6 1 8 3 1 1 0 2-1 2-2 0-4-1-5-1 1 3 1 6 0 9l3 10c1 2-2 3-3 1l-3-8c-2 1-5 2-8 2l1 8c0 2-3 2-3 0l-1-8h-6l-1 8c0 2-3 2-3 0l-1-9c-4-2-6-6-6-11 0-3 1-5 2-7z"/>
+            <circle cx="20" cy="21" r="1.6"/>
+          </svg>
+          <span class="name">Dikkricher Stuff</span>
+        </div>
+        <p data-i18n="foot.about">La brasserie de la place, au cœur de Dikrech. Cuisine luxembourgeoise, burgers et la plus belle terrasse de la Place de la Libération.</p>
+      </div>
+      <div>
+        <h4 data-i18n="foot.nav">Naviguer</h4>
+        <ul>
+          <li><a href="#place" data-i18n="nav.place">La Place</a></li>
+          <li><a href="#menu" data-i18n="nav.menu">La Carte</a></li>
+          <li><a href="#terrasse" data-i18n="nav.terrace">La Terrasse</a></li>
+          <li><a href="#visite" data-i18n="nav.visit">Nous trouver</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="foot.contact">Contact</h4>
+        <ul>
+          <li>10 Place de la Libération</li>
+          <li>L-9255 Diekirch</li>
+          <li><a href="tel:+35226800803">+352 26 80 08 03</a></li>
+          <li><a href="https://www.facebook.com/people/Dikkricher-Stuff/100034346145910/" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="demo-badge" data-i18n="foot.demo">Site de démonstration</span>
+      <span data-i18n="foot.disc">Maquette non officielle, non affiliée à l'établissement. Horaires, carte et prix à confirmer. Photos © leurs auteurs respectifs.</span>
+      <span>© <span id="yr"></span> Dikkricher Stuff · Dikrech</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* mobile nav */
+  var mt = document.getElementById('menuToggle');
+  if(mt){ mt.addEventListener('click', function(){ document.getElementById('masthead').classList.toggle('open'); }); }
+  document.querySelectorAll('#navlinks a').forEach(function(a){
+    a.addEventListener('click', function(){ document.getElementById('masthead').classList.remove('open'); });
+  });
+
+  /* ===== i18n ===== */
+  var I18N = {
+    "brand.sub":{de:"Brasserie · Place de la Libération · Dikrech",en:"Brasserie · Place de la Libération · Dikrech"},
+    "nav.place":{de:"Der Platz",en:"The Square"},
+    "nav.menu":{de:"Die Karte",en:"The Menu"},
+    "nav.terrace":{de:"Die Terrasse",en:"The Terrace"},
+    "nav.visit":{de:"Anfahrt",en:"Find Us"},
+    "cta.call":{de:"26 80 08 03",en:"26 80 08 03"},
+
+    "hero.kicker":{de:"Éislek · Dikrech · Großherzogtum",en:"Éislek · Dikrech · Luxembourg"},
+    "hero.t1":{de:"Im Herzen",en:"At the heart of"},
+    "hero.lede":{de:"Die Dorfbrasserie an der Place de la Libération: herzhafte Kniddelen, berühmte Burger und die schönste Terrasse von Dikrech im Schatten der Platane.",en:"The village brasserie on Place de la Libération: hearty kniddelen, celebrated burgers, and the finest terrace in Dikrech under the plane tree."},
+    "hero.m1b":{de:"Luxemburger Küche",en:"Luxembourg cuisine"},
+    "hero.m1s":{de:"& Brasserie am Tresen",en:"& counter brasserie"},
+    "hero.m2b":{de:"Große Terrasse",en:"Large terrace"},
+    "hero.m2s":{de:"am Brunnen",en:"facing the fountain"},
+    "hero.cta1":{de:"Telefonisch reservieren",en:"Reserve by phone"},
+    "hero.cta2":{de:"Zur Karte",en:"See the menu"},
+    "hero.badge":{de:"Bier vom Fass",en:"Draught beer"},
+
+    "place.eyebrow":{de:"Op der Plaz · Auf dem Platz",en:"Op der Plaz · On the square"},
+    "place.title":{de:"Der Plan des Platzes",en:"A map of the square"},
+    "place.note":{de:"Ein Pflasterstein, ein Tisch, eine Geschichte. Die Stuff, wie man sie erlebt: die grüne Fassade, der Eselsbrunnen, die sonnige Terrasse.",en:"A cobblestone, a table, a story. The Stuff as you live it: the green facade, the donkey fountain, the sunlit terrace."},
+    "tile1.t":{de:"Die grüne Fassade",en:"The green facade"},
+    "tile1.d":{de:"Graue Markise, gotische Schrift — die Seele eines Platz-Cafés",en:"Grey awning, gothic script — the soul of a square-side café"},
+    "tile2.k":{de:"Öffnungszeiten · zu bestätigen",en:"Hours · to be confirmed"},
+    "day.montue":{de:"Mo – Di",en:"Mon – Tue"},
+    "day.wedsat":{de:"Mi – Sa",en:"Wed – Sat"},
+    "day.sun":{de:"Sonntag",en:"Sunday"},
+    "closed":{de:"Geschlossen",en:"Closed"},
+    "tile3.t":{de:"Der Eselsbrunnen",en:"The donkey fountain"},
+    "tile3.d":{de:"Das Wahrzeichen von Dikrech, direkt vor der Terrasse",en:"Dikrech's emblem, right in front of the terrace"},
+    "tile4.q":{de:"« Pommes von einem anderen Stern. »",en:"“Fries from another planet.”"},
+    "tile4.c":{de:"Ein Stammgast, auf dem Platz",en:"A regular, on the square"},
+    "tile5.t":{de:"Abends, unter den Sonnenschirmen",en:"Evenings, under the parasols"},
+    "tile5.d":{de:"Urlaubsgefühl mitten im Zentrum",en:"A holiday feeling in the town centre"},
+    "tile6.k":{de:"Am Tresen",en:"At the counter"},
+    "tile6.t":{de:"Battin vom Fass, ein Kaffee auf dem Platz, der Aperitif unter Freunden.",en:"Battin on draught, a coffee on the square, apéro among friends."},
+    "tile7.t":{de:"Großzügig, ehrlich, hausgemacht",en:"Generous, honest, homemade"},
+    "tile7.d":{de:"Brasserie-Teller & berühmte hausgemachte Pommes",en:"Brasserie plates & famous homemade fries"},
+
+    "menu.eyebrow":{de:"D'Kaart · Die Karte",en:"D'Kaart · The menu"},
+    "menu.title":{de:"Zwei Tresen, ein Tisch",en:"Two counters, one table"},
+    "menu.note":{de:"Auf der einen Seite das Luxemburg der Kniddelen, auf der anderen die Brasserie der Burger und großen Salate. Beispielhafte Auswahl — Karte und Preise beim Betrieb zu bestätigen.",en:"On one side the Luxembourg of kniddelen, on the other the brasserie of burgers and big salads. Illustrative selection — menu and prices to be confirmed with the venue."},
+    "menu.l.k":{de:"D'Stuff · Luxemburger Spezialitäten",en:"D'Stuff · Luxembourg specialities"},
+    "menu.l.h":{de:"Heimat auf dem Teller",en:"The homeland on your plate"},
+    "menu.l.note":{de:"Die Klassiker des Landes, serviert wie zu Hause.",en:"The country's classics, served like at home."},
+    "menu.r.k":{de:"Der Tresen · Burger, Salate & Gerichte",en:"The counter · burgers, salads & mains"},
+    "menu.r.h":{de:"Genuss ohne Schnickschnack",en:"Pleasure, no fuss"},
+    "menu.r.note":{de:"Großzügig, schmackhaft — deshalb füllt sich der Platz.",en:"Generous, tasty — the reason the square fills up."},
+    "menu.sig":{de:"Signatur",en:"Signature"},
+    "menu.fav":{de:"Beliebt",en:"Renowned"},
+    "menu.veg":{de:"Vegetarische Optionen · zu bestätigen",en:"Vegetarian options · to be confirmed"},
+    "price.conf":{de:"Preis zu bestätigen",en:"price to confirm"},
+    "menu.d.kniddelen":{de:"Luxemburger Mehlklöße, Speck & Sahne. Klassisch — oder neu interpretiert mit Lachs.",en:"Luxembourg flour dumplings, bacon & cream. Classic — or reimagined with salmon."},
+    "menu.d.wain":{de:"Landwurst in cremiger Senfsauce, mit Kniddelen oder Kartoffelpüree.",en:"Local sausage in a creamy mustard sauce, with kniddelen or mash."},
+    "menu.d.tartare.n":{de:"Steak Tartar",en:"Steak tartare"},
+    "menu.d.tartare.d":{de:"Serviert mit hausgemachten Pommes und kleinem Salat — Brasserie in ihrer ehrlichsten Form.",en:"Served with homemade fries and a small salad — brasserie at its most honest."},
+    "menu.d.escalope.n":{de:"Kalbsschnitzel mit Champignons",en:"Veal escalope with mushrooms"},
+    "menu.d.escalope.d":{de:"Ein großer Brasserie-Klassiker, cremige Champignonsauce.",en:"A great brasserie classic, creamy mushroom sauce."},
+    "menu.d.burger.n":{de:"Hausburger & Pommes",en:"House burger & fries"},
+    "menu.d.burger.d":{de:"Der Favorit des Hauses: großzügig, hochwertige Zutaten, hausgemachte Pommes mit Gewürzmischung.",en:"The house favourite: generous, quality ingredients, homemade fries with a spice blend."},
+    "menu.d.salade.n":{de:"Große gemischte Salate",en:"Large composed salad"},
+    "menu.d.salade.d":{de:"Ziegenkäse oder knuspriges Hähnchen, frische Produkte — eine leichte, vollwertige Mahlzeit.",en:"Warm goat cheese or crispy chicken, fresh produce — a complete, light meal."},
+    "menu.d.cordon.n":{de:"Cordon bleu, Rahmsauce",en:"Cordon bleu, cream sauce"},
+    "menu.d.cordon.d":{de:"Hausgemacht paniert, innen zart, mit Rahmsauce und Pommes.",en:"House-breaded, tender inside, with cream sauce and fries."},
+    "menu.d.saumon.n":{de:"Lachsfilet mit Estragon",en:"Salmon fillet with tarragon"},
+    "menu.d.saumon.d":{de:"Für die Fischliebhaber: Lachsfilet mit leichter Estragonsauce.",en:"For the fish lovers: salmon fillet with a light tarragon sauce."},
+    "menu.d.frites.n":{de:"Hausgemachte Pommes",en:"Homemade fries"},
+    "menu.d.frites.d":{de:"„Von einem anderen Stern“, sagen die Stammgäste. Die hausgemachte Gewürzmischung macht den Unterschied.",en:"“From another planet,” say the regulars. The house spice blend makes the difference."},
+    "menu.disclaim":{de:"Beispielhafte Karte, rekonstruiert aus Bewertungen und Fotos — es existiert keine datierte Online-Karte. Vollständiges Menü, Tagesgerichte und Preise beim Betrieb zu bestätigen.",en:"Illustrative menu reconstructed from reviews and photos — no dated online menu exists. Full menu, daily specials and prices to be confirmed with the venue."},
+
+    "terrace.eyebrow":{de:"Die Terrasse",en:"The terrace"},
+    "terrace.title":{de:"Der beste Aussichtsplatz von Dikrech",en:"The best vantage point in Dikrech"},
+    "terrace.p":{de:"Ein Kaffee in der Sonne, ein frisches Battin, die Platane als Schatten und der ganze Platz, der vorbeizieht. Hier lässt sich Diekirch Zeit.",en:"A coffee in the sun, a fresh Battin, the plane tree for shade and the whole square drifting by. This is where Diekirch takes its time."},
+    "terrace.f1b":{de:"Nach Süden",en:"Sun-facing"},
+    "terrace.f1s":{de:"zum Platz hin",en:"onto the square"},
+    "terrace.f2b":{de:"Zum Mitnehmen",en:"Takeaway"},
+    "terrace.f2s":{de:"telefonisch · zu bestätigen",en:"by phone · to be confirmed"},
+    "terrace.f3b":{de:"Familien",en:"Families"},
+    "terrace.f3s":{de:"& jedes Alter willkommen",en:"& all ages welcome"},
+
+    "visit.eyebrow":{de:"Anfahrt",en:"Find us"},
+    "visit.title":{de:"An der Place de la Libération",en:"On Place de la Libération"},
+    "visit.note":{de:"Im Zentrum von Diekirch, auf der Brunnenseite. Achten Sie auf die grüne Fassade und die Markise mit der gotischen Schrift.",en:"In the centre of Diekirch, on the fountain side. Look for the green facade and the awning with gothic script."},
+    "visit.maptag":{de:"Lageplan",en:"Map of the square"},
+    "visit.info":{de:"Praktische Infos",en:"Practical info"},
+    "visit.addr":{de:"Adresse",en:"Address"},
+    "visit.phone":{de:"Telefon",en:"Phone"},
+    "visit.phone2":{de:"Mögliche 2. Leitung: 26 80 08 04 · zu bestätigen",en:"Possible 2nd line: 26 80 08 04 · to be confirmed"},
+    "visit.hours":{de:"Öffnungszeiten <span class=\"aconf\">· zu bestätigen</span>",en:"Opening hours <span class=\"aconf\">· to confirm</span>"},
+    "visit.good":{de:"Gut zu wissen",en:"Good to know"},
+    "visit.good2":{de:"Terrasse · zum Mitnehmen · Kartenzahlung · Reservierungen — <span class=\"aconf\">zu bestätigen</span>",en:"Terrace · takeaway · cards accepted · reservations — <span class=\"aconf\">to confirm</span>"},
+    "visit.social":{de:"Folgen",en:"Follow"},
+
+    "foot.about":{de:"Die Brasserie am Platz, im Herzen von Dikrech. Luxemburger Küche, Burger und die schönste Terrasse der Place de la Libération.",en:"The brasserie on the square, at the heart of Dikrech. Luxembourg cuisine, burgers and the finest terrace on Place de la Libération."},
+    "foot.nav":{de:"Navigation",en:"Navigate"},
+    "foot.contact":{de:"Kontakt",en:"Contact"},
+    "foot.demo":{de:"Demo-Website",en:"Demo website"},
+    "foot.disc":{de:"Nicht offizielles Muster, nicht mit dem Betrieb verbunden. Öffnungszeiten, Karte und Preise zu bestätigen. Fotos © jeweilige Urheber.",en:"Unofficial mock-up, not affiliated with the venue. Hours, menu and prices to be confirmed. Photos © their respective authors."}
+  };
+
+  var FR = {}; // captured from initial DOM
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ FR[el.getAttribute('data-i18n')] = el.innerHTML; });
+
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if(lang==='fr'){ el.innerHTML = FR[key]; return; }
+      var e = I18N[key];
+      if(e && e[lang]!=null){ el.innerHTML = e[lang]; }
+      else if(FR[key]!=null){ el.innerHTML = FR[key]; }
+    });
+    document.querySelectorAll('.lang button').forEach(function(b){
+      b.classList.toggle('on', b.getAttribute('data-lang')===lang);
+    });
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
+  });
+</script>
+</body>
+</html>

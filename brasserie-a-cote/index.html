@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>À Côté — Brasserie & Restaurant · Dudelange</title>
+<meta name="description" content="Brasserie Restaurant À Côté — poissons, fruits de mer & cuisine française au cœur de Dudelange." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Barlow:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0d2130;        /* deep chart water */
+  --navy-2:#12314a;      /* mid sea */
+  --navy-3:#183d59;      /* shallow */
+  --paper:#f3ead9;       /* chart parchment */
+  --paper-2:#ece0c8;
+  --ink:#0d2130;
+  --brass:#c6a256;       /* brass rule / soundings */
+  --brass-2:#a9863d;
+  --coral:#c65a41;       /* lobster / coast accent */
+  --coral-2:#a8462f;
+  --line:rgba(198,162,86,.28);
+  --line-soft:rgba(243,234,217,.10);
+  --maxw:1440px;
+  --pad:clamp(20px,4vw,64px);
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"Barlow",system-ui,sans-serif;
+  --mono:"Space Mono","Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:var(--sans);color:var(--paper);
+  background:var(--navy);
+  -webkit-font-smoothing:antialiased;line-height:1.55;
+  overflow-x:hidden;
+}
+/* ---- chart texture over the whole page ---- */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(120% 90% at 78% -10%, rgba(24,61,89,.55), transparent 60%),
+    radial-gradient(90% 80% at 0% 110%, rgba(18,49,74,.5), transparent 55%),
+    repeating-linear-gradient(0deg, rgba(243,234,217,.035) 0 1px, transparent 1px 64px),
+    repeating-linear-gradient(90deg, rgba(243,234,217,.035) 0 1px, transparent 1px 64px);
+}
+/* faint depth contours */
+body::after{
+  content:"";position:fixed;right:-18vw;top:8vh;width:60vw;height:60vw;z-index:0;pointer-events:none;
+  border-radius:50%;opacity:.5;
+  background:
+    radial-gradient(circle, transparent 0 30%, rgba(198,162,86,.05) 30% 30.4%, transparent 30.4% 44%,
+    rgba(198,162,86,.05) 44% 44.4%, transparent 44.4% 60%, rgba(198,162,86,.05) 60% 60.4%, transparent 60.4%);
+}
+.wrap{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* mono coordinate style */
+.coord{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--brass);text-transform:uppercase}
+.tick{font-family:var(--mono);font-size:.68rem;letter-spacing:.28em;color:rgba(243,234,217,.55);text-transform:uppercase}
+
+/* ============ MASTHEAD ============ */
+header.mast{position:relative;z-index:5;border-bottom:1px solid var(--line)}
+.mast-strip{
+  display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:10px var(--pad);border-bottom:1px solid var(--line);
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;color:rgba(243,234,217,.6);text-transform:uppercase;
+  flex-wrap:wrap;
+}
+.mast-strip .sep{color:var(--brass)}
+.langs{display:flex;gap:2px;align-items:center}
+.langs button{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;background:none;border:1px solid transparent;
+  color:rgba(243,234,217,.55);padding:3px 8px;cursor:pointer;border-radius:2px;text-transform:uppercase;
+}
+.langs button:hover{color:var(--paper)}
+.langs button.on{color:var(--navy);background:var(--brass);border-color:var(--brass)}
+
+.mast-main{
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;
+  padding:22px var(--pad);
+}
+.mast-nav{display:flex;gap:26px;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase}
+.mast-nav a{color:rgba(243,234,217,.72);padding-bottom:3px;border-bottom:1px solid transparent;transition:.2s}
+.mast-nav a:hover{color:var(--paper);border-color:var(--brass)}
+.brand{text-align:center;line-height:1}
+.brand .k{font-family:var(--mono);font-size:.6rem;letter-spacing:.42em;color:var(--brass);text-transform:uppercase}
+.brand .n{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:600;letter-spacing:.02em;color:var(--paper);margin:2px 0}
+.brand .n span{color:var(--brass)}
+.mast-cta{display:flex;justify-content:flex-end;gap:14px;align-items:center}
+.btn{
+  font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid var(--brass);color:var(--paper);padding:12px 20px;border-radius:2px;
+  display:inline-flex;gap:9px;align-items:center;transition:.2s;white-space:nowrap;cursor:pointer;background:transparent;
+}
+.btn:hover{background:var(--brass);color:var(--navy)}
+.btn.solid{background:var(--brass);color:var(--navy)}
+.btn.solid:hover{background:var(--paper);border-color:var(--paper)}
+.btn.coral{border-color:var(--coral);background:var(--coral);color:#fff}
+.btn.coral:hover{background:var(--coral-2);border-color:var(--coral-2)}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--paper);padding:9px 11px;border-radius:2px;cursor:pointer}
+
+/* ============ BEARING / HERO ============ */
+.bearing{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:0;
+  border-bottom:1px solid var(--line);position:relative;
+}
+.bearing-left{padding:clamp(40px,6vw,88px) clamp(20px,3.5vw,60px) clamp(40px,6vw,72px) 0;position:relative}
+.bearing-left::after{content:"";position:absolute;right:0;top:8%;bottom:8%;width:1px;background:linear-gradient(var(--line),transparent)}
+.eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.eyebrow .rule{height:1px;width:64px;background:var(--brass)}
+.hero-h{font-family:var(--serif);font-weight:600;font-size:clamp(2.6rem,5.4vw,5rem);line-height:1.02;letter-spacing:.005em;margin:0;color:var(--paper)}
+.hero-h em{font-style:italic;color:var(--brass)}
+.hero-sub{max-width:46ch;margin:26px 0 34px;color:rgba(243,234,217,.78);font-size:1.06rem;font-weight:300}
+.hero-meta{display:flex;gap:30px;flex-wrap:wrap;align-items:flex-start;margin-top:6px}
+.hero-meta .cell{border-left:1px solid var(--line);padding-left:14px}
+.hero-meta .cell .lbl{font-family:var(--mono);font-size:.6rem;letter-spacing:.24em;color:var(--brass);text-transform:uppercase;display:block;margin-bottom:6px}
+.hero-meta .cell .val{font-family:var(--serif);font-size:1.25rem;color:var(--paper)}
+.hero-actions{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap}
+
+/* compass rose floating in the left block */
+.rose{position:absolute;left:-6px;bottom:-30px;width:150px;height:150px;opacity:.5;z-index:-1}
+
+.bearing-right{position:relative;min-height:520px;background:var(--navy-2);overflow:hidden}
+.porthole{position:absolute;inset:26px;border:1px solid var(--line);}
+.porthole .photo{
+  position:absolute;inset:0;
+  background-image:url('assets/hero.jpg');background-size:cover;background-position:center;
+  filter:saturate(1.02) contrast(1.02);
+}
+.porthole .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,33,48,.15),rgba(13,33,48,.55))}
+.porthole .cap{
+  position:absolute;left:0;bottom:0;right:0;z-index:2;padding:16px 20px;
+  background:linear-gradient(0deg,rgba(13,33,48,.85),transparent);
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;color:rgba(243,234,217,.85);text-transform:uppercase;
+  display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+}
+.lat-rail{position:absolute;left:6px;top:26px;bottom:26px;width:14px;display:flex;flex-direction:column;justify-content:space-between;z-index:3}
+.lat-rail i{display:block;height:1px;background:var(--brass);opacity:.6}
+.lat-rail i:nth-child(odd){width:14px}.lat-rail i:nth-child(even){width:8px}
+
+/* ============ SECTION SHELL ============ */
+section{position:relative;z-index:2}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:38px}
+.sec-title{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,3.6vw,3rem);line-height:1;margin:8px 0 0;color:var(--paper)}
+.sec-num{font-family:var(--mono);font-size:.66rem;letter-spacing:.3em;color:var(--brass);text-transform:uppercase}
+.sec-note{max-width:40ch;color:rgba(243,234,217,.62);font-size:.9rem;font-weight:300;text-align:right}
+
+/* ============ LA CARTE (menu) ============ */
+.carte{padding:clamp(56px,8vw,110px) 0;border-bottom:1px solid var(--line)}
+.carte-grid{display:grid;grid-template-columns:1fr 1fr 1fr .92fr;gap:0}
+.mcol{padding:0 clamp(18px,2vw,32px);border-left:1px solid var(--line)}
+.mcol:first-child{padding-left:0;border-left:0}
+.mcol.sea{background:linear-gradient(180deg,rgba(198,162,86,.07),transparent 70%)}
+.mcol h3{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--brass);
+  margin:0 0 22px;padding-bottom:12px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;
+}
+.mcol.sea h3{color:var(--coral)}
+.dish{padding:14px 0;border-bottom:1px dotted rgba(243,234,217,.14)}
+.dish:last-child{border-bottom:0}
+.dish .top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.dish .nm{font-family:var(--serif);font-size:1.28rem;font-weight:600;color:var(--paper);line-height:1.1}
+.dish .pr{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;color:var(--brass);white-space:nowrap;padding-top:4px}
+.dish .ds{font-size:.86rem;color:rgba(243,234,217,.6);font-weight:300;margin-top:4px}
+.star{color:var(--coral);font-size:.8em;vertical-align:.15em}
+
+/* photo inset column of the menu */
+.inset-col{display:flex;flex-direction:column;gap:14px;padding-left:clamp(18px,2vw,32px);border-left:1px solid var(--line)}
+.tile{position:relative;background-color:var(--navy-2);background-repeat:no-repeat;overflow:hidden;border:1px solid var(--line)}
+.tile .t-cap{
+  position:absolute;left:0;bottom:0;right:0;padding:8px 10px;
+  background:linear-gradient(0deg,rgba(13,33,48,.88),transparent);
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;color:rgba(243,234,217,.85);text-transform:uppercase;
+}
+.q{background-size:200% 200%}
+.q-tl{background-position:0% 0%}.q-tr{background-position:100% 0%}.q-bl{background-position:0% 100%}
+/* lobster feature strip */
+.lobster{
+  grid-column:1 / -1;margin-top:34px;display:grid;grid-template-columns:auto 1fr auto;gap:26px;align-items:center;
+  border:1px solid var(--coral);background:linear-gradient(90deg,rgba(198,90,65,.14),rgba(198,90,65,.04));
+  padding:24px clamp(20px,3vw,40px);border-radius:3px;
+}
+.lobster .badge{font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;color:var(--coral);text-transform:uppercase;border:1px solid var(--coral);padding:8px 12px;border-radius:2px}
+.lobster h4{font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem,2.6vw,2.3rem);margin:0;color:var(--paper)}
+.lobster p{margin:6px 0 0;color:rgba(243,234,217,.7);font-size:.9rem;font-weight:300;max-width:60ch}
+.formule{
+  grid-column:1 / -1;margin-top:16px;padding:16px 20px;border:1px dashed var(--line);border-radius:3px;
+  display:flex;gap:16px;align-items:center;flex-wrap:wrap;color:rgba(243,234,217,.8);font-size:.9rem;
+}
+.formule .tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;color:var(--brass);text-transform:uppercase;border:1px solid var(--line);padding:6px 10px;border-radius:2px}
+
+/* ============ LE JOURNAL (owners) ============ */
+.journal{padding:clamp(56px,8vw,110px) 0;border-bottom:1px solid var(--line)}
+.journal-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,5vw,72px);align-items:center}
+.owner-frame{position:relative;border:1px solid var(--line);padding:14px;background:rgba(18,49,74,.4)}
+.owner-frame .ph{aspect-ratio:1140/753;background-image:url('assets/interior-1.jpg');background-size:cover;background-position:center}
+.owner-frame .stamp{
+  position:absolute;right:-14px;top:-14px;width:104px;height:104px;border-radius:50%;
+  border:1px solid var(--brass);background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  font-family:var(--mono);font-size:.54rem;letter-spacing:.14em;color:var(--brass);text-transform:uppercase;line-height:1.5;
+}
+.owner-frame .stamp b{font-family:var(--serif);font-size:1.5rem;color:var(--paper);letter-spacing:0}
+.owner-cap{margin-top:12px;font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;color:rgba(243,234,217,.55);text-transform:uppercase}
+.log-body p{font-size:1.08rem;font-weight:300;color:rgba(243,234,217,.85);margin:0 0 18px}
+.log-body p.lead{font-family:var(--serif);font-size:1.5rem;font-style:italic;color:var(--paper);line-height:1.35}
+.log-body .drop::first-letter{font-family:var(--serif);font-size:3.4rem;float:left;line-height:.8;padding:6px 12px 0 0;color:var(--brass)}
+.sig{display:flex;gap:20px;align-items:center;margin-top:26px;flex-wrap:wrap}
+.sig .name{font-family:var(--serif);font-size:1.5rem;color:var(--brass)}
+.sig .role{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:rgba(243,234,217,.55);text-transform:uppercase}
+
+/* ============ LE MOUILLAGE (visit) ============ */
+.visit{padding:clamp(56px,8vw,110px) 0}
+.visit-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;border:1px solid var(--line)}
+.harbor{padding:clamp(26px,3.4vw,48px);display:grid;grid-template-columns:1fr 1fr;gap:34px 40px;align-content:start}
+.harbor .full{grid-column:1 / -1}
+.info-lbl{font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;color:var(--brass);text-transform:uppercase;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.tide{width:100%;border-collapse:collapse;font-size:.9rem}
+.tide td{padding:9px 0;border-bottom:1px dotted rgba(243,234,217,.14);vertical-align:top}
+.tide td:first-child{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:rgba(243,234,217,.6);text-transform:uppercase;width:38%}
+.tide td:last-child{text-align:right;color:var(--paper)}
+.tide tr.closed td:last-child{color:var(--coral)}
+.addr{font-family:var(--serif);font-size:1.4rem;line-height:1.35;color:var(--paper)}
+.addr .co{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;color:var(--brass);margin-top:10px;text-transform:uppercase}
+.phone{font-family:var(--serif);font-size:1.7rem;color:var(--paper)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(243,234,217,.72);border:1px solid var(--line);padding:6px 10px;border-radius:2px}
+.map{min-height:100%;background:var(--navy-2);position:relative}
+.map iframe{width:100%;height:100%;min-height:440px;border:0;filter:grayscale(.25) contrast(.95) sepia(.12);display:block}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--line);padding:clamp(40px,5vw,64px) 0 30px;position:relative;z-index:2}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start}
+.foot-brand .n{font-family:var(--serif);font-size:2rem;color:var(--paper)}
+.foot-brand .n span{color:var(--brass)}
+.foot-brand p{color:rgba(243,234,217,.6);font-size:.9rem;font-weight:300;max-width:40ch;margin:12px 0 0}
+.foot-col h5{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;color:var(--brass);text-transform:uppercase;margin:0 0 14px}
+.foot-col a,.foot-col p{display:block;color:rgba(243,234,217,.72);font-size:.92rem;margin:0 0 8px}
+.foot-col a:hover{color:var(--paper)}
+.foot-bottom{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;color:rgba(243,234,217,.45);text-transform:uppercase}
+.disclaimer{color:rgba(243,234,217,.4);font-size:.7rem;font-family:var(--mono);letter-spacing:.06em;max-width:70ch;margin-top:14px;line-height:1.7;text-transform:none}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1080px){
+  .carte-grid{grid-template-columns:1fr 1fr}
+  .mcol{border-left:0;padding:0;margin-bottom:10px}
+  .mcol:nth-child(2n){padding-left:clamp(18px,2vw,32px);border-left:1px solid var(--line)}
+  .inset-col{grid-column:1 / -1;flex-direction:row;flex-wrap:wrap;border-left:0;padding-left:0;margin-top:24px}
+  .inset-col .tile{flex:1 1 200px}
+}
+@media(max-width:880px){
+  .mast-main{grid-template-columns:auto 1fr auto;gap:14px}
+  .mast-nav{display:none}
+  .mast-cta .btn:not(.solid){display:none}
+  .burger{display:inline-block}
+  .brand{text-align:left}
+  .bearing{grid-template-columns:1fr}
+  .bearing-left{padding:44px 0 56px}
+  .bearing-left::after{display:none}
+  .bearing-right{min-height:360px}
+  .journal-grid{grid-template-columns:1fr}
+  .visit-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .lobster{grid-template-columns:1fr}
+  .rose{display:none}
+}
+@media(max-width:620px){
+  .carte-grid{grid-template-columns:1fr}
+  .mcol:nth-child(2n){padding-left:0;border-left:0}
+  .harbor{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .brand .n{font-size:2rem}
+}
+/* mobile drawer */
+.drawer{position:fixed;inset:0;z-index:50;background:var(--navy);transform:translateY(-100%);transition:transform .35s ease;display:flex;flex-direction:column;padding:24px var(--pad);gap:22px}
+.drawer.open{transform:translateY(0)}
+.drawer a{font-family:var(--serif);font-size:2rem;color:var(--paper);border-bottom:1px solid var(--line);padding-bottom:14px}
+.drawer .close{align-self:flex-end;background:none;border:1px solid var(--line);color:var(--paper);padding:9px 14px;border-radius:2px;cursor:pointer;font-family:var(--mono)}
+</style>
+</head>
+<body>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="mast">
+  <div class="mast-strip">
+    <span><span data-i18n="strip.chart">Carte marine · Table de la maison</span> <span class="sep">◆</span> 49°28′06″N · 6°05′15″E</span>
+    <span class="langs" role="group" aria-label="Langue">
+      <button data-lang="fr" class="on">FR</button>
+      <button data-lang="de">DE</button>
+      <button data-lang="en">EN</button>
+    </span>
+  </div>
+  <div class="mast-main wrap" style="max-width:var(--maxw)">
+    <nav class="mast-nav">
+      <a href="#carte" data-i18n="nav.carte">La carte</a>
+      <a href="#journal" data-i18n="nav.journal">La maison</a>
+      <a href="#visit" data-i18n="nav.visit">Le mouillage</a>
+    </nav>
+    <div class="brand">
+      <div class="k" data-i18n="brand.kicker">Brasserie · Restaurant · Dudelange</div>
+      <div class="n">À C<span>ô</span>té</div>
+    </div>
+    <div class="mast-cta">
+      <a class="btn" href="#carte" data-i18n="cta.menu">Voir la carte</a>
+      <a class="btn solid" href="tel:+35226511207"><span>☎</span> <span data-i18n="cta.book">Réserver</span></a>
+      <button class="burger" id="burger" aria-label="Menu">≡</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ BEARING / HERO ============ -->
+<section class="bearing wrap" style="max-width:var(--maxw)">
+  <div class="bearing-left">
+    <div class="eyebrow"><span class="rule"></span><span class="coord" data-i18n="hero.eyebrow">Relevé · Place de l'Hôtel de Ville</span></div>
+    <h1 class="hero-h" data-i18n="hero.h">Le goût de la <em>côte</em>,<br>à <em>côté</em> de chez vous.</h1>
+    <p class="hero-sub" data-i18n="hero.sub">Poissons, fruits de mer et cuisine française sur la place de Dudelange. Une brasserie de quartier, raffinée et chaleureuse — jusqu'au menu tout homard.</p>
+    <div class="hero-meta">
+      <div class="cell"><span class="lbl" data-i18n="hero.m1l">Cap</span><span class="val" data-i18n="hero.m1v">Poisson & fruits de mer</span></div>
+      <div class="cell"><span class="lbl" data-i18n="hero.m2l">Depuis</span><span class="val" data-i18n="hero.m2v">Novembre 2018</span></div>
+      <div class="cell"><span class="lbl" data-i18n="hero.m3l">Réputation</span><span class="val">4,8 / 5 · #6 <span data-i18n="hero.m3v">à Dudelange</span></span></div>
+    </div>
+    <div class="hero-actions">
+      <a class="btn coral" href="#carte" data-i18n="hero.cta1">Menu tout homard</a>
+      <a class="btn" href="#visit" data-i18n="hero.cta2">Nous trouver</a>
+    </div>
+    <svg class="rose" viewBox="0 0 100 100" aria-hidden="true">
+      <g fill="none" stroke="#c6a256" stroke-width=".6">
+        <circle cx="50" cy="50" r="46"/><circle cx="50" cy="50" r="34"/>
+        <path d="M50 4 L56 44 L96 50 L56 56 L50 96 L44 56 L4 50 L44 44 Z" fill="#c6a256" fill-opacity=".18"/>
+        <path d="M50 4 L56 44 L50 50 Z M50 96 L44 56 L50 50 Z" fill="#c6a256" fill-opacity=".4" stroke="none"/>
+      </g>
+      <text x="50" y="14" fill="#c6a256" font-size="7" text-anchor="middle" font-family="Space Mono">N</text>
+    </svg>
+  </div>
+  <div class="bearing-right">
+    <div class="lat-rail"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="porthole">
+      <div class="photo"></div>
+      <div class="cap"><span data-i18n="hero.cap">Salle · L-3590 Dudelange</span><span>39, Pl. de l'Hôtel de Ville</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LA CARTE ============ -->
+<section class="carte wrap" id="carte" style="max-width:var(--maxw)">
+  <div class="sec-head">
+    <div>
+      <div class="sec-num">◆ 01 — <span data-i18n="carte.kick">Relevé du jour</span></div>
+      <h2 class="sec-title" data-i18n="carte.title">La carte</h2>
+    </div>
+    <p class="sec-note" data-i18n="carte.note">Plats donnés à titre indicatif — carte, disponibilité et prix à confirmer avec l'établissement.</p>
+  </div>
+
+  <div class="carte-grid">
+    <!-- Entrées -->
+    <div class="mcol">
+      <h3><span data-i18n="carte.c1">Pour commencer</span><span class="tick">01</span></h3>
+      <div class="dish"><div class="top"><span class="nm" data-i18n="d.foie.n">Foie gras maison</span><span class="pr" data-i18n="pr">à conf.</span></div><div class="ds" data-i18n="d.foie.d">Chutney de saison, pain toasté</div></div>
+      <div class="dish"><div class="top"><span class="nm" data-i18n="d.esc.n">Escargots de Bourgogne</span><span class="pr" data-i18n="pr">à conf.</span></div><div class="ds" data-i18n="d.esc.d">Beurre persillé à l'ail</div></div>
+      <div class="dish"><div class="top"><span class="nm" data-i18n="d.carp.n">Carpaccio de bœuf</span><span class="pr" data-i18n="pr">à conf.</span></div><div class="ds" data-i18n="d.carp.d">Copeaux, roquette, huile d'olive</div></div>
+      <div class="dish"><div class="top"><span class="nm" data-i18n="d.saum.n">Saumon fumé</span><span class="pr" data-i18n="pr">à conf.</span></div><div class="ds" data-i18n="d.saum.d">Salade fine et aneth</div></div>
+    </div>
+
+    <!-- La mer (featured) -->
+    <div class="mcol sea">
+      <h3><span data-i18n="carte.c2">La mer <span class="star">★</span></span><span class="tick">02</span></h3>
+      <div class="dish"><div class="top"><span class="nm" data-i18n="d.pdj.n">Poisson du jour</span><span class="pr" data-i18n="pr">à conf.</span></div><div class="ds" data-i18n="d.pdj.d">Selon l'arrivage et la marée</div></div>
+      <div class="dish"><div class="top"><span class="nm" data-i18n="d.sole.n">Sole meunière</span><span class="pr" data-i18n="pr">à conf.</span></div><div class="ds" data-i18n="d.sole.d">Beurre citronné, persil</div></div>
+      <div class="dish"><div class="top"><span class="nm" data-i18n="d.sj.n">Coquilles Saint-Jacques</span><span class="pr" data-i18n="pr">à conf.</span></div><div class="ds" data-i18n="d.sj.d">Poêlées, écrasé de saison</div></div>
+      <div class="dish"><div class="top"><span class="nm" data-i18n="d.fdm.n">Plateau de fruits de mer</span><span class="pr" data-i18n="pr">à conf.</span></div><div class="ds" data-i18n="d.fdm.d">À partager, pour les amoureux de la mer</div></div>
+    </div>
+
+    <!-- La terre -->
+    <div class="mcol">
+      <h3><span data-i18n="carte.c3">La terre</span><span class="tick">03</span></h3>
+      <div class="dish"><div class="top"><span class="nm" data-i18n="d.ent.n">Entrecôte grillée</span><span class="pr" data-i18n="pr">à conf.</span></div><div class="ds" data-i18n="d.ent.d">Sauce au choix, frites maison</div></div>
+      <div class="dish"><div class="top"><span class="nm" data-i18n="d.filet.n">Filet de bœuf</span><span class="pr" data-i18n="pr">à conf.</span></div><div class="ds" data-i18n="d.filet.d">Jus corsé, garniture du moment</div></div>
+      <div class="dish"><div class="top"><span class="nm" data-i18n="d.vav.n">Vol-au-vent</span><span class="pr" data-i18n="pr">à conf.</span></div><div class="ds" data-i18n="d.vav.d">À l'ancienne, frites</div></div>
+      <div class="dish"><div class="top"><span class="nm" data-i18n="d.chef.n">Suggestion du chef</span><span class="pr" data-i18n="pr">à conf.</span></div><div class="ds" data-i18n="d.chef.d">Selon le marché et la saison</div></div>
+    </div>
+
+    <!-- photo inset column -->
+    <div class="inset-col">
+      <div class="tile q q-tr" style="aspect-ratio:671/645;background-image:url('assets/food-scallops.jpg')"><span class="t-cap" data-i18n="ph.sole">Coquilles Saint-Jacques</span></div>
+      <div class="tile q q-tl" style="aspect-ratio:754/645;background-image:url('assets/food-steak.jpg')"><span class="t-cap" data-i18n="ph.steak">Viande grillée</span></div>
+      <div class="tile q q-bl" style="aspect-ratio:483/645;background-image:url('assets/food-dessert.jpg')"><span class="t-cap" data-i18n="ph.salmon">Dessert maison</span></div>
+    </div>
+
+    <!-- lobster feature -->
+    <div class="lobster">
+      <span class="badge" data-i18n="lob.badge">Signature</span>
+      <div>
+        <h4 data-i18n="lob.h">Le menu tout homard</h4>
+        <p data-i18n="lob.p">La pièce maîtresse de la maison — un menu entièrement consacré au homard. Disponibilité et prix à confirmer avec l'établissement.</p>
+      </div>
+      <a class="btn coral" href="tel:+35226511207" data-i18n="lob.cta">Réserver</a>
+    </div>
+
+    <!-- formule -->
+    <div class="formule">
+      <span class="tag" data-i18n="form.tag">Formule déjeuner · en semaine</span>
+      <span data-i18n="form.txt">4 plats renouvelés chaque semaine, dont une option végétarienne. Prix à confirmer.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LA MAISON (owners / log) ============ -->
+<section class="journal wrap" id="journal" style="max-width:var(--maxw)">
+  <div class="sec-head">
+    <div>
+      <div class="sec-num">◆ 02 — <span data-i18n="jour.kick">Journal de bord</span></div>
+      <h2 class="sec-title" data-i18n="jour.title">La maison</h2>
+    </div>
+    <p class="sec-note" data-i18n="jour.note">Une table de quartier tenue par ses propriétaires, sur la place de l'Hôtel de Ville.</p>
+  </div>
+  <div class="journal-grid">
+    <div>
+      <div class="owner-frame">
+        <div class="ph"></div>
+        <div class="stamp"><span data-i18n="jour.est">Depuis</span><b>2018</b></div>
+      </div>
+      <div class="owner-cap" data-i18n="jour.cap">Jacky & Corine Béguin — propriétaires</div>
+    </div>
+    <div class="log-body">
+      <p class="lead" data-i18n="jour.lead">« Un jeu de mots entre la côte et le fait d'être à côté de chez vous. »</p>
+      <p class="drop" data-i18n="jour.p1">En 2018, Jacky et Corine Béguin cherchaient un nom. Au retour d'un voyage — d'abord à la côte belge, puis dans un petit village des Pays-Bas où ils tombent sur une table portant déjà ce nom — l'évidence s'impose : À Côté.</p>
+      <p data-i18n="jour.p2">Une maison de poissons et de fruits de mer était née, au cœur de Dudelange. Cuisine française et quelques spécialités luxembourgeoises, produits de saison, service attentif : le déjeuner d'affaires, le repas de famille et le dîner entre amis y trouvent la même table.</p>
+      <div class="sig">
+        <div>
+          <div class="name">Jacky &amp; Corine</div>
+          <div class="role" data-i18n="jour.role">Propriétaires · Brasserie À Côté</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LE MOUILLAGE (visit) ============ -->
+<section class="visit wrap" id="visit" style="max-width:var(--maxw)">
+  <div class="sec-head">
+    <div>
+      <div class="sec-num">◆ 03 — <span data-i18n="visit.kick">Point d'accostage</span></div>
+      <h2 class="sec-title" data-i18n="visit.title">Le mouillage</h2>
+    </div>
+    <p class="sec-note" data-i18n="visit.note">Horaires à confirmer avec l'établissement — les sources publiques divergent.</p>
+  </div>
+  <div class="visit-grid">
+    <div class="harbor">
+      <div class="full">
+        <p class="info-lbl" data-i18n="visit.hours">Horaires · marées de service</p>
+        <table class="tide">
+          <tr><td data-i18n="day.mon">Lundi</td><td>11:30 – 15:00 <span class="tick" data-i18n="visit.lunch">midi</span></td></tr>
+          <tr class="closed"><td data-i18n="day.tue">Mardi</td><td data-i18n="visit.closed">Fermé</td></tr>
+          <tr><td data-i18n="day.wed">Mercredi</td><td>11:00 – 15:00 · 18:30 – 00:00</td></tr>
+          <tr><td data-i18n="day.thu">Jeudi</td><td>11:00 – 15:00 · 18:30 – 00:00</td></tr>
+          <tr><td data-i18n="day.fri">Vendredi</td><td>11:00 – 15:00 · 18:30 – 00:00</td></tr>
+          <tr><td data-i18n="day.sat">Samedi</td><td>11:00 – 15:00 · 18:30 – 00:00</td></tr>
+          <tr><td data-i18n="day.sun">Dimanche</td><td>11:00 – 15:00 · 18:30 – 22:30</td></tr>
+        </table>
+      </div>
+      <div>
+        <p class="info-lbl" data-i18n="visit.where">Où jeter l'ancre</p>
+        <div class="addr">39, Place de l'Hôtel de Ville<br>L-3590 Dudelange<span class="co">49°28′06″N · 6°05′15″E</span></div>
+      </div>
+      <div>
+        <p class="info-lbl" data-i18n="visit.contact">Contact & réservation</p>
+        <a class="phone" href="tel:+35226511207">+352 26 51 12 07</a>
+        <div style="margin-top:16px"><a class="btn solid" href="tel:+35226511207" data-i18n="cta.book">Réserver</a></div>
+      </div>
+      <div class="full">
+        <p class="info-lbl" data-i18n="visit.pay">Paiements & services</p>
+        <div class="chips">
+          <span class="chip">Visa</span><span class="chip">Mastercard</span><span class="chip">Maestro</span><span class="chip">V Pay</span>
+          <span class="chip">Ticket Restaurant</span><span class="chip">Chèque Repas</span>
+          <span class="chip" data-i18n="fac.ac">Climatisation</span><span class="chip" data-i18n="fac.pmr">Accès PMR</span>
+          <span class="chip" data-i18n="fac.togo">À emporter</span><span class="chip" data-i18n="fac.kids">Menu enfant</span>
+          <span class="chip" data-i18n="fac.dog">Chiens admis</span><span class="chip">Wi-Fi</span>
+          <span class="chip" data-i18n="fac.group">Groupes</span><span class="chip" data-i18n="fac.sun">Ouvert le dimanche</span>
+        </div>
+      </div>
+    </div>
+    <div class="map">
+      <iframe title="Carte — Brasserie À Côté, Dudelange" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=39%20Place%20de%20l'H%C3%B4tel%20de%20Ville,%20L-3590%20Dudelange,%20Luxembourg&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap" style="max-width:var(--maxw)">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="n">À C<span>ô</span>té</div>
+        <p data-i18n="foot.tag">La brasserie de la Place — poissons, fruits de mer & cuisine française, au cœur de Dudelange.</p>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot.visit">Visite</h5>
+        <p>39, Pl. de l'Hôtel de Ville</p>
+        <p>L-3590 Dudelange</p>
+        <a href="tel:+35226511207">+352 26 51 12 07</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot.explore">Explorer</h5>
+        <a href="#carte" data-i18n="nav.carte">La carte</a>
+        <a href="#journal" data-i18n="nav.journal">La maison</a>
+        <a href="#visit" data-i18n="nav.visit">Le mouillage</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Brasserie À Côté · Dudelange</span>
+      <span>49°28′06″N · 6°05′15″E ◆ N</span>
+    </div>
+    <p class="disclaimer" data-i18n="foot.disc">Site de démonstration — maquette non officielle, non affiliée à l'établissement. Menu, prix, horaires, taglines et couleurs proposés à titre indicatif et à confirmer avec l'établissement. Photographies : sources publiques.</p>
+  </div>
+</footer>
+
+<!-- mobile drawer -->
+<div class="drawer" id="drawer">
+  <button class="close" id="drawerClose">✕</button>
+  <a href="#carte" data-i18n="nav.carte">La carte</a>
+  <a href="#journal" data-i18n="nav.journal">La maison</a>
+  <a href="#visit" data-i18n="nav.visit">Le mouillage</a>
+  <a class="btn solid" href="tel:+35226511207" style="align-self:flex-start" data-i18n="cta.book">Réserver</a>
+</div>
+
+<script>
+const I18N = {
+  fr:{}, // French lives in the HTML (first paint)
+  de:{
+    "strip.chart":"Seekarte · Tisch des Hauses","nav.carte":"Die Karte","nav.journal":"Das Haus","nav.visit":"Der Ankerplatz",
+    "brand.kicker":"Brasserie · Restaurant · Düdelingen","cta.menu":"Karte ansehen","cta.book":"Reservieren",
+    "hero.eyebrow":"Standort · Place de l'Hôtel de Ville","hero.h":"Der Geschmack der <em>Küste</em>,<br>gleich <em>nebenan</em>.",
+    "hero.sub":"Fisch, Meeresfrüchte und französische Küche am Marktplatz von Düdelingen. Eine feine, herzliche Viertelbrasserie — bis hin zum ganzen Hummer-Menü.",
+    "hero.m1l":"Kurs","hero.m1v":"Fisch & Meeresfrüchte","hero.m2l":"Seit","hero.m2v":"November 2018","hero.m3l":"Ruf","hero.m3v":"in Düdelingen",
+    "hero.cta1":"Ganzes Hummer-Menü","hero.cta2":"So finden Sie uns","hero.cap":"Gastraum · L-3590 Düdelingen",
+    "carte.kick":"Aufnahme des Tages","carte.title":"Die Karte","carte.note":"Gerichte als Anhaltspunkt — Karte, Verfügbarkeit und Preise beim Haus zu bestätigen.",
+    "carte.c1":"Zum Anfang","carte.c2":"Das Meer <span class='star'>★</span>","carte.c3":"Das Land","pr":"a. A.",
+    "d.foie.n":"Hausgemachte Foie gras","d.foie.d":"Chutney der Saison, getoastetes Brot",
+    "d.esc.n":"Burgunderschnecken","d.esc.d":"Knoblauch-Petersilienbutter",
+    "d.carp.n":"Rindercarpaccio","d.carp.d":"Parmesan, Rucola, Olivenöl",
+    "d.saum.n":"Räucherlachs","d.saum.d":"Feiner Salat, Dill",
+    "d.pdj.n":"Fisch des Tages","d.pdj.d":"Je nach Anlieferung und Gezeiten",
+    "d.sole.n":"Seezunge Müllerin","d.sole.d":"Zitronenbutter, Petersilie",
+    "d.sj.n":"Jakobsmuscheln","d.sj.d":"Gebraten, Püree der Saison",
+    "d.fdm.n":"Meeresfrüchteplatte","d.fdm.d":"Zum Teilen, für Liebhaber des Meeres",
+    "d.ent.n":"Gegrilltes Entrecôte","d.ent.d":"Sauce nach Wahl, hausgemachte Pommes",
+    "d.filet.n":"Rinderfilet","d.filet.d":"Kräftiger Jus, Beilage der Saison",
+    "d.vav.n":"Königinpastete","d.vav.d":"Nach alter Art, Pommes",
+    "d.chef.n":"Empfehlung des Küchenchefs","d.chef.d":"Je nach Markt und Saison",
+    "ph.sole":"Jakobsmuscheln","ph.steak":"Gegrilltes Fleisch","ph.salmon":"Hausgemachtes Dessert",
+    "lob.badge":"Signature","lob.h":"Das ganze Hummer-Menü","lob.p":"Das Herzstück des Hauses — ein Menü ganz dem Hummer gewidmet. Verfügbarkeit und Preis beim Haus zu bestätigen.","lob.cta":"Reservieren",
+    "form.tag":"Mittagsformel · werktags","form.txt":"4 wöchentlich wechselnde Gerichte, davon eine vegetarische Option. Preis zu bestätigen.",
+    "jour.kick":"Logbuch","jour.title":"Das Haus","jour.note":"Ein von den Eigentümern geführtes Viertellokal am Rathausplatz.",
+    "jour.est":"Seit","jour.cap":"Jacky & Corine Béguin — Eigentümer",
+    "jour.lead":"„Ein Wortspiel zwischen der Küste und dem Gefühl, gleich nebenan zu sein.“",
+    "jour.p1":"2018 suchten Jacky und Corine Béguin einen Namen. Auf der Rückreise — zunächst an die belgische Küste, dann in ein kleines Dorf in den Niederlanden, wo sie auf ein Lokal mit genau diesem Namen stießen — war die Sache klar: À Côté.",
+    "jour.p2":"So entstand ein Haus für Fisch und Meeresfrüchte, im Herzen von Düdelingen. Französische Küche und einige luxemburgische Spezialitäten, saisonale Produkte, aufmerksamer Service: Geschäftsessen, Familienmahl und Abend unter Freunden finden hier denselben Tisch.",
+    "jour.role":"Eigentümer · Brasserie À Côté",
+    "visit.kick":"Anlegestelle","visit.title":"Der Ankerplatz","visit.note":"Öffnungszeiten beim Haus zu bestätigen — öffentliche Quellen weichen ab.",
+    "visit.hours":"Öffnungszeiten · Servicezeiten","visit.lunch":"mittags","visit.closed":"Geschlossen",
+    "visit.where":"Wo ankern","visit.contact":"Kontakt & Reservierung","visit.pay":"Zahlung & Service",
+    "day.mon":"Montag","day.tue":"Dienstag","day.wed":"Mittwoch","day.thu":"Donnerstag","day.fri":"Freitag","day.sat":"Samstag","day.sun":"Sonntag",
+    "fac.ac":"Klimatisiert","fac.pmr":"Barrierefrei","fac.togo":"Zum Mitnehmen","fac.kids":"Kindermenü","fac.dog":"Hunde erlaubt","fac.group":"Gruppen","fac.sun":"Sonntags geöffnet",
+    "foot.tag":"Die Brasserie am Platz — Fisch, Meeresfrüchte & französische Küche im Herzen von Düdelingen.",
+    "foot.visit":"Besuch","foot.explore":"Entdecken",
+    "foot.disc":"Demo-Website — inoffizielles Muster, nicht mit dem Betrieb verbunden. Menü, Preise, Öffnungszeiten, Slogans und Farben sind Vorschläge und beim Haus zu bestätigen. Fotos: öffentliche Quellen."
+  },
+  en:{
+    "strip.chart":"Sea chart · House table","nav.carte":"The menu","nav.journal":"The house","nav.visit":"The mooring",
+    "brand.kicker":"Brasserie · Restaurant · Dudelange","cta.menu":"See the menu","cta.book":"Reserve",
+    "hero.eyebrow":"Bearing · Place de l'Hôtel de Ville","hero.h":"The taste of the <em>coast</em>,<br>right <em>next</em> to you.",
+    "hero.sub":"Fish, seafood and French cooking on Dudelange's town-hall square. A refined yet warm neighbourhood brasserie — right through to the full lobster menu.",
+    "hero.m1l":"Heading","hero.m1v":"Fish & seafood","hero.m2l":"Since","hero.m2v":"November 2018","hero.m3l":"Standing","hero.m3v":"in Dudelange",
+    "hero.cta1":"Full lobster menu","hero.cta2":"Find us","hero.cap":"Dining room · L-3590 Dudelange",
+    "carte.kick":"Today's reading","carte.title":"The menu","carte.note":"Dishes shown for guidance — menu, availability and prices to be confirmed with the venue.",
+    "carte.c1":"To begin","carte.c2":"The sea <span class='star'>★</span>","carte.c3":"The land","pr":"t.b.c.",
+    "d.foie.n":"House foie gras","d.foie.d":"Seasonal chutney, toasted bread",
+    "d.esc.n":"Burgundy snails","d.esc.d":"Garlic-parsley butter",
+    "d.carp.n":"Beef carpaccio","d.carp.d":"Shavings, rocket, olive oil",
+    "d.saum.n":"Smoked salmon","d.saum.d":"Fine salad, dill",
+    "d.pdj.n":"Fish of the day","d.pdj.d":"According to the catch and the tide",
+    "d.sole.n":"Sole meunière","d.sole.d":"Lemon butter, parsley",
+    "d.sj.n":"Scallops","d.sj.d":"Pan-seared, seasonal mash",
+    "d.fdm.n":"Seafood platter","d.fdm.d":"To share, for lovers of the sea",
+    "d.ent.n":"Grilled rib steak","d.ent.d":"Sauce of your choice, house fries",
+    "d.filet.n":"Beef fillet","d.filet.d":"Rich jus, seasonal garnish",
+    "d.vav.n":"Vol-au-vent","d.vav.d":"Old-style, fries",
+    "d.chef.n":"Chef's suggestion","d.chef.d":"According to the market and season",
+    "ph.sole":"Scallops","ph.steak":"Grilled meat","ph.salmon":"House dessert",
+    "lob.badge":"Signature","lob.h":"The full lobster menu","lob.p":"The centrepiece of the house — a menu entirely devoted to lobster. Availability and price to be confirmed with the venue.","lob.cta":"Reserve",
+    "form.tag":"Lunch formula · weekdays","form.txt":"4 dishes renewed each week, including a vegetarian option. Price to be confirmed.",
+    "jour.kick":"Ship's log","jour.title":"The house","jour.note":"An owner-run neighbourhood table on the town-hall square.",
+    "jour.est":"Since","jour.cap":"Jacky & Corine Béguin — owners",
+    "jour.lead":"“A play on words between the coast and being right next to you.”",
+    "jour.p1":"In 2018, Jacky and Corine Béguin were looking for a name. Coming back from a trip — first to the Belgian coast, then to a small village in the Netherlands where they stumbled on a restaurant already carrying that name — it became obvious: À Côté.",
+    "jour.p2":"A house of fish and seafood was born, in the heart of Dudelange. French cooking and a few Luxembourg specialities, seasonal produce, attentive service: the business lunch, the family meal and the dinner among friends all find the same table.",
+    "jour.role":"Owners · Brasserie À Côté",
+    "visit.kick":"Landing point","visit.title":"The mooring","visit.note":"Opening hours to be confirmed with the venue — public sources disagree.",
+    "visit.hours":"Opening hours · service tides","visit.lunch":"lunch","visit.closed":"Closed",
+    "visit.where":"Where to drop anchor","visit.contact":"Contact & reservation","visit.pay":"Payment & services",
+    "day.mon":"Monday","day.tue":"Tuesday","day.wed":"Wednesday","day.thu":"Thursday","day.fri":"Friday","day.sat":"Saturday","day.sun":"Sunday",
+    "fac.ac":"Air-conditioned","fac.pmr":"Wheelchair access","fac.togo":"Takeaway","fac.kids":"Children's menu","fac.dog":"Dogs allowed","fac.group":"Groups","fac.sun":"Open Sundays",
+    "foot.tag":"The brasserie on the square — fish, seafood & French cooking in the heart of Dudelange.",
+    "foot.visit":"Visit","foot.explore":"Explore",
+    "foot.disc":"Demonstration website — unofficial mock-up, not affiliated with the venue. Menu, prices, hours, taglines and colours are proposed for guidance and to be confirmed with the venue. Photographs: public sources."
+  }
+};
+
+// snapshot the original French HTML so we can restore it
+const nodes = document.querySelectorAll('[data-i18n]');
+const FR = {};
+nodes.forEach(n=>{ const k=n.getAttribute('data-i18n'); if(!(k in FR)) FR[k]=n.innerHTML; });
+
+function setLang(lang){
+  const dict = lang==='fr' ? FR : I18N[lang];
+  nodes.forEach(n=>{
+    const k=n.getAttribute('data-i18n');
+    const v = (lang==='fr') ? FR[k] : (dict[k] ?? FR[k]);
+    if(v!==undefined) n.innerHTML=v;
+  });
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.langs button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+}
+document.querySelectorAll('.langs button').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.dataset.lang));
+});
+
+// mobile drawer
+const drawer=document.getElementById('drawer');
+document.getElementById('burger').addEventListener('click',()=>drawer.classList.add('open'));
+document.getElementById('drawerClose').addEventListener('click',()=>drawer.classList.remove('open'));
+drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>drawer.classList.remove('open')));
+</script>
+</body>
+</html>

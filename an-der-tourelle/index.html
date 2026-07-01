@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>An der Tourelle — Restaurant · Stadtbredimus, Moselle</title>
+<meta name="description" content="Restaurant An der Tourelle — cuisine luxembourgeoise et française au bord de la Moselle, entre vignes et château. Stadtbredimus." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#F2EADB;
+    --paper-2:#E9E0CD;
+    --paper-3:#E1D6BF;
+    --ink:#372924;
+    --ink-soft:#6E5C51;
+    --line:rgba(55,41,36,.26);
+    --line-soft:rgba(55,41,36,.14);
+    --gold:#A8792F;
+    --gold-bright:#C79B48;
+    --teal:#2C5A60;
+    --teal-deep:#1F4348;
+    --wine:#7A2E33;
+    --vine:#5B6836;
+    --dark:#2C2320;
+    --dark-2:#241C1A;
+    --cream-on-dark:#EFE5D3;
+    --shadow:0 24px 60px -34px rgba(44,35,32,.55);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Spectral",Georgia,serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* subtle drafting-paper grid */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:
+      linear-gradient(rgba(55,41,36,.035) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(55,41,36,.035) 1px,transparent 1px);
+    background-size:34px 34px;
+  }
+  .wrap{position:relative;z-index:1}
+  a{color:inherit;text-decoration:none}
+  img{display:block;width:100%;height:100%;object-fit:cover}
+
+  .mono{font-family:"IBM Plex Mono",monospace}
+  .label{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);font-weight:500;
+  }
+  .serif{font-family:"Fraunces",serif}
+
+  /* ============ TITLE-BLOCK TOP BAR ============ */
+  header.titlebar{
+    position:sticky;top:0;z-index:50;
+    display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;
+    padding:12px clamp(18px,3vw,46px);
+    background:rgba(242,234,219,.9);
+    backdrop-filter:blur(9px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand svg{width:46px;height:46px;flex:none}
+  .brand .wm{display:flex;flex-direction:column;line-height:1}
+  .brand .wm small{
+    font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.42em;
+    text-transform:uppercase;color:var(--ink-soft);margin-bottom:3px;
+  }
+  .brand .wm b{
+    font-family:"Quicksand",sans-serif;font-weight:600;font-size:18px;letter-spacing:.02em;
+    color:var(--ink);
+  }
+  .brand .wm b i{font-style:normal;color:var(--gold)}
+  .bar-meta{
+    justify-self:center;text-align:center;
+    font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.24em;
+    text-transform:uppercase;color:var(--ink-soft);
+  }
+  .bar-right{display:flex;align-items:center;gap:18px}
+  .langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+  .langs button{
+    background:transparent;border:0;cursor:pointer;padding:6px 9px;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+    color:var(--ink-soft);transition:.2s;
+  }
+  .langs button.active{background:var(--ink);color:var(--paper)}
+  .btn-reserve{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--gold);color:#fff;padding:9px 18px;border-radius:2px;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    transition:.2s;border:1px solid var(--gold);
+  }
+  .btn-reserve:hover{background:var(--ink);border-color:var(--ink)}
+
+  /* ============ PLATE FRAME PRIMITIVES ============ */
+  .plate{position:relative;padding:clamp(40px,6vw,92px) clamp(18px,4vw,72px)}
+  .plate-tag{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+  .plate-tag .num{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.26em;
+    color:var(--gold);text-transform:uppercase;
+  }
+  .plate-tag .rule{flex:1;height:1px;background:var(--line);align-self:center}
+  /* corner ticks for photo plates */
+  .framed{position:relative;background:var(--paper-2)}
+  .framed::before,.framed::after{
+    content:"";position:absolute;width:16px;height:16px;pointer-events:none;z-index:2;
+  }
+  .framed::before{top:-1px;left:-1px;border-top:1.5px solid var(--gold);border-left:1.5px solid var(--gold)}
+  .framed::after{bottom:-1px;right:-1px;border-bottom:1.5px solid var(--gold);border-right:1.5px solid var(--gold)}
+  .framed .tick2::before,.framed .tick2::after{
+    content:"";position:absolute;width:16px;height:16px;pointer-events:none;z-index:2;
+  }
+  .framed .tick2::before{top:-1px;right:-1px;border-top:1.5px solid var(--gold);border-right:1.5px solid var(--gold)}
+  .framed .tick2::after{bottom:-1px;left:-1px;border-bottom:1.5px solid var(--gold);border-left:1.5px solid var(--gold)}
+  .framed{border:1px solid var(--line)}
+  .imgcap{
+    position:absolute;left:0;bottom:0;z-index:3;
+    display:flex;gap:10px;align-items:center;
+    background:rgba(44,35,32,.82);color:var(--cream-on-dark);
+    padding:7px 12px;
+    font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  }
+  .imgcap b{color:var(--gold-bright);font-weight:500}
+
+  /* dimension line */
+  .dim{
+    display:flex;align-items:center;gap:10px;
+    font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.2em;
+    color:var(--ink-soft);text-transform:uppercase;
+  }
+  .dim .ln{flex:1;position:relative;height:1px;background:var(--line)}
+  .dim .ln::before,.dim .ln::after{content:"";position:absolute;top:-3px;width:1px;height:7px;background:var(--line)}
+  .dim .ln::before{left:0}.dim .ln::after{right:0}
+
+  /* ============ PLATE 01 — HERO ============ */
+  .hero{
+    display:grid;grid-template-columns:minmax(420px,5fr) 7fr;gap:clamp(24px,3vw,56px);
+    align-items:stretch;
+  }
+  .hero-left{display:flex;flex-direction:column;justify-content:center;padding:clamp(8px,2vw,26px) 0}
+  .hero-eyebrow{margin-bottom:22px}
+  .hero h1{
+    font-family:"Fraunces",serif;font-weight:400;
+    font-size:clamp(46px,6.6vw,104px);line-height:.94;letter-spacing:-.01em;
+    color:var(--ink);
+  }
+  .hero h1 .sub{
+    display:block;font-size:clamp(18px,1.7vw,26px);letter-spacing:.02em;
+    color:var(--gold);font-weight:400;margin-top:12px;font-style:italic;
+  }
+  .hero-tagline{
+    font-size:clamp(17px,1.4vw,21px);color:var(--ink-soft);font-style:italic;
+    max-width:40ch;margin:26px 0 30px;line-height:1.5;
+  }
+  .legend{
+    border:1px solid var(--line);border-radius:2px;background:rgba(255,255,255,.28);
+    padding:0;margin-bottom:30px;
+  }
+  .legend .lh{
+    font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--ink-soft);padding:9px 16px;border-bottom:1px solid var(--line);
+    display:flex;justify-content:space-between;
+  }
+  .legend .lh b{color:var(--gold)}
+  .legend ul{list-style:none}
+  .legend li{
+    display:grid;grid-template-columns:26px 1fr;gap:12px;align-items:baseline;
+    padding:11px 16px;border-bottom:1px dashed var(--line-soft);font-size:15px;
+  }
+  .legend li:last-child{border-bottom:0}
+  .legend li .k{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--gold);}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn-ghost{
+    display:inline-flex;align-items:center;gap:9px;border:1px solid var(--ink);
+    padding:12px 22px;border-radius:2px;font-family:"IBM Plex Mono",monospace;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;transition:.2s;
+  }
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn-solid{
+    display:inline-flex;align-items:center;gap:9px;background:var(--gold);color:#fff;
+    padding:13px 24px;border-radius:2px;font-family:"IBM Plex Mono",monospace;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;transition:.2s;border:1px solid var(--gold);
+  }
+  .btn-solid:hover{background:var(--ink);border-color:var(--ink)}
+
+  .hero-right{position:relative;min-height:clamp(360px,52vw,640px)}
+  .hero-right .framed{height:100%}
+  .hero-right .framed img{filter:saturate(1.02) contrast(1.02)}
+  .turret-badge{
+    position:absolute;top:-26px;right:26px;z-index:4;width:96px;height:96px;
+    background:var(--paper);border:1px solid var(--line);border-radius:50%;
+    display:grid;place-items:center;box-shadow:var(--shadow);
+  }
+  .turret-badge svg{width:64px;height:64px}
+
+  /* dimension ribbon under hero */
+  .ribbon{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    border:1px solid var(--line);margin-top:clamp(28px,3vw,44px);background:rgba(255,255,255,.24);
+  }
+  .ribbon .cell{padding:20px 22px;border-right:1px solid var(--line)}
+  .ribbon .cell:last-child{border-right:0}
+  .ribbon .cell .lab{
+    font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-soft);margin-bottom:8px;
+  }
+  .ribbon .cell .val{font-family:"Fraunces",serif;font-size:clamp(24px,2.4vw,34px);color:var(--ink);line-height:1}
+  .ribbon .cell .val small{font-size:13px;color:var(--gold);font-family:"IBM Plex Mono",monospace;letter-spacing:.06em;display:block;margin-top:7px}
+
+  /* ============ PLATE 02 — TOURELLE ============ */
+  .p-tourelle{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .tour-grid{display:grid;grid-template-columns:6fr 6fr;gap:clamp(28px,4vw,64px);align-items:center}
+  .tour-media{position:relative}
+  .tour-media .framed{height:clamp(360px,42vw,560px)}
+  .radial-over{
+    position:absolute;inset:0;z-index:3;display:grid;place-items:center;pointer-events:none;
+  }
+  .radial-over svg{width:66%;height:66%;opacity:.9}
+  .tour-copy h2{
+    font-family:"Fraunces",serif;font-weight:400;font-size:clamp(30px,3.4vw,50px);
+    line-height:1.04;margin:14px 0 24px;color:var(--ink);
+  }
+  .tour-copy p{font-size:16.5px;color:var(--ink-soft);margin-bottom:18px;max-width:52ch}
+  .tour-copy p .drop{
+    font-family:"Fraunces",serif;color:var(--gold);font-size:2.9em;line-height:.7;
+    float:left;margin:6px 12px 0 0;font-weight:500;
+  }
+  .coupe{
+    display:flex;align-items:center;gap:18px;margin-top:26px;
+    border-top:1px solid var(--line);padding-top:22px;
+  }
+  .coupe svg{width:82px;height:82px;flex:none}
+  .coupe .txt .label{margin-bottom:6px}
+  .coupe .txt small{color:var(--ink-soft);font-size:14px;font-style:italic}
+
+  /* ============ PLATE 03 — CARTE (dark) ============ */
+  .p-carte{background:var(--dark);color:var(--cream-on-dark);position:relative}
+  .p-carte::before{
+    content:"";position:absolute;inset:0;opacity:.06;pointer-events:none;
+    background-image:linear-gradient(rgba(239,229,211,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(239,229,211,.5) 1px,transparent 1px);
+    background-size:34px 34px;
+  }
+  .p-carte .plate-tag .rule{background:rgba(239,229,211,.24)}
+  .p-carte .plate-tag .num{color:var(--gold-bright)}
+  .carte-head{position:relative;z-index:1;max-width:60ch;margin-bottom:clamp(30px,4vw,52px)}
+  .carte-head h2{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(30px,3.6vw,52px);line-height:1.02;margin:12px 0 16px}
+  .carte-head p{color:rgba(239,229,211,.7);font-size:16px;font-style:italic}
+  .carte-grid{position:relative;z-index:1;display:grid;grid-template-columns:4fr 8fr;gap:clamp(28px,3.5vw,56px);align-items:start}
+  /* signature card */
+  .sig{border:1px solid rgba(239,229,211,.24);background:var(--dark-2)}
+  .sig .framed{height:clamp(240px,22vw,300px);border:0;background:var(--dark-2)}
+  .sig .framed::before,.sig .framed::after{border-color:var(--gold-bright)}
+  .sig .sig-body{padding:22px 24px 26px}
+  .sig .sig-body .label{color:var(--gold-bright);margin-bottom:10px}
+  .sig .sig-body h3{font-family:"Fraunces",serif;font-weight:400;font-size:28px;line-height:1.05;margin-bottom:12px;color:#fff}
+  .sig .sig-body p{color:rgba(239,229,211,.72);font-size:15px}
+  .sig .sig-body .price{
+    margin-top:16px;display:inline-block;border:1px solid var(--gold);color:var(--gold-bright);
+    font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+    padding:5px 12px;border-radius:2px;
+  }
+  /* schedule */
+  .sched{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(28px,3vw,52px)}
+  .sched .grp{margin-bottom:34px;break-inside:avoid}
+  .sched .grp > .ghead{
+    display:flex;align-items:baseline;gap:12px;margin-bottom:14px;
+    border-bottom:1px solid rgba(239,229,211,.24);padding-bottom:9px;
+  }
+  .sched .grp > .ghead .gh-num{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--gold-bright);letter-spacing:.1em}
+  .sched .grp > .ghead h4{font-family:"Fraunces",serif;font-weight:500;font-size:20px;color:#fff;letter-spacing:.01em}
+  .item{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(239,229,211,.14)}
+  .item:last-child{border-bottom:0}
+  .item .ref{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--gold-bright);padding-top:5px;letter-spacing:.06em}
+  .item .nm{font-family:"Fraunces",serif;font-size:18px;color:var(--cream-on-dark);line-height:1.15}
+  .item .nt{display:block;font-family:"Spectral",serif;font-style:italic;font-size:13.5px;color:rgba(239,229,211,.6);margin-top:2px}
+  .conf{
+    display:inline-block;margin-left:8px;font-family:"IBM Plex Mono",monospace;font-size:9px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--gold-bright);
+    border:1px solid rgba(199,155,72,.5);border-radius:2px;padding:1px 6px;vertical-align:middle;
+  }
+
+  /* ============ PLATE 04 — CAVE / FILMSTRIP ============ */
+  .cave-intro{display:grid;grid-template-columns:5fr 7fr;gap:clamp(24px,3vw,52px);align-items:end;margin-bottom:clamp(26px,3vw,42px)}
+  .cave-intro h2{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(28px,3.2vw,46px);line-height:1.03;margin-top:12px}
+  .cave-intro p{color:var(--ink-soft);font-size:16.5px;max-width:56ch}
+  .cave-intro .glass{
+    display:inline-flex;gap:8px;flex-wrap:wrap;margin-top:16px;
+  }
+  .cave-intro .glass span{
+    border:1px solid var(--line);border-radius:2px;padding:5px 11px;
+    font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--teal);background:rgba(255,255,255,.3);
+  }
+  .filmstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,26px)}
+  .film .framed{height:clamp(240px,26vw,380px)}
+  .film .fcap{
+    display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:12px;
+    border-top:1px solid var(--line);padding-top:10px;
+  }
+  .film .fcap .fn{font-family:"Fraunces",serif;font-size:18px}
+  .film .fcap .fr{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--gold);letter-spacing:.1em}
+  .film .fcap small{display:block;font-style:italic;color:var(--ink-soft);font-size:13px;margin-top:3px}
+
+  /* ============ PLATE 05 — PLAN / VISIT ============ */
+  .p-plan{background:var(--paper-2);border-top:1px solid var(--line)}
+  .plan-grid{display:grid;grid-template-columns:7fr 5fr;gap:clamp(28px,3.5vw,58px);align-items:stretch}
+  .map-plate{position:relative}
+  .map-plate .framed{height:100%;min-height:clamp(360px,40vw,520px);overflow:hidden}
+  .map-plate iframe{width:100%;height:100%;border:0;filter:grayscale(.35) sepia(.12) contrast(.98)}
+  .north{
+    position:absolute;top:16px;left:16px;z-index:4;width:56px;height:56px;background:var(--paper);
+    border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;box-shadow:var(--shadow);
+  }
+  .north svg{width:34px;height:34px}
+  .coords{
+    position:absolute;bottom:0;right:0;z-index:4;background:rgba(44,35,32,.85);color:var(--cream-on-dark);
+    font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;padding:7px 12px;
+  }
+  .visit-info{display:flex;flex-direction:column;gap:0}
+  .visit-info h2{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(28px,3vw,44px);line-height:1.03;margin:12px 0 22px}
+  .hours{border:1px solid var(--line);background:rgba(255,255,255,.3);margin-bottom:22px}
+  .hours .hh{
+    font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--ink-soft);padding:10px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;
+  }
+  .hours .hh .conf{margin:0}
+  .hours .row{display:flex;justify-content:space-between;gap:14px;padding:10px 16px;border-bottom:1px dashed var(--line-soft);font-size:15px}
+  .hours .row:last-child{border-bottom:0}
+  .hours .row.closed{color:var(--ink-soft)}
+  .hours .row .d{font-family:"Fraunces",serif;font-size:16px}
+  .hours .row .t{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.02em}
+  .hours .row.closed .t{color:var(--wine)}
+  .contact{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .contact a,.contact div{background:var(--paper-2);padding:15px 16px;display:block}
+  .contact .lab{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
+  .contact .v{font-family:"Fraunces",serif;font-size:16px;color:var(--ink)}
+  .contact a:hover .v{color:var(--gold)}
+  .pay{margin-top:16px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--ink-soft)}
+  .pay b{color:var(--ink)}
+
+  /* ============ FOOTER TITLE-BLOCK ============ */
+  footer.cartouche{background:var(--dark);color:var(--cream-on-dark);border-top:3px double var(--gold)}
+  .cart-inner{display:grid;grid-template-columns:1.6fr 1.2fr 1fr;gap:0}
+  .cart-col{padding:clamp(28px,3vw,44px) clamp(20px,2.6vw,42px);border-right:1px solid rgba(239,229,211,.16)}
+  .cart-col:last-child{border-right:0}
+  .cart-col .label{color:var(--gold-bright);margin-bottom:16px;display:block}
+  .cart-brand{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+  .cart-brand svg{width:52px;height:52px;flex:none}
+  .cart-brand .wm b{font-family:"Quicksand",sans-serif;font-weight:600;font-size:22px;color:#fff;letter-spacing:.02em}
+  .cart-brand .wm b i{font-style:normal;color:var(--gold-bright)}
+  .cart-brand .wm small{font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.4em;text-transform:uppercase;color:rgba(239,229,211,.6);display:block;margin-bottom:4px}
+  .cart-col p{font-size:15px;color:rgba(239,229,211,.78);line-height:1.7}
+  .cart-col a{color:rgba(239,229,211,.85)}
+  .cart-col a:hover{color:var(--gold-bright)}
+  .index-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+  .index-list a{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px dashed rgba(239,229,211,.16);font-family:"Spectral",serif;font-size:15px}
+  .index-list a .pn{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--gold-bright)}
+  .cart-foot{
+    border-top:1px solid rgba(239,229,211,.16);padding:18px clamp(20px,2.6vw,42px);
+    display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;
+    font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,229,211,.55);
+  }
+  .cart-foot .demo{color:var(--gold-bright)}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:1080px){
+    .hero{grid-template-columns:1fr;gap:32px}
+    .hero-right{min-height:56vw}
+    .tour-grid{grid-template-columns:1fr;gap:34px}
+    .carte-grid{grid-template-columns:1fr;gap:34px}
+    .cave-intro{grid-template-columns:1fr;gap:18px}
+    .plan-grid{grid-template-columns:1fr;gap:30px}
+    .cart-inner{grid-template-columns:1fr}
+    .cart-col{border-right:0;border-bottom:1px solid rgba(239,229,211,.16)}
+  }
+  @media (max-width:760px){
+    header.titlebar{grid-template-columns:1fr auto;gap:12px;row-gap:10px}
+    .bar-meta{display:none}
+    .ribbon{grid-template-columns:1fr 1fr}
+    .ribbon .cell:nth-child(2){border-right:0}
+    .ribbon .cell:nth-child(1),.ribbon .cell:nth-child(2){border-bottom:1px solid var(--line)}
+    .sched{grid-template-columns:1fr}
+    .filmstrip{grid-template-columns:1fr}
+    .contact{grid-template-columns:1fr}
+    .btn-reserve{padding:8px 12px}
+  }
+  @media (max-width:480px){
+    .ribbon{grid-template-columns:1fr}
+    .ribbon .cell{border-right:0;border-bottom:1px solid var(--line)}
+    .hero h1{font-size:52px}
+  }
+  .sr-note{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ============ TITLE-BLOCK TOP BAR ============ -->
+<header class="titlebar">
+  <a class="brand" href="#pl01" aria-label="An der Tourelle">
+    <!-- turret logo (recreated from the venue's own mark) -->
+    <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <circle cx="72" cy="14" r="3.4" stroke="var(--gold)" stroke-width="2"/>
+      <line x1="72" y1="17.4" x2="72" y2="30" stroke="var(--gold)" stroke-width="2"/>
+      <path d="M50 30 L72 30 L94 30" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+      <path d="M52 58 L72 31 L92 58 Z" stroke="var(--gold)" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M6 44 L52 44" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+      <path d="M52 58 L52 82 L92 82 L92 58" stroke="var(--gold)" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M58 82 L58 68 Q58 63 62 63 Q66 63 66 68 L66 82" stroke="var(--gold)" stroke-width="1.6"/>
+      <path d="M70 82 L70 68 Q70 63 74 63 Q78 63 78 68 L78 82" stroke="var(--gold)" stroke-width="1.6"/>
+      <path d="M82 82 L82 68 Q82 63 86 63 Q90 63 90 68 L90 82" stroke="var(--gold)" stroke-width="1.6"/>
+      <path d="M8 60 L8 82 L52 82" stroke="var(--gold)" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M16 82 L16 70 Q16 66 20 66 Q24 66 24 70 L24 82" stroke="var(--gold)" stroke-width="1.6"/>
+      <path d="M32 82 L32 70 Q32 66 36 66 Q40 66 40 70 L40 82" stroke="var(--gold)" stroke-width="1.6"/>
+      <line x1="4" y1="86" x2="96" y2="86" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <span class="wm">
+      <small>Restaurant</small>
+      <b>an der t<i>o</i>urelle</b>
+    </span>
+  </a>
+  <div class="bar-meta" data-i18n="bar.meta">Relevé d'architecture · Stadtbredimus · Moselle · L</div>
+  <div class="bar-right">
+    <div class="langs" role="group" aria-label="Langue">
+      <button data-lang="fr" class="active">FR</button>
+      <button data-lang="de">DE</button>
+      <button data-lang="en">EN</button>
+    </div>
+    <a class="btn-reserve" href="tel:+35223698511"><span data-i18n="nav.reserve">Réserver</span></a>
+  </div>
+</header>
+
+<!-- ============ PLATE 01 — ÉLÉVATION (HERO) ============ -->
+<section class="plate hero-plate" id="pl01">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow plate-tag">
+        <span class="num" data-i18n="hero.plate">PL·01 — Élévation Sud</span>
+        <span class="rule"></span>
+      </div>
+      <h1>An der Tourelle<span class="sub" data-i18n="hero.sub">« à la petite tour », au bord de la Moselle</span></h1>
+      <p class="hero-tagline" data-i18n="hero.tagline">Au bord de la Moselle, entre vignes et château — une maison de tradition, cuisine luxembourgeoise et française au fil des saisons.</p>
+
+      <div class="legend">
+        <div class="lh"><span data-i18n="hero.legendTitle">Légende</span><b>1:1</b></div>
+        <ul>
+          <li><span class="k">01</span><span data-i18n="hero.leg1">Maison reprise par Jean-Marie Hemmen en 2006 — tradition et modernité.</span></li>
+          <li><span class="k">02</span><span data-i18n="hero.leg2">Classée nº 1 sur 4 à Stadtbredimus (TripAdvisor, 4,3/5).</span></li>
+          <li><span class="k">03</span><span data-i18n="hero.leg3">Salle ronde sous charpente en étoile, face au Château de Stadtbredimus.</span></li>
+        </ul>
+      </div>
+
+      <div class="hero-cta">
+        <a class="btn-solid" href="tel:+35223698511"><span data-i18n="hero.reserve">Réserver une table</span></a>
+        <a class="btn-ghost" href="#pl03"><span data-i18n="hero.seeMenu">Voir la carte</span></a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="turret-badge">
+        <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <circle cx="50" cy="18" r="3.4" stroke="var(--gold)" stroke-width="2"/>
+          <line x1="50" y1="21.4" x2="50" y2="34" stroke="var(--gold)" stroke-width="2"/>
+          <path d="M28 62 L50 35 L72 62 Z" stroke="var(--gold)" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M14 48 L28 48 M72 48 L86 48" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+          <path d="M28 62 L28 84 L72 84 L72 62" stroke="var(--gold)" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M36 84 L36 70 Q36 65 40 65 Q44 65 44 70 L44 84" stroke="var(--gold)" stroke-width="1.6"/>
+          <path d="M54 84 L54 70 Q54 65 58 65 Q62 65 62 70 L62 84" stroke="var(--gold)" stroke-width="1.6"/>
+        </svg>
+      </div>
+      <div class="framed">
+        <span class="tick2"></span>
+        <img src="assets/exterior.jpg" alt="Façade du restaurant An der Tourelle au crépuscule, Stadtbredimus" />
+        <div class="imgcap"><b>PL·01</b><span data-i18n="cap.exterior">Élévation sud — la maison à tourelle, 12 Wäistrooss</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ribbon">
+    <div class="cell">
+      <div class="lab" data-i18n="rib.rating">Appréciation</div>
+      <div class="val">4,3<small data-i18n="rib.ratingSub">sur 5 · TripAdvisor</small></div>
+    </div>
+    <div class="cell">
+      <div class="lab" data-i18n="rib.rank">Classement</div>
+      <div class="val">Nº 1<small data-i18n="rib.rankSub">sur 4 · Stadtbredimus</small></div>
+    </div>
+    <div class="cell">
+      <div class="lab" data-i18n="rib.seats">Couverts</div>
+      <div class="val">±90<small data-i18n="rib.seatsSub">+ 50 en terrasse</small></div>
+    </div>
+    <div class="cell">
+      <div class="lab" data-i18n="rib.since">Maison depuis</div>
+      <div class="val">2006<small data-i18n="rib.sinceSub">Jean-Marie Hemmen</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLATE 02 — LA TOURELLE ============ -->
+<section class="plate p-tourelle" id="pl02">
+  <div class="plate-tag">
+    <span class="num" data-i18n="p2.plate">PL·02 — Coupe de la tourelle</span>
+    <span class="rule"></span>
+  </div>
+  <div class="tour-grid">
+    <div class="tour-media">
+      <div class="framed">
+        <span class="tick2"></span>
+        <img src="assets/interior-1.jpg" alt="Charpente en étoile de la salle ronde du restaurant An der Tourelle" />
+        <div class="radial-over">
+          <svg viewBox="0 0 200 200" fill="none" aria-hidden="true">
+            <circle cx="100" cy="100" r="86" stroke="rgba(199,155,72,.55)" stroke-width="1"/>
+            <circle cx="100" cy="100" r="58" stroke="rgba(199,155,72,.4)" stroke-width="1"/>
+            <circle cx="100" cy="100" r="30" stroke="rgba(199,155,72,.4)" stroke-width="1"/>
+            <g stroke="rgba(199,155,72,.5)" stroke-width="1">
+              <line x1="100" y1="14" x2="100" y2="186"/>
+              <line x1="14" y1="100" x2="186" y2="100"/>
+              <line x1="39" y1="39" x2="161" y2="161"/>
+              <line x1="161" y1="39" x2="39" y2="161"/>
+            </g>
+            <circle cx="100" cy="100" r="5" fill="rgba(199,155,72,.85)"/>
+          </svg>
+        </div>
+        <div class="imgcap"><b>PL·02</b><span data-i18n="cap.interior">Salle ronde — charpente rayonnante</span></div>
+      </div>
+    </div>
+    <div class="tour-copy">
+      <span class="label" data-i18n="p2.eyebrow">Le détail — la salle ronde</span>
+      <h2 data-i18n="p2.title">La table sous la charpente en étoile</h2>
+      <p><span class="drop" data-i18n="p2.drop">L</span><span data-i18n="p2.body1">e nom « an der Tourelle » — « à la petite tour » — se lit d'abord dans l'architecture : une tourelle coiffée d'un toit conique, une arcade de fenêtres cintrées, et à l'intérieur une salle ronde intime dont la charpente rayonne en étoile au-dessus des convives.</span></p>
+      <p data-i18n="p2.body2">Reprise en 2006 par Jean-Marie Hemmen, la maison marie tradition et modernité : un accueil chaleureux et sans hâte, des portions généreuses, et une vue sur la Moselle, le château et son parc. Le cadre est une destination en soi autant que la cuisine.</p>
+      <div class="coupe">
+        <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <circle cx="50" cy="50" r="44" stroke="var(--gold)" stroke-width="1"/>
+          <circle cx="50" cy="50" r="28" stroke="var(--gold)" stroke-width="1"/>
+          <g stroke="var(--gold)" stroke-width="1">
+            <line x1="50" y1="6" x2="50" y2="94"/><line x1="6" y1="50" x2="94" y2="50"/>
+            <line x1="19" y1="19" x2="81" y2="81"/><line x1="81" y1="19" x2="19" y2="81"/>
+            <line x1="50" y1="6" x2="65" y2="14"/><line x1="50" y1="6" x2="35" y2="14"/>
+          </g>
+          <circle cx="50" cy="50" r="3.4" fill="var(--gold)"/>
+        </svg>
+        <div class="txt">
+          <div class="label" data-i18n="p2.coupeLabel">Coupe · charpente rayonnante</div>
+          <small data-i18n="p2.coupeNote">Relevé schématique de la salle ronde — nombre de rayons indicatif.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLATE 03 — LA CARTE ============ -->
+<section class="plate p-carte" id="pl03">
+  <div class="plate-tag">
+    <span class="num" data-i18n="p3.plate">PL·03 — Nomenclature de la carte</span>
+    <span class="rule"></span>
+  </div>
+  <div class="carte-head">
+    <span class="label" data-i18n="p3.eyebrow">La carte — poissons de rivière & de mer</span>
+    <h2 data-i18n="p3.title">Une cuisine mosellane, au fil des saisons</h2>
+    <p data-i18n="p3.note">Sélection d'après les avis et les fiches de l'établissement. Carte et prix susceptibles d'évoluer — prix à confirmer avec la maison.</p>
+  </div>
+
+  <div class="carte-grid">
+    <!-- signature card -->
+    <aside class="sig">
+      <div class="framed">
+        <img src="assets/food-3.jpg" alt="Assiette de crevettes grises et avocat, dressage An der Tourelle" />
+      </div>
+      <div class="sig-body">
+        <div class="label" data-i18n="sig.eyebrow">La signature de la maison</div>
+        <h3 data-i18n="sig.title">Friture de la Moselle</h3>
+        <p data-i18n="sig.body">Petits poissons de rivière entiers, frits jusqu'au croustillant — le plat qui dit tout de la maison et de son fleuve. Servi selon la pêche et la saison.</p>
+        <span class="price" data-i18n="sig.price">Prix à confirmer</span>
+      </div>
+    </aside>
+
+    <!-- schedule -->
+    <div class="sched">
+      <div class="grp">
+        <div class="ghead"><span class="gh-num">E</span><h4 data-i18n="grp.entrees">Entrées</h4></div>
+        <div class="item"><span class="ref">E·01</span><span><span class="nm">Foie gras<span class="conf" data-i18n="tag.conf">à confirmer</span></span><span class="nt" data-i18n="it.e01">Duo de foie gras en entrée.</span></span></div>
+        <div class="item"><span class="ref">E·02</span><span><span class="nm">Guacamole aux crevettes<span class="conf" data-i18n="tag.conf">à confirmer</span></span><span class="nt" data-i18n="it.e02">Crevettes grises, avocat, roquette et tomate.</span></span></div>
+      </div>
+
+      <div class="grp">
+        <div class="ghead"><span class="gh-num">F</span><h4 data-i18n="grp.fish">De la Moselle & de la mer</h4></div>
+        <div class="item"><span class="ref">F·01</span><span><span class="nm">Friture de la Moselle<span class="conf" data-i18n="tag.conf">à confirmer</span></span><span class="nt" data-i18n="it.f01">Petits poissons de rivière frits — la signature.</span></span></div>
+        <div class="item"><span class="ref">F·02</span><span><span class="nm">Sole meunière<span class="conf" data-i18n="tag.conf">à confirmer</span></span><span class="nt" data-i18n="it.f02">Sole poêlée au beurre, façon meunière.</span></span></div>
+        <div class="item"><span class="ref">F·03</span><span><span class="nm">Scampis à l'ail<span class="conf" data-i18n="tag.conf">à confirmer</span></span><span class="nt" data-i18n="it.f03">Gambas poêlées à l'ail.</span></span></div>
+        <div class="item"><span class="ref">F·04</span><span><span class="nm">Poissons de saison<span class="conf" data-i18n="tag.conf">à confirmer</span></span><span class="nt" data-i18n="it.f04">Selon l'arrivage et la saison.</span></span></div>
+      </div>
+
+      <div class="grp">
+        <div class="ghead"><span class="gh-num">V</span><h4 data-i18n="grp.meat">Viandes</h4></div>
+        <div class="item"><span class="ref">V·01</span><span><span class="nm">Entrecôte grillée<span class="conf" data-i18n="tag.conf">à confirmer</span></span><span class="nt" data-i18n="it.v01">Faux-filet grillé, garniture et sauce.</span></span></div>
+        <div class="item"><span class="ref">V·02</span><span><span class="nm">Plats régionaux<span class="conf" data-i18n="tag.conf">à confirmer</span></span><span class="nt" data-i18n="it.v02">Spécialités luxembourgeoises de saison.</span></span></div>
+      </div>
+
+      <div class="grp">
+        <div class="ghead"><span class="gh-num">C</span><h4 data-i18n="grp.cellar">La Cave</h4></div>
+        <div class="item"><span class="ref">C·01</span><span><span class="nm">Vins de la Moselle<span class="conf" data-i18n="tag.conf">à confirmer</span></span><span class="nt" data-i18n="it.c01">Belle sélection de blancs de la région.</span></span></div>
+        <div class="item"><span class="ref">C·02</span><span><span class="nm">Crémant de Luxembourg<span class="conf" data-i18n="tag.conf">à confirmer</span></span><span class="nt" data-i18n="it.c02">Crémants de la Moselle luxembourgeoise.</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLATE 04 — LA CAVE & LA TABLE ============ -->
+<section class="plate" id="pl04">
+  <div class="plate-tag">
+    <span class="num" data-i18n="p4.plate">PL·04 — Planche des mets</span>
+    <span class="rule"></span>
+  </div>
+  <div class="cave-intro">
+    <div>
+      <span class="label" data-i18n="p4.eyebrow">La table & la cave</span>
+      <h2 data-i18n="p4.title">Générosité dans l'assiette, la Moselle dans le verre</h2>
+    </div>
+    <div>
+      <p data-i18n="p4.body">Des assiettes soignées et généreuses, un dressage précis, et une cave qui fait la part belle aux blancs et crémants de la Moselle luxembourgeoise — à deux pas des coteaux qui les font naître.</p>
+      <div class="glass">
+        <span data-i18n="p4.tag1">Blancs de Moselle</span>
+        <span data-i18n="p4.tag2">Crémant</span>
+        <span data-i18n="p4.tag3">Terrasse en saison</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="filmstrip">
+    <figure class="film">
+      <div class="framed"><span class="tick2"></span><img src="assets/hero.jpg" alt="Filet de rouget sur risotto, sauce crustacés" /></div>
+      <figcaption class="fcap">
+        <span><span class="fn" data-i18n="film.1">Rouget & risotto</span><small data-i18n="film.1s">poissons de saison</small></span>
+        <span class="fr">PL·04 / a</span>
+      </figcaption>
+    </figure>
+    <figure class="film">
+      <div class="framed"><span class="tick2"></span><img src="assets/food-1.jpg" alt="Entrecôte grillée, sauce et garnitures" /></div>
+      <figcaption class="fcap">
+        <span><span class="fn" data-i18n="film.2">Entrecôte grillée</span><small data-i18n="film.2s">viandes</small></span>
+        <span class="fr">PL·04 / b</span>
+      </figcaption>
+    </figure>
+    <figure class="film">
+      <div class="framed"><span class="tick2"></span><img src="assets/food-2.jpg" alt="Assiette dressée, spécialité de saison" /></div>
+      <figcaption class="fcap">
+        <span><span class="fn" data-i18n="film.3">Assiette du moment</span><small data-i18n="film.3s">selon la saison</small></span>
+        <span class="fr">PL·04 / c</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ PLATE 05 — PLAN DE SITUATION ============ -->
+<section class="plate p-plan" id="pl05">
+  <div class="plate-tag">
+    <span class="num" data-i18n="p5.plate">PL·05 — Plan de situation & accès</span>
+    <span class="rule"></span>
+  </div>
+  <div class="plan-grid">
+    <div class="map-plate">
+      <div class="north">
+        <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <path d="M20 4 L26 30 L20 24 L14 30 Z" fill="var(--wine)"/>
+          <text x="20" y="38" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#372924">N</text>
+        </svg>
+      </div>
+      <div class="framed">
+        <span class="tick2"></span>
+        <iframe title="Plan — An der Tourelle, 12 Wäistrooss, Stadtbredimus" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=An%20der%20Tourelle%2C%2012%20W%C3%A4istrooss%2C%20L-5450%20Stadtbredimus%2C%20Luxembourg&output=embed"></iframe>
+      </div>
+      <div class="coords">49.5316° N · 6.3611° E</div>
+    </div>
+
+    <div class="visit-info">
+      <span class="label" data-i18n="p5.eyebrow">L'accès</span>
+      <h2 data-i18n="p5.title">12, Wäistrooss — sur la route du Vin</h2>
+
+      <div class="hours">
+        <div class="hh"><span data-i18n="hours.title">Horaires d'ouverture</span><span class="conf" data-i18n="tag.conf">à confirmer</span></div>
+        <div class="row"><span class="d" data-i18n="d.thusun">Jeudi – Dimanche</span><span class="t">11:30–14:00 · 18:00–21:00</span></div>
+        <div class="row"><span class="d" data-i18n="d.mon">Lundi</span><span class="t">11:30–14:00 · 18:00–21:00</span></div>
+        <div class="row closed"><span class="d" data-i18n="d.tuewed">Mardi & Mercredi</span><span class="t" data-i18n="d.closed">Fermé</span></div>
+      </div>
+
+      <div class="contact">
+        <a href="tel:+35223698511">
+          <div class="lab" data-i18n="c.tel">Téléphone</div>
+          <div class="v">+352 23 69 85 11</div>
+        </a>
+        <a href="mailto:info@tourelle.lu">
+          <div class="lab" data-i18n="c.email">E-mail</div>
+          <div class="v">info@tourelle.lu</div>
+        </a>
+        <div>
+          <div class="lab" data-i18n="c.addr">Adresse</div>
+          <div class="v">12, Wäistrooss<br>L-5450 Stadtbredimus</div>
+        </div>
+        <a href="https://www.facebook.com/andertourelle/" target="_blank" rel="noopener">
+          <div class="lab" data-i18n="c.social">Réseaux</div>
+          <div class="v">facebook.com/andertourelle</div>
+        </a>
+      </div>
+      <div class="pay"><span data-i18n="pay.label">Paiement :</span> <b data-i18n="pay.methods">Visa · Mastercard · espèces</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER TITLE-BLOCK ============ -->
+<footer class="cartouche">
+  <div class="cart-inner">
+    <div class="cart-col">
+      <span class="label" data-i18n="ft.estab">Établissement</span>
+      <div class="cart-brand">
+        <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+          <circle cx="72" cy="14" r="3.4" stroke="var(--gold-bright)" stroke-width="2"/>
+          <line x1="72" y1="17.4" x2="72" y2="30" stroke="var(--gold-bright)" stroke-width="2"/>
+          <path d="M50 30 L94 30" stroke="var(--gold-bright)" stroke-width="2" stroke-linecap="round"/>
+          <path d="M52 58 L72 31 L92 58 Z" stroke="var(--gold-bright)" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M6 44 L52 44" stroke="var(--gold-bright)" stroke-width="2" stroke-linecap="round"/>
+          <path d="M52 58 L52 82 L92 82 L92 58" stroke="var(--gold-bright)" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M8 60 L8 82 L52 82" stroke="var(--gold-bright)" stroke-width="2" stroke-linejoin="round"/>
+          <line x1="4" y1="86" x2="96" y2="86" stroke="var(--gold-bright)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="wm"><small>Restaurant</small><b>an der t<i>o</i>urelle</b></span>
+      </div>
+      <p data-i18n="ft.blurb">Cuisine luxembourgeoise & française au bord de la Moselle, entre vignes et château. 12, Wäistrooss, L-5450 Stadtbredimus, Luxembourg.</p>
+    </div>
+
+    <div class="cart-col">
+      <span class="label" data-i18n="ft.coords">Coordonnées</span>
+      <p>
+        <a href="tel:+35223698511">+352 23 69 85 11</a><br>
+        <a href="mailto:info@tourelle.lu">info@tourelle.lu</a><br>
+        <a href="https://www.tourelle.lu" target="_blank" rel="noopener">www.tourelle.lu</a><br>
+        <a href="https://www.facebook.com/andertourelle/" target="_blank" rel="noopener">facebook.com/andertourelle</a>
+      </p>
+    </div>
+
+    <div class="cart-col">
+      <span class="label" data-i18n="ft.index">Index des planches</span>
+      <ul class="index-list">
+        <li><a href="#pl01"><span data-i18n="ft.i1">Élévation</span><span class="pn">PL·01</span></a></li>
+        <li><a href="#pl02"><span data-i18n="ft.i2">La Tourelle</span><span class="pn">PL·02</span></a></li>
+        <li><a href="#pl03"><span data-i18n="ft.i3">La Carte</span><span class="pn">PL·03</span></a></li>
+        <li><a href="#pl04"><span data-i18n="ft.i4">La table</span><span class="pn">PL·04</span></a></li>
+        <li><a href="#pl05"><span data-i18n="ft.i5">Plan de situation</span><span class="pn">PL·05</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="cart-foot">
+    <span class="demo" data-i18n="ft.demo">Site de démonstration — informations et prix à confirmer avec l'établissement.</span>
+    <span data-i18n="ft.rights">© 2026 An der Tourelle · Stadtbredimus, Moselle (LU)</span>
+  </div>
+</footer>
+
+</div>
+
+<script>
+/* ---------- i18n ---------- */
+const I18N = {
+  fr:{
+    "bar.meta":"Relevé d'architecture · Stadtbredimus · Moselle · L",
+    "nav.reserve":"Réserver",
+    "hero.plate":"PL·01 — Élévation Sud",
+    "hero.sub":"« à la petite tour », au bord de la Moselle",
+    "hero.tagline":"Au bord de la Moselle, entre vignes et château — une maison de tradition, cuisine luxembourgeoise et française au fil des saisons.",
+    "hero.legendTitle":"Légende",
+    "hero.leg1":"Maison reprise par Jean-Marie Hemmen en 2006 — tradition et modernité.",
+    "hero.leg2":"Classée nº 1 sur 4 à Stadtbredimus (TripAdvisor, 4,3/5).",
+    "hero.leg3":"Salle ronde sous charpente en étoile, face au Château de Stadtbredimus.",
+    "hero.reserve":"Réserver une table","hero.seeMenu":"Voir la carte",
+    "cap.exterior":"Élévation sud — la maison à tourelle, 12 Wäistrooss",
+    "rib.rating":"Appréciation","rib.ratingSub":"sur 5 · TripAdvisor",
+    "rib.rank":"Classement","rib.rankSub":"sur 4 · Stadtbredimus",
+    "rib.seats":"Couverts","rib.seatsSub":"+ 50 en terrasse",
+    "rib.since":"Maison depuis","rib.sinceSub":"Jean-Marie Hemmen",
+    "p2.plate":"PL·02 — Coupe de la tourelle",
+    "p2.eyebrow":"Le détail — la salle ronde",
+    "p2.title":"La table sous la charpente en étoile",
+    "p2.drop":"L",
+    "p2.body1":"e nom « an der Tourelle » — « à la petite tour » — se lit d'abord dans l'architecture : une tourelle coiffée d'un toit conique, une arcade de fenêtres cintrées, et à l'intérieur une salle ronde intime dont la charpente rayonne en étoile au-dessus des convives.",
+    "p2.body2":"Reprise en 2006 par Jean-Marie Hemmen, la maison marie tradition et modernité : un accueil chaleureux et sans hâte, des portions généreuses, et une vue sur la Moselle, le château et son parc. Le cadre est une destination en soi autant que la cuisine.",
+    "p2.coupeLabel":"Coupe · charpente rayonnante",
+    "p2.coupeNote":"Relevé schématique de la salle ronde — nombre de rayons indicatif.",
+    "cap.interior":"Salle ronde — charpente rayonnante",
+    "p3.plate":"PL·03 — Nomenclature de la carte",
+    "p3.eyebrow":"La carte — poissons de rivière & de mer",
+    "p3.title":"Une cuisine mosellane, au fil des saisons",
+    "p3.note":"Sélection d'après les avis et les fiches de l'établissement. Carte et prix susceptibles d'évoluer — prix à confirmer avec la maison.",
+    "sig.eyebrow":"La signature de la maison","sig.title":"Friture de la Moselle",
+    "sig.body":"Petits poissons de rivière entiers, frits jusqu'au croustillant — le plat qui dit tout de la maison et de son fleuve. Servi selon la pêche et la saison.",
+    "sig.price":"Prix à confirmer","tag.conf":"à confirmer",
+    "grp.entrees":"Entrées","grp.fish":"De la Moselle & de la mer","grp.meat":"Viandes","grp.cellar":"La Cave",
+    "it.e01":"Duo de foie gras en entrée.",
+    "it.e02":"Crevettes grises, avocat, roquette et tomate.",
+    "it.f01":"Petits poissons de rivière frits — la signature.",
+    "it.f02":"Sole poêlée au beurre, façon meunière.",
+    "it.f03":"Gambas poêlées à l'ail.",
+    "it.f04":"Selon l'arrivage et la saison.",
+    "it.v01":"Faux-filet grillé, garniture et sauce.",
+    "it.v02":"Spécialités luxembourgeoises de saison.",
+    "it.c01":"Belle sélection de blancs de la région.",
+    "it.c02":"Crémants de la Moselle luxembourgeoise.",
+    "p4.plate":"PL·04 — Planche des mets","p4.eyebrow":"La table & la cave",
+    "p4.title":"Générosité dans l'assiette, la Moselle dans le verre",
+    "p4.body":"Des assiettes soignées et généreuses, un dressage précis, et une cave qui fait la part belle aux blancs et crémants de la Moselle luxembourgeoise — à deux pas des coteaux qui les font naître.",
+    "p4.tag1":"Blancs de Moselle","p4.tag2":"Crémant","p4.tag3":"Terrasse en saison",
+    "film.1":"Rouget & risotto","film.1s":"poissons de saison",
+    "film.2":"Entrecôte grillée","film.2s":"viandes",
+    "film.3":"Assiette du moment","film.3s":"selon la saison",
+    "p5.plate":"PL·05 — Plan de situation & accès","p5.eyebrow":"L'accès",
+    "p5.title":"12, Wäistrooss — sur la route du Vin",
+    "hours.title":"Horaires d'ouverture",
+    "d.thusun":"Jeudi – Dimanche","d.mon":"Lundi","d.tuewed":"Mardi & Mercredi","d.closed":"Fermé",
+    "c.tel":"Téléphone","c.email":"E-mail","c.addr":"Adresse","c.social":"Réseaux",
+    "pay.label":"Paiement :","pay.methods":"Visa · Mastercard · espèces",
+    "ft.estab":"Établissement",
+    "ft.blurb":"Cuisine luxembourgeoise & française au bord de la Moselle, entre vignes et château. 12, Wäistrooss, L-5450 Stadtbredimus, Luxembourg.",
+    "ft.coords":"Coordonnées","ft.index":"Index des planches",
+    "ft.i1":"Élévation","ft.i2":"La Tourelle","ft.i3":"La Carte","ft.i4":"La table","ft.i5":"Plan de situation",
+    "ft.demo":"Site de démonstration — informations et prix à confirmer avec l'établissement.",
+    "ft.rights":"© 2026 An der Tourelle · Stadtbredimus, Moselle (LU)"
+  },
+  de:{
+    "bar.meta":"Architektonische Aufnahme · Stadtbredimus · Mosel · L",
+    "nav.reserve":"Reservieren",
+    "hero.plate":"BL·01 — Südansicht",
+    "hero.sub":"„am Türmchen“, direkt an der Mosel",
+    "hero.tagline":"An der Mosel, zwischen Reben und Schloss — ein Haus mit Tradition, luxemburgische und französische Küche im Rhythmus der Jahreszeiten.",
+    "hero.legendTitle":"Legende",
+    "hero.leg1":"2006 von Jean-Marie Hemmen übernommen — Tradition und Moderne.",
+    "hero.leg2":"Nr. 1 von 4 in Stadtbredimus (TripAdvisor, 4,3/5).",
+    "hero.leg3":"Runder Saal unter sternförmigem Dachstuhl, gegenüber dem Schloss Stadtbredimus.",
+    "hero.reserve":"Tisch reservieren","hero.seeMenu":"Zur Karte",
+    "cap.exterior":"Südansicht — das Haus mit Türmchen, 12 Wäistrooss",
+    "rib.rating":"Bewertung","rib.ratingSub":"von 5 · TripAdvisor",
+    "rib.rank":"Platzierung","rib.rankSub":"von 4 · Stadtbredimus",
+    "rib.seats":"Gedecke","rib.seatsSub":"+ 50 auf der Terrasse",
+    "rib.since":"Haus seit","rib.sinceSub":"Jean-Marie Hemmen",
+    "p2.plate":"BL·02 — Schnitt durch das Türmchen",
+    "p2.eyebrow":"Das Detail — der runde Saal",
+    "p2.title":"Der Tisch unter dem sternförmigen Dachstuhl",
+    "p2.drop":"D",
+    "p2.body1":"er Name „an der Tourelle“ — „am Türmchen“ — zeigt sich zuerst in der Architektur: ein Türmchen mit kegelförmigem Dach, eine Arkade aus Rundbogenfenstern und innen ein intimer runder Saal, dessen Dachstuhl sternförmig über den Gästen strahlt.",
+    "p2.body2":"2006 von Jean-Marie Hemmen übernommen, verbindet das Haus Tradition und Moderne: ein herzlicher, unaufgeregter Empfang, großzügige Portionen und ein Blick auf die Mosel, das Schloss und seinen Park. Der Rahmen ist ebenso ein Ziel wie die Küche.",
+    "p2.coupeLabel":"Schnitt · sternförmiger Dachstuhl",
+    "p2.coupeNote":"Schematische Aufnahme des runden Saals — Zahl der Streben symbolisch.",
+    "cap.interior":"Runder Saal — sternförmiger Dachstuhl",
+    "p3.plate":"BL·03 — Verzeichnis der Karte",
+    "p3.eyebrow":"Die Karte — Fluss- & Meeresfisch",
+    "p3.title":"Moselländische Küche, im Lauf der Jahreszeiten",
+    "p3.note":"Auswahl nach Bewertungen und Angaben des Hauses. Karte und Preise können sich ändern — Preise beim Haus zu bestätigen.",
+    "sig.eyebrow":"Die Spezialität des Hauses","sig.title":"Friture de la Moselle",
+    "sig.body":"Kleine ganze Flussfische, knusprig frittiert — das Gericht, das alles über das Haus und seinen Fluss sagt. Je nach Fang und Saison.",
+    "sig.price":"Preis zu bestätigen","tag.conf":"zu bestätigen",
+    "grp.entrees":"Vorspeisen","grp.fish":"Aus Mosel & Meer","grp.meat":"Fleisch","grp.cellar":"Der Weinkeller",
+    "it.e01":"Duo von Gänseleber als Vorspeise.",
+    "it.e02":"Nordseekrabben, Avocado, Rucola und Tomate.",
+    "it.f01":"Kleine frittierte Flussfische — die Spezialität.",
+    "it.f02":"In Butter gebratene Seezunge, Art Müllerin.",
+    "it.f03":"In Knoblauch gebratene Gambas.",
+    "it.f04":"Je nach Anlieferung und Saison.",
+    "it.v01":"Gegrilltes Roastbeef mit Beilage und Sauce.",
+    "it.v02":"Luxemburgische Spezialitäten der Saison.",
+    "it.c01":"Feine Auswahl regionaler Weißweine.",
+    "it.c02":"Crémant von der Luxemburger Mosel.",
+    "p4.plate":"BL·04 — Tafel der Gerichte","p4.eyebrow":"Tisch & Keller",
+    "p4.title":"Großzügig auf dem Teller, die Mosel im Glas",
+    "p4.body":"Sorgfältige, großzügige Teller, präzises Anrichten und ein Keller, der Weißweinen und Crémants der Luxemburger Mosel viel Raum gibt — nur wenige Schritte von den Hängen entfernt, an denen sie wachsen.",
+    "p4.tag1":"Moselweißweine","p4.tag2":"Crémant","p4.tag3":"Terrasse in der Saison",
+    "film.1":"Rotbarbe & Risotto","film.1s":"Fisch der Saison",
+    "film.2":"Gegrilltes Roastbeef","film.2s":"Fleisch",
+    "film.3":"Teller des Tages","film.3s":"je nach Saison",
+    "p5.plate":"BL·05 — Lageplan & Anfahrt","p5.eyebrow":"Die Anfahrt",
+    "p5.title":"12, Wäistrooss — an der Weinstraße",
+    "hours.title":"Öffnungszeiten",
+    "d.thusun":"Donnerstag – Sonntag","d.mon":"Montag","d.tuewed":"Dienstag & Mittwoch","d.closed":"Geschlossen",
+    "c.tel":"Telefon","c.email":"E-Mail","c.addr":"Adresse","c.social":"Soziale Netzwerke",
+    "pay.label":"Zahlung:","pay.methods":"Visa · Mastercard · Bargeld",
+    "ft.estab":"Betrieb",
+    "ft.blurb":"Luxemburgische & französische Küche an der Mosel, zwischen Reben und Schloss. 12, Wäistrooss, L-5450 Stadtbredimus, Luxemburg.",
+    "ft.coords":"Kontakt","ft.index":"Blattverzeichnis",
+    "ft.i1":"Ansicht","ft.i2":"Das Türmchen","ft.i3":"Die Karte","ft.i4":"Der Tisch","ft.i5":"Lageplan",
+    "ft.demo":"Demo-Website — Angaben und Preise mit dem Haus zu bestätigen.",
+    "ft.rights":"© 2026 An der Tourelle · Stadtbredimus, Mosel (LU)"
+  },
+  en:{
+    "bar.meta":"Architectural survey · Stadtbredimus · Moselle · L",
+    "nav.reserve":"Book",
+    "hero.plate":"PL·01 — South Elevation",
+    "hero.sub":"“at the little tower”, on the banks of the Moselle",
+    "hero.tagline":"On the Moselle, between the vines and the castle — a house of tradition, Luxembourgish and French cooking through the seasons.",
+    "hero.legendTitle":"Legend",
+    "hero.leg1":"Taken over by Jean-Marie Hemmen in 2006 — tradition and modernity.",
+    "hero.leg2":"Ranked no. 1 of 4 in Stadtbredimus (TripAdvisor, 4.3/5).",
+    "hero.leg3":"Round dining room under a star-shaped timber frame, facing Stadtbredimus castle.",
+    "hero.reserve":"Book a table","hero.seeMenu":"See the menu",
+    "cap.exterior":"South elevation — the tower house, 12 Wäistrooss",
+    "rib.rating":"Rating","rib.ratingSub":"out of 5 · TripAdvisor",
+    "rib.rank":"Ranking","rib.rankSub":"of 4 · Stadtbredimus",
+    "rib.seats":"Covers","rib.seatsSub":"+ 50 on the terrace",
+    "rib.since":"House since","rib.sinceSub":"Jean-Marie Hemmen",
+    "p2.plate":"PL·02 — Section through the turret",
+    "p2.eyebrow":"The detail — the round room",
+    "p2.title":"The table beneath the star-shaped frame",
+    "p2.drop":"T",
+    "p2.body1":"he name “an der Tourelle” — “at the little tower” — reads first in the architecture: a turret capped with a conical roof, an arcade of arched windows, and inside an intimate round dining room whose timber frame radiates like a star above the guests.",
+    "p2.body2":"Taken over in 2006 by Jean-Marie Hemmen, the house blends tradition and modernity: a warm, unhurried welcome, generous portions, and a view over the Moselle, the castle and its park. The setting is a destination in itself as much as the food.",
+    "p2.coupeLabel":"Section · radiating frame",
+    "p2.coupeNote":"Schematic survey of the round room — number of spokes indicative.",
+    "cap.interior":"Round room — radiating timber frame",
+    "p3.plate":"PL·03 — Menu schedule",
+    "p3.eyebrow":"The menu — river & sea fish",
+    "p3.title":"Moselle cooking, through the seasons",
+    "p3.note":"Selection drawn from reviews and the venue's listings. Menu and prices may change — prices to be confirmed with the house.",
+    "sig.eyebrow":"The house signature","sig.title":"Friture de la Moselle",
+    "sig.body":"Small whole river fish, fried until crisp — the dish that says everything about the house and its river. Served according to the catch and the season.",
+    "sig.price":"Price to confirm","tag.conf":"to confirm",
+    "grp.entrees":"Starters","grp.fish":"From the Moselle & the sea","grp.meat":"Meats","grp.cellar":"The Cellar",
+    "it.e01":"Duo of foie gras to start.",
+    "it.e02":"Brown shrimps, avocado, rocket and tomato.",
+    "it.f01":"Small fried river fish — the signature.",
+    "it.f02":"Pan-fried sole, meunière style.",
+    "it.f03":"Garlic prawns, pan-fried.",
+    "it.f04":"According to the day's catch and season.",
+    "it.v01":"Grilled sirloin with garnish and sauce.",
+    "it.v02":"Seasonal Luxembourgish specialities.",
+    "it.c01":"A fine selection of regional white wines.",
+    "it.c02":"Crémants from the Luxembourg Moselle.",
+    "p4.plate":"PL·04 — Plate of dishes","p4.eyebrow":"The table & the cellar",
+    "p4.title":"Generous on the plate, the Moselle in the glass",
+    "p4.body":"Carefully composed, generous plates, precise presentation, and a cellar that gives pride of place to the whites and crémants of the Luxembourg Moselle — steps from the slopes that grow them.",
+    "p4.tag1":"Moselle whites","p4.tag2":"Crémant","p4.tag3":"Terrace in season",
+    "film.1":"Red mullet & risotto","film.1s":"seasonal fish",
+    "film.2":"Grilled sirloin","film.2s":"meats",
+    "film.3":"Plate of the moment","film.3s":"by season",
+    "p5.plate":"PL·05 — Site plan & access","p5.eyebrow":"Getting here",
+    "p5.title":"12, Wäistrooss — on the Wine Route",
+    "hours.title":"Opening hours",
+    "d.thusun":"Thursday – Sunday","d.mon":"Monday","d.tuewed":"Tuesday & Wednesday","d.closed":"Closed",
+    "c.tel":"Telephone","c.email":"E-mail","c.addr":"Address","c.social":"Social",
+    "pay.label":"Payment:","pay.methods":"Visa · Mastercard · cash",
+    "ft.estab":"Establishment",
+    "ft.blurb":"Luxembourgish & French cooking on the Moselle, between the vines and the castle. 12, Wäistrooss, L-5450 Stadtbredimus, Luxembourg.",
+    "ft.coords":"Contact","ft.index":"Plate index",
+    "ft.i1":"Elevation","ft.i2":"The Turret","ft.i3":"The Menu","ft.i4":"The table","ft.i5":"Site plan",
+    "ft.demo":"Demonstration site — details and prices to be confirmed with the establishment.",
+    "ft.rights":"© 2026 An der Tourelle · Stadtbredimus, Moselle (LU)"
+  }
+};
+const titles={fr:"An der Tourelle — Restaurant · Stadtbredimus, Moselle",
+  de:"An der Tourelle — Restaurant · Stadtbredimus, Mosel",
+  en:"An der Tourelle — Restaurant · Stadtbredimus, Moselle"};
+
+function setLang(lang){
+  const dict=I18N[lang]||I18N.fr;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k=el.getAttribute("data-i18n");
+    if(dict[k]!==undefined) el.textContent=dict[k];
+  });
+  document.documentElement.lang=lang;
+  document.title=titles[lang]||titles.fr;
+  document.querySelectorAll(".langs button").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
+  try{localStorage.setItem("adt_lang",lang);}catch(e){}
+}
+document.querySelectorAll(".langs button").forEach(b=>{
+  b.addEventListener("click",()=>setLang(b.dataset.lang));
+});
+(function(){
+  let saved="fr";
+  try{saved=localStorage.getItem("adt_lang")||"fr";}catch(e){}
+  if(saved!=="fr") setLang(saved);
+})();
+</script>
+</body>
+</html>

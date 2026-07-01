@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Brasserie Al Schwemm · Diekirch — la brasserie au bord de la Sûre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Archivo:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f5edd8;
+    --cream-2:#efe4c8;
+    --paper:#faf5e6;
+    --river:#1f463b;      /* deep river green */
+    --river-2:#2f6350;    /* mid green */
+    --water:#3688b0;      /* sûre blue */
+    --sky:#bfe1ec;        /* sky / shallow water */
+    --wood:#a9713e;
+    --wood-dk:#7c5028;
+    --red:#c22f2b;        /* diekirch red lion */
+    --ink:#20302b;
+    --ink-soft:#4a5b52;
+    --line:rgba(31,70,59,.16);
+    --shadow:0 22px 50px -28px rgba(20,45,38,.55);
+    --disp:"Fraunces",Georgia,serif;
+    --sans:"Archivo",system-ui,sans-serif;
+    --hand:"Caveat",cursive;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1360px;margin:0 auto;padding:0 46px}
+  section{position:relative}
+
+  /* ---------- utility top strip ---------- */
+  .util{
+    background:var(--river);
+    color:var(--cream);
+    font-size:.74rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    position:sticky;top:0;z-index:60;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .util .wrap{display:flex;align-items:center;justify-content:space-between;height:44px;gap:20px}
+  .util-left{display:flex;align-items:center;gap:10px;opacity:.85;font-weight:500}
+  .util-left .lion{color:var(--red);font-size:1rem}
+  .util-nav{display:flex;gap:26px}
+  .util-nav a{opacity:.8;transition:opacity .2s;font-weight:600}
+  .util-nav a:hover{opacity:1;color:#fff}
+  .lang{display:flex;gap:2px;background:rgba(255,255,255,.09);border-radius:40px;padding:3px}
+  .lang button{
+    font:inherit;font-size:.68rem;letter-spacing:.12em;font-weight:700;
+    background:none;border:0;color:var(--cream);opacity:.6;cursor:pointer;
+    padding:4px 11px;border-radius:40px;transition:.2s;
+  }
+  .lang button.on{background:var(--red);opacity:1;color:#fff}
+  @media(max-width:860px){.util-nav{display:none}}
+
+  /* ---------- MASTHEAD ---------- */
+  .mast{
+    background:
+      radial-gradient(120% 90% at 88% 6%, rgba(191,225,236,.55), transparent 55%),
+      linear-gradient(180deg,var(--paper),var(--cream));
+    padding:0 0 20px;
+    border-bottom:1px solid var(--line);
+  }
+  .mast-grid{
+    display:grid;
+    grid-template-columns:96px 1.05fr .95fr;
+    gap:0;
+    align-items:stretch;
+    min-height:560px;
+  }
+  /* depth gauge rail */
+  .gauge{
+    border-right:2px solid var(--line);
+    position:relative;
+    padding:34px 0 34px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    align-items:center;
+  }
+  .gauge .plabel{
+    writing-mode:vertical-rl;transform:rotate(180deg);
+    font-size:.68rem;letter-spacing:.42em;text-transform:uppercase;
+    color:var(--water);font-weight:700;
+  }
+  .gauge .ticks{flex:1;width:100%;position:relative;margin:20px 0}
+  .gauge .tick{
+    position:absolute;left:0;right:14px;height:1px;background:var(--line);
+    display:flex;justify-content:flex-end;align-items:center;
+  }
+  .gauge .tick span{
+    font-family:var(--disp);font-size:.7rem;color:var(--ink-soft);
+    background:var(--paper);padding:0 4px;transform:translateY(-50%);
+    position:absolute;right:16px;
+  }
+  .gauge .tick.big{background:var(--water);height:2px}
+  .gauge .lion-badge{
+    width:46px;height:46px;border-radius:50%;
+    background:var(--red);color:#fff;display:grid;place-items:center;
+    font-size:1.4rem;box-shadow:0 8px 18px -8px var(--red);
+  }
+
+  .mast-main{
+    padding:44px 44px 40px 46px;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .eyebrow{
+    font-size:.78rem;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--water);font-weight:700;margin-bottom:18px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:"";width:38px;height:2px;background:var(--red)}
+  .wordmark{
+    font-family:var(--disp);font-weight:900;
+    font-size:clamp(3.4rem,7vw,6.6rem);line-height:.86;
+    letter-spacing:-.02em;color:var(--river);
+    font-optical-sizing:auto;
+  }
+  .wordmark em{
+    display:block;font-style:italic;font-weight:500;
+    font-size:.3em;letter-spacing:.02em;color:var(--wood-dk);
+    margin-top:.5em;
+  }
+  .tag{
+    font-family:var(--disp);font-style:italic;font-weight:500;
+    font-size:clamp(1.15rem,1.9vw,1.6rem);color:var(--ink);
+    max-width:30ch;margin:22px 0 10px;line-height:1.35;
+  }
+  .lede{color:var(--ink-soft);max-width:46ch;font-size:1.02rem}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .btn{
+    font-family:var(--sans);font-weight:700;font-size:.86rem;
+    letter-spacing:.08em;text-transform:uppercase;
+    padding:15px 26px;border-radius:40px;cursor:pointer;border:2px solid transparent;
+    transition:transform .18s,box-shadow .18s,background .18s;display:inline-flex;gap:9px;align-items:center;
+  }
+  .btn-primary{background:var(--red);color:#fff;box-shadow:0 14px 26px -14px var(--red)}
+  .btn-primary:hover{transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--river);border-color:var(--river)}
+  .btn-ghost:hover{background:var(--river);color:var(--cream)}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .chip{
+    font-size:.76rem;letter-spacing:.04em;color:var(--river-2);
+    background:rgba(47,99,80,.09);border:1px solid var(--line);
+    padding:7px 13px;border-radius:8px;display:inline-flex;gap:7px;align-items:center;font-weight:600;
+  }
+  .chip b{color:var(--red)}
+
+  /* hero cabana photo */
+  .mast-photo{position:relative;padding:44px 46px 44px 20px;display:flex;align-items:center}
+  .cabana{
+    position:relative;width:100%;height:480px;border-radius:14px 14px 90px 14px;
+    overflow:hidden;box-shadow:var(--shadow);
+    border:7px solid var(--paper);outline:2px solid var(--line);
+  }
+  .cabana img{width:100%;height:100%;object-fit:cover}
+  .photo-tag{
+    position:absolute;left:-10px;bottom:34px;z-index:3;
+    background:var(--river);color:var(--cream);
+    font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+    padding:9px 16px;border-radius:6px;box-shadow:var(--shadow);
+  }
+  .parasol{
+    position:absolute;top:-14px;right:34px;z-index:4;
+    font-family:var(--hand);font-size:1.7rem;color:var(--red);
+    background:var(--paper);border:2px solid var(--line);border-radius:50px;
+    padding:4px 18px;transform:rotate(-4deg);box-shadow:var(--shadow);
+  }
+  @media(max-width:960px){
+    .mast-grid{grid-template-columns:1fr}
+    .gauge{display:none}
+    .mast-main{padding:38px 30px 8px}
+    .mast-photo{padding:8px 30px 34px}
+    .cabana{height:360px}
+  }
+
+  /* ---------- wave divider ---------- */
+  .wave{display:block;width:100%;height:44px}
+  .wave path{fill:currentColor}
+
+  /* ---------- HERITAGE ---------- */
+  .heritage{background:var(--river);color:var(--cream);color:currentColor}
+  .heritage{color:var(--cream)}
+  .heritage .wrap{padding-top:34px;padding-bottom:64px}
+  .h-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+  .h-kicker{color:var(--sky);font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;font-weight:700;margin-bottom:16px}
+  .h-title{font-family:var(--disp);font-weight:900;font-size:clamp(2rem,3.6vw,3.3rem);line-height:1.02;color:#fff;letter-spacing:-.01em}
+  .h-title em{font-style:italic;font-weight:500;color:var(--sky)}
+  .h-body{margin-top:22px;color:rgba(245,237,216,.82);max-width:52ch;font-size:1.05rem}
+  .h-body p+p{margin-top:14px}
+  .h-note{
+    margin-top:26px;font-family:var(--hand);font-size:1.35rem;color:var(--sky);
+    display:flex;align-items:center;gap:12px;
+  }
+  .h-note::before{content:"";width:30px;height:2px;background:var(--red)}
+  /* postcard */
+  .postcard{
+    background:var(--paper);padding:14px 14px 20px;border-radius:6px;
+    box-shadow:var(--shadow);transform:rotate(2.2deg);position:relative;color:var(--ink);
+  }
+  .postcard .pc-photo{height:340px;border-radius:3px;overflow:hidden}
+  .postcard .pc-photo img{width:100%;height:100%;object-fit:cover}
+  .postcard .stamp{
+    position:absolute;top:-14px;right:18px;width:58px;height:66px;background:var(--red);color:#fff;
+    display:grid;place-items:center;border:3px dashed rgba(255,255,255,.6);
+    font-size:1.5rem;border-radius:4px;transform:rotate(6deg);box-shadow:var(--shadow);
+  }
+  .postcard .cap{font-family:var(--hand);font-size:1.5rem;color:var(--wood-dk);text-align:center;margin-top:10px}
+  @media(max-width:860px){.h-grid{grid-template-columns:1fr;gap:40px}.postcard{transform:none;margin:0 auto;max-width:440px}}
+
+  /* ---------- LA CARTE / lanes ---------- */
+  .carte{background:linear-gradient(180deg,var(--cream),var(--cream-2))}
+  .carte .wrap{padding-top:36px;padding-bottom:70px}
+  .carte-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:38px}
+  .carte-head h2{font-family:var(--disp);font-weight:900;font-size:clamp(2.1rem,4vw,3.4rem);color:var(--river);line-height:.95;letter-spacing:-.01em}
+  .carte-head h2 em{display:block;font-style:italic;font-weight:500;font-size:.4em;color:var(--water);letter-spacing:.02em;margin-top:.4em}
+  .carte-head .aside{max-width:34ch;color:var(--ink-soft);font-size:.95rem;text-align:right}
+  .confirm-pill{display:inline-block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--wood-dk);background:rgba(169,113,62,.14);border:1px dashed var(--wood);padding:5px 11px;border-radius:20px;margin-top:10px}
+
+  .lane{
+    display:grid;grid-template-columns:180px 1fr;gap:0;align-items:stretch;
+    border-top:2px solid var(--line);
+  }
+  .lane:last-child{border-bottom:2px solid var(--line)}
+  .lane-marker{
+    position:relative;padding:26px 22px 26px 8px;display:flex;flex-direction:column;justify-content:center;gap:8px;
+    border-right:2px dashed var(--line);
+  }
+  .lane-no{
+    font-family:var(--disp);font-weight:900;font-size:2.4rem;color:var(--red);line-height:1;
+  }
+  .lane-cat{font-family:var(--disp);font-weight:600;font-size:1.28rem;color:var(--river);line-height:1.05}
+  .lane-sub{font-size:.78rem;color:var(--ink-soft);letter-spacing:.02em}
+  .lane-dishes{
+    padding:24px 8px 24px 30px;
+    display:grid;grid-template-columns:1fr 1fr;gap:6px 42px;
+  }
+  .dish{display:flex;gap:12px;align-items:baseline;padding:9px 0;border-bottom:1px dotted var(--line)}
+  .dish:nth-last-child(-n+2){border-bottom:0}
+  .dish .d-main{flex:1;min-width:0}
+  .dish .d-name{font-weight:600;color:var(--ink);font-size:1rem}
+  .dish .d-desc{font-size:.82rem;color:var(--ink-soft);line-height:1.35}
+  .dish .d-dots{flex:1}
+  .dish .d-price{font-family:var(--disp);font-weight:600;color:var(--river-2);white-space:nowrap;font-size:1rem}
+  .dish .d-price::before{content:"~ ";color:var(--wood);font-family:var(--sans);font-size:.8em}
+  /* lane with photo */
+  .lane.has-photo .lane-dishes{grid-template-columns:1fr 1fr 250px}
+  .lane-photo{border-radius:10px;overflow:hidden;min-height:170px;box-shadow:var(--shadow);align-self:center;grid-row:span 4}
+  .lane-photo img{width:100%;height:100%;object-fit:cover;min-height:180px}
+  @media(max-width:960px){
+    .lane{grid-template-columns:130px 1fr}
+    .lane-dishes,.lane.has-photo .lane-dishes{grid-template-columns:1fr;gap:0}
+    .lane-photo{display:none}
+    .dish:nth-last-child(-n+2){border-bottom:1px dotted var(--line)}
+    .dish:last-child{border-bottom:0}
+  }
+  @media(max-width:560px){.lane{grid-template-columns:1fr}.lane-marker{flex-direction:row;align-items:center;border-right:0;border-bottom:2px dashed var(--line);padding:16px 4px}.lane-no{font-size:1.8rem}}
+
+  /* ---------- AU BORD DE L'EAU ---------- */
+  .river-life{background:var(--sky);color:var(--ink)}
+  .river-life .wrap{padding-top:34px;padding-bottom:62px}
+  .rl-head{text-align:center;max-width:60ch;margin:0 auto 40px}
+  .rl-head h2{font-family:var(--disp);font-weight:900;font-size:clamp(1.9rem,3.4vw,3rem);color:var(--river);line-height:1}
+  .rl-head h2 em{font-style:italic;font-weight:500;color:var(--water)}
+  .rl-head p{margin-top:14px;color:var(--river-2)}
+  .rl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .rl-card{
+    background:var(--paper);border-radius:14px;padding:28px 24px;box-shadow:var(--shadow);
+    border:1px solid rgba(255,255,255,.6);display:flex;flex-direction:column;gap:12px;
+    transition:transform .2s;
+  }
+  .rl-card:hover{transform:translateY(-5px)}
+  .rl-ic{width:52px;height:52px;border-radius:12px;background:var(--river);display:grid;place-items:center;color:var(--sky)}
+  .rl-ic svg{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:1.7}
+  .rl-card h3{font-family:var(--disp);font-weight:600;font-size:1.22rem;color:var(--river)}
+  .rl-card p{font-size:.9rem;color:var(--ink-soft)}
+  @media(max-width:900px){.rl-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.rl-grid{grid-template-columns:1fr}}
+
+  /* ---------- VISITE ---------- */
+  .visit{background:var(--river)}
+  .visit .wrap{padding-top:34px;padding-bottom:64px}
+  .v-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:0;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+  .v-board{background:var(--paper);padding:44px 42px;color:var(--ink)}
+  .v-board .k{font-size:.76rem;letter-spacing:.3em;text-transform:uppercase;color:var(--water);font-weight:700}
+  .v-board h2{font-family:var(--disp);font-weight:900;font-size:clamp(1.9rem,3vw,2.7rem);color:var(--river);line-height:1;margin:12px 0 8px}
+  .v-board .sub{font-family:var(--disp);font-style:italic;color:var(--wood-dk);font-size:1.15rem;margin-bottom:26px}
+  .v-row{display:flex;gap:14px;padding:16px 0;border-top:1px dotted var(--line)}
+  .v-row .vic{width:34px;flex:none;color:var(--red);display:grid;place-items:start center}
+  .v-row .vic svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8}
+  .v-row .vt{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;margin-bottom:3px}
+  .v-row .vv{font-size:1.02rem;color:var(--ink);font-weight:500}
+  .v-row .vv a{border-bottom:1px solid var(--red)}
+  .v-row .vv small{display:block;color:var(--wood-dk);font-size:.8rem;font-weight:500;margin-top:2px}
+  .hours-list{list-style:none;font-size:.98rem}
+  .hours-list li{display:flex;justify-content:space-between;padding:2px 0}
+  .hours-list li b{color:var(--river-2);font-weight:600}
+  .v-map{min-height:460px;background:var(--river-2)}
+  .v-map iframe{width:100%;height:100%;min-height:460px;border:0;filter:saturate(1.05)}
+  @media(max-width:860px){.v-grid{grid-template-columns:1fr}.v-map{min-height:320px}}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#16332a;color:var(--cream)}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding:52px 0 28px}
+  .foot-brand .fw{font-family:var(--disp);font-weight:900;font-size:2rem;color:#fff;line-height:.9}
+  .foot-brand .fw em{display:block;font-style:italic;font-weight:500;font-size:.42em;color:var(--sky);letter-spacing:.03em;margin-top:.5em}
+  .foot-brand p{margin-top:16px;color:rgba(245,237,216,.6);max-width:34ch;font-size:.92rem}
+  .foot h4{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sky);margin-bottom:14px}
+  .foot a,.foot li{color:rgba(245,237,216,.8);font-size:.94rem;line-height:1.9;list-style:none}
+  .foot a:hover{color:#fff}
+  .foot-lang{display:flex;gap:8px;margin-top:8px}
+  .foot-lang button{font:inherit;font-size:.72rem;font-weight:700;letter-spacing:.1em;background:rgba(255,255,255,.08);border:0;color:var(--cream);padding:6px 12px;border-radius:6px;cursor:pointer;opacity:.7}
+  .foot-lang button.on{background:var(--red);opacity:1}
+  .legal{border-top:1px solid rgba(255,255,255,.12);padding:18px 0 40px;font-size:.78rem;color:rgba(245,237,216,.5);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .legal .demo{color:var(--sky);font-family:var(--hand);font-size:1.15rem}
+  @media(max-width:820px){.foot{grid-template-columns:1fr;gap:28px}}
+</style>
+</head>
+<body>
+
+<!-- ================= UTILITY STRIP ================= -->
+<div class="util">
+  <div class="wrap">
+    <div class="util-left"><span class="lion">&#9650;</span><span data-i18n="util.est">Sur l'ancienne piscine de Diekirch · au bord de la Sûre</span></div>
+    <nav class="util-nav">
+      <a href="#carte" data-i18n="nav.menu">La carte</a>
+      <a href="#heritage" data-i18n="nav.story">L'histoire</a>
+      <a href="#river" data-i18n="nav.terrace">Au bord de l'eau</a>
+      <a href="#visite" data-i18n="nav.visit">Nous trouver</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Langue">
+      <button data-lang="fr" class="on">FR</button>
+      <button data-lang="de">DE</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= MASTHEAD ================= -->
+<header class="mast">
+  <div class="wrap" style="padding:0">
+    <div class="mast-grid">
+
+      <!-- depth gauge rail -->
+      <div class="gauge" aria-hidden="true">
+        <div class="plabel">Profondeur · Déift</div>
+        <div class="ticks">
+          <div class="tick big" style="top:8%"><span>0,00</span></div>
+          <div class="tick" style="top:30%"><span>0,50</span></div>
+          <div class="tick" style="top:52%"><span>1,00</span></div>
+          <div class="tick" style="top:74%"><span>1,50</span></div>
+          <div class="tick big" style="top:94%"><span>2,00</span></div>
+        </div>
+        <div class="lion-badge" title="Diekirch">&#9650;</div>
+      </div>
+
+      <!-- main type block -->
+      <div class="mast-main">
+        <div class="eyebrow" data-i18n="hero.eyebrow">Brasserie · Café · Diekirch, Luxembourg</div>
+        <h1 class="wordmark">Al&nbsp;Schwemm<em data-i18n="hero.sub">la brasserie au bord de l'eau</em></h1>
+        <p class="tag" data-i18n="hero.tag">« Au bord de la Sûre, là où Diekirch se baigne depuis toujours. »</p>
+        <p class="lede" data-i18n="hero.lede">Tartes flambées, grandes salades, grillades et pizzas, servies sous les arbres, face à la rivière et à la vallée verte — là où se trouvait l'ancienne piscine en plein air de la ville.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#carte" data-i18n="hero.cta1">Découvrir la carte</a>
+          <a class="btn btn-ghost" href="tel:+35227766465" data-i18n="hero.cta2">Réserver &middot; 27 76 64 65</a>
+        </div>
+        <div class="chips">
+          <span class="chip"><b>&#9650;</b><span data-i18n="hero.chip1">Bière Diekirch pression</span></span>
+          <span class="chip">&#9788; <span data-i18n="hero.chip2">Terrasse ombragée &amp; pétanque</span></span>
+          <span class="chip">&#9201; <span data-i18n="hero.chip3">7j/7 · 10h–23h (à confirmer)</span></span>
+        </div>
+      </div>
+
+      <!-- cabana hero photo -->
+      <div class="mast-photo">
+        <div class="parasol" data-i18n="hero.parasol">côté rivière ~</div>
+        <figure class="cabana">
+          <img src="assets/hero.jpg" alt="La terrasse ombragée de la Brasserie Al Schwemm au bord de la Sûre, parasols crème, terrain de pétanque et bancs sur la pelouse">
+        </figure>
+        <figcaption class="photo-tag" data-i18n="hero.phototag">La terrasse, sous les tilleuls</figcaption>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<div class="heritage" style="color:var(--water)"><svg class="wave" viewBox="0 0 1440 44" preserveAspectRatio="none" style="color:var(--river);background:var(--cream)"><path d="M0,22 C160,44 320,0 480,18 C640,36 800,6 960,20 C1120,34 1280,8 1440,24 L1440,44 L0,44 Z"/></svg></div>
+
+<!-- ================= HERITAGE ================= -->
+<section class="heritage" id="heritage">
+  <div class="wrap">
+    <div class="h-grid">
+      <div>
+        <div class="h-kicker" data-i18n="her.kicker">L'histoire du lieu</div>
+        <h2 class="h-title" data-i18n="her.title">Là où Diekirch <em>se baignait</em>.</h2>
+        <div class="h-body">
+          <p data-i18n="her.p1">« Al Schwemm » signifie en luxembourgeois « l'ancienne piscine ». La brasserie occupe le site de l'ancien bassin de baignade en plein air de Diekirch, sur les rives de la Sûre — un lieu que des générations ont connu maillot sur le dos, serviette au bras.</p>
+          <p data-i18n="her.p2">Aujourd'hui on y vient toujours pour l'eau, mais autrement : une bière fraîche à l'ombre des grands arbres, une salade généreuse face à la vallée, une partie de pétanque pendant que les enfants courent sur la pelouse.</p>
+        </div>
+        <div class="h-note" data-i18n="her.note">De vieilles photos du bassin sont encore accrochées à l'intérieur.</div>
+      </div>
+      <div>
+        <figure class="postcard">
+          <span class="stamp">&#9650;</span>
+          <div class="pc-photo">
+            <img src="assets/terrace-beer.jpg" alt="Une bière Diekirch pression sur une table de la terrasse, parasols crème et vallée verdoyante en arrière-plan">
+          </div>
+          <figcaption class="cap" data-i18n="her.cap">Une Diekirch, face à la Sûre</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="background:var(--river)"><svg class="wave" viewBox="0 0 1440 44" preserveAspectRatio="none" style="color:var(--cream);background:var(--river)"><path d="M0,22 C160,44 320,0 480,18 C640,36 800,6 960,20 C1120,34 1280,8 1440,24 L1440,44 L0,44 Z"/></svg></div>
+
+<!-- ================= LA CARTE (swim lanes) ================= -->
+<section class="carte" id="carte">
+  <div class="wrap">
+    <div class="carte-head">
+      <h2 data-i18n="carte.title">La carte<em>servie au bord de l'eau</em></h2>
+      <div class="aside">
+        <span data-i18n="carte.aside">Cuisine de brasserie française &amp; luxembourgeoise, avec un accent italien. Chaque « ligne » vous emmène dans un bassin de la carte.</span>
+        <div class="confirm-pill" data-i18n="carte.confirm">Plats &amp; prix à confirmer avec l'établissement</div>
+      </div>
+    </div>
+
+    <!-- Lane 1 -->
+    <div class="lane">
+      <div class="lane-marker">
+        <div class="lane-no">01</div>
+        <div class="lane-cat" data-i18n="cat.tartes">Tartes flambées</div>
+        <div class="lane-sub" data-i18n="cat.tartes.sub">La spécialité de la maison</div>
+      </div>
+      <div class="lane-dishes">
+        <div class="dish"><div class="d-main"><div class="d-name">La Classique</div><div class="d-desc" data-i18n="d.classique">Crème, oignons, lardons</div></div><span class="d-price">9,50 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name">La Paysanne</div><div class="d-desc" data-i18n="d.paysanne">Champignons, lardons, gruyère</div></div><span class="d-price">11,80 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name">Aux deux poissons</div><div class="d-desc" data-i18n="d.deuxpoissons">Saumon fumé &amp; truite, crème citronnée</div></div><span class="d-price">14,20 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name">Chèvre &amp; miel</div><div class="d-desc" data-i18n="d.chevre">Fromage de chèvre, miel, noix</div></div><span class="d-price">12,80 €</span></div>
+      </div>
+    </div>
+
+    <!-- Lane 2 with photo -->
+    <div class="lane has-photo">
+      <div class="lane-marker">
+        <div class="lane-no">02</div>
+        <div class="lane-cat" data-i18n="cat.salades">Grandes salades</div>
+        <div class="lane-sub" data-i18n="cat.salades.sub">Généreuses, en terrasse</div>
+      </div>
+      <div class="lane-dishes">
+        <div class="dish"><div class="d-main"><div class="d-name">Feierstengszalot</div><div class="d-desc" data-i18n="d.feier">Classique luxembourgeois, bœuf &amp; œuf</div></div><span class="d-price">17,50 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name">Salade niçoise</div><div class="d-desc" data-i18n="d.nicoise">Thon, œuf, olives, anchois</div></div><span class="d-price">15,80 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name">Scampis tièdes &amp; safran</div><div class="d-desc" data-i18n="d.scampisalad">Scampis poêlés, mesclun, safran</div></div><span class="d-price">16,50 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name">Bœuf grillé &amp; prosciutto</div><div class="d-desc" data-i18n="d.boeufsalad">Bœuf grillé, jambon cru, pastèque</div></div><span class="d-price">18,20 €</span></div>
+        <figure class="lane-photo"><img src="assets/food-1-salads.jpg" alt="Deux grandes salades de brasserie sur la terrasse : bœuf grillé, prosciutto et pastèque"></figure>
+      </div>
+    </div>
+
+    <!-- Lane 3 -->
+    <div class="lane">
+      <div class="lane-marker">
+        <div class="lane-no">03</div>
+        <div class="lane-cat" data-i18n="cat.grillades">Grillades</div>
+        <div class="lane-sub" data-i18n="cat.grillades.sub">Au feu, sauces maison</div>
+      </div>
+      <div class="lane-dishes">
+        <div class="dish"><div class="d-main"><div class="d-name">Entrecôte au poivre vert</div><div class="d-desc" data-i18n="d.entrecote">Frites maison &amp; salade</div></div><span class="d-price">26,50 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name">Filet de bœuf au poivre vert</div><div class="d-desc" data-i18n="d.filet">Sauce crème au poivre vert</div></div><span class="d-price">26,80 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name">Steak de cheval provençale</div><div class="d-desc" data-i18n="d.cheval">Sauce provençale, garniture</div></div><span class="d-price">23,80 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name">Plat du jour</div><div class="d-desc" data-i18n="d.platdujour">Suggestion de midi, en semaine</div></div><span class="d-price">15,50 €</span></div>
+      </div>
+    </div>
+
+    <!-- Lane 4 -->
+    <div class="lane">
+      <div class="lane-marker">
+        <div class="lane-no">04</div>
+        <div class="lane-cat" data-i18n="cat.poissons">Poissons</div>
+        <div class="lane-sub" data-i18n="cat.poissons.sub">De la rivière à l'assiette</div>
+      </div>
+      <div class="lane-dishes">
+        <div class="dish"><div class="d-main"><div class="d-name">Filet de saumon à l'estragon</div><div class="d-desc" data-i18n="d.saumon">Sauce estragon, légumes du moment</div></div><span class="d-price">23,80 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name">Tournedos de lotte au safran</div><div class="d-desc" data-i18n="d.lotte">Lotte rôtie, sauce safranée</div></div><span class="d-price">25,80 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name">Scampis à l'indienne</div><div class="d-desc" data-i18n="d.scampi">Curry doux, riz basmati</div></div><span class="d-price">24,50 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name">Cuisses de grenouilles à l'ail</div><div class="d-desc" data-i18n="d.grenouilles">Beurre persillé &amp; ail</div></div><span class="d-price">14,00 €</span></div>
+      </div>
+    </div>
+
+    <!-- Lane 5 with photo -->
+    <div class="lane has-photo">
+      <div class="lane-marker">
+        <div class="lane-no">05</div>
+        <div class="lane-cat" data-i18n="cat.pizzas">Pizzas &amp; pâtes</div>
+        <div class="lane-sub" data-i18n="cat.pizzas.sub">Pizzas rectangulaires sur planche</div>
+      </div>
+      <div class="lane-dishes">
+        <div class="dish"><div class="d-main"><div class="d-name">Marguerita</div><div class="d-desc" data-i18n="d.margue">Tomate, mozzarella, basilic</div></div><span class="d-price">9,50 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name">Quatre fromages</div><div class="d-desc" data-i18n="d.4from">Mozzarella, gorgonzola, chèvre, gruyère</div></div><span class="d-price">12,80 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name">Pizza aux scampis</div><div class="d-desc" data-i18n="d.pizzascampi">Scampis, légumes grillés</div></div><span class="d-price">16,90 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name">Linguine carbonara</div><div class="d-desc" data-i18n="d.carbo">Crème, lardons, parmesan</div></div><span class="d-price">14,80 €</span></div>
+        <figure class="lane-photo"><img src="assets/food-2-tarte-flambee.jpg" alt="Pizza rectangulaire servie sur une planche en bois"></figure>
+      </div>
+    </div>
+
+    <!-- Lane 6 -->
+    <div class="lane">
+      <div class="lane-marker">
+        <div class="lane-no">06</div>
+        <div class="lane-cat" data-i18n="cat.enfants">Entrées &amp; enfants</div>
+        <div class="lane-sub" data-i18n="cat.enfants.sub">Pour commencer &amp; pour les petits</div>
+      </div>
+      <div class="lane-dishes">
+        <div class="dish"><div class="d-main"><div class="d-name">Escargots</div><div class="d-desc" data-i18n="d.escargots">Six pièces, beurre à l'ail</div></div><span class="d-price">11,80 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name">Carpaccio de bœuf</div><div class="d-desc" data-i18n="d.carpaccio">Copeaux de parmesan, roquette</div></div><span class="d-price">13,80 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name" data-i18n="d.enfants.name">Menu enfants</div><div class="d-desc" data-i18n="d.enfants">Pâtes bolognaise · escalope · fish-sticks</div></div><span class="d-price">9,50 €</span></div>
+        <div class="dish"><div class="d-main"><div class="d-name" data-i18n="d.dessert.name">Desserts maison</div><div class="d-desc" data-i18n="d.dessert">Selon l'ardoise du jour</div></div><span class="d-price">7,50 €</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div style="background:var(--sky)"><svg class="wave" viewBox="0 0 1440 44" preserveAspectRatio="none" style="color:var(--sky);background:var(--cream-2)"><path d="M0,20 C160,2 320,40 480,22 C640,4 800,38 960,22 C1120,6 1280,36 1440,20 L1440,0 L0,0 Z"/></svg></div>
+
+<!-- ================= AU BORD DE L'EAU ================= -->
+<section class="river-life" id="river">
+  <div class="wrap">
+    <div class="rl-head">
+      <h2 data-i18n="rl.title">Bien plus qu'une <em>brasserie</em></h2>
+      <p data-i18n="rl.sub">Une journée entière au bord de la Sûre : on y vient pour manger, mais on reste pour l'après-midi.</p>
+    </div>
+    <div class="rl-grid">
+      <div class="rl-card">
+        <div class="rl-ic"><svg viewBox="0 0 24 24"><path d="M12 3v18M4 10c4-6 12-6 16 0M2 13h20"/><path d="M6 21c1.5-1.5 4-1.5 6 0s4.5 1.5 6 0"/></svg></div>
+        <h3 data-i18n="rl.c1.t">Terrasse au fil de l'eau</h3>
+        <p data-i18n="rl.c1.p">Grande terrasse ombragée par les tilleuls, parasols crème et vue directe sur la rivière et la vallée verte.</p>
+      </div>
+      <div class="rl-card">
+        <div class="rl-ic"><svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="15" r="3"/><circle cx="14" cy="7" r="1.4"/><path d="M4 20h16"/></svg></div>
+        <h3 data-i18n="rl.c2.t">Terrain de pétanque</h3>
+        <p data-i18n="rl.c2.p">Une partie entre amis pendant l'apéro, sur le terrain juste à côté des tables.</p>
+      </div>
+      <div class="rl-card">
+        <div class="rl-ic"><svg viewBox="0 0 24 24"><path d="M2 14c3 2 5 2 8 0M14 14c3 2 5 2 6 0"/><path d="M4 14l8-9 8 9"/><path d="M12 5v9"/></svg></div>
+        <h3 data-i18n="rl.c3.t">Kayak &amp; canoë</h3>
+        <p data-i18n="rl.c3.p">Location juste à côté et passerelle sur la Sûre : idéal pour les cyclistes et randonneurs de la vallée.</p>
+      </div>
+      <div class="rl-card">
+        <div class="rl-ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="2.3"/><circle cx="16" cy="9" r="1.7"/><path d="M4 20c0-3 2.5-5 5-5s5 2 5 5M14 20c0-2.2 1.4-3.6 3-3.6s3 1.4 3 3.6"/></svg></div>
+        <h3 data-i18n="rl.c4.t">Familles bienvenues</h3>
+        <p data-i18n="rl.c4.p">Menu enfants, pelouse, bancs et grands espaces : les petits jouent pendant que l'on savoure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISITE ================= -->
+<section class="visit" id="visite">
+  <div class="wrap">
+    <div class="v-grid">
+      <div class="v-board">
+        <div class="k" data-i18n="v.k">Nous trouver</div>
+        <h2 data-i18n="v.title">Au 21, Route d'Ettelbruck</h2>
+        <div class="sub" data-i18n="v.sub">On se gare devant, on s'installe côté rivière.</div>
+
+        <div class="v-row">
+          <div class="vic"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+          <div><div class="vt" data-i18n="v.addr.t">Adresse</div><div class="vv">21, Route d'Ettelbruck<br>L-9230 Diekirch, Luxembourg</div></div>
+        </div>
+
+        <div class="v-row">
+          <div class="vic"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2c1 2 3 4 5 5l2-3 5 2v4c0 1-1 2-2 2C10 21 3 14 3 6c0-1 1-2 2-2Z"/></svg></div>
+          <div><div class="vt" data-i18n="v.tel.t">Téléphone</div><div class="vv"><a href="tel:+35227766465">+352 27 76 64 65</a><small data-i18n="v.tel.note">Second numéro 26 80 31 04 — à confirmer</small></div></div>
+        </div>
+
+        <div class="v-row">
+          <div class="vic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div style="flex:1">
+            <div class="vt" data-i18n="v.hours.t">Horaires <span style="text-transform:none;letter-spacing:0;color:var(--wood-dk)">· à confirmer</span></div>
+            <ul class="hours-list">
+              <li><span data-i18n="v.days.mon">Lundi – Dimanche</span><b>10:00 – 23:00</b></li>
+              <li><span data-i18n="v.kitchen">Cuisine</span><b data-i18n="v.kitchen.v">12:00 – 21:30 (à conf.)</b></li>
+            </ul>
+          </div>
+        </div>
+
+        <a class="btn btn-primary" style="margin-top:22px" href="https://www.google.com/maps/dir/?api=1&destination=21+Route+d'Ettelbruck+9230+Diekirch" target="_blank" rel="noopener" data-i18n="v.route">Itinéraire &rarr;</a>
+      </div>
+      <div class="v-map">
+        <iframe title="Carte — Brasserie Al Schwemm, Diekirch" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=21+Route+d'Ettelbruck,+9230+Diekirch,+Luxembourg&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <div class="fw">Al Schwemm<em data-i18n="foot.sub">Brasserie · Café · Diekirch</em></div>
+        <p data-i18n="foot.blurb">La brasserie au bord de la Sûre, sur l'ancienne piscine en plein air de Diekirch. Tartes flambées, salades, grillades et une Diekirch bien fraîche, à l'ombre des tilleuls.</p>
+        <div class="foot-lang" role="group" aria-label="Langue">
+          <button data-lang="fr" class="on">Français</button>
+          <button data-lang="de">Deutsch</button>
+          <button data-lang="en">English</button>
+        </div>
+      </div>
+      <div>
+        <h4 data-i18n="foot.contact">Contact</h4>
+        <ul>
+          <li>21, Route d'Ettelbruck</li>
+          <li>L-9230 Diekirch</li>
+          <li><a href="tel:+35227766465">+352 27 76 64 65</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="foot.explore">Explorer</h4>
+        <ul>
+          <li><a href="#carte" data-i18n="nav.menu">La carte</a></li>
+          <li><a href="#heritage" data-i18n="nav.story">L'histoire</a></li>
+          <li><a href="#river" data-i18n="nav.terrace">Au bord de l'eau</a></li>
+          <li><a href="#visite" data-i18n="nav.visit">Nous trouver</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span data-i18n="foot.rights">© 2026 Brasserie Al Schwemm · Diekirch. Tous droits réservés.</span>
+      <span class="demo" data-i18n="foot.demo">Site de démonstration — contenu &amp; prix à confirmer avec l'établissement.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  fr:{
+    "util.est":"Sur l'ancienne piscine de Diekirch · au bord de la Sûre",
+    "nav.menu":"La carte","nav.story":"L'histoire","nav.terrace":"Au bord de l'eau","nav.visit":"Nous trouver",
+    "hero.eyebrow":"Brasserie · Café · Diekirch, Luxembourg",
+    "hero.sub":"la brasserie au bord de l'eau",
+    "hero.tag":"« Au bord de la Sûre, là où Diekirch se baigne depuis toujours. »",
+    "hero.lede":"Tartes flambées, grandes salades, grillades et pizzas, servies sous les arbres, face à la rivière et à la vallée verte — là où se trouvait l'ancienne piscine en plein air de la ville.",
+    "hero.cta1":"Découvrir la carte","hero.cta2":"Réserver · 27 76 64 65",
+    "hero.chip1":"Bière Diekirch pression","hero.chip2":"Terrasse ombragée & pétanque","hero.chip3":"7j/7 · 10h–23h (à confirmer)",
+    "hero.parasol":"côté rivière ~","hero.phototag":"La terrasse, sous les tilleuls",
+    "her.kicker":"L'histoire du lieu","her.title":"Là où Diekirch <em>se baignait</em>.",
+    "her.p1":"« Al Schwemm » signifie en luxembourgeois « l'ancienne piscine ». La brasserie occupe le site de l'ancien bassin de baignade en plein air de Diekirch, sur les rives de la Sûre — un lieu que des générations ont connu maillot sur le dos, serviette au bras.",
+    "her.p2":"Aujourd'hui on y vient toujours pour l'eau, mais autrement : une bière fraîche à l'ombre des grands arbres, une salade généreuse face à la vallée, une partie de pétanque pendant que les enfants courent sur la pelouse.",
+    "her.note":"De vieilles photos du bassin sont encore accrochées à l'intérieur.","her.cap":"Une Diekirch, face à la Sûre",
+    "carte.title":"La carte<em>servie au bord de l'eau</em>",
+    "carte.aside":"Cuisine de brasserie française & luxembourgeoise, avec un accent italien. Chaque « ligne » vous emmène dans un bassin de la carte.",
+    "carte.confirm":"Plats & prix à confirmer avec l'établissement",
+    "cat.tartes":"Tartes flambées","cat.tartes.sub":"La spécialité de la maison",
+    "cat.salades":"Grandes salades","cat.salades.sub":"Généreuses, en terrasse",
+    "cat.grillades":"Grillades","cat.grillades.sub":"Au feu, sauces maison",
+    "cat.poissons":"Poissons","cat.poissons.sub":"De la rivière à l'assiette",
+    "cat.pizzas":"Pizzas & pâtes","cat.pizzas.sub":"Pizzas rectangulaires sur planche",
+    "cat.enfants":"Entrées & enfants","cat.enfants.sub":"Pour commencer & pour les petits",
+    "d.classique":"Crème, oignons, lardons","d.paysanne":"Champignons, lardons, gruyère","d.deuxpoissons":"Saumon fumé & truite, crème citronnée","d.chevre":"Fromage de chèvre, miel, noix",
+    "d.feier":"Classique luxembourgeois, bœuf & œuf","d.nicoise":"Thon, œuf, olives, anchois","d.scampisalad":"Scampis poêlés, mesclun, safran","d.boeufsalad":"Bœuf grillé, jambon cru, pastèque",
+    "d.entrecote":"Frites maison & salade","d.filet":"Sauce crème au poivre vert","d.cheval":"Sauce provençale, garniture","d.platdujour":"Suggestion de midi, en semaine",
+    "d.saumon":"Sauce estragon, légumes du moment","d.lotte":"Lotte rôtie, sauce safranée","d.scampi":"Curry doux, riz basmati","d.grenouilles":"Beurre persillé & ail",
+    "d.margue":"Tomate, mozzarella, basilic","d.4from":"Mozzarella, gorgonzola, chèvre, gruyère","d.pizzascampi":"Scampis, légumes grillés","d.carbo":"Crème, lardons, parmesan",
+    "d.escargots":"Six pièces, beurre à l'ail","d.carpaccio":"Copeaux de parmesan, roquette","d.enfants.name":"Menu enfants","d.enfants":"Pâtes bolognaise · escalope · fish-sticks","d.dessert.name":"Desserts maison","d.dessert":"Selon l'ardoise du jour",
+    "rl.title":"Bien plus qu'une <em>brasserie</em>",
+    "rl.sub":"Une journée entière au bord de la Sûre : on y vient pour manger, mais on reste pour l'après-midi.",
+    "rl.c1.t":"Terrasse au fil de l'eau","rl.c1.p":"Grande terrasse ombragée par les tilleuls, parasols crème et vue directe sur la rivière et la vallée verte.",
+    "rl.c2.t":"Terrain de pétanque","rl.c2.p":"Une partie entre amis pendant l'apéro, sur le terrain juste à côté des tables.",
+    "rl.c3.t":"Kayak & canoë","rl.c3.p":"Location juste à côté et passerelle sur la Sûre : idéal pour les cyclistes et randonneurs de la vallée.",
+    "rl.c4.t":"Familles bienvenues","rl.c4.p":"Menu enfants, pelouse, bancs et grands espaces : les petits jouent pendant que l'on savoure.",
+    "v.k":"Nous trouver","v.title":"Au 21, Route d'Ettelbruck","v.sub":"On se gare devant, on s'installe côté rivière.",
+    "v.addr.t":"Adresse","v.tel.t":"Téléphone","v.tel.note":"Second numéro 26 80 31 04 — à confirmer",
+    "v.hours.t":"Horaires <span style=\"text-transform:none;letter-spacing:0;color:var(--wood-dk)\">· à confirmer</span>","v.days.mon":"Lundi – Dimanche","v.kitchen":"Cuisine","v.kitchen.v":"12:00 – 21:30 (à conf.)","v.route":"Itinéraire →",
+    "foot.sub":"Brasserie · Café · Diekirch",
+    "foot.blurb":"La brasserie au bord de la Sûre, sur l'ancienne piscine en plein air de Diekirch. Tartes flambées, salades, grillades et une Diekirch bien fraîche, à l'ombre des tilleuls.",
+    "foot.contact":"Contact","foot.explore":"Explorer",
+    "foot.rights":"© 2026 Brasserie Al Schwemm · Diekirch. Tous droits réservés.",
+    "foot.demo":"Site de démonstration — contenu & prix à confirmer avec l'établissement."
+  },
+  de:{
+    "util.est":"Auf dem alten Freibad von Diekirch · am Ufer der Sauer",
+    "nav.menu":"Speisekarte","nav.story":"Geschichte","nav.terrace":"Am Wasser","nav.visit":"Anfahrt",
+    "hero.eyebrow":"Brasserie · Café · Diekirch, Luxemburg",
+    "hero.sub":"die Brasserie am Wasser",
+    "hero.tag":"„An der Sauer – dort, wo Diekirch schon immer gebadet hat.“",
+    "hero.lede":"Flammkuchen, große Salate, Grillgerichte und Pizzen, serviert unter den Bäumen mit Blick auf den Fluss und das grüne Tal – dort, wo einst das Freibad der Stadt lag.",
+    "hero.cta1":"Zur Speisekarte","hero.cta2":"Reservieren · 27 76 64 65",
+    "hero.chip1":"Diekirch Bier vom Fass","hero.chip2":"Schattige Terrasse & Boule","hero.chip3":"täglich · 10–23 Uhr (zu bestätigen)",
+    "hero.parasol":"zur Flussseite ~","hero.phototag":"Die Terrasse, unter den Linden",
+    "her.kicker":"Die Geschichte des Ortes","her.title":"Wo Diekirch <em>badete</em>.",
+    "her.p1":"„Al Schwemm“ bedeutet auf Luxemburgisch „das alte Schwimmbad“. Die Brasserie steht auf dem Gelände des früheren Freibads von Diekirch am Ufer der Sauer – ein Ort, den Generationen mit Badehose und Handtuch kannten.",
+    "her.p2":"Heute kommt man immer noch wegen des Wassers, aber anders: ein kühles Bier im Schatten der großen Bäume, ein üppiger Salat mit Talblick, eine Partie Boule, während die Kinder über die Wiese tollen.",
+    "her.note":"Alte Fotos des Beckens hängen noch im Innenraum.","her.cap":"Ein Diekirch, mit Blick auf die Sauer",
+    "carte.title":"Speisekarte<em>serviert am Wasser</em>",
+    "carte.aside":"Französisch-luxemburgische Brasserie-Küche mit italienischem Akzent. Jede „Bahn“ führt Sie in ein Becken der Karte.",
+    "carte.confirm":"Gerichte & Preise mit dem Haus zu bestätigen",
+    "cat.tartes":"Flammkuchen","cat.tartes.sub":"Die Spezialität des Hauses",
+    "cat.salades":"Große Salate","cat.salades.sub":"Üppig, auf der Terrasse",
+    "cat.grillades":"Grillgerichte","cat.grillades.sub":"Vom Feuer, hausgemachte Saucen",
+    "cat.poissons":"Fisch","cat.poissons.sub":"Vom Fluss auf den Teller",
+    "cat.pizzas":"Pizza & Pasta","cat.pizzas.sub":"Rechteckige Pizza auf dem Brett",
+    "cat.enfants":"Vorspeisen & Kinder","cat.enfants.sub":"Zum Start & für die Kleinen",
+    "d.classique":"Crème fraîche, Zwiebeln, Speck","d.paysanne":"Champignons, Speck, Gruyère","d.deuxpoissons":"Räucherlachs & Forelle, Zitronencreme","d.chevre":"Ziegenkäse, Honig, Walnüsse",
+    "d.feier":"Luxemburger Klassiker, Rind & Ei","d.nicoise":"Thunfisch, Ei, Oliven, Sardellen","d.scampisalad":"Gebratene Scampi, Blattsalat, Safran","d.boeufsalad":"Gegrilltes Rind, Rohschinken, Wassermelone",
+    "d.entrecote":"Hausgemachte Pommes & Salat","d.filet":"Grüne Pfeffer-Rahmsauce","d.cheval":"Sauce provençale, Beilage","d.platdujour":"Mittagsempfehlung, werktags",
+    "d.saumon":"Estragonsauce, Gemüse der Saison","d.lotte":"Gebratener Seeteufel, Safransauce","d.scampi":"Mildes Curry, Basmatireis","d.grenouilles":"Petersilien-Knoblauchbutter",
+    "d.margue":"Tomate, Mozzarella, Basilikum","d.4from":"Mozzarella, Gorgonzola, Ziege, Gruyère","d.pizzascampi":"Scampi, gegrilltes Gemüse","d.carbo":"Sahne, Speck, Parmesan",
+    "d.escargots":"Sechs Stück, Knoblauchbutter","d.carpaccio":"Parmesanspäne, Rucola","d.enfants.name":"Kindermenü","d.enfants":"Spaghetti Bolognese · Schnitzel · Fischstäbchen","d.dessert.name":"Hausgemachte Desserts","d.dessert":"Nach Tagestafel",
+    "rl.title":"Mehr als eine <em>Brasserie</em>",
+    "rl.sub":"Ein ganzer Tag an der Sauer: Man kommt zum Essen und bleibt den ganzen Nachmittag.",
+    "rl.c1.t":"Terrasse am Wasser","rl.c1.p":"Große, von Linden beschattete Terrasse, cremefarbene Schirme und direkter Blick auf Fluss und grünes Tal.",
+    "rl.c2.t":"Boule-Platz","rl.c2.p":"Eine Partie mit Freunden zum Aperitif, direkt neben den Tischen.",
+    "rl.c3.t":"Kajak & Kanu","rl.c3.p":"Verleih gleich nebenan und Steg über die Sauer – ideal für Radfahrer und Wanderer im Tal.",
+    "rl.c4.t":"Familien willkommen","rl.c4.p":"Kindermenü, Wiese, Bänke und viel Platz: Die Kleinen spielen, während man genießt.",
+    "v.k":"Anfahrt","v.title":"21, Route d'Ettelbruck","v.sub":"Direkt davor parken, auf der Flussseite Platz nehmen.",
+    "v.addr.t":"Adresse","v.tel.t":"Telefon","v.tel.note":"Zweite Nummer 26 80 31 04 — zu bestätigen",
+    "v.hours.t":"Öffnungszeiten <span style=\"text-transform:none;letter-spacing:0;color:var(--wood-dk)\">· zu bestätigen</span>","v.days.mon":"Montag – Sonntag","v.kitchen":"Küche","v.kitchen.v":"12:00 – 21:30 (zu best.)","v.route":"Route →",
+    "foot.sub":"Brasserie · Café · Diekirch",
+    "foot.blurb":"Die Brasserie an der Sauer, auf dem alten Freibad von Diekirch. Flammkuchen, Salate, Grillgerichte und ein frisches Diekirch im Schatten der Linden.",
+    "foot.contact":"Kontakt","foot.explore":"Entdecken",
+    "foot.rights":"© 2026 Brasserie Al Schwemm · Diekirch. Alle Rechte vorbehalten.",
+    "foot.demo":"Demo-Website — Inhalt & Preise mit dem Haus zu bestätigen."
+  },
+  en:{
+    "util.est":"On Diekirch's old bathing spot · on the banks of the Sûre",
+    "nav.menu":"Menu","nav.story":"Our story","nav.terrace":"By the water","nav.visit":"Find us",
+    "hero.eyebrow":"Brasserie · Café · Diekirch, Luxembourg",
+    "hero.sub":"the riverside brasserie",
+    "hero.tag":"“On the banks of the Sûre — where Diekirch has always come to bathe.”",
+    "hero.lede":"Tartes flambées, generous salads, grills and pizzas, served under the trees facing the river and the green valley — on the site of the town's old open-air swimming pool.",
+    "hero.cta1":"See the menu","hero.cta2":"Book · 27 76 64 65",
+    "hero.chip1":"Diekirch beer on tap","hero.chip2":"Shaded terrace & pétanque","hero.chip3":"7 days · 10am–11pm (to confirm)",
+    "hero.parasol":"riverside ~","hero.phototag":"The terrace, under the lime trees",
+    "her.kicker":"The story of the place","her.title":"Where Diekirch <em>came to swim</em>.",
+    "her.p1":"“Al Schwemm” means “the old swimming pool” in Luxembourgish. The brasserie sits on the site of Diekirch's former open-air river baths on the banks of the Sûre — a spot generations knew with a swimsuit on and a towel over the arm.",
+    "her.p2":"Today you still come for the water, but differently: a cold beer in the shade of the big trees, a generous salad with a valley view, a game of pétanque while the children run on the lawn.",
+    "her.note":"Old photos of the pool still hang inside.","her.cap":"A Diekirch, facing the Sûre",
+    "carte.title":"The menu<em>served by the water</em>",
+    "carte.aside":"French & Luxembourgish brasserie cooking with an Italian accent. Each “lane” takes you into one pool of the menu.",
+    "carte.confirm":"Dishes & prices to confirm with the venue",
+    "cat.tartes":"Tartes flambées","cat.tartes.sub":"The house speciality",
+    "cat.salades":"Large salads","cat.salades.sub":"Generous, on the terrace",
+    "cat.grillades":"Grills","cat.grillades.sub":"Over the flame, house sauces",
+    "cat.poissons":"Fish","cat.poissons.sub":"From the river to the plate",
+    "cat.pizzas":"Pizza & pasta","cat.pizzas.sub":"Rectangular pizza on a board",
+    "cat.enfants":"Starters & kids","cat.enfants.sub":"To begin & for the little ones",
+    "d.classique":"Crème fraîche, onions, bacon","d.paysanne":"Mushrooms, bacon, gruyère","d.deuxpoissons":"Smoked salmon & trout, lemon cream","d.chevre":"Goat's cheese, honey, walnuts",
+    "d.feier":"Luxembourgish classic, beef & egg","d.nicoise":"Tuna, egg, olives, anchovies","d.scampisalad":"Pan-fried scampi, mixed leaves, saffron","d.boeufsalad":"Grilled beef, cured ham, watermelon",
+    "d.entrecote":"House fries & salad","d.filet":"Green peppercorn cream sauce","d.cheval":"Sauce provençale, garnish","d.platdujour":"Lunchtime special, weekdays",
+    "d.saumon":"Tarragon sauce, seasonal vegetables","d.lotte":"Roasted monkfish, saffron sauce","d.scampi":"Mild curry, basmati rice","d.grenouilles":"Parsley & garlic butter",
+    "d.margue":"Tomato, mozzarella, basil","d.4from":"Mozzarella, gorgonzola, goat, gruyère","d.pizzascampi":"Scampi, grilled vegetables","d.carbo":"Cream, bacon, parmesan",
+    "d.escargots":"Six pieces, garlic butter","d.carpaccio":"Parmesan shavings, rocket","d.enfants.name":"Kids' menu","d.enfants":"Spaghetti bolognese · schnitzel · fish sticks","d.dessert.name":"Homemade desserts","d.dessert":"See today's board",
+    "rl.title":"Far more than a <em>brasserie</em>",
+    "rl.sub":"A whole day by the Sûre: you come to eat and stay for the afternoon.",
+    "rl.c1.t":"Terrace at the water's edge","rl.c1.p":"A large terrace shaded by lime trees, cream parasols and a direct view over the river and green valley.",
+    "rl.c2.t":"Pétanque court","rl.c2.p":"A game with friends over an aperitif, on the court right beside the tables.",
+    "rl.c3.t":"Kayak & canoe","rl.c3.p":"Rental right next door and a footbridge over the Sûre — perfect for cyclists and hikers in the valley.",
+    "rl.c4.t":"Families welcome","rl.c4.p":"Kids' menu, lawn, benches and open space: the little ones play while you savour the moment.",
+    "v.k":"Find us","v.title":"21, Route d'Ettelbruck","v.sub":"Park out front, settle in on the river side.",
+    "v.addr.t":"Address","v.tel.t":"Phone","v.tel.note":"Second number 26 80 31 04 — to confirm",
+    "v.hours.t":"Opening hours <span style=\"text-transform:none;letter-spacing:0;color:var(--wood-dk)\">· to confirm</span>","v.days.mon":"Monday – Sunday","v.kitchen":"Kitchen","v.kitchen.v":"12:00 – 21:30 (to conf.)","v.route":"Directions →",
+    "foot.sub":"Brasserie · Café · Diekirch",
+    "foot.blurb":"The riverside brasserie on the banks of the Sûre, on Diekirch's old open-air swimming pool. Tartes flambées, salads, grills and an ice-cold Diekirch in the shade of the lime trees.",
+    "foot.contact":"Contact","foot.explore":"Explore",
+    "foot.rights":"© 2026 Brasserie Al Schwemm · Diekirch. All rights reserved.",
+    "foot.demo":"Demonstration website — content & prices to confirm with the venue."
+  }
+};
+function setLang(lang){
+  const dict=I18N[lang]||I18N.fr;
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(dict[k]!==undefined) el.innerHTML=dict[k];
+  });
+  document.querySelectorAll('.lang button, .foot-lang button').forEach(b=>{
+    b.classList.toggle('on', b.getAttribute('data-lang')===lang);
+  });
+}
+document.querySelectorAll('.lang button, .foot-lang button').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.getAttribute('data-lang')));
+});
+</script>
+</body>
+</html>

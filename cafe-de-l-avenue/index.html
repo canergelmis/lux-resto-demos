@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Café de l'Avenue — Schifflange</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Archivo:wght@400;500;600;700;800&family=Archivo+Narrow:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f6efe1; --cream2:#efe3ce; --paper:#faf5ea;
+    --espresso:#241611; --espresso2:#3a271b; --ink:#2c1d15;
+    --terra:#c15a34; --terra-d:#a2461f; --burgundy:#7c2f30;
+    --enamel:#1b506d; --enamel-d:#123c53; --enamel-l:#2f6d8e;
+    --amber:#ffc861; --amber-glow:rgba(255,190,90,.55);
+    --line:rgba(44,29,21,.16);
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Archivo",system-ui,sans-serif;
+    --cond:"Archivo Narrow","Archivo",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans); color:var(--ink); background:var(--cream);
+    -webkit-font-smoothing:antialiased; line-height:1.55; overflow-x:hidden;
+  }
+  img{display:block; max-width:100%}
+  a{color:inherit; text-decoration:none}
+  .wrap{max-width:1360px; margin:0 auto; padding:0 40px}
+  .eyebrow{font-family:var(--cond); text-transform:uppercase; letter-spacing:.28em;
+    font-weight:700; font-size:.74rem; color:var(--terra-d)}
+  .disp{font-family:var(--serif); font-weight:900; line-height:1.02; letter-spacing:-.01em}
+
+  /* ---------- enamel street-sign plaque motif ---------- */
+  .plaque{
+    position:relative; display:inline-block; background:var(--enamel);
+    color:#fff; border-radius:16px; padding:.55em .95em;
+    box-shadow:inset 0 0 0 4px var(--enamel), inset 0 0 0 6px rgba(255,255,255,.92),
+      0 10px 28px rgba(18,60,83,.35);
+    font-family:var(--serif); font-weight:600; letter-spacing:.01em;
+  }
+  .plaque::before,.plaque::after{content:""; position:absolute; width:9px; height:9px;
+    border-radius:50%; background:rgba(255,255,255,.85); top:11px}
+  .plaque::before{left:12px} .plaque::after{right:12px}
+  .plaque .b2{position:absolute; bottom:11px; width:9px; height:9px; border-radius:50%;
+    background:rgba(255,255,255,.85)}
+  .plaque .l{left:12px} .plaque .r{right:12px}
+
+  /* ---------- string-light garland ---------- */
+  .garland{position:relative; height:26px; background:var(--espresso);
+    display:flex; justify-content:space-around; align-items:flex-start; overflow:hidden}
+  .garland::before{content:""; position:absolute; top:5px; left:-2%; right:-2%; height:26px;
+    border-top:2px solid rgba(255,255,255,.14);
+    border-radius:0 0 50% 50%/0 0 100% 100%}
+  .bulb{width:7px; height:7px; border-radius:50%; background:var(--amber);
+    margin-top:9px; box-shadow:0 0 8px 2px var(--amber-glow); position:relative}
+  .bulb:nth-child(even){margin-top:15px}
+  .bulb::before{content:""; position:absolute; top:-6px; left:2px; width:3px; height:6px;
+    background:#5a4433}
+
+  /* ---------- utility bar ---------- */
+  .util{background:var(--espresso); color:var(--cream);
+    display:flex; align-items:center; justify-content:space-between; padding:10px 40px;
+    font-family:var(--cond); font-size:.86rem; letter-spacing:.04em}
+  .util .now{display:flex; align-items:center; gap:9px; text-transform:uppercase;
+    letter-spacing:.16em; font-weight:700; font-size:.72rem}
+  .dot{width:8px;height:8px;border-radius:50%;background:#5fd07a;box-shadow:0 0 9px #5fd07a;animation:pp 2s infinite}
+  @keyframes pp{50%{opacity:.35}}
+  .util .rgt{display:flex; align-items:center; gap:22px}
+  .util a.tel{color:var(--amber); font-weight:700; letter-spacing:.05em}
+  .lang{display:flex; gap:2px; background:rgba(255,255,255,.08); border-radius:20px; padding:3px}
+  .lang button{font-family:var(--cond); font-weight:700; letter-spacing:.1em; font-size:.72rem;
+    color:var(--cream); background:none; border:0; cursor:pointer; padding:4px 11px; border-radius:16px;
+    text-transform:uppercase}
+  .lang button.on{background:var(--terra); color:#fff}
+
+  /* ---------- masthead ---------- */
+  .mast{background:
+      radial-gradient(120% 90% at 12% 0%, #fbf6ec 0%, var(--cream) 55%, var(--cream2) 100%);
+    border-bottom:1px solid var(--line); position:relative}
+  .mast-grid{display:grid; grid-template-columns:1.15fr .85fr 58px; gap:0; align-items:stretch}
+  .mast-copy{padding:64px 56px 60px 0}
+  .mast-copy .rate{display:inline-flex; align-items:center; gap:9px; margin-bottom:22px;
+    font-family:var(--cond); font-weight:700; letter-spacing:.05em; color:var(--espresso2)}
+  .stars{color:var(--terra); letter-spacing:2px}
+  .wordmark{margin:8px 0 6px}
+  .wordmark .plaque{font-size:clamp(2rem,4.4vw,3.5rem)}
+  .subbrand{font-family:var(--serif); font-style:italic; font-weight:500;
+    font-size:clamp(1.1rem,1.9vw,1.55rem); color:var(--burgundy); margin:16px 0 4px}
+  .subbrand small{font-family:var(--cond); font-style:normal; font-weight:600; font-size:.62em;
+    color:var(--terra-d); letter-spacing:.08em; text-transform:uppercase; margin-left:8px;
+    vertical-align:middle}
+  .tag{font-family:var(--serif); font-size:clamp(1.35rem,2.6vw,2.15rem); line-height:1.15;
+    color:var(--espresso); max-width:20ch; margin:20px 0 8px; font-weight:600}
+  .lede{font-size:1.02rem; color:#4a382c; max-width:46ch; margin:14px 0 30px}
+  .cta-row{display:flex; flex-wrap:wrap; gap:14px; align-items:center}
+  .btn{font-family:var(--cond); font-weight:700; text-transform:uppercase; letter-spacing:.12em;
+    font-size:.86rem; padding:15px 26px; border-radius:40px; cursor:pointer; border:2px solid transparent;
+    display:inline-flex; align-items:center; gap:10px; transition:.2s}
+  .btn-p{background:var(--terra); color:#fff}
+  .btn-p:hover{background:var(--terra-d)}
+  .btn-o{background:transparent; color:var(--espresso); border-color:var(--espresso)}
+  .btn-o:hover{background:var(--espresso); color:var(--cream)}
+  .meta-line{margin-top:30px; display:flex; flex-wrap:wrap; gap:8px 26px;
+    font-family:var(--cond); font-size:.92rem; color:var(--espresso2); letter-spacing:.02em}
+  .meta-line b{color:var(--terra-d)}
+
+  .mast-photo{position:relative; overflow:hidden; border-left:1px solid var(--line);
+    min-height:560px}
+  .mast-photo img{width:100%; height:100%; object-fit:cover; object-position:left top}
+  .mast-photo .cap{position:absolute; left:18px; bottom:18px; background:rgba(36,22,17,.82);
+    color:var(--cream); font-family:var(--cond); font-size:.78rem; letter-spacing:.08em;
+    padding:7px 13px; border-radius:6px; text-transform:uppercase}
+
+  /* vertical "till 1h" ticker rail */
+  .rail{background:var(--enamel); color:#fff; position:relative; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:inset 4px 0 0 rgba(255,255,255,.85), inset 6px 0 0 var(--enamel)}
+  .rail span{writing-mode:vertical-rl; transform:rotate(180deg);
+    font-family:var(--cond); font-weight:700; text-transform:uppercase; letter-spacing:.42em;
+    font-size:.82rem; white-space:nowrap}
+
+  /* ---------- day ribbon (signature) ---------- */
+  .day{background:var(--espresso); color:var(--cream); padding:66px 0 74px; position:relative}
+  .day .head{display:flex; align-items:flex-end; justify-content:space-between; gap:24px;
+    margin-bottom:38px; flex-wrap:wrap}
+  .day h2{font-family:var(--serif); font-weight:900; font-size:clamp(2rem,3.4vw,3rem);
+    line-height:1; letter-spacing:-.01em}
+  .day h2 em{color:var(--amber); font-style:italic; font-weight:500}
+  .day .hint{font-family:var(--cond); letter-spacing:.06em; color:#cdb9a6; max-width:30ch;
+    font-size:.96rem}
+  .ribbon{display:grid; grid-template-columns:repeat(5,1fr); gap:0;
+    border:1px solid rgba(255,255,255,.14); border-radius:14px; overflow:hidden}
+  .stop{position:relative; border-right:1px solid rgba(255,255,255,.12);
+    display:flex; flex-direction:column; min-height:400px}
+  .stop:last-child{border-right:0}
+  .stop.feature{background:var(--terra)}
+  .stop .ph{height:186px; overflow:hidden; position:relative; background:#1c110c}
+  .stop .ph img{width:100%; height:100%; object-fit:cover}
+  .stop.noimg .ph{display:flex; align-items:center; justify-content:center; text-align:center;
+    background:repeating-linear-gradient(135deg,#33231a 0 14px,#2c1d15 14px 28px)}
+  .stop.noimg .ph span{font-family:var(--cond); font-size:.74rem; letter-spacing:.12em;
+    text-transform:uppercase; color:#b79c88; padding:0 20px}
+  .stop .txt{padding:20px 20px 26px; flex:1; display:flex; flex-direction:column}
+  .clock{font-family:var(--cond); font-weight:700; letter-spacing:.14em; font-size:.78rem;
+    color:var(--amber); text-transform:uppercase; margin-bottom:9px}
+  .stop.feature .clock{color:#ffe6cf}
+  .stop h3{font-family:var(--serif); font-weight:600; font-size:1.35rem; line-height:1.1;
+    margin-bottom:8px}
+  .stop p{font-size:.92rem; color:#d8c6b6}
+  .stop.feature p{color:#ffeadd}
+  .stop .flag{margin-top:auto; padding-top:14px; font-family:var(--cond); font-size:.72rem;
+    letter-spacing:.06em; color:#a98d78; text-transform:uppercase}
+  .stop.feature .flag{color:#ffd9c4}
+  .stop .badge{position:absolute; top:12px; left:12px; background:var(--amber); color:var(--espresso);
+    font-family:var(--cond); font-weight:700; font-size:.66rem; letter-spacing:.1em;
+    padding:4px 9px; border-radius:5px; text-transform:uppercase; z-index:2}
+
+  /* ---------- ardoise / menu ---------- */
+  .ardoise-sec{padding:76px 0; background:var(--cream)}
+  .ard-grid{display:grid; grid-template-columns:1.35fr .65fr; gap:36px; align-items:stretch}
+  .board{background:
+      radial-gradient(140% 120% at 20% 0%, #2f4a3f 0%, #22362e 60%, #1b2b25 100%);
+    border-radius:16px; padding:44px 44px 40px; color:#eaf1e9; position:relative;
+    box-shadow:0 20px 50px rgba(27,43,37,.35);
+    border:10px solid #3a2a1c; }
+  .board::after{content:""; position:absolute; inset:0; border-radius:8px; pointer-events:none;
+    box-shadow:inset 0 0 60px rgba(0,0,0,.35)}
+  .board .bhead{display:flex; align-items:baseline; justify-content:space-between; gap:14px;
+    border-bottom:1px dashed rgba(255,255,255,.28); padding-bottom:18px; margin-bottom:24px}
+  .board h2{font-family:var(--serif); font-weight:900; font-size:clamp(1.9rem,3vw,2.7rem);
+    line-height:1; color:#fff}
+  .board h2 em{font-style:italic; font-weight:500; color:var(--amber)}
+  .board .when{font-family:var(--cond); letter-spacing:.14em; text-transform:uppercase;
+    font-size:.76rem; color:#bcd0c4}
+  .cols{display:grid; grid-template-columns:repeat(3,1fr); gap:30px}
+  .col h4{font-family:var(--cond); text-transform:uppercase; letter-spacing:.16em; font-size:.82rem;
+    color:var(--amber); margin-bottom:16px; padding-bottom:8px;
+    border-bottom:1px solid rgba(255,255,255,.16)}
+  .dish{margin-bottom:15px}
+  .dish .d1{font-family:var(--serif); font-size:1.08rem; color:#fff; font-weight:600}
+  .dish .d2{font-size:.85rem; color:#b9c9be}
+  .ard-side{display:flex; flex-direction:column; gap:22px}
+  .ard-photo{flex:1; min-height:230px; border-radius:16px; overflow:hidden; position:relative}
+  .ard-photo img{width:100%; height:100%; object-fit:cover}
+  .note-card{background:var(--paper); border:1px solid var(--line); border-radius:16px;
+    padding:24px 26px}
+  .note-card .eyebrow{margin-bottom:10px}
+  .note-card p{font-size:.95rem; color:#54402f}
+  .price-strip{display:flex; align-items:center; gap:14px; margin-top:16px;
+    padding-top:16px; border-top:1px solid var(--line)}
+  .price-strip .pr{font-family:var(--serif); font-weight:900; font-size:1.7rem; color:var(--terra-d)}
+  .price-strip small{font-family:var(--cond); text-transform:uppercase; letter-spacing:.1em;
+    font-size:.72rem; color:#7a614d}
+
+  /* ---------- terrasse band ---------- */
+  .terr{background:var(--espresso2); color:var(--cream); padding:0; overflow:hidden}
+  .terr-grid{display:grid; grid-template-columns:.9fr 1.1fr 1fr; min-height:460px}
+  .terr .copy{padding:66px 50px; display:flex; flex-direction:column; justify-content:center;
+    background:var(--espresso)}
+  .terr .copy .eyebrow{color:var(--amber)}
+  .terr h2{font-family:var(--serif); font-weight:900; font-size:clamp(2rem,3.2vw,2.9rem);
+    line-height:1.03; margin:14px 0 18px}
+  .terr h2 em{font-style:italic; font-weight:500; color:var(--amber)}
+  .terr p{color:#d6c4b4; font-size:1.02rem; max-width:34ch}
+  .terr .lights{margin-top:26px; font-family:var(--cond); text-transform:uppercase;
+    letter-spacing:.14em; font-size:.78rem; color:var(--amber); display:flex; align-items:center; gap:10px}
+  .terr .ph{overflow:hidden; position:relative; background:#180f0a}
+  .terr .ph img{width:100%; height:100%; object-fit:cover}
+  .terr .ph .tag{position:absolute; left:16px; bottom:16px; background:rgba(0,0,0,.6);
+    font-family:var(--cond); font-size:.74rem; letter-spacing:.08em; text-transform:uppercase;
+    padding:6px 12px; border-radius:5px}
+
+  /* ---------- visit ---------- */
+  .visit{padding:78px 0 40px; background:var(--cream)}
+  .visit .top{text-align:center; max-width:620px; margin:0 auto 48px}
+  .visit h2{font-family:var(--serif); font-weight:900; font-size:clamp(2rem,3.4vw,3rem);
+    line-height:1.02; margin:12px 0 12px}
+  .visit .top p{color:#54402f}
+  .visit-grid{display:grid; grid-template-columns:.95fr .8fr 1.25fr; gap:26px; align-items:stretch}
+  .card{background:var(--paper); border:1px solid var(--line); border-radius:16px; padding:30px 30px}
+  .card h3{font-family:var(--cond); text-transform:uppercase; letter-spacing:.14em; font-size:.86rem;
+    color:var(--terra-d); margin-bottom:20px; display:flex; align-items:center; gap:10px}
+  /* hours board */
+  .hours li{display:flex; justify-content:space-between; align-items:baseline;
+    padding:11px 0; border-bottom:1px dotted var(--line); font-family:var(--cond); font-size:.98rem}
+  .hours li:last-child{border-bottom:0}
+  .hours li .dname{font-weight:700; letter-spacing:.03em; color:var(--espresso2)}
+  .hours li .dtime{color:var(--terra-d); font-weight:700; letter-spacing:.02em}
+  .hours li.today{background:rgba(193,90,52,.1); margin:0 -14px; padding:11px 14px; border-radius:8px;
+    border-bottom:1px dotted transparent}
+  .conf{margin-top:16px; font-size:.76rem; color:#8a715c; font-family:var(--cond); letter-spacing:.03em}
+  /* contact */
+  .contact .row{padding:14px 0; border-bottom:1px dotted var(--line)}
+  .contact .row:last-child{border-bottom:0}
+  .contact .k{font-family:var(--cond); text-transform:uppercase; letter-spacing:.12em; font-size:.7rem;
+    color:#8a715c; margin-bottom:3px}
+  .contact .v{font-family:var(--serif); font-size:1.12rem; color:var(--espresso)}
+  .contact .v a{color:var(--terra-d)}
+  .contact .fb{margin-top:20px; display:inline-flex; gap:9px; align-items:center;
+    font-family:var(--cond); font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    font-size:.78rem; color:var(--enamel)}
+  .mapcard{padding:0; overflow:hidden; border:1px solid var(--line); border-radius:16px; min-height:340px}
+  .mapcard iframe{width:100%; height:100%; min-height:340px; border:0; display:block; filter:saturate(.92)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--espresso); color:var(--cream); padding:56px 0 30px}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; align-items:start;
+    padding-bottom:34px; border-bottom:1px solid rgba(255,255,255,.12)}
+  .foot-grid .plaque{font-size:1.5rem}
+  .foot-brand p{margin-top:18px; color:#c9b5a4; max-width:38ch; font-size:.94rem}
+  .fcol h5{font-family:var(--cond); text-transform:uppercase; letter-spacing:.16em; font-size:.74rem;
+    color:var(--amber); margin-bottom:14px}
+  .fcol a,.fcol p{display:block; color:#d6c4b4; font-size:.95rem; margin-bottom:9px; font-family:var(--cond)}
+  .fcol a:hover{color:#fff}
+  .foot-bottom{display:flex; justify-content:space-between; align-items:center; gap:20px;
+    flex-wrap:wrap; padding-top:22px; font-family:var(--cond); font-size:.8rem; color:#a98d78;
+    letter-spacing:.03em}
+  .demo-badge{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18);
+    border-radius:20px; padding:7px 16px; color:#e9dccd}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:1080px){
+    .mast-grid{grid-template-columns:1fr .75fr; }
+    .rail{display:none}
+    .mast-copy{padding:52px 40px 46px 0}
+    .visit-grid{grid-template-columns:1fr 1fr}
+    .mapcard{grid-column:1/-1}
+    .ard-grid{grid-template-columns:1fr}
+    .terr-grid{grid-template-columns:1fr 1fr}
+    .terr .copy{grid-column:1/-1; padding:48px 40px}
+  }
+  @media(max-width:820px){
+    .wrap{padding:0 22px}
+    .util{padding:10px 22px; flex-wrap:wrap; gap:10px; justify-content:center}
+    .mast-grid{grid-template-columns:1fr}
+    .mast-copy{padding:44px 0 40px}
+    .mast-photo{min-height:340px; border-left:0; border-top:1px solid var(--line)}
+    .ribbon{grid-template-columns:1fr 1fr}
+    .stop{min-height:auto}
+    .stop:nth-child(odd){border-right:1px solid rgba(255,255,255,.12)}
+    .cols{grid-template-columns:1fr}
+    .terr-grid{grid-template-columns:1fr}
+    .visit-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr; gap:28px}
+  }
+  @media(max-width:520px){
+    .ribbon{grid-template-columns:1fr}
+    .stop{border-right:0!important; border-bottom:1px solid rgba(255,255,255,.12)}
+  }
+</style>
+</head>
+<body>
+
+<!-- string-light garland -->
+<div class="garland" aria-hidden="true">
+  <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+  <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+  <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+  <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+  <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+  <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+</div>
+
+<!-- utility bar -->
+<div class="util">
+  <div class="now"><span class="dot"></span><span data-i18n="util.open">Ouvert tous les jours jusqu'à 1 h</span></div>
+  <div class="rgt">
+    <span data-i18n="util.addr">54 Av. de la Libération · Schifflange</span>
+    <a class="tel" href="tel:+35226531676">+352 26 53 16 76</a>
+    <div class="lang" role="group" aria-label="Langue">
+      <button data-lang="fr" class="on">FR</button>
+      <button data-lang="de">DE</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</div>
+
+<!-- masthead -->
+<header class="mast">
+  <div class="wrap">
+    <div class="mast-grid">
+      <div class="mast-copy">
+        <div class="rate">
+          <span class="stars">★★★★☆</span>
+          <span data-i18n="mast.rate">4,4 / 5 · Top 5 des cafés de Schifflange</span>
+        </div>
+        <div class="wordmark">
+          <span class="plaque">Café de l'Avenue<span class="b2 l"></span><span class="b2 r"></span></span>
+        </div>
+        <div class="subbrand">« Chez Sofia » <small data-i18n="mast.confirm">à confirmer</small></div>
+        <h1 class="tag" data-i18n="mast.tag">Le cœur convivial de l'Avenue.</h1>
+        <p class="lede" data-i18n="mast.lede">Un café de quartier à Schifflange : le café du matin, un bon plat du jour à midi, un verre tranquille en terrasse le soir — et l'on reste ouvert jusqu'à 1 h, tous les soirs.</p>
+        <div class="cta-row">
+          <a class="btn btn-p" href="#ardoise" data-i18n="mast.cta1">Le plat du jour</a>
+          <a class="btn btn-o" href="tel:+35226531676" data-i18n="mast.cta2">Réserver une table</a>
+        </div>
+        <div class="meta-line">
+          <span><b data-i18n="mast.m1k">Cuisine</b> · <span data-i18n="mast.m1v">française &amp; portugaise, maison</span></span>
+          <span><b data-i18n="mast.m2k">Ambiance</b> · <span data-i18n="mast.m2v">terrasse · à emporter</span></span>
+        </div>
+      </div>
+
+      <div class="mast-photo">
+        <img src="assets/interior-2.jpg" alt="Façade du Café de l'Avenue, Schifflange" style="object-position:left top">
+        <div class="cap" data-i18n="mast.cap">La façade, Avenue de la Libération</div>
+      </div>
+
+      <div class="rail"><span data-i18n="rail.txt">Café du matin → dernier verre à 1 h</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- SIGNATURE: the day ribbon -->
+<section class="day" id="jour">
+  <div class="wrap">
+    <div class="head">
+      <h2 data-i18n="day.h">L'Avenue, <em>du matin à 1 h</em></h2>
+      <p class="hint" data-i18n="day.hint">Un même comptoir, cinq moments de la journée. Suivez l'heure.</p>
+    </div>
+    <div class="ribbon">
+
+      <div class="stop">
+        <div class="ph"><img src="assets/photo-1.jpg" alt="Le comptoir et la machine à café" style="object-position:left top"></div>
+        <div class="txt">
+          <div class="clock" data-i18n="s1.t">08:30 · Le matin</div>
+          <h3 data-i18n="s1.h">Le café</h3>
+          <p data-i18n="s1.p">Expresso, cappuccino et le journal au comptoir. On ouvre tôt pour le quartier.</p>
+        </div>
+      </div>
+
+      <div class="stop feature noimg">
+        <div class="ph"><span data-i18n="s2.ph">Photo du plat à fournir par l'établissement</span>
+          <span class="badge" data-i18n="s2.badge">La spécialité</span>
+        </div>
+        <div class="txt">
+          <div class="clock" data-i18n="s2.t">12:00 · Midi</div>
+          <h3 data-i18n="s2.h">Le plat du jour</h3>
+          <p data-i18n="s2.p">Une assiette qui change chaque jour — le rendez-vous du déjeuner sur l'Avenue.</p>
+          <div class="flag" data-i18n="s2.flag">Contenu &amp; prix à confirmer</div>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="ph"><img src="assets/hero.jpg" alt="La terrasse et ses guirlandes lumineuses" style="object-position:left center"></div>
+        <div class="txt">
+          <div class="clock" data-i18n="s3.t">15:00 · L'après-midi</div>
+          <h3 data-i18n="s3.h">La terrasse</h3>
+          <p data-i18n="s3.p">Un café, une pause au calme sous les guirlandes. Le coin tranquille du quartier.</p>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="ph"><img src="assets/drink-1.jpg" alt="Un verre servi au comptoir" style="object-position:left top"></div>
+        <div class="txt">
+          <div class="clock" data-i18n="s4.t">18:00 · Le soir</div>
+          <h3 data-i18n="s4.h">L'apéro</h3>
+          <p data-i18n="s4.p">Un verre après le travail, entre voisins et habitués. L'ambiance monte doucement.</p>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="ph"><img src="assets/interior-1.jpg" alt="L'enseigne du café la nuit" style="object-position:right top"></div>
+        <div class="txt">
+          <div class="clock" data-i18n="s5.t">01:00 · Tard</div>
+          <h3 data-i18n="s5.h">Jusqu'au bout</h3>
+          <p data-i18n="s5.p">On reste ouvert tard, tous les soirs. Le dernier café-bar allumé de l'Avenue.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ardoise / menu -->
+<section class="ardoise-sec" id="ardoise">
+  <div class="wrap">
+    <div class="ard-grid">
+      <div class="board">
+        <div class="bhead">
+          <h2 data-i18n="ard.h">L'ardoise <em>du jour</em></h2>
+          <span class="when" data-i18n="ard.when">Servi le midi · à emporter possible</span>
+        </div>
+        <div class="cols">
+          <div class="col">
+            <h4 data-i18n="ard.c1">Brasserie française</h4>
+            <div class="dish"><div class="d1" data-i18n="ard.c1d1">Plat du jour</div><div class="d2" data-i18n="ard.c1s1">l'assiette qui change chaque midi</div></div>
+            <div class="dish"><div class="d1" data-i18n="ard.c1d2">Steak-frites</div><div class="d2" data-i18n="ard.c1s2">classique de comptoir</div></div>
+            <div class="dish"><div class="d1" data-i18n="ard.c1d3">Croque &amp; salades</div><div class="d2" data-i18n="ard.c1s3">pour une faim plus légère</div></div>
+          </div>
+          <div class="col">
+            <h4 data-i18n="ard.c2">Saveurs portugaises</h4>
+            <div class="dish"><div class="d1" data-i18n="ard.c2d1">Bacalhau</div><div class="d2" data-i18n="ard.c2s1">morue, façon maison</div></div>
+            <div class="dish"><div class="d1" data-i18n="ard.c2d2">Grillades</div><div class="d2" data-i18n="ard.c2s2">selon l'arrivage du jour</div></div>
+            <div class="dish"><div class="d1" data-i18n="ard.c2d3">Pastéis de nata</div><div class="d2" data-i18n="ard.c2s3">avec le café</div></div>
+          </div>
+          <div class="col">
+            <h4 data-i18n="ard.c3">Café &amp; boissons</h4>
+            <div class="dish"><div class="d1" data-i18n="ard.c3d1">Expresso · Cappuccino</div><div class="d2" data-i18n="ard.c3s1">du matin au soir</div></div>
+            <div class="dish"><div class="d1" data-i18n="ard.c3d2">Bières &amp; vins</div><div class="d2" data-i18n="ard.c3s2">au verre, en terrasse</div></div>
+            <div class="dish"><div class="d1" data-i18n="ard.c3d3">Apéritifs</div><div class="d2" data-i18n="ard.c3s3">l'heure du verre</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ard-side">
+        <div class="ard-photo">
+          <img src="assets/food-1.jpg" alt="Le bar et ses bouteilles" style="object-position:left top">
+        </div>
+        <div class="note-card">
+          <div class="eyebrow" data-i18n="ard.notek">La carte réelle</div>
+          <p data-i18n="ard.note">Les plats ci-dessus sont des exemples illustratifs. La carte, le plat du jour et les prix sont à confirmer avec l'établissement.</p>
+          <div class="price-strip">
+            <span class="pr">±20–30 €</span>
+            <small data-i18n="ard.price">par personne · à confirmer</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- terrasse band -->
+<section class="terr">
+  <div class="terr-grid">
+    <div class="copy">
+      <span class="eyebrow" data-i18n="terr.eye">Sous les guirlandes</span>
+      <h2 data-i18n="terr.h">La terrasse, <em>jusqu'à tard</em></h2>
+      <p data-i18n="terr.p">Quand la nuit tombe sur l'Avenue, les guirlandes s'allument et la terrasse devient le salon du quartier. Un dernier verre, une conversation qui traîne — sans regarder l'heure.</p>
+      <div class="lights"><span class="bulb" style="margin:0"></span> <span data-i18n="terr.tag">Ouvert tous les soirs jusqu'à 1 h</span></div>
+    </div>
+    <div class="ph"><img src="assets/food-2.jpg" alt="Terrasse éclairée le soir" style="object-position:left center">
+      <div class="tag" data-i18n="terr.c1">La terrasse au crépuscule</div>
+    </div>
+    <div class="ph"><img src="assets/photo-2.jpg" alt="Salle du café en soirée" style="object-position:right bottom">
+      <div class="tag" data-i18n="terr.c2">La salle en soirée</div>
+    </div>
+  </div>
+</section>
+
+<!-- visit -->
+<section class="visit" id="visite">
+  <div class="wrap">
+    <div class="top">
+      <span class="eyebrow" data-i18n="visit.eye">Passez nous voir</span>
+      <h2 data-i18n="visit.h">Sur l'Avenue de la Libération</h2>
+      <p data-i18n="visit.p">Au cœur du quartier Terres Rouges, à Schifflange. Un café où l'on entre sans façon.</p>
+    </div>
+    <div class="visit-grid">
+
+      <div class="card hours">
+        <h3><span class="bulb" style="margin:0"></span> <span data-i18n="visit.hh">Horaires</span></h3>
+        <ul style="list-style:none">
+          <li><span class="dname" data-i18n="d.mon">Lundi</span><span class="dtime">08:30 – 01:00</span></li>
+          <li><span class="dname" data-i18n="d.tue">Mardi</span><span class="dtime">08:30 – 01:00</span></li>
+          <li><span class="dname" data-i18n="d.wed">Mercredi</span><span class="dtime">08:30 – 01:00</span></li>
+          <li><span class="dname" data-i18n="d.thu">Jeudi</span><span class="dtime">09:00 – 01:00</span></li>
+          <li><span class="dname" data-i18n="d.fri">Vendredi</span><span class="dtime">09:00 – 01:00</span></li>
+          <li><span class="dname" data-i18n="d.sat">Samedi</span><span class="dtime">09:00 – 01:00</span></li>
+          <li><span class="dname" data-i18n="d.sun">Dimanche</span><span class="dtime">10:00 – 01:00</span></li>
+        </ul>
+        <div class="conf" data-i18n="visit.hconf">Horaires indicatifs (sources en ligne) — à confirmer avec l'établissement.</div>
+      </div>
+
+      <div class="card contact">
+        <h3><span class="bulb" style="margin:0"></span> <span data-i18n="visit.ch">Contact</span></h3>
+        <div class="row"><div class="k" data-i18n="visit.cadr">Adresse</div><div class="v">54 Av. de la Libération<br>L-3850 Schifflange</div></div>
+        <div class="row"><div class="k" data-i18n="visit.ctel">Téléphone</div><div class="v"><a href="tel:+35226531676">+352 26 53 16 76</a></div></div>
+        <div class="row"><div class="k" data-i18n="visit.cta">Réservations</div><div class="v" data-i18n="visit.cav">Par téléphone, avec plaisir</div></div>
+        <a class="fb" href="https://www.facebook.com/Café-de-Lavenue-185700838227188/" target="_blank" rel="noopener">Facebook →</a>
+      </div>
+
+      <div class="card mapcard">
+        <iframe src="https://www.google.com/maps?q=54+Avenue+de+la+Lib%C3%A9ration,+L-3850+Schifflange,+Luxembourg&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Carte — Café de l'Avenue"></iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="plaque">Café de l'Avenue<span class="b2 l"></span><span class="b2 r"></span></span>
+        <p data-i18n="foot.p">Le café de quartier de l'Avenue de la Libération — café le matin, plat du jour à midi, terrasse jusqu'à 1 h.</p>
+      </div>
+      <div class="fcol">
+        <h5 data-i18n="foot.h1">Le café</h5>
+        <a href="#jour" data-i18n="foot.l1">La journée</a>
+        <a href="#ardoise" data-i18n="foot.l2">L'ardoise du jour</a>
+        <a href="#visite" data-i18n="foot.l3">Nous trouver</a>
+      </div>
+      <div class="fcol">
+        <h5 data-i18n="foot.h2">Nous joindre</h5>
+        <a href="tel:+35226531676">+352 26 53 16 76</a>
+        <p>54 Av. de la Libération<br>L-3850 Schifflange</p>
+        <a href="https://www.facebook.com/Café-de-Lavenue-185700838227188/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="demo-badge" data-i18n="foot.demo">Site de démonstration — non officiel. Contenu, horaires et prix à confirmer avec l'établissement.</span>
+      <span data-i18n="foot.copy">© 2026 Café de l'Avenue · maquette de présentation</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  fr:{
+    "util.open":"Ouvert tous les jours jusqu'à 1 h","util.addr":"54 Av. de la Libération · Schifflange",
+    "mast.rate":"4,4 / 5 · Top 5 des cafés de Schifflange","mast.confirm":"à confirmer",
+    "mast.tag":"Le cœur convivial de l'Avenue.",
+    "mast.lede":"Un café de quartier à Schifflange : le café du matin, un bon plat du jour à midi, un verre tranquille en terrasse le soir — et l'on reste ouvert jusqu'à 1 h, tous les soirs.",
+    "mast.cta1":"Le plat du jour","mast.cta2":"Réserver une table",
+    "mast.m1k":"Cuisine","mast.m1v":"française & portugaise, maison","mast.m2k":"Ambiance","mast.m2v":"terrasse · à emporter",
+    "mast.cap":"La façade, Avenue de la Libération","rail.txt":"Café du matin → dernier verre à 1 h",
+    "day.h":"L'Avenue, <em>du matin à 1 h</em>","day.hint":"Un même comptoir, cinq moments de la journée. Suivez l'heure.",
+    "s1.t":"08:30 · Le matin","s1.h":"Le café","s1.p":"Expresso, cappuccino et le journal au comptoir. On ouvre tôt pour le quartier.",
+    "s2.ph":"Photo du plat à fournir par l'établissement","s2.badge":"La spécialité","s2.t":"12:00 · Midi","s2.h":"Le plat du jour","s2.p":"Une assiette qui change chaque jour — le rendez-vous du déjeuner sur l'Avenue.","s2.flag":"Contenu & prix à confirmer",
+    "s3.t":"15:00 · L'après-midi","s3.h":"La terrasse","s3.p":"Un café, une pause au calme sous les guirlandes. Le coin tranquille du quartier.",
+    "s4.t":"18:00 · Le soir","s4.h":"L'apéro","s4.p":"Un verre après le travail, entre voisins et habitués. L'ambiance monte doucement.",
+    "s5.t":"01:00 · Tard","s5.h":"Jusqu'au bout","s5.p":"On reste ouvert tard, tous les soirs. Le dernier café-bar allumé de l'Avenue.",
+    "ard.h":"L'ardoise <em>du jour</em>","ard.when":"Servi le midi · à emporter possible",
+    "ard.c1":"Brasserie française","ard.c1d1":"Plat du jour","ard.c1s1":"l'assiette qui change chaque midi","ard.c1d2":"Steak-frites","ard.c1s2":"classique de comptoir","ard.c1d3":"Croque & salades","ard.c1s3":"pour une faim plus légère",
+    "ard.c2":"Saveurs portugaises","ard.c2d1":"Bacalhau","ard.c2s1":"morue, façon maison","ard.c2d2":"Grillades","ard.c2s2":"selon l'arrivage du jour","ard.c2d3":"Pastéis de nata","ard.c2s3":"avec le café",
+    "ard.c3":"Café & boissons","ard.c3d1":"Expresso · Cappuccino","ard.c3s1":"du matin au soir","ard.c3d2":"Bières & vins","ard.c3s2":"au verre, en terrasse","ard.c3d3":"Apéritifs","ard.c3s3":"l'heure du verre",
+    "ard.notek":"La carte réelle","ard.note":"Les plats ci-dessus sont des exemples illustratifs. La carte, le plat du jour et les prix sont à confirmer avec l'établissement.","ard.price":"par personne · à confirmer",
+    "terr.eye":"Sous les guirlandes","terr.h":"La terrasse, <em>jusqu'à tard</em>","terr.p":"Quand la nuit tombe sur l'Avenue, les guirlandes s'allument et la terrasse devient le salon du quartier. Un dernier verre, une conversation qui traîne — sans regarder l'heure.","terr.tag":"Ouvert tous les soirs jusqu'à 1 h","terr.c1":"La terrasse au crépuscule","terr.c2":"La salle en soirée",
+    "visit.eye":"Passez nous voir","visit.h":"Sur l'Avenue de la Libération","visit.p":"Au cœur du quartier Terres Rouges, à Schifflange. Un café où l'on entre sans façon.",
+    "visit.hh":"Horaires","visit.hconf":"Horaires indicatifs (sources en ligne) — à confirmer avec l'établissement.",
+    "visit.ch":"Contact","visit.cadr":"Adresse","visit.ctel":"Téléphone","visit.cta":"Réservations","visit.cav":"Par téléphone, avec plaisir",
+    "d.mon":"Lundi","d.tue":"Mardi","d.wed":"Mercredi","d.thu":"Jeudi","d.fri":"Vendredi","d.sat":"Samedi","d.sun":"Dimanche",
+    "foot.p":"Le café de quartier de l'Avenue de la Libération — café le matin, plat du jour à midi, terrasse jusqu'à 1 h.",
+    "foot.h1":"Le café","foot.l1":"La journée","foot.l2":"L'ardoise du jour","foot.l3":"Nous trouver","foot.h2":"Nous joindre",
+    "foot.demo":"Site de démonstration — non officiel. Contenu, horaires et prix à confirmer avec l'établissement.","foot.copy":"© 2026 Café de l'Avenue · maquette de présentation"
+  },
+  de:{
+    "util.open":"Täglich geöffnet bis 1 Uhr","util.addr":"54 Av. de la Libération · Schifflingen",
+    "mast.rate":"4,4 / 5 · Top 5 der Cafés in Schifflingen","mast.confirm":"zu bestätigen",
+    "mast.tag":"Das gesellige Herz der Avenue.",
+    "mast.lede":"Ein Nachbarschaftscafé in Schifflingen: morgens der Kaffee, mittags ein gutes Tagesgericht, abends ein ruhiges Glas auf der Terrasse — und geöffnet bis 1 Uhr, jeden Abend.",
+    "mast.cta1":"Das Tagesgericht","mast.cta2":"Tisch reservieren",
+    "mast.m1k":"Küche","mast.m1v":"französisch & portugiesisch, hausgemacht","mast.m2k":"Ambiente","mast.m2v":"Terrasse · zum Mitnehmen",
+    "mast.cap":"Die Fassade, Avenue de la Libération","rail.txt":"Morgenkaffee → letztes Glas um 1 Uhr",
+    "day.h":"Die Avenue, <em>von morgens bis 1 Uhr</em>","day.hint":"Ein Tresen, fünf Momente des Tages. Folgen Sie der Uhr.",
+    "s1.t":"08:30 · Morgens","s1.h":"Der Kaffee","s1.p":"Espresso, Cappuccino und die Zeitung am Tresen. Wir öffnen früh fürs Viertel.",
+    "s2.ph":"Gerichtsfoto vom Lokal beizustellen","s2.badge":"Die Spezialität","s2.t":"12:00 · Mittags","s2.h":"Das Tagesgericht","s2.p":"Ein Teller, der täglich wechselt — der Mittagstreff auf der Avenue.","s2.flag":"Inhalt & Preis zu bestätigen",
+    "s3.t":"15:00 · Nachmittags","s3.h":"Die Terrasse","s3.p":"Ein Kaffee, eine ruhige Pause unter den Lichterketten. Die stille Ecke des Viertels.",
+    "s4.t":"18:00 · Abends","s4.h":"Der Aperitif","s4.p":"Ein Glas nach der Arbeit, unter Nachbarn und Stammgästen. Die Stimmung steigt langsam.",
+    "s5.t":"01:00 · Spät","s5.h":"Bis zum Schluss","s5.p":"Wir bleiben spät geöffnet, jeden Abend. Das letzte erleuchtete Café-Bar der Avenue.",
+    "ard.h":"Die Tafel <em>des Tages</em>","ard.when":"Mittags serviert · auch zum Mitnehmen",
+    "ard.c1":"Französische Brasserie","ard.c1d1":"Tagesgericht","ard.c1s1":"der Teller, der mittags wechselt","ard.c1d2":"Steak-Frites","ard.c1s2":"Tresenklassiker","ard.c1d3":"Croque & Salate","ard.c1s3":"für den kleineren Hunger",
+    "ard.c2":"Portugiesische Aromen","ard.c2d1":"Bacalhau","ard.c2s1":"Stockfisch, hausgemacht","ard.c2d2":"Grillgerichte","ard.c2s2":"je nach Tagesangebot","ard.c2d3":"Pastéis de nata","ard.c2s3":"zum Kaffee",
+    "ard.c3":"Kaffee & Getränke","ard.c3d1":"Espresso · Cappuccino","ard.c3s1":"von morgens bis abends","ard.c3d2":"Bier & Wein","ard.c3s2":"im Glas, auf der Terrasse","ard.c3d3":"Aperitifs","ard.c3s3":"die Stunde des Glases",
+    "ard.notek":"Die echte Karte","ard.note":"Die obigen Gerichte sind illustrative Beispiele. Karte, Tagesgericht und Preise sind mit dem Lokal zu bestätigen.","ard.price":"pro Person · zu bestätigen",
+    "terr.eye":"Unter den Lichterketten","terr.h":"Die Terrasse, <em>bis spät</em>","terr.p":"Wenn die Nacht über die Avenue fällt, gehen die Lichterketten an und die Terrasse wird zum Wohnzimmer des Viertels. Ein letztes Glas, ein Gespräch, das sich zieht — ohne auf die Uhr zu schauen.","terr.tag":"Jeden Abend geöffnet bis 1 Uhr","terr.c1":"Die Terrasse in der Dämmerung","terr.c2":"Der Saal am Abend",
+    "visit.eye":"Besuchen Sie uns","visit.h":"An der Avenue de la Libération","visit.p":"Mitten im Viertel Terres Rouges in Schifflingen. Ein Café, in das man ungezwungen eintritt.",
+    "visit.hh":"Öffnungszeiten","visit.hconf":"Zeiten als Anhaltspunkt (Online-Quellen) — mit dem Lokal zu bestätigen.",
+    "visit.ch":"Kontakt","visit.cadr":"Adresse","visit.ctel":"Telefon","visit.cta":"Reservierungen","visit.cav":"Telefonisch, gerne",
+    "d.mon":"Montag","d.tue":"Dienstag","d.wed":"Mittwoch","d.thu":"Donnerstag","d.fri":"Freitag","d.sat":"Samstag","d.sun":"Sonntag",
+    "foot.p":"Das Nachbarschaftscafé der Avenue de la Libération — Kaffee am Morgen, Tagesgericht mittags, Terrasse bis 1 Uhr.",
+    "foot.h1":"Das Café","foot.l1":"Der Tag","foot.l2":"Die Tafel des Tages","foot.l3":"So finden Sie uns","foot.h2":"Kontakt",
+    "foot.demo":"Demo-Website — inoffiziell. Inhalte, Zeiten und Preise mit dem Lokal zu bestätigen.","foot.copy":"© 2026 Café de l'Avenue · Präsentationsmodell"
+  },
+  en:{
+    "util.open":"Open daily until 1 AM","util.addr":"54 Av. de la Libération · Schifflange",
+    "mast.rate":"4.4 / 5 · Top 5 cafés in Schifflange","mast.confirm":"to be confirmed",
+    "mast.tag":"The friendly heart of the Avenue.",
+    "mast.lede":"A neighbourhood café in Schifflange: your morning coffee, a good plat du jour at noon, a quiet drink on the terrace at night — and we stay open until 1 AM, every evening.",
+    "mast.cta1":"Today's plate","mast.cta2":"Book a table",
+    "mast.m1k":"Cuisine","mast.m1v":"French & Portuguese, home-cooked","mast.m2k":"Setting","mast.m2v":"terrace · takeaway",
+    "mast.cap":"The façade, Avenue de la Libération","rail.txt":"Morning coffee → last drink at 1 AM",
+    "day.h":"The Avenue, <em>from morning to 1 AM</em>","day.hint":"One counter, five moments of the day. Follow the clock.",
+    "s1.t":"08:30 · Morning","s1.h":"The coffee","s1.p":"Espresso, cappuccino and the paper at the counter. We open early for the neighbourhood.",
+    "s2.ph":"Dish photo to be provided by the venue","s2.badge":"The signature","s2.t":"12:00 · Noon","s2.h":"The plat du jour","s2.p":"A plate that changes every day — the lunch date on the Avenue.","s2.flag":"Content & price to be confirmed",
+    "s3.t":"15:00 · Afternoon","s3.h":"The terrace","s3.p":"A coffee, a quiet break under the string lights. The calm corner of the neighbourhood.",
+    "s4.t":"18:00 · Evening","s4.h":"The apéro","s4.p":"A drink after work, among neighbours and regulars. The mood rises gently.",
+    "s5.t":"01:00 · Late","s5.h":"To the last","s5.p":"We stay open late, every night. The last lit café-bar on the Avenue.",
+    "ard.h":"Today's <em>board</em>","ard.when":"Served at lunch · takeaway available",
+    "ard.c1":"French brasserie","ard.c1d1":"Plat du jour","ard.c1s1":"the plate that changes each midday","ard.c1d2":"Steak-frites","ard.c1s2":"a counter classic","ard.c1d3":"Croque & salads","ard.c1s3":"for a lighter appetite",
+    "ard.c2":"Portuguese flavours","ard.c2d1":"Bacalhau","ard.c2s1":"salt cod, house style","ard.c2d2":"Grills","ard.c2s2":"as the day's catch allows","ard.c2d3":"Pastéis de nata","ard.c2s3":"with your coffee",
+    "ard.c3":"Coffee & drinks","ard.c3d1":"Espresso · Cappuccino","ard.c3s1":"morning to night","ard.c3d2":"Beers & wines","ard.c3s2":"by the glass, on the terrace","ard.c3d3":"Aperitifs","ard.c3s3":"the drinking hour",
+    "ard.notek":"The real menu","ard.note":"The dishes above are illustrative examples. The menu, the plat du jour and prices are to be confirmed with the venue.","ard.price":"per person · to be confirmed",
+    "terr.eye":"Under the string lights","terr.h":"The terrace, <em>until late</em>","terr.p":"When night falls over the Avenue, the string lights come on and the terrace becomes the neighbourhood's living room. One last drink, a conversation that lingers — without watching the clock.","terr.tag":"Open every evening until 1 AM","terr.c1":"The terrace at dusk","terr.c2":"The room in the evening",
+    "visit.eye":"Come and see us","visit.h":"On the Avenue de la Libération","visit.p":"In the heart of the Terres Rouges quarter, in Schifflange. A café you walk into without any fuss.",
+    "visit.hh":"Opening hours","visit.hconf":"Hours as a guide (online sources) — to be confirmed with the venue.",
+    "visit.ch":"Contact","visit.cadr":"Address","visit.ctel":"Phone","visit.cta":"Reservations","visit.cav":"By phone, with pleasure",
+    "d.mon":"Monday","d.tue":"Tuesday","d.wed":"Wednesday","d.thu":"Thursday","d.fri":"Friday","d.sat":"Saturday","d.sun":"Sunday",
+    "foot.p":"The neighbourhood café of Avenue de la Libération — coffee in the morning, plat du jour at noon, terrace until 1 AM.",
+    "foot.h1":"The café","foot.l1":"The day","foot.l2":"Today's board","foot.l3":"Find us","foot.h2":"Get in touch",
+    "foot.demo":"Demonstration site — unofficial. Content, hours and prices to be confirmed with the venue.","foot.copy":"© 2026 Café de l'Avenue · presentation mock-up"
+  }
+};
+
+const RICH = new Set(["day.h","ard.h","terr.h"]); // keys containing HTML
+function setLang(lang){
+  const dict = I18N[lang]; if(!dict) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k = el.getAttribute("data-i18n");
+    if(dict[k]===undefined) return;
+    if(RICH.has(k)) el.innerHTML = dict[k];
+    else el.textContent = dict[k];
+  });
+  document.querySelectorAll(".lang button").forEach(b=>{
+    b.classList.toggle("on", b.dataset.lang===lang);
+  });
+}
+document.querySelectorAll(".lang button").forEach(b=>{
+  b.addEventListener("click",()=>setLang(b.dataset.lang));
+});
+
+// highlight today's row in the hours board
+(function(){
+  const idx = new Date().getDay(); // 0=Sun..6=Sat
+  const map = {1:0,2:1,3:2,4:3,5:4,6:5,0:6};
+  const rows = document.querySelectorAll(".hours li");
+  const r = rows[map[idx]];
+  if(r) r.classList.add("today");
+})();
+</script>
+</body>
+</html>

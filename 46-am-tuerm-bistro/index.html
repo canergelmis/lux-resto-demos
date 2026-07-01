@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>46 Am Tuerm — Bistro &amp; Bar dans la tour de Diekirch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --char:#1E1B1A;        /* industrial charcoal */
+    --char-2:#26221F;      /* warm dark panel */
+    --char-3:#2E2A26;      /* raised panel */
+    --wood:#B07A47;        /* pine / oak */
+    --wood-lt:#C89A6A;
+    --stone:#7A7168;       /* exposed stone */
+    --violet:#6C3FB0;      /* LED wash */
+    --violet-lt:#8C5BD6;
+    --blue:#2E2C6B;        /* deep blue LED */
+    --amber:#F2B860;       /* candle / fairy light */
+    --cream:#F3ECE3;
+    --cream-dim:#C9C0B4;
+    --line:rgba(200,154,106,.22);
+    --spine-w:340px;
+    --maxc:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--char);
+    color:var(--cream);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;image-orientation:from-image}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'Space Mono',monospace;letter-spacing:.02em}
+  .osw{font-family:'Oswald',sans-serif}
+
+  /* ============ TOWER SPINE (fixed left rail) ============ */
+  .spine{
+    position:fixed;top:0;left:0;width:var(--spine-w);height:100vh;
+    background:
+      radial-gradient(120% 60% at 20% 0%, rgba(108,63,176,.34), transparent 60%),
+      linear-gradient(180deg,#211D1B 0%, #171412 100%);
+    border-right:1px solid var(--line);
+    display:flex;flex-direction:column;
+    padding:34px 30px 26px;z-index:50;
+    overflow:hidden;
+  }
+  /* faint concentric cable-reel rings behind the spine */
+  .spine::after{
+    content:"";position:absolute;left:-160px;bottom:-120px;width:520px;height:520px;border-radius:50%;
+    background:
+      repeating-radial-gradient(circle at center,
+        transparent 0 26px, rgba(200,154,106,.07) 26px 27px);
+    pointer-events:none;
+  }
+  .spine>*{position:relative;z-index:2}
+  .brand-num{
+    font-family:'Oswald',sans-serif;font-weight:700;
+    font-size:118px;line-height:.82;letter-spacing:-.02em;
+    color:var(--amber);
+    text-shadow:0 0 34px rgba(242,184,96,.28);
+  }
+  .brand-word{
+    font-family:'Oswald',sans-serif;font-weight:500;
+    letter-spacing:.42em;font-size:19px;text-transform:uppercase;
+    margin-top:10px;color:var(--cream);padding-left:4px;
+  }
+  .brand-tag{
+    font-size:12.5px;color:var(--cream-dim);margin-top:14px;max-width:250px;
+    border-left:2px solid var(--violet-lt);padding-left:12px;font-style:italic;
+  }
+  .brand-tag small{display:block;font-style:normal;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-top:6px}
+
+  .floor-nav{margin-top:34px;display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--line);padding-top:20px}
+  .floor-nav a{
+    display:flex;align-items:baseline;gap:14px;padding:7px 0;
+    font-family:'Oswald',sans-serif;font-weight:400;letter-spacing:.06em;
+    text-transform:uppercase;font-size:14.5px;color:var(--cream-dim);
+    transition:.25s;
+  }
+  .floor-nav a .fcode{font-family:'Space Mono',monospace;font-size:11px;color:var(--stone);width:24px;transition:.25s}
+  .floor-nav a:hover,.floor-nav a.active{color:var(--amber)}
+  .floor-nav a:hover .fcode,.floor-nav a.active .fcode{color:var(--violet-lt)}
+
+  .spine-foot{margin-top:auto;padding-top:22px;border-top:1px solid var(--line);font-size:12.5px;color:var(--cream-dim)}
+  .spine-foot .ph{font-family:'Oswald',sans-serif;font-size:20px;letter-spacing:.02em;color:var(--cream);display:block;margin-bottom:4px}
+  .spine-foot .note{color:var(--stone);font-size:11px;margin-top:10px;display:flex;align-items:center;gap:7px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--violet-lt);box-shadow:0 0 8px var(--violet-lt);flex:none}
+
+  .lang{display:flex;gap:0;margin-top:20px;border:1px solid var(--line);border-radius:2px;overflow:hidden;width:max-content}
+  .lang button{
+    background:transparent;border:0;color:var(--cream-dim);cursor:pointer;
+    font-family:'Space Mono',monospace;font-size:12px;padding:6px 12px;letter-spacing:.05em;transition:.2s;
+  }
+  .lang button+button{border-left:1px solid var(--line)}
+  .lang button.on{background:var(--amber);color:#241a0c;font-weight:700}
+
+  /* ============ CONTENT COLUMN ============ */
+  .content{margin-left:var(--spine-w);min-height:100vh}
+  .floor{padding:96px 64px;border-bottom:1px solid var(--line);position:relative}
+  .floor-hd{display:flex;align-items:center;gap:18px;margin-bottom:38px}
+  .floor-hd .code{font-family:'Space Mono',monospace;font-size:13px;color:var(--violet-lt);letter-spacing:.1em}
+  .floor-hd .ttl{font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:15px;color:var(--cream-dim)}
+  .floor-hd .rule{flex:1;height:1px;background:var(--line)}
+
+  /* ---- 00 SEUIL / HERO ---- */
+  #seuil{padding:0;border-bottom:1px solid var(--line)}
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;min-height:100vh}
+  .hero-left{padding:80px 56px 56px;display:flex;flex-direction:column;justify-content:center;position:relative;background:linear-gradient(180deg,#1c1917,#211c19)}
+  .hero-kick{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--violet-lt);margin-bottom:24px}
+  .hero-h1{font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(44px,5vw,76px);line-height:.98;text-transform:uppercase;letter-spacing:-.01em}
+  .hero-h1 em{font-style:normal;color:var(--amber);display:block}
+  .hero-lede{margin-top:26px;max-width:440px;font-size:17px;color:var(--cream-dim)}
+  .hero-claim{margin-top:30px;display:inline-flex;align-items:center;gap:12px;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:14px;color:var(--cream);border:1px solid var(--line);padding:12px 18px;border-radius:2px;width:max-content;background:rgba(108,63,176,.1)}
+  .hero-claim b{color:var(--amber)}
+  .hero-cta{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:14px;padding:14px 26px;border-radius:2px;cursor:pointer;border:1px solid var(--amber);transition:.25s;display:inline-flex;align-items:center;gap:10px}
+  .btn-primary{background:var(--amber);color:#241a0c;font-weight:600}
+  .btn-primary:hover{background:var(--wood-lt);border-color:var(--wood-lt)}
+  .btn-ghost{background:transparent;color:var(--cream);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+  .hero-right{position:relative;overflow:hidden;background:#0f0d0c}
+  .hero-right img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05)}
+  .hero-right::before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(28,25,23,.55),transparent 22%),linear-gradient(0deg,rgba(46,44,107,.28),transparent 55%);pointer-events:none}
+  .hero-badge{position:absolute;z-index:3;right:26px;bottom:26px;background:rgba(23,20,18,.82);border:1px solid var(--line);backdrop-filter:blur(4px);padding:14px 18px;border-radius:2px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--cream-dim);max-width:230px}
+  .hero-badge b{color:var(--amber);display:block;font-size:13px;margin-bottom:3px;letter-spacing:.02em}
+  /* vertical strip of vitals down the seam */
+  .hero-strip{position:absolute;z-index:4;left:calc(52.5% - 1px);top:0;bottom:0;width:2px;background:linear-gradient(var(--violet-lt),transparent 40%,var(--amber))}
+
+  /* ---- 01 CUISINE ---- */
+  #cuisine{background:linear-gradient(180deg,#1E1B1A,#201c19)}
+  .kitchen{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:start}
+  .signature{border:1px solid var(--line);border-radius:3px;overflow:hidden;background:var(--char-2);position:relative;grid-column:1 / -1;display:grid;grid-template-columns:.9fr 1.1fr;margin-bottom:44px}
+  .signature .sig-txt{padding:40px}
+  .sig-tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--violet-lt)}
+  .sig-name{font-family:'Oswald',sans-serif;font-weight:700;font-size:46px;text-transform:uppercase;line-height:1;margin:14px 0 8px;color:var(--amber)}
+  .sig-desc{color:var(--cream-dim);max-width:380px;font-size:15.5px}
+  .sig-quote{margin-top:22px;font-style:italic;color:var(--cream);border-left:2px solid var(--amber);padding-left:14px;font-size:15px}
+  .signature .sig-img{position:relative;min-height:320px;overflow:hidden}
+  .signature .sig-img img{width:100%;height:100%;object-fit:cover}
+  .signature .sig-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(38,34,31,.7),transparent 30%)}
+
+  .menu-col h3{font-family:'Oswald',sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.12em;font-size:14px;color:var(--cream-dim);margin-bottom:6px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+  .dish{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:15px 0;border-bottom:1px dotted rgba(200,154,106,.18)}
+  .dish .dn{font-weight:600;font-size:16px}
+  .dish .dd{display:block;font-weight:400;font-size:13px;color:var(--stone);margin-top:2px}
+  .dish .dp{font-family:'Space Mono',monospace;font-size:14px;color:var(--amber);white-space:nowrap}
+  .dish .dp.tbc{color:var(--stone);font-size:11px}
+  .card-note{margin-top:22px;font-size:12px;color:var(--stone);font-style:italic}
+
+  /* ---- 02 COMPTOIR / BAR ---- */
+  #comptoir{background:
+      radial-gradient(90% 120% at 85% 0%, rgba(46,44,107,.5), transparent 55%),
+      linear-gradient(180deg,#171316,#1a1620)}
+  .bar{display:grid;grid-template-columns:1fr 1fr 1fr;gap:34px;align-items:stretch}
+  .bar-lead{grid-column:1 / 2;display:flex;flex-direction:column;justify-content:center}
+  .bar-lead h2{font-family:'Oswald',sans-serif;font-weight:600;font-size:40px;text-transform:uppercase;line-height:1.02}
+  .bar-lead h2 em{font-style:normal;color:var(--violet-lt)}
+  .bar-lead p{margin-top:18px;color:var(--cream-dim);font-size:15.5px}
+  .bar-card{background:rgba(23,20,18,.55);border:1px solid var(--line);border-radius:3px;padding:28px;position:relative;overflow:hidden}
+  .bar-card .bc-ico{font-family:'Oswald',sans-serif;font-weight:700;font-size:30px;color:var(--amber)}
+  .bar-card h4{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:17px;margin:12px 0 8px}
+  .bar-card p{font-size:14px;color:var(--cream-dim)}
+  .bar-photo{grid-column:3 / 4;grid-row:1 / 3;border-radius:3px;overflow:hidden;min-height:300px;position:relative;border:1px solid var(--line)}
+  .bar-photo img{width:100%;height:100%;object-fit:cover}
+  .bar-photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px;background:linear-gradient(0deg,rgba(23,20,18,.9),transparent);font-family:'Space Mono',monospace;font-size:11px;color:var(--cream-dim);letter-spacing:.04em}
+
+  /* ---- 03 LA TOUR / STORY ---- */
+  #tour{background:linear-gradient(180deg,#201c19,#1b1815)}
+  .story{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .story-imgs{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 200px;gap:14px}
+  .story-imgs figure{overflow:hidden;border-radius:3px;border:1px solid var(--line);position:relative}
+  .story-imgs figure:first-child{grid-column:1 / -1;grid-row:1 / 2}
+  .story-imgs img{width:100%;height:100%;object-fit:cover}
+  .story-txt h2{font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(32px,3.4vw,50px);text-transform:uppercase;line-height:1;margin-bottom:8px}
+  .story-txt h2 em{font-style:normal;color:var(--amber)}
+  .story-txt .sub{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet-lt);margin-bottom:26px}
+  .story-txt p{color:var(--cream-dim);margin-bottom:16px;font-size:16px}
+  .story-facts{display:flex;gap:14px;margin-top:28px;flex-wrap:wrap}
+  .fact{border:1px solid var(--line);border-radius:2px;padding:14px 18px;background:rgba(108,63,176,.08)}
+  .fact b{font-family:'Oswald',sans-serif;font-size:24px;color:var(--amber);display:block}
+  .fact span{font-size:11.5px;color:var(--cream-dim);letter-spacing:.03em}
+
+  /* ---- 04 LA SALLE / GALLERY ---- */
+  #salle{background:#161311}
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:14px}
+  .gallery figure{overflow:hidden;border-radius:3px;position:relative;border:1px solid var(--line)}
+  .gallery figure img{width:100%;height:100%;object-fit:cover;transition:.6s ease}
+  .gallery figure:hover img{transform:scale(1.06)}
+  .gallery .g-wide{grid-column:span 2;grid-row:span 2}
+  .gallery .g-tall{grid-row:span 2}
+  .gallery figcaption{position:absolute;left:12px;bottom:10px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--cream);text-shadow:0 1px 6px #000;opacity:0;transition:.3s}
+  .gallery figure:hover figcaption{opacity:1}
+
+  /* ---- 05 VISITE ---- */
+  #visite{background:linear-gradient(180deg,#1b1815,#151210)}
+  .visit{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:stretch}
+  .hours-block{}
+  .hours-block h2{font-family:'Oswald',sans-serif;font-weight:600;font-size:40px;text-transform:uppercase;margin-bottom:6px}
+  .tbc-flag{display:inline-block;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#241a0c;background:var(--amber);padding:4px 9px;border-radius:2px;margin-bottom:22px}
+  .hrow{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px dotted rgba(200,154,106,.18);font-size:15px}
+  .hrow .d{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--cream)}
+  .hrow .h{font-family:'Space Mono',monospace;font-size:13px;color:var(--cream-dim)}
+  .hrow.closed .h{color:var(--violet-lt)}
+  .contact-lines{margin-top:26px;display:flex;flex-direction:column;gap:12px;font-size:15px}
+  .contact-lines a,.contact-lines span{display:flex;gap:12px;align-items:center;color:var(--cream-dim)}
+  .contact-lines .lab{font-family:'Space Mono',monospace;font-size:11px;color:var(--stone);width:70px;text-transform:uppercase;letter-spacing:.06em}
+  .contact-lines a:hover{color:var(--amber)}
+  .map-wrap{border:1px solid var(--line);border-radius:3px;overflow:hidden;min-height:420px;position:relative}
+  .map-wrap iframe{width:100%;height:100%;min-height:420px;border:0;filter:grayscale(.3) contrast(1.05) brightness(.9)}
+  .map-addr{position:absolute;left:16px;top:16px;background:rgba(23,20,18,.9);border:1px solid var(--line);padding:12px 16px;border-radius:2px;font-size:12.5px;color:var(--cream);backdrop-filter:blur(4px)}
+  .map-addr b{font-family:'Oswald',sans-serif;letter-spacing:.04em;display:block;color:var(--amber);margin-bottom:3px}
+
+  /* ---- FOOTER ---- */
+  footer{background:#100e0d;padding:40px 64px;display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap}
+  footer .f-brand{font-family:'Oswald',sans-serif;font-weight:700;font-size:30px;color:var(--amber);letter-spacing:.02em}
+  footer .f-brand span{font-weight:400;font-size:13px;letter-spacing:.3em;color:var(--cream-dim);display:block;margin-top:2px}
+  footer .f-right{max-width:520px;font-size:12px;color:var(--stone);text-align:right}
+  footer .disclaimer{margin-top:10px;padding:10px 14px;border:1px dashed rgba(200,154,106,.3);border-radius:2px;color:var(--cream-dim);font-size:11.5px}
+
+  /* scroll reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* mobile toggle (hidden desktop) */
+  .spine-toggle{display:none}
+
+  /* ============ RESPONSIVE ============ */
+  @media(max-width:1100px){
+    :root{--spine-w:280px}
+    .floor{padding:72px 40px}
+    .hero{grid-template-columns:1fr}
+    .hero-right{min-height:52vh}
+    .hero-strip{display:none}
+    .signature{grid-template-columns:1fr}
+    .signature .sig-img{min-height:240px}
+    .kitchen{grid-template-columns:1fr;gap:36px}
+    .bar{grid-template-columns:1fr 1fr}
+    .bar-lead{grid-column:1 / -1}
+    .bar-photo{grid-column:1 / -1;grid-row:auto;min-height:240px}
+    .story{grid-template-columns:1fr;gap:36px}
+    .gallery{grid-template-columns:repeat(2,1fr)}
+    .visit{grid-template-columns:1fr}
+  }
+  @media(max-width:720px){
+    :root{--spine-w:0px}
+    .spine{
+      position:relative;width:100%;height:auto;flex-direction:column;
+      padding:24px 22px;border-right:0;border-bottom:1px solid var(--line);
+    }
+    .spine::after{display:none}
+    .brand-num{font-size:82px}
+    .floor-nav{display:none}
+    .floor-nav.open{display:flex}
+    .spine-toggle{display:inline-flex;align-items:center;gap:8px;position:absolute;top:26px;right:22px;background:transparent;border:1px solid var(--line);color:var(--cream);font-family:'Space Mono',monospace;font-size:12px;padding:8px 12px;border-radius:2px;cursor:pointer}
+    .spine-foot{margin-top:22px}
+    .content{margin-left:0}
+    .floor{padding:56px 22px}
+    .floor-hd .ttl{font-size:12px;letter-spacing:.08em}
+    .kitchen,.bar,.story,.visit{grid-template-columns:1fr}
+    .bar{grid-template-columns:1fr}
+    .gallery{grid-template-columns:1fr;grid-auto-rows:200px}
+    .gallery .g-wide,.gallery .g-tall{grid-column:auto;grid-row:auto}
+    .hero-left{padding:56px 24px}
+    footer{padding:32px 22px;flex-direction:column}
+    footer .f-right{text-align:left}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOWER SPINE ============ -->
+<aside class="spine">
+  <button class="spine-toggle" id="navToggle" aria-label="menu">MENU ▾</button>
+  <div class="brand-num osw">46</div>
+  <div class="brand-word">Am&nbsp;Tuerm</div>
+  <div class="brand-tag">
+    <span data-i18n="tag">Bistro &amp; bar dans la tour de Diekirch.</span>
+    <small data-i18n="tagProposed">Signature proposée</small>
+  </div>
+
+  <div class="lang" role="group" aria-label="langue">
+    <button data-lang="fr" class="on">FR</button>
+    <button data-lang="de">DE</button>
+    <button data-lang="en">EN</button>
+  </div>
+
+  <nav class="floor-nav" id="floorNav">
+    <a href="#seuil"><span class="fcode">00</span><span data-i18n="nav0">Le seuil</span></a>
+    <a href="#cuisine"><span class="fcode">01</span><span data-i18n="nav1">La cuisine</span></a>
+    <a href="#comptoir"><span class="fcode">02</span><span data-i18n="nav2">Le comptoir</span></a>
+    <a href="#tour"><span class="fcode">03</span><span data-i18n="nav3">La tour</span></a>
+    <a href="#salle"><span class="fcode">04</span><span data-i18n="nav4">La salle</span></a>
+    <a href="#visite"><span class="fcode">05</span><span data-i18n="nav5">Visiter</span></a>
+  </nav>
+
+  <div class="spine-foot">
+    <a href="tel:+35226870735" class="ph osw">+352 26 87 07 35</a>
+    <div data-i18n="spineAddr">46, Rue de l'Industrie · Diekirch</div>
+    <div class="note"><span class="dot"></span><span data-i18n="spineScala">À côté du cinéma Scala</span></div>
+    <div class="note"><span class="dot" style="background:var(--amber);box-shadow:0 0 8px var(--amber)"></span><span data-i18n="spineClosed">Fermé le mardi</span></div>
+  </div>
+</aside>
+
+<!-- ============ CONTENT ============ -->
+<main class="content">
+
+  <!-- 00 · LE SEUIL -->
+  <section id="seuil">
+    <div class="hero">
+      <div class="hero-left">
+        <div class="hero-kick" data-i18n="heroKick">Diekirch · Éislek · depuis la tour</div>
+        <h1 class="hero-h1">
+          <span data-i18n="heroH1a">Un bistro</span>
+          <em data-i18n="heroH1b">dans la tour.</em>
+        </h1>
+        <p class="hero-lede" data-i18n="heroLede">Pierre brute, bois de pin, tables-touret sous verre et une lueur violette au soir tombé. Le gastropub de quartier au pied de l'ancienne tour industrielle — un verre, un burger, un plat du jour, avant ou après la séance.</p>
+        <div class="hero-claim">
+          <span data-i18n="heroClaimPre">La maison revendique</span>&nbsp;<b data-i18n="heroClaimBold">le meilleur cheeseburger maison de Diekirch</b>
+        </div>
+        <div class="hero-cta">
+          <a href="tel:+35226870735" class="btn btn-primary" data-i18n="ctaBook">Réserver une table</a>
+          <a href="#cuisine" class="btn btn-ghost" data-i18n="ctaMenu">Voir la carte</a>
+        </div>
+      </div>
+      <div class="hero-strip"></div>
+      <div class="hero-right">
+        <img src="assets/hero.jpg" alt="Table au coin de la grande fenêtre, plaid en fourrure et bougies au crépuscule, 46 Am Tuerm Diekirch" />
+        <div class="hero-badge">
+          <b data-i18n="badgeTitle">Am Tuerm</b>
+          <span data-i18n="badgeText">« à la tour » en luxembourgeois — le 46 est le numéro de la rue, la tour est notre maison.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 · LA CUISINE -->
+  <section id="cuisine" class="floor">
+    <div class="floor-hd reveal">
+      <span class="code">01</span>
+      <span class="ttl" data-i18n="hd1">La cuisine — la carte</span>
+      <span class="rule"></span>
+    </div>
+
+    <div class="signature reveal">
+      <div class="sig-txt">
+        <div class="sig-tag" data-i18n="sigTag">La signature de la maison</div>
+        <div class="sig-name osw">Le 46 Burger</div>
+        <p class="sig-desc" data-i18n="sigDesc">Notre cheeseburger maison — le plat autour duquel toute la maison s'est construite. Steak, fromage fondant, pain doré et frites maison à côté.</p>
+        <p class="sig-quote" data-i18n="sigQuote">« Le meilleur cheeseburger maison de Diekirch » — la promesse de la maison.</p>
+      </div>
+      <div class="sig-img">
+        <img src="assets/food-1.jpg" alt="Grande salade composée : brochettes de poulet grillé aux herbes, mozzarella, œuf, pain grillé, frites maison en arrière-plan" />
+      </div>
+    </div>
+
+    <div class="kitchen">
+      <div class="menu-col reveal">
+        <h3 data-i18n="colPlats">Du bistro</h3>
+        <div class="dish">
+          <span><span class="dn" data-i18n="d1n">Plat du jour</span><span class="dd" data-i18n="d1d">Le midi, servi en semaine</span></span>
+          <span class="dp">11,50 €</span>
+        </div>
+        <div class="dish">
+          <span><span class="dn" data-i18n="d2n">Le 46 Burger</span><span class="dd" data-i18n="d2d">Cheeseburger maison, frites maison</span></span>
+          <span class="dp tbc" data-i18n="tbc">à confirmer</span>
+        </div>
+        <div class="dish">
+          <span><span class="dn" data-i18n="d3n">Pâtes maison</span><span class="dd" data-i18n="d3d">Sauce du moment</span></span>
+          <span class="dp tbc" data-i18n="tbc2">à confirmer</span>
+        </div>
+        <div class="dish">
+          <span><span class="dn" data-i18n="d4n">Croque monsieur</span><span class="dd" data-i18n="d4d">Le classique, jambon &amp; fromage</span></span>
+          <span class="dp tbc" data-i18n="tbc3">à confirmer</span>
+        </div>
+      </div>
+
+      <div class="menu-col reveal">
+        <h3 data-i18n="colPlus">Plats &amp; salades</h3>
+        <div class="dish">
+          <span><span class="dn" data-i18n="d5n">Dos de cabillaud</span><span class="dd" data-i18n="d5d">Filet de poisson, garniture du jour</span></span>
+          <span class="dp tbc" data-i18n="tbc4">à confirmer</span>
+        </div>
+        <div class="dish">
+          <span><span class="dn" data-i18n="d6n">Grande salade</span><span class="dd" data-i18n="d6d">Poulet grillé aux herbes, mozzarella, œuf, pain</span></span>
+          <span class="dp tbc" data-i18n="tbc5">à confirmer</span>
+        </div>
+        <div class="dish">
+          <span><span class="dn" data-i18n="d7n">Frites maison</span><span class="dd" data-i18n="d7d">En accompagnement</span></span>
+          <span class="dp tbc" data-i18n="tbc6">à confirmer</span>
+        </div>
+        <p class="card-note" data-i18n="cardNote">Carte indicative. Les plats et les prix (hors plat du jour à 11,50 €) sont à confirmer avec l'établissement.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 · LE COMPTOIR -->
+  <section id="comptoir" class="floor">
+    <div class="floor-hd reveal">
+      <span class="code">02</span>
+      <span class="ttl" data-i18n="hd2">Le comptoir — bières &amp; ambiance</span>
+      <span class="rule"></span>
+    </div>
+    <div class="bar">
+      <div class="bar-lead reveal">
+        <h2><span data-i18n="barH2a">La soif</span> <em data-i18n="barH2b">de Diekirch.</em></h2>
+        <p data-i18n="barLead">Ville de brasserie oblige : une large sélection de bières pression et bouteilles, un fond de musique et le buzz chaleureux du soir. On s'installe pour un verre, on reste pour l'ambiance.</p>
+      </div>
+      <div class="bar-card reveal">
+        <div class="bc-ico osw">01</div>
+        <h4 data-i18n="bc1t">Pression &amp; bouteilles</h4>
+        <p data-i18n="bc1p">Large choix de bières, dans la plus pure tradition brassicole de Diekirch.</p>
+      </div>
+      <figure class="bar-photo reveal">
+        <img src="assets/interior-3.jpg" alt="Table-touret ronde sous verre, bougie chauffe-plat, couverts dans une serviette noire, mur de pierre — ambiance du soir" />
+        <figcaption data-i18n="barCap">Le soir, à la lueur des bougies et des guirlandes.</figcaption>
+      </figure>
+      <div class="bar-card reveal">
+        <div class="bc-ico osw">02</div>
+        <h4 data-i18n="bc2t">Musique &amp; soirées</h4>
+        <p data-i18n="bc2p">Un vrai programme musical qui donne le tempo des soirées, plus tard le vendredi et le samedi.</p>
+      </div>
+      <div class="bar-card reveal">
+        <div class="bc-ico osw">03</div>
+        <h4 data-i18n="bc3t">Avant / après séance</h4>
+        <p data-i18n="bc3p">Le cinéma Scala est juste à côté : l'adresse naturelle pour un verre ou une bouchée autour du film.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · LA TOUR -->
+  <section id="tour" class="floor">
+    <div class="floor-hd reveal">
+      <span class="code">03</span>
+      <span class="ttl" data-i18n="hd3">La tour — l'histoire des lieux</span>
+      <span class="rule"></span>
+    </div>
+    <div class="story">
+      <div class="story-imgs reveal">
+        <figure><img src="assets/interior-2.jpg" alt="Détail d'une table-touret ronde sous verre avec bougie, mur de pierre brute — 46 Am Tuerm" /></figure>
+        <figure><img src="assets/interior-3.jpg" alt="Mise en place sur table-touret, plaid en fourrure et bois de pin" /></figure>
+        <figure><img src="assets/food-1.jpg" alt="Assiette du soir sous la lueur violette de la salle" /></figure>
+      </div>
+      <div class="story-txt reveal">
+        <div class="sub" data-i18n="storySub">46, Rue de l'Industrie</div>
+        <h2><span data-i18n="storyH2a">Une tour</span> <em data-i18n="storyH2b">réhabilitée.</em></h2>
+        <p data-i18n="storyP1">46 Am Tuerm occupe une ancienne tour industrielle au cœur de Diekirch. Pierre apparente, briques, bois de pin au plafond et aux murs : un décor cosy-industriel entièrement accordé au patrimoine de la ville.</p>
+        <p data-i18n="storyP2">Les grandes tables rondes sont d'anciens tourets à câble posés sous verre ; les chaises portent des plaids en fourrure, les guirlandes et les bougies réchauffent la pierre, et une tête de cerf veille sur la salle baignée d'une lumière violette au soir tombé.</p>
+        <div class="story-facts">
+          <div class="fact"><b>46</b><span data-i18n="fact1">le numéro de la rue</span></div>
+          <div class="fact"><b data-i18n="fact2b">Tuerm</b><span data-i18n="fact2">« la tour » en luxembourgeois</span></div>
+          <div class="fact"><b>~4,4★</b><span data-i18n="fact3">Google &amp; RestaurantGuru · à revérifier</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · LA SALLE -->
+  <section id="salle" class="floor">
+    <div class="floor-hd reveal">
+      <span class="code">04</span>
+      <span class="ttl" data-i18n="hd4">La salle — en images</span>
+      <span class="rule"></span>
+    </div>
+    <div class="gallery reveal">
+      <figure class="g-wide"><img src="assets/hero.jpg" alt="Vue de la grande fenêtre au crépuscule, table avec plaid et bougies" /><figcaption data-i18n="gc1">La grande fenêtre, au crépuscule</figcaption></figure>
+      <figure class="g-tall"><img src="assets/interior-2.jpg" alt="Table-touret ronde et bougie chauffe-plat" /><figcaption data-i18n="gc2">Table-touret &amp; bougie</figcaption></figure>
+      <figure><img src="assets/food-1.jpg" alt="Grande salade composée avec poulet grillé et frites maison" /><figcaption data-i18n="gc3">La grande salade</figcaption></figure>
+      <figure><img src="assets/interior-3.jpg" alt="Mise en place sur mur de pierre" /><figcaption data-i18n="gc4">Pierre &amp; bois de pin</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 05 · VISITER -->
+  <section id="visite" class="floor">
+    <div class="floor-hd reveal">
+      <span class="code">05</span>
+      <span class="ttl" data-i18n="hd5">Visiter — horaires &amp; accès</span>
+      <span class="rule"></span>
+    </div>
+    <div class="visit">
+      <div class="hours-block reveal">
+        <h2 data-i18n="hoursTitle">Horaires</h2><br>
+        <span class="tbc-flag" data-i18n="hoursFlag">Horaires à confirmer avec l'établissement</span>
+        <div class="hrow"><span class="d" data-i18n="dayMon">Lundi</span><span class="h">11:30–14:00 · 17:30–00:00</span></div>
+        <div class="hrow closed"><span class="d" data-i18n="dayTue">Mardi</span><span class="h" data-i18n="closedWord">Fermé</span></div>
+        <div class="hrow"><span class="d" data-i18n="dayWed">Mercredi</span><span class="h">11:30–14:00 · 17:30–00:00</span></div>
+        <div class="hrow"><span class="d" data-i18n="dayThu">Jeudi</span><span class="h">11:30–14:00 · 17:30–00:00</span></div>
+        <div class="hrow"><span class="d" data-i18n="dayFri">Vendredi</span><span class="h">11:30–14:00 · 17:30–01:00</span></div>
+        <div class="hrow"><span class="d" data-i18n="daySat">Samedi</span><span class="h">17:30–01:00</span></div>
+        <div class="hrow"><span class="d" data-i18n="daySun">Dimanche</span><span class="h">11:30–14:00 · 17:30–00:00</span></div>
+
+        <div class="contact-lines">
+          <a href="tel:+35226870735"><span class="lab">Tél</span>+352 26 87 07 35</a>
+          <a href="mailto:bistro46amtuerm@pt.lu"><span class="lab">Email</span>bistro46amtuerm@pt.lu</a>
+          <span><span class="lab">Adresse</span>46, Rue de l'Industrie, L-9250 Diekirch</span>
+          <a href="https://www.facebook.com/p/46-Am-Tuerm-100064088322718/" target="_blank" rel="noopener"><span class="lab">Suivre</span>Facebook</a>
+        </div>
+      </div>
+      <div class="map-wrap reveal">
+        <div class="map-addr"><b>46 Am Tuerm</b>46, Rue de l'Industrie<br>L-9250 Diekirch</div>
+        <iframe title="Carte — 46 Am Tuerm, Diekirch" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=46%20Rue%20de%20l'Industrie%20L-9250%20Diekirch%20Luxembourg&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="f-brand osw">46<span>AM TUERM · DIEKIRCH</span></div>
+    </div>
+    <div class="f-right">
+      <div data-i18n="footContact">46, Rue de l'Industrie, L-9250 Diekirch · +352 26 87 07 35 · bistro46amtuerm@pt.lu</div>
+      <div class="disclaimer" data-i18n="footDisc">Site de démonstration — maquette réalisée à des fins de présentation. Marque, couleurs et typographie proposées ; horaires, plats et prix (hors plat du jour à 11,50 €) à confirmer avec l'établissement. Photos réelles du lieu.</div>
+    </div>
+  </footer>
+</main>
+
+<script>
+const I18N = {
+  fr:{
+    tag:"Bistro & bar dans la tour de Diekirch.", tagProposed:"Signature proposée",
+    nav0:"Le seuil", nav1:"La cuisine", nav2:"Le comptoir", nav3:"La tour", nav4:"La salle", nav5:"Visiter",
+    spineAddr:"46, Rue de l'Industrie · Diekirch", spineScala:"À côté du cinéma Scala", spineClosed:"Fermé le mardi",
+    heroKick:"Diekirch · Éislek · depuis la tour",
+    heroH1a:"Un bistro", heroH1b:"dans la tour.",
+    heroLede:"Pierre brute, bois de pin, tables-touret sous verre et une lueur violette au soir tombé. Le gastropub de quartier au pied de l'ancienne tour industrielle — un verre, un burger, un plat du jour, avant ou après la séance.",
+    heroClaimPre:"La maison revendique", heroClaimBold:"le meilleur cheeseburger maison de Diekirch",
+    ctaBook:"Réserver une table", ctaMenu:"Voir la carte",
+    badgeTitle:"Am Tuerm", badgeText:"« à la tour » en luxembourgeois — le 46 est le numéro de la rue, la tour est notre maison.",
+    hd1:"La cuisine — la carte",
+    sigTag:"La signature de la maison",
+    sigDesc:"Notre cheeseburger maison — le plat autour duquel toute la maison s'est construite. Steak, fromage fondant, pain doré et frites maison à côté.",
+    sigQuote:"« Le meilleur cheeseburger maison de Diekirch » — la promesse de la maison.",
+    colPlats:"Du bistro", colPlus:"Plats & salades",
+    d1n:"Plat du jour", d1d:"Le midi, servi en semaine",
+    d2n:"Le 46 Burger", d2d:"Cheeseburger maison, frites maison", tbc:"à confirmer",
+    d3n:"Pâtes maison", d3d:"Sauce du moment", tbc2:"à confirmer",
+    d4n:"Croque monsieur", d4d:"Le classique, jambon & fromage", tbc3:"à confirmer",
+    d5n:"Dos de cabillaud", d5d:"Filet de poisson, garniture du jour", tbc4:"à confirmer",
+    d6n:"Grande salade", d6d:"Poulet grillé aux herbes, mozzarella, œuf, pain", tbc5:"à confirmer",
+    d7n:"Frites maison", d7d:"En accompagnement", tbc6:"à confirmer",
+    cardNote:"Carte indicative. Les plats et les prix (hors plat du jour à 11,50 €) sont à confirmer avec l'établissement.",
+    hd2:"Le comptoir — bières & ambiance",
+    barH2a:"La soif", barH2b:"de Diekirch.",
+    barLead:"Ville de brasserie oblige : une large sélection de bières pression et bouteilles, un fond de musique et le buzz chaleureux du soir. On s'installe pour un verre, on reste pour l'ambiance.",
+    bc1t:"Pression & bouteilles", bc1p:"Large choix de bières, dans la plus pure tradition brassicole de Diekirch.",
+    barCap:"Le soir, à la lueur des bougies et des guirlandes.",
+    bc2t:"Musique & soirées", bc2p:"Un vrai programme musical qui donne le tempo des soirées, plus tard le vendredi et le samedi.",
+    bc3t:"Avant / après séance", bc3p:"Le cinéma Scala est juste à côté : l'adresse naturelle pour un verre ou une bouchée autour du film.",
+    hd3:"La tour — l'histoire des lieux",
+    storySub:"46, Rue de l'Industrie", storyH2a:"Une tour", storyH2b:"réhabilitée.",
+    storyP1:"46 Am Tuerm occupe une ancienne tour industrielle au cœur de Diekirch. Pierre apparente, briques, bois de pin au plafond et aux murs : un décor cosy-industriel entièrement accordé au patrimoine de la ville.",
+    storyP2:"Les grandes tables rondes sont d'anciens tourets à câble posés sous verre ; les chaises portent des plaids en fourrure, les guirlandes et les bougies réchauffent la pierre, et une tête de cerf veille sur la salle baignée d'une lumière violette au soir tombé.",
+    fact1:"le numéro de la rue", fact2b:"Tuerm", fact2:"« la tour » en luxembourgeois", fact3:"Google & RestaurantGuru · à revérifier",
+    hd4:"La salle — en images",
+    gc1:"La grande fenêtre, au crépuscule", gc2:"Table-touret & bougie", gc3:"La grande salade", gc4:"Pierre & bois de pin",
+    hd5:"Visiter — horaires & accès",
+    hoursTitle:"Horaires", hoursFlag:"Horaires à confirmer avec l'établissement",
+    dayMon:"Lundi", dayTue:"Mardi", dayWed:"Mercredi", dayThu:"Jeudi", dayFri:"Vendredi", daySat:"Samedi", daySun:"Dimanche", closedWord:"Fermé",
+    footContact:"46, Rue de l'Industrie, L-9250 Diekirch · +352 26 87 07 35 · bistro46amtuerm@pt.lu",
+    footDisc:"Site de démonstration — maquette réalisée à des fins de présentation. Marque, couleurs et typographie proposées ; horaires, plats et prix (hors plat du jour à 11,50 €) à confirmer avec l'établissement. Photos réelles du lieu."
+  },
+  de:{
+    tag:"Bistro & Bar im Turm von Diekirch.", tagProposed:"Vorgeschlagenes Erscheinungsbild",
+    nav0:"Die Schwelle", nav1:"Die Küche", nav2:"Der Tresen", nav3:"Der Turm", nav4:"Der Saal", nav5:"Besuchen",
+    spineAddr:"46, Rue de l'Industrie · Diekirch", spineScala:"Neben dem Scala-Kino", spineClosed:"Dienstags geschlossen",
+    heroKick:"Diekirch · Ösling · aus dem Turm",
+    heroH1a:"Ein Bistro", heroH1b:"im Turm.",
+    heroLede:"Rohstein, Kiefernholz, runde Kabeltrommel-Tische unter Glas und ein violettes Leuchten bei Einbruch der Nacht. Der Gastropub im Viertel am Fuße des alten Industrieturms — ein Bier, ein Burger, ein Tagesgericht, vor oder nach der Vorstellung.",
+    heroClaimPre:"Das Haus verspricht", heroClaimBold:"den besten hausgemachten Cheeseburger von Diekirch",
+    ctaBook:"Tisch reservieren", ctaMenu:"Zur Karte",
+    badgeTitle:"Am Tuerm", badgeText:"„am Turm“ auf Luxemburgisch — die 46 ist die Hausnummer, der Turm ist unser Zuhause.",
+    hd1:"Die Küche — die Karte",
+    sigTag:"Das Aushängeschild des Hauses",
+    sigDesc:"Unser hausgemachter Cheeseburger — das Gericht, um das herum das ganze Haus entstanden ist. Patty, geschmolzener Käse, goldenes Brötchen und hausgemachte Pommes dazu.",
+    sigQuote:"„Der beste hausgemachte Cheeseburger von Diekirch“ — das Versprechen des Hauses.",
+    colPlats:"Aus dem Bistro", colPlus:"Gerichte & Salate",
+    d1n:"Tagesgericht", d1d:"Mittags, unter der Woche",
+    d2n:"Der 46 Burger", d2d:"Hausgemachter Cheeseburger, hausgemachte Pommes", tbc:"noch zu bestätigen",
+    d3n:"Hausgemachte Pasta", d3d:"Sauce des Tages", tbc2:"noch zu bestätigen",
+    d4n:"Croque Monsieur", d4d:"Der Klassiker, Schinken & Käse", tbc3:"noch zu bestätigen",
+    d5n:"Kabeljaurücken", d5d:"Fischfilet, Beilage des Tages", tbc4:"noch zu bestätigen",
+    d6n:"Großer Salat", d6d:"Gegrilltes Kräuterhähnchen, Mozzarella, Ei, Brot", tbc5:"noch zu bestätigen",
+    d7n:"Hausgemachte Pommes", d7d:"Als Beilage", tbc6:"noch zu bestätigen",
+    cardNote:"Beispielkarte. Gerichte und Preise (außer Tagesgericht zu 11,50 €) sind mit dem Betrieb zu bestätigen.",
+    hd2:"Der Tresen — Biere & Atmosphäre",
+    barH2a:"Der Durst", barH2b:"von Diekirch.",
+    barLead:"Brauereistadt verpflichtet: eine große Auswahl an Fass- und Flaschenbieren, Musik im Hintergrund und der warme Trubel des Abends. Man kommt für ein Bier und bleibt für die Stimmung.",
+    bc1t:"Fass & Flasche", bc1p:"Große Bierauswahl, ganz in der Brautradition von Diekirch.",
+    barCap:"Abends, im Schein von Kerzen und Lichterketten.",
+    bc2t:"Musik & Abende", bc2p:"Ein echtes Musikprogramm gibt den Takt der Abende vor, freitags und samstags länger.",
+    bc3t:"Vor / nach dem Film", bc3p:"Das Scala-Kino ist direkt nebenan: die natürliche Adresse für ein Bier oder einen Bissen rund um den Film.",
+    hd3:"Der Turm — die Geschichte des Ortes",
+    storySub:"46, Rue de l'Industrie", storyH2a:"Ein Turm", storyH2b:"neu belebt.",
+    storyP1:"46 Am Tuerm befindet sich in einem alten Industrieturm im Herzen von Diekirch. Sichtstein, Ziegel, Kiefernholz an Decke und Wänden: ein gemütlich-industrielles Ambiente, ganz im Einklang mit dem Erbe der Stadt.",
+    storyP2:"Die großen runden Tische sind alte Kabeltrommeln unter Glas; über den Stühlen liegen Felldecken, Lichterketten und Kerzen wärmen den Stein, und ein Hirschgeweih wacht über den Saal, der abends in violettes Licht getaucht ist.",
+    fact1:"die Hausnummer", fact2b:"Tuerm", fact2:"„der Turm“ auf Luxemburgisch", fact3:"Google & RestaurantGuru · zu prüfen",
+    hd4:"Der Saal — in Bildern",
+    gc1:"Das große Fenster, in der Dämmerung", gc2:"Trommeltisch & Kerze", gc3:"Der große Salat", gc4:"Stein & Kiefernholz",
+    hd5:"Besuchen — Öffnungszeiten & Anfahrt",
+    hoursTitle:"Öffnungszeiten", hoursFlag:"Öffnungszeiten mit dem Betrieb zu bestätigen",
+    dayMon:"Montag", dayTue:"Dienstag", dayWed:"Mittwoch", dayThu:"Donnerstag", dayFri:"Freitag", daySat:"Samstag", daySun:"Sonntag", closedWord:"Geschlossen",
+    footContact:"46, Rue de l'Industrie, L-9250 Diekirch · +352 26 87 07 35 · bistro46amtuerm@pt.lu",
+    footDisc:"Demo-Website — Muster zu Präsentationszwecken. Marke, Farben und Typografie sind Vorschläge; Öffnungszeiten, Gerichte und Preise (außer Tagesgericht zu 11,50 €) mit dem Betrieb zu bestätigen. Echte Fotos des Lokals."
+  },
+  en:{
+    tag:"Bistro & bar in Diekirch's old tower.", tagProposed:"Proposed identity",
+    nav0:"The threshold", nav1:"The kitchen", nav2:"The counter", nav3:"The tower", nav4:"The room", nav5:"Visit",
+    spineAddr:"46, Rue de l'Industrie · Diekirch", spineScala:"Next to the Scala cinema", spineClosed:"Closed Tuesdays",
+    heroKick:"Diekirch · Éislek · from the tower",
+    heroH1a:"A bistro", heroH1b:"in the tower.",
+    heroLede:"Raw stone, pine cladding, cable-reel tables under glass and a violet glow after dark. The neighbourhood gastropub at the foot of the old industrial tower — a drink, a burger, a daily special, before or after the film.",
+    heroClaimPre:"The house claims", heroClaimBold:"Diekirch's best homemade cheeseburger",
+    ctaBook:"Book a table", ctaMenu:"See the menu",
+    badgeTitle:"Am Tuerm", badgeText:"“at the tower” in Luxembourgish — 46 is the street number, the tower is home.",
+    hd1:"The kitchen — the menu",
+    sigTag:"The house signature",
+    sigDesc:"Our homemade cheeseburger — the dish the whole place was built around. Patty, melting cheese, golden bun and homemade fries alongside.",
+    sigQuote:"“Diekirch's best homemade cheeseburger” — the house's own claim.",
+    colPlats:"From the bistro", colPlus:"Plates & salads",
+    d1n:"Dish of the day", d1d:"At lunch, served on weekdays",
+    d2n:"The 46 Burger", d2d:"Homemade cheeseburger, homemade fries", tbc:"to confirm",
+    d3n:"Homemade pasta", d3d:"Sauce of the moment", tbc2:"to confirm",
+    d4n:"Croque monsieur", d4d:"The classic, ham & cheese", tbc3:"to confirm",
+    d5n:"Cod fillet", d5d:"Fish main, garnish of the day", tbc4:"to confirm",
+    d6n:"Large salad", d6d:"Grilled herbed chicken, mozzarella, egg, bread", tbc5:"to confirm",
+    d7n:"Homemade fries", d7d:"As a side", tbc6:"to confirm",
+    cardNote:"Indicative menu. Dishes and prices (except the €11.50 dish of the day) are to be confirmed with the venue.",
+    hd2:"The counter — beers & atmosphere",
+    barH2a:"The thirst", barH2b:"of Diekirch.",
+    barLead:"A brewery town at heart: a wide selection of draught and bottled beers, music in the background and the warm buzz of the evening. Come for a drink, stay for the atmosphere.",
+    bc1t:"Draught & bottled", bc1p:"A wide beer selection, in Diekirch's purest brewing tradition.",
+    barCap:"By night, in the glow of candles and fairy lights.",
+    bc2t:"Music & nights", bc2p:"A real music programme sets the tempo of the evenings, running later on Fridays and Saturdays.",
+    bc3t:"Before / after the film", bc3p:"The Scala cinema is right next door: the natural spot for a drink or a bite around the film.",
+    hd3:"The tower — the story of the place",
+    storySub:"46, Rue de l'Industrie", storyH2a:"A tower", storyH2b:"reborn.",
+    storyP1:"46 Am Tuerm sits inside a former industrial tower in the heart of Diekirch. Exposed stone, brick, pine on the ceiling and walls: a cosy-industrial setting fully in tune with the town's heritage.",
+    storyP2:"The big round tables are old cable reels set under glass; sheepskin throws drape the chairs, fairy lights and candles warm the stone, and a mounted deer head watches over the room, bathed in violet light after dark.",
+    fact1:"the street number", fact2b:"Tuerm", fact2:"“the tower” in Luxembourgish", fact3:"Google & RestaurantGuru · to re-check",
+    hd4:"The room — in pictures",
+    gc1:"The big window, at dusk", gc2:"Reel table & candle", gc3:"The large salad", gc4:"Stone & pine",
+    hd5:"Visit — hours & directions",
+    hoursTitle:"Hours", hoursFlag:"Hours to be confirmed with the venue",
+    dayMon:"Monday", dayTue:"Tuesday", dayWed:"Wednesday", dayThu:"Thursday", dayFri:"Friday", daySat:"Saturday", daySun:"Sunday", closedWord:"Closed",
+    footContact:"46, Rue de l'Industrie, L-9250 Diekirch · +352 26 87 07 35 · bistro46amtuerm@pt.lu",
+    footDisc:"Demonstration site — mock-up built for presentation purposes. Brand, colours and typography are proposed; hours, dishes and prices (except the €11.50 dish of the day) to be confirmed with the venue. Real photos of the venue."
+  }
+};
+
+function setLang(lang){
+  const dict = I18N[lang]; if(!dict) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[k] !== undefined) el.innerHTML = dict[k];
+  });
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+}
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.dataset.lang));
+});
+
+/* mobile nav toggle */
+const nt = document.getElementById('navToggle');
+if(nt){ nt.addEventListener('click',()=>document.getElementById('floorNav').classList.toggle('open')); }
+document.querySelectorAll('#floorNav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('floorNav').classList.remove('open')));
+
+/* scroll reveal */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* active floor in spine */
+const secs = document.querySelectorAll('main section[id]');
+const navLinks = document.querySelectorAll('#floorNav a');
+const spy = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(l=>l.classList.toggle('active', l.getAttribute('href')==='#'+e.target.id));
+    }
+  });
+},{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(s=>spy.observe(s));
+</script>
+</body>
+</html>

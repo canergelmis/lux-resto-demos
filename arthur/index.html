@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Restaurant-Taverne Arthur — Ettelbruck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Caveat:wght@500;600;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --terracotta:#B85E3D;
+    --terracotta-deep:#9C4A2E;
+    --salmon:#CB7A56;
+    --cream:#F7EEDD;
+    --cream-2:#FBF5E9;
+    --paper:#FBF6EA;
+    --paper-shade:#EFE3CB;
+    --ink:#3A2A20;
+    --ink-soft:#5C4535;
+    --burgundy:#6E2233;
+    --burgundy-soft:#8A3448;
+    --gold:#B08D57;
+    --rule:#D9C4A0;
+    --rule-soft:#E7D8BC;
+    --shadow:rgba(58,32,18,.28);
+    --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+    --hand:'Caveat','Segoe Script','Brush Script MT',cursive;
+    --sans:'Archivo','Segoe UI',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:
+      radial-gradient(120% 90% at 50% -10%, #C86B48 0%, var(--terracotta) 42%, var(--terracotta-deep) 100%);
+    background-attachment:fixed;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{display:block;max-width:100%;}
+
+  /* ===== DESK + SPREAD SHELL ===== */
+  .desk{
+    max-width:1400px;
+    margin:0 auto;
+    padding:30px 26px 60px;
+  }
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    color:var(--cream);
+    padding:6px 8px 22px;
+    flex-wrap:wrap;
+  }
+  .topbar .brandmini{
+    font-family:var(--serif);
+    font-weight:700;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    font-size:15px;
+  }
+  .toolstrip{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+  .toolstrip .tel{
+    font-family:var(--sans);
+    font-weight:600;
+    letter-spacing:.06em;
+    font-size:14px;
+    text-decoration:none;
+    display:inline-flex;align-items:center;gap:8px;
+    color:var(--cream);
+  }
+  .toolstrip .tel:hover{color:#fff;}
+  .lang{display:inline-flex;border:1px solid rgba(247,238,221,.55);border-radius:2px;overflow:hidden;}
+  .lang button{
+    background:transparent;border:0;color:var(--cream);
+    font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.14em;
+    padding:7px 12px;cursor:pointer;text-transform:uppercase;transition:.2s;
+  }
+  .lang button+button{border-left:1px solid rgba(247,238,221,.4);}
+  .lang button.active{background:var(--cream);color:var(--burgundy);}
+  .lang button:hover:not(.active){background:rgba(247,238,221,.18);}
+
+  /* the bound book */
+  .book{
+    position:relative;
+    background:var(--paper);
+    border-radius:5px;
+    box-shadow:
+      0 2px 0 rgba(255,255,255,.35) inset,
+      0 26px 60px -20px var(--shadow),
+      0 60px 120px -50px rgba(0,0,0,.5);
+    background-image:
+      linear-gradient(180deg, rgba(255,255,255,.5), rgba(255,255,255,0) 120px),
+      repeating-linear-gradient(90deg, transparent 0 3px, rgba(184,94,61,.012) 3px 6px);
+    overflow:hidden;
+  }
+  /* leather-ish edge */
+  .book::before,.book::after{
+    content:"";position:absolute;top:0;bottom:0;width:14px;z-index:3;pointer-events:none;
+  }
+  .book::before{left:0;background:linear-gradient(90deg,rgba(58,32,18,.22),transparent);}
+  .book::after{right:0;background:linear-gradient(270deg,rgba(58,32,18,.22),transparent);}
+
+  /* a page-spread grid: two facing pages + a central spine */
+  .spread{
+    display:grid;
+    grid-template-columns:1fr 34px 1fr;
+    position:relative;
+  }
+  .spine{
+    background:
+      linear-gradient(90deg, rgba(58,32,18,.02), rgba(58,32,18,.16) 45%, rgba(58,32,18,.16) 55%, rgba(58,32,18,.02));
+    position:relative;
+  }
+  .spine::after{
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(180deg, transparent 0 20px, rgba(58,32,18,.10) 20px 21px);
+    opacity:.5;
+  }
+  .page{padding:52px 54px;position:relative;}
+  .page.ruled{
+    background-image:repeating-linear-gradient(180deg, transparent 0 33px, var(--rule-soft) 33px 34px);
+    background-position:0 64px;
+  }
+
+  /* ===== FRONTISPIECE ===== */
+  .frontispiece{
+    grid-column:1 / -1;
+    display:grid;
+    grid-template-columns:1.15fr 1fr;
+    gap:0;
+    border-bottom:2px solid var(--rule);
+  }
+  .fp-left{padding:56px 56px 46px;position:relative;}
+  .fp-right{
+    padding:40px 48px 40px 30px;
+    border-left:1px dashed var(--rule);
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(180deg,rgba(184,94,61,.05),transparent);
+  }
+  .seal{
+    width:74px;height:74px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #C99D63, var(--gold) 55%, #8f6f3f);
+    color:#fff3dd;font-family:var(--serif);font-weight:700;font-size:40px;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 14px -4px rgba(58,32,18,.5), inset 0 2px 4px rgba(255,255,255,.4);
+    letter-spacing:0;line-height:1;
+    border:2px solid rgba(255,255,255,.35);
+  }
+  .kicker{
+    font-family:var(--hand);
+    color:var(--burgundy);
+    font-size:27px;line-height:1;
+    transform:rotate(-2deg);
+    margin:22px 0 6px;
+  }
+  .wordmark{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(66px,9vw,128px);
+    line-height:.86;
+    letter-spacing:-.01em;
+    color:var(--ink);
+    margin:0;
+  }
+  .wordmark small{
+    display:block;
+    font-size:.20em;
+    letter-spacing:.42em;
+    font-weight:500;
+    text-transform:uppercase;
+    color:var(--burgundy);
+    margin-top:16px;
+    text-indent:.42em;
+  }
+  .tagline{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:23px;
+    color:var(--ink-soft);
+    max-width:34ch;
+    margin:26px 0 22px;
+  }
+  .fp-meta{
+    display:flex;gap:26px;flex-wrap:wrap;
+    font-family:var(--sans);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-soft);
+    border-top:1px solid var(--rule);padding-top:16px;
+  }
+  .fp-meta b{color:var(--burgundy);}
+
+  /* pasted photo with tape */
+  .snapshot{
+    position:relative;
+    background:#fff;
+    padding:10px 10px 44px;
+    box-shadow:0 14px 30px -12px var(--shadow);
+    transform:rotate(2.2deg);
+    max-width:330px;
+  }
+  .snapshot .frame{width:100%;height:230px;overflow:hidden;background:var(--paper-shade);}
+  .snapshot .frame img{width:100%;height:100%;object-fit:cover;}
+  .snapshot figcaption{
+    position:absolute;left:0;right:0;bottom:12px;text-align:center;
+    font-family:var(--hand);font-size:20px;color:var(--ink-soft);
+  }
+  .tape{
+    position:absolute;width:88px;height:26px;
+    background:rgba(224,203,150,.62);
+    box-shadow:0 2px 5px rgba(58,32,18,.18);
+    top:-12px;left:50%;transform:translateX(-50%) rotate(-3deg);
+    border-left:1px dashed rgba(255,255,255,.5);border-right:1px dashed rgba(255,255,255,.5);
+  }
+
+  /* ===== GENERIC PAGE TYPO ===== */
+  .entry-no{
+    font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:.28em;
+    color:var(--burgundy);text-transform:uppercase;display:block;margin-bottom:4px;
+  }
+  .page h2{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(32px,3.4vw,46px);line-height:1;
+    margin:0 0 20px;color:var(--ink);
+  }
+  .page h2 em{font-style:italic;color:var(--burgundy);}
+  .lede{font-family:var(--serif);font-size:20px;line-height:1.5;color:var(--ink-soft);}
+  .body-note{font-size:15px;color:var(--ink-soft);margin:14px 0;max-width:46ch;}
+
+  /* ledger stamps for ratings */
+  .stamps{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px;}
+  .stamp{
+    border:2px solid var(--burgundy-soft);
+    color:var(--burgundy);
+    border-radius:4px;
+    padding:8px 12px;
+    transform:rotate(-1.5deg);
+    background:rgba(110,34,51,.03);
+    min-width:92px;
+  }
+  .stamp:nth-child(even){transform:rotate(1.5deg);}
+  .stamp .n{font-family:var(--serif);font-weight:700;font-size:26px;line-height:1;}
+  .stamp .l{font-family:var(--sans);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;display:block;margin-top:3px;opacity:.85;}
+
+  /* signature dish column (right page of frontispiece spread area) */
+  .signature{position:relative;}
+  .sig-plate{
+    font-family:var(--hand);font-size:30px;color:var(--burgundy);transform:rotate(-2deg);
+    margin-bottom:2px;
+  }
+  .sig-name{
+    font-family:var(--serif);font-weight:700;font-size:clamp(40px,4.6vw,62px);line-height:.94;margin:0 0 12px;
+  }
+  .sig-underline{width:120px;height:3px;background:var(--gold);margin:0 0 18px;border-radius:2px;}
+
+  /* ===== MENU LEDGER ===== */
+  .menu-band{grid-column:1 / -1;border-top:2px solid var(--rule);padding:50px 56px 40px;}
+  .menu-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:8px;}
+  .menu-head p{font-family:var(--hand);font-size:23px;color:var(--burgundy);margin:0;}
+  .menu-cols{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:34px 50px;margin-top:26px;
+  }
+  .mcol h3{
+    font-family:var(--serif);font-weight:600;font-style:italic;font-size:24px;
+    color:var(--burgundy);margin:0 0 6px;border-bottom:1px solid var(--rule);padding-bottom:8px;
+  }
+  .mitem{display:flex;align-items:baseline;gap:8px;padding:9px 0;border-bottom:1px dotted var(--rule);}
+  .mitem .dot{flex:1;border-bottom:1px dotted var(--rule);transform:translateY(-4px);}
+  .mitem .nm{font-family:var(--serif);font-size:20px;color:var(--ink);}
+  .mitem .pr{font-family:var(--sans);font-size:12px;letter-spacing:.05em;color:var(--ink-soft);white-space:nowrap;}
+  .mitem .desc{display:block;font-size:12.5px;color:var(--ink-soft);margin-top:2px;font-family:var(--sans);}
+  .mitem.star .nm{font-weight:600;}
+  .mitem.star .nm::after{content:"★";color:var(--gold);font-size:13px;margin-left:8px;vertical-align:middle;}
+  .menu-foot{font-size:12px;color:var(--ink-soft);margin-top:22px;font-style:italic;font-family:var(--serif);}
+
+  /* ===== AMBIANCE ROW ===== */
+  .ambiance{grid-column:1 / -1;border-top:2px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;}
+  .amb-text{padding:52px 54px;}
+  .amb-photo{
+    padding:52px 54px;border-left:1px dashed var(--rule);
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(180deg,rgba(184,94,61,.05),transparent);
+  }
+  .polaroid{
+    background:#fff;padding:12px 12px 50px;box-shadow:0 18px 36px -14px var(--shadow);
+    transform:rotate(-2.4deg);max-width:360px;
+  }
+  .polaroid .frame{width:100%;height:290px;overflow:hidden;background:var(--paper-shade);}
+  .polaroid .frame img{width:100%;height:100%;object-fit:cover;}
+  .polaroid figcaption{text-align:center;font-family:var(--hand);font-size:22px;color:var(--ink-soft);margin-top:14px;}
+  .quote{
+    font-family:var(--serif);font-style:italic;font-size:26px;line-height:1.4;color:var(--ink);
+    border-left:3px solid var(--gold);padding-left:22px;margin:26px 0 0;
+  }
+  .quote span{display:block;font-style:normal;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--burgundy);margin-top:12px;font-family:var(--sans);}
+
+  /* ===== REGISTRE (practical) ===== */
+  .registre{grid-column:1 / -1;border-top:2px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;}
+  .reg-left{padding:52px 54px;}
+  .reg-right{padding:0;border-left:1px dashed var(--rule);min-height:420px;position:relative;background:var(--paper-shade);}
+  .hours-tbl{width:100%;border-collapse:collapse;margin-top:20px;font-family:var(--serif);}
+  .hours-tbl th{
+    text-align:left;font-family:var(--sans);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--burgundy);font-weight:700;padding:0 10px 10px 0;border-bottom:2px solid var(--rule);
+  }
+  .hours-tbl td{padding:11px 10px 11px 0;border-bottom:1px solid var(--rule-soft);font-size:18px;}
+  .hours-tbl tr.closed td{color:#b09a86;font-style:italic;}
+  .hours-tbl .day{font-weight:600;color:var(--ink);}
+  .reg-facts{margin-top:26px;display:grid;gap:16px;}
+  .fact{display:flex;gap:12px;align-items:flex-start;}
+  .fact .k{font-family:var(--sans);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--burgundy);font-weight:700;min-width:96px;padding-top:4px;}
+  .fact .v{font-family:var(--serif);font-size:19px;color:var(--ink);}
+  .fact .v a{text-decoration:none;border-bottom:1px solid var(--gold);}
+  .btn{
+    display:inline-block;margin-top:26px;
+    background:var(--burgundy);color:var(--cream-2);
+    font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    padding:15px 30px;border-radius:2px;text-decoration:none;
+    box-shadow:0 10px 22px -10px rgba(110,34,51,.7);transition:.2s;
+  }
+  .btn:hover{background:var(--burgundy-soft);transform:translateY(-2px);}
+  .reg-right iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:sepia(.12) saturate(1.05);}
+  .map-pin{
+    position:absolute;z-index:2;top:18px;left:18px;
+    background:var(--paper);padding:8px 14px;border-radius:2px;
+    font-family:var(--hand);font-size:19px;color:var(--burgundy);
+    box-shadow:0 8px 18px -8px var(--shadow);transform:rotate(-2deg);
+  }
+
+  /* ===== COLOPHON / FOOTER ===== */
+  .colophon{
+    grid-column:1 / -1;border-top:2px solid var(--rule);
+    background:linear-gradient(180deg,transparent,rgba(184,94,61,.06));
+    padding:40px 56px 48px;text-align:center;
+  }
+  .colophon .mono{font-family:var(--serif);font-weight:700;letter-spacing:.34em;text-transform:uppercase;font-size:14px;color:var(--ink);}
+  .colophon .sub{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ink-soft);margin:8px 0 18px;}
+  .colophon .row{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;font-size:13px;color:var(--ink-soft);font-family:var(--sans);}
+  .colophon .row a{text-decoration:none;border-bottom:1px solid var(--rule);}
+  .disclaimer{
+    margin-top:24px;font-size:11.5px;color:var(--ink-soft);opacity:.85;
+    font-family:var(--sans);max-width:60ch;margin-left:auto;margin-right:auto;line-height:1.6;
+  }
+  .disclaimer b{color:var(--burgundy);}
+
+  .footer-desk{text-align:center;color:rgba(247,238,221,.75);font-size:11px;letter-spacing:.14em;margin-top:24px;font-family:var(--sans);}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:980px){
+    .spread{grid-template-columns:1fr;}
+    .spine{display:none;}
+    .frontispiece{grid-template-columns:1fr;}
+    .fp-right{border-left:0;border-top:1px dashed var(--rule);padding:36px;}
+    .menu-cols{grid-template-columns:1fr 1fr;}
+    .ambiance,.registre{grid-template-columns:1fr;}
+    .amb-photo,.reg-right{border-left:0;border-top:1px dashed var(--rule);}
+    .reg-right{min-height:340px;}
+    .page{padding:40px 34px;}
+  }
+  @media(max-width:640px){
+    .desk{padding:18px 12px 40px;}
+    .topbar{justify-content:center;text-align:center;}
+    .menu-cols{grid-template-columns:1fr;}
+    .fp-left{padding:38px 26px 30px;}
+    .wordmark{font-size:clamp(56px,17vw,90px);}
+    .page,.menu-band,.amb-text,.reg-left,.colophon{padding-left:24px;padding-right:24px;}
+    .snapshot{transform:rotate(1.5deg);margin:0 auto;}
+  }
+</style>
+</head>
+<body>
+<div class="desk">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <span class="brandmini">Restaurant · Taverne Arthur</span>
+    <div class="toolstrip">
+      <a class="tel" href="tel:+3528104 27">☎ +352 81 04 27</a>
+      <div class="lang" role="group" aria-label="Langue">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE BOOK -->
+  <div class="book">
+    <div class="spread">
+
+      <!-- FRONTISPIECE -->
+      <div class="frontispiece">
+        <div class="fp-left">
+          <div class="seal">A</div>
+          <p class="kicker" data-i18n="kicker">Le carnet de la maison, ouvert depuis toujours</p>
+          <h1 class="wordmark">Arthur<small data-i18n="wm_sub">Restaurant · Taverne · Ettelbruck</small></h1>
+          <p class="tagline" data-i18n="tagline">Cuisine française &amp; luxembourgeoise, servie à la table conviviale d'Ettelbruck.</p>
+          <div class="fp-meta">
+            <span data-i18n="meta_family">Maison familiale</span>
+            <span><b>Ettelbruck</b> · 1 Rue Neuve</span>
+            <span data-i18n="meta_closed">Fermé le lundi</span>
+          </div>
+        </div>
+        <div class="fp-right">
+          <figure class="snapshot">
+            <span class="tape"></span>
+            <div class="frame"><img src="assets/exterior.jpg" alt="Façade terracotta du Restaurant-Taverne Arthur avec sa terrasse" /></div>
+            <figcaption data-i18n="cap_exterior">Notre façade, place d'Ettelbruck</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- LEFT PAGE: LA MAISON  |  RIGHT PAGE: LA SIGNATURE -->
+      <div class="page ruled">
+        <span class="entry-no" data-i18n="e1">Feuillet I — La maison</span>
+        <h2 data-i18n="maison_h">Une table que l'on <em>tient de main de maître</em>.</h2>
+        <p class="lede" data-i18n="maison_lede">Depuis de longues années, Arthur est l'une de ces adresses que l'on se transmet à Ettelbruck : une taverne chaleureuse, aux poutres apparentes et au linge blanc, où l'on revient pour une cuisine franche, généreuse et sans esbroufe.</p>
+        <p class="body-note" data-i18n="maison_note">Une carte courte, faite maison, travaillée avec les classiques français et luxembourgeois — et une constance que les habitués saluent depuis des années.</p>
+        <div class="stamps" aria-label="Avis">
+          <div class="stamp"><span class="n">4,8</span><span class="l" data-i18n="src_sluurpy">Sluurpy · 144 avis</span></div>
+          <div class="stamp"><span class="n">4,7</span><span class="l" data-i18n="src_google">Google</span></div>
+          <div class="stamp"><span class="n">4,6</span><span class="l" data-i18n="src_guru">Restaurant Guru</span></div>
+          <div class="stamp"><span class="n">4,5</span><span class="l" data-i18n="src_ta">TripAdvisor</span></div>
+        </div>
+      </div>
+
+      <div class="spine" aria-hidden="true"></div>
+
+      <div class="page ruled signature">
+        <span class="entry-no" data-i18n="e2">Feuillet II — Le plat signé</span>
+        <p class="sig-plate" data-i18n="sig_plate">La spécialité de la maison</p>
+        <h2 class="sig-name" data-i18n="sig_name">L'Escalope d'Arthur</h2>
+        <div class="sig-underline"></div>
+        <p class="lede" data-i18n="sig_lede">« La meilleure de la région », écrivent nos hôtes de retour. C'est le plat que l'on commande les yeux fermés — dorée, généreuse, servie comme il se doit.</p>
+        <p class="body-note" data-i18n="sig_note">À côté d'elle, la crème de champignons et la crème brûlée maison ferment le carnet en beauté. Composition et prix à confirmer avec l'établissement.</p>
+        <div class="stamps">
+          <div class="stamp" style="border-color:var(--gold);color:#8f6f3f;background:rgba(176,141,87,.06)"><span class="n">★</span><span class="l" data-i18n="sig_stamp">Plat signature</span></div>
+        </div>
+      </div>
+
+      <!-- MENU LEDGER -->
+      <div class="menu-band">
+        <div class="menu-head">
+          <div>
+            <span class="entry-no" data-i18n="e3">Feuillet III — La carte</span>
+            <h2 data-i18n="menu_h">Le carnet de la carte</h2>
+          </div>
+          <p data-i18n="menu_sub">Une sélection courte, faite maison</p>
+        </div>
+        <div class="menu-cols">
+          <div class="mcol">
+            <h3 data-i18n="cat_entrees">Pour commencer</h3>
+            <div class="mitem star">
+              <span><span class="nm" data-i18n="d_soupe">Crème de champignons</span><span class="desc" data-i18n="d_soupe_d">Velouté maison, souvent cité par nos hôtes</span></span>
+              <span class="dot"></span><span class="pr" data-i18n="tbc">à confirmer</span>
+            </div>
+            <div class="mitem">
+              <span><span class="nm" data-i18n="d_jour_e">Suggestion du jour</span><span class="desc" data-i18n="d_jour_e_d">Entrée de saison selon le marché</span></span>
+              <span class="dot"></span><span class="pr" data-i18n="tbc">à confirmer</span>
+            </div>
+          </div>
+          <div class="mcol">
+            <h3 data-i18n="cat_plats">Les plats</h3>
+            <div class="mitem star">
+              <span><span class="nm" data-i18n="d_escalope">Escalope d'Arthur</span><span class="desc" data-i18n="d_escalope_d">La spécialité de la maison</span></span>
+              <span class="dot"></span><span class="pr" data-i18n="tbc">à confirmer</span>
+            </div>
+            <div class="mitem">
+              <span><span class="nm" data-i18n="d_classiques">Classiques FR &amp; LU</span><span class="desc" data-i18n="d_classiques_d">Petite carte de saison, faite maison</span></span>
+              <span class="dot"></span><span class="pr" data-i18n="tbc">à confirmer</span>
+            </div>
+            <div class="mitem">
+              <span><span class="nm" data-i18n="d_jour">Plat du jour</span><span class="desc" data-i18n="d_jour_d">Menu du midi, service court</span></span>
+              <span class="dot"></span><span class="pr" data-i18n="tbc">à confirmer</span>
+            </div>
+          </div>
+          <div class="mcol">
+            <h3 data-i18n="cat_desserts">Les douceurs</h3>
+            <div class="mitem star">
+              <span><span class="nm" data-i18n="d_brulee">Crème brûlée</span><span class="desc" data-i18n="d_brulee_d">Le dessert que l'on recommande</span></span>
+              <span class="dot"></span><span class="pr" data-i18n="tbc">à confirmer</span>
+            </div>
+            <div class="mitem">
+              <span><span class="nm" data-i18n="d_dessert">Dessert du carnet</span><span class="desc" data-i18n="d_dessert_d">Selon l'inspiration du jour</span></span>
+              <span class="dot"></span><span class="pr" data-i18n="tbc">à confirmer</span>
+            </div>
+          </div>
+        </div>
+        <p class="menu-foot" data-i18n="menu_foot">Carte reconstituée d'après les avis de nos hôtes — plats, compositions et prix restent à confirmer avec l'établissement.</p>
+      </div>
+
+      <!-- AMBIANCE -->
+      <div class="ambiance">
+        <div class="amb-text">
+          <span class="entry-no" data-i18n="e4">Feuillet IV — La salle</span>
+          <h2 data-i18n="amb_h">Poutres, linge blanc <em>et petit lustre</em>.</h2>
+          <p class="lede" data-i18n="amb_lede">La salle a gardé son âme de taverne : bois chaud, rideaux, tables nappées de blanc et cette lumière douce du soir. Aux beaux jours, la terrasse fleurie s'ouvre sur la place.</p>
+          <blockquote class="quote"><span data-i18n="amb_quote">« On y revient depuis des années — la même table, la même qualité. »</span>
+            <span data-i18n="amb_quote_src">— d'après nos hôtes réguliers</span>
+          </blockquote>
+        </div>
+        <div class="amb-photo">
+          <figure class="polaroid">
+            <div class="frame"><img src="assets/interior-1.jpg" alt="Salle du Restaurant-Taverne Arthur : tables nappées, poutres et petit lustre" /></div>
+            <figcaption data-i18n="cap_interior">La salle, un soir de service</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- REGISTRE -->
+      <div class="registre">
+        <div class="reg-left">
+          <span class="entry-no" data-i18n="e5">Feuillet V — Le registre</span>
+          <h2 data-i18n="reg_h">Nous trouver &amp; réserver</h2>
+          <table class="hours-tbl">
+            <thead><tr>
+              <th data-i18n="th_day">Jour</th>
+              <th data-i18n="th_lunch">Midi</th>
+              <th data-i18n="th_dinner">Soir</th>
+            </tr></thead>
+            <tbody>
+              <tr class="closed"><td class="day" data-i18n="mon">Lundi</td><td colspan="2" data-i18n="closed">Fermé</td></tr>
+              <tr><td class="day" data-i18n="tue">Mardi</td><td>11:45–13:20</td><td>18:15–20:30</td></tr>
+              <tr><td class="day" data-i18n="wed">Mercredi</td><td>11:45–13:20</td><td>18:15–20:30</td></tr>
+              <tr><td class="day" data-i18n="thu">Jeudi</td><td>11:45–13:20</td><td>18:15–20:30</td></tr>
+              <tr><td class="day" data-i18n="fri">Vendredi</td><td>11:45–13:20</td><td>18:15–20:30</td></tr>
+              <tr><td class="day" data-i18n="sat">Samedi</td><td>11:45–13:20</td><td>18:15–20:30</td></tr>
+              <tr><td class="day" data-i18n="sun">Dimanche</td><td>11:45–13:20</td><td>18:15–20:30</td></tr>
+            </tbody>
+          </table>
+          <p class="body-note" data-i18n="hours_note">Services courts, cuisine fermant tôt. Horaires à confirmer avec l'établissement.</p>
+
+          <div class="reg-facts">
+            <div class="fact"><span class="k" data-i18n="k_addr">Adresse</span><span class="v">1, Rue Neuve<br>L-9066 Ettelbruck</span></div>
+            <div class="fact"><span class="k" data-i18n="k_tel">Téléphone</span><span class="v"><a href="tel:+3528104 27">+352 81 04 27</a></span></div>
+            <div class="fact"><span class="k" data-i18n="k_resa">Réservation</span><span class="v" data-i18n="resa_v">par téléphone, de préférence la veille</span></div>
+          </div>
+          <a class="btn" href="tel:+3528104 27" data-i18n="cta">Réserver une table</a>
+        </div>
+        <div class="reg-right">
+          <span class="map-pin" data-i18n="pin">Ici, place d'Ettelbruck</span>
+          <iframe
+            title="Carte — Restaurant-Taverne Arthur, Ettelbruck"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=1+Rue+Neuve,+9066+Ettelbruck,+Luxembourg&output=embed"></iframe>
+        </div>
+      </div>
+
+      <!-- COLOPHON -->
+      <div class="colophon">
+        <div class="mono">Restaurant · Taverne Arthur</div>
+        <div class="sub" data-i18n="colophon_sub">La table conviviale d'Ettelbruck</div>
+        <div class="row">
+          <span>1 Rue Neuve, L-9066 Ettelbruck</span>
+          <a href="tel:+3528104 27">+352 81 04 27</a>
+          <span data-i18n="closed_short">Fermé le lundi</span>
+        </div>
+        <p class="disclaimer" data-i18n="disclaimer"><b>Site de démonstration.</b> Maquette non officielle réalisée pour présentation. Textes, horaires, carte et prix sont indicatifs et à confirmer avec l'établissement. Photographies haute résolution à fournir par la maison.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer-desk" data-i18n="footer_desk">Maquette · concept « Le Carnet d'Arthur »</div>
+</div>
+
+<script>
+const I18N = {
+  fr:{
+    kicker:"Le carnet de la maison, ouvert depuis toujours",
+    wm_sub:"Restaurant · Taverne · Ettelbruck",
+    tagline:"Cuisine française & luxembourgeoise, servie à la table conviviale d'Ettelbruck.",
+    meta_family:"Maison familiale", meta_closed:"Fermé le lundi",
+    cap_exterior:"Notre façade, place d'Ettelbruck",
+    e1:"Feuillet I — La maison",
+    maison_h:'Une table que l\'on <em>tient de main de maître</em>.',
+    maison_lede:"Depuis de longues années, Arthur est l'une de ces adresses que l'on se transmet à Ettelbruck : une taverne chaleureuse, aux poutres apparentes et au linge blanc, où l'on revient pour une cuisine franche, généreuse et sans esbroufe.",
+    maison_note:"Une carte courte, faite maison, travaillée avec les classiques français et luxembourgeois — et une constance que les habitués saluent depuis des années.",
+    src_sluurpy:"Sluurpy · 144 avis", src_google:"Google", src_guru:"Restaurant Guru", src_ta:"TripAdvisor",
+    e2:"Feuillet II — Le plat signé",
+    sig_plate:"La spécialité de la maison", sig_name:"L'Escalope d'Arthur",
+    sig_lede:"« La meilleure de la région », écrivent nos hôtes de retour. C'est le plat que l'on commande les yeux fermés — dorée, généreuse, servie comme il se doit.",
+    sig_note:"À côté d'elle, la crème de champignons et la crème brûlée maison ferment le carnet en beauté. Composition et prix à confirmer avec l'établissement.",
+    sig_stamp:"Plat signature",
+    e3:"Feuillet III — La carte", menu_h:"Le carnet de la carte", menu_sub:"Une sélection courte, faite maison",
+    cat_entrees:"Pour commencer", cat_plats:"Les plats", cat_desserts:"Les douceurs",
+    d_soupe:"Crème de champignons", d_soupe_d:"Velouté maison, souvent cité par nos hôtes",
+    d_jour_e:"Suggestion du jour", d_jour_e_d:"Entrée de saison selon le marché",
+    d_escalope:"Escalope d'Arthur", d_escalope_d:"La spécialité de la maison",
+    d_classiques:"Classiques FR & LU", d_classiques_d:"Petite carte de saison, faite maison",
+    d_jour:"Plat du jour", d_jour_d:"Menu du midi, service court",
+    d_brulee:"Crème brûlée", d_brulee_d:"Le dessert que l'on recommande",
+    d_dessert:"Dessert du carnet", d_dessert_d:"Selon l'inspiration du jour",
+    tbc:"à confirmer",
+    menu_foot:"Carte reconstituée d'après les avis de nos hôtes — plats, compositions et prix restent à confirmer avec l'établissement.",
+    e4:"Feuillet IV — La salle",
+    amb_h:"Poutres, linge blanc <em>et petit lustre</em>.",
+    amb_lede:"La salle a gardé son âme de taverne : bois chaud, rideaux, tables nappées de blanc et cette lumière douce du soir. Aux beaux jours, la terrasse fleurie s'ouvre sur la place.",
+    amb_quote:"« On y revient depuis des années — la même table, la même qualité. »",
+    amb_quote_src:"— d'après nos hôtes réguliers",
+    cap_interior:"La salle, un soir de service",
+    e5:"Feuillet V — Le registre", reg_h:"Nous trouver & réserver",
+    th_day:"Jour", th_lunch:"Midi", th_dinner:"Soir",
+    mon:"Lundi", tue:"Mardi", wed:"Mercredi", thu:"Jeudi", fri:"Vendredi", sat:"Samedi", sun:"Dimanche",
+    closed:"Fermé",
+    hours_note:"Services courts, cuisine fermant tôt. Horaires à confirmer avec l'établissement.",
+    k_addr:"Adresse", k_tel:"Téléphone", k_resa:"Réservation",
+    resa_v:"par téléphone, de préférence la veille",
+    cta:"Réserver une table", pin:"Ici, place d'Ettelbruck",
+    colophon_sub:"La table conviviale d'Ettelbruck", closed_short:"Fermé le lundi",
+    disclaimer:"<b>Site de démonstration.</b> Maquette non officielle réalisée pour présentation. Textes, horaires, carte et prix sont indicatifs et à confirmer avec l'établissement. Photographies haute résolution à fournir par la maison.",
+    footer_desk:"Maquette · concept « Le Carnet d'Arthur »"
+  },
+  de:{
+    kicker:"Das Hausbuch, seit jeher aufgeschlagen",
+    wm_sub:"Restaurant · Taverne · Ettelbrück",
+    tagline:"Französische & luxemburgische Küche, an der geselligen Tafel von Ettelbrück.",
+    meta_family:"Familienbetrieb", meta_closed:"Montags geschlossen",
+    cap_exterior:"Unsere Fassade am Platz von Ettelbrück",
+    e1:"Blatt I — Das Haus",
+    maison_h:"Eine Tafel, geführt <em>mit Meisterhand</em>.",
+    maison_lede:"Seit vielen Jahren ist Arthur eine jener Adressen, die man sich in Ettelbrück weitererzählt: eine gemütliche Taverne mit Holzbalken und weißem Leinen, in die man für eine ehrliche, großzügige Küche ohne Getöse zurückkehrt.",
+    maison_note:"Eine kurze, hausgemachte Karte aus französischen und luxemburgischen Klassikern — und eine Beständigkeit, die Stammgäste seit Jahren loben.",
+    src_sluurpy:"Sluurpy · 144 Bewertungen", src_google:"Google", src_guru:"Restaurant Guru", src_ta:"TripAdvisor",
+    e2:"Blatt II — Das Signature-Gericht",
+    sig_plate:"Die Spezialität des Hauses", sig_name:"Arthurs Schnitzel",
+    sig_lede:"„Das beste der Region“, schreiben wiederkehrende Gäste. Das Gericht, das man blind bestellt — goldbraun, großzügig, serviert wie es sein soll.",
+    sig_note:"Dazu runden die Champignoncremesuppe und die hausgemachte Crème brûlée das Buch ab. Zusammensetzung und Preise mit dem Haus zu bestätigen.",
+    sig_stamp:"Signature-Gericht",
+    e3:"Blatt III — Die Karte", menu_h:"Die Karte des Hauses", menu_sub:"Eine kurze, hausgemachte Auswahl",
+    cat_entrees:"Zum Beginn", cat_plats:"Die Gerichte", cat_desserts:"Die Süßspeisen",
+    d_soupe:"Champignoncremesuppe", d_soupe_d:"Hausgemacht, oft von Gästen genannt",
+    d_jour_e:"Tagesempfehlung", d_jour_e_d:"Saisonale Vorspeise nach Markt",
+    d_escalope:"Arthurs Schnitzel", d_escalope_d:"Die Spezialität des Hauses",
+    d_classiques:"FR- & LU-Klassiker", d_classiques_d:"Kleine saisonale, hausgemachte Karte",
+    d_jour:"Tagesgericht", d_jour_d:"Mittagsmenü, kurzer Service",
+    d_brulee:"Crème brûlée", d_brulee_d:"Das empfohlene Dessert",
+    d_dessert:"Dessert des Hauses", d_dessert_d:"Je nach Inspiration des Tages",
+    tbc:"zu bestätigen",
+    menu_foot:"Karte nach Gästebewertungen rekonstruiert — Gerichte, Zusammensetzung und Preise sind mit dem Haus zu bestätigen.",
+    e4:"Blatt IV — Der Saal",
+    amb_h:"Holzbalken, weißes Leinen <em>und ein kleiner Lüster</em>.",
+    amb_lede:"Der Saal hat seine Tavernenseele bewahrt: warmes Holz, Vorhänge, weiß gedeckte Tische und dieses sanfte Abendlicht. An schönen Tagen öffnet sich die blühende Terrasse zum Platz.",
+    amb_quote:"„Wir kommen seit Jahren wieder — derselbe Tisch, dieselbe Qualität.“",
+    amb_quote_src:"— nach unseren Stammgästen",
+    cap_interior:"Der Saal, an einem Serviceabend",
+    e5:"Blatt V — Das Register", reg_h:"Finden & reservieren",
+    th_day:"Tag", th_lunch:"Mittags", th_dinner:"Abends",
+    mon:"Montag", tue:"Dienstag", wed:"Mittwoch", thu:"Donnerstag", fri:"Freitag", sat:"Samstag", sun:"Sonntag",
+    closed:"Geschlossen",
+    hours_note:"Kurze Servicezeiten, Küche schließt früh. Öffnungszeiten mit dem Haus zu bestätigen.",
+    k_addr:"Adresse", k_tel:"Telefon", k_resa:"Reservierung",
+    resa_v:"telefonisch, am besten am Vortag",
+    cta:"Tisch reservieren", pin:"Hier, am Platz von Ettelbrück",
+    colophon_sub:"Die gesellige Tafel von Ettelbrück", closed_short:"Montags geschlossen",
+    disclaimer:"<b>Demo-Website.</b> Inoffizielles Muster zu Präsentationszwecken. Texte, Öffnungszeiten, Karte und Preise sind Richtwerte und mit dem Haus zu bestätigen. Hochauflösende Fotos vom Haus bereitzustellen.",
+    footer_desk:"Muster · Konzept „Das Buch des Arthur“"
+  },
+  en:{
+    kicker:"The house ledger, open since forever",
+    wm_sub:"Restaurant · Taverne · Ettelbruck",
+    tagline:"French & Luxembourgish cooking, served at Ettelbruck's convivial table.",
+    meta_family:"Family-run", meta_closed:"Closed Mondays",
+    cap_exterior:"Our façade on the Ettelbruck square",
+    e1:"Leaf I — The house",
+    maison_h:"A table kept <em>with a master's hand</em>.",
+    maison_lede:"For many years, Arthur has been one of those addresses passed on in Ettelbruck: a warm taverne of exposed beams and white linen, where you return for honest, generous, unfussy cooking.",
+    maison_note:"A short, home-made menu built on French and Luxembourgish classics — and a consistency regulars have praised for years.",
+    src_sluurpy:"Sluurpy · 144 reviews", src_google:"Google", src_guru:"Restaurant Guru", src_ta:"TripAdvisor",
+    e2:"Leaf II — The signed dish",
+    sig_plate:"The house speciality", sig_name:"Arthur's Escalope",
+    sig_lede:"“The best in the region,” returning guests write. The dish you order with your eyes closed — golden, generous, served just right.",
+    sig_note:"Alongside it, the mushroom cream soup and house crème brûlée close the ledger in style. Composition and prices to be confirmed with the house.",
+    sig_stamp:"Signature dish",
+    e3:"Leaf III — The menu", menu_h:"The menu ledger", menu_sub:"A short, home-made selection",
+    cat_entrees:"To begin", cat_plats:"The mains", cat_desserts:"Sweet things",
+    d_soupe:"Mushroom cream soup", d_soupe_d:"House-made, often cited by our guests",
+    d_jour_e:"Today's suggestion", d_jour_e_d:"Seasonal starter, market-led",
+    d_escalope:"Arthur's Escalope", d_escalope_d:"The house speciality",
+    d_classiques:"FR & LU classics", d_classiques_d:"Small seasonal, home-made menu",
+    d_jour:"Dish of the day", d_jour_d:"Lunch menu, short service",
+    d_brulee:"Crème brûlée", d_brulee_d:"The dessert we recommend",
+    d_dessert:"Dessert of the day", d_dessert_d:"As the day inspires",
+    tbc:"to confirm",
+    menu_foot:"Menu reconstructed from guest reviews — dishes, composition and prices remain to be confirmed with the house.",
+    e4:"Leaf IV — The room",
+    amb_h:"Beams, white linen <em>and a small chandelier</em>.",
+    amb_lede:"The room has kept its taverne soul: warm wood, curtains, white-clothed tables and that soft evening light. In fine weather, the flowered terrace opens onto the square.",
+    amb_quote:"“We've come back for years — the same table, the same quality.”",
+    amb_quote_src:"— after our regular guests",
+    cap_interior:"The dining room, on a service evening",
+    e5:"Leaf V — The register", reg_h:"Find us & book",
+    th_day:"Day", th_lunch:"Lunch", th_dinner:"Dinner",
+    mon:"Monday", tue:"Tuesday", wed:"Wednesday", thu:"Thursday", fri:"Friday", sat:"Saturday", sun:"Sunday",
+    closed:"Closed",
+    hours_note:"Short services, kitchen closes early. Hours to be confirmed with the house.",
+    k_addr:"Address", k_tel:"Phone", k_resa:"Booking",
+    resa_v:"by phone, ideally the day before",
+    cta:"Book a table", pin:"Here, on the Ettelbruck square",
+    colophon_sub:"Ettelbruck's convivial table", closed_short:"Closed Mondays",
+    disclaimer:"<b>Demonstration site.</b> Unofficial mock-up for presentation. Text, hours, menu and prices are indicative and to be confirmed with the house. High-resolution photography to be supplied by the establishment.",
+    footer_desk:"Mock-up · concept “Arthur's Ledger”"
+  }
+};
+const HTML_KEYS = new Set(["maison_h","amb_h","disclaimer"]);
+function setLang(lang){
+  const dict = I18N[lang]; if(!dict) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k = el.getAttribute("data-i18n");
+    if(dict[k]===undefined) return;
+    if(HTML_KEYS.has(k)) el.innerHTML = dict[k]; else el.textContent = dict[k];
+  });
+  document.querySelectorAll(".lang button").forEach(b=>{
+    b.classList.toggle("active", b.dataset.lang===lang);
+  });
+}
+document.querySelectorAll(".lang button").forEach(b=>{
+  b.addEventListener("click",()=>setLang(b.dataset.lang));
+});
+</script>
+</body>
+</html>

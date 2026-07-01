@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Le Nid Gourmand — Hôtel Beau-Séjour · Mondorf-les-Bains</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Marcellus&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   LE NID GOURMAND — signature concept: "La Verrière du Terroir"
+   The whole page is composed as a grand leaded stained-glass
+   window: an asymmetric mosaic of glass panes divided by thin
+   charcoal lead-came lines, glowing terracotta / gold / crimson.
+   ============================================================ */
+:root{
+  --terracotta:#B04A34;
+  --terracotta-deep:#8F3A28;
+  --crimson:#C0392B;
+  --charcoal:#2A2320;          /* lead came */
+  --charcoal-soft:#413731;
+  --cream:#F6EFE3;
+  --cream-2:#EFE4D2;
+  --ivory:#FBF7EF;
+  --gold:#C4962F;
+  --gold-soft:#E0BC6A;
+  --coral:#E08A6E;
+  --olive:#7C8D42;             /* Beau-Séjour secondary */
+  --olive-lime:#A7BE4E;
+  --glass-green:#5E7A5A;
+  --ink:#241E1A;
+  --lead:6px;                  /* came thickness */
+  --frame:#1F1915;
+  --ff-display:'Cormorant Garamond', Georgia, serif;
+  --ff-lapidary:'Marcellus', 'Cormorant Garamond', serif;
+  --ff-body:'Work Sans', system-ui, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--ff-body);
+  color:var(--ink);
+  background:var(--charcoal);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+
+/* ---------- lead-came pane system ---------- */
+.pane{position:relative;background:var(--ivory);overflow:hidden}
+.leadgrid{
+  display:grid;
+  gap:var(--lead);
+  background:var(--charcoal);      /* came showing through gaps */
+  border:var(--lead) solid var(--charcoal);
+}
+.eyebrow{
+  font-family:var(--ff-lapidary);
+  text-transform:uppercase;
+  letter-spacing:.32em;
+  font-size:.72rem;
+  color:var(--terracotta);
+}
+.pane-label{
+  position:absolute;top:0;left:0;
+  font-family:var(--ff-lapidary);
+  font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--cream);background:var(--charcoal);
+  padding:6px 14px 6px 12px;
+  z-index:3;
+}
+h1,h2,h3{font-family:var(--ff-display);font-weight:500;line-height:1.02;color:var(--ink)}
+.section-title{font-size:clamp(2.4rem,4.6vw,4.2rem)}
+
+/* glass texture overlay — gives panes a subtle antique-glass sheen */
+.glass::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(115deg, rgba(255,255,255,.16) 0%, rgba(255,255,255,0) 32%),
+    radial-gradient(120% 90% at 15% 0%, rgba(255,255,255,.12), transparent 55%);
+  mix-blend-mode:screen;
+}
+
+/* ============================================================
+   TRANSOM — the window's top frame (sticky header)
+   ============================================================ */
+.transom{
+  position:sticky;top:0;z-index:60;
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;
+  gap:24px;
+  background:var(--charcoal);
+  border-bottom:var(--lead) solid var(--frame);
+  padding:12px clamp(16px,3vw,40px);
+  color:var(--cream);
+}
+.brand{display:flex;align-items:center;gap:14px}
+.brand .emblem{width:46px;height:46px;flex:none}
+.brand .wm{display:flex;flex-direction:column;line-height:1}
+.brand .wm .le{font-family:var(--ff-lapidary);font-size:.72rem;letter-spacing:.34em;color:var(--gold-soft);text-transform:uppercase}
+.brand .wm .name{font-family:var(--ff-display);font-size:1.5rem;color:var(--cream);font-weight:600;letter-spacing:.01em}
+.nav{display:flex;gap:26px;justify-content:center;flex-wrap:wrap}
+.nav a{
+  font-family:var(--ff-lapidary);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--cream);opacity:.82;transition:.25s;position:relative;padding:4px 0;
+}
+.nav a:hover{opacity:1;color:var(--gold-soft)}
+.transom-right{display:flex;align-items:center;gap:16px}
+.langsw{display:flex;border:1px solid rgba(255,255,255,.25);border-radius:2px;overflow:hidden}
+.langsw button{
+  background:transparent;border:0;color:var(--cream);cursor:pointer;
+  font-family:var(--ff-lapidary);font-size:.72rem;letter-spacing:.12em;
+  padding:6px 9px;opacity:.6;transition:.2s;
+}
+.langsw button.active{background:var(--terracotta);opacity:1}
+.langsw button:hover{opacity:1}
+.btn{
+  font-family:var(--ff-lapidary);letter-spacing:.14em;text-transform:uppercase;font-size:.76rem;
+  background:var(--crimson);color:#fff;padding:11px 20px;border-radius:2px;
+  display:inline-block;transition:.25s;border:1px solid var(--crimson);white-space:nowrap;
+}
+.btn:hover{background:var(--terracotta-deep);border-color:var(--terracotta-deep)}
+.btn.ghost{background:transparent;color:var(--cream);border-color:rgba(255,255,255,.4)}
+.btn.ghost:hover{background:var(--cream);color:var(--charcoal)}
+.btn.dark{background:var(--charcoal);border-color:var(--charcoal)}
+.btn.dark:hover{background:var(--terracotta);border-color:var(--terracotta)}
+.burger{display:none;background:none;border:0;color:var(--cream);font-size:1.6rem;cursor:pointer}
+
+/* ============================================================
+   1 · LA GRANDE VERRIÈRE  (hero mosaic)
+   ============================================================ */
+.verriere{
+  background:var(--charcoal);
+  border-bottom:var(--lead) solid var(--frame);
+  display:grid;
+  grid-template-columns:1.15fr 2.4fr 1.15fr;
+  gap:var(--lead);
+  padding:var(--lead);
+  min-height:88vh;
+}
+.verriere .col{display:grid;gap:var(--lead)}
+/* left column: tall stained-glass goddess + emblem quarry */
+.v-goddess{background:#12100e}
+.v-goddess img{opacity:.96}
+.v-goddess .cap{
+  position:absolute;left:0;right:0;bottom:0;
+  background:linear-gradient(0deg, rgba(15,12,10,.92), transparent);
+  color:var(--cream);padding:26px 18px 16px;
+}
+.v-goddess .cap .t{font-family:var(--ff-display);font-size:1.2rem;color:var(--gold-soft)}
+.v-goddess .cap .d{font-size:.78rem;opacity:.85;margin-top:4px}
+
+/* center: main light — dining room with wordmark */
+.v-hero{position:relative;background:#1a1512}
+.v-hero>img{position:absolute;inset:0;opacity:.62}
+.v-hero .halo{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(90% 70% at 50% 20%, rgba(196,150,47,.28), transparent 60%),
+    linear-gradient(180deg, rgba(26,21,18,.35), rgba(26,21,18,.72));
+}
+.v-hero .content{
+  position:relative;z-index:2;height:100%;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+  padding:clamp(26px,5vw,70px);color:var(--cream);
+}
+.v-hero .content .eyebrow{color:var(--gold-soft)}
+.v-hero h1{
+  color:var(--ivory);font-weight:600;
+  font-size:clamp(3.4rem,8vw,7rem);margin:.18em 0 .1em;letter-spacing:.01em;
+  text-shadow:0 4px 40px rgba(0,0,0,.5);
+}
+.v-hero .strap{
+  font-family:var(--ff-display);font-style:italic;font-size:clamp(1.25rem,2.3vw,1.9rem);
+  color:var(--cream);max-width:26ch;margin-bottom:6px;
+}
+.v-hero .sub{font-size:.92rem;letter-spacing:.02em;opacity:.9;max-width:46ch;margin:10px auto 30px}
+.v-hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.rule-orn{display:flex;align-items:center;gap:14px;color:var(--gold-soft);margin:8px 0}
+.rule-orn::before,.rule-orn::after{content:"";height:1px;width:52px;background:var(--gold-soft);opacity:.6}
+.rule-orn span{font-family:var(--ff-lapidary);letter-spacing:.3em;font-size:.7rem;text-transform:uppercase}
+
+/* right column: quarry panes = quick facts */
+.v-quarry{
+  background:var(--terracotta);color:var(--cream);
+  display:flex;flex-direction:column;justify-content:center;padding:22px 20px;
+}
+.v-quarry:nth-child(2){background:var(--olive)}
+.v-quarry:nth-child(3){background:var(--gold);color:var(--charcoal)}
+.v-quarry:nth-child(4){background:var(--charcoal-soft);color:var(--cream)}
+.v-quarry .k{font-family:var(--ff-display);font-size:2.5rem;line-height:1;font-weight:600}
+.v-quarry .l{font-family:var(--ff-lapidary);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;margin-top:8px;opacity:.92}
+
+/* ============================================================
+   2 · LE NID  (story — illuminated text)
+   ============================================================ */
+.story{
+  background:var(--cream);
+  border-bottom:var(--lead) solid var(--frame);
+  display:grid;grid-template-columns:1.5fr 1fr;
+}
+.story .text{padding:clamp(40px,5vw,86px);display:flex;flex-direction:column;justify-content:center}
+.story .text h2{margin:.15em 0 .5em;max-width:14ch}
+.story .lede{
+  font-family:var(--ff-display);font-size:clamp(1.3rem,1.8vw,1.6rem);
+  color:var(--terracotta-deep);font-style:italic;margin-bottom:1.1em;line-height:1.4;
+}
+.story p{margin-bottom:1em;max-width:56ch;color:#41372f}
+.dropcap::first-letter{
+  font-family:var(--ff-display);font-weight:600;color:var(--crimson);
+  font-size:4.4rem;line-height:.72;float:left;margin:.06em .12em 0 0;
+}
+.story .chef{margin-top:1.2em;font-size:.86rem;color:#6a5c50;border-left:3px solid var(--gold);padding-left:14px}
+.story .art{position:relative;border-left:var(--lead) solid var(--frame);background:#20140f;min-height:420px}
+.story .art img{opacity:.97}
+.story .art .tag{
+  position:absolute;bottom:0;left:0;right:0;color:var(--cream);
+  background:linear-gradient(0deg, rgba(20,15,11,.9), transparent);
+  padding:30px 20px 16px;font-family:var(--ff-display);font-style:italic;font-size:1.05rem;
+}
+
+/* ============================================================
+   3 · LA CARTE  (menu as a mosaic of glass panels)
+   ============================================================ */
+.carte{background:var(--ink);padding:clamp(36px,5vw,72px) clamp(16px,4vw,64px);border-bottom:var(--lead) solid var(--frame)}
+.carte-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:18px;margin-bottom:34px}
+.carte-head .eyebrow{color:var(--gold-soft)}
+.carte-head h2{color:var(--ivory)}
+.carte-head .note{color:var(--gold-soft);font-size:.8rem;font-style:italic;max-width:38ch;text-align:right}
+.carte-grid{
+  display:grid;gap:var(--lead);
+  grid-template-columns:repeat(12,1fr);
+  background:var(--frame);border:var(--lead) solid var(--frame);
+}
+.mcard{background:var(--ivory);padding:26px 24px;position:relative}
+.mcard h3{font-size:1.5rem;color:var(--terracotta-deep);display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+.mcard h3::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold-soft),transparent)}
+.mrow{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px dotted #d8c6ab}
+.mrow:last-child{border-bottom:0}
+.mrow .n{font-family:var(--ff-display);font-size:1.16rem;color:var(--ink);line-height:1.25}
+.mrow .n small{display:block;font-family:var(--ff-body);font-size:.74rem;color:#8a7a6a;font-style:normal;margin-top:2px}
+.mrow .p{font-family:var(--ff-lapidary);color:var(--crimson);font-size:1rem;white-space:nowrap}
+/* column spans */
+.span-formule{grid-column:span 4}
+.span-signature{grid-column:span 8}
+.span-entrees{grid-column:span 6}
+.span-plats{grid-column:span 6}
+@media(max-width:900px){
+  .span-formule,.span-signature,.span-entrees,.span-plats{grid-column:span 12}
+}
+/* signature jewel */
+.signature{
+  background:linear-gradient(135deg,var(--terracotta) 0%, var(--terracotta-deep) 100%);
+  color:var(--cream);display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;
+}
+.signature .medal{
+  width:92px;height:92px;border-radius:50%;flex:none;
+  border:2px solid var(--gold-soft);display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.12);
+}
+.signature .medal svg{width:52px;height:52px}
+.signature h3{color:var(--gold-soft)}
+.signature h3::after{display:none}
+.signature .desc{font-family:var(--ff-display);font-style:italic;font-size:1.2rem;line-height:1.4}
+.signature .meta{display:flex;gap:20px;align-items:baseline;margin-top:12px;flex-wrap:wrap}
+.signature .price{font-family:var(--ff-lapidary);font-size:1.6rem;color:#fff}
+.signature .tagpill{font-family:var(--ff-lapidary);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+  border:1px solid var(--gold-soft);color:var(--gold-soft);padding:4px 10px;border-radius:2px}
+.carte-foot{margin-top:26px;color:var(--gold-soft);font-size:.82rem;text-align:center;font-style:italic}
+
+/* ============================================================
+   4 · L'ÉCRIN  (ambiance gallery mosaic)
+   ============================================================ */
+.ecrin{background:var(--charcoal);border-bottom:var(--lead) solid var(--frame)}
+.ecrin-head{padding:clamp(30px,4vw,56px) clamp(16px,4vw,64px) 0;color:var(--cream);text-align:center}
+.ecrin-head .eyebrow{color:var(--gold-soft)}
+.ecrin-head h2{color:var(--ivory);margin:.1em 0}
+.ecrin-head p{color:var(--cream);opacity:.82;max-width:52ch;margin:8px auto 0;font-size:.92rem}
+.ecrin-grid{
+  display:grid;gap:var(--lead);padding:var(--lead);margin-top:clamp(20px,3vw,40px);
+  grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;
+}
+.ecrin-grid .g{position:relative;background:#1a1410;min-height:100%}
+.ecrin-grid .g figcaption{
+  position:absolute;left:0;bottom:0;right:0;color:var(--cream);
+  font-family:var(--ff-display);font-style:italic;font-size:.98rem;
+  background:linear-gradient(0deg,rgba(15,11,8,.82),transparent);padding:24px 16px 12px;
+  opacity:0;transform:translateY(8px);transition:.35s;
+}
+.ecrin-grid .g:hover figcaption{opacity:1;transform:none}
+.ecrin-grid .g img{transition:transform .6s ease}
+.ecrin-grid .g:hover img{transform:scale(1.05)}
+.g-a{grid-column:span 2;grid-row:span 2}
+.g-b{grid-column:span 2;grid-row:span 1}
+.g-c{grid-column:span 1;grid-row:span 2}
+.g-d{grid-column:span 1;grid-row:span 1}
+.g-e{grid-column:span 2;grid-row:span 1}
+
+/* ============================================================
+   5 · SÉJOUR  (hotel link band)
+   ============================================================ */
+.sejour{
+  display:grid;grid-template-columns:1fr 1.1fr;
+  background:var(--olive);border-bottom:var(--lead) solid var(--frame);
+}
+.sejour .txt{padding:clamp(36px,4vw,72px);color:var(--cream);display:flex;flex-direction:column;justify-content:center}
+.sejour .eyebrow{color:#EAF0CE}
+.sejour h2{color:#fff;margin:.12em 0 .4em;max-width:16ch}
+.sejour p{max-width:52ch;opacity:.94;margin-bottom:1.4em}
+.sejour .img{position:relative;border-left:var(--lead) solid var(--frame);min-height:340px;background:#3d4a1e}
+
+/* ============================================================
+   6 · NOUS TROUVER  (contact / hours / map mosaic)
+   ============================================================ */
+.trouver{
+  display:grid;
+  grid-template-columns:1fr 1fr 1.3fr;
+  gap:var(--lead);background:var(--frame);
+  border-bottom:var(--lead) solid var(--frame);
+}
+.trouver>div{background:var(--ivory)}
+.t-facade{position:relative;min-height:300px;background:#3a1b12}
+.t-facade .stamp{
+  position:absolute;top:16px;left:16px;background:var(--charcoal);color:var(--cream);
+  font-family:var(--ff-lapidary);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;padding:6px 12px;
+}
+.t-info{padding:clamp(28px,3vw,44px);display:flex;flex-direction:column;justify-content:center}
+.t-info h2{color:var(--terracotta-deep);margin-bottom:.5em;font-size:clamp(2rem,3vw,2.8rem)}
+.info-block{margin-bottom:20px}
+.info-block .lab{font-family:var(--ff-lapidary);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.info-block .val{font-family:var(--ff-display);font-size:1.24rem;color:var(--ink)}
+.info-block .val a:hover{color:var(--crimson)}
+.hours{margin-top:6px}
+.hours .hrow{display:grid;grid-template-columns:1fr auto;gap:12px;padding:5px 0;border-bottom:1px dotted #d8c6ab;font-size:.92rem}
+.hours .hrow span:first-child{color:#5f5247}
+.hours .hrow span:last-child{font-family:var(--ff-lapidary);color:var(--ink);font-size:.86rem}
+.t-info .confirm{font-size:.74rem;color:#8a7a6a;font-style:italic;margin-top:12px}
+.t-map{position:relative;min-height:340px;background:#ddd}
+.t-map iframe{width:100%;height:100%;border:0;filter:sepia(.12) saturate(1.05)}
+.t-cta{padding:16px;background:var(--charcoal);display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+
+/* ============================================================
+   FOOTER TRANSOM
+   ============================================================ */
+.footer{background:var(--charcoal);color:var(--cream);padding:clamp(32px,4vw,56px) clamp(16px,4vw,64px) 22px}
+.footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;align-items:start}
+.footer .brand .wm .name{font-size:1.4rem}
+.footer .tag{font-family:var(--ff-display);font-style:italic;color:var(--gold-soft);margin-top:14px;max-width:38ch;font-size:1.05rem}
+.footer h4{font-family:var(--ff-lapidary);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:12px}
+.footer a.fl{display:block;opacity:.82;font-size:.9rem;padding:3px 0;transition:.2s}
+.footer a.fl:hover{opacity:1;color:var(--gold-soft)}
+.footer .foot-note{opacity:.72;font-size:.86rem;line-height:1.7}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.14);margin-top:30px;padding-top:16px;
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-size:.74rem;opacity:.66;
+}
+.disclaimer{color:var(--gold-soft);opacity:.9}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:1080px){
+  .verriere{grid-template-columns:1fr 1.4fr;grid-auto-rows:minmax(220px,auto)}
+  .verriere .col.right{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);grid-auto-flow:column}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .trouver{grid-template-columns:1fr 1fr}
+  .t-map{grid-column:1/-1}
+}
+@media(max-width:820px){
+  .nav{display:none}
+  .burger{display:block}
+  .transom{grid-template-columns:auto 1fr auto}
+  .nav.open{
+    display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;
+    background:var(--charcoal);padding:18px 24px;gap:16px;border-bottom:var(--lead) solid var(--frame);
+  }
+  .verriere{grid-template-columns:1fr;min-height:auto}
+  .verriere .col.left,.verriere .col.right{grid-column:auto}
+  .v-goddess{min-height:420px}
+  .v-hero{min-height:70vh}
+  .verriere .col.right{grid-template-columns:repeat(2,1fr)}
+  .story{grid-template-columns:1fr}
+  .story .art{border-left:0;border-top:var(--lead) solid var(--frame);min-height:360px}
+  .sejour{grid-template-columns:1fr}
+  .sejour .img{border-left:0;border-top:var(--lead) solid var(--frame);min-height:280px}
+  .trouver{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .carte-head .note{text-align:left}
+}
+@media(max-width:560px){
+  .verriere .col.right{grid-template-columns:1fr}
+  .ecrin-grid{grid-template-columns:1fr 1fr}
+  .g-a,.g-b,.g-c,.g-d,.g-e{grid-column:span 1;grid-row:span 1;min-height:180px}
+  .brand .wm .name{font-size:1.2rem}
+  .transom-right .btn{display:none}
+}
+.sr-hide{display:none}
+</style>
+</head>
+<body>
+
+<!-- ============ TRANSOM (header) ============ -->
+<header class="transom">
+  <a class="brand" href="#top" aria-label="Le Nid Gourmand">
+    <svg class="emblem" viewBox="0 0 64 64" aria-hidden="true">
+      <!-- crimson nest emblem: two figures curled into a nest/heart -->
+      <path d="M6 40 C6 30 16 26 32 26 C48 26 58 30 58 40 C58 52 46 58 32 58 C18 58 6 52 6 40 Z" fill="#C0392B"/>
+      <path d="M12 40 C12 34 20 32 32 32 C44 32 52 34 52 40" fill="none" stroke="#F6EFE3" stroke-width="2.4" opacity=".55"/>
+      <circle cx="24" cy="20" r="7" fill="#C0392B"/>
+      <circle cx="40" cy="20" r="7" fill="#8F3A28"/>
+      <path d="M24 27 C24 32 24 33 30 34" stroke="#C0392B" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M40 27 C40 32 40 33 34 34" stroke="#8F3A28" stroke-width="6" fill="none" stroke-linecap="round"/>
+    </svg>
+    <span class="wm">
+      <span class="le">Le</span>
+      <span class="name">Nid Gourmand</span>
+    </span>
+  </a>
+
+  <nav class="nav" id="mainnav">
+    <a href="#nid" data-i18n="nav.story">Le Nid</a>
+    <a href="#carte" data-i18n="nav.carte">La Carte</a>
+    <a href="#ecrin" data-i18n="nav.ecrin">L'Écrin</a>
+    <a href="#sejour" data-i18n="nav.sejour">Séjour</a>
+    <a href="#trouver" data-i18n="nav.find">Nous trouver</a>
+  </nav>
+
+  <div class="transom-right">
+    <div class="langsw" role="group" aria-label="Langue">
+      <button data-lang="fr" class="active">FR</button>
+      <button data-lang="de">DE</button>
+      <button data-lang="en">EN</button>
+    </div>
+    <a href="tel:+35226677525" class="btn" data-i18n="nav.reserve">Réserver</a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ 1 · LA GRANDE VERRIÈRE (hero) ============ -->
+<section class="verriere" aria-label="Le Nid Gourmand">
+
+  <!-- LEFT: stained-glass goddess -->
+  <div class="col left">
+    <figure class="pane glass v-goddess" style="min-height:0">
+      <span class="pane-label" data-i18n="hero.panel1">Verrière du terroir</span>
+      <img src="assets/detail-stained-glass.jpg" alt="Verrière du terroir — la déesse des moissons portant fruits et vin">
+      <figcaption class="cap">
+        <div class="t" data-i18n="goddess.title">La déesse des moissons</div>
+        <div class="d" data-i18n="goddess.desc">Vitrail d'origine de la salle — fruits, vigne &amp; vin de la Moselle.</div>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- CENTER: main light -->
+  <div class="col" style="grid-template-rows:1fr">
+    <div class="pane glass v-hero">
+      <img src="assets/hero.jpg" alt="Salle du Nid Gourmand — cheminée, vitrail et tons chaleureux">
+      <div class="halo"></div>
+      <div class="content">
+        <div class="eyebrow" data-i18n="hero.eyebrow">Hôtel Beau-Séjour · Mondorf-les-Bains</div>
+        <h1>Le Nid Gourmand</h1>
+        <div class="rule-orn"><span data-i18n="hero.since">Cuisine de terroir</span></div>
+        <p class="strap" data-i18n="hero.strap">Cuisine française de terroir, au cœur de Mondorf-les-Bains.</p>
+        <p class="sub" data-i18n="hero.sub">Une des plus élégantes tables de la ville thermale — nappes blanches, miroirs dorés et une cuisine française créative et généreuse.</p>
+        <div class="cta-row">
+          <a href="tel:+35226677525" class="btn" data-i18n="hero.cta1">Réserver une table</a>
+          <a href="#carte" class="btn ghost" data-i18n="hero.cta2">Découvrir la carte</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: quarry facts -->
+  <div class="col right">
+    <div class="pane glass v-quarry">
+      <div class="k" data-i18n="fact1.k">Terroir</div>
+      <div class="l" data-i18n="fact1.l">Cuisine française créative &amp; innovante</div>
+    </div>
+    <div class="pane glass v-quarry">
+      <div class="k">4,5<span style="font-size:1.1rem"> / 5</span></div>
+      <div class="l" data-i18n="fact2.l">196 avis · RestaurantGuru</div>
+    </div>
+    <div class="pane glass v-quarry">
+      <div class="k">30<span style="font-size:1.1rem"> min</span></div>
+      <div class="l" data-i18n="fact3.l">de Luxembourg-Ville</div>
+    </div>
+    <div class="pane glass v-quarry">
+      <div class="k">64<span style="font-size:1.1rem"> + 32</span></div>
+      <div class="l" data-i18n="fact4.l">couverts en salle &amp; terrasse</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2 · LE NID (story) ============ -->
+<section class="story" id="nid">
+  <div class="text">
+    <div class="eyebrow" data-i18n="story.eyebrow">Le Nid</div>
+    <h2 class="section-title" data-i18n="story.title">Un nid de bien-vivre à Mondorf</h2>
+    <p class="lede" data-i18n="story.lede">« Le Nid Gourmand » — deux silhouettes lovées comme dans un nid : l'emblème même de l'accueil que l'on vous réserve.</p>
+    <p class="dropcap" data-i18n="story.p1">Au rez-de-chaussée de l'Hôtel Beau-Séjour, la salle à manger est l'une des tables les plus raffinées de Mondorf-les-Bains. Nappes blanches et serviettes en tissu, miroirs à cadre doré, cheminée et boiseries chaleureuses, un dressoir ancien garni de porcelaine bleu et blanc — et, veillant sur la salle, un grand vitrail du terroir.</p>
+    <p data-i18n="story.p2">La cuisine y est française, de terroir, créative et généreuse : un menu du jour et un menu du marché qui suivent les saisons, des suggestions et une carte fidèle aux classiques. Une adresse pensée pour les repas qui comptent — en couple, en famille, ou entre deux escapades au Domaine Thermal.</p>
+    <p class="chef" data-i18n="story.chef">En cuisine : le chef Jan Van Dijken, dont le Châteaubriand est la signature de la maison. <em>(nom &amp; orthographe à confirmer avec l'établissement.)</em></p>
+  </div>
+  <figure class="pane glass art">
+    <img src="assets/interior-2.jpg" alt="Salle du Nid Gourmand — miroir doré reflétant le dressoir ancien">
+    <figcaption class="tag" data-i18n="story.caption">Miroirs dorés &amp; dressoir ancien — l'esprit d'une maison.</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 3 · LA CARTE (menu mosaic) ============ -->
+<section class="carte" id="carte">
+  <div class="carte-head">
+    <div>
+      <div class="eyebrow" data-i18n="carte.eyebrow">La Carte</div>
+      <h2 class="section-title" data-i18n="carte.title">Au fil des saisons</h2>
+    </div>
+    <p class="note" data-i18n="carte.note">Sélection indicative. Plats &amp; prix à confirmer avec l'établissement ; menu du jour et menu du marché variables.</p>
+  </div>
+
+  <div class="carte-grid">
+    <!-- Formule midi -->
+    <div class="mcard span-formule">
+      <h3 data-i18n="m.formule">Formule de midi</h3>
+      <div class="mrow">
+        <span class="n" data-i18n="m.f1">Entrée + Plat</span>
+        <span class="p">19&nbsp;€</span>
+      </div>
+      <div class="mrow">
+        <span class="n" data-i18n="m.f2">Plat seul</span>
+        <span class="p">16&nbsp;€</span>
+      </div>
+      <div class="mrow">
+        <span class="n" data-i18n="m.f3">Menu du marché <small data-i18n="m.f3s">au gré du chef</small></span>
+        <span class="p" data-i18n="m.aconf">à conf.</span>
+      </div>
+    </div>
+
+    <!-- Signature jewel -->
+    <div class="mcard span-signature signature glass">
+      <div class="medal">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M6 40 C6 30 16 26 32 26 C48 26 58 30 58 40 C58 52 46 58 32 58 C18 58 6 52 6 40 Z" fill="#E0BC6A"/>
+          <circle cx="24" cy="20" r="6" fill="#E0BC6A"/><circle cx="40" cy="20" r="6" fill="#C4962F"/>
+        </svg>
+      </div>
+      <div>
+        <div class="eyebrow" style="color:var(--gold-soft)" data-i18n="m.sigeye">Spécialité de la maison</div>
+        <h3 data-i18n="m.signame">Châteaubriand</h3>
+        <div class="desc" data-i18n="m.sigdesc">Sauces au poivre &amp; béarnaise, garnitures — servi pour deux.</div>
+        <div class="meta">
+          <span class="price">31,50&nbsp;€</span>
+          <span class="tagpill" data-i18n="m.sigtag">Pour 2 personnes</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Entrées -->
+    <div class="mcard span-entrees">
+      <h3 data-i18n="m.entrees">Entrées</h3>
+      <div class="mrow"><span class="n" data-i18n="m.e1">Carpaccio de bœuf au pesto, parmesan &amp; roquette</span><span class="p">15,00&nbsp;€</span></div>
+      <div class="mrow"><span class="n" data-i18n="m.e2">Carpaccio de saumon, vinaigrette au curry</span><span class="p">16,00&nbsp;€</span></div>
+      <div class="mrow"><span class="n" data-i18n="m.e3">Filets de hareng marinés</span><span class="p">16,00&nbsp;€</span></div>
+      <div class="mrow"><span class="n" data-i18n="m.e4">Salade de scampis</span><span class="p">16,00&nbsp;€</span></div>
+    </div>
+
+    <!-- Plats -->
+    <div class="mcard span-plats">
+      <h3 data-i18n="m.plats">Plats</h3>
+      <div class="mrow"><span class="n" data-i18n="m.p1">Entrecôte grillée</span><span class="p">24,50&nbsp;€</span></div>
+      <div class="mrow"><span class="n" data-i18n="m.p2">Magret d'agneau ibérique, miel &amp; thym</span><span class="p">28,50&nbsp;€</span></div>
+      <div class="mrow"><span class="n" data-i18n="m.p3">Filet de sandre, sauce Riesling</span><span class="p">28,50&nbsp;€</span></div>
+      <div class="mrow"><span class="n" data-i18n="m.p4">Tête de veau, sauce ravigote</span><span class="p">23,50&nbsp;€</span></div>
+      <div class="mrow"><span class="n" data-i18n="m.p5">Wok de crevettes, curry-coco</span><span class="p">24,50&nbsp;€</span></div>
+    </div>
+  </div>
+  <p class="carte-foot" data-i18n="carte.foot">Options végétariennes disponibles · Cartes &amp; espèces acceptées · Menu du jour et suggestions annoncés en salle.</p>
+</section>
+
+<!-- ============ 4 · L'ÉCRIN (gallery) ============ -->
+<section class="ecrin" id="ecrin">
+  <div class="ecrin-head">
+    <div class="eyebrow" data-i18n="ecrin.eyebrow">L'Écrin</div>
+    <h2 class="section-title" data-i18n="ecrin.title">L'ambiance de la salle</h2>
+    <p data-i18n="ecrin.sub">Une salle baignée de lumière chaude, entre cheminée, miroirs dorés et le vitrail du terroir.</p>
+  </div>
+  <div class="ecrin-grid">
+    <figure class="g glass g-a"><img src="assets/interior-1.jpg" alt="Table dressée, miroir doré, vue sur la terrasse"><figcaption data-i18n="g.1">Table dressée &amp; vue sur le jardin</figcaption></figure>
+    <figure class="g glass g-b"><img src="assets/hero.jpg" alt="Salle avec cheminée centrale et boiseries"><figcaption data-i18n="g.2">La grande salle &amp; sa cheminée</figcaption></figure>
+    <figure class="g glass g-c"><img src="assets/detail-stained-glass.jpg" alt="Détail du vitrail du terroir"><figcaption data-i18n="g.3">Le vitrail du terroir</figcaption></figure>
+    <figure class="g glass g-d"><img src="assets/interior-2.jpg" alt="Miroir doré et dressoir ancien"><figcaption data-i18n="g.4">Miroir &amp; dressoir ancien</figcaption></figure>
+    <figure class="g glass g-e"><img src="assets/exterior.jpg" alt="Façade brique de l'Hôtel Beau-Séjour"><figcaption data-i18n="g.5">La façade, avenue Dr. Klein</figcaption></figure>
+  </div>
+</section>
+
+<!-- ============ 5 · SÉJOUR (hotel) ============ -->
+<section class="sejour" id="sejour">
+  <div class="txt">
+    <div class="eyebrow" data-i18n="sejour.eyebrow">Séjourner</div>
+    <h2 class="section-title" data-i18n="sejour.title">Restez à l'Hôtel Beau-Séjour</h2>
+    <p data-i18n="sejour.p">Le Nid Gourmand est la table de l'Hôtel Beau-Séjour. Prolongez la soirée sans reprendre la route : des chambres confortables au cœur de Mondorf-les-Bains, à deux pas du Domaine Thermal et du Casino.</p>
+    <div><a href="tel:+35226677525" class="btn dark" data-i18n="sejour.cta">Se renseigner sur les chambres</a></div>
+  </div>
+  <figure class="pane glass img">
+    <img src="assets/hotel-room.jpg" alt="Chambre de l'Hôtel Beau-Séjour à Mondorf-les-Bains">
+  </figure>
+</section>
+
+<!-- ============ 6 · NOUS TROUVER ============ -->
+<section class="trouver" id="trouver">
+  <figure class="pane glass t-facade">
+    <span class="stamp" data-i18n="find.stamp">Avenue Dr. Klein</span>
+    <img src="assets/exterior.jpg" alt="Façade brique de l'Hôtel Beau-Séjour avec l'enseigne Le Nid Gourmand">
+  </figure>
+
+  <div class="t-info">
+    <h2 data-i18n="find.title">Nous trouver</h2>
+    <div class="info-block">
+      <div class="lab" data-i18n="find.addr">Adresse</div>
+      <div class="val">3, Avenue Dr. Klein<br>L-5630 Mondorf-les-Bains</div>
+    </div>
+    <div class="info-block">
+      <div class="lab" data-i18n="find.tel">Réservation</div>
+      <div class="val"><a href="tel:+35226677525">+352 26 67 75 25</a></div>
+    </div>
+    <div class="info-block">
+      <div class="lab" data-i18n="find.hours">Horaires <span data-i18n="find.hoursconf">(à confirmer)</span></div>
+      <div class="hours">
+        <div class="hrow"><span data-i18n="find.d1">Lun – Jeu</span><span>12:00–14:00 · 19:00–21:00</span></div>
+        <div class="hrow"><span data-i18n="find.d2">Ven – Sam</span><span>12:00–14:00 · 19:00–21:30</span></div>
+        <div class="hrow"><span data-i18n="find.d3">Dimanche</span><span>12:00–14:00 · 19:00–21:00</span></div>
+      </div>
+      <p class="confirm" data-i18n="find.restday">Jour de fermeture hebdomadaire à confirmer avec l'établissement.</p>
+    </div>
+  </div>
+
+  <div class="t-map">
+    <iframe title="Carte — Le Nid Gourmand, Mondorf-les-Bains"
+      src="https://www.google.com/maps?q=3+Avenue+Dr.+Klein,+L-5630+Mondorf-les-Bains,+Luxembourg&output=embed"
+      loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+
+  <div class="t-cta" style="grid-column:1/-1">
+    <a href="tel:+35226677525" class="btn" data-i18n="find.cta1">Réserver par téléphone</a>
+    <a href="https://www.google.com/maps?q=3+Avenue+Dr.+Klein,+L-5630+Mondorf-les-Bains,+Luxembourg" target="_blank" rel="noopener" class="btn ghost" data-i18n="find.cta2">Itinéraire</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <div class="brand">
+        <svg class="emblem" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M6 40 C6 30 16 26 32 26 C48 26 58 30 58 40 C58 52 46 58 32 58 C18 58 6 52 6 40 Z" fill="#C0392B"/>
+          <circle cx="24" cy="20" r="7" fill="#C0392B"/><circle cx="40" cy="20" r="7" fill="#8F3A28"/>
+        </svg>
+        <span class="wm"><span class="le">Le</span><span class="name">Nid Gourmand</span></span>
+      </div>
+      <p class="tag" data-i18n="foot.tag">Le terroir luxembourgeois, dans un nid d'élégance.</p>
+    </div>
+    <div>
+      <h4 data-i18n="foot.h1">Visiter</h4>
+      <a class="fl" href="#nid" data-i18n="nav.story">Le Nid</a>
+      <a class="fl" href="#carte" data-i18n="nav.carte">La Carte</a>
+      <a class="fl" href="#ecrin" data-i18n="nav.ecrin">L'Écrin</a>
+      <a class="fl" href="#sejour" data-i18n="nav.sejour">Séjour</a>
+    </div>
+    <div>
+      <h4 data-i18n="foot.h2">Contact</h4>
+      <a class="fl" href="tel:+35226677525">+352 26 67 75 25</a>
+      <a class="fl" href="mailto:bonjour@nid-gourmand.lu">bonjour@nid-gourmand.lu</a>
+      <span class="fl" style="opacity:.72">3, Av. Dr. Klein · L-5630 Mondorf-les-Bains</span>
+      <a class="fl" href="https://www.facebook.com/restaurantnidgourmand" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="yr"></span> Le Nid Gourmand · Hôtel Beau-Séjour</span>
+    <span class="disclaimer" data-i18n="foot.demo">Site de démonstration — contenu, menu, prix et horaires non contractuels, à confirmer avec l'établissement.</span>
+  </div>
+</footer>
+
+<script>
+/* ============ i18n ============ */
+const I18N = {
+  fr:{
+    "nav.story":"Le Nid","nav.carte":"La Carte","nav.ecrin":"L'Écrin","nav.sejour":"Séjour","nav.find":"Nous trouver","nav.reserve":"Réserver",
+    "hero.panel1":"Verrière du terroir",
+    "goddess.title":"La déesse des moissons","goddess.desc":"Vitrail d'origine de la salle — fruits, vigne & vin de la Moselle.",
+    "hero.eyebrow":"Hôtel Beau-Séjour · Mondorf-les-Bains","hero.since":"Cuisine de terroir",
+    "hero.strap":"Cuisine française de terroir, au cœur de Mondorf-les-Bains.",
+    "hero.sub":"Une des plus élégantes tables de la ville thermale — nappes blanches, miroirs dorés et une cuisine française créative et généreuse.",
+    "hero.cta1":"Réserver une table","hero.cta2":"Découvrir la carte",
+    "fact1.k":"Terroir","fact1.l":"Cuisine française créative & innovante",
+    "fact2.l":"196 avis · RestaurantGuru","fact3.l":"de Luxembourg-Ville","fact4.l":"couverts en salle & terrasse",
+    "story.eyebrow":"Le Nid","story.title":"Un nid de bien-vivre à Mondorf",
+    "story.lede":"« Le Nid Gourmand » — deux silhouettes lovées comme dans un nid : l'emblème même de l'accueil que l'on vous réserve.",
+    "story.p1":"Au rez-de-chaussée de l'Hôtel Beau-Séjour, la salle à manger est l'une des tables les plus raffinées de Mondorf-les-Bains. Nappes blanches et serviettes en tissu, miroirs à cadre doré, cheminée et boiseries chaleureuses, un dressoir ancien garni de porcelaine bleu et blanc — et, veillant sur la salle, un grand vitrail du terroir.",
+    "story.p2":"La cuisine y est française, de terroir, créative et généreuse : un menu du jour et un menu du marché qui suivent les saisons, des suggestions et une carte fidèle aux classiques. Une adresse pensée pour les repas qui comptent — en couple, en famille, ou entre deux escapades au Domaine Thermal.",
+    "story.chef":"En cuisine : le chef Jan Van Dijken, dont le Châteaubriand est la signature de la maison. (nom & orthographe à confirmer avec l'établissement.)",
+    "story.caption":"Miroirs dorés & dressoir ancien — l'esprit d'une maison.",
+    "carte.eyebrow":"La Carte","carte.title":"Au fil des saisons",
+    "carte.note":"Sélection indicative. Plats & prix à confirmer avec l'établissement ; menu du jour et menu du marché variables.",
+    "m.formule":"Formule de midi","m.f1":"Entrée + Plat","m.f2":"Plat seul","m.f3":"Menu du marché","m.f3s":"au gré du chef","m.aconf":"à conf.",
+    "m.sigeye":"Spécialité de la maison","m.signame":"Châteaubriand","m.sigdesc":"Sauces au poivre & béarnaise, garnitures — servi pour deux.","m.sigtag":"Pour 2 personnes",
+    "m.entrees":"Entrées","m.e1":"Carpaccio de bœuf au pesto, parmesan & roquette","m.e2":"Carpaccio de saumon, vinaigrette au curry","m.e3":"Filets de hareng marinés","m.e4":"Salade de scampis",
+    "m.plats":"Plats","m.p1":"Entrecôte grillée","m.p2":"Magret d'agneau ibérique, miel & thym","m.p3":"Filet de sandre, sauce Riesling","m.p4":"Tête de veau, sauce ravigote","m.p5":"Wok de crevettes, curry-coco",
+    "carte.foot":"Options végétariennes disponibles · Cartes & espèces acceptées · Menu du jour et suggestions annoncés en salle.",
+    "ecrin.eyebrow":"L'Écrin","ecrin.title":"L'ambiance de la salle","ecrin.sub":"Une salle baignée de lumière chaude, entre cheminée, miroirs dorés et le vitrail du terroir.",
+    "g.1":"Table dressée & vue sur le jardin","g.2":"La grande salle & sa cheminée","g.3":"Le vitrail du terroir","g.4":"Miroir & dressoir ancien","g.5":"La façade, avenue Dr. Klein",
+    "sejour.eyebrow":"Séjourner","sejour.title":"Restez à l'Hôtel Beau-Séjour",
+    "sejour.p":"Le Nid Gourmand est la table de l'Hôtel Beau-Séjour. Prolongez la soirée sans reprendre la route : des chambres confortables au cœur de Mondorf-les-Bains, à deux pas du Domaine Thermal et du Casino.",
+    "sejour.cta":"Se renseigner sur les chambres",
+    "find.stamp":"Avenue Dr. Klein","find.title":"Nous trouver","find.addr":"Adresse","find.tel":"Réservation","find.hours":"Horaires","find.hoursconf":"(à confirmer)",
+    "find.d1":"Lun – Jeu","find.d2":"Ven – Sam","find.d3":"Dimanche","find.restday":"Jour de fermeture hebdomadaire à confirmer avec l'établissement.",
+    "find.cta1":"Réserver par téléphone","find.cta2":"Itinéraire",
+    "foot.tag":"Le terroir luxembourgeois, dans un nid d'élégance.","foot.h1":"Visiter","foot.h2":"Contact",
+    "foot.demo":"Site de démonstration — contenu, menu, prix et horaires non contractuels, à confirmer avec l'établissement."
+  },
+  de:{
+    "nav.story":"Das Nest","nav.carte":"Speisekarte","nav.ecrin":"Ambiente","nav.sejour":"Übernachten","nav.find":"Anfahrt","nav.reserve":"Reservieren",
+    "hero.panel1":"Terroir-Glasfenster",
+    "goddess.title":"Die Göttin der Ernte","goddess.desc":"Original-Glasfenster des Saals — Früchte, Reben & Wein der Mosel.",
+    "hero.eyebrow":"Hôtel Beau-Séjour · Mondorf-les-Bains","hero.since":"Terroir-Küche",
+    "hero.strap":"Französische Terroir-Küche im Herzen von Mondorf-les-Bains.",
+    "hero.sub":"Eine der elegantesten Tafeln des Thermalstädtchens — weiße Tischtücher, vergoldete Spiegel und eine kreative, großzügige französische Küche.",
+    "hero.cta1":"Tisch reservieren","hero.cta2":"Zur Speisekarte",
+    "fact1.k":"Terroir","fact1.l":"Kreative & innovative französische Küche",
+    "fact2.l":"196 Bewertungen · RestaurantGuru","fact3.l":"von Luxemburg-Stadt","fact4.l":"Plätze im Saal & auf der Terrasse",
+    "story.eyebrow":"Das Nest","story.title":"Ein Nest der Lebensfreude in Mondorf",
+    "story.lede":"„Le Nid Gourmand“ — zwei ineinander geschmiegte Gestalten wie in einem Nest: das Sinnbild des Willkommens, das Sie hier erwartet.",
+    "story.p1":"Im Erdgeschoss des Hôtel Beau-Séjour liegt einer der feinsten Speisesäle von Mondorf-les-Bains. Weiße Tischtücher und Stoffservietten, vergoldete Spiegel, Kamin und warmes Holz, eine antike Anrichte mit blau-weißem Porzellan — und, über dem Saal wachend, ein großes Terroir-Glasfenster.",
+    "story.p2":"Die Küche ist französisch, bodenständig, kreativ und großzügig: ein Tagesmenü und ein Marktmenü im Rhythmus der Jahreszeiten, Empfehlungen und eine Karte treu den Klassikern. Eine Adresse für die Mahlzeiten, die zählen — zu zweit, mit der Familie oder zwischen zwei Ausflügen ins Thermalbad.",
+    "story.chef":"In der Küche: Chef Jan Van Dijken, dessen Châteaubriand die Signatur des Hauses ist. (Name & Schreibweise mit dem Haus zu bestätigen.)",
+    "story.caption":"Vergoldete Spiegel & antike Anrichte — die Seele eines Hauses.",
+    "carte.eyebrow":"Speisekarte","carte.title":"Im Rhythmus der Jahreszeiten",
+    "carte.note":"Indikative Auswahl. Gerichte & Preise mit dem Haus zu bestätigen; Tages- und Marktmenü wechseln.",
+    "m.formule":"Mittagsmenü","m.f1":"Vorspeise + Hauptgang","m.f2":"Nur Hauptgang","m.f3":"Marktmenü","m.f3s":"nach Wahl des Chefs","m.aconf":"a. A.",
+    "m.sigeye":"Spezialität des Hauses","m.signame":"Châteaubriand","m.sigdesc":"Pfeffer- & Sauce béarnaise, Beilagen — für zwei serviert.","m.sigtag":"Für 2 Personen",
+    "m.entrees":"Vorspeisen","m.e1":"Rinder-Carpaccio mit Pesto, Parmesan & Rucola","m.e2":"Lachs-Carpaccio, Curry-Vinaigrette","m.e3":"Marinierte Heringsfilets","m.e4":"Scampi-Salat",
+    "m.plats":"Hauptgerichte","m.p1":"Gegrilltes Entrecôte","m.p2":"Iberisches Lammfilet, Honig & Thymian","m.p3":"Zanderfilet, Riesling-Sauce","m.p4":"Kalbskopf, Sauce Ravigote","m.p5":"Garnelen-Wok, Curry-Kokos",
+    "carte.foot":"Vegetarische Optionen · Karten & Bargeld · Tagesmenü und Empfehlungen im Saal angesagt.",
+    "ecrin.eyebrow":"Ambiente","ecrin.title":"Die Atmosphäre des Saals","ecrin.sub":"Ein Saal voll warmen Lichts — zwischen Kamin, vergoldeten Spiegeln und dem Terroir-Glasfenster.",
+    "g.1":"Gedeckter Tisch & Blick in den Garten","g.2":"Der große Saal & sein Kamin","g.3":"Das Terroir-Glasfenster","g.4":"Spiegel & antike Anrichte","g.5":"Die Fassade, Avenue Dr. Klein",
+    "sejour.eyebrow":"Übernachten","sejour.title":"Bleiben Sie im Hôtel Beau-Séjour",
+    "sejour.p":"Le Nid Gourmand ist das Restaurant des Hôtel Beau-Séjour. Lassen Sie den Abend ausklingen, ohne noch fahren zu müssen: komfortable Zimmer im Herzen von Mondorf-les-Bains, nur wenige Schritte vom Thermalbad und Casino.",
+    "sejour.cta":"Zimmer anfragen",
+    "find.stamp":"Avenue Dr. Klein","find.title":"Anfahrt","find.addr":"Adresse","find.tel":"Reservierung","find.hours":"Öffnungszeiten","find.hoursconf":"(zu bestätigen)",
+    "find.d1":"Mo – Do","find.d2":"Fr – Sa","find.d3":"Sonntag","find.restday":"Wöchentlicher Ruhetag mit dem Haus zu bestätigen.",
+    "find.cta1":"Telefonisch reservieren","find.cta2":"Route",
+    "foot.tag":"Das luxemburgische Terroir, in einem Nest der Eleganz.","foot.h1":"Besuchen","foot.h2":"Kontakt",
+    "foot.demo":"Demo-Website — Inhalte, Speisekarte, Preise und Zeiten unverbindlich, mit dem Haus zu bestätigen."
+  },
+  en:{
+    "nav.story":"The Nest","nav.carte":"Menu","nav.ecrin":"Ambiance","nav.sejour":"Stay","nav.find":"Find us","nav.reserve":"Reserve",
+    "hero.panel1":"Terroir stained glass",
+    "goddess.title":"The goddess of the harvest","goddess.desc":"The room's original stained-glass panel — fruit, vine & Moselle wine.",
+    "hero.eyebrow":"Hôtel Beau-Séjour · Mondorf-les-Bains","hero.since":"Terroir cuisine",
+    "hero.strap":"Refined French terroir cooking in the heart of Mondorf-les-Bains.",
+    "hero.sub":"One of the spa town's most elegant tables — white linen, gilded mirrors and a creative, generous French kitchen.",
+    "hero.cta1":"Reserve a table","hero.cta2":"See the menu",
+    "fact1.k":"Terroir","fact1.l":"Creative & innovative French cuisine",
+    "fact2.l":"196 reviews · RestaurantGuru","fact3.l":"from Luxembourg City","fact4.l":"seats indoors & on the terrace",
+    "story.eyebrow":"The Nest","story.title":"A nest of good living in Mondorf",
+    "story.lede":"“Le Nid Gourmand” — two figures curled together as in a nest: the very emblem of the welcome that awaits you.",
+    "story.p1":"On the ground floor of the Hôtel Beau-Séjour lies one of the most refined dining rooms in Mondorf-les-Bains. White tablecloths and cloth napkins, gilt-framed mirrors, a fireplace and warm woodwork, an antique dresser set with blue-and-white porcelain — and, watching over the room, a great terroir stained-glass window.",
+    "story.p2":"The cooking is French, of the terroir, creative and generous: a menu of the day and a market menu that follow the seasons, chef's suggestions and a carte true to the classics. An address made for the meals that matter — as a couple, with family, or between two escapes to the thermal spa.",
+    "story.chef":"In the kitchen: chef Jan Van Dijken, whose Châteaubriand is the house signature. (name & spelling to be confirmed with the venue.)",
+    "story.caption":"Gilded mirrors & an antique dresser — the soul of a house.",
+    "carte.eyebrow":"The Menu","carte.title":"With the seasons",
+    "carte.note":"Indicative selection. Dishes & prices to be confirmed with the venue; menu of the day and market menu vary.",
+    "m.formule":"Lunch set menu","m.f1":"Starter + Main","m.f2":"Main only","m.f3":"Market menu","m.f3s":"chef's choice","m.aconf":"TBC",
+    "m.sigeye":"House specialty","m.signame":"Châteaubriand","m.sigdesc":"Peppercorn & béarnaise sauces, garnishes — served for two.","m.sigtag":"For 2 people",
+    "m.entrees":"Starters","m.e1":"Beef carpaccio, pesto, parmesan & rocket","m.e2":"Salmon carpaccio, curry vinaigrette","m.e3":"Marinated herring fillets","m.e4":"Scampi salad",
+    "m.plats":"Mains","m.p1":"Grilled entrecôte","m.p2":"Iberian lamb, honey & thyme","m.p3":"Pike-perch fillet, Riesling sauce","m.p4":"Calf's head, ravigote sauce","m.p5":"Prawn wok, coconut curry",
+    "carte.foot":"Vegetarian options · Cards & cash accepted · Menu of the day and suggestions announced in the room.",
+    "ecrin.eyebrow":"Ambiance","ecrin.title":"The mood of the room","ecrin.sub":"A room bathed in warm light — between fireplace, gilded mirrors and the terroir stained glass.",
+    "g.1":"Set table & garden view","g.2":"The great room & its fireplace","g.3":"The terroir stained glass","g.4":"Mirror & antique dresser","g.5":"The façade on Avenue Dr. Klein",
+    "sejour.eyebrow":"Stay over","sejour.title":"Stay at the Hôtel Beau-Séjour",
+    "sejour.p":"Le Nid Gourmand is the restaurant of the Hôtel Beau-Séjour. Linger over the evening without taking to the road: comfortable rooms in the heart of Mondorf-les-Bains, steps from the thermal spa and the casino.",
+    "sejour.cta":"Enquire about rooms",
+    "find.stamp":"Avenue Dr. Klein","find.title":"Find us","find.addr":"Address","find.tel":"Reservations","find.hours":"Opening hours","find.hoursconf":"(to confirm)",
+    "find.d1":"Mon – Thu","find.d2":"Fri – Sat","find.d3":"Sunday","find.restday":"Weekly closing day to be confirmed with the venue.",
+    "find.cta1":"Reserve by phone","find.cta2":"Directions",
+    "foot.tag":"The Luxembourg terroir, in a nest of elegance.","foot.h1":"Visit","foot.h2":"Contact",
+    "foot.demo":"Demonstration site — content, menu, prices and hours are non-binding and to be confirmed with the venue."
+  }
+};
+
+function setLang(lang){
+  const dict = I18N[lang]; if(!dict) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[k]!=null) el.innerHTML = dict[k];
+  });
+  document.querySelectorAll('.langsw button').forEach(b=>{
+    b.classList.toggle('active', b.getAttribute('data-lang')===lang);
+  });
+}
+document.querySelectorAll('.langsw button').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.getAttribute('data-lang')));
+});
+
+/* mobile nav */
+const burger=document.getElementById('burger'), nav=document.getElementById('mainnav');
+burger.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

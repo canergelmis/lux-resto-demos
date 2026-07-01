@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Calango Grill — Churrascaria & Rodízio brésilien · Dudelange</title>
+<meta name="description" content="Calango Grill — le vrai rodízio brésilien au cœur de Dudelange. Viandes grillées à la broche, découpées à votre table.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-900:#0c3227;   /* deep jungle ground */
+    --green-800:#124234;
+    --green-600:#0f7a45;
+    --green-500:#12994f;   /* vivid brasil */
+    --gold:#f4b740;
+    --gold-soft:#f6cd6d;
+    --ember:#c0492b;       /* grill / "pause" red */
+    --ember-deep:#9a3620;
+    --cream:#f4ecda;       /* napkin/tablecloth */
+    --cream-2:#efe4cc;
+    --charcoal:#1b1712;
+    --ink:#20180f;
+    --line:rgba(244,236,218,.16);
+    --shadow:0 24px 60px -28px rgba(0,0,0,.55);
+    --sans:'Instrument Sans',system-ui,-apple-system,Segoe UI,sans-serif;
+    --disp:'Bricolage Grotesque',Georgia,serif;
+    --script:'Caveat',cursive;
+    --gut:clamp(20px,4vw,72px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--green-900);
+    color:var(--cream);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    line-height:1.55;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  ::selection{background:var(--gold);color:var(--green-900)}
+
+  /* ---------- decorative mosaic mesh (azulejo/gecko-derived) ---------- */
+  .mesh{
+    position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(18,153,79,.22), transparent 30%),
+      radial-gradient(circle at 88% 8%,  rgba(244,183,64,.16), transparent 26%),
+      radial-gradient(circle at 78% 82%, rgba(192,73,43,.20), transparent 34%),
+      radial-gradient(circle at 20% 90%, rgba(15,122,69,.20), transparent 32%);
+  }
+
+  /* ---------- top rail ---------- */
+  .rail{
+    position:sticky;top:0;z-index:60;
+    display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;
+    padding:12px var(--gut);
+    background:rgba(9,38,29,.82);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .rail-brand{display:flex;align-items:center;gap:12px;font-family:var(--disp);font-weight:800;letter-spacing:.02em}
+  .rail-brand img{width:38px;height:38px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4))}
+  .rail-brand b{font-size:16px}
+  .rail-status{
+    justify-self:center;display:flex;align-items:center;gap:9px;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft)
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--green-500);box-shadow:0 0 0 4px rgba(18,153,79,.22);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .lang{display:flex;gap:2px;background:rgba(244,236,218,.08);border:1px solid var(--line);border-radius:999px;padding:3px}
+  .lang button{
+    font:600 12px/1 var(--sans);letter-spacing:.08em;color:var(--cream);
+    background:none;border:0;cursor:pointer;padding:7px 12px;border-radius:999px;transition:.2s
+  }
+  .lang button.on{background:var(--gold);color:var(--green-900)}
+  .lang button:not(.on):hover{background:rgba(244,236,218,.12)}
+
+  .wrap{position:relative;z-index:1}
+  section{position:relative;z-index:1}
+
+  /* ================= HERO / MASTHEAD ================= */
+  .hero{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,3.5vw,60px);
+    padding:clamp(40px,6vw,90px) var(--gut) clamp(30px,4vw,60px);
+    align-items:stretch;
+  }
+  .hero-l{display:flex;flex-direction:column;justify-content:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:12px;align-self:flex-start;
+    font-size:12.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);
+    margin-bottom:22px
+  }
+  .eyebrow::before{content:"";width:34px;height:2px;background:var(--gold)}
+  .hero h1{
+    font-family:var(--disp);font-weight:800;line-height:.9;letter-spacing:-.02em;
+    font-size:clamp(52px,8.4vw,132px);color:var(--cream);text-wrap:balance;
+  }
+  .hero h1 em{font-style:normal;color:var(--green-500)}
+  .hero h1 .grill{
+    display:block;font-family:var(--script);font-weight:700;font-size:.44em;
+    color:var(--gold);letter-spacing:0;margin-top:-.04em;line-height:1;transform:rotate(-2deg);transform-origin:left
+  }
+  .lede{font-size:clamp(16px,1.35vw,20px);max-width:44ch;margin-top:26px;color:rgba(244,236,218,.86)}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .btn{
+    font:600 15px/1 var(--sans);letter-spacing:.02em;padding:16px 26px;border-radius:14px;cursor:pointer;
+    display:inline-flex;align-items:center;gap:10px;transition:.22s;border:1px solid transparent
+  }
+  .btn-gold{background:var(--gold);color:var(--green-900)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(244,183,64,.6)}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--cream)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+  /* right column: photo + reservation "fiche" */
+  .hero-r{display:grid;grid-template-rows:1fr auto;gap:18px}
+  .photo{
+    position:relative;border-radius:22px;overflow:hidden;min-height:340px;
+    box-shadow:var(--shadow);border:1px solid var(--line)
+  }
+  .photo img{width:100%;height:100%;object-fit:cover}
+  .photo .tag{
+    position:absolute;left:16px;bottom:16px;background:rgba(12,50,39,.86);backdrop-filter:blur(6px);
+    color:var(--cream);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+    padding:8px 14px;border-radius:999px;border:1px solid var(--line)
+  }
+  .fiche{
+    background:var(--cream);color:var(--ink);border-radius:22px;padding:22px 24px;box-shadow:var(--shadow);
+    display:grid;grid-template-columns:1fr 1fr;gap:16px 20px
+  }
+  .fiche .full{grid-column:1/-1}
+  .fiche h4{font:700 11px/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ember);margin-bottom:5px}
+  .fiche p{font-size:15px;font-weight:500;color:var(--ink)}
+  .fiche .conf{color:#8a7a5e;font-weight:500;font-size:12.5px}
+  .fiche a.tel{font-family:var(--disp);font-weight:800;font-size:22px;color:var(--green-800)}
+
+  /* ================= RODÍZIO TOKEN band ================= */
+  .roda{
+    display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,70px);align-items:center;
+    padding:clamp(30px,4vw,54px) var(--gut);
+    background:linear-gradient(100deg,var(--green-800),var(--green-900));
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line)
+  }
+  .token-wrap{display:flex;flex-direction:column;align-items:center;gap:14px}
+  .token{
+    width:190px;height:190px;perspective:1000px;cursor:pointer;background:none;border:0;padding:0
+  }
+  .token-inner{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.34,1.56,.64,1);transform-style:preserve-3d}
+  .token.flip .token-inner{transform:rotateY(180deg)}
+  .face{
+    position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+    box-shadow:inset 0 0 0 8px rgba(255,255,255,.22),0 20px 44px -18px rgba(0,0,0,.7);
+    text-align:center;padding:20px
+  }
+  .face .big{font-family:var(--disp);font-weight:800;font-size:34px;line-height:.95}
+  .face .sm{font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.92}
+  .face-green{background:radial-gradient(circle at 35% 30%,#18b45c,var(--green-600));color:#04250f}
+  .face-red{background:radial-gradient(circle at 35% 30%,#d6583a,var(--ember-deep));color:#fff;transform:rotateY(180deg)}
+  .token-hint{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft)}
+  .roda-copy h2{font-family:var(--disp);font-weight:800;font-size:clamp(28px,3.6vw,48px);line-height:1;letter-spacing:-.01em}
+  .roda-copy p{margin-top:16px;max-width:60ch;color:rgba(244,236,218,.85);font-size:clamp(15px,1.2vw,18px)}
+  .roda-copy .state{margin-top:18px;font-family:var(--disp);font-weight:700;color:var(--gold);font-size:19px}
+
+  /* ================= ESPETO PARADE (skewer rail) ================= */
+  .parade{padding:clamp(46px,6vw,88px) 0}
+  .sec-head{padding:0 var(--gut);display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:30px}
+  .sec-head .kick{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .sec-head h2{font-family:var(--disp);font-weight:800;font-size:clamp(32px,4.4vw,58px);line-height:.96;letter-spacing:-.02em;margin-top:8px}
+  .sec-head p{max-width:40ch;color:rgba(244,236,218,.7);font-size:14.5px}
+  .skewers{
+    display:flex;gap:20px;overflow-x:auto;padding:8px var(--gut) 26px;scroll-snap-type:x mandatory;
+    scrollbar-width:thin;scrollbar-color:var(--green-600) transparent
+  }
+  .skewers::-webkit-scrollbar{height:8px}
+  .skewers::-webkit-scrollbar-thumb{background:var(--green-600);border-radius:99px}
+  .cut{
+    scroll-snap-align:start;flex:0 0 clamp(220px,20vw,272px);
+    background:linear-gradient(180deg,var(--cream),var(--cream-2));color:var(--ink);
+    border-radius:20px;padding:26px 24px 24px;position:relative;overflow:hidden;
+    border:1px solid rgba(27,23,18,.08);box-shadow:0 16px 34px -22px rgba(0,0,0,.6);
+    transition:transform .25s ease, box-shadow .25s ease
+  }
+  .cut:hover{transform:translateY(-6px);box-shadow:0 26px 44px -22px rgba(0,0,0,.65)}
+  .cut.dim{opacity:.42;filter:grayscale(.4)}
+  /* CSS-drawn skewer of meat */
+  .espeto{position:relative;height:30px;margin-bottom:20px}
+  .espeto::before{content:"";position:absolute;top:50%;left:0;right:0;height:3px;transform:translateY(-50%);
+    background:linear-gradient(90deg,transparent,#9c7b4a 8%,#9c7b4a 92%,transparent)}
+  .espeto i{position:absolute;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:6px 6px 7px 7px;
+    background:radial-gradient(circle at 35% 30%,#c0603a,var(--ember-deep));box-shadow:inset 0 -3px 4px rgba(0,0,0,.3)}
+  .espeto i:nth-child(1){left:22%}.espeto i:nth-child(2){left:44%}.espeto i:nth-child(3){left:66%}
+  .cut .pt{font-family:var(--disp);font-weight:800;font-size:27px;line-height:1;color:var(--green-800)}
+  .cut .fr{margin-top:6px;font-size:14px;color:#6c5d44;font-weight:500}
+  .cut .note{margin-top:16px;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ember);font-weight:600}
+
+  /* ================= FORMULES boards ================= */
+  .formules{padding:clamp(40px,5vw,80px) var(--gut);display:grid;grid-template-columns:1fr 1fr .82fr;gap:22px;align-items:start}
+  .board{background:var(--charcoal);border:1px solid var(--line);border-radius:24px;padding:34px 32px;position:relative;overflow:hidden}
+  .board.hero-board{background:linear-gradient(160deg,var(--green-600),var(--green-800));border-color:transparent}
+  .board .ribbon{display:inline-block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--green-900);
+    background:var(--gold);padding:6px 12px;border-radius:999px;font-weight:700;margin-bottom:18px}
+  .board.hero-board .ribbon{background:var(--gold)}
+  .board h3{font-family:var(--disp);font-weight:800;font-size:clamp(26px,2.6vw,36px);line-height:1;letter-spacing:-.01em}
+  .board .price{font-family:var(--disp);font-weight:800;font-size:30px;color:var(--gold);margin-top:14px}
+  .board .price small{font-size:13px;color:rgba(244,236,218,.7);font-weight:500;letter-spacing:.04em}
+  .board p.desc{margin-top:14px;color:rgba(244,236,218,.8);font-size:14.5px}
+  .board ul{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:11px}
+  .board li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;color:rgba(244,236,218,.9)}
+  .board li::before{content:"";flex:0 0 auto;width:8px;height:8px;margin-top:7px;border-radius:2px;transform:rotate(45deg);background:var(--gold)}
+  .sides{background:var(--cream);color:var(--ink);border-color:transparent}
+  .sides h3{color:var(--green-800)}
+  .sides li{color:var(--ink)}
+  .sides li::before{background:var(--ember)}
+  .sides .lbl{font:700 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ember)}
+  .conf-tag{display:inline-block;margin-top:20px;font-size:12px;color:rgba(244,236,218,.6)}
+  .sides .conf-tag{color:#8a7a5e}
+
+  /* ================= STORY / AZULEJO ================= */
+  .story{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,64px);align-items:center;
+    padding:clamp(46px,6vw,96px) var(--gut);background:linear-gradient(180deg,var(--green-900),var(--green-800))}
+  .story-art{position:relative;aspect-ratio:1/1;border-radius:24px;overflow:hidden;
+    background:
+      repeating-linear-gradient(45deg,rgba(18,153,79,.12) 0 14px,transparent 14px 28px),
+      repeating-linear-gradient(-45deg,rgba(244,183,64,.1) 0 14px,transparent 14px 28px),
+      radial-gradient(circle at 50% 45%,var(--green-600),var(--green-900));
+    border:1px solid var(--line);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+  .story-art img{width:78%;filter:drop-shadow(0 18px 34px rgba(0,0,0,.5))}
+  .story-art .frame{position:absolute;inset:16px;border:1px solid rgba(244,236,218,.18);border-radius:16px}
+  .story-copy .kick{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .story-copy h2{font-family:var(--disp);font-weight:800;font-size:clamp(30px,4vw,54px);line-height:.98;letter-spacing:-.02em;margin:12px 0 20px}
+  .story-copy p{color:rgba(244,236,218,.86);font-size:clamp(15px,1.2vw,18px);max-width:56ch}
+  .story-copy p+p{margin-top:16px}
+  .story-quote{margin-top:26px;font-family:var(--script);font-size:clamp(24px,2.4vw,34px);color:var(--gold);line-height:1.1}
+  .story-stats{display:flex;gap:34px;flex-wrap:wrap;margin-top:30px}
+  .stat b{display:block;font-family:var(--disp);font-weight:800;font-size:34px;color:var(--green-500)}
+  .stat span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,236,218,.7)}
+
+  /* ================= VISIT ================= */
+  .visit{display:grid;grid-template-columns:1.05fr .95fr;gap:0;
+    padding:0;border-top:1px solid var(--line)}
+  .visit-info{padding:clamp(40px,5vw,80px) var(--gut);background:var(--charcoal)}
+  .visit-info h2{font-family:var(--disp);font-weight:800;font-size:clamp(30px,3.6vw,50px);line-height:.98;letter-spacing:-.01em}
+  .visit-info>p{margin-top:14px;color:rgba(244,236,218,.8);max-width:46ch}
+  .amenities{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px}
+  .amen{display:flex;gap:12px;align-items:flex-start;background:rgba(244,236,218,.05);border:1px solid var(--line);
+    border-radius:14px;padding:14px 16px;font-size:14px}
+  .amen .ic{flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:var(--green-600);
+    display:flex;align-items:center;justify-content:center;color:var(--cream);font-weight:800;font-size:13px;font-family:var(--disp)}
+  .coords{margin-top:30px;display:grid;gap:16px}
+  .coords .row h4{font:700 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+  .coords .row p{font-size:16px;font-weight:500}
+  .coords .row a.tel{font-family:var(--disp);font-weight:800;font-size:24px;color:var(--green-500)}
+  .map{min-height:420px;position:relative}
+  .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.9)}
+
+  /* ================= FOOTER ================= */
+  footer{padding:clamp(40px,5vw,70px) var(--gut) 40px;background:var(--green-900);border-top:1px solid var(--line)}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;align-items:start}
+  .foot-brand{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+  .foot-brand img{width:56px;height:56px;object-fit:contain}
+  .foot-brand b{font-family:var(--disp);font-weight:800;font-size:22px}
+  .foot-brand span{display:block;font-family:var(--script);color:var(--gold);font-size:20px;line-height:.8}
+  .foot-col h5{font:700 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .foot-col p,.foot-col a{display:block;font-size:14px;color:rgba(244,236,218,.8);margin-bottom:8px}
+  .foot-col a:hover{color:var(--gold)}
+  .disclaimer{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12px;color:rgba(244,236,218,.5)}
+  .disclaimer .demo{color:var(--gold-soft)}
+
+  /* ================= RESPONSIVE ================= */
+  @media(max-width:1080px){
+    .hero{grid-template-columns:1fr}
+    .hero-r{grid-template-rows:auto auto}
+    .photo{min-height:300px}
+    .formules{grid-template-columns:1fr 1fr}
+    .formules .sides{grid-column:1/-1}
+    .story{grid-template-columns:1fr}
+    .story-art{max-width:440px}
+    .visit{grid-template-columns:1fr}
+    .map{min-height:340px}
+    .foot-top{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:720px){
+    .rail{grid-template-columns:auto auto;gap:12px}
+    .rail-status{display:none}
+    .roda{grid-template-columns:1fr;justify-items:center;text-align:center}
+    .roda-copy p{margin-left:auto;margin-right:auto}
+    .fiche{grid-template-columns:1fr}
+    .formules{grid-template-columns:1fr}
+    .amenities{grid-template-columns:1fr}
+    .foot-top{grid-template-columns:1fr}
+    .token{width:160px;height:160px}
+    .hero h1{font-size:clamp(46px,13vw,84px)}
+  }
+</style>
+</head>
+<body>
+<div class="mesh" aria-hidden="true"></div>
+
+<!-- ======= TOP RAIL ======= -->
+<header class="rail">
+  <a class="rail-brand" href="#top">
+    <img src="assets/logo.webp" alt="Calango Grill">
+    <b>CALANGO&nbsp;GRILL</b>
+  </a>
+  <div class="rail-status">
+    <span class="dot" aria-hidden="true"></span>
+    <span data-i18n="railStatus">Service du soir · 7/7 · à confirmer</span>
+  </div>
+  <div class="lang" role="group" aria-label="Langue">
+    <button data-lang="fr" class="on">FR</button>
+    <button data-lang="de">DE</button>
+    <button data-lang="en">EN</button>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <!-- ======= HERO / MASTHEAD ======= -->
+  <section class="hero">
+    <div class="hero-l">
+      <span class="eyebrow" data-i18n="heroEyebrow">Churrascaria brésilienne · Dudelange</span>
+      <h1>
+        <em>Rodízio</em><br>Calango
+        <span class="grill">Grill</span>
+      </h1>
+      <p class="lede" data-i18n="heroLede">Le vrai rodízio brésilien : des broches de viandes grillées au feu, découpées à votre table, sans fin — tant que vous montrez le vert.</p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="tel:+35226510541" data-i18n="heroCta1">Réserver une table</a>
+        <a class="btn btn-ghost" href="#formules" data-i18n="heroCta2">Voir le rodízio</a>
+      </div>
+    </div>
+
+    <div class="hero-r">
+      <div class="photo">
+        <img src="assets/interior-1.jpg" alt="Salle du Calango Grill">
+        <span class="tag" data-i18n="photoTag">La grande table · notre salle</span>
+      </div>
+      <div class="fiche">
+        <div class="full">
+          <h4 data-i18n="ficheTel">Réservation</h4>
+          <a class="tel" href="tel:+35226510541">+352 26 51 05 41</a>
+        </div>
+        <div>
+          <h4 data-i18n="ficheHours">Horaires</h4>
+          <p>18h30 – 22h00</p>
+          <p class="conf" data-i18n="ficheHoursConf">7/7 · à confirmer</p>
+        </div>
+        <div>
+          <h4 data-i18n="ficheAddr">Adresse</h4>
+          <p>72 Rue Jean Jaurès</p>
+          <p class="conf">L-3490 Dudelange</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= RODÍZIO TOKEN (A RODA) ======= -->
+  <section class="roda">
+    <div class="token-wrap">
+      <button class="token" id="token" aria-label="Tourner le jeton du rodízio">
+        <div class="token-inner">
+          <div class="face face-green">
+            <span class="big" data-i18n="tokenGreenBig">SIM</span>
+            <span class="sm" data-i18n="tokenGreenSm">Plus de viande !</span>
+          </div>
+          <div class="face face-red">
+            <span class="big" data-i18n="tokenRedBig">NÃO</span>
+            <span class="sm" data-i18n="tokenRedSm">Une pause</span>
+          </div>
+        </div>
+      </button>
+      <span class="token-hint" data-i18n="tokenHint">↻ Tournez le jeton</span>
+    </div>
+    <div class="roda-copy">
+      <h2 data-i18n="rodaTitle">Le jeton décide du rythme</h2>
+      <p data-i18n="rodaText">Au rodízio, chaque convive garde un jeton. Côté vert vers le haut, les serveurs reviennent avec de nouvelles broches. Côté rouge, on souffle un instant. C'est vous qui menez la ronde — « a roda » — jusqu'à satiété.</p>
+      <p class="state" id="rodaState" data-i18n="rodaStateGreen">Côté vert — apportez les broches !</p>
+    </div>
+  </section>
+
+  <!-- ======= ESPETO PARADE ======= -->
+  <section class="parade" id="parade">
+    <div class="sec-head">
+      <div>
+        <div class="kick" data-i18n="paradeKick">La ronde des broches</div>
+        <h2 data-i18n="paradeTitle">Ce qui défile à table</h2>
+      </div>
+      <p data-i18n="paradeSub">Nos coupes signature, grillées à la braise et tranchées devant vous. Sélection indicative — à confirmer avec l'établissement.</p>
+    </div>
+    <div class="skewers" id="skewers">
+      <article class="cut"><div class="espeto"><i></i><i></i><i></i></div><div class="pt">Picanha</div><div class="fr" data-i18n="cutPicanha">Aiguillette de rumsteck — la coupe reine</div><div class="note" data-i18n="cutStar">★ La signature</div></article>
+      <article class="cut"><div class="espeto"><i></i><i></i><i></i></div><div class="pt">Linguiça</div><div class="fr" data-i18n="cutLinguica">Saucisse brésilienne grillée</div></article>
+      <article class="cut"><div class="espeto"><i></i><i></i><i></i></div><div class="pt">Frango</div><div class="fr" data-i18n="cutFrango">Poulet mariné aux herbes</div></article>
+      <article class="cut"><div class="espeto"><i></i><i></i><i></i></div><div class="pt">Costela</div><div class="fr" data-i18n="cutCostela">Travers de bœuf fondants</div></article>
+      <article class="cut"><div class="espeto"><i></i><i></i><i></i></div><div class="pt">Coração</div><div class="fr" data-i18n="cutCoracao">Cœurs de poulet grillés</div></article>
+      <article class="cut"><div class="espeto"><i></i><i></i><i></i></div><div class="pt">Alcatra</div><div class="fr" data-i18n="cutAlcatra">Rumsteck tendre à la braise</div></article>
+      <article class="cut"><div class="espeto"><i></i><i></i><i></i></div><div class="pt">Fraldinha</div><div class="fr" data-i18n="cutFraldinha">Bavette juteuse, croûte caramélisée</div></article>
+    </div>
+  </section>
+
+  <!-- ======= FORMULES ======= -->
+  <section class="formules" id="formules">
+    <article class="board hero-board">
+      <span class="ribbon" data-i18n="ribbonSignature">La formule signature</span>
+      <h3 data-i18n="soireeTitle">Rodízio Soirée</h3>
+      <div class="price"><span data-i18n="priceTBD">Prix à confirmer</span> <small>/ pers.</small></div>
+      <p class="desc" data-i18n="soireeDesc">Le rodízio complet : les serveurs enchaînent les broches à volonté, du début à la fin du service. Buffet de salades et accompagnements inclus.</p>
+      <ul>
+        <li data-i18n="soireeLi1">Viandes grillées à volonté, découpées à table</li>
+        <li data-i18n="soireeLi2">Buffet de salades, riz, haricots & farofa</li>
+        <li data-i18n="soireeLi3">Ambiance conviviale — idéal en groupe</li>
+      </ul>
+      <span class="conf-tag" data-i18n="confTag">Détails & prix à confirmer avec l'établissement</span>
+    </article>
+
+    <article class="board">
+      <span class="ribbon" data-i18n="ribbonMidi">Formule du midi</span>
+      <h3 data-i18n="midiTitle">Rodízio Midi</h3>
+      <div class="price"><span data-i18n="priceTBD">Prix à confirmer</span> <small>/ pers.</small></div>
+      <p class="desc" data-i18n="midiDesc">La même ronde de broches en version déjeuner — généreuse et rapide, pensée pour la pause de midi.</p>
+      <ul>
+        <li data-i18n="midiLi1">Sélection de viandes grillées à volonté</li>
+        <li data-i18n="midiLi2">Accompagnements & salades inclus</li>
+        <li data-i18n="midiLi3">Service du midi — disponibilité à confirmer</li>
+      </ul>
+      <span class="conf-tag" data-i18n="confTag">Détails & prix à confirmer avec l'établissement</span>
+    </article>
+
+    <article class="board sides">
+      <span class="lbl" data-i18n="sidesLbl">À côté du grill</span>
+      <h3 data-i18n="sidesTitle">Plus qu'un grill</h3>
+      <ul>
+        <li data-i18n="sidesLi1"><b>Feijoada</b> — ragoût de haricots noirs & porc</li>
+        <li data-i18n="sidesLi2"><b>Buffet de salades</b> — farofa, riz, haricots</li>
+        <li data-i18n="sidesLi3"><b>Pizzas</b> — normales & format XL, à emporter</li>
+        <li data-i18n="sidesLi4"><b>Caipirinha</b> & boissons brésiliennes</li>
+      </ul>
+      <span class="conf-tag" data-i18n="confTag">Détails & prix à confirmer avec l'établissement</span>
+    </article>
+  </section>
+
+  <!-- ======= STORY / AZULEJO ======= -->
+  <section class="story">
+    <div class="story-art">
+      <span class="frame" aria-hidden="true"></span>
+      <img src="assets/logo.webp" alt="Emblème Calango Grill — le calango mosaïque">
+    </div>
+    <div class="story-copy">
+      <div class="kick" data-i18n="storyKick">Notre maison</div>
+      <h2 data-i18n="storyTitle">Un morceau de Brésil à Dudelange</h2>
+      <p data-i18n="storyP1">Le « calango » — ce petit lézard bariolé de notre emblème — veille sur une adresse familiale où l'on cuisine le Brésil comme à la maison : généreux, chaleureux, sans chichi.</p>
+      <p data-i18n="storyP2">Ici, on vient pour le rodízio, la braise, et cette ambiance où la table se remplit d'amis et d'inconnus qui repartent rassasiés. Le plaisir avant tout.</p>
+      <div class="story-quote" data-i18n="storyQuote">« On revient pour le rodízio, l'atmosphère et le bon accueil. »</div>
+      <div class="story-stats">
+        <div class="stat"><b>7/7</b><span data-i18n="statDays">Service du soir · à confirmer</span></div>
+        <div class="stat"><b>∞</b><span data-i18n="statMeat">Broches à volonté</span></div>
+        <div class="stat"><b>4.3★</b><span data-i18n="statRating">Avis Google</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= VISIT ======= -->
+  <section class="visit" id="visit">
+    <div class="visit-info">
+      <h2 data-i18n="visitTitle">Venir au Calango</h2>
+      <p data-i18n="visitSub">Au cœur de Dudelange, quartier Terres Rouges. Groupes bienvenus — un coup de fil suffit pour réserver.</p>
+
+      <div class="amenities">
+        <div class="amen"><span class="ic">T</span><span data-i18n="amTerrace">Terrasse</span></div>
+        <div class="amen"><span class="ic">P</span><span data-i18n="amParking">Parking gratuit</span></div>
+        <div class="amen"><span class="ic">W</span><span data-i18n="amWifi">Wi-Fi gratuit</span></div>
+        <div class="amen"><span class="ic">A</span><span data-i18n="amAc">Climatisation</span></div>
+        <div class="amen"><span class="ic">♪</span><span data-i18n="amShow">Soirées à thème</span></div>
+        <div class="amen"><span class="ic">🐾</span><span data-i18n="amPets">Animaux bienvenus</span></div>
+        <div class="amen"><span class="ic">↗</span><span data-i18n="amTakeaway">Plats à emporter</span></div>
+        <div class="amen"><span class="ic">€</span><span data-i18n="amPay">Ticket Restaurant & Chèque Repas</span></div>
+      </div>
+
+      <div class="coords">
+        <div class="row">
+          <h4 data-i18n="visitAddr">Adresse</h4>
+          <p>72 Rue Jean Jaurès · L-3490 Dudelange</p>
+        </div>
+        <div class="row">
+          <h4 data-i18n="visitPhone">Téléphone</h4>
+          <a class="tel" href="tel:+35226510541">+352 26 51 05 41</a>
+        </div>
+        <div class="row">
+          <h4 data-i18n="visitHours">Horaires</h4>
+          <p>18h30 – 22h00 · <span data-i18n="visitHoursConf">7/7 · à confirmer</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="map">
+      <iframe title="Calango Grill — Dudelange" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=72+Rue+Jean+Jaur%C3%A8s,+L-3490+Dudelange,+Luxembourg&output=embed"></iframe>
+    </div>
+  </section>
+
+  <!-- ======= FOOTER ======= -->
+  <footer>
+    <div class="foot-top">
+      <div class="foot-col">
+        <div class="foot-brand">
+          <img src="assets/logo.webp" alt="Calango Grill">
+          <div>
+            <b>CALANGO GRILL</b>
+            <span>Rodízio brésilien</span>
+          </div>
+        </div>
+        <p data-i18n="footTagline">Le vrai rodízio brésilien, au cœur de Dudelange.</p>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="footVisit">Nous trouver</h5>
+        <p>72 Rue Jean Jaurès</p>
+        <p>L-3490 Dudelange</p>
+        <a href="tel:+35226510541">+352 26 51 05 41</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="footHours">Horaires</h5>
+        <p data-i18n="footHoursLine">Tous les soirs · 18h30 – 22h00</p>
+        <p class="conf" data-i18n="footHoursConf">7/7 · à confirmer avec l'établissement</p>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <span data-i18n="footCopy">© Calango Grill · Dudelange, Luxembourg</span>
+      <span class="demo" data-i18n="footDemo">Site de démonstration — contenu, horaires & prix à confirmer avec l'établissement.</span>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+const I18N = {
+  fr:{
+    railStatus:"Service du soir · 7/7 · à confirmer",
+    heroEyebrow:"Churrascaria brésilienne · Dudelange",
+    heroLede:"Le vrai rodízio brésilien : des broches de viandes grillées au feu, découpées à votre table, sans fin — tant que vous montrez le vert.",
+    heroCta1:"Réserver une table", heroCta2:"Voir le rodízio",
+    photoTag:"La grande table · notre salle",
+    ficheTel:"Réservation", ficheHours:"Horaires", ficheHoursConf:"7/7 · à confirmer",
+    ficheAddr:"Adresse",
+    tokenGreenBig:"SIM", tokenGreenSm:"Plus de viande !", tokenRedBig:"NÃO", tokenRedSm:"Une pause",
+    tokenHint:"↻ Tournez le jeton",
+    rodaTitle:"Le jeton décide du rythme",
+    rodaText:"Au rodízio, chaque convive garde un jeton. Côté vert vers le haut, les serveurs reviennent avec de nouvelles broches. Côté rouge, on souffle un instant. C'est vous qui menez la ronde — « a roda » — jusqu'à satiété.",
+    rodaStateGreen:"Côté vert — apportez les broches !",
+    rodaStateRed:"Côté rouge — petite pause…",
+    paradeKick:"La ronde des broches", paradeTitle:"Ce qui défile à table",
+    paradeSub:"Nos coupes signature, grillées à la braise et tranchées devant vous. Sélection indicative — à confirmer avec l'établissement.",
+    cutPicanha:"Aiguillette de rumsteck — la coupe reine", cutStar:"★ La signature",
+    cutLinguica:"Saucisse brésilienne grillée", cutFrango:"Poulet mariné aux herbes",
+    cutCostela:"Travers de bœuf fondants", cutCoracao:"Cœurs de poulet grillés",
+    cutAlcatra:"Rumsteck tendre à la braise", cutFraldinha:"Bavette juteuse, croûte caramélisée",
+    ribbonSignature:"La formule signature", soireeTitle:"Rodízio Soirée", priceTBD:"Prix à confirmer",
+    soireeDesc:"Le rodízio complet : les serveurs enchaînent les broches à volonté, du début à la fin du service. Buffet de salades et accompagnements inclus.",
+    soireeLi1:"Viandes grillées à volonté, découpées à table", soireeLi2:"Buffet de salades, riz, haricots & farofa", soireeLi3:"Ambiance conviviale — idéal en groupe",
+    confTag:"Détails & prix à confirmer avec l'établissement",
+    ribbonMidi:"Formule du midi", midiTitle:"Rodízio Midi",
+    midiDesc:"La même ronde de broches en version déjeuner — généreuse et rapide, pensée pour la pause de midi.",
+    midiLi1:"Sélection de viandes grillées à volonté", midiLi2:"Accompagnements & salades inclus", midiLi3:"Service du midi — disponibilité à confirmer",
+    sidesLbl:"À côté du grill", sidesTitle:"Plus qu'un grill",
+    sidesLi1:"<b>Feijoada</b> — ragoût de haricots noirs & porc", sidesLi2:"<b>Buffet de salades</b> — farofa, riz, haricots",
+    sidesLi3:"<b>Pizzas</b> — normales & format XL, à emporter", sidesLi4:"<b>Caipirinha</b> & boissons brésiliennes",
+    storyKick:"Notre maison", storyTitle:"Un morceau de Brésil à Dudelange",
+    storyP1:"Le « calango » — ce petit lézard bariolé de notre emblème — veille sur une adresse familiale où l'on cuisine le Brésil comme à la maison : généreux, chaleureux, sans chichi.",
+    storyP2:"Ici, on vient pour le rodízio, la braise, et cette ambiance où la table se remplit d'amis et d'inconnus qui repartent rassasiés. Le plaisir avant tout.",
+    storyQuote:"« On revient pour le rodízio, l'atmosphère et le bon accueil. »",
+    statDays:"Service du soir · à confirmer", statMeat:"Broches à volonté", statRating:"Avis Google",
+    visitTitle:"Venir au Calango", visitSub:"Au cœur de Dudelange, quartier Terres Rouges. Groupes bienvenus — un coup de fil suffit pour réserver.",
+    amTerrace:"Terrasse", amParking:"Parking gratuit", amWifi:"Wi-Fi gratuit", amAc:"Climatisation",
+    amShow:"Soirées à thème", amPets:"Animaux bienvenus", amTakeaway:"Plats à emporter", amPay:"Ticket Restaurant & Chèque Repas",
+    visitAddr:"Adresse", visitPhone:"Téléphone", visitHours:"Horaires", visitHoursConf:"7/7 · à confirmer",
+    footTagline:"Le vrai rodízio brésilien, au cœur de Dudelange.",
+    footVisit:"Nous trouver", footHours:"Horaires", footHoursLine:"Tous les soirs · 18h30 – 22h00", footHoursConf:"7/7 · à confirmer avec l'établissement",
+    footCopy:"© Calango Grill · Dudelange, Luxembourg",
+    footDemo:"Site de démonstration — contenu, horaires & prix à confirmer avec l'établissement."
+  },
+  de:{
+    railStatus:"Abendservice · 7/7 · zu bestätigen",
+    heroEyebrow:"Brasilianische Churrascaria · Düdelingen",
+    heroLede:"Echtes brasilianisches Rodízio: Spieße mit über dem Feuer gegrilltem Fleisch, am Tisch aufgeschnitten — endlos, solange Sie Grün zeigen.",
+    heroCta1:"Tisch reservieren", heroCta2:"Rodízio ansehen",
+    photoTag:"Die große Tafel · unser Saal",
+    ficheTel:"Reservierung", ficheHours:"Öffnungszeiten", ficheHoursConf:"7/7 · zu bestätigen",
+    ficheAddr:"Adresse",
+    tokenGreenBig:"SIM", tokenGreenSm:"Mehr Fleisch!", tokenRedBig:"NÃO", tokenRedSm:"Eine Pause",
+    tokenHint:"↻ Marke drehen",
+    rodaTitle:"Die Marke bestimmt das Tempo",
+    rodaText:"Beim Rodízio behält jeder Gast eine Marke. Grün nach oben: Die Kellner kommen mit neuen Spießen. Rot: kurze Pause. Sie bestimmen die Runde — „a roda“ — bis Sie satt sind.",
+    rodaStateGreen:"Grüne Seite — bringt die Spieße!",
+    rodaStateRed:"Rote Seite — kleine Pause…",
+    paradeKick:"Die Runde der Spieße", paradeTitle:"Was an den Tisch kommt",
+    paradeSub:"Unsere Signature-Cuts, über Glut gegrillt und vor Ihnen aufgeschnitten. Auswahl beispielhaft — zu bestätigen.",
+    cutPicanha:"Tafelspitz-Deckel — der Königs-Cut", cutStar:"★ Der Klassiker",
+    cutLinguica:"Gegrillte brasilianische Wurst", cutFrango:"Mariniertes Hähnchen mit Kräutern",
+    cutCostela:"Zarte Rinderrippen", cutCoracao:"Gegrillte Hähnchenherzen",
+    cutAlcatra:"Zartes Rumpsteak vom Grill", cutFraldinha:"Saftiges Flanksteak, karamellisierte Kruste",
+    ribbonSignature:"Die Signature-Formel", soireeTitle:"Rodízio Abend", priceTBD:"Preis zu bestätigen",
+    soireeDesc:"Das komplette Rodízio: Die Kellner bringen unbegrenzt Spieße, vom Anfang bis zum Ende des Service. Salatbuffet und Beilagen inklusive.",
+    soireeLi1:"Gegrilltes Fleisch à volonté, am Tisch aufgeschnitten", soireeLi2:"Salatbuffet, Reis, Bohnen & Farofa", soireeLi3:"Gesellige Atmosphäre — ideal für Gruppen",
+    confTag:"Details & Preise zu bestätigen",
+    ribbonMidi:"Mittagsformel", midiTitle:"Rodízio Mittag",
+    midiDesc:"Dieselbe Spießrunde als Mittagsvariante — großzügig und schnell, für die Mittagspause gedacht.",
+    midiLi1:"Auswahl an gegrilltem Fleisch à volonté", midiLi2:"Beilagen & Salate inklusive", midiLi3:"Mittagsservice — Verfügbarkeit zu bestätigen",
+    sidesLbl:"Neben dem Grill", sidesTitle:"Mehr als ein Grill",
+    sidesLi1:"<b>Feijoada</b> — Eintopf aus schwarzen Bohnen & Schwein", sidesLi2:"<b>Salatbuffet</b> — Farofa, Reis, Bohnen",
+    sidesLi3:"<b>Pizzen</b> — normal & XL, zum Mitnehmen", sidesLi4:"<b>Caipirinha</b> & brasilianische Getränke",
+    storyKick:"Unser Haus", storyTitle:"Ein Stück Brasilien in Düdelingen",
+    storyP1:"Der „Calango“ — die bunte kleine Echse unseres Emblems — wacht über ein Familienlokal, in dem Brasilien wie zu Hause gekocht wird: großzügig, herzlich, ungezwungen.",
+    storyP2:"Man kommt für das Rodízio, die Glut und diese Stimmung, in der sich der Tisch mit Freunden und Fremden füllt, die satt wieder gehen. Genuss zuerst.",
+    storyQuote:"„Man kommt wieder für das Rodízio, die Atmosphäre und den herzlichen Empfang.“",
+    statDays:"Abendservice · zu bestätigen", statMeat:"Spieße à volonté", statRating:"Google-Bewertung",
+    visitTitle:"So finden Sie uns", visitSub:"Im Herzen von Düdelingen, Viertel Terres Rouges. Gruppen willkommen — ein Anruf genügt zum Reservieren.",
+    amTerrace:"Terrasse", amParking:"Kostenlose Parkplätze", amWifi:"Kostenloses WLAN", amAc:"Klimaanlage",
+    amShow:"Themenabende", amPets:"Haustiere willkommen", amTakeaway:"Zum Mitnehmen", amPay:"Ticket Restaurant & Chèque Repas",
+    visitAddr:"Adresse", visitPhone:"Telefon", visitHours:"Öffnungszeiten", visitHoursConf:"7/7 · zu bestätigen",
+    footTagline:"Echtes brasilianisches Rodízio, im Herzen von Düdelingen.",
+    footVisit:"Standort", footHours:"Öffnungszeiten", footHoursLine:"Jeden Abend · 18:30 – 22:00", footHoursConf:"7/7 · zu bestätigen",
+    footCopy:"© Calango Grill · Düdelingen, Luxemburg",
+    footDemo:"Demo-Website — Inhalte, Öffnungszeiten & Preise mit dem Lokal zu bestätigen."
+  },
+  en:{
+    railStatus:"Evening service · 7/7 · to confirm",
+    heroEyebrow:"Brazilian churrascaria · Dudelange",
+    heroLede:"The real Brazilian rodízio: skewers of fire-grilled meats carved at your table, endlessly — as long as you show the green.",
+    heroCta1:"Book a table", heroCta2:"See the rodízio",
+    photoTag:"The long table · our dining room",
+    ficheTel:"Reservations", ficheHours:"Hours", ficheHoursConf:"7/7 · to confirm",
+    ficheAddr:"Address",
+    tokenGreenBig:"SIM", tokenGreenSm:"More meat!", tokenRedBig:"NÃO", tokenRedSm:"A pause",
+    tokenHint:"↻ Flip the token",
+    rodaTitle:"The token sets the pace",
+    rodaText:"At a rodízio, every guest keeps a token. Green side up, the waiters return with fresh skewers. Red side, you take a breather. You lead the round — “a roda” — until you're satisfied.",
+    rodaStateGreen:"Green side — bring the skewers!",
+    rodaStateRed:"Red side — taking a breather…",
+    paradeKick:"The round of skewers", paradeTitle:"What comes to your table",
+    paradeSub:"Our signature cuts, grilled over embers and carved in front of you. Indicative selection — to confirm with the venue.",
+    cutPicanha:"Top sirloin cap — the king cut", cutStar:"★ The signature",
+    cutLinguica:"Grilled Brazilian sausage", cutFrango:"Herb-marinated chicken",
+    cutCostela:"Tender beef ribs", cutCoracao:"Grilled chicken hearts",
+    cutAlcatra:"Tender rump steak over embers", cutFraldinha:"Juicy flank, caramelised crust",
+    ribbonSignature:"The signature", soireeTitle:"Evening Rodízio", priceTBD:"Price to confirm",
+    soireeDesc:"The full rodízio: waiters bring skewers non-stop from start to finish of service. Salad buffet and sides included.",
+    soireeLi1:"All-you-can-eat grilled meats, carved at the table", soireeLi2:"Salad buffet, rice, beans & farofa", soireeLi3:"Convivial atmosphere — perfect for groups",
+    confTag:"Details & prices to confirm with the venue",
+    ribbonMidi:"Lunch formula", midiTitle:"Lunch Rodízio",
+    midiDesc:"The same round of skewers in a lunch version — generous and quick, built for the midday break.",
+    midiLi1:"Selection of all-you-can-eat grilled meats", midiLi2:"Sides & salads included", midiLi3:"Lunch service — availability to confirm",
+    sidesLbl:"Alongside the grill", sidesTitle:"More than a grill",
+    sidesLi1:"<b>Feijoada</b> — black bean & pork stew", sidesLi2:"<b>Salad buffet</b> — farofa, rice, beans",
+    sidesLi3:"<b>Pizzas</b> — regular & XL, takeaway", sidesLi4:"<b>Caipirinha</b> & Brazilian drinks",
+    storyKick:"Our house", storyTitle:"A piece of Brazil in Dudelange",
+    storyP1:"The “calango” — the colourful little lizard on our emblem — watches over a family-run address where Brazil is cooked like home: generous, warm, no fuss.",
+    storyP2:"People come for the rodízio, the embers, and that mood where the table fills with friends and strangers who leave full. Pleasure first.",
+    storyQuote:"“We come back for the rodízio, the atmosphere and the warm welcome.”",
+    statDays:"Evening service · to confirm", statMeat:"All-you-can-eat skewers", statRating:"Google rating",
+    visitTitle:"Finding the Calango", visitSub:"In the heart of Dudelange, Terres Rouges district. Groups welcome — a phone call is all it takes to book.",
+    amTerrace:"Terrace", amParking:"Free parking", amWifi:"Free Wi-Fi", amAc:"Air conditioning",
+    amShow:"Themed evenings", amPets:"Pets welcome", amTakeaway:"Takeaway", amPay:"Ticket Restaurant & Chèque Repas",
+    visitAddr:"Address", visitPhone:"Phone", visitHours:"Hours", visitHoursConf:"7/7 · to confirm",
+    footTagline:"The real Brazilian rodízio, in the heart of Dudelange.",
+    footVisit:"Find us", footHours:"Hours", footHoursLine:"Every evening · 6:30pm – 10:00pm", footHoursConf:"7/7 · to confirm with the venue",
+    footCopy:"© Calango Grill · Dudelange, Luxembourg",
+    footDemo:"Demonstration site — content, hours & prices to be confirmed with the venue."
+  }
+};
+
+let tokenGreen = true;
+
+function applyLang(lang){
+  const dict = I18N[lang]; if(!dict) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(k==='rodaStateGreen' || k==='rodaStateRed') return; // handled by token state
+    if(dict[k]!==undefined) el.innerHTML = dict[k];
+  });
+  // roda state respects current token side
+  const stEl = document.getElementById('rodaState');
+  stEl.innerHTML = tokenGreen ? dict.rodaStateGreen : dict.rodaStateRed;
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+}
+
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.addEventListener('click', ()=>applyLang(b.dataset.lang));
+});
+
+// ---- Rodízio token flip drives the meat parade ----
+const token = document.getElementById('token');
+const skewers = document.getElementById('skewers');
+token.addEventListener('click', ()=>{
+  tokenGreen = !tokenGreen;
+  token.classList.toggle('flip', !tokenGreen);
+  const lang = document.documentElement.lang || 'fr';
+  const dict = I18N[lang];
+  document.getElementById('rodaState').innerHTML = tokenGreen ? dict.rodaStateGreen : dict.rodaStateRed;
+  // dim/undim the cuts to reflect "pause"
+  document.querySelectorAll('.cut').forEach(c=>c.classList.toggle('dim', !tokenGreen));
+});
+
+// default paint is French (already in HTML); ensure state text set
+applyLang('fr');
+</script>
+</body>
+</html>

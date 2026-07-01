@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Atelier Gourmand — Food, Wine &amp; Shop · Bettembourg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Archivo:wght@400;500;600;700&family=Saira+Condensed:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#2D5433;      /* deep forest green — brand */
+  --green-deep:#20402A;
+  --green-ink:#3B5C42;
+  --cream:#EAE4C7;      /* logo linework / parchment */
+  --paper:#F5F1E1;      /* lighter parchment field */
+  --paper-2:#EFE9D4;
+  --terra:#B85C3C;      /* CTA / seal accent — red-fruit terracotta */
+  --terra-deep:#9E4A2E;
+  --wood:#C9A876;       /* blond wood tertiary */
+  --navy:#26364F;       /* chair navy — sparing */
+  --line:rgba(45,84,51,.24);
+  --line-soft:rgba(45,84,51,.14);
+  --spine:88px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Archivo',system-ui,sans-serif;
+  color:var(--green);
+  background:var(--paper);
+  margin-left:var(--spine);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.02;color:var(--green)}
+a{color:inherit}
+img{display:block;max-width:100%}
+.kick{font-family:'Archivo';font-weight:600;font-size:.68rem;letter-spacing:.32em;text-transform:uppercase}
+.serif-it{font-family:'Cormorant Garamond';font-style:italic}
+
+/* ---------- LEFT SPINE ---------- */
+.spine{
+  position:fixed;left:0;top:0;bottom:0;width:var(--spine);
+  background:var(--green);color:var(--cream);
+  display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+  padding:22px 0;z-index:60;border-right:1px solid rgba(234,228,199,.18);
+}
+.spine .diamond{width:12px;height:12px;background:var(--terra);transform:rotate(45deg);flex:0 0 auto;margin-top:4px}
+.spine .vwrap{writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;flex:1;display:flex;flex-direction:column;justify-content:center;gap:26px}
+.spine .vmark{font-family:'Cormorant Garamond';font-weight:600;font-size:1.18rem;letter-spacing:.42em;text-transform:uppercase}
+.spine .vsub{font-family:'Archivo';font-weight:500;font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:rgba(234,228,199,.66)}
+.spine .vfoot{font-family:'Saira Condensed';font-weight:400;font-size:.7rem;letter-spacing:.28em;color:rgba(234,228,199,.55);writing-mode:vertical-rl;transform:rotate(180deg)}
+
+/* ---------- SHELL ---------- */
+.wrap{max-width:1500px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
+
+/* ---------- MASTHEAD DATELINE ---------- */
+.dateline{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:15px 0 13px;border-bottom:1.5px solid var(--green);
+}
+.dateline .dl-left{font-family:'Saira Condensed';font-weight:400;font-size:.82rem;letter-spacing:.24em;text-transform:uppercase;color:var(--green-ink)}
+.dateline .dl-right{display:flex;align-items:center;gap:22px}
+.lang{display:flex;gap:2px;align-items:center;font-family:'Archivo';font-weight:600;font-size:.72rem;letter-spacing:.12em}
+.lang button{background:none;border:none;cursor:pointer;color:var(--green-ink);opacity:.5;padding:3px 5px;font:inherit;text-transform:uppercase;transition:opacity .2s}
+.lang button.on{opacity:1;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--terra);text-decoration-thickness:2px}
+.lang span{opacity:.3}
+.dl-res{font-family:'Archivo';font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--terra-deep);text-decoration:none;border-bottom:1.5px solid var(--terra);padding-bottom:2px}
+
+/* ---------- TICKER ---------- */
+.ticker{overflow:hidden;border-bottom:1px solid var(--line);background:var(--green)}
+.ticker .track{display:flex;white-space:nowrap;animation:slide 34s linear infinite;padding:8px 0}
+.ticker span{font-family:'Saira Condensed';font-weight:400;font-size:.82rem;letter-spacing:.26em;text-transform:uppercase;color:var(--cream);padding:0 26px}
+.ticker span::after{content:"◆";color:var(--terra);margin-left:52px;font-size:.6rem;vertical-align:middle}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- HERO / OUVERTURE ---------- */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4vw,68px);align-items:stretch;padding:clamp(40px,5vw,72px) 0 clamp(30px,4vw,54px)}
+.hero-l{display:flex;flex-direction:column;justify-content:center}
+.hero-kick{color:var(--terra-deep);margin-bottom:22px;display:flex;align-items:center;gap:14px}
+.hero-kick::before{content:"";width:44px;height:1.5px;background:var(--terra)}
+.hero h1{font-size:clamp(3.1rem,6.4vw,6rem);letter-spacing:-.01em}
+.hero h1 em{font-style:italic;font-weight:500;color:var(--green-ink)}
+.hero-lede{font-family:'Cormorant Garamond';font-size:clamp(1.25rem,1.7vw,1.6rem);line-height:1.4;max-width:46ch;margin:24px 0 30px;color:var(--green-ink)}
+.trindex{display:flex;gap:0;border-top:1.5px solid var(--green);border-bottom:1.5px solid var(--green);margin:6px 0 32px}
+.trindex a{flex:1;text-decoration:none;padding:15px 16px 13px;border-right:1px solid var(--line);transition:background .2s}
+.trindex a:last-child{border-right:none}
+.trindex a:hover{background:var(--paper-2)}
+.trindex .n{font-family:'Saira Condensed';font-weight:500;font-size:1.1rem;color:var(--terra)}
+.trindex .t{font-family:'Cormorant Garamond';font-weight:600;font-size:1.5rem;display:block;margin-top:2px}
+.trindex .s{font-family:'Archivo';font-weight:600;font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--green-ink);opacity:.66}
+.cta-row{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.btn{display:inline-block;background:var(--terra);color:#fff;text-decoration:none;font-family:'Archivo';font-weight:600;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;padding:15px 30px;transition:background .2s}
+.btn:hover{background:var(--terra-deep)}
+.btn.ghost{background:none;color:var(--green);border:1.5px solid var(--green)}
+.btn.ghost:hover{background:var(--green);color:var(--cream)}
+.tel{font-family:'Saira Condensed';font-weight:500;font-size:1.15rem;letter-spacing:.06em;text-decoration:none;color:var(--green)}
+
+.hero-r{position:relative}
+.hero-frame{position:relative;height:100%;min-height:460px;border:1px solid var(--line);padding:12px;background:var(--paper-2)}
+.hero-frame .ph{position:relative;width:100%;height:100%;overflow:hidden;background:var(--green)}
+.hero-frame img{width:100%;height:100%;object-fit:cover;object-position:center 62%}
+.seal{
+  position:absolute;right:-26px;bottom:32px;width:118px;height:118px;border-radius:50%;
+  background:var(--terra);color:var(--cream);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 24px rgba(32,64,42,.28);z-index:4;
+}
+.seal .ring{position:absolute;inset:8px;border:1px dashed rgba(234,228,199,.6);border-radius:50%}
+.seal .txt{text-align:center;font-family:'Saira Condensed';line-height:1;z-index:2}
+.seal .txt b{display:block;font-family:'Cormorant Garamond';font-weight:700;font-size:1.9rem}
+.seal .txt small{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;display:block;margin-top:3px}
+.poincon{position:absolute;left:-14px;top:26px;background:var(--green);color:var(--cream);padding:11px 15px;z-index:5;box-shadow:0 6px 18px rgba(32,64,42,.25)}
+.poincon .star{color:var(--wood);font-size:1.3rem;line-height:1}
+.poincon b{font-family:'Cormorant Garamond';font-weight:600;font-size:1.55rem;display:block}
+.poincon small{font-family:'Archivo';font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;opacity:.8;display:block;margin-top:2px}
+
+/* ---------- TRIPTYCH ---------- */
+.triptych{border-top:2px solid var(--green);display:grid;grid-template-columns:repeat(3,1fr)}
+.strand{padding:clamp(30px,3vw,48px) clamp(24px,2.4vw,40px);border-right:1px solid var(--line);position:relative}
+.strand:last-child{border-right:none}
+.strand .num{font-family:'Cormorant Garamond';font-weight:400;font-size:4.2rem;line-height:.8;color:var(--line);position:absolute;top:22px;right:26px}
+.strand .st-kick{color:var(--terra-deep);margin-bottom:6px}
+.strand h3{font-size:2.15rem}
+.strand .st-sub{font-family:'Cormorant Garamond';font-style:italic;font-size:1.15rem;color:var(--green-ink);margin:6px 0 18px}
+.strand p{font-size:.94rem;color:var(--green-ink);max-width:38ch}
+.divide{height:1px;background:var(--line);margin:20px 0}
+
+/* menu list (food strand) */
+.dish{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:8px 0;border-bottom:1px dotted var(--line-soft)}
+.dish:last-child{border-bottom:none}
+.dish .d-name{font-family:'Cormorant Garamond';font-weight:600;font-size:1.25rem}
+.dish .d-dot{flex:1;border-bottom:1px dotted var(--line);margin:0 4px 5px;min-width:14px}
+.dish .d-tag{font-family:'Archivo';font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--terra-deep);white-space:nowrap;opacity:.8}
+.formula{background:var(--green);color:var(--cream);padding:16px 18px;margin-top:20px}
+.formula .f-h{font-family:'Archivo';font-weight:600;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--wood);margin-bottom:8px}
+.formula .f-row{display:flex;justify-content:space-between;align-items:baseline;font-family:'Cormorant Garamond';font-size:1.2rem;padding:3px 0}
+.formula .f-row b{font-weight:600}
+.formula .f-note{font-family:'Archivo';font-size:.6rem;letter-spacing:.06em;color:rgba(234,228,199,.6);margin-top:8px}
+
+/* wine tasting cards (cave strand) */
+.card{background:var(--paper);border:1px solid var(--line);padding:14px 16px;margin-bottom:12px;position:relative}
+.card:nth-child(odd){transform:rotate(-.5deg)}
+.card:nth-child(even){transform:rotate(.4deg)}
+.card .c-h{font-family:'Cormorant Garamond';font-weight:600;font-size:1.15rem}
+.card .c-note{font-family:'Cormorant Garamond';font-style:italic;font-size:1rem;color:var(--green-ink)}
+.card .c-tag{font-family:'Archivo';font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--terra-deep);position:absolute;top:12px;right:14px}
+
+/* shop list */
+.shoplist{list-style:none}
+.shoplist li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px dotted var(--line-soft);font-family:'Cormorant Garamond';font-size:1.18rem}
+.shoplist li::before{content:"—";color:var(--terra);font-family:'Archivo'}
+.shopfoot{font-family:'Cormorant Garamond';font-style:italic;font-size:1.15rem;color:var(--green-ink);margin-top:18px;line-height:1.35}
+
+/* ---------- ATELIER STORY ---------- */
+.atelier{display:grid;grid-template-columns:.9fr 1.1fr;border-top:2px solid var(--green)}
+.at-photo{position:relative;min-height:440px;background:var(--green);overflow:hidden}
+.at-photo img{width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:grayscale(.35) contrast(1.02)}
+.at-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(45,84,51,.62),rgba(32,64,42,.9));mix-blend-mode:multiply}
+.at-cap{position:absolute;left:22px;bottom:20px;z-index:3;color:var(--cream);font-family:'Archivo';font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;opacity:.82;max-width:70%}
+.at-txt{padding:clamp(34px,4vw,64px);background:var(--paper-2);display:flex;flex-direction:column;justify-content:center}
+.at-txt .st-kick{color:var(--terra-deep);margin-bottom:16px}
+.at-txt h2{font-size:clamp(2.2rem,3.2vw,3.4rem)}
+.at-txt .lead{font-family:'Cormorant Garamond';font-size:1.35rem;font-style:italic;color:var(--green-ink);margin:14px 0 18px;max-width:44ch}
+.at-txt p{font-size:.95rem;color:var(--green-ink);max-width:52ch;margin-bottom:14px}
+.at-marks{display:flex;gap:26px;flex-wrap:wrap;margin-top:14px;border-top:1px solid var(--line);padding-top:20px}
+.at-marks .m b{font-family:'Cormorant Garamond';font-weight:600;font-size:2.1rem;display:block;line-height:1}
+.at-marks .m small{font-family:'Archivo';font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--green-ink);opacity:.7}
+
+/* ---------- CARNET PRATIQUE ---------- */
+.carnet{display:grid;grid-template-columns:1fr 1.15fr;border-top:2px solid var(--green);border-bottom:2px solid var(--green)}
+.carnet-l{padding:clamp(34px,4vw,60px);border-right:1px solid var(--line)}
+.carnet-l .st-kick{color:var(--terra-deep);margin-bottom:8px}
+.carnet-l h2{font-size:clamp(2rem,2.8vw,3rem);margin-bottom:26px}
+.hours{width:100%;border-collapse:collapse;margin-bottom:24px}
+.hours td{padding:9px 0;border-bottom:1px dotted var(--line-soft);font-size:.92rem;vertical-align:top}
+.hours td:first-child{font-family:'Saira Condensed';font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--green);width:40%}
+.hours td:last-child{text-align:right;font-family:'Cormorant Garamond';font-size:1.1rem;color:var(--green-ink)}
+.hours tr.closed td:last-child{color:var(--terra-deep);font-style:italic}
+.coord{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px;margin-bottom:22px}
+.coord .cb .lbl{font-family:'Archivo';font-weight:600;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--terra-deep);margin-bottom:4px}
+.coord .cb .val{font-family:'Cormorant Garamond';font-size:1.18rem;line-height:1.3;color:var(--green)}
+.coord .cb a{text-decoration:none}
+.confirm{display:inline-block;font-family:'Archivo';font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--terra-deep);background:rgba(184,92,60,.1);padding:2px 7px;border-radius:2px;margin-left:6px;vertical-align:middle}
+.map-wrap{position:relative;min-height:420px;background:var(--green)}
+.map-wrap iframe{width:100%;height:100%;min-height:420px;border:0;filter:grayscale(.2) sepia(.06)}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--green);color:var(--cream);padding:clamp(38px,4vw,60px) 0 26px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;align-items:start}
+.foot-mark{font-family:'Cormorant Garamond';font-weight:600;font-size:2rem;letter-spacing:.14em;text-transform:uppercase}
+.foot-mark small{display:block;font-family:'Archivo';font-size:.6rem;letter-spacing:.34em;color:rgba(234,228,199,.6);margin-top:8px;font-weight:600}
+.foot-p{font-family:'Cormorant Garamond';font-style:italic;font-size:1.15rem;color:rgba(234,228,199,.85);margin-top:16px;max-width:34ch}
+.foot-col h4{font-family:'Archivo';font-weight:600;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--wood);margin-bottom:12px}
+.foot-col a,.foot-col p{color:rgba(234,228,199,.85);text-decoration:none;font-size:.92rem;display:block;margin-bottom:6px;font-family:'Archivo'}
+.foot-col a:hover{color:#fff}
+.foot-bar{border-top:1px solid rgba(234,228,199,.16);margin-top:34px;padding-top:18px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'Archivo';font-size:.68rem;letter-spacing:.06em;color:rgba(234,228,199,.55)}
+.demo-badge{color:var(--wood)}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:1080px){
+  .hero{grid-template-columns:1fr;gap:34px}
+  .hero-frame{min-height:400px}
+  .triptych{grid-template-columns:1fr}
+  .strand{border-right:none;border-bottom:1px solid var(--line)}
+  .strand:last-child{border-bottom:none}
+  .strand .num{font-size:3.4rem}
+  .atelier,.carnet{grid-template-columns:1fr}
+  .at-photo{min-height:320px;order:-1}
+  .carnet-l{border-right:none;border-bottom:1px solid var(--line)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:760px){
+  :root{--spine:0px}
+  body{margin-left:0}
+  .spine{position:static;width:100%;height:auto;flex-direction:row;justify-content:space-between;padding:10px 18px;border-right:none;border-bottom:1px solid rgba(234,228,199,.18)}
+  .spine .vwrap{writing-mode:horizontal-tb;transform:none;flex-direction:row;gap:14px;align-items:baseline}
+  .spine .vmark{writing-mode:horizontal-tb;transform:none;font-size:1rem;letter-spacing:.28em}
+  .spine .vsub{writing-mode:horizontal-tb;transform:none;font-size:.55rem}
+  .spine .vfoot{writing-mode:horizontal-tb;transform:none}
+  .dateline{flex-wrap:wrap;gap:10px}
+  .foot-grid{grid-template-columns:1fr}
+  .coord{grid-template-columns:1fr}
+}
+@media(max-width:460px){
+  .trindex{flex-direction:column}
+  .trindex a{border-right:none;border-bottom:1px solid var(--line)}
+  .hero h1{font-size:2.6rem}
+  .seal{width:92px;height:92px;right:10px}
+}
+</style>
+</head>
+<body>
+
+<!-- LEFT SPINE / persistent identity -->
+<aside class="spine" aria-label="Atelier Gourmand">
+  <span class="diamond" aria-hidden="true"></span>
+  <div class="vwrap">
+    <span class="vmark">Atelier Gourmand</span>
+    <span class="vsub" data-i18n="spine_sub">Food · Wine &amp; Shop</span>
+  </div>
+  <span class="vfoot">L-3275 · Bettembourg</span>
+</aside>
+
+<!-- MASTHEAD DATELINE -->
+<div class="wrap">
+  <div class="dateline">
+    <div class="dl-left"><span data-i18n="dl_no">No. Été 2026</span> · <span data-i18n="dl_place">Bettembourg, Grand-Duché</span></div>
+    <div class="dl-right">
+      <nav class="lang" aria-label="Langue">
+        <button data-lang="fr" class="on">FR</button><span>/</span><button data-lang="de">DE</button><span>/</span><button data-lang="en">EN</button>
+      </nav>
+      <a class="dl-res" href="https://atelier-gourmand-luxembourg.resos.com/" target="_blank" rel="noopener" data-i18n="dl_res">Réserver</a>
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="track">
+    <span data-i18n="tick1">Fait maison</span><span data-i18n="tick2">Carte renouvelée toutes les 2 à 3 semaines</span><span data-i18n="tick3">Vins naturels de vignerons indépendants</span><span data-i18n="tick4">Au fil des saisons</span>
+    <span data-i18n="tick1b">Fait maison</span><span data-i18n="tick2b">Carte renouvelée toutes les 2 à 3 semaines</span><span data-i18n="tick3b">Vins naturels de vignerons indépendants</span><span data-i18n="tick4b">Au fil des saisons</span>
+  </div>
+</div>
+
+<!-- HERO / OUVERTURE -->
+<div class="wrap">
+  <section class="hero">
+    <div class="hero-l">
+      <div class="hero-kick kick" data-i18n="hero_kick">Bistronomie de quartier · Bettembourg</div>
+      <h1><span data-i18n="hero_h1a">Fait maison,</span><br><em data-i18n="hero_h1b">au fil des saisons.</em></h1>
+      <p class="hero-lede" data-i18n="hero_lede">Une table chef-driven où tout est cuisiné sur place, une cave de vins naturels et une épicerie à emporter — réunies sous un même toit lumineux, face à la piscine des Terres Rouges.</p>
+
+      <div class="trindex">
+        <a href="#table"><span class="n">I</span><span class="t" data-i18n="tri_a_t">La Table</span><span class="s" data-i18n="tri_a_s">Food</span></a>
+        <a href="#cave"><span class="n">II</span><span class="t" data-i18n="tri_b_t">La Cave</span><span class="s" data-i18n="tri_b_s">Wine</span></a>
+        <a href="#epicerie"><span class="n">III</span><span class="t" data-i18n="tri_c_t">L'Épicerie</span><span class="s" data-i18n="tri_c_s">Shop</span></a>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="https://atelier-gourmand-luxembourg.resos.com/" target="_blank" rel="noopener" data-i18n="hero_btn">Réserver une table</a>
+        <a class="tel" href="tel:+352621291042">+352 621 291 042</a>
+      </div>
+    </div>
+
+    <div class="hero-r">
+      <div class="hero-frame">
+        <div class="ph">
+          <img src="assets/interior-3.jpg" alt="Salle de l'Atelier Gourmand — chaises bleues, tables en bois clair, étagères végétalisées">
+        </div>
+        <div class="poincon" aria-label="Classement TripAdvisor">
+          <span class="star">★</span>
+          <b>4,7</b>
+          <small data-i18n="poincon">N°1 sur 17 · Bettembourg</small>
+        </div>
+        <div class="seal" aria-hidden="true">
+          <span class="ring"></span>
+          <span class="txt"><b>Été</b><small data-i18n="seal">Saison ’26</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- TRIPTYCH — Food · Wine · Shop -->
+<div class="wrap">
+  <section class="triptych">
+
+    <!-- I — LA TABLE -->
+    <div class="strand" id="table">
+      <span class="num">I</span>
+      <div class="st-kick kick" data-i18n="s1_kick">Food</div>
+      <h3 data-i18n="s1_h">La Table</h3>
+      <p class="st-sub" data-i18n="s1_sub">Cuisine bistronomique, 100 % faite maison, au rythme du marché.</p>
+      <p data-i18n="s1_p">Une carte courte qui tourne toutes les deux à trois semaines, dictée par la saison et les producteurs. Voici quelques signatures régulièrement à l'ardoise.</p>
+      <div class="divide"></div>
+      <div class="menu">
+        <div class="dish"><span class="d-name" data-i18n="d1">Foie gras maison</span><span class="d-dot"></span><span class="d-tag" data-i18n="tag_ac">à confirmer</span></div>
+        <div class="dish"><span class="d-name" data-i18n="d2">Ris de veau</span><span class="d-dot"></span><span class="d-tag" data-i18n="tag_ac2">à confirmer</span></div>
+        <div class="dish"><span class="d-name" data-i18n="d3">Magret de canard aux épices</span><span class="d-dot"></span><span class="d-tag" data-i18n="tag_ac3">à confirmer</span></div>
+        <div class="dish"><span class="d-name" data-i18n="d4">Joues de bœuf braisées</span><span class="d-dot"></span><span class="d-tag" data-i18n="tag_ac4">à confirmer</span></div>
+        <div class="dish"><span class="d-name" data-i18n="d5">Soufflé au Grand Marnier</span><span class="d-dot"></span><span class="d-tag" data-i18n="tag_ac5">à confirmer</span></div>
+        <div class="dish"><span class="d-name" data-i18n="d6">Sablé breton, fruits rouges</span><span class="d-dot"></span><span class="d-tag" data-i18n="tag_ac6">à confirmer</span></div>
+      </div>
+      <div class="formula">
+        <div class="f-h" data-i18n="f_h">Formule déjeuner · mar–ven</div>
+        <div class="f-row"><span data-i18n="f_r1">2 services</span><b>20,50 €</b></div>
+        <div class="f-row"><span data-i18n="f_r2">3 services complets</span><b>25 €</b></div>
+        <div class="f-note" data-i18n="f_note">Soir à la carte ≈ 30–55 €/pers. — tarifs à confirmer avec l'établissement.</div>
+      </div>
+    </div>
+
+    <!-- II — LA CAVE -->
+    <div class="strand" id="cave">
+      <span class="num">II</span>
+      <div class="st-kick kick" data-i18n="s2_kick">Wine</div>
+      <h3 data-i18n="s2_h">La Cave</h3>
+      <p class="st-sub" data-i18n="s2_sub">Vins naturels choisis chez des vignerons indépendants.</p>
+      <p data-i18n="s2_p">Une cave vivante, pensée en accords avec la carte. Menu dégustation possible avec suggestions au verre — nos notes de dégustation, saison après saison.</p>
+      <div class="divide"></div>
+      <div class="card"><span class="c-tag" data-i18n="ct1">Nature</span><div class="c-h" data-i18n="c1_h">Vignerons indépendants</div><div class="c-note" data-i18n="c1_n">« Des cuvées vivantes, peu ou pas sulfitées, à la personnalité franche. »</div></div>
+      <div class="card"><span class="c-tag" data-i18n="ct2">Accords</span><div class="c-h" data-i18n="c2_h">Menu dégustation</div><div class="c-note" data-i18n="c2_n">« Plats de saison et vins au verre, servis en dialogue. »</div></div>
+      <div class="card"><span class="c-tag" data-i18n="ct3">Conseil</span><div class="c-h" data-i18n="c3_h">Au verre &amp; à l'ardoise</div><div class="c-note" data-i18n="c3_n">« Demandez la suggestion du jour à l'équipe en salle. »</div></div>
+      <p class="st-sub" style="margin-top:18px" data-i18n="s2_foot">Sélection indicative — la carte des vins évolue en cave. À confirmer.</p>
+    </div>
+
+    <!-- III — L'ÉPICERIE -->
+    <div class="strand" id="epicerie">
+      <span class="num">III</span>
+      <div class="st-kick kick" data-i18n="s3_kick">Shop</div>
+      <h3 data-i18n="s3_h">L'Épicerie</h3>
+      <p class="st-sub" data-i18n="s3_sub">« Food, Wine &amp; Shop » — la maison se prolonge à emporter.</p>
+      <p data-i18n="s3_p">Ce qu'on aime en salle se retrouve sur les étagères : la cave se visite, la bouteille se remporte, et quelques produits de saison suivent.</p>
+      <div class="divide"></div>
+      <ul class="shoplist">
+        <li data-i18n="sh1">Vins naturels à emporter</li>
+        <li data-i18n="sh2">Cuvées de vignerons indépendants</li>
+        <li data-i18n="sh3">Produits de saison &amp; épicerie fine</li>
+        <li data-i18n="sh4">Idées cadeaux gourmandes</li>
+      </ul>
+      <p class="shopfoot" data-i18n="s3_foot">Poussez la porte à l'heure de l'apéritif : on vous conseille une bouteille pour ce soir.</p>
+      <a class="btn ghost" href="tel:+352621291042" style="margin-top:22px" data-i18n="s3_btn">Se renseigner</a>
+    </div>
+
+  </section>
+</div>
+
+<!-- ATELIER STORY -->
+<div class="wrap">
+  <section class="atelier">
+    <div class="at-photo">
+      <img src="assets/interior-1.jpg" alt="Salle lumineuse de l'Atelier Gourmand — bois clair et chaises bleu marine">
+      <div class="at-cap" data-i18n="at_cap">La salle lumineuse — bois clair &amp; chaises marine, Bettembourg</div>
+    </div>
+    <div class="at-txt">
+      <div class="st-kick kick" data-i18n="at_kick">La Maison</div>
+      <h2 data-i18n="at_h">Un atelier, trois plaisirs.</h2>
+      <p class="lead" data-i18n="at_lead">De Dudelange à la piscine des Terres Rouges de Bettembourg, la même idée : une bistronomie généreuse, sans chichi, ancrée dans le quartier.</p>
+      <p data-i18n="at_p1">La salle est lumineuse — bois clair, chaises bleu marine, étagères végétalisées — pensée pour les déjeuners de semaine comme pour les dîners à deux. Terrasse, menu enfant, chiens bienvenus, parking gratuit et accès de plain-pied.</p>
+      <p data-i18n="at_p2">Une adresse de food-forward regulars et d'amateurs de vins nature, régulièrement en tête des tables de Bettembourg.</p>
+      <div class="at-marks">
+        <div class="m"><b>4,7 / 5</b><small data-i18n="mk1">74 avis TripAdvisor</small></div>
+        <div class="m"><b>N°1</b><small data-i18n="mk2">sur 17 à Bettembourg</small></div>
+        <div class="m"><b>100 %</b><small data-i18n="mk3">fait maison</small></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CARNET PRATIQUE -->
+<div class="wrap">
+  <section class="carnet" id="visite">
+    <div class="carnet-l">
+      <div class="st-kick kick" data-i18n="cn_kick">Le Carnet</div>
+      <h2 data-i18n="cn_h">Nous trouver &amp; réserver</h2>
+      <table class="hours">
+        <tr class="closed"><td data-i18n="day_mon">Lundi</td><td data-i18n="h_closed">Fermé</td></tr>
+        <tr><td data-i18n="day_tue">Mardi</td><td><span data-i18n="h_tue">12:00–15:00</span> <span class="confirm" data-i18n="h_ac">à confirmer</span></td></tr>
+        <tr><td data-i18n="day_wed">Mer–Sam</td><td><span data-i18n="h_wed">12:00–15:00 · 18:00–23:00</span> <span class="confirm" data-i18n="h_ac2">à confirmer</span></td></tr>
+        <tr><td data-i18n="day_sun">Dimanche</td><td><span data-i18n="h_sun">12:00–15:00</span> <span class="confirm" data-i18n="h_ac3">à confirmer</span></td></tr>
+      </table>
+      <div class="coord">
+        <div class="cb">
+          <div class="lbl" data-i18n="cd_addr">Adresse</div>
+          <div class="val">8, Rue James-Hilliard Polk<br>L-3275 Bettembourg <span class="confirm" data-i18n="cd_addr_ac">n° à confirmer</span></div>
+        </div>
+        <div class="cb">
+          <div class="lbl" data-i18n="cd_tel">Téléphone</div>
+          <div class="val"><a href="tel:+352621291042">+352 621 291 042</a></div>
+        </div>
+        <div class="cb">
+          <div class="lbl" data-i18n="cd_book">Réservation</div>
+          <div class="val"><a href="https://atelier-gourmand-luxembourg.resos.com/" target="_blank" rel="noopener" style="border-bottom:1.5px solid var(--terra)">resOS en ligne</a></div>
+        </div>
+        <div class="cb">
+          <div class="lbl" data-i18n="cd_park">Accès</div>
+          <div class="val" data-i18n="cd_park_v">Parking gratuit · terrasse · plain-pied</div>
+        </div>
+      </div>
+      <a class="btn" href="https://atelier-gourmand-luxembourg.resos.com/" target="_blank" rel="noopener" data-i18n="cn_btn">Réserver maintenant</a>
+    </div>
+    <div class="map-wrap">
+      <iframe title="Carte — Atelier Gourmand, Bettembourg" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=8+Rue+James-Hilliard+Polk,+L-3275+Bettembourg,+Luxembourg&output=embed"></iframe>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-mark">Atelier Gourmand<small>Food · Wine &amp; Shop</small></div>
+        <p class="foot-p" data-i18n="foot_p">Bistronomie faite maison, au fil des saisons — Bettembourg.</p>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot_h1">Visite</h4>
+        <p>8, Rue James-Hilliard Polk</p>
+        <p>L-3275 Bettembourg</p>
+        <a href="tel:+352621291042">+352 621 291 042</a>
+      </div>
+      <div class="foot-col">
+        <h4 data-i18n="foot_h2">Réserver</h4>
+        <a href="https://atelier-gourmand-luxembourg.resos.com/" target="_blank" rel="noopener">resOS en ligne</a>
+        <a href="https://www.facebook.com/ateliergourmand.lu/" target="_blank" rel="noopener">Facebook</a>
+        <a href="#table" data-i18n="foot_menu">La carte</a>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span class="demo-badge" data-i18n="foot_demo">Site de démonstration — maquette non officielle. Horaires, adresse et tarifs à confirmer avec l'établissement.</span>
+      <span>© 2026 · Atelier Gourmand</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N={
+  fr:{
+    spine_sub:"Food · Wine & Shop",
+    dl_no:"No. Été 2026", dl_place:"Bettembourg, Grand-Duché", dl_res:"Réserver",
+    tick1:"Fait maison",tick2:"Carte renouvelée toutes les 2 à 3 semaines",tick3:"Vins naturels de vignerons indépendants",tick4:"Au fil des saisons",
+    tick1b:"Fait maison",tick2b:"Carte renouvelée toutes les 2 à 3 semaines",tick3b:"Vins naturels de vignerons indépendants",tick4b:"Au fil des saisons",
+    hero_kick:"Bistronomie de quartier · Bettembourg",
+    hero_h1a:"Fait maison,",hero_h1b:"au fil des saisons.",
+    hero_lede:"Une table chef-driven où tout est cuisiné sur place, une cave de vins naturels et une épicerie à emporter — réunies sous un même toit lumineux, face à la piscine des Terres Rouges.",
+    tri_a_t:"La Table",tri_a_s:"Food",tri_b_t:"La Cave",tri_b_s:"Wine",tri_c_t:"L'Épicerie",tri_c_s:"Shop",
+    hero_btn:"Réserver une table",
+    poincon:"N°1 sur 17 · Bettembourg", seal:"Saison ’26",
+    s1_kick:"Food",s1_h:"La Table",s1_sub:"Cuisine bistronomique, 100 % faite maison, au rythme du marché.",
+    s1_p:"Une carte courte qui tourne toutes les deux à trois semaines, dictée par la saison et les producteurs. Voici quelques signatures régulièrement à l'ardoise.",
+    d1:"Foie gras maison",d2:"Ris de veau",d3:"Magret de canard aux épices",d4:"Joues de bœuf braisées",d5:"Soufflé au Grand Marnier",d6:"Sablé breton, fruits rouges",
+    tag_ac:"à confirmer",tag_ac2:"à confirmer",tag_ac3:"à confirmer",tag_ac4:"à confirmer",tag_ac5:"à confirmer",tag_ac6:"à confirmer",
+    f_h:"Formule déjeuner · mar–ven",f_r1:"2 services",f_r2:"3 services complets",
+    f_note:"Soir à la carte ≈ 30–55 €/pers. — tarifs à confirmer avec l'établissement.",
+    s2_kick:"Wine",s2_h:"La Cave",s2_sub:"Vins naturels choisis chez des vignerons indépendants.",
+    s2_p:"Une cave vivante, pensée en accords avec la carte. Menu dégustation possible avec suggestions au verre — nos notes de dégustation, saison après saison.",
+    ct1:"Nature",c1_h:"Vignerons indépendants",c1_n:"« Des cuvées vivantes, peu ou pas sulfitées, à la personnalité franche. »",
+    ct2:"Accords",c2_h:"Menu dégustation",c2_n:"« Plats de saison et vins au verre, servis en dialogue. »",
+    ct3:"Conseil",c3_h:"Au verre & à l'ardoise",c3_n:"« Demandez la suggestion du jour à l'équipe en salle. »",
+    s2_foot:"Sélection indicative — la carte des vins évolue en cave. À confirmer.",
+    s3_kick:"Shop",s3_h:"L'Épicerie",s3_sub:"« Food, Wine & Shop » — la maison se prolonge à emporter.",
+    s3_p:"Ce qu'on aime en salle se retrouve sur les étagères : la cave se visite, la bouteille se remporte, et quelques produits de saison suivent.",
+    sh1:"Vins naturels à emporter",sh2:"Cuvées de vignerons indépendants",sh3:"Produits de saison & épicerie fine",sh4:"Idées cadeaux gourmandes",
+    s3_foot:"Poussez la porte à l'heure de l'apéritif : on vous conseille une bouteille pour ce soir.",s3_btn:"Se renseigner",
+    at_cap:"La salle lumineuse — bois clair & chaises marine, Bettembourg",
+    at_kick:"La Maison",at_h:"Un atelier, trois plaisirs.",
+    at_lead:"De Dudelange à la piscine des Terres Rouges de Bettembourg, la même idée : une bistronomie généreuse, sans chichi, ancrée dans le quartier.",
+    at_p1:"La salle est lumineuse — bois clair, chaises bleu marine, étagères végétalisées — pensée pour les déjeuners de semaine comme pour les dîners à deux. Terrasse, menu enfant, chiens bienvenus, parking gratuit et accès de plain-pied.",
+    at_p2:"Une adresse de food-forward regulars et d'amateurs de vins nature, régulièrement en tête des tables de Bettembourg.",
+    mk1:"74 avis TripAdvisor",mk2:"sur 17 à Bettembourg",mk3:"fait maison",
+    cn_kick:"Le Carnet",cn_h:"Nous trouver & réserver",
+    day_mon:"Lundi",h_closed:"Fermé",day_tue:"Mardi",h_tue:"12:00–15:00",day_wed:"Mer–Sam",h_wed:"12:00–15:00 · 18:00–23:00",day_sun:"Dimanche",h_sun:"12:00–15:00",
+    h_ac:"à confirmer",h_ac2:"à confirmer",h_ac3:"à confirmer",
+    cd_addr:"Adresse",cd_addr_ac:"n° à confirmer",cd_tel:"Téléphone",cd_book:"Réservation",cd_park:"Accès",cd_park_v:"Parking gratuit · terrasse · plain-pied",
+    cn_btn:"Réserver maintenant",
+    foot_p:"Bistronomie faite maison, au fil des saisons — Bettembourg.",
+    foot_h1:"Visite",foot_h2:"Réserver",foot_menu:"La carte",
+    foot_demo:"Site de démonstration — maquette non officielle. Horaires, adresse et tarifs à confirmer avec l'établissement."
+  },
+  de:{
+    spine_sub:"Food · Wine & Shop",
+    dl_no:"Nr. Sommer 2026", dl_place:"Bettemburg, Großherzogtum", dl_res:"Reservieren",
+    tick1:"Hausgemacht",tick2:"Karte wechselt alle 2 bis 3 Wochen",tick3:"Naturweine unabhängiger Winzer",tick4:"Im Rhythmus der Jahreszeiten",
+    tick1b:"Hausgemacht",tick2b:"Karte wechselt alle 2 bis 3 Wochen",tick3b:"Naturweine unabhängiger Winzer",tick4b:"Im Rhythmus der Jahreszeiten",
+    hero_kick:"Bistronomie im Viertel · Bettemburg",
+    hero_h1a:"Hausgemacht,",hero_h1b:"im Takt der Saison.",
+    hero_lede:"Eine chef-driven Küche, in der alles vor Ort zubereitet wird, ein Keller mit Naturweinen und ein Feinkostladen zum Mitnehmen — unter einem hellen Dach, gegenüber dem Freibad Terres Rouges.",
+    tri_a_t:"Der Tisch",tri_a_s:"Food",tri_b_t:"Der Keller",tri_b_s:"Wine",tri_c_t:"Der Laden",tri_c_s:"Shop",
+    hero_btn:"Tisch reservieren",
+    poincon:"Nr. 1 von 17 · Bettemburg", seal:"Saison ’26",
+    s1_kick:"Food",s1_h:"Der Tisch",s1_sub:"Bistronomische Küche, 100 % hausgemacht, im Takt des Marktes.",
+    s1_p:"Eine kurze Karte, die alle zwei bis drei Wochen wechselt — nach Saison und Erzeugern. Hier einige Klassiker, die regelmäßig auf der Tafel stehen.",
+    d1:"Hausgemachte Foie gras",d2:"Kalbsbries",d3:"Entenbrust mit Gewürzen",d4:"Geschmorte Rinderbäckchen",d5:"Soufflé Grand Marnier",d6:"Bretonisches Sablé, rote Früchte",
+    tag_ac:"zu bestätigen",tag_ac2:"zu bestätigen",tag_ac3:"zu bestätigen",tag_ac4:"zu bestätigen",tag_ac5:"zu bestätigen",tag_ac6:"zu bestätigen",
+    f_h:"Mittagsformel · Di–Fr",f_r1:"2 Gänge",f_r2:"3 komplette Gänge",
+    f_note:"Abends à la carte ≈ 30–55 €/Pers. — Preise mit dem Haus zu bestätigen.",
+    s2_kick:"Wine",s2_h:"Der Keller",s2_sub:"Naturweine, ausgewählt bei unabhängigen Winzern.",
+    s2_p:"Ein lebendiger Keller, abgestimmt auf die Karte. Degustationsmenü mit Weinbegleitung im Glas möglich — unsere Notizen, Saison für Saison.",
+    ct1:"Natur",c1_h:"Unabhängige Winzer",c1_n:"„Lebendige Cuvées, wenig oder nicht geschwefelt, mit klarem Charakter.“",
+    ct2:"Begleitung",c2_h:"Degustationsmenü",c2_n:"„Saisongerichte und Weine im Glas, im Dialog serviert.“",
+    ct3:"Empfehlung",c3_h:"Im Glas & auf der Tafel",c3_n:"„Fragen Sie das Serviceteam nach der Empfehlung des Tages.“",
+    s2_foot:"Auswahl exemplarisch — die Weinkarte entwickelt sich im Keller. Zu bestätigen.",
+    s3_kick:"Shop",s3_h:"Der Laden",s3_sub:"„Food, Wine & Shop“ — das Haus zum Mitnehmen.",
+    s3_p:"Was im Saal gefällt, steht auch im Regal: den Keller besuchen, die Flasche mitnehmen, dazu einige Produkte der Saison.",
+    sh1:"Naturweine zum Mitnehmen",sh2:"Cuvées unabhängiger Winzer",sh3:"Saisonprodukte & Feinkost",sh4:"Genussvolle Geschenkideen",
+    s3_foot:"Kommen Sie zur Aperitif-Zeit vorbei: Wir empfehlen Ihnen eine Flasche für heute Abend.",s3_btn:"Nachfragen",
+    at_cap:"Der helle Saal — helles Holz & marineblaue Stühle, Bettemburg",
+    at_kick:"Das Haus",at_h:"Ein Atelier, drei Freuden.",
+    at_lead:"Von Düdelingen zum Freibad Terres Rouges in Bettemburg, dieselbe Idee: eine großzügige Bistronomie ohne Schnickschnack, verwurzelt im Viertel.",
+    at_p1:"Der Saal ist hell — helles Holz, marineblaue Stühle, begrünte Regale — gedacht für Mittagessen unter der Woche wie für Dinner zu zweit. Terrasse, Kindermenü, Hunde willkommen, kostenlose Parkplätze und ebenerdiger Zugang.",
+    at_p2:"Eine Adresse für food-forward Stammgäste und Naturwein-Liebhaber, regelmäßig ganz oben unter den Tischen von Bettemburg.",
+    mk1:"74 TripAdvisor-Bewertungen",mk2:"von 17 in Bettemburg",mk3:"hausgemacht",
+    cn_kick:"Das Notizbuch",cn_h:"Finden & reservieren",
+    day_mon:"Montag",h_closed:"Geschlossen",day_tue:"Dienstag",h_tue:"12:00–15:00",day_wed:"Mi–Sa",h_wed:"12:00–15:00 · 18:00–23:00",day_sun:"Sonntag",h_sun:"12:00–15:00",
+    h_ac:"zu bestätigen",h_ac2:"zu bestätigen",h_ac3:"zu bestätigen",
+    cd_addr:"Adresse",cd_addr_ac:"Nr. zu bestätigen",cd_tel:"Telefon",cd_book:"Reservierung",cd_park:"Zugang",cd_park_v:"Kostenlose Parkplätze · Terrasse · ebenerdig",
+    cn_btn:"Jetzt reservieren",
+    foot_p:"Hausgemachte Bistronomie, im Takt der Saison — Bettemburg.",
+    foot_h1:"Besuch",foot_h2:"Reservieren",foot_menu:"Die Karte",
+    foot_demo:"Demo-Website — inoffizielle Vorschau. Öffnungszeiten, Adresse und Preise mit dem Haus zu bestätigen."
+  },
+  en:{
+    spine_sub:"Food · Wine & Shop",
+    dl_no:"No. Summer 2026", dl_place:"Bettembourg, Luxembourg", dl_res:"Book",
+    tick1:"Homemade",tick2:"Menu changes every 2 to 3 weeks",tick3:"Natural wines from independent growers",tick4:"In season, all year round",
+    tick1b:"Homemade",tick2b:"Menu changes every 2 to 3 weeks",tick3b:"Natural wines from independent growers",tick4b:"In season, all year round",
+    hero_kick:"Neighbourhood bistronomy · Bettembourg",
+    hero_h1a:"Homemade,",hero_h1b:"in season.",
+    hero_lede:"A chef-driven table where everything is cooked on site, a cellar of natural wines and a grocery to take home — all under one bright roof, facing the Terres Rouges pool.",
+    tri_a_t:"The Table",tri_a_s:"Food",tri_b_t:"The Cellar",tri_b_s:"Wine",tri_c_t:"The Shop",tri_c_s:"Shop",
+    hero_btn:"Book a table",
+    poincon:"No.1 of 17 · Bettembourg", seal:"Season ’26",
+    s1_kick:"Food",s1_h:"The Table",s1_sub:"Bistronomy, 100% homemade, at the pace of the market.",
+    s1_p:"A short menu that turns over every two to three weeks, led by the season and the growers. Here are a few signatures that regularly reach the board.",
+    d1:"Homemade foie gras",d2:"Veal sweetbreads",d3:"Spiced duck breast",d4:"Braised beef cheeks",d5:"Grand Marnier soufflé",d6:"Breton shortbread, red fruits",
+    tag_ac:"to confirm",tag_ac2:"to confirm",tag_ac3:"to confirm",tag_ac4:"to confirm",tag_ac5:"to confirm",tag_ac6:"to confirm",
+    f_h:"Lunch set menu · Tue–Fri",f_r1:"2 courses",f_r2:"3 full courses",
+    f_note:"Evening à la carte ≈ €30–55/person — prices to confirm with the venue.",
+    s2_kick:"Wine",s2_h:"The Cellar",s2_sub:"Natural wines chosen from independent growers.",
+    s2_p:"A living cellar built to pair with the menu. Tasting menu available with wines by the glass — our tasting notes, season after season.",
+    ct1:"Natural",c1_h:"Independent growers",c1_n:"“Living cuvées, little to no added sulphites, with frank character.”",
+    ct2:"Pairing",c2_h:"Tasting menu",c2_n:"“Seasonal dishes and wines by the glass, served in dialogue.”",
+    ct3:"Advice",c3_h:"By the glass & on the board",c3_n:"“Ask the floor team for today's suggestion.”",
+    s2_foot:"Indicative selection — the wine list evolves in the cellar. To confirm.",
+    s3_kick:"Shop",s3_h:"The Shop",s3_sub:"“Food, Wine & Shop” — the house, to take home.",
+    s3_p:"What you enjoy at the table lines the shelves too: visit the cellar, take the bottle home, and a few seasonal products follow.",
+    sh1:"Natural wines to take away",sh2:"Cuvées from independent growers",sh3:"Seasonal products & fine grocery",sh4:"Gourmet gift ideas",
+    s3_foot:"Drop by around apéritif time: we'll recommend a bottle for tonight.",s3_btn:"Ask us",
+    at_cap:"The bright dining room — pale wood & navy chairs, Bettembourg",
+    at_kick:"The House",at_h:"One atelier, three pleasures.",
+    at_lead:"From Dudelange to the Terres Rouges pool in Bettembourg, the same idea: generous, no-fuss bistronomy, rooted in the neighbourhood.",
+    at_p1:"The dining room is bright — pale wood, navy chairs, greenery-filled shelving — made for weekday lunches as much as dinners for two. Terrace, children's menu, dogs welcome, free parking and step-free access.",
+    at_p2:"A spot for food-forward regulars and natural-wine lovers, consistently near the top of Bettembourg's tables.",
+    mk1:"74 TripAdvisor reviews",mk2:"of 17 in Bettembourg",mk3:"homemade",
+    cn_kick:"The Notebook",cn_h:"Find us & book",
+    day_mon:"Monday",h_closed:"Closed",day_tue:"Tuesday",h_tue:"12:00–15:00",day_wed:"Wed–Sat",h_wed:"12:00–15:00 · 18:00–23:00",day_sun:"Sunday",h_sun:"12:00–15:00",
+    h_ac:"to confirm",h_ac2:"to confirm",h_ac3:"to confirm",
+    cd_addr:"Address",cd_addr_ac:"no. to confirm",cd_tel:"Phone",cd_book:"Booking",cd_park:"Access",cd_park_v:"Free parking · terrace · step-free",
+    cn_btn:"Book now",
+    foot_p:"Homemade bistronomy, in season — Bettembourg.",
+    foot_h1:"Visit",foot_h2:"Book",foot_menu:"The menu",
+    foot_demo:"Demonstration website — unofficial mock-up. Hours, address and prices to be confirmed with the venue."
+  }
+};
+function setLang(lang){
+  const dict=I18N[lang];if(!dict)return;
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(dict[k]!==undefined)el.textContent=dict[k];
+  });
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+}
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.dataset.lang));
+});
+</script>
+</body>
+</html>

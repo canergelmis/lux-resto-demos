@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Am Zechenhaus — Café-Restaurant · Ellergronn, Esch-sur-Alzette</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --walnut:#3a2418; --walnut2:#4d3320; --bark:#20130a;
+    --terra:#c1663a; --ochre:#cf9a4e; --ochre-soft:#e0b972;
+    --red:#8f2d2d; --red2:#ab3a30;
+    --moss:#5c6b40; --moss-dk:#39432a; --forest:#242c19;
+    --cream:#f2e9d8; --cream2:#e7d9bf; --paper:#f7f0e1;
+    --steel:#6a645c; --steel-dk:#2a2620; --steel-lt:#8f887e;
+    --ink:#221811;
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    --cond:'Oswald','Arial Narrow',Helvetica,sans-serif;
+    --sans:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;
+    --gutter:132px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .cond{font-family:var(--cond)}
+  .serif{font-family:var(--serif)}
+
+  /* ---------- TOP SIGNAL PLAQUE (header) ---------- */
+  .plaque{
+    position:sticky;top:0;z-index:60;
+    display:flex;align-items:stretch;justify-content:space-between;
+    background:linear-gradient(180deg,#2f2a24,#211d18);
+    border-bottom:3px solid var(--ochre);
+    box-shadow:0 6px 22px rgba(0,0,0,.35);
+  }
+  .plaque .brand{
+    display:flex;flex-direction:column;justify-content:center;
+    padding:11px 26px;color:var(--cream);
+    border-right:1px solid rgba(255,255,255,.08);
+    min-width:var(--gutter);
+  }
+  .plaque .brand .wm{font-family:var(--serif);font-style:italic;font-size:23px;line-height:1;letter-spacing:.3px}
+  .plaque .brand .sub{font-family:var(--cond);text-transform:uppercase;letter-spacing:.32em;font-size:9.5px;color:var(--ochre-soft);margin-top:5px}
+  .plaque nav{display:flex;align-items:stretch;flex:1;overflow:hidden}
+  .plaque nav a{
+    display:flex;align-items:center;gap:9px;
+    padding:0 20px;color:#cdc4b4;
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:400;
+    border-left:1px solid rgba(255,255,255,.05);
+    transition:.2s;white-space:nowrap;
+  }
+  .plaque nav a .n{font-size:10px;color:var(--terra);font-weight:600}
+  .plaque nav a:hover{background:rgba(207,154,78,.14);color:#fff}
+  .langsw{display:flex;align-items:center;padding:0 14px;gap:2px;border-left:1px solid rgba(255,255,255,.08)}
+  .langsw button{
+    font-family:var(--cond);font-size:12px;font-weight:500;letter-spacing:.1em;
+    background:none;border:1px solid transparent;color:#9c9385;
+    padding:6px 9px;cursor:pointer;border-radius:3px;transition:.18s;
+  }
+  .langsw button:hover{color:var(--cream)}
+  .langsw button.on{background:var(--ochre);color:#2a1c0c;font-weight:600}
+
+  /* ---------- THE LINE + RAIL ---------- */
+  .line{position:relative}
+  .rail{
+    position:absolute;top:0;bottom:0;left:59px;width:14px;z-index:1;
+    background:
+      linear-gradient(90deg,#4a453d 0%,#8b857a 34%,#c9c2b4 50%,#8b857a 66%,#4a453d 100%);
+    box-shadow:0 0 0 1px rgba(0,0,0,.25);
+  }
+  .rail::before{ /* sleepers/ties behind rail */
+    content:"";position:absolute;left:-19px;right:-19px;top:0;bottom:0;z-index:-1;
+    background:repeating-linear-gradient(180deg,#5a3d26 0 10px,transparent 10px 46px);
+    opacity:.6;
+  }
+  .halte{position:relative;z-index:2;padding:0 5vw 0 var(--gutter)}
+  .marker{
+    position:absolute;left:35px;top:var(--mk,54px);z-index:5;
+    width:62px;height:62px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#e9c987,var(--ochre) 55%,#9c6a2a);
+    border:3px solid #2a2116;
+    box-shadow:0 4px 12px rgba(0,0,0,.4),inset 0 0 0 2px rgba(255,255,255,.25);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:#2a1c0c;font-family:var(--cond);line-height:1;
+  }
+  .marker b{font-size:20px;font-weight:700}
+  .marker span{font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;margin-top:2px}
+
+  .eyebrow{
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.34em;
+    font-size:12px;font-weight:500;color:var(--terra);
+    display:flex;align-items:center;gap:14px;
+  }
+  .eyebrow::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--terra),transparent);max-width:220px}
+  h2.title{font-family:var(--serif);font-weight:600;font-size:clamp(30px,3.6vw,52px);line-height:1.02;letter-spacing:-.01em;margin:.35em 0 .3em}
+  h2.title em{font-style:italic;color:var(--terra)}
+
+  /* ---------- HALTE 00 · DÉPART (hero) ---------- */
+  #depart{padding-top:0;padding-bottom:0}
+  .hero{
+    display:grid;grid-template-columns:1.15fr .85fr;min-height:88vh;align-items:stretch;
+  }
+  .hero-photo{position:relative;overflow:hidden;background:#1c140c;border-right:6px solid var(--ochre)}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(1.02) contrast(1.03)}
+  .hero-photo .frame{
+    position:absolute;inset:20px;border:1px solid rgba(255,255,255,.35);pointer-events:none;
+    box-shadow:inset 0 0 60px rgba(0,0,0,.4);
+  }
+  .hero-photo .tag{
+    position:absolute;left:0;bottom:34px;background:rgba(28,20,12,.82);
+    color:var(--cream);font-family:var(--cond);text-transform:uppercase;letter-spacing:.24em;
+    font-size:11px;padding:9px 20px 9px 28px;backdrop-filter:blur(2px);
+    border-left:4px solid var(--red2);
+  }
+  .board{
+    background:
+      radial-gradient(120% 90% at 80% 0%,rgba(207,154,78,.10),transparent 60%),
+      linear-gradient(180deg,var(--forest),#1a2011);
+    color:var(--cream);
+    display:flex;flex-direction:column;justify-content:center;
+    padding:6vh 5vw 6vh 4vw;position:relative;
+  }
+  .board .kicker{font-family:var(--cond);text-transform:uppercase;letter-spacing:.4em;font-size:11px;color:var(--ochre-soft)}
+  .board h1{
+    font-family:var(--serif);font-weight:600;font-size:clamp(44px,5.2vw,86px);
+    line-height:.92;letter-spacing:-.015em;margin:.18em 0 .1em;
+  }
+  .board h1 em{display:block;font-style:italic;font-weight:400;font-size:.42em;color:var(--ochre-soft);letter-spacing:0;margin-top:.35em}
+  .board .lede{max-width:34ch;color:#e3dcc9;font-size:18px;margin:22px 0 30px}
+  .board .lede b{color:#fff;font-weight:600}
+  .enamel{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);margin-bottom:30px;
+  }
+  .enamel div{background:linear-gradient(180deg,#20281680,#161c0f80);padding:14px 16px}
+  .enamel .l{font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;font-size:9px;color:var(--ochre-soft)}
+  .enamel .v{font-family:var(--serif);font-size:17px;margin-top:4px;color:#fff}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;font-size:13px;font-weight:500;
+    padding:14px 26px;border:1px solid transparent;cursor:pointer;transition:.2s;display:inline-flex;gap:9px;align-items:center;
+  }
+  .btn-primary{background:var(--ochre);color:#251804}
+  .btn-primary:hover{background:#e6bd6f}
+  .btn-ghost{background:transparent;color:var(--cream);border-color:rgba(255,255,255,.4)}
+  .btn-ghost:hover{border-color:var(--ochre);color:var(--ochre-soft)}
+  .board .coords{position:absolute;right:22px;top:22px;font-family:var(--cond);font-size:9px;letter-spacing:.24em;color:rgba(255,255,255,.4);text-transform:uppercase;text-align:right;line-height:1.7}
+
+  /* ---------- HALTE 01 · LE DÉCOR (setting) ---------- */
+  #decor{
+    background:linear-gradient(180deg,var(--walnut),var(--bark));
+    color:var(--cream);padding-top:76px;padding-bottom:80px;
+  }
+  #decor .eyebrow{color:var(--ochre-soft)}
+  #decor .eyebrow::after{background:linear-gradient(90deg,var(--ochre),transparent)}
+  .decor-grid{display:grid;grid-template-columns:.92fr 1.35fr;gap:46px;align-items:center;margin-top:6px}
+  .decor-copy p{color:#ddd3bf;margin-bottom:16px;max-width:46ch}
+  .facts{display:flex;gap:26px;margin-top:26px;flex-wrap:wrap}
+  .facts div{border-left:2px solid var(--terra);padding-left:14px}
+  .facts .num{font-family:var(--serif);font-size:34px;line-height:1;color:#fff}
+  .facts .lab{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:var(--ochre-soft);margin-top:6px}
+  .windows{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:200px 200px;gap:14px}
+  .win{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.14);box-shadow:0 10px 26px rgba(0,0,0,.4)}
+  .win .bg{position:absolute;inset:0;background-size:200% 200%;background-repeat:no-repeat}
+  .win.big{grid-row:span 2}
+  .win .cap{
+    position:absolute;left:0;bottom:0;right:0;padding:22px 14px 10px;
+    background:linear-gradient(180deg,transparent,rgba(20,13,7,.9));
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;font-size:10px;color:var(--cream);
+  }
+  .win .cap b{color:var(--ochre-soft)}
+
+  /* ---------- HALTE 02 · LA CARTE (menu) ---------- */
+  #carte{padding-top:78px;padding-bottom:78px}
+  .carte-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px}
+  .lunchtab{
+    background:var(--red);color:#fff;padding:14px 22px;border-radius:2px;
+    box-shadow:0 8px 20px rgba(143,45,45,.3);text-align:right;
+  }
+  .lunchtab .l{font-family:var(--cond);text-transform:uppercase;letter-spacing:.2em;font-size:10px;color:#f3cdcd}
+  .lunchtab .p{font-family:var(--serif);font-size:30px;line-height:1;margin-top:3px}
+  .lunchtab .c{font-size:11px;color:#f0c9c9;margin-top:4px;font-style:italic}
+  .menu-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:38px;border-top:2px solid var(--walnut)}
+  .mcol{padding:26px 30px;border-right:1px dashed #c9b48f;position:relative}
+  .mcol:last-child{border-right:none}
+  .mcol h3{
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;font-size:14px;font-weight:600;
+    color:var(--terra);padding-bottom:12px;margin-bottom:16px;border-bottom:1px solid #d8c6a3;
+    display:flex;align-items:center;gap:10px;
+  }
+  .mcol h3 .fl{font-size:15px}
+  .dish{margin-bottom:16px}
+  .dish .r{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .dish .nm{font-family:var(--serif);font-size:18px;color:var(--ink);font-weight:500}
+  .dish .nm .star{color:var(--red);font-size:12px;vertical-align:super;margin-left:3px}
+  .dish .pr{font-family:var(--cond);font-size:12px;color:#9c8b6d;letter-spacing:.06em;white-space:nowrap}
+  .dish .ds{font-size:13.5px;color:#6f6250;margin-top:2px;line-height:1.45}
+  .menu-note{font-size:12px;color:#8a7c66;font-style:italic;margin-top:14px;padding:0 30px}
+  .plates{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
+  .plate{aspect-ratio:1/1;overflow:hidden;border:5px solid #fff;box-shadow:0 8px 20px rgba(60,40,20,.18);position:relative}
+  .plate .bg{position:absolute;inset:0;background-size:200% 200%;background-repeat:no-repeat}
+  .plate .cap{position:absolute;left:0;bottom:0;right:0;background:rgba(28,20,12,.78);color:var(--cream);font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-size:9.5px;padding:6px 8px}
+
+  /* ---------- HALTE 03 · LA SALLE (room) ---------- */
+  #salle{background:linear-gradient(180deg,var(--moss-dk),var(--forest));color:var(--cream);padding-top:76px;padding-bottom:80px}
+  #salle .eyebrow{color:var(--ochre-soft)}
+  #salle .eyebrow::after{background:linear-gradient(90deg,var(--ochre),transparent)}
+  .salle-lede{max-width:52ch;color:#d8dcc6;margin-top:6px}
+  .salle-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:230px 230px;gap:14px;margin-top:34px}
+  .scell{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 12px 28px rgba(0,0,0,.4)}
+  .scell .bg{position:absolute;inset:0;background-size:cover;background-position:center}
+  .scell.tall{grid-row:span 2}
+  .scell .cap{position:absolute;left:0;bottom:0;right:0;padding:22px 14px 10px;background:linear-gradient(180deg,transparent,rgba(15,20,9,.9));font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:10px}
+  .scell .cap b{color:var(--ochre-soft)}
+  .klee{background:linear-gradient(135deg,#c0392b,#e07b39 25%,#2e6e8e 50%,#c99b2f 72%,#4a7c59);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:18px}
+  .klee .k1{font-family:var(--serif);font-style:italic;font-size:26px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+  .klee .k2{font-family:var(--cond);text-transform:uppercase;letter-spacing:.2em;font-size:9px;margin-top:8px;background:rgba(0,0,0,.35);padding:5px 10px}
+
+  /* ---------- HALTE 04 · TERMINUS (visit) ---------- */
+  #terminus{padding-top:78px;padding-bottom:70px}
+  .term-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:0;margin-top:30px;border:1px solid var(--cream2);box-shadow:0 18px 40px rgba(60,40,20,.14)}
+  .infoboard{background:linear-gradient(180deg,#2c2721,#211d18);color:var(--cream);padding:38px 40px}
+  .infoboard .row{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .infoboard .row:last-child{border-bottom:none}
+  .infoboard .ic{font-size:19px;color:var(--ochre);width:26px;flex-shrink:0;text-align:center;padding-top:2px}
+  .infoboard .k{font-family:var(--cond);text-transform:uppercase;letter-spacing:.18em;font-size:10px;color:var(--ochre-soft)}
+  .infoboard .val{font-size:15.5px;color:#efe7d5;margin-top:3px}
+  .infoboard .val .cf{font-style:italic;color:#b7ac96;font-size:12.5px}
+  .infoboard .val a:hover{color:var(--ochre-soft)}
+  .picto{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+  .picto span{font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-size:9.5px;color:#d8cdb6;border:1px solid rgba(255,255,255,.22);padding:5px 9px;border-radius:2px}
+  .mapwrap{position:relative;min-height:440px}
+  .mapwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.9) contrast(1.02)}
+  .hours-note{grid-column:1/-1;background:var(--red);color:#fff;font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:11px;padding:12px 40px;display:flex;align-items:center;gap:12px}
+  .hours-note b{color:#f6d7d7}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--bark);color:#b7ab95;padding:44px 5vw 30px var(--gutter);position:relative;z-index:2}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;align-items:start}
+  footer .wm{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--cream)}
+  footer .sub{font-family:var(--cond);text-transform:uppercase;letter-spacing:.28em;font-size:10px;color:var(--ochre-soft);margin-top:6px}
+  footer p{font-size:13.5px;margin-top:14px;max-width:40ch;color:#a99d87}
+  footer h4{font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;font-size:11px;color:var(--ochre-soft);margin-bottom:12px}
+  footer .fl{font-size:14px;line-height:2;color:#c3b8a1}
+  footer .fl a:hover{color:var(--ochre-soft)}
+  .disclaimer{margin-top:34px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);font-size:11.5px;color:#8a7f6b;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .disclaimer .demo{color:var(--ochre-soft);font-family:var(--cond);letter-spacing:.1em;text-transform:uppercase;font-size:10px}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:1080px){
+    .hero{grid-template-columns:1fr;min-height:auto}
+    .hero-photo{min-height:52vh;border-right:none;border-bottom:6px solid var(--ochre)}
+    .decor-grid{grid-template-columns:1fr;gap:30px}
+    .term-grid{grid-template-columns:1fr}
+    .mapwrap{min-height:340px}
+    .salle-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:860px){
+    .plaque{flex-wrap:wrap}
+    .plaque nav{order:3;width:100%;overflow-x:auto}
+    .plaque .brand{flex:1;min-width:0}
+    .menu-cols{grid-template-columns:1fr}
+    .mcol{border-right:none;border-bottom:1px dashed #c9b48f}
+    .plates{grid-template-columns:repeat(2,1fr)}
+    .windows{grid-template-columns:1fr;grid-template-rows:auto}
+    .win.big{grid-row:auto}
+    .win .bg{position:relative;height:220px}
+    .win{min-height:220px}
+    .salle-grid{grid-template-columns:1fr;grid-template-rows:auto}
+    .scell.tall{grid-row:auto}
+    .scell{min-height:200px}
+    .scell .bg{position:relative;height:200px}
+    .foot-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:680px){
+    :root{--gutter:56px}
+    .rail{left:20px;width:9px}
+    .rail::before{left:-11px;right:-11px}
+    .marker{left:5px;width:44px;height:44px}
+    .marker b{font-size:15px}
+    .marker span{display:none}
+    .halte{padding-left:var(--gutter);padding-right:20px}
+    footer{padding-left:var(--gutter);padding-right:20px}
+    .board{padding:8vh 24px}
+    .enamel{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TOP SIGNAL PLAQUE ===== -->
+<header class="plaque">
+  <div class="brand">
+    <span class="wm">Am Zechenhaus</span>
+    <span class="sub" data-i18n="brand_sub">Ellergronn · Esch-sur-Alzette</span>
+  </div>
+  <nav>
+    <a href="#decor"><span class="n">01</span><span data-i18n="nav_decor">Le décor</span></a>
+    <a href="#carte"><span class="n">02</span><span data-i18n="nav_carte">La carte</span></a>
+    <a href="#salle"><span class="n">03</span><span data-i18n="nav_salle">La salle</span></a>
+    <a href="#terminus"><span class="n">04</span><span data-i18n="nav_terminus">Nous trouver</span></a>
+  </nav>
+  <div class="langsw">
+    <button data-lang="fr" class="on">FR</button>
+    <button data-lang="de">DE</button>
+    <button data-lang="en">EN</button>
+  </div>
+</header>
+
+<div class="line">
+  <div class="rail" aria-hidden="true"></div>
+
+  <!-- ===== HALTE 00 · DÉPART (hero) ===== -->
+  <section class="halte" id="depart">
+    <div class="marker" style="--mk:44px"><b>00</b><span data-i18n="mk_depart">Départ</span></div>
+    <div class="hero">
+      <div class="hero-photo">
+        <img src="assets/hero.jpg" alt="Salle rustique aux poutres de bois, bar aux bouteilles de vin et chaises à coussins rouges — Am Zechenhaus">
+        <span class="frame"></span>
+        <span class="tag" data-i18n="hero_tag">La salle · chalet de bois, cœur du site minier</span>
+      </div>
+      <div class="board">
+        <span class="coords" data-i18n="hero_coords">49.4931° N · 5.9556° E<br>Réserve naturelle Ellergronn<br>Anc. mine « Cockerill »</span>
+        <span class="kicker" data-i18n="hero_kicker">Café-Restaurant · depuis le fond de la vallée</span>
+        <h1>Am Zechenhaus<em data-i18n="hero_line">La ligne de l'Ellergronn</em></h1>
+        <p class="lede" data-i18n="hero_lede">Une table <b>maison</b> posée entre la forêt et le patrimoine minier — au terminus des sentiers, là où les vieilles locomotives dorment encore sur leurs rails.</p>
+        <div class="enamel">
+          <div><div class="l" data-i18n="en1l">Cuisine</div><div class="v" data-i18n="en1v">Luxo · Française · Italienne</div></div>
+          <div><div class="l" data-i18n="en2l">Cadre</div><div class="v" data-i18n="en2v">Réserve naturelle</div></div>
+          <div><div class="l" data-i18n="en3l">Esprit</div><div class="v" data-i18n="en3v">Fait maison · €€</div></div>
+        </div>
+        <div class="cta-row">
+          <a href="#carte" class="btn btn-primary" data-i18n="hero_cta1">Voir la carte</a>
+          <a href="#terminus" class="btn btn-ghost" data-i18n="hero_cta2">Réserver une table</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HALTE 01 · LE DÉCOR ===== -->
+  <section class="halte" id="decor">
+    <div class="marker" style="--mk:60px"><b>01</b><span data-i18n="mk_decor">Décor</span></div>
+    <span class="eyebrow" data-i18n="decor_eye">Entre forêt et mine</span>
+    <h2 class="title" data-i18n-html="decor_title">Le seul restaurant <em>au fond de la réserve</em></h2>
+    <div class="decor-grid">
+      <div class="decor-copy">
+        <p data-i18n="decor_p1">Am Zechenhaus n'est pas une adresse de centre-ville. On y arrive par les sentiers de l'Ellergronn, la réserve naturelle qui borde Esch-sur-Alzette : forêt, ruisseaux, et les bâtiments industriels de l'ancienne mine tout autour.</p>
+        <p data-i18n="decor_p2">Wagonnets et voie étroite, halle aux locomotives, musée national des mines : le décor raconte le passé minier du bassin. La table, elle, réchauffe les randonneurs, les familles et les visiteurs du centre nature.</p>
+        <div class="facts">
+          <div><div class="num">1</div><div class="lab" data-i18n="fact1">Réserve naturelle</div></div>
+          <div><div class="num">3</div><div class="lab" data-i18n="fact2">Cuisines à la carte</div></div>
+          <div><div class="num">4,3★</div><div class="lab" data-i18n="fact3">≈120 avis Google</div></div>
+        </div>
+      </div>
+      <div class="windows">
+        <div class="win big">
+          <div class="bg" style="background-image:url(assets/interior-1.jpg);background-position:0% 0%"></div>
+          <div class="cap"><b data-i18n="win1b">Patrimoine ·</b> <span data-i18n="win1t">Les locomotives de la mine</span></div>
+        </div>
+        <div class="win">
+          <div class="bg" style="background-image:url(assets/exterior.jpg);background-position:100% 0%"></div>
+          <div class="cap"><b data-i18n="win2b">Sentiers ·</b> <span data-i18n="win2t">La voie étroite sous la neige</span></div>
+        </div>
+        <div class="win">
+          <div class="bg" style="background-image:url(assets/facade.jpg);background-position:100% 0%"></div>
+          <div class="cap"><b data-i18n="win3b">Cadre ·</b> <span data-i18n="win3t">La halle historique</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HALTE 02 · LA CARTE ===== -->
+  <section class="halte" id="carte">
+    <div class="marker" style="--mk:60px"><b>02</b><span data-i18n="mk_carte">La carte</span></div>
+    <div class="carte-head">
+      <div>
+        <span class="eyebrow" data-i18n="carte_eye">Fait maison, tous les jours</span>
+        <h2 class="title" data-i18n-html="carte_title">Trois cuisines <em>sur une même voie</em></h2>
+      </div>
+      <div class="lunchtab">
+        <div class="l" data-i18n="lunch_l">Plat du jour · midi</div>
+        <div class="p">≈ 12,50 €</div>
+        <div class="c" data-i18n="lunch_c">prix à confirmer</div>
+      </div>
+    </div>
+
+    <div class="menu-cols">
+      <div class="mcol">
+        <h3><span class="fl">🇱🇺</span> <span data-i18n="col1">Du Luxembourg</span></h3>
+        <div class="dish">
+          <div class="r"><span class="nm" data-i18n="d1n">Steak de cheval à l'ail<span class="star">★</span></span><span class="pr" data-i18n="pr">à conf.</span></div>
+          <div class="ds" data-i18n="d1d">La spécialité de la maison, ail et beurre persillé.</div>
+        </div>
+        <div class="dish">
+          <div class="r"><span class="nm" data-i18n="d2n">Cordon bleu maison</span><span class="pr" data-i18n="pr">à conf.</span></div>
+          <div class="ds" data-i18n="d2d">Généreux, pané minute, frites maison.</div>
+        </div>
+        <div class="dish">
+          <div class="r"><span class="nm" data-i18n="d3n">Beignets de jambon</span><span class="pr" data-i18n="pr">à conf.</span></div>
+          <div class="ds" data-i18n="d3d">Un classique réconfortant du pays.</div>
+        </div>
+      </div>
+
+      <div class="mcol">
+        <h3><span class="fl">🇫🇷</span> <span data-i18n="col2">De France</span></h3>
+        <div class="dish">
+          <div class="r"><span class="nm" data-i18n="d4n">Tagliata de bœuf</span><span class="pr" data-i18n="pr">à conf.</span></div>
+          <div class="ds" data-i18n="d4d">Sur planche, copeaux de parmesan et roquette.</div>
+        </div>
+        <div class="dish">
+          <div class="r"><span class="nm" data-i18n="d5n">Steak au poivre & frites</span><span class="pr" data-i18n="pr">à conf.</span></div>
+          <div class="ds" data-i18n="d5d">Sauce poivre crémeuse, légumes du moment.</div>
+        </div>
+        <div class="dish">
+          <div class="r"><span class="nm" data-i18n="d6n">Carpaccio & salades composées</span><span class="pr" data-i18n="pr">à conf.</span></div>
+          <div class="ds" data-i18n="d6d">Frais, pour les jours de marche au grand air.</div>
+        </div>
+      </div>
+
+      <div class="mcol">
+        <h3><span class="fl">🇮🇹</span> <span data-i18n="col3">D'Italie</span></h3>
+        <div class="dish">
+          <div class="r"><span class="nm" data-i18n="d7n">Ravioli maison</span><span class="pr" data-i18n="pr">à conf.</span></div>
+          <div class="ds" data-i18n="d7d">Pâtes fraîches, sauce du jour.</div>
+        </div>
+        <div class="dish">
+          <div class="r"><span class="nm" data-i18n="d8n">Pasta au parmesan</span><span class="pr" data-i18n="pr">à conf.</span></div>
+          <div class="ds" data-i18n="d8d">Simple et généreuse, à l'italienne.</div>
+        </div>
+        <div class="dish">
+          <div class="r"><span class="nm" data-i18n="d9n">Gyoza</span><span class="pr" data-i18n="pr">à conf.</span></div>
+          <div class="ds" data-i18n="d9d">La bouchée légère, à partager au café.</div>
+        </div>
+      </div>
+    </div>
+    <p class="menu-note" data-i18n="menu_note">★ Spécialité maison. Carte donnée à titre indicatif — plats et prix à confirmer avec l'établissement. Cave de vins (dont Sassicaia), sélection de whiskies et café de qualité au bar.</p>
+
+    <div class="plates">
+      <div class="plate">
+        <div class="bg" style="background-image:url(assets/food-1.jpg);background-position:0% 0%"></div>
+        <div class="cap" data-i18n="pl1">Pasta au parmesan</div>
+      </div>
+      <div class="plate">
+        <div class="bg" style="background-image:url(assets/food-2-ravioli.jpg);background-position:0% 0%"></div>
+        <div class="cap" data-i18n="pl2">Ravioli maison</div>
+      </div>
+      <div class="plate">
+        <div class="bg" style="background-image:url(assets/food-4-dessert.jpg);background-position:0% 0%"></div>
+        <div class="cap" data-i18n="pl3">Tagliata sur planche</div>
+      </div>
+      <div class="plate">
+        <div class="bg" style="background-image:url(assets/food-4-dessert.jpg);background-position:100% 0%"></div>
+        <div class="cap" data-i18n="pl4">Café liégeois</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HALTE 03 · LA SALLE ===== -->
+  <section class="halte" id="salle">
+    <div class="marker" style="--mk:60px"><b>03</b><span data-i18n="mk_salle">La salle</span></div>
+    <span class="eyebrow" data-i18n="salle_eye">Poutres, feu de bois, coussins rouges</span>
+    <h2 class="title" data-i18n-html="salle_title">Un chalet de bois, <em>et la forêt aux fenêtres</em></h2>
+    <p class="salle-lede" data-i18n="salle_lede">Plafond à poutres apparentes, bar tapissé de bouteilles, terrasse ouverte sur la verdure : on s'attable ici après la marche, en famille ou entre amis.</p>
+    <div class="salle-grid">
+      <div class="scell tall">
+        <div class="bg" style="background-image:url(assets/hero.jpg)"></div>
+        <div class="cap"><b data-i18n="sc1b">Salle ·</b> <span data-i18n="sc1t">Le bar et les poutres</span></div>
+      </div>
+      <div class="scell">
+        <div class="bg" style="background-image:url(assets/interior-2.jpg);background-size:200% 200%;background-position:100% 100%"></div>
+        <div class="cap"><b data-i18n="sc2b">Terrasse ·</b> <span data-i18n="sc2t">Face à la forêt</span></div>
+      </div>
+      <div class="scell klee">
+        <div class="k1" data-i18n="klee1">Am Zechenhaus</div>
+        <div class="k2" data-i18n="klee2">Couverture du menu · art abstrait</div>
+      </div>
+      <div class="scell">
+        <div class="bg" style="background-image:url(assets/interior-2.jpg);background-size:200% 200%;background-position:0% 100%"></div>
+        <div class="cap"><b data-i18n="sc3b">Intérieur ·</b> <span data-i18n="sc3t">Tables et chaises rustiques</span></div>
+      </div>
+      <div class="scell">
+        <div class="bg" style="background-image:url(assets/food-3-gyoza.jpg);background-size:200% 200%;background-position:0% 0%"></div>
+        <div class="cap"><b data-i18n="sc4b">Dessert ·</b> <span data-i18n="sc4t">Tiramisu maison</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HALTE 04 · TERMINUS ===== -->
+  <section class="halte" id="terminus">
+    <div class="marker" style="--mk:60px"><b>04</b><span data-i18n="mk_terminus">Terminus</span></div>
+    <span class="eyebrow" data-i18n="term_eye">Terminus de la ligne</span>
+    <h2 class="title" data-i18n-html="term_title">Nous trouver <em>au bout du chemin</em></h2>
+    <div class="term-grid">
+      <div class="infoboard">
+        <div class="row">
+          <div class="ic">📍</div>
+          <div><div class="k" data-i18n="ib_addr">Adresse</div>
+            <div class="val">100, Rue Jean-Pierre Bausch<br>L-4023 Esch-sur-Alzette (Ellergronn)<br><span class="cf" data-i18n="ib_addr_cf">Adresse à confirmer avec l'établissement</span></div></div>
+        </div>
+        <div class="row">
+          <div class="ic">☎</div>
+          <div><div class="k" data-i18n="ib_tel">Téléphone</div>
+            <div class="val"><a href="tel:+3525327 55">+352 53 27 55</a><br><span class="cf" data-i18n="ib_tel_cf">numéro à confirmer</span></div></div>
+        </div>
+        <div class="row">
+          <div class="ic">🕑</div>
+          <div><div class="k" data-i18n="ib_hours">Horaires</div>
+            <div class="val" data-i18n="ib_hours_v">Café d'accueil des week-ends & visiteurs de la réserve.<br><span class="cf">Horaires exacts à confirmer — merci d'appeler avant de venir.</span></div></div>
+        </div>
+        <div class="row">
+          <div class="ic">✦</div>
+          <div><div class="k" data-i18n="ib_serv">Sur place</div>
+            <div class="picto">
+              <span data-i18n="p1">Terrasse</span><span data-i18n="p2">Parking gratuit</span><span data-i18n="p3">Accès PMR</span><span data-i18n="p4">Familles</span>
+            </div></div>
+        </div>
+      </div>
+      <div class="mapwrap">
+        <iframe title="Carte — Am Zechenhaus, Ellergronn" loading="lazy" src="https://www.google.com/maps?q=Am%20Zechenhaus%20Ellergronn%20Esch-sur-Alzette&output=embed"></iframe>
+      </div>
+      <div class="hours-note"><b>ⓘ</b><span data-i18n="hours_banner">Site de démonstration — horaires, adresse, téléphone et carte à confirmer avec l'établissement avant publication.</span></div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="foot-grid">
+      <div>
+        <div class="wm">Am Zechenhaus</div>
+        <div class="sub" data-i18n="foot_sub">Café-Restaurant · Réserve de l'Ellergronn</div>
+        <p data-i18n="foot_p">Une table maison entre forêt et patrimoine minier, au cœur de la réserve naturelle de l'Ellergronn, à Esch-sur-Alzette.</p>
+      </div>
+      <div>
+        <h4 data-i18n="foot_visit">La visite</h4>
+        <div class="fl">
+          <a href="#decor" data-i18n="nav_decor">Le décor</a><br>
+          <a href="#carte" data-i18n="nav_carte">La carte</a><br>
+          <a href="#salle" data-i18n="nav_salle">La salle</a><br>
+          <a href="#terminus" data-i18n="nav_terminus">Nous trouver</a>
+        </div>
+      </div>
+      <div>
+        <h4 data-i18n="foot_contact">Contact</h4>
+        <div class="fl">
+          <a href="tel:+3525327 55">+352 53 27 55</a><br>
+          <span data-i18n="foot_addr">100, Rue Jean-Pierre Bausch<br>L-4023 Esch-sur-Alzette</span>
+        </div>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <span class="demo" data-i18n="demo">◆ Site de démonstration — non officiel</span>
+      <span data-i18n="foot_credit">Maquette conçue par Webwerk · contenus & coordonnées à confirmer avec l'établissement</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+const I18N = {
+  fr:{
+    brand_sub:"Ellergronn · Esch-sur-Alzette",
+    nav_decor:"Le décor", nav_carte:"La carte", nav_salle:"La salle", nav_terminus:"Nous trouver",
+    mk_depart:"Départ", mk_decor:"Décor", mk_carte:"La carte", mk_salle:"La salle", mk_terminus:"Terminus",
+    hero_tag:"La salle · chalet de bois, cœur du site minier",
+    hero_coords:"49.4931° N · 5.9556° E<br>Réserve naturelle Ellergronn<br>Anc. mine « Cockerill »",
+    hero_kicker:"Café-Restaurant · depuis le fond de la vallée",
+    hero_line:"La ligne de l'Ellergronn",
+    hero_lede:"Une table <b>maison</b> posée entre la forêt et le patrimoine minier — au terminus des sentiers, là où les vieilles locomotives dorment encore sur leurs rails.",
+    en1l:"Cuisine", en1v:"Luxo · Française · Italienne", en2l:"Cadre", en2v:"Réserve naturelle", en3l:"Esprit", en3v:"Fait maison · €€",
+    hero_cta1:"Voir la carte", hero_cta2:"Réserver une table",
+    decor_eye:"Entre forêt et mine",
+    decor_title:"Le seul restaurant <em>au fond de la réserve</em>",
+    decor_p1:"Am Zechenhaus n'est pas une adresse de centre-ville. On y arrive par les sentiers de l'Ellergronn, la réserve naturelle qui borde Esch-sur-Alzette : forêt, ruisseaux, et les bâtiments industriels de l'ancienne mine tout autour.",
+    decor_p2:"Wagonnets et voie étroite, halle aux locomotives, musée national des mines : le décor raconte le passé minier du bassin. La table, elle, réchauffe les randonneurs, les familles et les visiteurs du centre nature.",
+    fact1:"Réserve naturelle", fact2:"Cuisines à la carte", fact3:"≈120 avis Google",
+    win1b:"Patrimoine ·", win1t:"Les locomotives de la mine",
+    win2b:"Sentiers ·", win2t:"La voie étroite sous la neige",
+    win3b:"Cadre ·", win3t:"La halle historique",
+    carte_eye:"Fait maison, tous les jours",
+    carte_title:"Trois cuisines <em>sur une même voie</em>",
+    lunch_l:"Plat du jour · midi", lunch_c:"prix à confirmer",
+    col1:"Du Luxembourg", col2:"De France", col3:"D'Italie",
+    d1n:"Steak de cheval à l'ail<span class='star'>★</span>", d1d:"La spécialité de la maison, ail et beurre persillé.",
+    d2n:"Cordon bleu maison", d2d:"Généreux, pané minute, frites maison.",
+    d3n:"Beignets de jambon", d3d:"Un classique réconfortant du pays.",
+    d4n:"Tagliata de bœuf", d4d:"Sur planche, copeaux de parmesan et roquette.",
+    d5n:"Steak au poivre & frites", d5d:"Sauce poivre crémeuse, légumes du moment.",
+    d6n:"Carpaccio & salades composées", d6d:"Frais, pour les jours de marche au grand air.",
+    d7n:"Ravioli maison", d7d:"Pâtes fraîches, sauce du jour.",
+    d8n:"Pasta au parmesan", d8d:"Simple et généreuse, à l'italienne.",
+    d9n:"Gyoza", d9d:"La bouchée légère, à partager au café.",
+    pr:"à conf.",
+    menu_note:"★ Spécialité maison. Carte donnée à titre indicatif — plats et prix à confirmer avec l'établissement. Cave de vins (dont Sassicaia), sélection de whiskies et café de qualité au bar.",
+    pl1:"Pasta au parmesan", pl2:"Ravioli maison", pl3:"Tagliata sur planche", pl4:"Café liégeois",
+    salle_eye:"Poutres, feu de bois, coussins rouges",
+    salle_title:"Un chalet de bois, <em>et la forêt aux fenêtres</em>",
+    salle_lede:"Plafond à poutres apparentes, bar tapissé de bouteilles, terrasse ouverte sur la verdure : on s'attable ici après la marche, en famille ou entre amis.",
+    sc1b:"Salle ·", sc1t:"Le bar et les poutres",
+    sc2b:"Terrasse ·", sc2t:"Face à la forêt",
+    klee1:"Am Zechenhaus", klee2:"Couverture du menu · art abstrait",
+    sc3b:"Intérieur ·", sc3t:"Tables et chaises rustiques",
+    sc4b:"Dessert ·", sc4t:"Tiramisu maison",
+    term_eye:"Terminus de la ligne",
+    term_title:"Nous trouver <em>au bout du chemin</em>",
+    ib_addr:"Adresse", ib_addr_cf:"Adresse à confirmer avec l'établissement",
+    ib_tel:"Téléphone", ib_tel_cf:"numéro à confirmer",
+    ib_hours:"Horaires", ib_hours_v:"Café d'accueil des week-ends & visiteurs de la réserve.<br><span class='cf'>Horaires exacts à confirmer — merci d'appeler avant de venir.</span>",
+    ib_serv:"Sur place", p1:"Terrasse", p2:"Parking gratuit", p3:"Accès PMR", p4:"Familles",
+    hours_banner:"Site de démonstration — horaires, adresse, téléphone et carte à confirmer avec l'établissement avant publication.",
+    foot_sub:"Café-Restaurant · Réserve de l'Ellergronn",
+    foot_p:"Une table maison entre forêt et patrimoine minier, au cœur de la réserve naturelle de l'Ellergronn, à Esch-sur-Alzette.",
+    foot_visit:"La visite", foot_contact:"Contact",
+    foot_addr:"100, Rue Jean-Pierre Bausch<br>L-4023 Esch-sur-Alzette",
+    demo:"◆ Site de démonstration — non officiel",
+    foot_credit:"Maquette conçue par Webwerk · contenus & coordonnées à confirmer avec l'établissement"
+  },
+  de:{
+    brand_sub:"Ellergronn · Esch-sur-Alzette",
+    nav_decor:"Das Umfeld", nav_carte:"Die Karte", nav_salle:"Der Saal", nav_terminus:"Anfahrt",
+    mk_depart:"Abfahrt", mk_decor:"Umfeld", mk_carte:"Die Karte", mk_salle:"Der Saal", mk_terminus:"Endstation",
+    hero_tag:"Der Saal · Holzchalet, im Herzen des Bergbaugeländes",
+    hero_coords:"49.4931° N · 5.9556° E<br>Naturschutzgebiet Ellergronn<br>Ehem. Grube „Cockerill“",
+    hero_kicker:"Café-Restaurant · tief im Tal",
+    hero_line:"Die Linie des Ellergronn",
+    hero_lede:"Eine <b>hausgemachte</b> Küche zwischen Wald und Bergbau-Erbe — am Ende der Wanderwege, wo die alten Loks noch auf ihren Gleisen ruhen.",
+    en1l:"Küche", en1v:"Luxemb. · Franz. · Ital.", en2l:"Lage", en2v:"Naturschutzgebiet", en3l:"Stil", en3v:"Hausgemacht · €€",
+    hero_cta1:"Zur Karte", hero_cta2:"Tisch reservieren",
+    decor_eye:"Zwischen Wald und Grube",
+    decor_title:"Das einzige Restaurant <em>tief im Schutzgebiet</em>",
+    decor_p1:"Am Zechenhaus ist keine Adresse im Stadtzentrum. Man erreicht es über die Wege des Ellergronn, des Naturschutzgebiets am Rand von Esch-sur-Alzette: Wald, Bäche und rundherum die Industriebauten der alten Grube.",
+    decor_p2:"Loren und Schmalspurgleise, Lokschuppen, das nationale Bergbaumuseum: das Umfeld erzählt die Bergbaugeschichte der Region. Die Küche wärmt Wanderer, Familien und Besucher des Naturzentrums.",
+    fact1:"Naturschutzgebiet", fact2:"Küchen auf der Karte", fact3:"≈120 Google-Bewertungen",
+    win1b:"Erbe ·", win1t:"Die Grubenlokomotiven",
+    win2b:"Wege ·", win2t:"Das Schmalspurgleis im Schnee",
+    win3b:"Umfeld ·", win3t:"Die historische Halle",
+    carte_eye:"Täglich hausgemacht",
+    carte_title:"Drei Küchen <em>auf einem Gleis</em>",
+    lunch_l:"Tagesgericht · mittags", lunch_c:"Preis zu bestätigen",
+    col1:"Aus Luxemburg", col2:"Aus Frankreich", col3:"Aus Italien",
+    d1n:"Pferdesteak mit Knoblauch<span class='star'>★</span>", d1d:"Die Spezialität des Hauses, Knoblauch-Kräuterbutter.",
+    d2n:"Cordon bleu hausgemacht", d2d:"Großzügig, frisch paniert, mit hausgemachten Pommes.",
+    d3n:"Schinkenkrapfen", d3d:"Ein herzhafter Klassiker des Landes.",
+    d4n:"Rinder-Tagliata", d4d:"Auf dem Brett, mit Parmesanspänen und Rucola.",
+    d5n:"Pfeffersteak & Pommes", d5d:"Cremige Pfeffersauce, Gemüse der Saison.",
+    d6n:"Carpaccio & bunte Salate", d6d:"Frisch, für Tage an der frischen Luft.",
+    d7n:"Ravioli hausgemacht", d7d:"Frische Pasta, Sauce des Tages.",
+    d8n:"Pasta mit Parmesan", d8d:"Einfach und großzügig, auf italienische Art.",
+    d9n:"Gyoza", d9d:"Der leichte Happen, zum Teilen beim Kaffee.",
+    pr:"n. Absp.",
+    menu_note:"★ Spezialität des Hauses. Karte als Beispiel — Gerichte und Preise mit dem Betrieb zu bestätigen. Weinkeller (u. a. Sassicaia), Whisky-Auswahl und guter Kaffee an der Bar.",
+    pl1:"Pasta mit Parmesan", pl2:"Ravioli hausgemacht", pl3:"Tagliata auf dem Brett", pl4:"Café liégeois",
+    salle_eye:"Balken, Holzwärme, rote Kissen",
+    salle_title:"Ein Holzchalet, <em>und der Wald vor den Fenstern</em>",
+    salle_lede:"Sichtbare Deckenbalken, eine Bar voller Flaschen, eine Terrasse zum Grün hin: hier setzt man sich nach der Wanderung, mit der Familie oder mit Freunden.",
+    sc1b:"Saal ·", sc1t:"Die Bar und die Balken",
+    sc2b:"Terrasse ·", sc2t:"Zum Wald hin",
+    klee1:"Am Zechenhaus", klee2:"Menü-Titelbild · abstrakte Kunst",
+    sc3b:"Innenraum ·", sc3t:"Rustikale Tische und Stühle",
+    sc4b:"Dessert ·", sc4t:"Hausgemachtes Tiramisu",
+    term_eye:"Endstation der Linie",
+    term_title:"So finden Sie uns <em>am Ende des Weges</em>",
+    ib_addr:"Adresse", ib_addr_cf:"Adresse mit dem Betrieb zu bestätigen",
+    ib_tel:"Telefon", ib_tel_cf:"Nummer zu bestätigen",
+    ib_hours:"Öffnungszeiten", ib_hours_v:"Café für Wochenend- und Naturbesucher.<br><span class='cf'>Genaue Zeiten zu bestätigen — bitte vorher anrufen.</span>",
+    ib_serv:"Vor Ort", p1:"Terrasse", p2:"Kostenlos parken", p3:"Barrierefrei", p4:"Familien",
+    hours_banner:"Demo-Website — Öffnungszeiten, Adresse, Telefon und Karte vor Veröffentlichung mit dem Betrieb zu bestätigen.",
+    foot_sub:"Café-Restaurant · Ellergronn-Schutzgebiet",
+    foot_p:"Eine hausgemachte Küche zwischen Wald und Bergbau-Erbe, mitten im Naturschutzgebiet Ellergronn in Esch-sur-Alzette.",
+    foot_visit:"Der Besuch", foot_contact:"Kontakt",
+    foot_addr:"100, Rue Jean-Pierre Bausch<br>L-4023 Esch-sur-Alzette",
+    demo:"◆ Demo-Website — inoffiziell",
+    foot_credit:"Entwurf von Webwerk · Inhalte & Kontaktdaten mit dem Betrieb zu bestätigen"
+  },
+  en:{
+    brand_sub:"Ellergronn · Esch-sur-Alzette",
+    nav_decor:"The setting", nav_carte:"The menu", nav_salle:"The room", nav_terminus:"Find us",
+    mk_depart:"Departure", mk_decor:"Setting", mk_carte:"The menu", mk_salle:"The room", mk_terminus:"Terminus",
+    hero_tag:"The room · timber chalet, heart of the mining site",
+    hero_coords:"49.4931° N · 5.9556° E<br>Ellergronn nature reserve<br>Former “Cockerill” mine",
+    hero_kicker:"Café-Restaurant · deep in the valley",
+    hero_line:"The Ellergronn line",
+    hero_lede:"A <b>homemade</b> table set between forest and mining heritage — at the end of the trails, where the old locomotives still rest on their rails.",
+    en1l:"Cuisine", en1v:"Lux. · French · Italian", en2l:"Setting", en2v:"Nature reserve", en3l:"Spirit", en3v:"Homemade · €€",
+    hero_cta1:"See the menu", hero_cta2:"Book a table",
+    decor_eye:"Between forest and mine",
+    decor_title:"The only restaurant <em>deep in the reserve</em>",
+    decor_p1:"Am Zechenhaus is not a town-centre address. You reach it along the trails of the Ellergronn, the nature reserve on the edge of Esch-sur-Alzette: forest, streams, and the old mine's industrial buildings all around.",
+    decor_p2:"Tipper wagons and narrow-gauge track, a locomotive hall, the national mining museum: the setting tells the region's mining past. The table warms up hikers, families and visitors to the nature centre.",
+    fact1:"Nature reserve", fact2:"Cuisines on the menu", fact3:"≈120 Google reviews",
+    win1b:"Heritage ·", win1t:"The mine locomotives",
+    win2b:"Trails ·", win2t:"The narrow-gauge track in snow",
+    win3b:"Setting ·", win3t:"The historic hall",
+    carte_eye:"Homemade, every day",
+    carte_title:"Three cuisines <em>on a single line</em>",
+    lunch_l:"Dish of the day · lunch", lunch_c:"price to be confirmed",
+    col1:"From Luxembourg", col2:"From France", col3:"From Italy",
+    d1n:"Garlic horse steak<span class='star'>★</span>", d1d:"The house speciality, garlic and herb butter.",
+    d2n:"Homemade cordon bleu", d2d:"Generous, freshly breaded, homemade fries.",
+    d3n:"Ham fritters", d3d:"A comforting local classic.",
+    d4n:"Beef tagliata", d4d:"On a board, with parmesan shavings and rocket.",
+    d5n:"Pepper steak & fries", d5d:"Creamy pepper sauce, seasonal vegetables.",
+    d6n:"Carpaccio & mixed salads", d6d:"Fresh, for days out in the open air.",
+    d7n:"Homemade ravioli", d7d:"Fresh pasta, sauce of the day.",
+    d8n:"Pasta with parmesan", d8d:"Simple and generous, Italian style.",
+    d9n:"Gyoza", d9d:"The light bite, to share over coffee.",
+    pr:"tbc",
+    menu_note:"★ House speciality. Menu shown for illustration — dishes and prices to be confirmed with the venue. Wine cellar (incl. Sassicaia), whisky selection and quality coffee at the bar.",
+    pl1:"Pasta with parmesan", pl2:"Homemade ravioli", pl3:"Tagliata on a board", pl4:"Café liégeois",
+    salle_eye:"Beams, warm timber, red cushions",
+    salle_title:"A timber chalet, <em>with the forest at the windows</em>",
+    salle_lede:"Exposed ceiling beams, a bar lined with bottles, a terrace open to the greenery: this is where you sit down after the walk, with family or friends.",
+    sc1b:"Room ·", sc1t:"The bar and the beams",
+    sc2b:"Terrace ·", sc2t:"Facing the forest",
+    klee1:"Am Zechenhaus", klee2:"Menu cover · abstract art",
+    sc3b:"Interior ·", sc3t:"Rustic tables and chairs",
+    sc4b:"Dessert ·", sc4t:"Homemade tiramisu",
+    term_eye:"End of the line",
+    term_title:"Find us <em>at the end of the path</em>",
+    ib_addr:"Address", ib_addr_cf:"Address to be confirmed with the venue",
+    ib_tel:"Phone", ib_tel_cf:"number to be confirmed",
+    ib_hours:"Opening hours", ib_hours_v:"A welcome café for weekends & reserve visitors.<br><span class='cf'>Exact hours to be confirmed — please call ahead.</span>",
+    ib_serv:"On site", p1:"Terrace", p2:"Free parking", p3:"Wheelchair access", p4:"Families",
+    hours_banner:"Demonstration site — opening hours, address, phone and map to be confirmed with the venue before publishing.",
+    foot_sub:"Café-Restaurant · Ellergronn reserve",
+    foot_p:"A homemade table between forest and mining heritage, in the heart of the Ellergronn nature reserve in Esch-sur-Alzette.",
+    foot_visit:"The visit", foot_contact:"Contact",
+    foot_addr:"100, Rue Jean-Pierre Bausch<br>L-4023 Esch-sur-Alzette",
+    demo:"◆ Demonstration site — unofficial",
+    foot_credit:"Mockup designed by Webwerk · content & contact details to be confirmed with the venue"
+  }
+};
+const HTML_KEYS = new Set(["hero_coords","hero_lede","decor_title","carte_title","salle_title","term_title","ib_hours_v","d1n","d4n","d7n","foot_addr"]);
+function setLang(lang){
+  const dict = I18N[lang]; if(!dict) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k = el.getAttribute("data-i18n");
+    if(dict[k]!=null){ if(HTML_KEYS.has(k)) el.innerHTML = dict[k]; else el.textContent = dict[k]; }
+  });
+  document.querySelectorAll("[data-i18n-html]").forEach(el=>{
+    const k = el.getAttribute("data-i18n-html");
+    if(dict[k]!=null) el.innerHTML = dict[k];
+  });
+  document.querySelectorAll(".langsw button").forEach(b=>b.classList.toggle("on", b.dataset.lang===lang));
+}
+document.querySelectorAll(".langsw button").forEach(b=>{
+  b.addEventListener("click",()=>setLang(b.dataset.lang));
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Pavillon Eden Rose — Haute cuisine 100 % sans gluten · Kayl</title>
+<meta name="description" content="Pavillon Eden Rose — table étoilée, saisonnière et 100 % sans gluten, au cœur du parc de Kayl. Un pavillon d'acier corten, dix-huit couverts, les chants d'oiseaux pour seule musique." />
+<style>
+  /* ============================================================
+     PAVILLON EDEN ROSE — concept « Herbier d'Acier »
+     A botanical field-journal / specimen dossier: the corten
+     pavilion's rust pressed against park-flora greens. Each
+     section is an annotated planche (specimen plate).
+     Single-file demo. Desktop-first (1440), responsive down.
+     ============================================================ */
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  :root{
+    --rust:#9c4a2e; --rust-deep:#763320; --terracotta:#b5643e; --ember:#cf824e;
+    --forest:#2b3527; --forest-2:#374231; --moss:#5c6b49; --sage:#96a37f;
+    --cream:#f5efe3; --paper:#ece2d1; --paper-2:#e3d7c2; --ink:#241f18; --steel:#38332b;
+    --line:#c9bda4;
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter', system-ui, sans-serif;
+    --mono:'IBM Plex Mono', ui-monospace, monospace;
+    --maxw:1440px;
+    --gut:clamp(20px, 4vw, 72px);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:var(--sans); font-weight:400; line-height:1.6;
+    -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  }
+  img{display:block; max-width:100%;}
+  a{color:inherit; text-decoration:none;}
+  h1,h2,h3,h4{margin:0; font-family:var(--serif); font-weight:400; line-height:1.02;}
+
+  .shell{max-width:var(--maxw); margin:0 auto; padding-left:var(--gut); padding-right:var(--gut);}
+
+  /* --- reusable specimen-label chrome --- */
+  .kicker{
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.28em; text-transform:uppercase;
+    display:inline-flex; align-items:center; gap:.7em;
+  }
+  .kicker::before{content:""; width:26px; height:1px; background:currentColor; opacity:.6;}
+  .planche-no{font-family:var(--mono); font-size:.72rem; letter-spacing:.22em;}
+
+  /* image specimen — background-sprite crop to dodge watermark/collage cells */
+  .spec{background-repeat:no-repeat; background-color:var(--paper-2); position:relative;}
+  /* exterior.jpg = 2 cols x 3 rows */
+  .ext{background-image:url('assets/exterior.jpg'); background-size:200% 300%;}
+  .ext-park {background-position:0% 0%;}      /* river / park greenery */
+  .ext-cous {background-position:100% 0%;}     /* couscous-crust dish */
+  .ext-fish {background-position:0% 50%;}      /* overhead plated */
+  .ext-flor {background-position:100% 50%;}    /* floral plate, two spoons */
+  /* hero.jpg = 2 cols x 2 rows */
+  .hero-img{background-image:url('assets/hero.jpg'); background-size:200% 200%;}
+  .hero-boat{background-position:100% 0%;}     /* wooden boat, two rounds on rice */
+  .hero-spread{background-position:0% 0%;}      /* wooden-bowl tasting spread */
+  .hero-canele{background-position:0% 100%;}    /* canelé + bowl */
+  /* interior-1.jpg = 2 cols x 2 rows */
+  .int{background-image:url('assets/interior-1.jpg'); background-size:200% 200%;}
+  .int-rose{background-position:100% 0%;}       /* pink rose in vase, set table */
+  .int-tree{background-position:0% 0%;}         /* olive-tree centrepiece */
+
+  /* ============ TOP RIBBON ============ */
+  header.ribbon{
+    position:sticky; top:0; z-index:50;
+    background:rgba(43,53,39,.94); color:var(--cream);
+    backdrop-filter:saturate(1.1) blur(6px);
+    border-bottom:1px solid rgba(245,239,227,.14);
+  }
+  .ribbon .shell{display:flex; align-items:center; gap:2rem; height:66px;}
+  .brandmark{display:flex; align-items:center; gap:.7rem; margin-right:auto;}
+  .brandmark svg{width:26px; height:26px; flex:none;}
+  .brandmark b{font-family:var(--serif); font-weight:500; font-size:1.12rem; letter-spacing:.01em; white-space:nowrap;}
+  nav.mainnav{display:flex; gap:1.7rem;}
+  nav.mainnav a{
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+    color:rgba(245,239,227,.82); padding:.3em 0; border-bottom:1px solid transparent; transition:.2s;
+  }
+  nav.mainnav a:hover{color:#fff; border-color:var(--ember);}
+  .langset{display:flex; align-items:center; gap:.1rem; font-family:var(--mono); font-size:.72rem;}
+  .langset button{
+    background:none; border:0; color:rgba(245,239,227,.55); cursor:pointer;
+    font:inherit; letter-spacing:.12em; padding:.3em .5em; border-radius:2px;
+  }
+  .langset button[aria-pressed="true"]{color:var(--cream); background:var(--rust);}
+  .langset span{opacity:.3;}
+  .btn-reserve{
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase;
+    background:var(--ember); color:#2a1a10; padding:.62em 1.15em; border-radius:1px; white-space:nowrap;
+    border:1px solid var(--ember); transition:.2s;
+  }
+  .btn-reserve:hover{background:transparent; color:var(--ember);}
+  .burger{display:none; background:none; border:0; color:var(--cream); cursor:pointer;}
+
+  /* ============ MASTHEAD / PLANCHE ============ */
+  .masthead{background:var(--cream); border-bottom:1px solid var(--line);}
+  .masthead .grid{
+    display:grid; grid-template-columns:minmax(0,46fr) minmax(0,54fr);
+    min-height:clamp(520px, 74vh, 720px);
+  }
+  .mast-left{
+    background:
+      radial-gradient(120% 90% at 12% 8%, rgba(207,130,78,.28), transparent 55%),
+      radial-gradient(140% 120% at 95% 100%, rgba(118,51,32,.55), transparent 60%),
+      repeating-linear-gradient(112deg, rgba(0,0,0,.05) 0 3px, transparent 3px 8px),
+      linear-gradient(150deg, var(--terracotta), var(--rust) 55%, var(--rust-deep));
+    color:var(--cream); position:relative;
+    padding:clamp(28px,3.4vw,54px) clamp(28px,3.4vw,58px);
+    display:flex; flex-direction:column; justify-content:space-between;
+    box-shadow:inset 0 0 120px rgba(0,0,0,.25);
+  }
+  .mast-left::after{ /* corten grain speckle */
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.5; mix-blend-mode:overlay;
+    background-image:radial-gradient(rgba(0,0,0,.35) .6px, transparent .7px);
+    background-size:5px 5px;
+  }
+  .mast-top{position:relative; z-index:2; display:flex; justify-content:space-between; align-items:flex-start;}
+  .stars{font-family:var(--mono); font-size:.7rem; letter-spacing:.18em; text-align:right; line-height:1.9;}
+  .stars .m{color:#ffdca8;}
+  .wordmark{position:relative; z-index:2; margin:1.4rem 0;}
+  .wordmark .taxon{font-family:var(--mono); font-size:.74rem; letter-spacing:.34em; text-transform:uppercase; opacity:.85;}
+  .wordmark h1{
+    font-family:var(--serif); font-weight:400; font-size:clamp(2.7rem, 5.2vw, 4.6rem);
+    line-height:.92; margin:.35em 0 .28em; letter-spacing:-.01em;
+  }
+  .wordmark h1 em{font-style:italic; font-weight:300;}
+  .wordmark .tag{font-family:var(--serif); font-style:italic; font-weight:300; font-size:clamp(1.05rem,1.5vw,1.35rem); opacity:.95; max-width:22ch;}
+  .mast-cta{position:relative; z-index:2; display:flex; flex-wrap:wrap; gap:.8rem; align-items:center;}
+  .cta-a{
+    font-family:var(--mono); font-size:.74rem; letter-spacing:.16em; text-transform:uppercase;
+    background:var(--cream); color:var(--rust-deep); padding:.85em 1.5em; border-radius:1px; border:1px solid var(--cream); transition:.2s;
+  }
+  .cta-a:hover{background:transparent; color:var(--cream);}
+  .cta-b{
+    font-family:var(--mono); font-size:.74rem; letter-spacing:.16em; text-transform:uppercase;
+    padding:.85em 1.2em; border:1px solid rgba(245,239,227,.5); border-radius:1px; transition:.2s;
+  }
+  .cta-b:hover{border-color:var(--cream); background:rgba(255,255,255,.08);}
+  .mast-foot{position:relative; z-index:2; font-family:var(--mono); font-size:.68rem; letter-spacing:.12em; opacity:.72; display:flex; gap:1.4rem; flex-wrap:wrap;}
+
+  .mast-right{position:relative; overflow:hidden;}
+  .mast-right .spec{position:absolute; inset:0;}
+  .mast-cap{
+    position:absolute; left:24px; bottom:24px; z-index:3;
+    background:rgba(36,31,24,.82); color:var(--cream); backdrop-filter:blur(3px);
+    padding:.85rem 1.1rem; max-width:290px; border-left:2px solid var(--ember);
+  }
+  .mast-cap .l{font-family:var(--mono); font-size:.64rem; letter-spacing:.24em; text-transform:uppercase; color:var(--ember); display:block; margin-bottom:.4em;}
+  .mast-cap p{margin:0; font-family:var(--serif); font-style:italic; font-size:1rem; line-height:1.35;}
+
+  /* ============ FICHE SIGNALÉTIQUE (field-mark band) ============ */
+  .fiche{background:var(--forest); color:var(--cream);}
+  .fiche .row{display:grid; grid-template-columns:repeat(5,1fr);}
+  .fmark{
+    padding:1.7rem 1.5rem; border-left:1px solid rgba(245,239,227,.14);
+    display:flex; flex-direction:column; gap:.45rem;
+  }
+  .fmark:first-child{border-left:0;}
+  .fmark .l{font-family:var(--mono); font-size:.64rem; letter-spacing:.2em; text-transform:uppercase; color:var(--sage);}
+  .fmark .v{font-family:var(--serif); font-size:1.42rem; line-height:1.05;}
+  .fmark .s{font-size:.78rem; color:rgba(245,239,227,.62);}
+
+  /* ============ PLANCHE (generic section header) ============ */
+  section.planche{padding:clamp(56px,7vw,110px) 0; position:relative;}
+  .plabel{display:flex; align-items:baseline; gap:1.4rem; margin-bottom:2.6rem; flex-wrap:wrap;}
+  .plabel .no{font-family:var(--mono); font-size:.72rem; letter-spacing:.22em; color:var(--rust); padding-top:.2em;}
+  .plabel h2{font-family:var(--serif); font-size:clamp(1.9rem,3.4vw,3rem); line-height:1; flex:1 1 300px;}
+  .plabel h2 em{font-style:italic;}
+  .plabel .r{font-family:var(--mono); font-size:.7rem; letter-spacing:.14em; color:var(--moss); text-transform:uppercase;}
+
+  /* PLANCHE I — L'espèce rare (gluten-free hook) */
+  .espece{background:
+      linear-gradient(var(--cream),var(--cream)),
+      repeating-linear-gradient(0deg, rgba(150,163,127,.16) 0 1px, transparent 1px 46px),
+      repeating-linear-gradient(90deg, rgba(150,163,127,.16) 0 1px, transparent 1px 46px);
+    background-blend-mode:normal;}
+  .espece-grid{display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:clamp(28px,4vw,72px); align-items:start;}
+  .prose-lead{font-family:var(--serif); font-size:clamp(1.4rem,2.1vw,1.9rem); line-height:1.32; font-weight:400; margin:0 0 1.3rem; max-width:26ch;}
+  .prose-lead em{font-style:italic; color:var(--rust);}
+  .prose p{font-size:1.02rem; color:#4a4234; margin:0 0 1.1rem; max-width:56ch;}
+  .drop{border-left:2px solid var(--rust); padding:.2rem 0 .2rem 1.3rem; margin:2rem 0;}
+  .drop p{font-family:var(--serif); font-style:italic; font-size:1.3rem; line-height:1.35; color:var(--ink); margin:0;}
+  .flour{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.6rem;}
+  .flour span{font-family:var(--mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; border:1px solid var(--line); border-radius:100px; padding:.4em .9em; color:var(--moss); background:rgba(255,255,255,.5);}
+
+  .plates-stack{display:flex; flex-direction:column; gap:1.2rem;}
+  .plate{position:relative;}
+  .plate .spec{width:100%; height:clamp(200px,26vw,290px); border:1px solid var(--line);}
+  .plate .anno{
+    font-family:var(--mono); font-size:.66rem; letter-spacing:.12em; color:var(--moss); text-transform:uppercase;
+    display:flex; justify-content:space-between; margin-top:.55rem; padding-bottom:.55rem; border-bottom:1px solid var(--line);
+  }
+  .plate .anno em{font-style:normal; color:var(--rust);}
+
+  /* PLANCHE II — Le pavillon (place) */
+  .pavillon{background:var(--forest-2); color:var(--cream);}
+  .pavillon .plabel h2{color:var(--cream);}
+  .pav-grid{display:grid; grid-template-columns:minmax(0,6fr) minmax(0,6fr); gap:0; border:1px solid rgba(245,239,227,.16);}
+  .pav-photo{position:relative; min-height:clamp(340px,42vw,560px);}
+  .pav-photo .spec{position:absolute; inset:0;}
+  .pav-photo .tag{
+    position:absolute; top:18px; left:18px; z-index:2;
+    font-family:var(--mono); font-size:.62rem; letter-spacing:.2em; text-transform:uppercase;
+    background:rgba(43,53,39,.85); color:var(--sage); padding:.5em .8em; border-left:2px solid var(--ember);
+  }
+  .pav-text{padding:clamp(28px,3.4vw,58px); display:flex; flex-direction:column; gap:1.3rem; justify-content:center;}
+  .pav-text h3{font-family:var(--serif); font-size:clamp(1.5rem,2.3vw,2.1rem); line-height:1.06;}
+  .pav-text p{font-size:1rem; color:rgba(245,239,227,.82); margin:0; max-width:46ch;}
+  .pav-detail{display:flex; gap:1rem; align-items:center; padding:1.1rem 0; border-top:1px solid rgba(245,239,227,.16);}
+  .pav-detail svg{width:30px; height:30px; flex:none; color:var(--ember);}
+  .pav-detail b{font-family:var(--serif); font-weight:500; font-size:1.05rem; display:block;}
+  .pav-detail span{font-size:.85rem; color:rgba(245,239,227,.62);}
+  .pav-inset{position:relative; min-height:200px; border-top:1px solid rgba(245,239,227,.16);}
+  .pav-inset .spec{position:absolute; inset:0;}
+
+  /* PLANCHE III — Les planches du marché (menu approach) */
+  .marche .intro{display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:clamp(24px,3vw,56px); align-items:end; margin-bottom:2.8rem;}
+  .marche .intro p{font-size:1.02rem; color:#4a4234; margin:0; max-width:54ch;}
+  .aconf{
+    font-family:var(--mono); font-size:.7rem; letter-spacing:.06em; color:var(--rust-deep);
+    background:rgba(181,100,62,.12); border:1px dashed var(--terracotta); border-radius:2px;
+    padding:.7em 1em; line-height:1.5;
+  }
+  .specimens{display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(14px,1.6vw,26px);}
+  .card{border:1px solid var(--line); background:#fbf7ee; display:flex; flex-direction:column;}
+  .card .spec{width:100%; height:210px;}
+  .card .body{padding:1rem 1.05rem 1.15rem; display:flex; flex-direction:column; gap:.5rem; flex:1;}
+  .card .cno{font-family:var(--mono); font-size:.64rem; letter-spacing:.2em; color:var(--moss);}
+  .card h4{font-family:var(--serif); font-size:1.18rem; line-height:1.12;}
+  .card p{font-size:.86rem; color:#5a513f; margin:0; flex:1;}
+  .card .tick{font-family:var(--mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--rust);}
+  .menu-note{
+    margin-top:2.4rem; display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,2vw,32px);
+    border-top:1px solid var(--line); padding-top:2rem;
+  }
+  .menu-note .col .l{font-family:var(--mono); font-size:.66rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rust); display:block; margin-bottom:.5rem;}
+  .menu-note .col h4{font-family:var(--serif); font-size:1.3rem; margin-bottom:.4rem;}
+  .menu-note .col p{font-size:.9rem; color:#5a513f; margin:0;}
+
+  /* PLANCHE IV — Les auteurs (chefs) */
+  .auteurs{background:var(--paper);}
+  .chefs{display:grid; grid-template-columns:1fr 1fr; gap:clamp(20px,3vw,48px);}
+  .chef{background:var(--cream); border:1px solid var(--line); padding:clamp(24px,2.6vw,42px); position:relative;}
+  .chef .no{position:absolute; top:1.4rem; right:1.6rem; font-family:var(--mono); font-size:.66rem; letter-spacing:.2em; color:var(--sage);}
+  .chef .role{font-family:var(--mono); font-size:.68rem; letter-spacing:.2em; text-transform:uppercase; color:var(--rust);}
+  .chef h3{font-family:var(--serif); font-size:clamp(1.7rem,2.6vw,2.3rem); margin:.4rem 0 .2rem;}
+  .chef .lat{font-family:var(--serif); font-style:italic; color:var(--moss); font-size:1rem; margin-bottom:1.1rem;}
+  .chef p{font-size:.95rem; color:#4a4234; margin:0 0 1rem;}
+  .chef .ledger{display:flex; gap:1.6rem; border-top:1px solid var(--line); padding-top:1rem; margin-top:.4rem; flex-wrap:wrap;}
+  .chef .ledger div .y{font-family:var(--serif); font-size:1.3rem; color:var(--rust); display:block;}
+  .chef .ledger div .t{font-family:var(--mono); font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--moss);}
+
+  /* EPIGRAPH — the Saint-Exupéry rose */
+  .epigraph{background:var(--forest); color:var(--cream); text-align:center; padding:clamp(50px,7vw,96px) 0;}
+  .epigraph svg{width:34px; height:34px; color:var(--ember); margin:0 auto 1.4rem;}
+  .epigraph blockquote{max-width:26ch; margin:0 auto; font-family:var(--serif); font-style:italic; font-weight:300; font-size:clamp(1.5rem,3vw,2.4rem); line-height:1.28;}
+  .epigraph cite{display:block; margin-top:1.4rem; font-family:var(--mono); font-style:normal; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--sage);}
+
+  /* PLANCHE V — Visite (contact + map) */
+  .visite-grid{display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:0; border:1px solid var(--line);}
+  .visite-info{padding:clamp(26px,3vw,50px); background:#fbf7ee; display:flex; flex-direction:column; gap:1.4rem;}
+  .dtable{display:flex; flex-direction:column;}
+  .drow{display:grid; grid-template-columns:34% 1fr; gap:1rem; padding:.9rem 0; border-top:1px solid var(--line); align-items:baseline;}
+  .drow:first-child{border-top:0;}
+  .drow .k{font-family:var(--mono); font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:var(--moss);}
+  .drow .val{font-size:.98rem; color:var(--ink);}
+  .drow .val b{font-family:var(--serif); font-weight:500;}
+  .drow .val a{border-bottom:1px solid var(--terracotta);}
+  .conf{color:var(--rust); font-family:var(--mono); font-size:.66rem; letter-spacing:.05em;}
+  .visite-cta{display:flex; gap:.8rem; flex-wrap:wrap; margin-top:.4rem;}
+  .visite-cta a{font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; padding:.85em 1.4em; border-radius:1px;}
+  .visite-cta .p{background:var(--rust); color:var(--cream); border:1px solid var(--rust);}
+  .visite-cta .p:hover{background:var(--rust-deep);}
+  .visite-cta .s{border:1px solid var(--line); color:var(--ink);}
+  .visite-cta .s:hover{border-color:var(--rust);}
+  .visite-map{min-height:440px; position:relative;}
+  .visite-map iframe{position:absolute; inset:0; width:100%; height:100%; border:0; filter:saturate(.9) contrast(.96);}
+
+  /* FOOTER */
+  footer.foot{background:var(--ink); color:var(--paper); padding:clamp(44px,5vw,72px) 0 2rem;}
+  .foot-grid{display:grid; grid-template-columns:2fr 1fr 1fr; gap:clamp(24px,4vw,64px); padding-bottom:2.4rem; border-bottom:1px solid rgba(245,239,227,.14);}
+  .foot-brand svg{width:30px; height:30px; color:var(--ember); margin-bottom:1rem;}
+  .foot-brand b{font-family:var(--serif); font-size:1.5rem; font-weight:500; display:block; margin-bottom:.5rem;}
+  .foot-brand p{font-size:.86rem; color:rgba(245,239,227,.6); max-width:34ch; margin:0;}
+  .foot-col h5{font-family:var(--mono); font-size:.66rem; letter-spacing:.2em; text-transform:uppercase; color:var(--sage); margin:0 0 1rem; font-weight:500;}
+  .foot-col a, .foot-col p{display:block; font-size:.9rem; color:rgba(245,239,227,.78); margin:0 0 .55rem;}
+  .foot-col a:hover{color:var(--ember);}
+  .foot-bottom{display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; padding-top:1.6rem; font-family:var(--mono); font-size:.66rem; letter-spacing:.08em; color:rgba(245,239,227,.5);}
+  .demo-badge{color:var(--ember); border:1px solid rgba(207,130,78,.5); padding:.4em .8em; border-radius:2px;}
+
+  /* ============ RESPONSIVE ============ */
+  @media(max-width:1080px){
+    nav.mainnav{display:none;}
+    .burger{display:block; order:3;}
+    .fiche .row{grid-template-columns:repeat(3,1fr);}
+    .fmark:nth-child(4){border-left:0;}
+    .specimens{grid-template-columns:repeat(2,1fr);}
+    .menu-note{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:820px){
+    .masthead .grid{grid-template-columns:1fr;}
+    .mast-right{min-height:340px;}
+    .espece-grid{grid-template-columns:1fr;}
+    .pav-grid{grid-template-columns:1fr;}
+    .marche .intro{grid-template-columns:1fr;}
+    .chefs{grid-template-columns:1fr;}
+    .visite-grid{grid-template-columns:1fr;}
+    .visite-map{min-height:340px;}
+  }
+  @media(max-width:560px){
+    .ribbon .shell{gap:.8rem; height:60px;}
+    .brandmark b{font-size:1rem;}
+    .btn-reserve{display:none;}
+    .fiche .row{grid-template-columns:1fr 1fr;}
+    .fmark{border-left:0 !important; border-top:1px solid rgba(245,239,227,.14);}
+    .fmark:nth-child(-n+2){border-top:0;}
+    .specimens{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr;}
+  }
+  /* mobile drawer */
+  .drawer{display:none; position:fixed; inset:66px 0 0; z-index:49; background:var(--forest); padding:2rem var(--gut); flex-direction:column; gap:1.2rem;}
+  .drawer.open{display:flex;}
+  .drawer a{font-family:var(--serif); font-size:1.6rem; color:var(--cream); border-bottom:1px solid rgba(245,239,227,.14); padding-bottom:1rem;}
+</style>
+</head>
+<body>
+
+<!-- ============ TOP RIBBON ============ -->
+<header class="ribbon">
+  <div class="shell">
+    <a class="brandmark" href="#top" aria-label="Pavillon Eden Rose">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+        <path d="M20 30c0-6 4-9 4-14 0-3-2-5-4-5s-4 2-4 5c0 5 4 8 4 14z"/>
+        <path d="M20 21c-3-1-5-4-5-7M20 21c3-1 5-4 5-7M20 30v6M15 34h10"/>
+      </svg>
+      <b>Pavillon Eden Rose</b>
+    </a>
+    <nav class="mainnav">
+      <a href="#espece" data-i18n="nav1">Le concept</a>
+      <a href="#pavillon" data-i18n="nav2">Le pavillon</a>
+      <a href="#marche" data-i18n="nav3">Les planches</a>
+      <a href="#auteurs" data-i18n="nav4">Les auteurs</a>
+      <a href="#visite" data-i18n="nav5">Visite</a>
+    </nav>
+    <div class="langset" role="group" aria-label="Langue">
+      <button data-lang="fr" aria-pressed="true">FR</button><span>/</span>
+      <button data-lang="de" aria-pressed="false">DE</button><span>/</span>
+      <button data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn-reserve" href="tel:+35226560035" data-i18n="reserve">Réserver</a>
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('drawer').classList.toggle('open')">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+<div class="drawer" id="drawer">
+  <a href="#espece" data-i18n="nav1" onclick="document.getElementById('drawer').classList.remove('open')">Le concept</a>
+  <a href="#pavillon" data-i18n="nav2" onclick="document.getElementById('drawer').classList.remove('open')">Le pavillon</a>
+  <a href="#marche" data-i18n="nav3" onclick="document.getElementById('drawer').classList.remove('open')">Les planches</a>
+  <a href="#auteurs" data-i18n="nav4" onclick="document.getElementById('drawer').classList.remove('open')">Les auteurs</a>
+  <a href="#visite" data-i18n="nav5" onclick="document.getElementById('drawer').classList.remove('open')">Visite</a>
+  <a href="tel:+35226560035" data-i18n="reserve">Réserver</a>
+</div>
+
+<!-- ============ MASTHEAD ============ -->
+<main id="top" class="masthead">
+  <div class="grid">
+    <div class="mast-left">
+      <div class="mast-top">
+        <span class="kicker" data-i18n="mastKicker">Herbier d'acier · Kayl</span>
+        <div class="stars">
+          <span class="m">★</span> <span data-i18n="starLine">Une étoile · Guide MICHELIN 2026</span><br>
+          <span data-i18n="gmLine">Gault&amp;Millau — 14,5/20</span>
+        </div>
+      </div>
+      <div class="wordmark">
+        <div class="taxon" data-i18n="taxon">Cuisine française · saisonnière · 100 % sans gluten</div>
+        <h1>Pavillon<br><em>Eden Rose</em></h1>
+        <p class="tag" data-i18n="tagline">La haute cuisine, sans compromis — au cœur du parc.</p>
+      </div>
+      <div class="mast-cta">
+        <a class="cta-a" href="tel:+35226560035" data-i18n="ctaReserve">Réserver une table</a>
+        <a class="cta-b" href="#espece" data-i18n="ctaDiscover">Découvrir la maison</a>
+      </div>
+      <div class="mast-foot">
+        <span data-i18n="footCovers">Dix-huit couverts</span>
+        <span data-i18n="footPark">Parc de Kayl</span>
+        <span data-i18n="footSince">Depuis 2019</span>
+      </div>
+    </div>
+    <div class="mast-right">
+      <div class="spec hero-img hero-boat" role="img" aria-label="Assiette gastronomique du Pavillon Eden Rose"></div>
+      <figure class="mast-cap">
+        <span class="l" data-i18n="capLabel">Planche · specimen</span>
+        <p data-i18n="capText">« Là où l'absence du gluten ne se remarque jamais. »</p>
+      </figure>
+    </div>
+  </div>
+</main>
+
+<!-- ============ FICHE SIGNALÉTIQUE ============ -->
+<section class="fiche" aria-label="Fiche signalétique">
+  <div class="row">
+    <div class="fmark">
+      <span class="l" data-i18n="fm1l">Distinction</span>
+      <span class="v" data-i18n="fm1v">★ Michelin</span>
+      <span class="s" data-i18n="fm1s">Retenue au Guide 2026</span>
+    </div>
+    <div class="fmark">
+      <span class="l" data-i18n="fm2l">Signature</span>
+      <span class="v" data-i18n="fm2v">100 % sans gluten</span>
+      <span class="s" data-i18n="fm2s">L'unique table étoilée du genre au pays</span>
+    </div>
+    <div class="fmark">
+      <span class="l" data-i18n="fm3l">Salle</span>
+      <span class="v" data-i18n="fm3v">18 couverts</span>
+      <span class="s" data-i18n="fm3s">Service attentif, intime</span>
+    </div>
+    <div class="fmark">
+      <span class="l" data-i18n="fm4l">Décor</span>
+      <span class="v" data-i18n="fm4v">Pavillon corten</span>
+      <span class="s" data-i18n="fm4s">Dans le parc, près de la rivière</span>
+    </div>
+    <div class="fmark">
+      <span class="l" data-i18n="fm5l">Ambiance</span>
+      <span class="v" data-i18n="fm5v">Chants d'oiseaux</span>
+      <span class="s" data-i18n="fm5s">Oiseaux &amp; cigales pour seule musique</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLANCHE I — L'ESPÈCE RARE ============ -->
+<section class="planche espece" id="espece">
+  <div class="shell">
+    <div class="plabel">
+      <span class="no" data-i18n="p1no">Planche I</span>
+      <h2 data-i18n="p1h">L'espèce <em>rare</em></h2>
+      <span class="r" data-i18n="p1r">Haute cuisine sans gluten</span>
+    </div>
+    <div class="espece-grid">
+      <div class="prose">
+        <p class="prose-lead" data-i18n="e1">Une cuisine gastronomique <em>entièrement sans gluten</em> — pensée non comme une contrainte, mais comme une signature.</p>
+        <p data-i18n="e2">Enfant, Caroline Esch développe une intolérance sévère au gluten. De cette histoire personnelle naît une maison rare : chaque assiette, chaque sauce, chaque miette de pain est conçue pour que le convive ne remarque jamais l'absence.</p>
+        <p data-i18n="e3">Les pains et pâtisseries sont pétris ici, à partir d'assemblages de farines de riz, sarrasin, pomme de terre, maïs, tapioca et châtaigne — une pâtisserie d'exception, libérée du blé.</p>
+        <div class="drop"><p data-i18n="e4">« Une table pour les gastronomes cœliaques qui, à ce niveau, n'avaient presque nulle part où aller. »</p></div>
+        <div class="flour">
+          <span data-i18n="fl1">Riz</span><span data-i18n="fl2">Sarrasin</span><span data-i18n="fl3">Pomme de terre</span><span data-i18n="fl4">Maïs</span><span data-i18n="fl5">Tapioca</span><span data-i18n="fl6">Châtaigne</span>
+        </div>
+      </div>
+      <div class="plates-stack">
+        <figure class="plate">
+          <div class="spec hero-img hero-boat" role="img" aria-label="Assiette dressée sur nacelle de bois"></div>
+          <figcaption class="anno"><span data-i18n="pl1a">Dressage · bois &amp; céréales</span><em data-i18n="aconfShort">à confirmer</em></figcaption>
+        </figure>
+        <figure class="plate">
+          <div class="spec hero-img hero-canele" role="img" aria-label="Pâtisserie sans gluten"></div>
+          <figcaption class="anno"><span data-i18n="pl2a">Pâtisserie · farines alternatives</span><em data-i18n="aconfShort">à confirmer</em></figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLANCHE II — LE PAVILLON ============ -->
+<section class="planche pavillon" id="pavillon">
+  <div class="shell">
+    <div class="plabel">
+      <span class="no" data-i18n="p2no">Planche II</span>
+      <h2 data-i18n="p2h">Le <em>pavillon</em></h2>
+      <span class="r" data-i18n="p2r">Un écrin dans le parc de Kayl</span>
+    </div>
+    <div class="pav-grid">
+      <div class="pav-photo">
+        <div class="spec ext ext-park" role="img" aria-label="La rivière et la verdure du parc de Kayl"></div>
+        <span class="tag" data-i18n="pavTag1">Parc de Kayl · la rivière</span>
+      </div>
+      <div class="pav-text">
+        <h3 data-i18n="pav-h">Un pavillon d'acier corten, posé dans la verdure.</h3>
+        <p data-i18n="pav-p1">Habillé d'acier corten patiné, le pavillon se fond dans le parc — à deux pas de la rivière et d'une aire de jeux. Une maison d'amis, secrète et lumineuse, où l'on se sent reçu plus que servi.</p>
+        <div class="pav-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 18c3-1 5-4 5-8M12 20c-1-6 2-11 6-13M9 15c2 0 4-1 5-3"/><circle cx="18" cy="6" r="1.5"/></svg>
+          <div><b data-i18n="pavd1b">Les chants d'oiseaux pour seule musique</b><span data-i18n="pavd1s">Oiseaux et cigales enregistrés remplacent la sono</span></div>
+        </div>
+        <div class="pav-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 20h18M6 20v-8M18 20v-8M4 12h16l-2-5H6z"/></svg>
+          <div><b data-i18n="pavd2b">Terrasse &amp; jardin</b><span data-i18n="pavd2s">Dîner en plein air aux beaux jours</span></div>
+        </div>
+        <div class="pav-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5L12 21l-5 2.6 1-5.5-4-3.9 5.5-.8z"/></svg>
+          <div><b data-i18n="pavd3b">Circuits courts</b><span data-i18n="pavd3s">Légumes du Luxembourg, de Belgique &amp; de France ; viandes de producteurs locaux</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="pav-grid" style="border-top:0;">
+      <div class="pav-inset" style="min-height:220px;">
+        <div class="spec int int-rose" role="img" aria-label="Une rose sur la table dressée"></div>
+      </div>
+      <div class="pav-text" style="justify-content:center;">
+        <h3 data-i18n="pav-h2">Une rose sur chaque table.</h3>
+        <p data-i18n="pav-p2">Le nom dit tout. Sur les tables, une rose fraîche ; sur les cartes, une phrase du Petit Prince. Dix-huit couverts, un service qui « se comprend d'un regard » — l'hospitalité d'une maison plutôt que d'un restaurant.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLANCHE III — LES PLANCHES DU MARCHÉ ============ -->
+<section class="planche marche" id="marche">
+  <div class="shell">
+    <div class="plabel">
+      <span class="no" data-i18n="p3no">Planche III</span>
+      <h2 data-i18n="p3h">Les planches du <em>marché</em></h2>
+      <span class="r" data-i18n="p3r">Menus dégustation, au fil des saisons</span>
+    </div>
+    <div class="intro">
+      <p data-i18n="m-intro">La table travaille en menus dégustation — dictés par le marché, la saison et l'inspiration du jour. Plutôt qu'une carte figée, une succession de « planches » où le produit mène la danse. Voici l'approche, non les plats du soir.</p>
+      <p class="aconf" data-i18n="m-conf">Note d'honnêteté : le format exact, les plats signatures et les prix évoluent au gré des saisons — à confirmer directement avec l'établissement. Les images illustrent l'esprit de la maison.</p>
+    </div>
+    <div class="specimens">
+      <article class="card">
+        <div class="spec ext ext-cous" role="img" aria-label="Spécimen — dressage sur céréales"></div>
+        <div class="body">
+          <span class="cno">N° I · <span data-i18n="tickSeason">saison</span></span>
+          <h4 data-i18n="sp1h">Les entames</h4>
+          <p data-i18n="sp1p">Bouchées et mises en bouche jouées sur le croustillant sans blé et les céréales torréfiées.</p>
+          <span class="tick" data-i18n="aconfShort">à confirmer</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="spec ext ext-fish" role="img" aria-label="Spécimen — poisson de saison"></div>
+        <div class="body">
+          <span class="cno">N° II · <span data-i18n="tickSea">marée</span></span>
+          <h4 data-i18n="sp2h">Le fil de l'eau</h4>
+          <p data-i18n="sp2p">Poissons et légumes primeurs, jus courts et herbes du potager — la fraîcheur avant tout.</p>
+          <span class="tick" data-i18n="aconfShort">à confirmer</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="spec ext ext-flor" role="img" aria-label="Spécimen — assiette florale"></div>
+        <div class="body">
+          <span class="cno">N° III · <span data-i18n="tickGarden">potager</span></span>
+          <h4 data-i18n="sp3h">Le jardin</h4>
+          <p data-i18n="sp3p">Fleurs comestibles, verdures et racines du parc — la palette végétale au premier plan.</p>
+          <span class="tick" data-i18n="aconfShort">à confirmer</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="spec hero-img hero-canele" role="img" aria-label="Spécimen — pâtisserie sans gluten"></div>
+        <div class="body">
+          <span class="cno">N° IV · <span data-i18n="tickPastry">sucré</span></span>
+          <h4 data-i18n="sp4h">La pâtisserie</h4>
+          <p data-i18n="sp4p">Pains et douceurs maison, aux farines de riz, sarrasin et châtaigne — la fierté de la maison.</p>
+          <span class="tick" data-i18n="aconfShort">à confirmer</span>
+        </div>
+      </article>
+    </div>
+    <div class="menu-note">
+      <div class="col">
+        <span class="l" data-i18n="mn1l">Format</span>
+        <h4 data-i18n="mn1h">Menus surprise</h4>
+        <p data-i18n="mn1p">Dégustation au gré du marché ; le pain sans gluten reste l'un des grands moments.</p>
+      </div>
+      <div class="col">
+        <span class="l" data-i18n="mn2l">Ressenti prix</span>
+        <h4 data-i18n="mn2h">Gastronomique — <span class="conf">à confirmer</span></h4>
+        <p data-i18n="mn2p">Positionnement d'une table étoilée ; tarifs et accords mets-vins à préciser avec l'établissement.</p>
+      </div>
+      <div class="col">
+        <span class="l" data-i18n="mn3l">Service après-midi</span>
+        <h4 data-i18n="mn3h">≈ 15 h – 17 h</h4>
+        <p data-i18n="mn3p">Un moment plus léger, familial, à l'ombre du parc — horaires à confirmer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLANCHE IV — LES AUTEURS ============ -->
+<section class="planche auteurs" id="auteurs">
+  <div class="shell">
+    <div class="plabel">
+      <span class="no" data-i18n="p4no">Planche IV</span>
+      <h2 data-i18n="p4h">Les <em>auteurs</em></h2>
+      <span class="r" data-i18n="p4r">Deux mains, une étoile</span>
+    </div>
+    <div class="chefs">
+      <article class="chef">
+        <span class="no">N° I</span>
+        <span class="role" data-i18n="chef1role">Pâtisserie · accueil · fondatrice</span>
+        <h3>Caroline Esch</h3>
+        <div class="lat" data-i18n="chef1lat">L'âme sans gluten de la maison</div>
+        <p data-i18n="chef1p">Intolérante au gluten depuis l'enfance, Caroline a fait de sa contrainte le cœur d'un projet : une haute pâtisserie et une hospitalité où rien ne manque. Elle veille sur la salle comme sur ses pains.</p>
+        <div class="ledger">
+          <div><span class="y">2015</span><span class="t" data-i18n="chef1y1">Auberge de l'Ill ★★★</span></div>
+          <div><span class="y">2019</span><span class="t" data-i18n="chef1y2">Ouverture d'Eden Rose</span></div>
+        </div>
+      </article>
+      <article class="chef">
+        <span class="no">N° II</span>
+        <span class="role" data-i18n="chef2role">Cuisine · chef de fourneaux</span>
+        <h3>Valérian Prade</h3>
+        <div class="lat" data-i18n="chef2lat">Le produit, la saison, la précision</div>
+        <p data-i18n="chef2p">Rencontré aux côtés de Caroline lors de leur passage à l'Auberge de l'Ill, Valérian mène la cuisine : produits de circuits courts, cuissons justes, une gastronomie sans gluten qui n'a rien à envier aux plus grandes.</p>
+        <div class="ledger">
+          <div><span class="y">2023</span><span class="t" data-i18n="chef2y1">Première étoile Michelin*</span></div>
+          <div><span class="y">14,5</span><span class="t" data-i18n="chef2y2">Gault&amp;Millau /20</span></div>
+        </div>
+      </article>
+    </div>
+    <p style="font-family:var(--mono); font-size:.66rem; letter-spacing:.06em; color:var(--moss); margin-top:1.6rem;" data-i18n="chefNote">* Étoile obtenue en 2023 (certaines sources anciennes citent 2022) — à confirmer.</p>
+  </div>
+</section>
+
+<!-- ============ EPIGRAPH ============ -->
+<section class="epigraph" aria-label="Épigraphe">
+  <div class="shell">
+    <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+      <path d="M20 30c0-6 4-9 4-14 0-3-2-5-4-5s-4 2-4 5c0 5 4 8 4 14z"/>
+      <path d="M20 21c-3-1-5-4-5-7M20 21c3-1 5-4 5-7M20 30v6M15 34h10"/>
+    </svg>
+    <blockquote data-i18n="epi">« C'est le temps que tu as perdu pour ta rose qui fait ta rose si importante. »</blockquote>
+    <cite data-i18n="epic">Antoine de Saint-Exupéry — Le Petit Prince</cite>
+  </div>
+</section>
+
+<!-- ============ PLANCHE V — VISITE ============ -->
+<section class="planche visite" id="visite">
+  <div class="shell">
+    <div class="plabel">
+      <span class="no" data-i18n="p5no">Planche V</span>
+      <h2 data-i18n="p5h">La <em>visite</em></h2>
+      <span class="r" data-i18n="p5r">30 Rue du Moulin · L-3660 Kayl</span>
+    </div>
+    <div class="visite-grid">
+      <div class="visite-info">
+        <div class="dtable">
+          <div class="drow">
+            <span class="k" data-i18n="v-addr">Adresse</span>
+            <span class="val"><b>30 Rue du Moulin</b><br>L-3660 Kayl, <span data-i18n="v-lux">Luxembourg</span><br><span class="conf" data-i18n="v-addr-s">Dans le parc / Terres Rouges</span></span>
+          </div>
+          <div class="drow">
+            <span class="k" data-i18n="v-tel">Téléphone</span>
+            <span class="val"><a href="tel:+35226560035">+352 26 56 00 35</a></span>
+          </div>
+          <div class="drow">
+            <span class="k" data-i18n="v-days">Jours</span>
+            <span class="val"><b data-i18n="v-open">Mardi – Dimanche</b><br><span data-i18n="v-closed">Fermé le lundi</span></span>
+          </div>
+          <div class="drow">
+            <span class="k" data-i18n="v-hours">Horaires</span>
+            <span class="val" data-i18n="v-hours-v">Déjeuner &amp; dîner ; service l'après-midi ≈ 15 h–17 h. <span class="conf">Plages exactes à confirmer.</span></span>
+          </div>
+          <div class="drow">
+            <span class="k" data-i18n="v-mail">Courriel</span>
+            <span class="val conf" data-i18n="v-mail-v">Adresse historique info@edenrose.lu — domaine expiré, à confirmer avec l'établissement.</span>
+          </div>
+        </div>
+        <div class="visite-cta">
+          <a class="p" href="tel:+35226560035" data-i18n="v-cta1">Réserver par téléphone</a>
+          <a class="s" href="https://www.facebook.com/PavillonEdenRose/" target="_blank" rel="noopener" data-i18n="v-cta2">Facebook</a>
+        </div>
+      </div>
+      <div class="visite-map">
+        <iframe
+          title="Carte — Pavillon Eden Rose, Kayl"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=30+Rue+du+Moulin+L-3660+Kayl+Luxembourg&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+          <path d="M20 30c0-6 4-9 4-14 0-3-2-5-4-5s-4 2-4 5c0 5 4 8 4 14z"/>
+          <path d="M20 21c-3-1-5-4-5-7M20 21c3-1 5-4 5-7M20 30v6M15 34h10"/>
+        </svg>
+        <b>Pavillon Eden Rose</b>
+        <p data-i18n="foot-tag">Haute cuisine française, saisonnière et 100 % sans gluten, au cœur du parc de Kayl.</p>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot-c1">Trouver</h5>
+        <p>30 Rue du Moulin<br>L-3660 Kayl</p>
+        <a href="tel:+35226560035">+352 26 56 00 35</a>
+        <a href="https://www.facebook.com/PavillonEdenRose/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot-c2">Explorer</h5>
+        <a href="#espece" data-i18n="nav1">Le concept</a>
+        <a href="#pavillon" data-i18n="nav2">Le pavillon</a>
+        <a href="#marche" data-i18n="nav3">Les planches</a>
+        <a href="#visite" data-i18n="nav5">Visite</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Pavillon Eden Rose · Kayl, Luxembourg</span>
+      <span class="demo-badge" data-i18n="demo">Site de démonstration — maquette non officielle · Webwerk</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============ i18n dictionary (FR default in HTML) ============ */
+const I18N = {
+  fr:{
+    nav1:"Le concept",nav2:"Le pavillon",nav3:"Les planches",nav4:"Les auteurs",nav5:"Visite",reserve:"Réserver",
+    mastKicker:"Herbier d'acier · Kayl",starLine:"Une étoile · Guide MICHELIN 2026",gmLine:"Gault&Millau — 14,5/20",
+    taxon:"Cuisine française · saisonnière · 100 % sans gluten",tagline:"La haute cuisine, sans compromis — au cœur du parc.",
+    ctaReserve:"Réserver une table",ctaDiscover:"Découvrir la maison",footCovers:"Dix-huit couverts",footPark:"Parc de Kayl",footSince:"Depuis 2019",
+    capLabel:"Planche · specimen",capText:"« Là où l'absence du gluten ne se remarque jamais. »",
+    fm1l:"Distinction",fm1v:"★ Michelin",fm1s:"Retenue au Guide 2026",fm2l:"Signature",fm2v:"100 % sans gluten",fm2s:"L'unique table étoilée du genre au pays",
+    fm3l:"Salle",fm3v:"18 couverts",fm3s:"Service attentif, intime",fm4l:"Décor",fm4v:"Pavillon corten",fm4s:"Dans le parc, près de la rivière",
+    fm5l:"Ambiance",fm5v:"Chants d'oiseaux",fm5s:"Oiseaux & cigales pour seule musique",
+    p1no:"Planche I",p1h:"L'espèce <em>rare</em>",p1r:"Haute cuisine sans gluten",
+    e1:"Une cuisine gastronomique <em>entièrement sans gluten</em> — pensée non comme une contrainte, mais comme une signature.",
+    e2:"Enfant, Caroline Esch développe une intolérance sévère au gluten. De cette histoire personnelle naît une maison rare : chaque assiette, chaque sauce, chaque miette de pain est conçue pour que le convive ne remarque jamais l'absence.",
+    e3:"Les pains et pâtisseries sont pétris ici, à partir d'assemblages de farines de riz, sarrasin, pomme de terre, maïs, tapioca et châtaigne — une pâtisserie d'exception, libérée du blé.",
+    e4:"« Une table pour les gastronomes cœliaques qui, à ce niveau, n'avaient presque nulle part où aller. »",
+    fl1:"Riz",fl2:"Sarrasin",fl3:"Pomme de terre",fl4:"Maïs",fl5:"Tapioca",fl6:"Châtaigne",
+    pl1a:"Dressage · bois & céréales",pl2a:"Pâtisserie · farines alternatives",aconfShort:"à confirmer",
+    p2no:"Planche II",p2h:"Le <em>pavillon</em>",p2r:"Un écrin dans le parc de Kayl",pavTag1:"Parc de Kayl · la rivière",
+    "pav-h":"Un pavillon d'acier corten, posé dans la verdure.",
+    "pav-p1":"Habillé d'acier corten patiné, le pavillon se fond dans le parc — à deux pas de la rivière et d'une aire de jeux. Une maison d'amis, secrète et lumineuse, où l'on se sent reçu plus que servi.",
+    pavd1b:"Les chants d'oiseaux pour seule musique",pavd1s:"Oiseaux et cigales enregistrés remplacent la sono",
+    pavd2b:"Terrasse & jardin",pavd2s:"Dîner en plein air aux beaux jours",
+    pavd3b:"Circuits courts",pavd3s:"Légumes du Luxembourg, de Belgique & de France ; viandes de producteurs locaux",
+    "pav-h2":"Une rose sur chaque table.",
+    "pav-p2":"Le nom dit tout. Sur les tables, une rose fraîche ; sur les cartes, une phrase du Petit Prince. Dix-huit couverts, un service qui « se comprend d'un regard » — l'hospitalité d'une maison plutôt que d'un restaurant.",
+    p3no:"Planche III",p3h:"Les planches du <em>marché</em>",p3r:"Menus dégustation, au fil des saisons",
+    "m-intro":"La table travaille en menus dégustation — dictés par le marché, la saison et l'inspiration du jour. Plutôt qu'une carte figée, une succession de « planches » où le produit mène la danse. Voici l'approche, non les plats du soir.",
+    "m-conf":"Note d'honnêteté : le format exact, les plats signatures et les prix évoluent au gré des saisons — à confirmer directement avec l'établissement. Les images illustrent l'esprit de la maison.",
+    tickSeason:"saison",tickSea:"marée",tickGarden:"potager",tickPastry:"sucré",
+    sp1h:"Les entames",sp1p:"Bouchées et mises en bouche jouées sur le croustillant sans blé et les céréales torréfiées.",
+    sp2h:"Le fil de l'eau",sp2p:"Poissons et légumes primeurs, jus courts et herbes du potager — la fraîcheur avant tout.",
+    sp3h:"Le jardin",sp3p:"Fleurs comestibles, verdures et racines du parc — la palette végétale au premier plan.",
+    sp4h:"La pâtisserie",sp4p:"Pains et douceurs maison, aux farines de riz, sarrasin et châtaigne — la fierté de la maison.",
+    mn1l:"Format",mn1h:"Menus surprise",mn1p:"Dégustation au gré du marché ; le pain sans gluten reste l'un des grands moments.",
+    mn2l:"Ressenti prix",mn2h:'Gastronomique — <span class="conf">à confirmer</span>',mn2p:"Positionnement d'une table étoilée ; tarifs et accords mets-vins à préciser avec l'établissement.",
+    mn3l:"Service après-midi",mn3h:"≈ 15 h – 17 h",mn3p:"Un moment plus léger, familial, à l'ombre du parc — horaires à confirmer.",
+    p4no:"Planche IV",p4h:"Les <em>auteurs</em>",p4r:"Deux mains, une étoile",
+    chef1role:"Pâtisserie · accueil · fondatrice",chef1lat:"L'âme sans gluten de la maison",
+    chef1p:"Intolérante au gluten depuis l'enfance, Caroline a fait de sa contrainte le cœur d'un projet : une haute pâtisserie et une hospitalité où rien ne manque. Elle veille sur la salle comme sur ses pains.",
+    chef1y1:"Auberge de l'Ill ★★★",chef1y2:"Ouverture d'Eden Rose",
+    chef2role:"Cuisine · chef de fourneaux",chef2lat:"Le produit, la saison, la précision",
+    chef2p:"Rencontré aux côtés de Caroline lors de leur passage à l'Auberge de l'Ill, Valérian mène la cuisine : produits de circuits courts, cuissons justes, une gastronomie sans gluten qui n'a rien à envier aux plus grandes.",
+    chef2y1:"Première étoile Michelin*",chef2y2:"Gault&Millau /20",
+    chefNote:"* Étoile obtenue en 2023 (certaines sources anciennes citent 2022) — à confirmer.",
+    epi:"« C'est le temps que tu as perdu pour ta rose qui fait ta rose si importante. »",epic:"Antoine de Saint-Exupéry — Le Petit Prince",
+    p5no:"Planche V",p5h:"La <em>visite</em>",p5r:"30 Rue du Moulin · L-3660 Kayl",
+    "v-addr":"Adresse","v-lux":"Luxembourg","v-addr-s":"Dans le parc / Terres Rouges","v-tel":"Téléphone",
+    "v-days":"Jours","v-open":"Mardi – Dimanche","v-closed":"Fermé le lundi","v-hours":"Horaires",
+    "v-hours-v":'Déjeuner & dîner ; service l\'après-midi ≈ 15 h–17 h. <span class="conf">Plages exactes à confirmer.</span>',
+    "v-mail":"Courriel","v-mail-v":"Adresse historique info@edenrose.lu — domaine expiré, à confirmer avec l'établissement.",
+    "v-cta1":"Réserver par téléphone","v-cta2":"Facebook",
+    "foot-tag":"Haute cuisine française, saisonnière et 100 % sans gluten, au cœur du parc de Kayl.",
+    "foot-c1":"Trouver","foot-c2":"Explorer",demo:"Site de démonstration — maquette non officielle · Webwerk"
+  },
+  de:{
+    nav1:"Das Konzept",nav2:"Der Pavillon",nav3:"Die Tafeln",nav4:"Die Urheber",nav5:"Besuch",reserve:"Reservieren",
+    mastKicker:"Stahl-Herbarium · Kayl",starLine:"Ein Stern · Guide MICHELIN 2026",gmLine:"Gault&Millau — 14,5/20",
+    taxon:"Französische Küche · saisonal · 100 % glutenfrei",tagline:"Hohe Küche, ohne Kompromiss — mitten im Park.",
+    ctaReserve:"Tisch reservieren",ctaDiscover:"Das Haus entdecken",footCovers:"Achtzehn Gedecke",footPark:"Park von Kayl",footSince:"Seit 2019",
+    capLabel:"Tafel · Exemplar",capText:"„Wo das Fehlen von Gluten nie auffällt.“",
+    fm1l:"Auszeichnung",fm1v:"★ Michelin",fm1s:"Im Guide 2026 bestätigt",fm2l:"Signatur",fm2v:"100 % glutenfrei",fm2s:"Das landesweit einzige Sternehaus seiner Art",
+    fm3l:"Saal",fm3v:"18 Gedecke",fm3s:"Aufmerksamer, intimer Service",fm4l:"Ambiente",fm4v:"Corten-Pavillon",fm4s:"Im Park, nahe dem Fluss",
+    fm5l:"Atmosphäre",fm5v:"Vogelgesang",fm5s:"Vögel & Zikaden als einzige Musik",
+    p1no:"Tafel I",p1h:"Die <em>seltene</em> Art",p1r:"Glutenfreie Spitzenküche",
+    e1:"Eine <em>vollständig glutenfreie</em> Gourmetküche — nicht als Einschränkung, sondern als Signatur gedacht.",
+    e2:"Als Kind entwickelte Caroline Esch eine schwere Glutenunverträglichkeit. Aus dieser persönlichen Geschichte entstand ein seltenes Haus: jeder Teller, jede Sauce, jede Brotkrume ist so gedacht, dass der Gast das Fehlen nie bemerkt.",
+    e3:"Brote und Patisserie werden hier gebacken — aus Mehlmischungen von Reis, Buchweizen, Kartoffel, Mais, Tapioka und Kastanie — eine außergewöhnliche, weizenfreie Patisserie.",
+    e4:"„Ein Haus für zöliakiebetroffene Feinschmecker, die auf diesem Niveau kaum irgendwohin konnten.“",
+    fl1:"Reis",fl2:"Buchweizen",fl3:"Kartoffel",fl4:"Mais",fl5:"Tapioka",fl6:"Kastanie",
+    pl1a:"Anrichten · Holz & Körner",pl2a:"Patisserie · alternative Mehle",aconfShort:"zu bestätigen",
+    p2no:"Tafel II",p2h:"Der <em>Pavillon</em>",p2r:"Ein Schmuckstück im Park von Kayl",pavTag1:"Park von Kayl · der Fluss",
+    "pav-h":"Ein Pavillon aus Corten-Stahl, im Grün gebettet.",
+    "pav-p1":"Verkleidet mit patiniertem Corten-Stahl fügt sich der Pavillon in den Park — nur wenige Schritte vom Fluss und einem Spielplatz. Ein Freundeshaus, verborgen und licht, in dem man empfangen statt bedient wird.",
+    pavd1b:"Vogelgesang als einzige Musik",pavd1s:"Aufgenommene Vögel und Zikaden ersetzen die Anlage",
+    pavd2b:"Terrasse & Garten",pavd2s:"Speisen im Freien an schönen Tagen",
+    pavd3b:"Kurze Wege",pavd3s:"Gemüse aus Luxemburg, Belgien & Frankreich; Fleisch lokaler Erzeuger",
+    "pav-h2":"Eine Rose auf jedem Tisch.",
+    "pav-p2":"Der Name sagt alles. Auf den Tischen eine frische Rose; auf den Karten ein Satz aus dem Kleinen Prinzen. Achtzehn Gedecke, ein Service, der sich „mit einem Blick versteht“ — die Gastlichkeit eines Hauses statt eines Restaurants.",
+    p3no:"Tafel III",p3h:"Die Tafeln des <em>Marktes</em>",p3r:"Degustationsmenüs im Lauf der Jahreszeiten",
+    "m-intro":"Das Haus arbeitet mit Degustationsmenüs — bestimmt von Markt, Saison und der Eingebung des Tages. Statt fester Karte eine Folge von „Tafeln“, bei denen das Produkt führt. Hier der Ansatz, nicht die Gerichte des Abends.",
+    "m-conf":"Ehrlichkeitshinweis: Format, Signaturgerichte und Preise wechseln mit den Jahreszeiten — direkt beim Haus zu bestätigen. Die Bilder zeigen den Geist des Hauses.",
+    tickSeason:"Saison",tickSea:"Meer",tickGarden:"Garten",tickPastry:"süß",
+    sp1h:"Die Auftakte",sp1p:"Häppchen und Amuse-bouches, gespielt auf weizenfreiem Knusper und gerösteten Körnern.",
+    sp2h:"Am Wasser entlang",sp2p:"Fisch und junges Gemüse, kurze Jus und Kräuter aus dem Garten — Frische zuerst.",
+    sp3h:"Der Garten",sp3p:"Essbare Blüten, Grünes und Wurzeln aus dem Park — die pflanzliche Palette im Vordergrund.",
+    sp4h:"Die Patisserie",sp4p:"Hausgemachte Brote und Süßes, aus Reis-, Buchweizen- und Kastanienmehl — der Stolz des Hauses.",
+    mn1l:"Format",mn1h:"Überraschungsmenüs",mn1p:"Degustation je nach Markt; das glutenfreie Brot bleibt einer der großen Momente.",
+    mn2l:"Preisgefühl",mn2h:'Gastronomisch — <span class="conf">zu bestätigen</span>',mn2p:"Positionierung eines Sternehauses; Preise und Weinbegleitung beim Haus zu erfragen.",
+    mn3l:"Nachmittagsservice",mn3h:"≈ 15 – 17 Uhr",mn3p:"Ein leichterer, familiärer Moment im Schatten des Parks — Zeiten zu bestätigen.",
+    p4no:"Tafel IV",p4h:"Die <em>Urheber</em>",p4r:"Zwei Hände, ein Stern",
+    chef1role:"Patisserie · Empfang · Gründerin",chef1lat:"Die glutenfreie Seele des Hauses",
+    chef1p:"Seit ihrer Kindheit glutenunverträglich, machte Caroline aus ihrer Einschränkung den Kern eines Projekts: eine hohe Patisserie und eine Gastlichkeit, in der nichts fehlt. Sie wacht über den Saal wie über ihre Brote.",
+    chef1y1:"Auberge de l'Ill ★★★",chef1y2:"Eröffnung Eden Rose",
+    chef2role:"Küche · Küchenchef",chef2lat:"Das Produkt, die Saison, die Präzision",
+    chef2p:"An Carolines Seite während ihrer Zeit in der Auberge de l'Ill kennengelernt, führt Valérian die Küche: Produkte aus der Region, präzise Garungen, eine glutenfreie Gastronomie, die den Größten in nichts nachsteht.",
+    chef2y1:"Erster Michelin-Stern*",chef2y2:"Gault&Millau /20",
+    chefNote:"* Stern erhalten 2023 (einige ältere Quellen nennen 2022) — zu bestätigen.",
+    epi:"„Die Zeit, die du für deine Rose verloren hast, macht deine Rose so wichtig.“",epic:"Antoine de Saint-Exupéry — Der kleine Prinz",
+    p5no:"Tafel V",p5h:"Der <em>Besuch</em>",p5r:"30 Rue du Moulin · L-3660 Kayl",
+    "v-addr":"Adresse","v-lux":"Luxemburg","v-addr-s":"Im Park / Terres Rouges","v-tel":"Telefon",
+    "v-days":"Tage","v-open":"Dienstag – Sonntag","v-closed":"Montags geschlossen","v-hours":"Öffnungszeiten",
+    "v-hours-v":'Mittag- & Abendessen; Nachmittagsservice ≈ 15–17 Uhr. <span class="conf">Genaue Zeiten zu bestätigen.</span>',
+    "v-mail":"E-Mail","v-mail-v":"Historische Adresse info@edenrose.lu — Domain abgelaufen, beim Haus zu bestätigen.",
+    "v-cta1":"Telefonisch reservieren","v-cta2":"Facebook",
+    "foot-tag":"Hohe französische Küche, saisonal und 100 % glutenfrei, mitten im Park von Kayl.",
+    "foot-c1":"Finden","foot-c2":"Entdecken",demo:"Demo-Website — inoffizielles Muster · Webwerk"
+  },
+  en:{
+    nav1:"The concept",nav2:"The pavilion",nav3:"The plates",nav4:"The authors",nav5:"Visit",reserve:"Reserve",
+    mastKicker:"Steel herbarium · Kayl",starLine:"One star · MICHELIN Guide 2026",gmLine:"Gault&Millau — 14.5/20",
+    taxon:"French cuisine · seasonal · 100% gluten-free",tagline:"Fine dining, without compromise — at the heart of the park.",
+    ctaReserve:"Book a table",ctaDiscover:"Discover the house",footCovers:"Eighteen covers",footPark:"Kayl park",footSince:"Since 2019",
+    capLabel:"Plate · specimen",capText:"“Where the absence of gluten is never noticed.”",
+    fm1l:"Distinction",fm1v:"★ Michelin",fm1s:"Retained in the 2026 Guide",fm2l:"Signature",fm2v:"100% gluten-free",fm2s:"The country's only starred table of its kind",
+    fm3l:"Room",fm3v:"18 covers",fm3s:"Attentive, intimate service",fm4l:"Setting",fm4v:"Corten pavilion",fm4s:"In the park, by the river",
+    fm5l:"Ambience",fm5v:"Birdsong",fm5s:"Birds & cicadas as the only music",
+    p1no:"Plate I",p1h:"The <em>rare</em> species",p1r:"Gluten-free haute cuisine",
+    e1:"A gourmet kitchen that is <em>entirely gluten-free</em> — conceived not as a constraint, but as a signature.",
+    e2:"As a child, Caroline Esch developed a severe gluten intolerance. From that personal story a rare house was born: every plate, every sauce, every crumb of bread is made so the guest never notices what is missing.",
+    e3:"Breads and pastries are made here, from blends of rice, buckwheat, potato, corn, tapioca and chestnut flours — an exceptional patisserie, freed from wheat.",
+    e4:"“A table for coeliac gastronomes who, at this level, had almost nowhere else to go.”",
+    fl1:"Rice",fl2:"Buckwheat",fl3:"Potato",fl4:"Corn",fl5:"Tapioca",fl6:"Chestnut",
+    pl1a:"Plating · wood & grains",pl2a:"Pastry · alternative flours",aconfShort:"to be confirmed",
+    p2no:"Plate II",p2h:"The <em>pavilion</em>",p2r:"A jewel box in Kayl park",pavTag1:"Kayl park · the river",
+    "pav-h":"A corten-steel pavilion, set among the greenery.",
+    "pav-p1":"Clad in weathered corten steel, the pavilion melts into the park — steps from the river and a playground. A friends' house, secret and light-filled, where you feel received rather than served.",
+    pavd1b:"Birdsong as the only music",pavd1s:"Recorded birds and cicadas replace the sound system",
+    pavd2b:"Terrace & garden",pavd2s:"Al fresco dining on fine days",
+    pavd3b:"Short supply chains",pavd3s:"Vegetables from Luxembourg, Belgium & France; meat from local producers",
+    "pav-h2":"A rose on every table.",
+    "pav-p2":"The name says it all. A fresh rose on the tables; a line from The Little Prince on the menus. Eighteen covers, a service that “understands with a glance” — the hospitality of a home rather than a restaurant.",
+    p3no:"Plate III",p3h:"The market <em>plates</em>",p3r:"Tasting menus, through the seasons",
+    "m-intro":"The house works in tasting menus — dictated by the market, the season and the day's inspiration. Rather than a fixed card, a sequence of “plates” where the produce leads. This is the approach, not tonight's dishes.",
+    "m-conf":"Honesty note: the exact format, signature dishes and prices change with the seasons — to be confirmed directly with the restaurant. The images convey the spirit of the house.",
+    tickSeason:"season",tickSea:"sea",tickGarden:"garden",tickPastry:"sweet",
+    sp1h:"The openings",sp1p:"Bites and amuse-bouches built on wheat-free crunch and toasted grains.",
+    sp2h:"Along the water",sp2p:"Fish and early vegetables, short jus and garden herbs — freshness first.",
+    sp3h:"The garden",sp3p:"Edible flowers, greens and roots from the park — the plant palette to the fore.",
+    sp4h:"The patisserie",sp4p:"House breads and sweets from rice, buckwheat and chestnut flours — the pride of the house.",
+    mn1l:"Format",mn1h:"Surprise menus",mn1p:"Tasting at the whim of the market; the gluten-free bread remains one of the great moments.",
+    mn2l:"Price feel",mn2h:'Gastronomic — <span class="conf">to be confirmed</span>',mn2p:"Positioned as a starred table; prices and wine pairings to be confirmed with the restaurant.",
+    mn3l:"Afternoon service",mn3h:"≈ 3–5 pm",mn3p:"A lighter, family-friendly moment in the shade of the park — hours to be confirmed.",
+    p4no:"Plate IV",p4h:"The <em>authors</em>",p4r:"Two hands, one star",
+    chef1role:"Pastry · front of house · founder",chef1lat:"The gluten-free soul of the house",
+    chef1p:"Gluten-intolerant since childhood, Caroline turned her constraint into the heart of a project: a high patisserie and a hospitality where nothing is missing. She watches over the room as she does her breads.",
+    chef1y1:"Auberge de l'Ill ★★★",chef1y2:"Eden Rose opens",
+    chef2role:"Kitchen · head chef",chef2lat:"The produce, the season, the precision",
+    chef2p:"Met alongside Caroline during their time at the Auberge de l'Ill, Valérian leads the kitchen: short-chain produce, exact cooking, a gluten-free gastronomy with nothing to envy of the greatest.",
+    chef2y1:"First Michelin star*",chef2y2:"Gault&Millau /20",
+    chefNote:"* Star awarded in 2023 (some older sources cite 2022) — to be confirmed.",
+    epi:"“It is the time you have wasted on your rose that makes your rose so important.”",epic:"Antoine de Saint-Exupéry — The Little Prince",
+    p5no:"Plate V",p5h:"The <em>visit</em>",p5r:"30 Rue du Moulin · L-3660 Kayl",
+    "v-addr":"Address","v-lux":"Luxembourg","v-addr-s":"In the park / Terres Rouges","v-tel":"Telephone",
+    "v-days":"Days","v-open":"Tuesday – Sunday","v-closed":"Closed Monday","v-hours":"Hours",
+    "v-hours-v":'Lunch & dinner; afternoon service ≈ 3–5 pm. <span class="conf">Exact bands to be confirmed.</span>',
+    "v-mail":"Email","v-mail-v":"Historic address info@edenrose.lu — domain lapsed, to be confirmed with the restaurant.",
+    "v-cta1":"Reserve by phone","v-cta2":"Facebook",
+    "foot-tag":"French haute cuisine, seasonal and 100% gluten-free, at the heart of Kayl park.",
+    "foot-c1":"Find","foot-c2":"Explore",demo:"Demonstration site — unofficial mock-up · Webwerk"
+  }
+};
+
+const HTML_KEYS = new Set(["p1h","p2h","p3h","p4h","p5h","e1","mn2h","v-hours-v"]);
+
+function setLang(lang){
+  const dict = I18N[lang]; if(!dict) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k = el.getAttribute('data-i18n');
+    if(dict[k]===undefined) return;
+    if(HTML_KEYS.has(k)) el.innerHTML = dict[k];
+    else el.textContent = dict[k];
+  });
+  document.querySelectorAll('.langset button').forEach(b=>{
+    b.setAttribute('aria-pressed', b.dataset.lang===lang ? 'true':'false');
+  });
+}
+document.querySelectorAll('.langset button').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.dataset.lang));
+});
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

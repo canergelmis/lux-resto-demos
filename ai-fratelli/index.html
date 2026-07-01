@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>AI Fratelli — Restaurant · Pizzeria · au feu de bois · Grevenmacher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --char:#1E1B18; --char2:#262119; --char3:#322a20;
+    --cream:#F3ECE0; --cream2:#FBF7EF; --paper:#EFE6D7;
+    --terra:#B5432E; --terra2:#C0442F;
+    --taupe:#8A6E5E; --taupe-soft:#b39c8c;
+    --ember:#E07A3E; --ember2:#F0A15A;
+    --ink:#2A2521;
+    --serif:"Fraunces",Georgia,serif;
+    --cond:"Oswald","Arial Narrow",sans-serif;
+    --sans:"Inter",system-ui,sans-serif;
+    --maxw:1440px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans); color:var(--ink); background:var(--cream);
+    -webkit-font-smoothing:antialiased; line-height:1.5; overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 44px}
+  .kick{font-family:var(--cond);text-transform:uppercase;letter-spacing:.28em;font-size:12px;font-weight:600}
+  .serif{font-family:var(--serif)}
+
+  /* ---------- utility bar ---------- */
+  .util{
+    background:var(--char); color:var(--cream);
+    border-bottom:1px solid rgba(243,236,224,.12);
+    position:sticky; top:0; z-index:60;
+  }
+  .util-in{max-width:var(--maxw);margin:0 auto;padding:0 44px;height:52px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .util-left{display:flex;align-items:center;gap:14px;font-family:var(--cond);
+    text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--taupe-soft)}
+  .util-dot{width:6px;height:6px;border-radius:50%;background:var(--ember)}
+  .util-right{display:flex;align-items:center;gap:8px}
+  .lang{display:flex;border:1px solid rgba(243,236,224,.25);border-radius:2px;overflow:hidden}
+  .lang button{background:transparent;color:var(--taupe-soft);border:0;cursor:pointer;
+    font-family:var(--cond);font-size:12px;letter-spacing:.14em;padding:6px 11px;text-transform:uppercase}
+  .lang button.on{background:var(--ember);color:var(--char);font-weight:600}
+  .util-phone{font-family:var(--cond);letter-spacing:.06em;font-size:13px;color:var(--cream);padding:0 6px}
+  .btn{display:inline-block;font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;
+    font-size:12.5px;font-weight:600;padding:11px 20px;border-radius:2px;cursor:pointer;border:1px solid transparent;transition:.18s}
+  .btn-ember{background:var(--ember);color:var(--char)}
+  .btn-ember:hover{background:var(--ember2)}
+  .btn-ghost{border-color:rgba(243,236,224,.4);color:var(--cream)}
+  .btn-ghost:hover{border-color:var(--ember);color:var(--ember)}
+  .btn-dark{background:var(--char);color:var(--cream)}
+  .btn-dark:hover{background:var(--terra)}
+  .btn-out{border-color:var(--char);color:var(--char)}
+  .btn-out:hover{background:var(--char);color:var(--cream)}
+
+  /* ---------- badge ---------- */
+  .badge{display:block}
+  .badge text{font-family:var(--cond)}
+
+  /* ---------- masthead ---------- */
+  .mast{display:grid;grid-template-columns:minmax(0,46fr) minmax(0,54fr);min-height:88vh}
+  .mast-brand{
+    background:
+      radial-gradient(120% 90% at 22% 118%, rgba(224,122,62,.55) 0%, rgba(181,67,46,.28) 30%, transparent 62%),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.014) 0 2px, transparent 2px 7px),
+      linear-gradient(180deg,#221d18,#17130f);
+    color:var(--cream);
+    padding:52px 6vw 60px 44px;
+    display:flex;flex-direction:column;justify-content:space-between;position:relative;
+  }
+  .mast-brand::after{content:"";position:absolute;right:-1px;top:0;bottom:0;width:1px;background:rgba(243,236,224,.14)}
+  .mast-top{display:flex;align-items:center;gap:20px}
+  .mast-badge{width:104px;height:104px;flex:none}
+  .mast-wordmark .name{font-family:var(--cond);font-weight:700;letter-spacing:.14em;font-size:26px;line-height:1}
+  .mast-wordmark .sub{font-family:var(--cond);text-transform:uppercase;letter-spacing:.24em;
+    font-size:10.5px;color:var(--taupe-soft);margin-top:7px}
+  .mast-wordmark .sub em{color:var(--ember2);font-style:italic;font-family:var(--serif);letter-spacing:.02em;text-transform:none;font-size:12px}
+  .mast-hero-txt{margin:44px 0}
+  .mast-hero-txt .kick{color:var(--ember2);margin-bottom:20px}
+  .mast-hero-txt h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,3.6vw,58px);
+    line-height:1.02;letter-spacing:-.01em}
+  .mast-hero-txt h1 em{font-style:italic;color:var(--ember2)}
+  .mast-hero-txt p{max-width:40ch;margin-top:22px;color:#d9cdbd;font-size:16px}
+  .mast-cta{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+  .mast-foot{display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+    padding-top:26px;border-top:1px solid rgba(243,236,224,.14)}
+  .stars{color:var(--ember2);font-size:15px;letter-spacing:2px}
+  .mast-foot .rate{font-family:var(--cond);letter-spacing:.06em;font-size:13px;color:#d9cdbd}
+  .mast-foot .rate b{color:var(--cream);font-weight:600}
+  .mast-photo{position:relative;background:var(--char)}
+  .mast-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .mast-photo .scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(23,19,15,.45),transparent 26%),
+    linear-gradient(0deg,rgba(23,19,15,.55),transparent 40%)}
+  .temp-chip{position:absolute;top:26px;right:26px;background:rgba(23,19,15,.8);
+    border:1px solid var(--ember);color:var(--ember2);font-family:var(--cond);
+    text-transform:uppercase;letter-spacing:.14em;font-size:12px;padding:9px 15px;border-radius:2px;
+    display:flex;align-items:center;gap:9px;backdrop-filter:blur(3px)}
+  .temp-chip .flame{width:8px;height:8px;border-radius:50%;background:var(--ember);box-shadow:0 0 10px var(--ember)}
+  .photo-cap{position:absolute;left:26px;bottom:24px;color:var(--cream);font-family:var(--serif);
+    font-style:italic;font-size:15px;text-shadow:0 1px 12px rgba(0,0,0,.7);max-width:52%}
+
+  /* ---------- carta (wood-fired board) ---------- */
+  .carta{background:var(--char);color:var(--cream);padding:78px 0 92px;position:relative;overflow:hidden}
+  .carta::before{content:"";position:absolute;left:50%;top:-30%;transform:translateX(-50%);
+    width:150%;height:70%;background:radial-gradient(50% 100% at 50% 100%,rgba(224,122,62,.16),transparent 70%);pointer-events:none}
+  .carta-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;
+    padding-bottom:34px;margin-bottom:40px;border-bottom:1px solid rgba(243,236,224,.16);position:relative}
+  .carta-head .kick{color:var(--ember2)}
+  .carta-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3vw,46px);line-height:1.03;margin-top:12px}
+  .carta-head h2 em{font-style:italic;color:var(--ember2)}
+  .band-chip{font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;font-size:12.5px;
+    color:var(--char);background:var(--cream);padding:9px 16px;border-radius:2px;white-space:nowrap}
+  .carta-grid{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:44px;position:relative}
+  .menu-block h3{font-family:var(--cond);text-transform:uppercase;letter-spacing:.2em;font-size:14px;
+    color:var(--ember2);padding-bottom:14px;margin-bottom:8px;border-bottom:1px solid rgba(243,236,224,.14)}
+  .dish{display:flex;justify-content:space-between;gap:14px;align-items:baseline;padding:13px 0;
+    border-bottom:1px dashed rgba(243,236,224,.12)}
+  .dish:last-child{border-bottom:0}
+  .dish .d-name{font-family:var(--serif);font-size:19px}
+  .dish .d-desc{display:block;font-family:var(--sans);font-size:12.5px;color:var(--taupe-soft);margin-top:3px;letter-spacing:.01em}
+  .dish .d-price{font-family:var(--cond);font-size:12px;letter-spacing:.08em;color:var(--taupe-soft);white-space:nowrap;text-transform:uppercase}
+  .menu-note{margin-top:18px;font-family:var(--serif);font-style:italic;font-size:14px;color:var(--taupe-soft)}
+  .feature{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .feature-oven{width:100%;max-width:330px;aspect-ratio:1/1;border-radius:50%;overflow:hidden;position:relative;
+    border:6px solid var(--char3);box-shadow:0 0 0 2px rgba(224,122,62,.5),0 20px 60px rgba(0,0,0,.5),0 0 80px rgba(224,122,62,.25)}
+  .feature-oven img{width:100%;height:100%;object-fit:cover}
+  .feature-tag{margin-top:22px;font-family:var(--cond);text-transform:uppercase;letter-spacing:.2em;
+    font-size:12px;color:var(--ember2)}
+  .feature h4{font-family:var(--serif);font-size:22px;margin-top:8px}
+  .feature p{font-size:13.5px;color:var(--taupe-soft);margin-top:8px;max-width:32ch}
+  .diet{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:52px}
+  .diet span{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:11.5px;
+    color:var(--cream);border:1px solid rgba(243,236,224,.3);padding:8px 15px;border-radius:2px}
+
+  /* ---------- fire ritual ---------- */
+  .fire{background:
+      linear-gradient(180deg,var(--paper),var(--cream));
+    padding:84px 0}
+  .fire-head{max-width:640px}
+  .fire-head .kick{color:var(--terra)}
+  .fire-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,2.7vw,42px);line-height:1.05;margin-top:12px}
+  .fire-head p{margin-top:16px;color:#5b5148;font-size:16px;max-width:56ch}
+  .fire-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:52px;
+    border:1px solid rgba(30,27,24,.14);background:rgba(30,27,24,.14)}
+  .step{background:var(--cream2);padding:38px 34px 42px;position:relative}
+  .step .num{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--terra)}
+  .step .heat{height:5px;border-radius:3px;margin:16px 0 22px}
+  .step:nth-child(1) .heat{background:linear-gradient(90deg,var(--taupe),var(--ember))}
+  .step:nth-child(2) .heat{background:linear-gradient(90deg,var(--ember),var(--terra))}
+  .step:nth-child(3) .heat{background:linear-gradient(90deg,var(--terra),#7a1f12)}
+  .step h3{font-family:var(--serif);font-size:24px}
+  .step .it{font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;font-size:11.5px;color:var(--taupe);margin-top:4px}
+  .step p{font-size:14px;color:#5b5148;margin-top:14px}
+  .step .deg{position:absolute;top:34px;right:34px;font-family:var(--cond);font-size:13px;
+    color:var(--terra);letter-spacing:.08em}
+
+  /* ---------- salles (rooms) ---------- */
+  .salles{background:var(--char2);color:var(--cream);padding:80px 0 90px}
+  .salles-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+  .salles-head .kick{color:var(--ember2)}
+  .salles-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,2.7vw,42px);margin-top:12px}
+  .salles-head p{color:var(--taupe-soft);max-width:34ch;font-size:14.5px}
+  .mosaic{display:grid;grid-template-columns:1.5fr 1fr;grid-template-rows:230px 230px;gap:16px}
+  .tile{position:relative;overflow:hidden;border-radius:3px;background:#000}
+  .tile.big{grid-row:1/3}
+  .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .tile:hover img{transform:scale(1.05)}
+  .tile .lab{position:absolute;left:18px;bottom:16px;z-index:2}
+  .tile .lab .t{font-family:var(--serif);font-size:20px;text-shadow:0 1px 10px rgba(0,0,0,.7)}
+  .tile .lab .s{font-family:var(--cond);text-transform:uppercase;letter-spacing:.16em;font-size:11px;color:var(--ember2);margin-top:3px}
+  .tile .grad{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.62),transparent 55%);z-index:1}
+
+  /* ---------- visit ---------- */
+  .visit{padding:82px 0 60px;background:var(--cream)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .visit .kick{color:var(--terra)}
+  .visit h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,2.7vw,42px);margin:12px 0 30px}
+  .hours{border-top:2px solid var(--char)}
+  .hrow{display:flex;justify-content:space-between;gap:16px;padding:13px 2px;border-bottom:1px solid rgba(30,27,24,.14);align-items:baseline}
+  .hrow .day{font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-size:14px}
+  .hrow .time{font-family:var(--serif);font-size:15.5px;color:#4a4139}
+  .hrow.closed .time{color:var(--terra);font-style:italic}
+  .hrow.now{background:rgba(224,122,62,.12);margin:0 -8px;padding:13px 8px}
+  .hnote{font-size:12.5px;color:var(--taupe);margin-top:12px;font-style:italic}
+  .contact-row{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+  .info-card{background:var(--cream2);border:1px solid rgba(30,27,24,.12);border-radius:3px;padding:18px 20px;flex:1;min-width:200px}
+  .info-card .l{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:var(--taupe)}
+  .info-card .v{font-family:var(--serif);font-size:17px;margin-top:6px}
+  .info-card .v small{display:block;font-family:var(--sans);font-size:12px;color:var(--taupe);font-style:italic;margin-top:3px}
+  .facil{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+  .facil span{font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-size:11.5px;
+    background:var(--char);color:var(--cream);padding:7px 13px;border-radius:2px}
+  .events{margin-top:26px;padding:20px 22px;border-left:3px solid var(--terra);background:var(--cream2)}
+  .events h4{font-family:var(--serif);font-size:19px}
+  .events p{font-size:14px;color:#5b5148;margin-top:8px}
+  .map-wrap{position:sticky;top:76px}
+  .map-frame{border:1px solid rgba(30,27,24,.18);border-radius:3px;overflow:hidden;box-shadow:0 18px 50px rgba(30,27,24,.14)}
+  .map-frame iframe{display:block;width:100%;height:520px;border:0;filter:grayscale(.2) contrast(1.02)}
+  .map-cta{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--char);color:var(--cream);padding:60px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px;align-items:start;
+    padding-bottom:34px;border-bottom:1px solid rgba(243,236,224,.14)}
+  .foot-brand{display:flex;gap:16px;align-items:flex-start}
+  .foot-badge{width:72px;height:72px;flex:none}
+  .foot-brand .name{font-family:var(--cond);font-weight:700;letter-spacing:.12em;font-size:20px}
+  .foot-brand .sub{font-family:var(--serif);font-style:italic;color:var(--ember2);font-size:13px;margin-top:5px}
+  .foot-brand p{color:var(--taupe-soft);font-size:13px;margin-top:12px;max-width:34ch}
+  .foot-col h5{font-family:var(--cond);text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--ember2);margin-bottom:14px}
+  .foot-col a,.foot-col p{display:block;color:#d9cdbd;font-size:14px;margin-bottom:9px}
+  .foot-col a:hover{color:var(--ember2)}
+  .foot-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:24px;
+    font-size:12px;color:var(--taupe-soft)}
+  .demo{border:1px dashed rgba(224,122,62,.5);color:var(--ember2);padding:4px 12px;border-radius:2px;
+    font-family:var(--cond);text-transform:uppercase;letter-spacing:.12em;font-size:11px}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:1080px){
+    .carta-grid{grid-template-columns:1fr 1fr}
+    .feature{grid-column:1/3;order:-1;flex-direction:row;text-align:left;gap:30px;align-items:center;justify-content:center}
+    .feature p{margin-top:6px}
+    .visit-grid{gap:36px}
+  }
+  @media(max-width:900px){
+    .wrap{padding:0 26px}
+    .util-in{padding:0 26px}
+    .mast{grid-template-columns:1fr}
+    .mast-photo{min-height:52vh}
+    .mast-brand{padding:40px 26px 46px}
+    .fire-steps{grid-template-columns:1fr}
+    .visit-grid{grid-template-columns:1fr}
+    .map-wrap{position:static}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:640px){
+    .carta-grid{grid-template-columns:1fr}
+    .feature{grid-column:auto;flex-direction:column;text-align:center}
+    .mosaic{grid-template-columns:1fr;grid-template-rows:repeat(3,220px)}
+    .tile.big{grid-row:auto}
+    .util-phone,.util-left .sep{display:none}
+    .foot-grid{grid-template-columns:1fr}
+    .salles-head,.carta-head{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== UTILITY BAR ===== -->
+<div class="util">
+  <div class="util-in">
+    <div class="util-left">
+      <span class="util-dot"></span>
+      <span data-i18n="util.region">Grevenmacher · Vallée de la Moselle</span>
+    </div>
+    <div class="util-right">
+      <a href="tel:+35226262995" class="util-phone">+352 26 26 29 95</a>
+      <div class="lang" role="group" aria-label="Langue">
+        <button data-lang="fr" class="on">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a href="tel:+35226262995" class="btn btn-ember" data-i18n="util.reserve">Réserver</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MASTHEAD ===== -->
+<header class="mast">
+  <div class="mast-brand">
+    <div class="mast-top">
+      <!-- recreated circular badge -->
+      <svg class="mast-badge" viewBox="0 0 200 200" aria-label="AI Fratelli">
+        <circle cx="100" cy="100" r="97" fill="#17130f"/>
+        <circle cx="100" cy="100" r="93" fill="none" stroke="#F3ECE0" stroke-width="2.2"/>
+        <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(243,236,224,.3)" stroke-width="1"/>
+        <g transform="translate(100,54) scale(.62)" stroke="#F3ECE0" stroke-width="4.5" stroke-linecap="round" fill="none">
+          <g transform="rotate(-20)">
+            <line x1="0" y1="-30" x2="0" y2="34"/>
+            <line x1="-9" y1="-30" x2="-9" y2="-12"/>
+            <line x1="9" y1="-30" x2="9" y2="-12"/>
+            <path d="M-9,-12 Q0,-2 9,-12"/>
+          </g>
+          <g transform="rotate(20)">
+            <line x1="0" y1="-6" x2="0" y2="34"/>
+            <path d="M0,-30 Q10,-22 6,-6 L-2,-6 Q-4,-20 0,-30 Z" fill="#F3ECE0" stroke="none"/>
+          </g>
+        </g>
+        <text x="100" y="128" text-anchor="middle" fill="#F3ECE0" font-size="27" font-weight="700" letter-spacing="2">AI FRATELLI</text>
+        <text x="100" y="146" text-anchor="middle" fill="rgba(243,236,224,.75)" font-size="9.5" letter-spacing="3">RESTAURANT · PIZZERIA</text>
+        <text x="100" y="163" text-anchor="middle" fill="#F0A15A" font-family="Fraunces,serif" font-style="italic" font-size="12">au feu de bois</text>
+      </svg>
+      <div class="mast-wordmark">
+        <div class="name">AI&nbsp;FRATELLI</div>
+        <div class="sub">Restaurant · Pizzeria · <em>au feu de bois</em></div>
+      </div>
+    </div>
+
+    <div class="mast-hero-txt">
+      <div class="kick" data-i18n="m.kicker">La cuisine italienne au feu de bois</div>
+      <h1 data-i18n="m.title">Au cœur de Grevenmacher, la <em>vraie flamme</em> italienne.</h1>
+      <p data-i18n="m.lede">Pâtes fraîches, pizzas à la croûte braisée dans notre four à bois, et une salle à nappes blanches à deux pas de la Place du Marché, dans la vallée de la Moselle.</p>
+      <div class="mast-cta">
+        <a href="tel:+35226262995" class="btn btn-ember" data-i18n="m.cta1">Réserver une table</a>
+        <a href="#carta" class="btn btn-ghost" data-i18n="m.cta2">Voir la carte</a>
+      </div>
+    </div>
+
+    <div class="mast-foot">
+      <span class="stars">★★★★½</span>
+      <span class="rate"><b>4,5 / 5</b> · <span data-i18n="m.reviews">183 avis Google</span></span>
+      <span class="rate" data-i18n="m.price">€20–30 / personne</span>
+    </div>
+  </div>
+
+  <div class="mast-photo">
+    <img src="assets/hero.jpg" alt="La salle principale d'AI Fratelli avec son escalier en colimaçon">
+    <div class="scrim"></div>
+    <div class="temp-chip"><span class="flame"></span><span data-i18n="m.temp">Four à bois · ≈ 400 °C</span></div>
+    <div class="photo-cap serif" data-i18n="m.heroCap">La salle principale et son escalier en colimaçon noir.</div>
+  </div>
+</header>
+
+<!-- ===== CARTA (wood-fired board) ===== -->
+<section class="carta" id="carta">
+  <div class="wrap">
+    <div class="carta-head">
+      <div>
+        <div class="kick" data-i18n="c.kick">La carta</div>
+        <h2 data-i18n="c.title">Tout passe par le <em>feu de bois</em>.</h2>
+      </div>
+      <div class="band-chip" data-i18n="c.band">Compter €20–30 par personne</div>
+    </div>
+
+    <div class="carta-grid">
+      <!-- pizze -->
+      <div class="menu-block">
+        <h3 data-i18n="c.pizze">Le Pizze — al forno</h3>
+        <div class="dish"><span><span class="d-name">Margherita</span><span class="d-desc" data-i18n="c.p1d">Tomate San Marzano, mozzarella, basilic frais</span></span><span class="d-price" data-i18n="c.tbc">prix à confirmer</span></div>
+        <div class="dish"><span><span class="d-name" data-i18n="c.p2">Chèvre di capra</span><span class="d-desc" data-i18n="c.p2d">Tomate, mozzarella, chèvre braisé au four</span></span><span class="d-price" data-i18n="c.tbc">prix à confirmer</span></div>
+        <div class="dish"><span><span class="d-name" data-i18n="c.p3">Tartufo — aux truffes</span><span class="d-desc" data-i18n="c.p3d">Crème, mozzarella, truffe — la plus demandée</span></span><span class="d-price" data-i18n="c.tbc">prix à confirmer</span></div>
+        <div class="dish"><span><span class="d-name">Quattro Stagioni</span><span class="d-desc" data-i18n="c.p4d">Jambon, champignons, artichauts, olives</span></span><span class="d-price" data-i18n="c.tbc">prix à confirmer</span></div>
+        <p class="menu-note" data-i18n="c.pnote">…et l'ardoise du jour, selon l'humeur du four.</p>
+      </div>
+
+      <!-- feature: pizza from the oven -->
+      <div class="feature">
+        <div class="feature-oven">
+          <img src="assets/food-2.jpg" alt="Pizza chèvre à la croûte braisée au feu de bois">
+        </div>
+        <div>
+          <div class="feature-tag" data-i18n="c.ftag">Directement du four</div>
+          <h4 data-i18n="c.fh">Pizza chèvre, pâte fine</h4>
+          <p data-i18n="c.fp">Croûte fine et souple, bords braisés et marbrés par la flamme vive — la signature de la maison.</p>
+        </div>
+      </div>
+
+      <!-- cucina + dolci -->
+      <div class="menu-block">
+        <h3 data-i18n="c.cucina">La Cucina & i Dolci</h3>
+        <div class="dish"><span><span class="d-name" data-i18n="c.c1">Antipasto della casa</span><span class="d-desc" data-i18n="c.c1d">Bresaola, mozzarella, parmesan en copeaux, grissini</span></span><span class="d-price" data-i18n="c.tbc">prix à confirmer</span></div>
+        <div class="dish"><span><span class="d-name" data-i18n="c.c2">Lasagne al forno</span><span class="d-desc" data-i18n="c.c2d">La recette traditionnelle, gratinée au four</span></span><span class="d-price" data-i18n="c.tbc">prix à confirmer</span></div>
+        <div class="dish"><span><span class="d-name">Entrecôte</span><span class="d-desc" data-i18n="c.c3d">Le clin d'œil brasserie, cuisson au choix</span></span><span class="d-price" data-i18n="c.tbc">prix à confirmer</span></div>
+        <div class="dish"><span><span class="d-name">Cassata siciliana</span><span class="d-desc" data-i18n="c.c4d">Notre dessert signature, ricotta &amp; fruits confits</span></span><span class="d-price" data-i18n="c.tbc">prix à confirmer</span></div>
+        <p class="menu-note" data-i18n="c.cnote">Vins de la Moselle &amp; d'Italie · cocktails.</p>
+      </div>
+    </div>
+
+    <div class="diet">
+      <span data-i18n="c.d1">Menu enfant</span>
+      <span data-i18n="c.d2">Options végétariennes</span>
+      <span data-i18n="c.d3">Options sans gluten</span>
+      <span data-i18n="c.d4">À emporter &amp; livraison</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FIRE RITUAL ===== -->
+<section class="fire">
+  <div class="wrap">
+    <div class="fire-head">
+      <div class="kick" data-i18n="f.kick">Le feu de bois</div>
+      <h2 data-i18n="f.title">Une flamme, trois temps.</h2>
+      <p data-i18n="f.lede">Le four à bois ne se règle pas au bouton. Il se conduit — du premier rondin à la braise blanche, jusqu'à la pizza qui cuit en moins de deux minutes.</p>
+    </div>
+    <div class="fire-steps">
+      <div class="step">
+        <div class="deg">~ 120 °C</div>
+        <div class="num" data-i18n="f.n1">Premier temps</div>
+        <div class="heat"></div>
+        <h3 data-i18n="f.h1">Le bois</h3>
+        <div class="it" data-i18n="f.i1">on allume</div>
+        <p data-i18n="f.p1">Du bois sec de la région lance le four et lui donne son parfum fumé, dès le matin.</p>
+      </div>
+      <div class="step">
+        <div class="deg">~ 300 °C</div>
+        <div class="num" data-i18n="f.n2">Deuxième temps</div>
+        <div class="heat"></div>
+        <h3 data-i18n="f.h2">La braise</h3>
+        <div class="it" data-i18n="f.i2">on attend</div>
+        <p data-i18n="f.p2">Les flammes retombent, la braise blanchit et emmagasine la chaleur dans la sole.</p>
+      </div>
+      <div class="step">
+        <div class="deg">~ 400 °C</div>
+        <div class="num" data-i18n="f.n3">Troisième temps</div>
+        <div class="heat"></div>
+        <h3 data-i18n="f.h3">Al forno</h3>
+        <div class="it" data-i18n="f.i3">on enfourne</div>
+        <p data-i18n="f.p3">La pizza glisse sur la pierre brûlante : croûte gonflée, bords marbrés, cœur moelleux.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SALLES (rooms) ===== -->
+<section class="salles">
+  <div class="wrap">
+    <div class="salles-head">
+      <div>
+        <div class="kick" data-i18n="s.kick">Nos salles</div>
+        <h2 data-i18n="s.title">Élégant, mais sans façon.</h2>
+      </div>
+      <p data-i18n="s.lede">Nappes blanches, chaises à assise terracotta, sol de granit poli — trois espaces pour un déjeuner, un dîner en couple ou un banquet.</p>
+    </div>
+    <div class="mosaic">
+      <div class="tile big">
+        <img src="assets/interior-1.jpg" alt="Salle principale avec l'arbre lumineux en fleurs">
+        <div class="grad"></div>
+        <div class="lab"><div class="t serif" data-i18n="s.r1">La salle principale</div><div class="s" data-i18n="s.r1s">escalier en colimaçon &amp; arbre en fleurs</div></div>
+      </div>
+      <div class="tile">
+        <img src="assets/interior-2.jpg" alt="Véranda sous verrière avec art abstrait et vins">
+        <div class="grad"></div>
+        <div class="lab"><div class="t serif" data-i18n="s.r2">La véranda</div><div class="s" data-i18n="s.r2s">sous verrière, baignée de lumière</div></div>
+      </div>
+      <div class="tile">
+        <img src="assets/hero.jpg" alt="Détail des tables dressées et de la terrasse">
+        <div class="grad"></div>
+        <div class="lab"><div class="t serif" data-i18n="s.r3">Tables &amp; terrasse</div><div class="s" data-i18n="s.r3s">dressage soigné, terrasse aux beaux jours</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISIT ===== -->
+<section class="visit" id="visite">
+  <div class="wrap">
+    <div class="visit-grid">
+      <div>
+        <div class="kick" data-i18n="v.kick">Passez nous voir</div>
+        <h2 data-i18n="v.title">Horaires &amp; réservation</h2>
+
+        <div class="hours">
+          <div class="hrow closed"><span class="day" data-i18n="v.mon">Lundi</span><span class="time" data-i18n="v.closed">Fermé</span></div>
+          <div class="hrow"><span class="day" data-i18n="v.tue">Mardi</span><span class="time">11:30–14:00 · 18:00–22:00</span></div>
+          <div class="hrow"><span class="day" data-i18n="v.wed">Mercredi</span><span class="time">11:30–14:00 · 18:00–22:00</span></div>
+          <div class="hrow"><span class="day" data-i18n="v.thu">Jeudi</span><span class="time">11:30–14:00 · 18:00–22:00</span></div>
+          <div class="hrow"><span class="day" data-i18n="v.fri">Vendredi</span><span class="time">11:30–14:00 · 18:00–22:00</span></div>
+          <div class="hrow"><span class="day" data-i18n="v.sat">Samedi</span><span class="time">11:30–14:00 · 18:00–22:00</span></div>
+          <div class="hrow"><span class="day" data-i18n="v.sun">Dimanche</span><span class="time">11:30–14:00 · 18:00–22:00</span></div>
+        </div>
+        <p class="hnote" data-i18n="v.hnote">Service continu du mardi au dimanche, midi &amp; soir. Horaires à confirmer avec l'établissement.</p>
+
+        <div class="contact-row">
+          <div class="info-card">
+            <div class="l" data-i18n="v.callL">Téléphone</div>
+            <div class="v">+352 26 26 29 95<small data-i18n="v.callS">alt. 28 20 77 11 — à confirmer</small></div>
+          </div>
+          <div class="info-card">
+            <div class="l" data-i18n="v.addrL">Adresse</div>
+            <div class="v">5 Place du Marché<small>L-6755 Grevenmacher</small></div>
+          </div>
+        </div>
+
+        <div class="facil">
+          <span data-i18n="v.f1">Terrasse</span>
+          <span data-i18n="v.f2">Parking gratuit</span>
+          <span data-i18n="v.f3">Accès PMR</span>
+          <span data-i18n="v.f4">Chiens admis</span>
+          <span data-i18n="v.f5">Wi-Fi gratuit</span>
+          <span data-i18n="v.f6">Climatisation</span>
+          <span data-i18n="v.f7">Ouvert le dimanche</span>
+        </div>
+
+        <div class="events">
+          <h4 data-i18n="v.evH">Événements &amp; traiteur</h4>
+          <p data-i18n="v.evP">Banquets, mariages et repas de groupe sur réservation — également à emporter et en livraison à domicile.</p>
+        </div>
+      </div>
+
+      <div class="map-wrap">
+        <div class="map-frame">
+          <iframe title="AI Fratelli — 5 Place du Marché, Grevenmacher" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=5%20Place%20du%20March%C3%A9%2C%20L-6755%20Grevenmacher%2C%20Luxembourg&output=embed"></iframe>
+        </div>
+        <div class="map-cta">
+          <a href="https://www.google.com/maps/place/AI+FRATELLI/" target="_blank" rel="noopener" class="btn btn-out" data-i18n="v.dir">Itinéraire</a>
+          <a href="tel:+35226262995" class="btn btn-dark" data-i18n="v.book">Appeler pour réserver</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <svg class="foot-badge" viewBox="0 0 200 200" aria-label="AI Fratelli">
+          <circle cx="100" cy="100" r="97" fill="#17130f"/>
+          <circle cx="100" cy="100" r="93" fill="none" stroke="#F3ECE0" stroke-width="2.2"/>
+          <g transform="translate(100,58) scale(.6)" stroke="#F3ECE0" stroke-width="5" stroke-linecap="round" fill="none">
+            <g transform="rotate(-20)"><line x1="0" y1="-30" x2="0" y2="34"/><line x1="-9" y1="-30" x2="-9" y2="-12"/><line x1="9" y1="-30" x2="9" y2="-12"/><path d="M-9,-12 Q0,-2 9,-12"/></g>
+            <g transform="rotate(20)"><line x1="0" y1="-6" x2="0" y2="34"/><path d="M0,-30 Q10,-22 6,-6 L-2,-6 Q-4,-20 0,-30 Z" fill="#F3ECE0" stroke="none"/></g>
+          </g>
+          <text x="100" y="132" text-anchor="middle" fill="#F3ECE0" font-family="Oswald,sans-serif" font-size="30" font-weight="700" letter-spacing="2">AI FRATELLI</text>
+          <text x="100" y="152" text-anchor="middle" fill="#F0A15A" font-family="Fraunces,serif" font-style="italic" font-size="13">au feu de bois</text>
+        </svg>
+        <div>
+          <div class="name">AI FRATELLI</div>
+          <div class="sub">Restaurant · Pizzeria · au feu de bois</div>
+          <p data-i18n="ft.blurb">La cuisine italienne au feu de bois, sur la Place du Marché de Grevenmacher, dans la vallée de la Moselle.</p>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="ft.contact">Contact</h5>
+        <a href="tel:+35226262995">+352 26 26 29 95</a>
+        <p>5 Place du Marché<br>L-6755 Grevenmacher</p>
+        <a href="https://www.google.com/maps/place/AI+FRATELLI/" target="_blank" rel="noopener" data-i18n="ft.map">Voir sur Google Maps</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="ft.hours">Horaires</h5>
+        <p data-i18n="ft.mon">Lundi — fermé</p>
+        <p data-i18n="ft.rest">Mardi–Dimanche<br>11:30–14:00 · 18:00–22:00</p>
+        <p style="color:var(--taupe-soft);font-size:12px;font-style:italic" data-i18n="ft.tbc">Horaires à confirmer</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-i18n="ft.copy">© 2026 AI Fratelli Sàrl · Grevenmacher</span>
+      <span class="demo" data-i18n="ft.demo">Site de démonstration — non officiel</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  fr:{
+    "util.region":"Grevenmacher · Vallée de la Moselle","util.reserve":"Réserver",
+    "m.kicker":"La cuisine italienne au feu de bois",
+    "m.title":"Au cœur de Grevenmacher, la vraie flamme italienne.",
+    "m.lede":"Pâtes fraîches, pizzas à la croûte braisée dans notre four à bois, et une salle à nappes blanches à deux pas de la Place du Marché, dans la vallée de la Moselle.",
+    "m.cta1":"Réserver une table","m.cta2":"Voir la carte","m.reviews":"183 avis Google","m.price":"€20–30 / personne",
+    "m.temp":"Four à bois · ≈ 400 °C","m.heroCap":"La salle principale et son escalier en colimaçon noir.",
+    "c.kick":"La carta","c.title":"Tout passe par le feu de bois.","c.band":"Compter €20–30 par personne",
+    "c.pizze":"Le Pizze — al forno","c.tbc":"prix à confirmer",
+    "c.p1d":"Tomate San Marzano, mozzarella, basilic frais","c.p2":"Chèvre di capra","c.p2d":"Tomate, mozzarella, chèvre braisé au four",
+    "c.p3":"Tartufo — aux truffes","c.p3d":"Crème, mozzarella, truffe — la plus demandée","c.p4d":"Jambon, champignons, artichauts, olives",
+    "c.pnote":"…et l'ardoise du jour, selon l'humeur du four.",
+    "c.ftag":"Directement du four","c.fh":"Pizza chèvre, pâte fine","c.fp":"Croûte fine et souple, bords braisés et marbrés par la flamme vive — la signature de la maison.",
+    "c.cucina":"La Cucina & i Dolci","c.c1":"Antipasto della casa","c.c1d":"Bresaola, mozzarella, parmesan en copeaux, grissini",
+    "c.c2":"Lasagne al forno","c.c2d":"La recette traditionnelle, gratinée au four","c.c3d":"Le clin d'œil brasserie, cuisson au choix",
+    "c.c4d":"Notre dessert signature, ricotta & fruits confits","c.cnote":"Vins de la Moselle & d'Italie · cocktails.",
+    "c.d1":"Menu enfant","c.d2":"Options végétariennes","c.d3":"Options sans gluten","c.d4":"À emporter & livraison",
+    "f.kick":"Le feu de bois","f.title":"Une flamme, trois temps.",
+    "f.lede":"Le four à bois ne se règle pas au bouton. Il se conduit — du premier rondin à la braise blanche, jusqu'à la pizza qui cuit en moins de deux minutes.",
+    "f.n1":"Premier temps","f.h1":"Le bois","f.i1":"on allume","f.p1":"Du bois sec de la région lance le four et lui donne son parfum fumé, dès le matin.",
+    "f.n2":"Deuxième temps","f.h2":"La braise","f.i2":"on attend","f.p2":"Les flammes retombent, la braise blanchit et emmagasine la chaleur dans la sole.",
+    "f.n3":"Troisième temps","f.h3":"Al forno","f.i3":"on enfourne","f.p3":"La pizza glisse sur la pierre brûlante : croûte gonflée, bords marbrés, cœur moelleux.",
+    "s.kick":"Nos salles","s.title":"Élégant, mais sans façon.",
+    "s.lede":"Nappes blanches, chaises à assise terracotta, sol de granit poli — trois espaces pour un déjeuner, un dîner en couple ou un banquet.",
+    "s.r1":"La salle principale","s.r1s":"escalier en colimaçon & arbre en fleurs","s.r2":"La véranda","s.r2s":"sous verrière, baignée de lumière",
+    "s.r3":"Tables & terrasse","s.r3s":"dressage soigné, terrasse aux beaux jours",
+    "v.kick":"Passez nous voir","v.title":"Horaires & réservation",
+    "v.mon":"Lundi","v.tue":"Mardi","v.wed":"Mercredi","v.thu":"Jeudi","v.fri":"Vendredi","v.sat":"Samedi","v.sun":"Dimanche","v.closed":"Fermé",
+    "v.hnote":"Service midi & soir du mardi au dimanche. Horaires à confirmer avec l'établissement.",
+    "v.callL":"Téléphone","v.callS":"alt. 28 20 77 11 — à confirmer","v.addrL":"Adresse",
+    "v.f1":"Terrasse","v.f2":"Parking gratuit","v.f3":"Accès PMR","v.f4":"Chiens admis","v.f5":"Wi-Fi gratuit","v.f6":"Climatisation","v.f7":"Ouvert le dimanche",
+    "v.evH":"Événements & traiteur","v.evP":"Banquets, mariages et repas de groupe sur réservation — également à emporter et en livraison à domicile.",
+    "v.dir":"Itinéraire","v.book":"Appeler pour réserver",
+    "ft.blurb":"La cuisine italienne au feu de bois, sur la Place du Marché de Grevenmacher, dans la vallée de la Moselle.",
+    "ft.contact":"Contact","ft.map":"Voir sur Google Maps","ft.hours":"Horaires","ft.mon":"Lundi — fermé","ft.rest":"Mardi–Dimanche 11:30–14:00 · 18:00–22:00",
+    "ft.tbc":"Horaires à confirmer","ft.copy":"© 2026 AI Fratelli Sàrl · Grevenmacher","ft.demo":"Site de démonstration — non officiel"
+  },
+  de:{
+    "util.region":"Grevenmacher · Moseltal","util.reserve":"Reservieren",
+    "m.kicker":"Italienische Küche aus dem Holzofen",
+    "m.title":"Im Herzen von Grevenmacher: die echte italienische Flamme.",
+    "m.lede":"Frische Pasta, Pizza mit im Holzofen gebackener Kruste und ein Saal mit weißen Tischdecken, nur wenige Schritte vom Marktplatz entfernt, mitten im Moseltal.",
+    "m.cta1":"Tisch reservieren","m.cta2":"Zur Speisekarte","m.reviews":"183 Google-Bewertungen","m.price":"€20–30 / Person",
+    "m.temp":"Holzofen · ≈ 400 °C","m.heroCap":"Der Hauptsaal mit seiner schwarzen Wendeltreppe.",
+    "c.kick":"Die Karte","c.title":"Alles kommt aus dem Holzofen.","c.band":"Rund €20–30 pro Person",
+    "c.pizze":"Le Pizze — al forno","c.tbc":"Preis auf Anfrage",
+    "c.p1d":"San-Marzano-Tomate, Mozzarella, frisches Basilikum","c.p2":"Chèvre di capra","c.p2d":"Tomate, Mozzarella, im Ofen gebackener Ziegenkäse",
+    "c.p3":"Tartufo — mit Trüffel","c.p3d":"Sahne, Mozzarella, Trüffel — der Favorit","c.p4d":"Schinken, Champignons, Artischocken, Oliven",
+    "c.pnote":"…und die Tageskarte, je nach Laune des Ofens.",
+    "c.ftag":"Direkt aus dem Ofen","c.fh":"Ziegenkäse-Pizza, dünner Boden","c.fp":"Dünner, weicher Boden, von der offenen Flamme marmorierte Ränder — das Markenzeichen des Hauses.",
+    "c.cucina":"La Cucina & i Dolci","c.c1":"Antipasto della casa","c.c1d":"Bresaola, Mozzarella, Parmesanspäne, Grissini",
+    "c.c2":"Lasagne al forno","c.c2d":"Das traditionelle Rezept, im Ofen überbacken","c.c3d":"Der Brasserie-Klassiker, Garstufe nach Wahl",
+    "c.c4d":"Unser Signature-Dessert, Ricotta & kandierte Früchte","c.cnote":"Weine von der Mosel & aus Italien · Cocktails.",
+    "c.d1":"Kindermenü","c.d2":"Vegetarische Optionen","c.d3":"Glutenfreie Optionen","c.d4":"Zum Mitnehmen & Lieferung",
+    "f.kick":"Der Holzofen","f.title":"Eine Flamme, drei Phasen.",
+    "f.lede":"Ein Holzofen lässt sich nicht per Knopf regeln. Er wird geführt — vom ersten Scheit bis zur weißen Glut, bis die Pizza in weniger als zwei Minuten gart.",
+    "f.n1":"Erste Phase","f.h1":"Das Holz","f.i1":"anzünden","f.p1":"Trockenes Holz aus der Region heizt den Ofen an und gibt ihm schon am Morgen sein rauchiges Aroma.",
+    "f.n2":"Zweite Phase","f.h2":"Die Glut","f.i2":"abwarten","f.p2":"Die Flammen sinken, die Glut wird weiß und speichert die Hitze im Ofenboden.",
+    "f.n3":"Dritte Phase","f.h3":"Al forno","f.i3":"einschieben","f.p3":"Die Pizza gleitet auf den heißen Stein: aufgegangene Kruste, marmorierte Ränder, weicher Kern.",
+    "s.kick":"Unsere Räume","s.title":"Elegant, aber ungezwungen.",
+    "s.lede":"Weiße Tischdecken, Stühle mit terrakottafarbenen Sitzen, polierter Granitboden — drei Bereiche für ein Mittagessen, ein Dinner zu zweit oder ein Bankett.",
+    "s.r1":"Der Hauptsaal","s.r1s":"Wendeltreppe & blühender Lichterbaum","s.r2":"Der Wintergarten","s.r2s":"unter Glasdach, lichtdurchflutet",
+    "s.r3":"Tische & Terrasse","s.r3s":"sorgfältig eingedeckt, Terrasse bei schönem Wetter",
+    "v.kick":"Besuchen Sie uns","v.title":"Öffnungszeiten & Reservierung",
+    "v.mon":"Montag","v.tue":"Dienstag","v.wed":"Mittwoch","v.thu":"Donnerstag","v.fri":"Freitag","v.sat":"Samstag","v.sun":"Sonntag","v.closed":"Geschlossen",
+    "v.hnote":"Mittags & abends von Dienstag bis Sonntag. Öffnungszeiten bitte beim Restaurant bestätigen.",
+    "v.callL":"Telefon","v.callS":"alt. 28 20 77 11 — auf Anfrage","v.addrL":"Adresse",
+    "v.f1":"Terrasse","v.f2":"Kostenlose Parkplätze","v.f3":"Barrierefrei","v.f4":"Hunde erlaubt","v.f5":"Gratis-WLAN","v.f6":"Klimaanlage","v.f7":"Sonntags geöffnet",
+    "v.evH":"Veranstaltungen & Catering","v.evP":"Bankette, Hochzeiten und Gruppenessen auf Reservierung — auch zum Mitnehmen und mit Lieferung nach Hause.",
+    "v.dir":"Route","v.book":"Zum Reservieren anrufen",
+    "ft.blurb":"Italienische Küche aus dem Holzofen, am Marktplatz von Grevenmacher, mitten im Moseltal.",
+    "ft.contact":"Kontakt","ft.map":"Auf Google Maps ansehen","ft.hours":"Öffnungszeiten","ft.mon":"Montag — geschlossen","ft.rest":"Dienstag–Sonntag 11:30–14:00 · 18:00–22:00",
+    "ft.tbc":"Öffnungszeiten auf Anfrage","ft.copy":"© 2026 AI Fratelli Sàrl · Grevenmacher","ft.demo":"Demo-Website — inoffiziell"
+  },
+  en:{
+    "util.region":"Grevenmacher · Moselle Valley","util.reserve":"Book",
+    "m.kicker":"Italian cooking over a wood fire",
+    "m.title":"In the heart of Grevenmacher, the real Italian flame.",
+    "m.lede":"Fresh pasta, pizza with a crust blistered in our wood-fired oven, and a white-linen dining room steps from the market square, in the heart of the Moselle valley.",
+    "m.cta1":"Book a table","m.cta2":"See the menu","m.reviews":"183 Google reviews","m.price":"€20–30 / person",
+    "m.temp":"Wood-fired oven · ≈ 400 °C","m.heroCap":"The main room and its black spiral staircase.",
+    "c.kick":"The menu","c.title":"Everything comes through the wood fire.","c.band":"About €20–30 per person",
+    "c.pizze":"Le Pizze — al forno","c.tbc":"price to confirm",
+    "c.p1d":"San Marzano tomato, mozzarella, fresh basil","c.p2":"Chèvre di capra","c.p2d":"Tomato, mozzarella, oven-blistered goat cheese",
+    "c.p3":"Tartufo — with truffle","c.p3d":"Cream, mozzarella, truffle — the one everyone orders","c.p4d":"Ham, mushrooms, artichokes, olives",
+    "c.pnote":"…plus the day's board, at the whim of the oven.",
+    "c.ftag":"Straight from the oven","c.fh":"Goat-cheese pizza, thin base","c.fp":"Thin, supple base with edges blistered and mottled by the live flame — the house signature.",
+    "c.cucina":"La Cucina & i Dolci","c.c1":"Antipasto della casa","c.c1d":"Bresaola, mozzarella, shaved parmesan, grissini",
+    "c.c2":"Lasagne al forno","c.c2d":"The traditional recipe, baked in the oven","c.c3d":"The brasserie touch, cooked to your liking",
+    "c.c4d":"Our signature dessert, ricotta & candied fruit","c.cnote":"Moselle & Italian wines · cocktails.",
+    "c.d1":"Children's menu","c.d2":"Vegetarian options","c.d3":"Gluten-free options","c.d4":"Takeaway & delivery",
+    "f.kick":"The wood fire","f.title":"One flame, three acts.",
+    "f.lede":"A wood-fired oven isn't set with a dial. It's driven — from the first log to the white embers, until the pizza bakes in under two minutes.",
+    "f.n1":"First act","f.h1":"The wood","f.i1":"we light it","f.p1":"Dry local wood fires up the oven and gives it its smoky scent, from the morning on.",
+    "f.n2":"Second act","f.h2":"The embers","f.i2":"we wait","f.p2":"The flames drop, the embers turn white and store the heat in the oven floor.",
+    "f.n3":"Third act","f.h3":"Al forno","f.i3":"we bake","f.p3":"The pizza slides onto the scorching stone: risen crust, mottled edges, a soft centre.",
+    "s.kick":"Our rooms","s.title":"Elegant, but easy-going.",
+    "s.lede":"White linens, chairs with terracotta seats, polished granite floor — three spaces for a lunch, a dinner for two or a banquet.",
+    "s.r1":"The main room","s.r1s":"spiral staircase & blossom light-tree","s.r2":"The veranda","s.r2s":"under a glass roof, full of light",
+    "s.r3":"Tables & terrace","s.r3s":"carefully laid, terrace in fine weather",
+    "v.kick":"Come and see us","v.title":"Hours & reservations",
+    "v.mon":"Monday","v.tue":"Tuesday","v.wed":"Wednesday","v.thu":"Thursday","v.fri":"Friday","v.sat":"Saturday","v.sun":"Sunday","v.closed":"Closed",
+    "v.hnote":"Lunch & dinner, Tuesday to Sunday. Hours to be confirmed with the restaurant.",
+    "v.callL":"Phone","v.callS":"alt. 28 20 77 11 — to confirm","v.addrL":"Address",
+    "v.f1":"Terrace","v.f2":"Free parking","v.f3":"Wheelchair access","v.f4":"Dogs welcome","v.f5":"Free Wi-Fi","v.f6":"Air conditioning","v.f7":"Open Sundays",
+    "v.evH":"Events & catering","v.evP":"Banquets, weddings and group meals by reservation — also takeaway and home delivery.",
+    "v.dir":"Directions","v.book":"Call to book",
+    "ft.blurb":"Italian cooking over a wood fire, on Grevenmacher's market square, in the heart of the Moselle valley.",
+    "ft.contact":"Contact","ft.map":"View on Google Maps","ft.hours":"Hours","ft.mon":"Monday — closed","ft.rest":"Tuesday–Sunday 11:30–14:00 · 18:00–22:00",
+    "ft.tbc":"Hours to be confirmed","ft.copy":"© 2026 AI Fratelli Sàrl · Grevenmacher","ft.demo":"Demonstration site — unofficial"
+  }
+};
+function setLang(lang){
+  const dict = I18N[lang]; if(!dict) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k = el.getAttribute("data-i18n");
+    if(dict[k]!==undefined) el.textContent = dict[k];
+  });
+  document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on", b.dataset.lang===lang));
+}
+document.querySelectorAll(".lang button").forEach(b=>{
+  b.addEventListener("click", ()=>setLang(b.dataset.lang));
+});
+</script>
+</body>
+</html>

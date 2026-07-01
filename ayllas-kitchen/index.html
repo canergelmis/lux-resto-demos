@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Aylla's Kitchen — Restaurant & Pizzeria · Esch-sur-Alzette</title>
+<meta name="description" content="Aylla's Kitchen — restaurant-pizzeria familial à Esch-sur-Alzette. Cuisine balkanique faite maison, grillades, pizzas au feu de bois. Site de démonstration." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Mulish:wght@400;500;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --blush:#C9788A;
+    --wine:#7A2E38;
+    --cream:#F5EBE2;
+    --cream-deep:#EFE1D4;
+    --ink:#2A2320;
+    --gold:#C9A25E;
+    --gold-soft:#e0c491;
+    --paper:#FBF5EF;
+    --shadow:rgba(42,35,32,.14);
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Mulish",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.05;letter-spacing:-.01em}
+  .wrap{max-width:1360px;margin:0 auto;padding:0 40px}
+
+  /* ---- Kilim embroidery band (Balkan textile motif) ---- */
+  .kilim{
+    height:16px;
+    background-color:var(--wine);
+    background-image:
+      linear-gradient(45deg, var(--gold) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--gold) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--gold) 75%),
+      linear-gradient(-45deg, transparent 75%, var(--gold) 75%);
+    background-size:16px 16px;
+    background-position:0 0,0 0,8px 8px,8px 8px;
+  }
+  .kilim.light{background-color:transparent;opacity:.55}
+
+  /* ---- Top ribbon ---- */
+  header.bar{
+    position:sticky;top:0;z-index:60;
+    background:rgba(251,245,239,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(201,162,94,.35);
+  }
+  .bar .row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 40px}
+  .mark{display:flex;flex-direction:column;line-height:1}
+  .mark .name{font-family:var(--serif);font-weight:900;font-size:24px;letter-spacing:-.02em;color:var(--wine)}
+  .mark .sub{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--blush);margin-top:4px;font-weight:700}
+  nav.main{display:flex;gap:26px;align-items:center}
+  nav.main a{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);opacity:.8;transition:.2s}
+  nav.main a:hover{opacity:1;color:var(--wine)}
+  .bar-tools{display:flex;align-items:center;gap:16px}
+  .langs{display:flex;border:1px solid var(--gold);border-radius:40px;overflow:hidden}
+  .langs button{font-family:var(--sans);font-weight:800;font-size:11px;letter-spacing:.08em;padding:6px 11px;border:0;background:transparent;color:var(--ink);cursor:pointer;transition:.2s}
+  .langs button.active{background:var(--wine);color:var(--paper)}
+  .callbtn{font-size:13px;font-weight:800;color:var(--wine);white-space:nowrap;border-bottom:2px solid var(--gold);padding-bottom:2px}
+  .burger{display:none;background:none;border:0;cursor:pointer;flex-direction:column;gap:5px}
+  .burger span{width:26px;height:2px;background:var(--wine);display:block}
+
+  /* ---- Masthead ---- */
+  .mast{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:0;
+    background:
+      radial-gradient(120% 90% at 0% 0%, var(--paper), var(--cream) 60%);
+    position:relative;
+  }
+  .mast-l{padding:74px 56px 66px 40px;position:relative}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--blush)}
+  .eyebrow::before{content:"";width:34px;height:2px;background:var(--gold)}
+  .mast-l h1{font-size:clamp(52px,6vw,92px);color:var(--wine);margin:18px 0 6px;font-weight:900}
+  .mast-l h1 em{font-style:italic;font-weight:500;color:var(--blush);display:block;font-size:.44em;letter-spacing:0;margin-top:6px}
+  .tag{font-family:var(--serif);font-style:italic;font-size:clamp(19px,1.7vw,25px);color:var(--ink);max-width:30ch;margin:14px 0 18px}
+  .lead{font-size:15.5px;max-width:46ch;color:#4a3f39}
+  .bujrum-note{margin-top:22px;padding-left:18px;border-left:3px solid var(--gold);font-size:14px;color:#5a4d45;max-width:44ch}
+  .bujrum-note b{color:var(--wine);font-family:var(--serif);font-style:italic;font-weight:600}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:14px;letter-spacing:.03em;padding:15px 26px;border-radius:44px;cursor:pointer;transition:.22s;border:2px solid transparent}
+  .btn.primary{background:var(--wine);color:var(--paper)}
+  .btn.primary:hover{background:var(--ink);transform:translateY(-2px)}
+  .btn.ghost{border-color:var(--wine);color:var(--wine)}
+  .btn.ghost:hover{background:var(--wine);color:var(--paper)}
+  .facts{display:flex;flex-wrap:wrap;gap:26px;margin-top:38px}
+  .fact{display:flex;flex-direction:column}
+  .fact b{font-family:var(--serif);font-size:26px;color:var(--wine);line-height:1}
+  .fact span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--blush);font-weight:700;margin-top:5px}
+
+  .mast-r{position:relative;padding:44px 40px 44px 0;display:flex;align-items:center;justify-content:center}
+  .arch{
+    width:100%;max-width:420px;aspect-ratio:.82;
+    border-radius:300px 300px 20px 20px;
+    overflow:hidden;position:relative;
+    border:8px solid var(--paper);
+    outline:2px solid var(--gold);outline-offset:6px;
+    box-shadow:0 30px 60px -22px var(--shadow);
+  }
+  .arch img{width:100%;height:100%;object-fit:cover}
+  .rating-plate{
+    position:absolute;left:6px;bottom:20px;z-index:3;
+    width:120px;height:120px;border-radius:50%;
+    background:var(--blush);border:3px solid var(--gold);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--paper);
+    box-shadow:0 14px 26px -10px var(--shadow);
+  }
+  .rating-plate b{font-family:var(--serif);font-size:30px;line-height:1}
+  .rating-plate span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-top:3px;font-weight:700}
+  .rating-plate .stars{font-size:12px;letter-spacing:2px;color:var(--gold-soft)}
+
+  /* ---- Neon band ("But first, Bujrum") ---- */
+  .neon-band{background:var(--ink);text-align:center;padding:52px 20px;position:relative;overflow:hidden}
+  .neon-band .butfirst{font-family:var(--serif);font-style:italic;font-size:clamp(15px,2vw,19px);color:var(--gold-soft);letter-spacing:.05em;margin-bottom:6px;opacity:.85}
+  .neon{
+    font-family:var(--serif);font-weight:900;font-style:italic;
+    font-size:clamp(60px,11vw,150px);line-height:.9;letter-spacing:.01em;
+    color:#ffd9e4;
+    text-shadow:
+      0 0 6px #fff,
+      0 0 16px var(--blush),
+      0 0 34px var(--blush),
+      0 0 62px #b34d68,
+      0 0 90px #b34d68;
+  }
+  .neon-sub{margin-top:20px;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--blush);font-weight:700}
+
+  /* ---- La Sofra (the set table) ---- */
+  .sofra{padding:96px 0 60px;position:relative}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:14px}
+  .sec-head .kick{font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--blush)}
+  .sec-head h2{font-size:clamp(38px,4.4vw,64px);color:var(--wine);margin-top:10px}
+  .sec-head p{max-width:40ch;font-size:15px;color:#5a4d45}
+  .sofra-runner{position:relative;margin-top:56px;min-height:420px}
+  .sofra-runner::before{
+    content:"";position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);
+    height:118px;background:linear-gradient(var(--blush),#b96678);
+    border-top:3px solid var(--gold);border-bottom:3px solid var(--gold);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.15);
+    z-index:0;
+  }
+  .plates{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .plate{display:flex;flex-direction:column;align-items:center;text-align:center;flex:1}
+  .disc{
+    border-radius:50%;overflow:hidden;position:relative;
+    border:4px solid var(--paper);outline:3px solid var(--gold);outline-offset:2px;
+    box-shadow:0 20px 34px -14px rgba(42,35,32,.5);
+    transition:transform .3s ease;
+  }
+  .plate:hover .disc{transform:translateY(-8px) rotate(-2deg)}
+  .disc img{width:100%;height:100%;object-fit:cover}
+  .s-xl .disc{width:230px;height:230px}
+  .s-l .disc{width:190px;height:190px}
+  .s-m .disc{width:158px;height:158px}
+  .plate.up{margin-bottom:70px}
+  .plate.down{margin-top:70px}
+  .plabel{margin-top:16px}
+  .plabel .n{font-family:var(--serif);font-weight:600;font-size:18px;color:var(--ink);display:block}
+  .plabel .d{font-size:12px;color:#6b5d54;display:block;margin-top:2px}
+  .plabel .pr{display:inline-block;margin-top:7px;font-weight:800;font-size:13px;color:var(--wine);border:1.5px solid var(--gold);border-radius:30px;padding:3px 12px;background:var(--paper)}
+
+  /* ---- La Carte (menu, multi-column broadsheet) ---- */
+  .carte{background:var(--paper);padding:92px 0;border-top:1px solid rgba(201,162,94,.3);border-bottom:1px solid rgba(201,162,94,.3)}
+  .carte .intro{text-align:center;max-width:620px;margin:0 auto 20px}
+  .carte .intro .kick{font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--blush)}
+  .carte .intro h2{font-size:clamp(38px,4.4vw,64px);color:var(--wine);margin:10px 0}
+  .carte .intro p{font-size:14.5px;color:#5a4d45}
+  .disclaim-inline{display:inline-block;margin-top:10px;font-size:11.5px;font-style:italic;color:#8a7b70}
+  .cols{columns:4;column-gap:44px;margin-top:44px}
+  @media(max-width:1180px){.cols{columns:3}}
+  @media(max-width:840px){.cols{columns:2}}
+  @media(max-width:560px){.cols{columns:1}}
+  .cat{break-inside:avoid;margin-bottom:34px;display:inline-block;width:100%}
+  .cat h3{font-size:20px;color:var(--wine);display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+  .cat h3 .ic{font-size:13px;color:var(--gold);font-style:normal}
+  .cat .catnote{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--blush);font-weight:700;margin-bottom:12px}
+  .catline{border:0;border-top:2px solid var(--gold);opacity:.4;margin:0 0 12px}
+  .item{display:flex;justify-content:space-between;gap:8px;align-items:baseline;padding:5px 0;font-size:14px}
+  .item .in{color:var(--ink)}
+  .item .in small{display:block;color:#8a7b70;font-size:11.5px;font-weight:400}
+  .item .ip{font-weight:800;color:var(--wine);white-space:nowrap}
+  .item .dots{flex:1;border-bottom:1px dotted #c9b8aa;transform:translateY(-4px);margin:0 4px}
+
+  /* ---- Fait maison (story) ---- */
+  .story{display:grid;grid-template-columns:.9fr 1.1fr;align-items:stretch}
+  .story-txt{background:var(--wine);color:var(--paper);padding:84px 56px 84px 40px;position:relative}
+  .story-txt .kick{color:var(--gold-soft);font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase}
+  .story-txt h2{font-size:clamp(34px,3.6vw,52px);margin:14px 0 20px;color:var(--paper)}
+  .story-txt p{font-size:15.5px;color:#f3dfd8;max-width:52ch;margin-bottom:16px}
+  .story-txt .sig{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--gold-soft);margin-top:22px}
+  .story-txt .sig small{display:block;font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--blush);margin-top:6px;font-weight:700}
+  .story-media{position:relative;min-height:460px}
+  .story-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .story-media .tags{position:absolute;left:0;bottom:0;display:flex;flex-wrap:wrap;gap:8px;padding:22px}
+  .chip{background:rgba(251,245,239,.94);color:var(--wine);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:8px 14px;border-radius:30px;border:1px solid var(--gold)}
+
+  /* ---- À table (visit / dresser) ---- */
+  .visit{padding:92px 0}
+  .visit .sec-head{margin-bottom:44px}
+  .dresser{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:26px;align-items:stretch}
+  .card{background:var(--paper);border:1px solid rgba(201,162,94,.4);border-radius:18px;padding:30px;box-shadow:0 18px 40px -30px var(--shadow)}
+  .card h3{font-size:22px;color:var(--wine);margin-bottom:16px}
+  .hours-t{width:100%;border-collapse:collapse;font-size:14px}
+  .hours-t td{padding:7px 0;border-bottom:1px dashed rgba(122,46,56,.18)}
+  .hours-t td:last-child{text-align:right;font-weight:700;color:var(--ink)}
+  .hours-t tr.closed td{color:var(--blush)}
+  .hours-t tr.today td{color:var(--wine);font-weight:800}
+  .info-line{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;font-size:14px}
+  .info-line .lab{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--blush);font-weight:800;min-width:74px;padding-top:2px}
+  .info-line a{color:var(--wine);font-weight:700}
+  .cfm{font-size:11px;font-style:italic;color:#8a7b70}
+  .socials{display:flex;gap:10px;margin-top:6px}
+  .socials a{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;color:var(--wine);transition:.2s}
+  .socials a:hover{background:var(--wine);color:var(--paper)}
+  .mapcard{padding:0;overflow:hidden;position:relative}
+  .mapcard iframe{width:100%;height:100%;min-height:340px;border:0;display:block;filter:grayscale(.15) sepia(.08)}
+
+  /* ---- Footer ---- */
+  footer{background:var(--ink);color:#d8c9bf;padding:56px 0 30px}
+  .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start}
+  .foot-mark .name{font-family:var(--serif);font-weight:900;font-size:28px;color:var(--paper)}
+  .foot-mark .sub{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--blush);margin-top:6px;font-weight:700}
+  .foot-mark p{margin-top:14px;font-size:13px;max-width:34ch;color:#bca99d}
+  .foot-links{display:flex;gap:60px;flex-wrap:wrap}
+  .foot-col h4{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:14px}
+  .foot-col a,.foot-col p{display:block;font-size:13.5px;color:#cbbaae;margin-bottom:9px}
+  .foot-col a:hover{color:var(--paper)}
+  .foot-bottom{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12px;color:#9c8a7e}
+  .demo{background:rgba(201,162,94,.14);border:1px solid rgba(201,162,94,.4);color:var(--gold-soft);border-radius:8px;padding:12px 16px;font-size:12px;font-style:italic;max-width:60ch}
+
+  /* ---- Responsive ---- */
+  @media(max-width:960px){
+    nav.main{display:none}
+    .burger{display:flex}
+    .mast{grid-template-columns:1fr}
+    .mast-l{padding:56px 26px 40px}
+    .mast-r{padding:0 26px 46px;justify-content:flex-start}
+    .arch{max-width:340px}
+    .story{grid-template-columns:1fr}
+    .story-txt{padding:56px 26px}
+    .dresser{grid-template-columns:1fr}
+    .wrap{padding:0 24px}
+    .bar .row{padding:12px 24px}
+    .sofra-runner::before{display:none}
+    .plates{flex-wrap:wrap;justify-content:center;gap:30px 24px}
+    .plate{flex:0 0 auto}
+    .plate.up,.plate.down{margin:0}
+    .s-xl .disc,.s-l .disc,.s-m .disc{width:150px;height:150px}
+  }
+  @media(max-width:520px){
+    .mast-l h1{font-size:46px}
+    .facts{gap:18px}
+  }
+  /* Mobile nav overlay */
+  #mnav{display:none;position:fixed;inset:0;z-index:80;background:var(--ink);flex-direction:column;align-items:center;justify-content:center;gap:26px}
+  #mnav.open{display:flex}
+  #mnav a{color:var(--paper);font-family:var(--serif);font-size:30px}
+  #mnav .close{position:absolute;top:24px;right:28px;font-size:34px;color:var(--gold-soft);background:none;border:0;cursor:pointer}
+</style>
+</head>
+<body>
+
+<!-- ===== TOP RIBBON ===== -->
+<header class="bar">
+  <div class="row">
+    <a href="#top" class="mark">
+      <span class="name">Aylla's Kitchen</span>
+      <span class="sub" data-i18n="brand.sub">Esch-sur-Alzette · Restaurant & Pizzeria</span>
+    </a>
+    <nav class="main">
+      <a href="#sofra" data-i18n="nav.table">La table</a>
+      <a href="#carte" data-i18n="nav.menu">La carte</a>
+      <a href="#story" data-i18n="nav.story">Fait maison</a>
+      <a href="#visit" data-i18n="nav.visit">Nous trouver</a>
+    </nav>
+    <div class="bar-tools">
+      <a class="callbtn" href="tel:+35227523338">+352 27 52 33 38</a>
+      <div class="langs" role="group" aria-label="Language">
+        <button data-lang="fr" class="active">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div id="mnav">
+  <button class="close" id="mclose" aria-label="Close">×</button>
+  <a href="#sofra" data-i18n="nav.table">La table</a>
+  <a href="#carte" data-i18n="nav.menu">La carte</a>
+  <a href="#story" data-i18n="nav.story">Fait maison</a>
+  <a href="#visit" data-i18n="nav.visit">Nous trouver</a>
+</div>
+
+<!-- ===== MASTHEAD (le seuil / bujrum) ===== -->
+<section class="mast" id="top">
+  <div class="mast-l">
+    <span class="eyebrow" data-i18n="mast.eyebrow">Esch-sur-Alzette · Fait maison</span>
+    <h1>Aylla's Kitchen<em data-i18n="mast.h1sub">Restaurant &amp; Pizzeria</em></h1>
+    <p class="tag" data-i18n="mast.tag">Une échappée balkanique. Fait maison, comme à la maison.</p>
+    <p class="lead" data-i18n="mast.lead">Grillades au feu, ćevapi et pljeskavica, pizzas au feu de bois, burgers généreux et douceurs des Balkans — servis dans une salle chaleureuse et sans chichis.</p>
+    <p class="bujrum-note" data-i18n="mast.bujrum">Au-dessus des tables, un néon rose : <b>« But first, Bujrum »</b>. Bujrum, c'est le mot d'accueil des Balkans — « entrez, servez-vous ». Ici, on vous reçoit comme à la maison.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="tel:+35227523338" data-i18n="mast.cta1">Réserver une table</a>
+      <a class="btn ghost" href="#carte" data-i18n="mast.cta2">Découvrir la carte</a>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>4,7</b><span data-i18n="mast.f1">Google · 109 avis</span></div>
+      <div class="fact"><b data-i18n="mast.f2b">Halal</b><span data-i18n="mast.f2">Sélection halal</span></div>
+      <div class="fact"><b data-i18n="mast.f3b">Feu de bois</b><span data-i18n="mast.f3">Pizzas artisanales</span></div>
+      <div class="fact"><b data-i18n="mast.f4b">Familial</b><span data-i18n="mast.f4">Sur place · à emporter</span></div>
+    </div>
+  </div>
+  <div class="mast-r">
+    <div class="arch">
+      <img src="assets/hero.jpg" alt="Trio de desserts sur assiettes rose à liseré doré — Aylla's Kitchen" />
+    </div>
+    <div class="rating-plate">
+      <span class="stars">★★★★★</span>
+      <b>4,7</b>
+      <span data-i18n="mast.plate">Sur 5</span>
+    </div>
+  </div>
+</section>
+
+<div class="kilim"></div>
+
+<!-- ===== NEON BAND ===== -->
+<section class="neon-band">
+  <div class="butfirst" data-i18n="neon.pre">But first,</div>
+  <div class="neon">Bujrum</div>
+  <div class="neon-sub" data-i18n="neon.sub">Entrez, servez-vous — bienvenue à table</div>
+</section>
+
+<div class="kilim"></div>
+
+<!-- ===== LA SOFRA (the set table) ===== -->
+<section class="sofra" id="sofra">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kick" data-i18n="sofra.kick">La sofra — la table partagée</div>
+        <h2 data-i18n="sofra.h2">On dresse la table</h2>
+      </div>
+      <p data-i18n="sofra.p">Aux Balkans, on ne commande pas chacun son plat : on garnit la table et on partage. Voici quelques signatures de la maison, posées comme à la sofra.</p>
+    </div>
+
+    <div class="sofra-runner">
+      <div class="plates">
+        <div class="plate up s-l">
+          <div class="disc"><img src="assets/pizza-diavola.jpg" alt="Pizza Diavola" /></div>
+          <div class="plabel"><span class="n">Pizza Diavola</span><span class="d" data-i18n="dish.diavola">Pepperoni halal, feu de bois</span><span class="pr">€14,50</span></div>
+        </div>
+        <div class="plate down s-xl">
+          <div class="disc"><img src="assets/smash-burger.jpg" alt="Aylla's smash burger" /></div>
+          <div class="plabel"><span class="n">Aylla's Smash</span><span class="d" data-i18n="dish.smash">Planche bois, ajvar &amp; frites</span><span class="pr">€12,50</span></div>
+        </div>
+        <div class="plate up s-m">
+          <div class="disc"><img src="assets/baklava.jpg" alt="Baklava pistache" /></div>
+          <div class="plabel"><span class="n">Baklava</span><span class="d" data-i18n="dish.baklava">Pistache, sirop, fait maison</span><span class="pr">€4,50</span></div>
+        </div>
+        <div class="plate down s-l">
+          <div class="disc"><img src="assets/kaiserschmarrn.jpg" alt="Kaiserschmarrn" /></div>
+          <div class="plabel"><span class="n">Kaiserschmarrn</span><span class="d" data-i18n="dish.kaiser">Douceur autrichienne, nutella</span><span class="pr">€8,50</span></div>
+        </div>
+        <div class="plate up s-m">
+          <div class="disc"><img src="assets/cheeseburger.jpg" alt="Cheeseburger" /></div>
+          <div class="plabel"><span class="n">Cheeseburger</span><span class="d" data-i18n="dish.cheese">Planche journal, frites paniers</span><span class="pr">€16,00</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LA CARTE (broadsheet menu) ===== -->
+<section class="carte" id="carte">
+  <div class="wrap">
+    <div class="intro">
+      <div class="kick" data-i18n="carte.kick">La carte</div>
+      <h2 data-i18n="carte.h2">Des Balkans au feu de bois</h2>
+      <p data-i18n="carte.p">Grillades, pizzas artisanales, pâtes, poissons et douceurs. Une carte généreuse, à partager.</p>
+      <span class="disclaim-inline" data-i18n="carte.cfm">Prix indicatifs · à confirmer avec l'établissement</span>
+    </div>
+
+    <div class="cols">
+      <!-- Grill -->
+      <div class="cat">
+        <h3><span class="ic">◆</span> <span data-i18n="cat.grill">Grill &amp; spécialités balkaniques</span></h3>
+        <div class="catnote" data-i18n="cat.grill.note">Servi avec lepina &amp; sauce blanche</div>
+        <hr class="catline" />
+        <div class="item"><span class="in">Ćevapi <small data-i18n="d.cevapi">Petites saucisses grillées, pain lepina</small></span><span class="dots"></span><span class="ip" data-i18n="apc">à conf.</span></div>
+        <div class="item"><span class="in">Pljeskavica <small data-i18n="d.plje">Steak balkanique grillé</small></span><span class="dots"></span><span class="ip" data-i18n="apc">à conf.</span></div>
+        <div class="item"><span class="in">Aylla's satarash <small data-i18n="d.satarash">Ragoût de poivrons</small></span><span class="dots"></span><span class="ip">€15,00</span></div>
+        <div class="item"><span class="in">Aylla's paprika</span><span class="dots"></span><span class="ip">€15,00</span></div>
+        <div class="item"><span class="in">Sopska <small data-i18n="d.sopska">Salade balkanique, feta</small></span><span class="dots"></span><span class="ip">€14,50</span></div>
+        <div class="item"><span class="in">Menu partage <small data-i18n="d.iftar">Soupe, ćevapi, burek, grillades, trileće</small></span><span class="dots"></span><span class="ip">≈ €35</span></div>
+      </div>
+
+      <!-- Pizzas -->
+      <div class="cat">
+        <h3><span class="ic">◆</span> <span data-i18n="cat.pizza">Pizzas au feu de bois</span></h3>
+        <div class="catnote" data-i18n="cat.pizza.note">Salami halal</div>
+        <hr class="catline" />
+        <div class="item"><span class="in">Margherita</span><span class="dots"></span><span class="ip">€11,50</span></div>
+        <div class="item"><span class="in">Napoli</span><span class="dots"></span><span class="ip">€14,00</span></div>
+        <div class="item"><span class="in">Diavola <small data-i18n="d.diavola">Pepperoni halal</small></span><span class="dots"></span><span class="ip">€14,50</span></div>
+        <div class="item"><span class="in">Funghi</span><span class="dots"></span><span class="ip">€14,50</span></div>
+        <div class="item"><span class="in">Calzone</span><span class="dots"></span><span class="ip">€14,50</span></div>
+        <div class="item"><span class="in">Capricciosa</span><span class="dots"></span><span class="ip">€15,50</span></div>
+        <div class="item"><span class="in">4 Formaggi</span><span class="dots"></span><span class="ip">€16,00</span></div>
+        <div class="item"><span class="in">Végétarienne</span><span class="dots"></span><span class="ip">€16,50</span></div>
+        <div class="item"><span class="in">Fruits de mer</span><span class="dots"></span><span class="ip">€17,00</span></div>
+        <div class="item"><span class="in">Salmone</span><span class="dots"></span><span class="ip">€18,00</span></div>
+      </div>
+
+      <!-- Burgers -->
+      <div class="cat">
+        <h3><span class="ic">◆</span> <span data-i18n="cat.burger">Burgers</span></h3>
+        <div class="catnote" data-i18n="cat.burger.note">Planche bois · ajvar · frites paniers</div>
+        <hr class="catline" />
+        <div class="item"><span class="in">Hamburger</span><span class="dots"></span><span class="ip">€11,50</span></div>
+        <div class="item"><span class="in">Aylla's smash</span><span class="dots"></span><span class="ip">€12,50</span></div>
+        <div class="item"><span class="in">XL burger</span><span class="dots"></span><span class="ip">€14,50</span></div>
+        <div class="item"><span class="in">Cheeseburger</span><span class="dots"></span><span class="ip">€16,00</span></div>
+        <div class="item"><span class="in">XL cheeseburger</span><span class="dots"></span><span class="ip">€16,50</span></div>
+
+        <h3 style="margin-top:26px"><span class="ic">◆</span> <span data-i18n="cat.pasta">Pâtes</span></h3>
+        <hr class="catline" />
+        <div class="item"><span class="in">Arrabiata</span><span class="dots"></span><span class="ip">€14,00</span></div>
+        <div class="item"><span class="in">Bolognaise</span><span class="dots"></span><span class="ip">€17,50</span></div>
+        <div class="item"><span class="in">Tagliatelles saumon</span><span class="dots"></span><span class="ip">€18,50</span></div>
+        <div class="item"><span class="in">Tagliatelles scampis</span><span class="dots"></span><span class="ip">€19,50</span></div>
+      </div>
+
+      <!-- Seafood + salads + desserts -->
+      <div class="cat">
+        <h3><span class="ic">◆</span> <span data-i18n="cat.sea">Poissons &amp; grillades</span></h3>
+        <hr class="catline" />
+        <div class="item"><span class="in">Aylla's shrimps cocktail</span><span class="dots"></span><span class="ip">€17,50</span></div>
+        <div class="item"><span class="in">Scampis à l'ail</span><span class="dots"></span><span class="ip">€25,50</span></div>
+        <div class="item"><span class="in">Saumon grillé</span><span class="dots"></span><span class="ip">€27,50</span></div>
+        <div class="item"><span class="in">Aylla's saumon</span><span class="dots"></span><span class="ip">€28,50</span></div>
+        <div class="item"><span class="in">Grillade mixte de poissons</span><span class="dots"></span><span class="ip">€30,50</span></div>
+
+        <h3 style="margin-top:26px"><span class="ic">◆</span> <span data-i18n="cat.salad">Salades</span></h3>
+        <hr class="catline" />
+        <div class="item"><span class="in">Salade César</span><span class="dots"></span><span class="ip">€15,00</span></div>
+        <div class="item"><span class="in">Scrimps salade</span><span class="dots"></span><span class="ip">€16,50</span></div>
+        <div class="item"><span class="in">Greek chicken avocado</span><span class="dots"></span><span class="ip">€17,00</span></div>
+        <div class="item"><span class="in">Aylla's saumon avocado</span><span class="dots"></span><span class="ip">€18,50</span></div>
+
+        <h3 style="margin-top:26px"><span class="ic">◆</span> <span data-i18n="cat.sweet">Douceurs &amp; Autriche</span></h3>
+        <hr class="catline" />
+        <div class="item"><span class="in">Hurmašice</span><span class="dots"></span><span class="ip">€3,50</span></div>
+        <div class="item"><span class="in">Trileće</span><span class="dots"></span><span class="ip">€4,00</span></div>
+        <div class="item"><span class="in">Big Baklava</span><span class="dots"></span><span class="ip">€4,50</span></div>
+        <div class="item"><span class="in">Vulcan cake</span><span class="dots"></span><span class="ip">€8,50</span></div>
+        <div class="item"><span class="in">Kaiserschmarrn</span><span class="dots"></span><span class="ip">€8,50</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAIT MAISON (story) ===== -->
+<section class="story" id="story">
+  <div class="story-txt">
+    <div class="kick" data-i18n="story.kick">Fait maison</div>
+    <h2 data-i18n="story.h2">Le goût de la cuisine de famille</h2>
+    <p data-i18n="story.p1">Aylla's Kitchen est un restaurant-pizzeria familial d'Esch-sur-Alzette. Paperjam y voit « une échappée balkanique assumée » et un accueil « d'une simplicité désarmante ».</p>
+    <p data-i18n="story.p2">Tout est fait maison, avec ce goût de cuisine de famille : ćevapi et pljeskavica grillés, pain lepina chaud, burek et poivrons grillés à la sauce blanche — puis pizzas au feu de bois, burgers généreux, salades fraîches et grillades de poisson. Et pour finir, baklava, trileće, hurmašice et Kaiserschmarrn autrichien.</p>
+    <div class="sig"><span data-i18n="story.sigmain">Bujrum — bienvenue à table.</span><small data-i18n="story.sig">Aylla's Kitchen · Esch-sur-Alzette</small></div>
+  </div>
+  <div class="story-media">
+    <img src="assets/baklava.jpg" alt="Baklava à la pistache, fait maison" />
+    <div class="tags">
+      <span class="chip" data-i18n="chip.1">Fait maison</span>
+      <span class="chip" data-i18n="chip.2">Grillades balkaniques</span>
+      <span class="chip" data-i18n="chip.3">Feu de bois</span>
+      <span class="chip" data-i18n="chip.4">Sélection halal</span>
+      <span class="chip" data-i18n="chip.5">Familial &amp; convivial</span>
+    </div>
+  </div>
+</section>
+
+<div class="kilim"></div>
+
+<!-- ===== À TABLE (visit) ===== -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="kick" data-i18n="visit.kick">À table</div>
+        <h2 data-i18n="visit.h2">Nous trouver</h2>
+      </div>
+      <p data-i18n="visit.p">Sur place, à emporter, en livraison (Esch, Oberkorn, Kayl). Un coup de fil suffit pour réserver.</p>
+    </div>
+
+    <div class="dresser">
+      <!-- Hours -->
+      <div class="card">
+        <h3 data-i18n="visit.hours">Horaires</h3>
+        <table class="hours-t">
+          <tr><td data-i18n="day.mon">Lundi</td><td>11:30–15:00 · 18:00–22:00</td></tr>
+          <tr><td data-i18n="day.tue">Mardi</td><td>11:30–15:00 · 18:00–22:00</td></tr>
+          <tr class="closed"><td data-i18n="day.wed">Mercredi</td><td data-i18n="closed">Fermé</td></tr>
+          <tr><td data-i18n="day.thu">Jeudi</td><td>11:30–15:00 · 18:00–22:00</td></tr>
+          <tr><td data-i18n="day.fri">Vendredi</td><td>11:30–15:00 · 18:00–23:00</td></tr>
+          <tr><td data-i18n="day.sat">Samedi</td><td>11:30–23:00</td></tr>
+          <tr><td data-i18n="day.sun">Dimanche</td><td>11:30–23:00</td></tr>
+        </table>
+        <p class="cfm" style="margin-top:14px" data-i18n="visit.hcfm">Horaires à confirmer avec l'établissement.</p>
+      </div>
+
+      <!-- Contact -->
+      <div class="card">
+        <h3 data-i18n="visit.contact">Contact &amp; adresse</h3>
+        <div class="info-line"><span class="lab" data-i18n="visit.addr">Adresse</span><span>17 Rue du Brill<br />L-4041 Esch-sur-Alzette<br /><span class="cfm" data-i18n="visit.addrcfm">Adresse principale — à confirmer avec l'établissement.</span></span></div>
+        <div class="info-line"><span class="lab" data-i18n="visit.phone">Tél.</span><a href="tel:+35227523338">+352 27 52 33 38</a></div>
+        <div class="info-line"><span class="lab" data-i18n="visit.mail">Email</span><a href="mailto:info@ayllaskitchen.lu">info@ayllaskitchen.lu</a></div>
+        <div class="info-line"><span class="lab" data-i18n="visit.delivery">Livraison</span><span>Esch · Oberkorn · Kayl<br /><a href="https://wolt.com/en/lux/luxembourg-south/restaurant/ayllas-kitchen-lux" target="_blank" rel="noopener">Wolt</a></span></div>
+        <div class="socials">
+          <a href="https://www.instagram.com/ayllas.kitchen/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="https://www.facebook.com/saray.luxembourg/" target="_blank" rel="noopener" aria-label="Facebook">FB</a>
+          <a href="https://wolt.com/en/lux/luxembourg-south/restaurant/ayllas-kitchen-lux" target="_blank" rel="noopener" aria-label="Wolt">W</a>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="card mapcard">
+        <iframe
+          title="Aylla's Kitchen — 17 Rue du Brill, Esch-sur-Alzette"
+          src="https://www.google.com/maps?q=17+Rue+du+Brill,+L-4041+Esch-sur-Alzette,+Luxembourg&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-mark">
+        <div class="name">Aylla's Kitchen</div>
+        <div class="sub" data-i18n="brand.sub">Esch-sur-Alzette · Restaurant & Pizzeria</div>
+        <p data-i18n="foot.blurb">Cuisine balkanique faite maison, pizzas au feu de bois et douceurs. Bujrum — entrez, servez-vous.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4 data-i18n="foot.nav">Naviguer</h4>
+          <a href="#sofra" data-i18n="nav.table">La table</a>
+          <a href="#carte" data-i18n="nav.menu">La carte</a>
+          <a href="#story" data-i18n="nav.story">Fait maison</a>
+          <a href="#visit" data-i18n="nav.visit">Nous trouver</a>
+        </div>
+        <div class="foot-col">
+          <h4 data-i18n="foot.contact">Contact</h4>
+          <a href="tel:+35227523338">+352 27 52 33 38</a>
+          <a href="mailto:info@ayllaskitchen.lu">info@ayllaskitchen.lu</a>
+          <p>17 Rue du Brill<br />L-4041 Esch-sur-Alzette</p>
+        </div>
+        <div class="foot-col">
+          <h4 data-i18n="foot.social">Suivre</h4>
+          <a href="https://www.instagram.com/ayllas.kitchen/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.facebook.com/saray.luxembourg/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://wolt.com/en/lux/luxembourg-south/restaurant/ayllas-kitchen-lux" target="_blank" rel="noopener">Wolt</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Aylla's Kitchen SARL</span>
+      <span class="demo" data-i18n="foot.demo">Site de démonstration — contenu, prix, horaires et adresse à confirmer avec l'établissement. Photos et couleurs indicatives.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- i18n ----
+  const I18N = {
+    fr:{
+      "brand.sub":"Esch-sur-Alzette · Restaurant & Pizzeria",
+      "nav.table":"La table","nav.menu":"La carte","nav.story":"Fait maison","nav.visit":"Nous trouver",
+      "mast.eyebrow":"Esch-sur-Alzette · Fait maison",
+      "mast.h1sub":"Restaurant & Pizzeria",
+      "mast.tag":"Une échappée balkanique. Fait maison, comme à la maison.",
+      "mast.lead":"Grillades au feu, ćevapi et pljeskavica, pizzas au feu de bois, burgers généreux et douceurs des Balkans — servis dans une salle chaleureuse et sans chichis.",
+      "mast.bujrum":"Au-dessus des tables, un néon rose : <b>« But first, Bujrum »</b>. Bujrum, c'est le mot d'accueil des Balkans — « entrez, servez-vous ». Ici, on vous reçoit comme à la maison.",
+      "mast.cta1":"Réserver une table","mast.cta2":"Découvrir la carte",
+      "mast.f1":"Google · 109 avis","mast.f2b":"Halal","mast.f2":"Sélection halal",
+      "mast.f3b":"Feu de bois","mast.f3":"Pizzas artisanales","mast.f4b":"Familial","mast.f4":"Sur place · à emporter",
+      "mast.plate":"Sur 5",
+      "neon.pre":"But first,","neon.sub":"Entrez, servez-vous — bienvenue à table",
+      "sofra.kick":"La sofra — la table partagée","sofra.h2":"On dresse la table",
+      "sofra.p":"Aux Balkans, on ne commande pas chacun son plat : on garnit la table et on partage. Voici quelques signatures de la maison, posées comme à la sofra.",
+      "dish.diavola":"Pepperoni halal, feu de bois","dish.smash":"Planche bois, ajvar & frites",
+      "dish.baklava":"Pistache, sirop, fait maison","dish.kaiser":"Douceur autrichienne, nutella","dish.cheese":"Planche journal, frites paniers",
+      "carte.kick":"La carte","carte.h2":"Des Balkans au feu de bois",
+      "carte.p":"Grillades, pizzas artisanales, pâtes, poissons et douceurs. Une carte généreuse, à partager.",
+      "carte.cfm":"Prix indicatifs · à confirmer avec l'établissement",
+      "cat.grill":"Grill & spécialités balkaniques","cat.grill.note":"Servi avec lepina & sauce blanche",
+      "cat.pizza":"Pizzas au feu de bois","cat.pizza.note":"Salami halal",
+      "cat.burger":"Burgers","cat.burger.note":"Planche bois · ajvar · frites paniers",
+      "cat.pasta":"Pâtes","cat.sea":"Poissons & grillades","cat.salad":"Salades","cat.sweet":"Douceurs & Autriche",
+      "d.cevapi":"Petites saucisses grillées, pain lepina","d.plje":"Steak balkanique grillé","d.satarash":"Ragoût de poivrons",
+      "d.sopska":"Salade balkanique, feta","d.iftar":"Soupe, ćevapi, burek, grillades, trileće","d.diavola":"Pepperoni halal","apc":"à conf.",
+      "story.kick":"Fait maison","story.h2":"Le goût de la cuisine de famille",
+      "story.p1":"Aylla's Kitchen est un restaurant-pizzeria familial d'Esch-sur-Alzette. Paperjam y voit « une échappée balkanique assumée » et un accueil « d'une simplicité désarmante ».",
+      "story.p2":"Tout est fait maison, avec ce goût de cuisine de famille : ćevapi et pljeskavica grillés, pain lepina chaud, burek et poivrons grillés à la sauce blanche — puis pizzas au feu de bois, burgers généreux, salades fraîches et grillades de poisson. Et pour finir, baklava, trileće, hurmašice et Kaiserschmarrn autrichien.",
+      "story.sig":"Aylla's Kitchen · Esch-sur-Alzette","story.sigmain":"Bujrum — bienvenue à table.",
+      "chip.1":"Fait maison","chip.2":"Grillades balkaniques","chip.3":"Feu de bois","chip.4":"Sélection halal","chip.5":"Familial & convivial",
+      "visit.kick":"À table","visit.h2":"Nous trouver",
+      "visit.p":"Sur place, à emporter, en livraison (Esch, Oberkorn, Kayl). Un coup de fil suffit pour réserver.",
+      "visit.hours":"Horaires","visit.contact":"Contact & adresse","visit.addr":"Adresse","visit.phone":"Tél.","visit.mail":"Email","visit.delivery":"Livraison",
+      "visit.addrcfm":"Adresse principale — à confirmer avec l'établissement.","visit.hcfm":"Horaires à confirmer avec l'établissement.",
+      "day.mon":"Lundi","day.tue":"Mardi","day.wed":"Mercredi","day.thu":"Jeudi","day.fri":"Vendredi","day.sat":"Samedi","day.sun":"Dimanche","closed":"Fermé",
+      "foot.blurb":"Cuisine balkanique faite maison, pizzas au feu de bois et douceurs. Bujrum — entrez, servez-vous.",
+      "foot.nav":"Naviguer","foot.contact":"Contact","foot.social":"Suivre",
+      "foot.demo":"Site de démonstration — contenu, prix, horaires et adresse à confirmer avec l'établissement. Photos et couleurs indicatives."
+    },
+    de:{
+      "brand.sub":"Esch-sur-Alzette · Restaurant & Pizzeria",
+      "nav.table":"Die Tafel","nav.menu":"Die Karte","nav.story":"Hausgemacht","nav.visit":"Anfahrt",
+      "mast.eyebrow":"Esch-sur-Alzette · Hausgemacht",
+      "mast.h1sub":"Restaurant & Pizzeria",
+      "mast.tag":"Eine Balkan-Auszeit. Hausgemacht, wie zu Hause.",
+      "mast.lead":"Grillspezialitäten, Ćevapi und Pljeskavica, Pizza aus dem Holzofen, großzügige Burger und Balkan-Süßes — serviert in einem warmen, unkomplizierten Gastraum.",
+      "mast.bujrum":"Über den Tischen ein rosa Neon: <b>„But first, Bujrum“</b>. Bujrum ist das Willkommenswort des Balkans — „kommt rein, bedient euch“. Hier empfängt man Sie wie zu Hause.",
+      "mast.cta1":"Tisch reservieren","mast.cta2":"Zur Karte",
+      "mast.f1":"Google · 109 Bewertungen","mast.f2b":"Halal","mast.f2":"Halal-Auswahl",
+      "mast.f3b":"Holzofen","mast.f3":"Handwerkspizza","mast.f4b":"Familiär","mast.f4":"Vor Ort · zum Mitnehmen",
+      "mast.plate":"von 5",
+      "neon.pre":"But first,","neon.sub":"Kommt rein, bedient euch — willkommen an der Tafel",
+      "sofra.kick":"Die Sofra — die geteilte Tafel","sofra.h2":"Wir decken den Tisch",
+      "sofra.p":"Am Balkan bestellt nicht jeder für sich: Man deckt die Tafel und teilt. Hier ein paar Signaturen des Hauses, angerichtet wie an der Sofra.",
+      "dish.diavola":"Halal-Pepperoni, Holzofen","dish.smash":"Holzbrett, Ajvar & Pommes",
+      "dish.baklava":"Pistazie, Sirup, hausgemacht","dish.kaiser":"Österreichische Süßspeise, Nutella","dish.cheese":"Zeitungsbrett, Korb-Pommes",
+      "carte.kick":"Die Karte","carte.h2":"Vom Balkan aus dem Holzofen",
+      "carte.p":"Grillgerichte, Handwerkspizza, Pasta, Fisch und Süßes. Eine großzügige Karte zum Teilen.",
+      "carte.cfm":"Richtpreise · beim Restaurant zu bestätigen",
+      "cat.grill":"Grill & Balkan-Spezialitäten","cat.grill.note":"Mit Lepina & weißer Sauce",
+      "cat.pizza":"Pizza aus dem Holzofen","cat.pizza.note":"Halal-Salami",
+      "cat.burger":"Burger","cat.burger.note":"Holzbrett · Ajvar · Korb-Pommes",
+      "cat.pasta":"Pasta","cat.sea":"Fisch & Grill","cat.salad":"Salate","cat.sweet":"Süßes & Österreich",
+      "d.cevapi":"Kleine gegrillte Würstchen, Lepina-Brot","d.plje":"Gegrilltes Balkan-Steak","d.satarash":"Paprika-Eintopf",
+      "d.sopska":"Balkan-Salat, Feta","d.iftar":"Suppe, Ćevapi, Burek, Grill, Trileće","d.diavola":"Halal-Pepperoni","apc":"a. A.",
+      "story.kick":"Hausgemacht","story.h2":"Der Geschmack der Familienküche",
+      "story.p1":"Aylla's Kitchen ist ein familiengeführtes Restaurant mit Pizzeria in Esch-sur-Alzette. Paperjam nennt es „eine echte Balkan-Auszeit“ mit einem Empfang „von entwaffnender Einfachheit“.",
+      "story.p2":"Alles ist hausgemacht, mit dem Geschmack der Familienküche: gegrillte Ćevapi und Pljeskavica, warmes Lepina-Brot, Burek und gegrillte Paprika mit weißer Sauce — dazu Pizza aus dem Holzofen, großzügige Burger, frische Salate und Fischgerichte. Zum Schluss: Baklava, Trileće, Hurmašice und österreichischer Kaiserschmarrn.",
+      "story.sig":"Aylla's Kitchen · Esch-sur-Alzette","story.sigmain":"Bujrum — willkommen an der Tafel.",
+      "chip.1":"Hausgemacht","chip.2":"Balkan-Grill","chip.3":"Holzofen","chip.4":"Halal-Auswahl","chip.5":"Familiär & gesellig",
+      "visit.kick":"An die Tafel","visit.h2":"Anfahrt",
+      "visit.p":"Vor Ort, zum Mitnehmen, Lieferung (Esch, Oberkorn, Kayl). Ein Anruf genügt zum Reservieren.",
+      "visit.hours":"Öffnungszeiten","visit.contact":"Kontakt & Adresse","visit.addr":"Adresse","visit.phone":"Tel.","visit.mail":"E-Mail","visit.delivery":"Lieferung",
+      "visit.addrcfm":"Hauptadresse — beim Restaurant zu bestätigen.","visit.hcfm":"Öffnungszeiten beim Restaurant zu bestätigen.",
+      "day.mon":"Montag","day.tue":"Dienstag","day.wed":"Mittwoch","day.thu":"Donnerstag","day.fri":"Freitag","day.sat":"Samstag","day.sun":"Sonntag","closed":"Geschlossen",
+      "foot.blurb":"Hausgemachte Balkanküche, Pizza aus dem Holzofen und Süßes. Bujrum — kommt rein, bedient euch.",
+      "foot.nav":"Navigation","foot.contact":"Kontakt","foot.social":"Folgen",
+      "foot.demo":"Demo-Website — Inhalte, Preise, Öffnungszeiten und Adresse beim Restaurant zu bestätigen. Fotos und Farben sind Richtwerte."
+    },
+    en:{
+      "brand.sub":"Esch-sur-Alzette · Restaurant & Pizzeria",
+      "nav.table":"The table","nav.menu":"The menu","nav.story":"Homemade","nav.visit":"Find us",
+      "mast.eyebrow":"Esch-sur-Alzette · Homemade",
+      "mast.h1sub":"Restaurant & Pizzeria",
+      "mast.tag":"A Balkan escape — homemade, like home.",
+      "mast.lead":"Flame grills, ćevapi and pljeskavica, wood-oven pizzas, generous burgers and Balkan sweets — served in a warm, unpretentious dining room.",
+      "mast.bujrum":"Above the tables, a pink neon: <b>“But first, Bujrum”</b>. Bujrum is the Balkan word of welcome — “come in, help yourself”. Here, you're received like family.",
+      "mast.cta1":"Book a table","mast.cta2":"See the menu",
+      "mast.f1":"Google · 109 reviews","mast.f2b":"Halal","mast.f2":"Halal selection",
+      "mast.f3b":"Wood-fired","mast.f3":"Artisan pizzas","mast.f4b":"Family-run","mast.f4":"Dine-in · takeaway",
+      "mast.plate":"out of 5",
+      "neon.pre":"But first,","neon.sub":"Come in, help yourself — welcome to the table",
+      "sofra.kick":"The sofra — the shared table","sofra.h2":"We set the table",
+      "sofra.p":"In the Balkans you don't each order your own plate: you fill the table and share. Here are a few house signatures, laid out sofra-style.",
+      "dish.diavola":"Halal pepperoni, wood-fired","dish.smash":"Wooden board, ajvar & fries",
+      "dish.baklava":"Pistachio, syrup, homemade","dish.kaiser":"Austrian sweet, nutella","dish.cheese":"Newsprint board, basket fries",
+      "carte.kick":"The menu","carte.h2":"From the Balkans, wood-fired",
+      "carte.p":"Grills, artisan pizzas, pasta, seafood and sweets. A generous menu, made to share.",
+      "carte.cfm":"Indicative prices · to be confirmed with the restaurant",
+      "cat.grill":"Grill & Balkan specialities","cat.grill.note":"Served with lepina & white sauce",
+      "cat.pizza":"Wood-oven pizzas","cat.pizza.note":"Halal salami",
+      "cat.burger":"Burgers","cat.burger.note":"Wooden board · ajvar · basket fries",
+      "cat.pasta":"Pasta","cat.sea":"Seafood & grill","cat.salad":"Salads","cat.sweet":"Sweets & Austria",
+      "d.cevapi":"Little grilled sausages, lepina bread","d.plje":"Grilled Balkan steak","d.satarash":"Pepper stew",
+      "d.sopska":"Balkan salad, feta","d.iftar":"Soup, ćevapi, burek, grills, trileće","d.diavola":"Halal pepperoni","apc":"TBC",
+      "story.kick":"Homemade","story.h2":"The taste of family cooking",
+      "story.p1":"Aylla's Kitchen is a family-run restaurant and pizzeria in Esch-sur-Alzette. Paperjam calls it “a committed Balkan escape” with a welcome “of disarming simplicity”.",
+      "story.p2":"Everything is homemade, with the taste of family cooking: grilled ćevapi and pljeskavica, warm lepina bread, burek and grilled peppers with white sauce — then wood-oven pizzas, generous burgers, fresh salads and seafood grills. To finish: baklava, trileće, hurmašice and Austrian Kaiserschmarrn.",
+      "story.sig":"Aylla's Kitchen · Esch-sur-Alzette","story.sigmain":"Bujrum — welcome to the table.",
+      "chip.1":"Homemade","chip.2":"Balkan grill","chip.3":"Wood-fired","chip.4":"Halal selection","chip.5":"Family & convivial",
+      "visit.kick":"To the table","visit.h2":"Find us",
+      "visit.p":"Dine-in, takeaway, delivery (Esch, Oberkorn, Kayl). One call is enough to book.",
+      "visit.hours":"Opening hours","visit.contact":"Contact & address","visit.addr":"Address","visit.phone":"Phone","visit.mail":"Email","visit.delivery":"Delivery",
+      "visit.addrcfm":"Primary address — to be confirmed with the restaurant.","visit.hcfm":"Hours to be confirmed with the restaurant.",
+      "day.mon":"Monday","day.tue":"Tuesday","day.wed":"Wednesday","day.thu":"Thursday","day.fri":"Friday","day.sat":"Saturday","day.sun":"Sunday","closed":"Closed",
+      "foot.blurb":"Homemade Balkan cooking, wood-oven pizzas and sweets. Bujrum — come in, help yourself.",
+      "foot.nav":"Navigate","foot.contact":"Contact","foot.social":"Follow",
+      "foot.demo":"Demonstration site — content, prices, hours and address to be confirmed with the restaurant. Photos and colours are indicative."
+    }
+  };
+
+  function setLang(lang){
+    const dict = I18N[lang]; if(!dict) return;
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach(el=>{
+      const k = el.getAttribute("data-i18n");
+      if(dict[k]!==undefined) el.innerHTML = dict[k];
+    });
+    document.querySelectorAll(".langs button").forEach(b=>{
+      b.classList.toggle("active", b.dataset.lang===lang);
+    });
+  }
+  document.querySelectorAll(".langs button").forEach(b=>{
+    b.addEventListener("click",()=>setLang(b.dataset.lang));
+  });
+
+  // Mobile nav
+  const mnav=document.getElementById("mnav");
+  document.getElementById("burger").addEventListener("click",()=>mnav.classList.add("open"));
+  document.getElementById("mclose").addEventListener("click",()=>mnav.classList.remove("open"));
+  mnav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>mnav.classList.remove("open")));
+
+  // Year
+  document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

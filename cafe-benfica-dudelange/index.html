@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Café Benfica — Dudelange · Cuisine portugaise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#E30613;
+    --red-deep:#B00410;
+    --ink:#1B1310;
+    --ink-soft:#3a2b25;
+    --cream:#FBF4E9;
+    --cream-2:#F3E7D3;
+    --wood:#7A3B1E;
+    --gold:#E3B04B;
+    --line:rgba(27,19,16,.14);
+    --disp:'Oswald', 'Arial Narrow', Impact, sans-serif;
+    --serif:'Fraunces', Georgia, 'Times New Roman', serif;
+    --body:'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    --maxw:1360px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  .disp{font-family:var(--disp);text-transform:uppercase;letter-spacing:.04em;line-height:.95}
+  .serif{font-family:var(--serif)}
+  .eyebrow{
+    font-family:var(--disp);text-transform:uppercase;letter-spacing:.34em;
+    font-size:12px;font-weight:600;color:var(--red);
+  }
+  .conf{
+    font-family:var(--body);font-size:11px;font-weight:500;font-style:italic;
+    color:var(--wood);opacity:.85;letter-spacing:.01em;text-transform:none;
+  }
+
+  /* ===== MATCHDAY BAR ===== */
+  .bar{
+    position:sticky;top:0;z-index:60;
+    background:var(--ink);color:var(--cream);
+    border-bottom:3px solid var(--red);
+  }
+  .bar-in{
+    max-width:var(--maxw);margin:0 auto;padding:0 32px;
+    height:64px;display:flex;align-items:center;gap:22px;
+  }
+  .crest{display:flex;align-items:center;gap:12px;font-family:var(--disp);text-transform:uppercase}
+  .crest .shield{
+    width:38px;height:44px;background:var(--red);
+    clip-path:polygon(0 0,100% 0,100% 66%,50% 100%,0 66%);
+    display:grid;place-items:center;color:#fff;font-weight:700;font-size:20px;
+    box-shadow:inset 0 0 0 2px rgba(255,255,255,.35);
+  }
+  .crest .nm{line-height:1}
+  .crest .nm b{display:block;font-weight:700;font-size:17px;letter-spacing:.08em}
+  .crest .nm span{display:block;font-size:9.5px;letter-spacing:.42em;color:var(--gold);font-weight:500}
+  .bar-status{
+    margin-left:6px;display:flex;align-items:center;gap:8px;font-size:12px;
+    font-family:var(--disp);text-transform:uppercase;letter-spacing:.14em;color:#e9dccb;
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:#39d353;box-shadow:0 0 0 0 rgba(57,211,83,.7);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(57,211,83,.6)}70%{box-shadow:0 0 0 7px rgba(57,211,83,0)}100%{box-shadow:0 0 0 0 rgba(57,211,83,0)}}
+  .bar-nav{margin-left:auto;display:flex;align-items:center;gap:26px}
+  .bar-nav a.nl{font-family:var(--disp);text-transform:uppercase;letter-spacing:.13em;font-size:12.5px;color:#e9dccb;transition:color .2s}
+  .bar-nav a.nl:hover{color:#fff}
+  .bar-phone{
+    font-family:var(--disp);letter-spacing:.08em;font-size:13px;
+    background:var(--red);color:#fff;padding:9px 16px;border-radius:2px;font-weight:600;
+    display:flex;gap:8px;align-items:center;transition:background .2s;
+  }
+  .bar-phone:hover{background:var(--red-deep)}
+  .lang{display:flex;gap:2px;border:1px solid rgba(255,255,255,.28);border-radius:3px;overflow:hidden}
+  .lang button{
+    background:transparent;color:#cbb9a5;border:0;cursor:pointer;
+    font-family:var(--disp);font-size:11.5px;letter-spacing:.1em;padding:6px 9px;font-weight:600;
+  }
+  .lang button.on{background:var(--gold);color:var(--ink)}
+  .burger{display:none}
+
+  /* ===== KICK-OFF / HERO ===== */
+  .kick{
+    position:relative;background:var(--ink);color:var(--cream);
+    padding:0;overflow:hidden;
+  }
+  .kick:before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(120% 90% at 88% 8%, rgba(227,6,19,.5), transparent 55%),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.028) 0 1px, transparent 1px 92px);
+    pointer-events:none;
+  }
+  .kick-in{
+    max-width:var(--maxw);margin:0 auto;padding:64px 32px 56px;
+    display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;position:relative;
+  }
+  .kick-word{max-width:560px}
+  .kick .club{
+    font-family:var(--disp);letter-spacing:.5em;font-size:13px;color:var(--gold);
+    display:flex;align-items:center;gap:14px;margin-bottom:22px;font-weight:500;
+  }
+  .kick .club:before,.kick .club:after{content:"";height:1px;background:linear-gradient(90deg,transparent,var(--gold));flex:1;max-width:60px}
+  .kick .club:before{background:linear-gradient(270deg,transparent,var(--gold))}
+  .kick h1{
+    font-family:var(--serif);font-weight:900;font-size:clamp(48px,6.4vw,92px);
+    line-height:.92;letter-spacing:-.01em;
+  }
+  .kick h1 .em{color:var(--red);font-style:italic;font-weight:500}
+  .kick .tag{
+    font-family:var(--serif);font-style:italic;font-size:22px;color:#f0e2ce;
+    margin:22px 0 6px;font-weight:500;
+  }
+  .kick .sub{font-size:15px;color:#c9b8a6;max-width:440px;margin-top:14px}
+  .kick .cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+  .btn{
+    font-family:var(--disp);text-transform:uppercase;letter-spacing:.1em;font-weight:600;font-size:14px;
+    padding:14px 26px;border-radius:2px;cursor:pointer;transition:transform .15s,background .2s,color .2s;display:inline-flex;gap:9px;align-items:center;
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn-red{background:var(--red);color:#fff}
+  .btn-red:hover{background:var(--red-deep)}
+  .btn-ghost{background:transparent;color:var(--cream);border:1.5px solid rgba(255,255,255,.4)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+  .kick-visual{position:relative}
+  .kick-photo{
+    height:460px;border-radius:4px;overflow:hidden;position:relative;
+    box-shadow:0 30px 60px rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.08);
+  }
+  .kick-photo img{width:100%;height:100%;object-fit:cover}
+  .kick-photo .cap{
+    position:absolute;left:0;bottom:0;right:0;padding:14px 18px;
+    background:linear-gradient(0deg,rgba(0,0,0,.72),transparent);
+    font-size:11.5px;letter-spacing:.05em;color:#eadcc9;
+  }
+  /* scoreboard strip */
+  .scoreboard{
+    position:absolute;left:-34px;bottom:-30px;
+    background:var(--red);color:#fff;border-radius:3px;
+    display:grid;grid-template-columns:repeat(3,auto);
+    box-shadow:0 18px 40px rgba(179,4,16,.5);
+  }
+  .scoreboard .sc{padding:16px 22px;text-align:center;border-right:1px solid rgba(255,255,255,.25)}
+  .scoreboard .sc:last-child{border-right:0}
+  .scoreboard .sc b{display:block;font-family:var(--disp);font-size:28px;font-weight:700;line-height:1}
+  .scoreboard .sc span{display:block;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;margin-top:5px;opacity:.9}
+
+  /* ticker */
+  .ticker{background:var(--gold);color:var(--ink);overflow:hidden;white-space:nowrap;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
+  .ticker .run{display:inline-block;padding:11px 0;animation:scrollx 32s linear infinite;font-family:var(--disp);text-transform:uppercase;letter-spacing:.22em;font-size:13px;font-weight:600}
+  .ticker .run span{margin:0 26px;opacity:.85}
+  .ticker .run span:before{content:"◆";color:var(--red);margin-right:26px}
+  @keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ===== SECTION SHELL ===== */
+  section.band{padding:88px 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:44px;flex-wrap:wrap}
+  .sec-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(34px,4vw,58px);line-height:.95;letter-spacing:-.01em}
+  .sec-head h2 em{color:var(--red);font-style:italic;font-weight:500}
+  .sec-head .kv{max-width:360px;font-size:14px;color:var(--ink-soft)}
+
+  /* ===== L'ONZE (buffet lineup) ===== */
+  #onze{background:var(--red);color:var(--cream);position:relative;overflow:hidden}
+  #onze:before{
+    content:"";position:absolute;inset:0;opacity:.9;pointer-events:none;
+    background:
+      radial-gradient(140% 80% at 50% -10%, rgba(255,255,255,.10), transparent 60%),
+      repeating-linear-gradient(0deg, transparent 0 78px, rgba(255,255,255,.06) 78px 79px);
+  }
+  #onze .wrap{position:relative}
+  .onze-top{display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:end;margin-bottom:46px}
+  .onze-top .eyebrow{color:#ffd9c9}
+  .onze-top h2{font-family:var(--serif);font-weight:900;color:#fff;font-size:clamp(36px,4.4vw,66px);line-height:.92}
+  .onze-price{
+    text-align:right;
+  }
+  .onze-price .lbl{font-family:var(--disp);letter-spacing:.2em;font-size:12px;text-transform:uppercase;color:#ffd9c9}
+  .onze-price .amt{font-family:var(--disp);font-weight:700;font-size:74px;line-height:.85;color:#fff}
+  .onze-price .amt small{font-size:26px;vertical-align:super}
+  .onze-price .per{font-size:13px;color:#ffe3d6}
+  /* the "team sheet" grid */
+  .lineup{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .player{
+    display:flex;gap:16px;align-items:center;
+    background:rgba(27,19,16,.28);border:1px solid rgba(255,255,255,.16);
+    border-radius:3px;padding:15px 16px;backdrop-filter:blur(2px);transition:transform .15s,background .2s;
+  }
+  .player:hover{transform:translateY(-3px);background:rgba(27,19,16,.42)}
+  .num{
+    flex:none;width:46px;height:46px;display:grid;place-items:center;
+    font-family:var(--disp);font-weight:700;font-size:22px;color:var(--red);
+    background:#fff;border-radius:50%;box-shadow:0 4px 12px rgba(0,0,0,.25);
+  }
+  .player .pn{font-family:var(--serif);font-weight:600;font-size:18px;color:#fff;line-height:1.1}
+  .player .pd{font-size:12px;color:#ffdccf;margin-top:3px}
+  .onze-foot{
+    margin-top:32px;display:flex;flex-wrap:wrap;gap:12px 26px;align-items:center;
+    border-top:1px solid rgba(255,255,255,.22);padding-top:22px;
+  }
+  .chip{
+    font-family:var(--disp);text-transform:uppercase;letter-spacing:.1em;font-size:12px;
+    background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);
+    color:#fff;padding:7px 13px;border-radius:2px;
+  }
+  .chip.gold{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+
+  /* ===== À LA CARTE ===== */
+  #carte{background:var(--cream)}
+  .carte-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px}
+  .position-label{
+    grid-column:span 12;display:flex;align-items:center;gap:16px;margin:8px 0 -4px;
+  }
+  .position-label .pl-num{font-family:var(--disp);font-weight:700;font-size:13px;color:var(--red);letter-spacing:.2em}
+  .position-label h3{font-family:var(--serif);font-weight:900;font-size:26px;letter-spacing:-.01em}
+  .position-label .rule{flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 14px)}
+  .dish{
+    grid-column:span 4;background:#fff;border:1px solid var(--line);border-radius:4px;overflow:hidden;
+    display:flex;flex-direction:column;transition:transform .15s,box-shadow .2s;
+  }
+  .dish:hover{transform:translateY(-4px);box-shadow:0 18px 34px rgba(122,59,30,.15)}
+  .dish.wide{grid-column:span 8}
+  .dish .ph{height:172px;overflow:hidden;background:var(--cream-2);position:relative}
+  .dish .ph img{width:100%;height:100%;object-fit:cover}
+  .dish.wide .ph{height:220px}
+  .dish .bd{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .dish .dt{display:flex;justify-content:space-between;gap:14px;align-items:baseline}
+  .dish .dt h4{font-family:var(--serif);font-weight:600;font-size:20px}
+  .dish .dt .pr{font-family:var(--disp);font-weight:600;font-size:16px;color:var(--red);white-space:nowrap}
+  .dish .de{font-size:13.5px;color:var(--ink-soft)}
+  .dish.noimg .bd{padding-top:22px}
+  .dish .flag{
+    position:absolute;top:10px;left:10px;background:var(--ink);color:#fff;
+    font-family:var(--disp);letter-spacing:.14em;font-size:10px;text-transform:uppercase;padding:5px 9px;border-radius:2px;
+  }
+
+  /* ===== TRIBUNE (community) ===== */
+  #tribune{background:var(--ink);color:var(--cream);position:relative}
+  .tribune-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:52px;align-items:center}
+  .tribune-left h2{font-family:var(--serif);font-weight:900;color:#fff;font-size:clamp(34px,4vw,56px);line-height:.95;margin-bottom:8px}
+  .tribune-left h2 em{color:var(--red);font-style:italic;font-weight:500}
+  .tribune-left p{color:#cab9a7;font-size:15px;max-width:460px;margin-top:16px}
+  .fixtures{margin-top:30px;display:grid;gap:2px}
+  .fx{
+    display:grid;grid-template-columns:52px 1fr auto;gap:16px;align-items:center;
+    background:rgba(255,255,255,.05);border-left:3px solid var(--red);padding:14px 18px;
+  }
+  .fx .ic{font-size:22px;text-align:center}
+  .fx b{font-family:var(--disp);text-transform:uppercase;letter-spacing:.08em;font-size:14px;color:#fff;display:block}
+  .fx span{font-size:12.5px;color:#b6a596}
+  .fx .tg{font-family:var(--disp);font-size:11px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}
+  .tribune-media{display:grid;gap:14px}
+  .tribune-media .big{height:300px;border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+  .tribune-media .big img{width:100%;height:100%;object-fit:cover;object-position:0 40%}
+  .tribune-media .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .tribune-media .row div{height:150px;border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+  .tribune-media .row img{width:100%;height:100%;object-fit:cover}
+
+  /* ===== RÉCEPTIONS ===== */
+  #recep{background:var(--cream-2);position:relative;overflow:hidden}
+  .recep-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:52px;align-items:center}
+  .recep-photo{height:440px;border-radius:5px;overflow:hidden;box-shadow:0 24px 50px rgba(122,59,30,.24);position:relative}
+  .recep-photo img{width:100%;height:100%;object-fit:cover}
+  .recep-photo .stamp{
+    position:absolute;top:20px;right:20px;background:var(--gold);color:var(--ink);
+    width:96px;height:96px;border-radius:50%;display:grid;place-items:center;text-align:center;
+    font-family:var(--disp);text-transform:uppercase;font-weight:700;font-size:12px;letter-spacing:.06em;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);transform:rotate(-8deg);line-height:1.15;
+  }
+  .recep-txt .eyebrow{color:var(--wood)}
+  .recep-txt h2{font-family:var(--serif);font-weight:900;font-size:clamp(34px,4vw,56px);line-height:.95;margin:10px 0 16px}
+  .recep-txt h2 em{color:var(--red);font-style:italic;font-weight:500}
+  .recep-txt p{font-size:15px;color:var(--ink-soft);max-width:480px}
+  .recep-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:26px 0 28px}
+  .recep-list .ri{background:#fff;border:1px solid var(--line);border-radius:4px;padding:16px 18px}
+  .recep-list .ri b{font-family:var(--disp);text-transform:uppercase;letter-spacing:.06em;font-size:14px;color:var(--red);display:block;margin-bottom:4px}
+  .recep-list .ri span{font-size:13px;color:var(--ink-soft)}
+
+  /* ===== LE TERRAIN (hours/map/contact) ===== */
+  #terrain{background:var(--ink);color:var(--cream)}
+  .terrain-grid{display:grid;grid-template-columns:.85fr .75fr 1fr;gap:40px}
+  .box-title{font-family:var(--disp);text-transform:uppercase;letter-spacing:.16em;font-size:13px;color:var(--gold);margin-bottom:20px;font-weight:600;display:flex;align-items:center;gap:10px}
+  .box-title:before{content:"";width:22px;height:2px;background:var(--red)}
+  .hours-tbl{width:100%;border-collapse:collapse}
+  .hours-tbl tr{border-bottom:1px solid rgba(255,255,255,.12)}
+  .hours-tbl td{padding:11px 0;font-size:14px}
+  .hours-tbl td:first-child{font-family:var(--disp);text-transform:uppercase;letter-spacing:.06em;color:#e6d7c6;font-size:13px}
+  .hours-tbl td:last-child{text-align:right;color:#c3b2a1}
+  .hours-tbl tr.today{color:#fff}
+  .hours-tbl tr.today td{color:#fff;font-weight:500}
+  .hours-tbl tr.today td:first-child{color:var(--gold)}
+  .buffet-note{margin-top:16px;background:var(--red);color:#fff;padding:14px 16px;border-radius:3px;font-size:13px}
+  .buffet-note b{font-family:var(--disp);letter-spacing:.06em;text-transform:uppercase;display:block;font-size:13px}
+  .contact-line{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;font-size:14px;color:#d8c9b8}
+  .contact-line .ci{color:var(--red);font-size:18px;flex:none;width:22px;text-align:center}
+  .contact-line b{color:#fff;font-weight:500}
+  .pays{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+  .pays span{font-family:var(--disp);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(255,255,255,.24);color:#cbbaa9;padding:5px 9px;border-radius:2px}
+  .map-box{height:280px;border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,.14);margin-top:22px}
+  .map-box iframe{width:100%;height:100%;border:0;filter:grayscale(.3) contrast(1.05)}
+
+  /* ===== FOOTER ===== */
+  footer{background:#120c0a;color:#9c8b7c;padding:52px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;align-items:start;padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .foot-crest .shield{width:52px;height:60px;font-size:26px}
+  .foot-crest .nm b{font-size:22px;color:var(--cream)}
+  .foot-crest p{margin-top:16px;font-size:13.5px;max-width:340px;color:#a89786}
+  .foot-col h5{font-family:var(--disp);text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--gold);margin-bottom:14px}
+  .foot-col a,.foot-col p{display:block;font-size:13.5px;color:#a89786;margin-bottom:9px}
+  .foot-col a:hover{color:var(--cream)}
+  .foot-bottom{padding-top:22px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:11.5px;color:#7a6b5e}
+  .demo-tag{background:rgba(227,6,19,.16);border:1px solid rgba(227,6,19,.4);color:#e8b8ad;padding:5px 11px;border-radius:2px;font-size:11px;letter-spacing:.02em}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:1080px){
+    .kick-in{grid-template-columns:1fr;gap:56px}
+    .kick-visual{max-width:560px}
+    .scoreboard{left:0}
+    .onze-top{grid-template-columns:1fr}
+    .onze-price{text-align:left}
+    .lineup{grid-template-columns:repeat(2,1fr)}
+    .tribune-grid,.recep-grid{grid-template-columns:1fr;gap:36px}
+    .terrain-grid{grid-template-columns:1fr 1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:760px){
+    .wrap,.bar-in,.kick-in{padding-left:20px;padding-right:20px}
+    .bar-nav{display:none}
+    .bar-nav.open{
+      display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;
+      background:var(--ink);padding:20px;gap:16px;border-bottom:3px solid var(--red);
+    }
+    .bar-nav.open .lang{align-self:flex-start}
+    .burger{display:block;margin-left:auto;background:transparent;border:0;color:var(--cream);cursor:pointer}
+    .burger svg{width:26px;height:26px}
+    .lineup{grid-template-columns:1fr}
+    .carte-grid{grid-template-columns:repeat(6,1fr)}
+    .dish,.dish.wide{grid-column:span 6}
+    .terrain-grid,.foot-grid{grid-template-columns:1fr}
+    .recep-list{grid-template-columns:1fr}
+    .tribune-media .row{grid-template-columns:1fr}
+    section.band{padding:60px 0}
+    .kick .club{font-size:11px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== MATCHDAY BAR ===== -->
+<header class="bar">
+  <div class="bar-in">
+    <a href="#top" class="crest">
+      <span class="shield">B</span>
+      <span class="nm"><b>CAFÉ BENFICA</b><span>DUDELANGE · 1897</span></span>
+    </a>
+    <div class="bar-status"><span class="dot"></span><span data-i18n="status">Cuisine ouverte</span></div>
+    <nav class="bar-nav" id="nav">
+      <a class="nl" href="#onze" data-i18n="nav_buffet">Le buffet</a>
+      <a class="nl" href="#carte" data-i18n="nav_carte">La carte</a>
+      <a class="nl" href="#tribune" data-i18n="nav_tribune">L'ambiance</a>
+      <a class="nl" href="#recep" data-i18n="nav_recep">Réceptions</a>
+      <a class="nl" href="#terrain" data-i18n="nav_visit">Nous trouver</a>
+      <div class="lang">
+        <button data-lang="fr" class="on">FR</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <a class="bar-phone" href="tel:+352518255">☎ +352 51 82 55</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ===== KICK-OFF / HERO ===== -->
+<section class="kick" id="top">
+  <div class="kick-in">
+    <div class="kick-word">
+      <div class="club" data-i18n="hero_club">Maison portugaise · Depuis toujours au centre du jeu</div>
+      <h1><span data-i18n="hero_h1a">Le Portugal</span><br><span class="em serif" data-i18n="hero_h1b">joue à domicile</span><br><span data-i18n="hero_h1c">à Dudelange</span></h1>
+      <p class="tag" data-i18n="hero_tag">« Un coin du Portugal à Dudelange »</p>
+      <p class="sub" data-i18n="hero_sub">Buffet du midi à volonté, grandes tablées, matchs sur écran et musique le week-end. Une cuisine portugaise généreuse, servie comme à la maison.</p>
+      <div class="cta">
+        <a class="btn btn-red" href="tel:+352518255" data-i18n="hero_cta1">Réserver une table</a>
+        <a class="btn btn-ghost" href="#onze" data-i18n="hero_cta2">Voir le buffet</a>
+      </div>
+    </div>
+    <div class="kick-visual">
+      <div class="kick-photo">
+        <img src="assets/hero.jpg" alt="Table de réception dressée au Café Benfica">
+        <div class="cap" data-i18n="hero_cap">Salle de banquet dressée pour une réception — Café Benfica, Dudelange</div>
+      </div>
+      <div class="scoreboard">
+        <div class="sc"><b>4,2</b><span data-i18n="sb_rating">Note / 5</span></div>
+        <div class="sc"><b>417</b><span data-i18n="sb_reviews">Avis clients</span></div>
+        <div class="sc"><b>PT</b><span data-i18n="sb_kitchen">Cuisine maison</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TICKER ===== -->
+<div class="ticker">
+  <div class="run" id="ticker-run"></div>
+</div>
+
+<!-- ===== L'ONZE DE MIDI (buffet lineup) ===== -->
+<section class="band" id="onze">
+  <div class="wrap">
+    <div class="onze-top">
+      <div>
+        <div class="eyebrow" data-i18n="onze_eye">La composition du midi · Lundi → Samedi</div>
+        <h2 class="serif" data-i18n="onze_h2">L'Onze de midi</h2>
+        <p style="color:#ffe3d6;max-width:520px;margin-top:14px;font-size:15px" data-i18n="onze_intro">Notre buffet à volonté : entrées froides, plats chauds mijotés et desserts. Onze spécialités qui tournent chaque jour — servez-vous, resservez-vous.</p>
+      </div>
+      <div class="onze-price">
+        <div class="lbl" data-i18n="onze_lbl">Le buffet complet</div>
+        <div class="amt"><small>€</small>14,50</div>
+        <div class="per conf" data-i18n="onze_per">par personne · dessert inclus — à confirmer</div>
+      </div>
+    </div>
+
+    <div class="lineup" id="lineup"></div>
+
+    <div class="onze-foot">
+      <span class="chip gold" data-i18n="onze_c1">Ticket Restaurant accepté</span>
+      <span class="chip" data-i18n="onze_c2">Chèque Repas</span>
+      <span class="chip" data-i18n="onze_c3">À emporter</span>
+      <span class="chip" data-i18n="onze_c4">~12h → 14h</span>
+      <span class="conf" style="color:#ffdccf" data-i18n="onze_conf">Plats et prix indicatifs — à confirmer avec l'établissement.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== À LA CARTE ===== -->
+<section class="band" id="carte">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow" data-i18n="carte_eye">Le soir & le week-end · à la carte</div>
+        <h2 class="serif"><span data-i18n="carte_h2a">La feuille</span> <em data-i18n="carte_h2b">de match</em></h2>
+      </div>
+      <p class="kv" data-i18n="carte_kv">Le soir, la cuisine passe à la carte : grillades, poissons et grands plats portugais à partager. Formation classique en trois lignes.</p>
+    </div>
+
+    <div class="carte-grid" id="carte-grid"></div>
+    <p class="conf" style="margin-top:22px" data-i18n="carte_conf">Sélection illustrative. Tous les plats et prix sont à confirmer avec l'établissement. Menu du soir ~20–30 € / personne — à confirmer.</p>
+  </div>
+</section>
+
+<!-- ===== TRIBUNE (community / ambiance) ===== -->
+<section class="band" id="tribune">
+  <div class="wrap">
+    <div class="tribune-grid">
+      <div class="tribune-left">
+        <div class="eyebrow" data-i18n="trib_eye">La tribune · vie du quartier</div>
+        <h2 class="serif"><span data-i18n="trib_h2a">Plus qu'un resto,</span><br><em data-i18n="trib_h2b">le club-house du quartier</em></h2>
+        <p data-i18n="trib_p">Café le matin, cantine le midi, tribune le soir. On y suit les matchs sur écran, on y écoute de la musique le week-end, et les grandes tablées portugaises ne se vident jamais avant la dernière chanson.</p>
+        <div class="fixtures">
+          <div class="fx"><div class="ic">📺</div><div><b data-i18n="fx1_t">Les matchs sur écran</b><span data-i18n="fx1_s">L'esprit Benfica, entre supporters.</span></div><div class="tg" data-i18n="fx1_g">Live</div></div>
+          <div class="fx"><div class="ic">🎶</div><div><b data-i18n="fx2_t">Musique le week-end</b><span data-i18n="fx2_s">Ambiance conviviale vendredi & samedi.</span></div><div class="tg conf" data-i18n="fx2_g">à confirmer</div></div>
+          <div class="fx"><div class="ic">☕</div><div><b data-i18n="fx3_t">Café & bar dès 9h</b><span data-i18n="fx3_s">Ouvert aussi le dimanche.</span></div><div class="tg" data-i18n="fx3_g">7j/7</div></div>
+        </div>
+      </div>
+      <div class="tribune-media">
+        <div class="big"><img src="assets/interior-1.jpg" alt="Salle du Café Benfica"></div>
+        <div class="row">
+          <div><img src="assets/drink-1.jpg" alt="Bière pression"></div>
+          <div><img src="assets/food-2.jpg" alt="Pâtes aux gambas"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RÉCEPTIONS ===== -->
+<section class="band" id="recep">
+  <div class="wrap">
+    <div class="recep-grid">
+      <div class="recep-photo">
+        <img src="assets/hero.jpg" alt="Table de réception dressée">
+        <div class="stamp"><span data-i18n="recep_stamp">Mariages<br>& fêtes</span></div>
+      </div>
+      <div class="recep-txt">
+        <div class="eyebrow" data-i18n="recep_eye">Salle de banquet · sur réservation</div>
+        <h2 class="serif"><span data-i18n="recep_h2a">Vos grands jours,</span> <em data-i18n="recep_h2b">à la maison</em></h2>
+        <p data-i18n="recep_p">Notre salle des fêtes accueille mariages, baptêmes, anniversaires et repas de groupe. Grandes tablées dressées, cuisine portugaise généreuse et menus personnalisés selon l'occasion.</p>
+        <div class="recep-list">
+          <div class="ri"><b data-i18n="recep_i1t">Mariages & baptêmes</b><span data-i18n="recep_i1s">Salle privatisable pour vos réceptions.</span></div>
+          <div class="ri"><b data-i18n="recep_i2t">Repas de groupe</b><span data-i18n="recep_i2s">Grands plats à partager, tarifs de groupe.</span></div>
+          <div class="ri"><b data-i18n="recep_i3t">Menus sur mesure</b><span data-i18n="recep_i3s">Composés avec vous selon l'événement.</span></div>
+          <div class="ri"><b data-i18n="recep_i4t">Parking gratuit</b><span data-i18n="recep_i4s">Accès facile, salle accessible PMR.</span></div>
+        </div>
+        <a class="btn btn-red" href="tel:+352518255" data-i18n="recep_cta">Demander un devis</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LE TERRAIN (visit) ===== -->
+<section class="band" id="terrain">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:40px">
+      <div>
+        <div class="eyebrow" data-i18n="ter_eye">Coup d'envoi · nous rejoindre</div>
+        <h2 class="serif" style="color:#fff"><span data-i18n="ter_h2a">Le terrain</span> <em data-i18n="ter_h2b">de jeu</em></h2>
+      </div>
+    </div>
+    <div class="terrain-grid">
+      <!-- hours -->
+      <div>
+        <div class="box-title" data-i18n="ter_hours">Horaires</div>
+        <table class="hours-tbl" id="hours-tbl"></table>
+        <div class="buffet-note">
+          <b data-i18n="ter_buffet_t">Buffet du midi</b>
+          <span data-i18n="ter_buffet_s">Lundi → Samedi, ~12h–14h · à confirmer</span>
+        </div>
+      </div>
+      <!-- contact -->
+      <div>
+        <div class="box-title" data-i18n="ter_contact">Contact & accès</div>
+        <div class="contact-line"><span class="ci">📍</span><div><b>Café Restaurant Benfica</b><br>179 Rue de la Libération<br>L-3512 Dudelange</div></div>
+        <div class="contact-line"><span class="ci">☎</span><div><b>+352 51 82 55</b></div></div>
+        <div class="contact-line"><span class="ci">🅿️</span><div><span data-i18n="ter_park">Parking gratuit · accessible PMR · Wi-Fi</span></div></div>
+        <div class="box-title" style="margin-top:26px" data-i18n="ter_pay">Paiements acceptés</div>
+        <div class="pays">
+          <span data-i18n="pay_cash">Espèces</span><span>Visa</span><span>Mastercard</span><span>Maestro</span><span>V PAY</span><span>Ticket Restaurant</span><span>Chèque Repas</span>
+        </div>
+      </div>
+      <!-- map -->
+      <div>
+        <div class="box-title" data-i18n="ter_map">Sur la carte</div>
+        <p style="font-size:14px;color:#c3b2a1;max-width:340px" data-i18n="ter_map_s">Au cœur de Dudelange, sur la Rue de la Libération. Terrasse couverte côté rue.</p>
+        <div class="map-box">
+          <iframe title="Carte Café Benfica Dudelange" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=179+Rue+de+la+Lib%C3%A9ration,+L-3512+Dudelange,+Luxembourg&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-crest crest" style="align-items:flex-start">
+        <span class="shield">B</span>
+        <div class="nm">
+          <b>CAFÉ BENFICA</b>
+          <span style="color:var(--gold);font-family:var(--disp);letter-spacing:.4em;font-size:10px">DUDELANGE</span>
+          <p data-i18n="foot_about">Maison portugaise de Dudelange : buffet du midi, cuisine à la carte le soir, réceptions et l'esprit du quartier. Da Silva Costa S.à r.l.</p>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_nav">Naviguer</h5>
+        <a href="#onze" data-i18n="nav_buffet">Le buffet</a>
+        <a href="#carte" data-i18n="nav_carte">La carte</a>
+        <a href="#tribune" data-i18n="nav_tribune">L'ambiance</a>
+        <a href="#recep" data-i18n="nav_recep">Réceptions</a>
+      </div>
+      <div class="foot-col">
+        <h5 data-i18n="foot_contact">Contact</h5>
+        <p>179 Rue de la Libération<br>L-3512 Dudelange</p>
+        <a href="tel:+352518255">+352 51 82 55</a>
+        <p data-i18n="foot_hours">Ouvert 7j/7 dès 9h · <span class="conf">horaires à confirmer</span></p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Café Restaurant Benfica · Dudelange</span>
+      <span class="demo-tag" data-i18n="foot_demo">Site de démonstration — contenu et photos indicatifs, à valider avec l'établissement.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============ DATA ============ */
+const LINEUP = {
+  fr:[
+    ["1","Bacalhau","Morue à la portugaise"],
+    ["2","Cozido à Portuguesa","Viandes & légumes mijotés"],
+    ["3","Cataplana","Palourdes, porc, pommes de terre"],
+    ["4","Porco Preto","Porc noir ibérique grillé"],
+    ["5","Gambas","Crevettes à l'ail"],
+    ["6","Grillades","Viandes du jour, frites & salade"],
+    ["7","Poisson grillé","Selon arrivage"],
+    ["8","Riz & feijoada","Accompagnements maison"],
+    ["9","Salades & entrées froides","Buffet froid varié"],
+    ["10","Pudim / Flan","Dessert portugais"],
+    ["11","Bolo","Gâteau en couches, caramel"]
+  ],
+  de:[
+    ["1","Bacalhau","Stockfisch auf portugiesische Art"],
+    ["2","Cozido à Portuguesa","Geschmortes Fleisch & Gemüse"],
+    ["3","Cataplana","Venusmuscheln, Schwein, Kartoffeln"],
+    ["4","Porco Preto","Gegrilltes iberisches Schwein"],
+    ["5","Gambas","Garnelen in Knoblauch"],
+    ["6","Grillteller","Fleisch des Tages, Pommes & Salat"],
+    ["7","Gegrillter Fisch","Je nach Anlieferung"],
+    ["8","Reis & Feijoada","Hausgemachte Beilagen"],
+    ["9","Salate & kalte Vorspeisen","Vielfältiges kaltes Buffet"],
+    ["10","Pudim / Flan","Portugiesisches Dessert"],
+    ["11","Bolo","Schichtkuchen mit Karamell"]
+  ],
+  en:[
+    ["1","Bacalhau","Portuguese-style salt cod"],
+    ["2","Cozido à Portuguesa","Slow-cooked meats & vegetables"],
+    ["3","Cataplana","Clams, pork, potatoes"],
+    ["4","Porco Preto","Grilled Iberian black pork"],
+    ["5","Gambas","Garlic shrimp"],
+    ["6","Grilled meats","Meats of the day, fries & salad"],
+    ["7","Grilled fish","Catch of the day"],
+    ["8","Rice & feijoada","House sides"],
+    ["9","Salads & cold starters","Varied cold buffet"],
+    ["10","Pudim / Flan","Portuguese dessert"],
+    ["11","Bolo","Layered cake with caramel"]
+  ]
+};
+
+/* dishes: [img, key, name, desc, price] ; img null = no photo. position markers via type */
+const CARTE = {
+  fr:{
+    lines:["Ligne d'attaque — les grands plats","Milieu de terrain — à partager","La défense — desserts"],
+    dishes:[
+      {l:0,img:"assets/food-1.jpg",flag:"Signature",n:"Travessa de Cozido",d:"Grand plateau de palourdes, porc et pommes de terre, façon cataplana.",p:"à conf."},
+      {l:0,img:"assets/food-2.jpg",n:"Gambas & pâtes",d:"Crevettes sautées, pâtes crémeuses, touche d'ail.",p:"à conf."},
+      {l:0,img:null,n:"Prego no prato",d:"Steak portugais à l'ail, œuf, frites & riz.",p:"à conf."},
+      {l:1,img:null,n:"Bacalhau à Brás",d:"Effeuillé de morue, oignons, pommes paille & œuf.",p:"à conf."},
+      {l:1,img:null,n:"Porco Preto grillé",d:"Porc noir ibérique, grillé, accompagnements maison.",p:"à conf."},
+      {l:1,img:null,n:"Poisson grillé du jour",d:"Selon arrivage, huile d'olive & citron.",p:"à conf."},
+      {l:2,img:"assets/dessert-1.jpg",n:"Bolo caramel",d:"Gâteau en couches nappé de caramel.",p:"à conf."},
+      {l:2,img:"assets/dessert-2.jpg",n:"Pudim / Flan",d:"Le flan portugais, onctueux et doré.",p:"à conf."},
+      {l:2,img:null,n:"Coupe glacée",d:"Glaces & coupes maison pour finir en douceur.",p:"à conf."}
+    ]
+  },
+  de:{
+    lines:["Sturmreihe — die großen Gerichte","Mittelfeld — zum Teilen","Abwehr — Desserts"],
+    dishes:[
+      {l:0,img:"assets/food-1.jpg",flag:"Signature",n:"Travessa de Cozido",d:"Große Platte mit Venusmuscheln, Schwein und Kartoffeln.",p:"n. Absp."},
+      {l:0,img:"assets/food-2.jpg",n:"Gambas & Pasta",d:"Gebratene Garnelen, cremige Pasta, Knoblauch.",p:"n. Absp."},
+      {l:0,img:null,n:"Prego no prato",d:"Portugiesisches Knoblauchsteak, Ei, Pommes & Reis.",p:"n. Absp."},
+      {l:1,img:null,n:"Bacalhau à Brás",d:"Zerpflückter Stockfisch, Zwiebeln, Kartoffelstroh & Ei.",p:"n. Absp."},
+      {l:1,img:null,n:"Gegrilltes Porco Preto",d:"Iberisches Schwarzschwein, gegrillt, Beilagen.",p:"n. Absp."},
+      {l:1,img:null,n:"Gegrillter Fisch des Tages",d:"Je nach Anlieferung, Olivenöl & Zitrone.",p:"n. Absp."},
+      {l:2,img:"assets/dessert-1.jpg",n:"Bolo Karamell",d:"Schichtkuchen mit Karamell überzogen.",p:"n. Absp."},
+      {l:2,img:"assets/dessert-2.jpg",n:"Pudim / Flan",d:"Der cremige portugiesische Flan.",p:"n. Absp."},
+      {l:2,img:null,n:"Eisbecher",d:"Hausgemachtes Eis für den süßen Abschluss.",p:"n. Absp."}
+    ]
+  },
+  en:{
+    lines:["Front line — the big plates","Midfield — to share","Defence — desserts"],
+    dishes:[
+      {l:0,img:"assets/food-1.jpg",flag:"Signature",n:"Travessa de Cozido",d:"Big platter of clams, pork and potatoes, cataplana style.",p:"TBC"},
+      {l:0,img:"assets/food-2.jpg",n:"Gambas & pasta",d:"Sautéed shrimp, creamy pasta, a hit of garlic.",p:"TBC"},
+      {l:0,img:null,n:"Prego no prato",d:"Portuguese garlic steak, egg, fries & rice.",p:"TBC"},
+      {l:1,img:null,n:"Bacalhau à Brás",d:"Shredded cod, onions, straw potatoes & egg.",p:"TBC"},
+      {l:1,img:null,n:"Grilled Porco Preto",d:"Iberian black pork, grilled, house sides.",p:"TBC"},
+      {l:1,img:null,n:"Grilled fish of the day",d:"Catch of the day, olive oil & lemon.",p:"TBC"},
+      {l:2,img:"assets/dessert-1.jpg",n:"Caramel bolo",d:"Layered cake glazed with caramel.",p:"TBC"},
+      {l:2,img:"assets/dessert-2.jpg",n:"Pudim / Flan",d:"The silky golden Portuguese flan.",p:"TBC"},
+      {l:2,img:null,n:"Ice-cream coupe",d:"House ices & coupes for a sweet finish.",p:"TBC"}
+    ]
+  }
+};
+
+const HOURS = {
+  fr:[["Lundi","09:00 – 18:00"],["Mardi","09:00 – 01:00"],["Mercredi","09:00 – 23:00"],["Jeudi","09:00 – 23:00"],["Vendredi","09:00 – 01:00"],["Samedi","09:00 – 01:00"],["Dimanche","09:00 – 18:00"]],
+  de:[["Montag","09:00 – 18:00"],["Dienstag","09:00 – 01:00"],["Mittwoch","09:00 – 23:00"],["Donnerstag","09:00 – 23:00"],["Freitag","09:00 – 01:00"],["Samstag","09:00 – 01:00"],["Sonntag","09:00 – 18:00"]],
+  en:[["Monday","09:00 – 18:00"],["Tuesday","09:00 – 01:00"],["Wednesday","09:00 – 23:00"],["Thursday","09:00 – 23:00"],["Friday","09:00 – 01:00"],["Saturday","09:00 – 01:00"],["Sunday","09:00 – 18:00"]]
+};
+
+const TICKER = {
+  fr:["Buffet du midi à volonté","Cuisine portugaise maison","Matchs sur écran","Musique le week-end","Réceptions & mariages","Ticket Restaurant accepté","Ouvert 7j/7 dès 9h"],
+  de:["Mittagsbuffet à volonté","Hausgemachte portugiesische Küche","Spiele auf dem Bildschirm","Musik am Wochenende","Feiern & Hochzeiten","Ticket Restaurant akzeptiert","7 Tage/Woche ab 9 Uhr"],
+  en:["All-you-can-eat lunch buffet","Home-style Portuguese cooking","Matches on screen","Live music at weekends","Events & weddings","Ticket Restaurant accepted","Open 7 days from 9am"]
+};
+
+const I18N = {
+  fr:{
+    status:"Cuisine ouverte",
+    nav_buffet:"Le buffet",nav_carte:"La carte",nav_tribune:"L'ambiance",nav_recep:"Réceptions",nav_visit:"Nous trouver",
+    hero_club:"Maison portugaise · au centre du jeu",
+    hero_h1a:"Le Portugal",hero_h1b:"joue à domicile",hero_h1c:"à Dudelange",
+    hero_tag:"« Un coin du Portugal à Dudelange »",
+    hero_sub:"Buffet du midi à volonté, grandes tablées, matchs sur écran et musique le week-end. Une cuisine portugaise généreuse, servie comme à la maison.",
+    hero_cta1:"Réserver une table",hero_cta2:"Voir le buffet",
+    hero_cap:"Salle de banquet dressée pour une réception — Café Benfica, Dudelange",
+    sb_rating:"Note / 5",sb_reviews:"Avis clients",sb_kitchen:"Cuisine maison",
+    onze_eye:"La composition du midi · Lundi → Samedi",onze_h2:"L'Onze de midi",
+    onze_intro:"Notre buffet à volonté : entrées froides, plats chauds mijotés et desserts. Onze spécialités qui tournent chaque jour — servez-vous, resservez-vous.",
+    onze_lbl:"Le buffet complet",onze_per:"par personne · dessert inclus — à confirmer",
+    onze_c1:"Ticket Restaurant accepté",onze_c2:"Chèque Repas",onze_c3:"À emporter",onze_c4:"~12h → 14h",
+    onze_conf:"Plats et prix indicatifs — à confirmer avec l'établissement.",
+    carte_eye:"Le soir & le week-end · à la carte",carte_h2a:"La feuille",carte_h2b:"de match",
+    carte_kv:"Le soir, la cuisine passe à la carte : grillades, poissons et grands plats portugais à partager. Formation classique en trois lignes.",
+    carte_conf:"Sélection illustrative. Tous les plats et prix sont à confirmer avec l'établissement. Menu du soir ~20–30 € / personne — à confirmer.",
+    trib_eye:"La tribune · vie du quartier",trib_h2a:"Plus qu'un resto,",trib_h2b:"le club-house du quartier",
+    trib_p:"Café le matin, cantine le midi, tribune le soir. On y suit les matchs sur écran, on y écoute de la musique le week-end, et les grandes tablées portugaises ne se vident jamais avant la dernière chanson.",
+    fx1_t:"Les matchs sur écran",fx1_s:"L'esprit Benfica, entre supporters.",fx1_g:"Live",
+    fx2_t:"Musique le week-end",fx2_s:"Ambiance conviviale vendredi & samedi.",fx2_g:"à confirmer",
+    fx3_t:"Café & bar dès 9h",fx3_s:"Ouvert aussi le dimanche.",fx3_g:"7j/7",
+    recep_stamp:"Mariages<br>& fêtes",recep_eye:"Salle de banquet · sur réservation",
+    recep_h2a:"Vos grands jours,",recep_h2b:"à la maison",
+    recep_p:"Notre salle des fêtes accueille mariages, baptêmes, anniversaires et repas de groupe. Grandes tablées dressées, cuisine portugaise généreuse et menus personnalisés selon l'occasion.",
+    recep_i1t:"Mariages & baptêmes",recep_i1s:"Salle privatisable pour vos réceptions.",
+    recep_i2t:"Repas de groupe",recep_i2s:"Grands plats à partager, tarifs de groupe.",
+    recep_i3t:"Menus sur mesure",recep_i3s:"Composés avec vous selon l'événement.",
+    recep_i4t:"Parking gratuit",recep_i4s:"Accès facile, salle accessible PMR.",
+    recep_cta:"Demander un devis",
+    ter_eye:"Coup d'envoi · nous rejoindre",ter_h2a:"Le terrain",ter_h2b:"de jeu",
+    ter_hours:"Horaires",ter_buffet_t:"Buffet du midi",ter_buffet_s:"Lundi → Samedi, ~12h–14h · à confirmer",
+    ter_contact:"Contact & accès",ter_park:"Parking gratuit · accessible PMR · Wi-Fi",
+    ter_pay:"Paiements acceptés",pay_cash:"Espèces",
+    ter_map:"Sur la carte",ter_map_s:"Au cœur de Dudelange, sur la Rue de la Libération. Terrasse couverte côté rue.",
+    foot_about:"Maison portugaise de Dudelange : buffet du midi, cuisine à la carte le soir, réceptions et l'esprit du quartier. Da Silva Costa S.à r.l.",
+    foot_nav:"Naviguer",foot_contact:"Contact",foot_hours:"Ouvert 7j/7 dès 9h · horaires à confirmer",
+    foot_demo:"Site de démonstration — contenu et photos indicatifs, à valider avec l'établissement."
+  },
+  de:{
+    status:"Küche geöffnet",
+    nav_buffet:"Das Buffet",nav_carte:"Die Karte",nav_tribune:"Atmosphäre",nav_recep:"Feiern",nav_visit:"Anfahrt",
+    hero_club:"Portugiesisches Haus · mitten im Spiel",
+    hero_h1a:"Portugal",hero_h1b:"spielt zu Hause",hero_h1c:"in Düdelingen",
+    hero_tag:"« Ein Stück Portugal in Düdelingen »",
+    hero_sub:"Mittags All-you-can-eat-Buffet, große Tafeln, Spiele auf dem Bildschirm und Musik am Wochenende. Großzügige portugiesische Küche, serviert wie zu Hause.",
+    hero_cta1:"Tisch reservieren",hero_cta2:"Buffet ansehen",
+    hero_cap:"Für eine Feier gedeckter Banketttisch — Café Benfica, Düdelingen",
+    sb_rating:"Note / 5",sb_reviews:"Bewertungen",sb_kitchen:"Hausküche",
+    onze_eye:"Die Mittagsaufstellung · Montag → Samstag",onze_h2:"Die Mittagself",
+    onze_intro:"Unser All-you-can-eat-Buffet: kalte Vorspeisen, geschmorte warme Gerichte und Desserts. Elf Spezialitäten, die täglich wechseln — bedienen Sie sich, nehmen Sie nach.",
+    onze_lbl:"Das komplette Buffet",onze_per:"pro Person · Dessert inklusive — noch zu bestätigen",
+    onze_c1:"Ticket Restaurant akzeptiert",onze_c2:"Chèque Repas",onze_c3:"Zum Mitnehmen",onze_c4:"~12–14 Uhr",
+    onze_conf:"Gerichte und Preise sind Richtwerte — mit dem Haus zu bestätigen.",
+    carte_eye:"Abends & am Wochenende · à la carte",carte_h2a:"Die Aufstellung",carte_h2b:"des Abends",
+    carte_kv:"Abends geht die Küche à la carte: Grillgerichte, Fisch und große portugiesische Gerichte zum Teilen. Klassische Aufstellung in drei Reihen.",
+    carte_conf:"Beispielhafte Auswahl. Alle Gerichte und Preise sind mit dem Haus zu bestätigen. Abendmenü ~20–30 € / Person — zu bestätigen.",
+    trib_eye:"Die Tribüne · Leben im Viertel",trib_h2a:"Mehr als ein Restaurant,",trib_h2b:"das Vereinsheim des Viertels",
+    trib_p:"Morgens Café, mittags Kantine, abends Tribüne. Man verfolgt die Spiele auf dem Bildschirm, hört am Wochenende Musik, und die großen portugiesischen Tafeln leeren sich nie vor dem letzten Lied.",
+    fx1_t:"Spiele auf dem Bildschirm",fx1_s:"Benfica-Geist, unter Fans.",fx1_g:"Live",
+    fx2_t:"Musik am Wochenende",fx2_s:"Gesellige Stimmung Freitag & Samstag.",fx2_g:"zu bestätigen",
+    fx3_t:"Café & Bar ab 9 Uhr",fx3_s:"Auch sonntags geöffnet.",fx3_g:"7/7",
+    recep_stamp:"Hochzeiten<br>& Feste",recep_eye:"Bankettsaal · auf Reservierung",
+    recep_h2a:"Ihre großen Tage,",recep_h2b:"wie zu Hause",
+    recep_p:"Unser Festsaal empfängt Hochzeiten, Taufen, Geburtstage und Gruppenessen. Große gedeckte Tafeln, großzügige portugiesische Küche und individuelle Menüs je nach Anlass.",
+    recep_i1t:"Hochzeiten & Taufen",recep_i1s:"Privatisierbarer Saal für Ihre Feiern.",
+    recep_i2t:"Gruppenessen",recep_i2s:"Große Gerichte zum Teilen, Gruppentarife.",
+    recep_i3t:"Menüs nach Maß",recep_i3s:"Mit Ihnen je nach Anlass zusammengestellt.",
+    recep_i4t:"Kostenlose Parkplätze",recep_i4s:"Leichter Zugang, barrierefreier Saal.",
+    recep_cta:"Angebot anfragen",
+    ter_eye:"Anpfiff · so finden Sie uns",ter_h2a:"Das Spielfeld",ter_h2b:"",
+    ter_hours:"Öffnungszeiten",ter_buffet_t:"Mittagsbuffet",ter_buffet_s:"Montag → Samstag, ~12–14 Uhr · zu bestätigen",
+    ter_contact:"Kontakt & Anfahrt",ter_park:"Kostenlose Parkplätze · barrierefrei · WLAN",
+    ter_pay:"Akzeptierte Zahlungen",pay_cash:"Bargeld",
+    ter_map:"Auf der Karte",ter_map_s:"Im Herzen von Düdelingen, an der Rue de la Libération. Überdachte Terrasse zur Straße.",
+    foot_about:"Portugiesisches Haus in Düdelingen: Mittagsbuffet, abends à la carte, Feiern und der Geist des Viertels. Da Silva Costa S.à r.l.",
+    foot_nav:"Navigation",foot_contact:"Kontakt",foot_hours:"7 Tage/Woche ab 9 Uhr · Zeiten zu bestätigen",
+    foot_demo:"Demo-Website — Inhalte und Fotos beispielhaft, mit dem Haus zu bestätigen."
+  },
+  en:{
+    status:"Kitchen open",
+    nav_buffet:"The buffet",nav_carte:"The menu",nav_tribune:"Atmosphere",nav_recep:"Events",nav_visit:"Find us",
+    hero_club:"Portuguese house · always in the game",
+    hero_h1a:"Portugal",hero_h1b:"plays at home",hero_h1c:"in Dudelange",
+    hero_tag:"“A corner of Portugal in Dudelange”",
+    hero_sub:"All-you-can-eat lunch buffet, big shared tables, matches on screen and live music at weekends. Generous Portuguese cooking, served like home.",
+    hero_cta1:"Book a table",hero_cta2:"See the buffet",
+    hero_cap:"Banquet table set for a reception — Café Benfica, Dudelange",
+    sb_rating:"Rating / 5",sb_reviews:"Guest reviews",sb_kitchen:"Home kitchen",
+    onze_eye:"The midday line-up · Monday → Saturday",onze_h2:"The Midday Eleven",
+    onze_intro:"Our all-you-can-eat buffet: cold starters, slow-cooked hot dishes and desserts. Eleven specialities that rotate daily — help yourself, go back for more.",
+    onze_lbl:"The full buffet",onze_per:"per person · dessert included — to confirm",
+    onze_c1:"Ticket Restaurant accepted",onze_c2:"Chèque Repas",onze_c3:"Takeaway",onze_c4:"~12 → 2pm",
+    onze_conf:"Dishes and prices are indicative — to confirm with the venue.",
+    carte_eye:"Evenings & weekends · à la carte",carte_h2a:"The team",carte_h2b:"sheet",
+    carte_kv:"In the evening the kitchen goes à la carte: grills, fish and big Portuguese plates to share. A classic three-line formation.",
+    carte_conf:"Illustrative selection. All dishes and prices to be confirmed with the venue. Evening menu ~€20–30 / person — to confirm.",
+    trib_eye:"The stand · neighbourhood life",trib_h2a:"More than a restaurant,",trib_h2b:"the neighbourhood clubhouse",
+    trib_p:"Café in the morning, canteen at lunch, stand in the evening. Matches on screen, music at weekends, and the big Portuguese tables never empty before the last song.",
+    fx1_t:"Matches on screen",fx1_s:"The Benfica spirit, among supporters.",fx1_g:"Live",
+    fx2_t:"Live music at weekends",fx2_s:"A convivial buzz Friday & Saturday.",fx2_g:"to confirm",
+    fx3_t:"Café & bar from 9am",fx3_s:"Open on Sundays too.",fx3_g:"7/7",
+    recep_stamp:"Weddings<br>& parties",recep_eye:"Banquet hall · by reservation",
+    recep_h2a:"Your big days,",recep_h2b:"served at home",
+    recep_p:"Our function room hosts weddings, christenings, birthdays and group meals. Big tables laid out, generous Portuguese food and menus tailored to the occasion.",
+    recep_i1t:"Weddings & christenings",recep_i1s:"Private hire for your receptions.",
+    recep_i2t:"Group meals",recep_i2s:"Big plates to share, group rates.",
+    recep_i3t:"Bespoke menus",recep_i3s:"Built with you for the occasion.",
+    recep_i4t:"Free parking",recep_i4s:"Easy access, wheelchair-accessible hall.",
+    recep_cta:"Request a quote",
+    ter_eye:"Kick-off · come and join us",ter_h2a:"The",ter_h2b:"home ground",
+    ter_hours:"Opening hours",ter_buffet_t:"Lunch buffet",ter_buffet_s:"Monday → Saturday, ~12–2pm · to confirm",
+    ter_contact:"Contact & access",ter_park:"Free parking · wheelchair access · Wi-Fi",
+    ter_pay:"Payments accepted",pay_cash:"Cash",
+    ter_map:"On the map",ter_map_s:"In the heart of Dudelange, on Rue de la Libération. Covered terrace on the street side.",
+    foot_about:"Portuguese house in Dudelange: lunch buffet, à la carte evenings, events and the spirit of the neighbourhood. Da Silva Costa S.à r.l.",
+    foot_nav:"Navigate",foot_contact:"Contact",foot_hours:"Open 7 days from 9am · hours to confirm",
+    foot_demo:"Demonstration website — content and photos are indicative, to be validated with the venue."
+  }
+};
+
+/* ============ RENDER ============ */
+const todayIdx = new Date().getDay(); // 0 Sun..6 Sat
+const dayMap = [6,0,1,2,3,4,5]; // map JS getDay -> our Mon-first array index
+
+function renderLineup(lang){
+  const el = document.getElementById('lineup');
+  el.innerHTML = LINEUP[lang].map(p=>`
+    <div class="player">
+      <div class="num">${p[0]}</div>
+      <div><div class="pn">${p[1]}</div><div class="pd">${p[2]}</div></div>
+    </div>`).join('');
+}
+function renderCarte(lang){
+  const el = document.getElementById('carte-grid');
+  const data = CARTE[lang];
+  let html='';
+  data.lines.forEach((line,li)=>{
+    html+=`<div class="position-label"><span class="pl-num">${String(li+1).padStart(2,'0')}</span><h3 class="serif">${line}</h3><span class="rule"></span></div>`;
+    const items = data.dishes.filter(d=>d.l===li);
+    items.forEach((d,i)=>{
+      const wide = (d.img && i===0 && li===0) ? ' wide':'';
+      const noimg = d.img? '':' noimg';
+      const ph = d.img? `<div class="ph">${d.flag?`<span class="flag">${d.flag}</span>`:''}<img src="${d.img}" alt="${d.n}"></div>`:'';
+      html+=`<div class="dish${wide}${noimg}">${ph}<div class="bd"><div class="dt"><h4>${d.n}</h4><span class="pr">${d.p}</span></div><div class="de">${d.d}</div></div></div>`;
+    });
+  });
+  el.innerHTML = html;
+}
+function renderHours(lang){
+  const el = document.getElementById('hours-tbl');
+  const cur = dayMap[todayIdx];
+  el.innerHTML = HOURS[lang].map((h,i)=>`<tr class="${i===cur?'today':''}"><td>${h[0]}</td><td>${h[1]}</td></tr>`).join('');
+}
+function renderTicker(lang){
+  const items = TICKER[lang];
+  const one = items.map(t=>`<span>${t}</span>`).join('');
+  document.getElementById('ticker-run').innerHTML = one+one; // duplicate for seamless loop
+}
+function applyI18n(lang){
+  const dict = I18N[lang];
+  document.querySelectorAll('[data-i18n]').forEach(node=>{
+    const k = node.getAttribute('data-i18n');
+    if(dict[k]!==undefined) node.innerHTML = dict[k];
+  });
+  document.documentElement.lang = lang;
+}
+function setLang(lang){
+  applyI18n(lang);
+  renderLineup(lang);
+  renderCarte(lang);
+  renderHours(lang);
+  renderTicker(lang);
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+}
+
+/* init (French first paint already in HTML; render dynamic blocks in FR) */
+setLang('fr');
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+document.querySelectorAll('.lang button').forEach(b=>{
+  b.addEventListener('click',()=>setLang(b.dataset.lang));
+});
+const burger = document.getElementById('burger');
+const nav = document.getElementById('nav');
+burger.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a.nl').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+</script>
+</body>
+</html>

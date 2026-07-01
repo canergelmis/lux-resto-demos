@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Café Um Rond Point — Friture beim Petz · Kayl</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --asphalt:#15120e;
+    --asphalt-2:#211b14;
+    --asphalt-3:#2b241b;
+    --cream:#f5ecdc;
+    --cream-2:#ece0ca;
+    --tomato:#cf3a2a;
+    --tomato-deep:#a92c1e;
+    --mustard:#e8a527;
+    --mustard-deep:#c8861a;
+    --line:#f4ecda;
+    --ink:#231c12;
+    --ink-soft:#5a4d38;
+    --sign-navy:#183a5a;
+    --maxw:1440px;
+    --gutter:clamp(18px,4vw,72px);
+    --r:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Barlow",system-ui,sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.anton{font-family:"Anton",Impact,sans-serif;font-weight:400;letter-spacing:.5px;line-height:.94;text-transform:uppercase}
+  .serif{font-family:"Fraunces",Georgia,serif}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+
+  /* ---- road-marking dashed divider ---- */
+  .laneline{height:8px;width:100%;
+    background:repeating-linear-gradient(90deg,var(--mustard) 0 44px,transparent 44px 80px);
+    opacity:.9}
+  .laneline.cream{background:repeating-linear-gradient(90deg,var(--cream) 0 44px,transparent 44px 80px)}
+
+  /* ---- top marker bar ---- */
+  .topbar{position:sticky;top:0;z-index:60;background:var(--asphalt);
+    border-bottom:3px solid var(--mustard);color:var(--cream)}
+  .topbar .wrap{display:flex;align-items:center;gap:22px;height:60px}
+  .brandmark{display:flex;align-items:center;gap:12px;font-family:"Anton";font-size:18px;letter-spacing:1px;white-space:nowrap}
+  .brandmark .disc{width:30px;height:30px;border-radius:50%;border:3px solid var(--mustard);
+    display:grid;place-items:center;flex:none;position:relative}
+  .brandmark .disc::before{content:"";position:absolute;inset:5px;border-radius:50%;
+    border:2px dashed var(--tomato)}
+  .topnav{display:flex;gap:26px;margin-left:auto;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;font-weight:600}
+  .topnav a{opacity:.8;transition:.2s;font-family:"Barlow"}
+  .topnav a:hover{opacity:1;color:var(--mustard)}
+  .lang{display:flex;gap:2px;border:2px solid #4a3f2e;border-radius:40px;padding:3px;flex:none}
+  .lang button{font-family:"Barlow";font-weight:700;font-size:11.5px;letter-spacing:1px;
+    background:none;border:0;color:var(--cream);opacity:.55;cursor:pointer;
+    padding:5px 11px;border-radius:30px;transition:.18s}
+  .lang button.active{background:var(--mustard);color:var(--asphalt);opacity:1}
+  .menu-toggle{display:none}
+
+  /* ================= HERO ================= */
+  .hero{position:relative;background:
+      radial-gradient(1200px 700px at 78% 12%,rgba(232,165,39,.10),transparent 60%),
+      radial-gradient(900px 600px at 8% 90%,rgba(207,58,42,.13),transparent 55%),
+      var(--asphalt);
+    color:var(--cream);overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1.4px);
+    background-size:5px 5px;opacity:.5}
+  .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;
+    gap:clamp(30px,4vw,70px);align-items:center;padding-block:clamp(46px,5vw,80px)}
+  .kayl-tag{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:3px;
+    text-transform:uppercase;font-weight:700;color:var(--mustard)}
+  .kayl-tag::before{content:"";width:34px;height:2px;background:var(--mustard)}
+  .hero h1{font-size:clamp(48px,6.6vw,104px);margin:18px 0 6px;color:var(--cream)}
+  .hero h1 .em{color:var(--mustard)}
+  .hero .sub2{font-family:"Fraunces";font-style:italic;font-size:clamp(19px,2vw,27px);
+    color:var(--cream-2);font-weight:500;max-width:30ch;margin-bottom:10px}
+  .proposed{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#a7987f;margin-bottom:24px;display:inline-block}
+  .hero-badges{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:30px}
+  .hbadge{background:var(--tomato);color:#fff;padding:9px 15px;border-radius:8px;
+    font-weight:700;font-size:13px;letter-spacing:.5px;display:inline-flex;gap:9px;align-items:center}
+  .hbadge.mus{background:transparent;color:var(--cream);border:2px solid #4a3f2e}
+  .hbadge .num{font-family:"Anton";font-size:18px;color:#fff}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:14px;
+    letter-spacing:.6px;padding:14px 22px;border-radius:9px;cursor:pointer;transition:.2s;border:0;font-family:"Barlow"}
+  .btn.arrow::before{content:"";width:0;height:0;border-top:6px solid transparent;
+    border-bottom:6px solid transparent;border-left:9px solid currentColor}
+  .btn-primary{background:var(--mustard);color:var(--asphalt)}
+  .btn-primary:hover{background:#f4b53c;transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--cream);border:2px solid #5a4d37}
+  .btn-ghost:hover{border-color:var(--mustard);color:var(--mustard)}
+
+  /* ---- the roundabout graphic ---- */
+  .roundabout{position:relative;width:min(100%,520px);aspect-ratio:1;margin-inline:auto}
+  .ra-ring{position:absolute;inset:0;border-radius:50%;
+    background:conic-gradient(from 0deg,#2b241b,#221c14,#2b241b,#221c14,#2b241b);
+    box-shadow:inset 0 0 0 3px #3a3123, 0 30px 60px -20px rgba(0,0,0,.7)}
+  .ra-dash{position:absolute;inset:12%;border-radius:50%;
+    border:4px dashed var(--mustard);opacity:.85;animation:spin 60s linear infinite}
+  .ra-dash.inner{inset:20%;border-style:dashed;border-color:var(--tomato);opacity:.55;animation-duration:44s;animation-direction:reverse}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .ra-island{position:absolute;inset:27%;border-radius:50%;overflow:hidden;
+    border:5px solid var(--cream);box-shadow:0 12px 30px -8px rgba(0,0,0,.6)}
+  .ra-island img{width:100%;height:100%;object-fit:cover}
+  /* directional exit signs pinned around the ring */
+  .exit{position:absolute;background:var(--sign-navy);color:#fff;font-family:"Anton";
+    font-size:13px;letter-spacing:.5px;padding:8px 12px 8px 26px;border-radius:6px;
+    box-shadow:0 8px 18px -6px rgba(0,0,0,.6);white-space:nowrap;border:2px solid #2b567e}
+  .exit small{display:block;font-family:"Barlow";font-weight:600;font-size:9.5px;letter-spacing:1.5px;opacity:.75}
+  .exit::before{content:"";position:absolute;left:8px;top:50%;transform:translateY(-50%);
+    width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-right:10px solid var(--mustard)}
+  .exit.e1{top:2%;left:50%;transform:translateX(-50%)}
+  .exit.e2{top:44%;right:-6%}
+  .exit.e3{bottom:2%;left:50%;transform:translateX(-50%)}
+  .exit.e4{top:44%;left:-6%;padding:8px 26px 8px 12px}
+  .exit.e4::before{left:auto;right:8px;border-right:0;border-left:10px solid var(--mustard)}
+  @media(prefers-reduced-motion:reduce){.ra-dash{animation:none}}
+
+  /* ================= TOUR DU CADRAN (day circuit) ================= */
+  .circuit{background:var(--cream);padding-block:clamp(50px,6vw,90px)}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:38px}
+  .sec-kick{font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--tomato);display:flex;align-items:center;gap:10px}
+  .sec-kick::before{content:"";width:30px;height:2px;background:var(--tomato)}
+  .sec-head h2{font-size:clamp(30px,4vw,58px);color:var(--ink);margin-top:10px}
+  .sec-head .lead{max-width:40ch;color:var(--ink-soft);font-size:15.5px}
+  .circuit-track{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative}
+  .circuit-track::before{content:"";position:absolute;top:26px;left:6%;right:6%;height:6px;z-index:0;
+    background:repeating-linear-gradient(90deg,var(--mustard) 0 22px,transparent 22px 40px)}
+  .moment{position:relative;z-index:1;text-align:center}
+  .moment .clockpin{width:56px;height:56px;border-radius:50%;background:var(--asphalt);color:var(--mustard);
+    font-family:"Anton";font-size:16px;display:grid;place-items:center;margin:0 auto 16px;
+    border:4px solid var(--cream);box-shadow:0 0 0 3px var(--mustard)}
+  .moment .mphoto{height:170px;border-radius:12px;overflow:hidden;margin-bottom:14px;background:var(--asphalt-3)}
+  .moment .mphoto img{width:100%;height:100%;object-fit:cover;transition:.4s}
+  .moment:hover .mphoto img{transform:scale(1.06)}
+  .moment h3{font-size:20px;color:var(--ink);margin-bottom:6px}
+  .moment p{font-size:13.5px;color:var(--ink-soft);padding-inline:6px}
+
+  /* ================= LES SORTIES (menu as exits) ================= */
+  .sorties{background:var(--asphalt);color:var(--cream);padding-block:clamp(52px,6vw,96px);position:relative}
+  .sorties::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.045) 1px,transparent 1.4px);background-size:6px 6px}
+  .sorties .wrap{position:relative;z-index:2}
+  .sorties .sec-head h2{color:var(--cream)}
+  .sorties .sec-kick{color:var(--mustard)}
+  .sorties .sec-kick::before{background:var(--mustard)}
+  .sorties .lead{color:var(--cream-2)}
+  .menu-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+  .exit-card{background:var(--asphalt-2);border-radius:16px;overflow:hidden;border:1px solid #33291d;
+    display:flex;flex-direction:column;transition:.25s;position:relative}
+  .exit-card:hover{transform:translateY(-4px);border-color:var(--mustard)}
+  .exit-card .ec-photo{height:190px;overflow:hidden;position:relative}
+  .exit-card .ec-photo img{width:100%;height:100%;object-fit:cover;transition:.5s}
+  .exit-card:hover .ec-photo img{transform:scale(1.07)}
+  .exit-no{position:absolute;top:12px;left:12px;background:var(--sign-navy);border:2px solid #fff;
+    color:#fff;font-family:"Anton";font-size:12px;letter-spacing:1px;padding:5px 10px;border-radius:6px;z-index:2}
+  .exit-no span{color:var(--mustard)}
+  .ec-body{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1}
+  .ec-body h3{font-size:22px;margin-bottom:7px}
+  .ec-body p{font-size:13.5px;color:var(--cream-2);flex:1}
+  .ec-tag{margin-top:14px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;
+    color:var(--mustard);display:inline-flex;align-items:center;gap:8px}
+  .ec-tag::before{content:"→"}
+  /* span sizes for asymmetric composition */
+  .span6{grid-column:span 6}.span4{grid-column:span 4}.span3{grid-column:span 3}.span5{grid-column:span 5}.span7{grid-column:span 7}
+  .exit-card.wide{flex-direction:row}
+  .exit-card.wide .ec-photo{width:46%;height:auto;flex:none}
+  .exit-card.wide .ec-body{justify-content:center}
+  .menu-note{margin-top:26px;font-size:13px;color:#a7987f;letter-spacing:.4px;display:flex;gap:10px;align-items:center}
+  .menu-note::before{content:"⚠";color:var(--mustard)}
+
+  /* ================= STORY (au centre du village) ================= */
+  .story{background:var(--cream);padding-block:clamp(52px,6vw,96px)}
+  .story-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,4vw,64px);align-items:center}
+  .story h2{font-size:clamp(30px,3.8vw,56px);color:var(--ink);margin:12px 0 22px}
+  .story h2 .u{color:var(--tomato)}
+  .story p{font-size:16px;color:var(--ink-soft);margin-bottom:16px;max-width:52ch}
+  .quote{margin-top:26px;background:var(--sign-navy);color:#fff;border-radius:14px;padding:24px 26px;
+    position:relative;max-width:50ch}
+  .quote .qmark{font-family:"Fraunces";font-size:56px;line-height:0;position:absolute;top:30px;left:18px;color:var(--mustard);opacity:.6}
+  .quote p{font-family:"Fraunces";font-style:italic;font-size:18px;color:#fff;margin:0 0 8px 34px}
+  .quote cite{margin-left:34px;font-style:normal;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mustard)}
+  .story-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 150px;gap:14px}
+  .story-photos figure{overflow:hidden;border-radius:14px;background:var(--asphalt-3)}
+  .story-photos img{width:100%;height:100%;object-fit:cover}
+  .story-photos .tall{grid-row:span 2}
+  .karaoke-chip{grid-column:1 / -1;background:var(--tomato);color:#fff;border-radius:14px;
+    display:flex;align-items:center;gap:14px;padding:16px 20px;font-family:"Anton";font-size:22px;letter-spacing:1px}
+  .karaoke-chip .mic{font-size:26px}
+
+  /* ================= VISITE / accès ================= */
+  .visite{background:var(--asphalt);color:var(--cream);padding-block:clamp(52px,6vw,90px);position:relative}
+  .visite .sec-kick{color:var(--mustard)}
+  .visite .sec-kick::before{background:var(--mustard)}
+  .visite h2{color:var(--cream)}
+  .acces-grid{display:grid;grid-template-columns:.8fr .8fr 1.4fr;gap:20px;align-items:stretch}
+  .panel{background:var(--asphalt-2);border:1px solid #33291d;border-radius:16px;padding:26px}
+  .panel h3{font-size:20px;color:var(--mustard);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .hours-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed #3a3123;font-size:14.5px}
+  .hours-row:last-child{border-bottom:0}
+  .hours-row span:first-child{color:var(--cream-2)}
+  .hours-row span:last-child{font-weight:700}
+  .aconf{font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:var(--mustard);margin-top:14px;display:inline-flex;gap:7px;align-items:center}
+  .aconf::before{content:"⚠"}
+  .contact-line{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed #3a3123;font-size:14.5px}
+  .contact-line:last-child{border-bottom:0}
+  .contact-line .ic{width:30px;height:30px;border-radius:50%;background:var(--asphalt-3);color:var(--mustard);
+    display:grid;place-items:center;flex:none;font-size:14px}
+  .contact-line a{font-weight:600}
+  .contact-line a:hover{color:var(--mustard)}
+  .map-panel{padding:0;overflow:hidden;position:relative;min-height:340px}
+  .map-panel iframe{width:100%;height:100%;min-height:340px;border:0;filter:saturate(.9)}
+  .map-flag{position:absolute;top:14px;left:14px;z-index:2;background:var(--tomato);color:#fff;
+    font-family:"Anton";font-size:13px;letter-spacing:.5px;padding:7px 13px;border-radius:7px;box-shadow:0 6px 14px -4px rgba(0,0,0,.6)}
+
+  /* ================= FOOTER ================= */
+  footer{background:#0f0d0a;color:var(--cream);padding-block:44px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;align-items:start}
+  .foot-brand .anton{font-size:26px;color:var(--cream)}
+  .foot-brand p{font-size:13.5px;color:#a7987f;margin-top:10px;max-width:34ch}
+  .foot-col h4{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--mustard);margin-bottom:14px;font-weight:700}
+  .foot-col a,.foot-col p{display:block;font-size:14px;color:var(--cream-2);margin-bottom:9px}
+  .foot-col a:hover{color:var(--mustard)}
+  .foot-bottom{border-top:1px solid #2a231a;margin-top:34px;padding-top:20px;display:flex;
+    justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;color:#7d715c}
+  .demo-flag{background:var(--asphalt-3);color:var(--mustard);padding:5px 12px;border-radius:20px;font-weight:600;letter-spacing:.5px}
+
+  /* ================= RESPONSIVE ================= */
+  @media(max-width:1080px){
+    .acces-grid{grid-template-columns:1fr 1fr}
+    .map-panel{grid-column:1 / -1}
+    .menu-grid .span4,.menu-grid .span3,.menu-grid .span5,.menu-grid .span7{grid-column:span 6}
+  }
+  @media(max-width:820px){
+    .topnav{display:none}
+    .menu-toggle{display:inline-flex}
+    .hero .wrap{grid-template-columns:1fr;text-align:left}
+    .roundabout{order:-1;max-width:400px}
+    .circuit-track{grid-template-columns:1fr 1fr}
+    .circuit-track::before{display:none}
+    .story-grid{grid-template-columns:1fr}
+    .story-photos{grid-template-rows:180px 130px}
+    .acces-grid{grid-template-columns:1fr}
+    .menu-grid{grid-template-columns:1fr}
+    .menu-grid .span6,.menu-grid .span4,.menu-grid .span3,.menu-grid .span5,.menu-grid .span7{grid-column:span 1}
+    .exit-card.wide{flex-direction:column}
+    .exit-card.wide .ec-photo{width:100%;height:190px}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:520px){
+    .circuit-track{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .hero h1{font-size:44px}
+    .exit{font-size:11px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP MARKER BAR ============ -->
+<header class="topbar">
+  <div class="wrap">
+    <a href="#top" class="brandmark"><span class="disc"></span>BEIM&nbsp;PETZ</a>
+    <nav class="topnav" id="topnav">
+      <a href="#circuit" data-i18n="nav.day">Le tour du cadran</a>
+      <a href="#sorties" data-i18n="nav.menu">La carte</a>
+      <a href="#story" data-i18n="nav.story">Le café</a>
+      <a href="#visite" data-i18n="nav.visit">Accès</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Langue">
+      <button data-lang="fr" class="active">FR</button>
+      <button data-lang="de">DE</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO / LE ROND-POINT ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-text">
+      <span class="kayl-tag" data-i18n="hero.kicker">Kayl · Tétange — au rond-point</span>
+      <h1>Café Um<br><span class="em">Rond&nbsp;Point</span></h1>
+      <p class="sub2" data-i18n="hero.sub">Le café du coin où tout Kayl tourne — burgers, friture et bonne ambiance.</p>
+      <span class="proposed" data-i18n="hero.proposed">Slogan proposé — à valider avec l'établissement</span>
+      <div class="hero-badges">
+        <span class="hbadge"><span class="num">N°1</span> <span data-i18n="hero.badge1">des cafés de Kayl</span></span>
+        <span class="hbadge mus" data-i18n="hero.badge2">7j/7 · du matin tard dans la nuit</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary arrow" href="tel:+35226561804" data-i18n="hero.cta1">Réserver une table</a>
+        <a class="btn btn-ghost" href="#visite" data-i18n="hero.cta2">Voir l'itinéraire</a>
+      </div>
+    </div>
+
+    <div class="roundabout" aria-hidden="false">
+      <div class="ra-ring"></div>
+      <div class="ra-dash"></div>
+      <div class="ra-dash inner"></div>
+      <div class="ra-island">
+        <img src="assets/hero.jpg" alt="Assiette maison — saucisses à la moutarde et purée">
+      </div>
+      <div class="exit e1"><small data-i18n="exit.morning.s">Sortie 1</small><span data-i18n="exit.morning">Café du matin</span></div>
+      <div class="exit e2"><small data-i18n="exit.lunch.s">Sortie 2</small><span data-i18n="exit.lunch">Burgers &amp; friture</span></div>
+      <div class="exit e3"><small data-i18n="exit.apero.s">Sortie 3</small><span data-i18n="exit.apero">Apéro &amp; karaoké</span></div>
+      <div class="exit e4"><small data-i18n="exit.late.s">Sortie 4</small><span data-i18n="exit.late">Dernier verre</span></div>
+    </div>
+  </div>
+</section>
+<div class="laneline"></div>
+
+<!-- ============ LE TOUR DU CADRAN ============ -->
+<section class="circuit" id="circuit">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="sec-kick" data-i18n="circuit.kicker">Une journée au rond-point</span>
+        <h2 data-i18n="circuit.title">Le tour du cadran</h2>
+      </div>
+      <p class="lead" data-i18n="circuit.lead">Ici la journée fait le tour : on entre pour un café, on revient pour le burger, on reste pour le karaoké. Un seul point de passage, du matin jusque tard.</p>
+    </div>
+    <div class="circuit-track">
+      <div class="moment">
+        <div class="clockpin">07h</div>
+        <div class="mphoto"><img src="assets/drink.jpg" alt="Boisson au comptoir"></div>
+        <h3 data-i18n="mom1.t">Le café</h3>
+        <p data-i18n="mom1.d">Comptoir ouvert tôt : le premier café des habitués et des travailleurs du coin.</p>
+      </div>
+      <div class="moment">
+        <div class="clockpin">12h</div>
+        <div class="mphoto"><img src="assets/burger.jpg" alt="Burger maison"></div>
+        <h3 data-i18n="mom2.t">Le déjeuner</h3>
+        <p data-i18n="mom2.d">Les fameux burgers, l'Angus et la friture — la pause de midi de Kayl-Tétange.</p>
+      </div>
+      <div class="moment">
+        <div class="clockpin">18h</div>
+        <div class="mphoto"><img src="assets/interior-2.jpg" alt="Salle du café en soirée"></div>
+        <h3 data-i18n="mom3.t">L'apéro</h3>
+        <p data-i18n="mom3.d">Bière fraîche, ambiance de quartier et la salle qui se remplit doucement.</p>
+      </div>
+      <div class="moment">
+        <div class="clockpin">22h</div>
+        <div class="mphoto"><img src="assets/food-choc-mousse.jpg" alt="Mousse au chocolat maison"></div>
+        <h3 data-i18n="mom4.t">La soirée</h3>
+        <p data-i18n="mom4.d">Dessert maison, dernier verre et les soirées karaoké jusqu'à tard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LES SORTIES / LA CARTE ============ -->
+<section class="sorties" id="sorties">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="sec-kick" data-i18n="menu.kicker">Toutes directions</span>
+        <h2 data-i18n="menu.title">Les sorties de la carte</h2>
+      </div>
+      <p class="lead" data-i18n="menu.lead">Prenez la sortie qui vous fait envie. Une carte café-brasserie et friture, généreuse et sans façon.</p>
+    </div>
+
+    <div class="menu-grid">
+      <article class="exit-card span5">
+        <div class="ec-photo"><span class="exit-no"><span>Sortie</span> 01</span><img src="assets/burger.jpg" alt="Burger maison"></div>
+        <div class="ec-body">
+          <h3 data-i18n="d1.t">Burgers maison</h3>
+          <p data-i18n="d1.d">La signature du café — réputée pour les meilleurs burgers du coin. Pain, viande et frites maison.</p>
+          <span class="ec-tag" data-i18n="menu.house">Spécialité de la maison</span>
+        </div>
+      </article>
+
+      <article class="exit-card span7 wide">
+        <div class="ec-photo"><span class="exit-no"><span>Sortie</span> 02</span><img src="assets/hero.jpg" alt="Saucisses à la moutarde et purée"></div>
+        <div class="ec-body">
+          <h3 data-i18n="d2.t">Saucisses à la moutarde &amp; purée</h3>
+          <p data-i18n="d2.d">Le plat brasserie par excellence : saucisses grillées, sauce moutarde onctueuse et purée maison, avec petite salade.</p>
+          <span class="ec-tag" data-i18n="menu.classic">Grand classique brasserie</span>
+        </div>
+      </article>
+
+      <article class="exit-card span4">
+        <div class="ec-photo"><span class="exit-no"><span>Sortie</span> 03</span><img src="assets/food-1.jpg" alt="Bœuf Angus"></div>
+        <div class="ec-body">
+          <h3 data-i18n="d3.t">Bœuf Angus</h3>
+          <p data-i18n="d3.d">Pièces de bœuf Angus grillées, servies avec frites et garniture du jour.</p>
+          <span class="ec-tag" data-i18n="menu.grill">Au grill</span>
+        </div>
+      </article>
+
+      <article class="exit-card span4">
+        <div class="ec-photo"><span class="exit-no"><span>Sortie</span> 04</span><img src="assets/food-2.jpg" alt="Assiette friture"></div>
+        <div class="ec-body">
+          <h3 data-i18n="d4.t">Friture &amp; snacks</h3>
+          <p data-i18n="d4.d">Frites croustillantes, filet américain, bifana portugaise — le côté friterie du coin.</p>
+          <span class="ec-tag" data-i18n="menu.togo">À emporter aussi</span>
+        </div>
+      </article>
+
+      <article class="exit-card span4">
+        <div class="ec-photo"><span class="exit-no"><span>Sortie</span> 05</span><img src="assets/food-3.jpg" alt="Salade fraîche"></div>
+        <div class="ec-body">
+          <h3 data-i18n="d5.t">Salades &amp; fraîcheur</h3>
+          <p data-i18n="d5.d">Salades généreuses et assiettes plus légères pour l'option fraîche du midi.</p>
+          <span class="ec-tag" data-i18n="menu.light">Plus léger</span>
+        </div>
+      </article>
+
+      <article class="exit-card span5 wide">
+        <div class="ec-photo"><span class="exit-no"><span>Sortie</span> 06</span><img src="assets/food-choc-mousse.jpg" alt="Mousse au chocolat"></div>
+        <div class="ec-body">
+          <h3 data-i18n="d6.t">Mousse au chocolat</h3>
+          <p data-i18n="d6.d">Le dessert-signature, maison et généreux — la bonne raison de rester encore un peu.</p>
+          <span class="ec-tag" data-i18n="menu.dessert">Dessert maison</span>
+        </div>
+      </article>
+
+      <article class="exit-card span7 wide">
+        <div class="ec-photo"><span class="exit-no"><span>Sortie</span> 07</span><img src="assets/drink.jpg" alt="Boissons et bar"></div>
+        <div class="ec-body">
+          <h3 data-i18n="d7.t">Bar &amp; café toute la journée</h3>
+          <p data-i18n="d7.d">Café le matin, bières et boissons du midi jusqu'au dernier verre du soir — le comptoir ne ferme jamais tôt.</p>
+          <span class="ec-tag" data-i18n="menu.bar">Service continu</span>
+        </div>
+      </article>
+    </div>
+
+    <p class="menu-note" data-i18n="menu.note">Sélection indicative — plats confirmés, prix à confirmer avec l'établissement. Aucune carte tarifaire n'est publiée officiellement.</p>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div>
+      <span class="sec-kick" data-i18n="story.kicker">Depuis le rond-point</span>
+      <h2 data-i18n="story.title">Le café qui tient <span class="u">le carrefour</span></h2>
+      <p data-i18n="story.p1">« Um Rond Point » : le café installé au rond-point de Kayl-Tétange, celui devant lequel tout le monde passe. On y prend son café le matin, son burger à midi, son verre le soir. Un vrai café de village.</p>
+      <p data-i18n="story.p2">Côté friterie, « beim Petz » régale le quartier depuis le comptoir : burgers maison, friture, plats brasserie et snacks portugais. Salle chaleureuse en bois, terrasse aux géraniums, accueil sympathique.</p>
+      <div class="quote">
+        <span class="qmark">“</span>
+        <p data-i18n="story.quote">Superbe endroit avec superbe ambiance, surtout les soirs de karaoké.</p>
+        <cite data-i18n="story.cite">— Avis client, Kayl</cite>
+      </div>
+    </div>
+    <div class="story-photos">
+      <figure class="tall"><img src="assets/interior-1.jpg" alt="Salle du café, ambiance conviviale"></figure>
+      <figure><img src="assets/interior-2.jpg" alt="Vue de la salle"></figure>
+      <figure><img src="assets/food-1.jpg" alt="Plat maison"></figure>
+      <div class="karaoke-chip"><span class="mic">🎤</span><span data-i18n="story.karaoke">Soirées karaoké</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISITE / ACCÈS ============ -->
+<section class="visite" id="visite">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="sec-kick" data-i18n="visit.kicker">Voie d'accès</span>
+        <h2 data-i18n="visit.title">Passez au rond-point</h2>
+      </div>
+      <p class="lead" data-i18n="visit.lead">42 Grand-Rue, au rond-point de Kayl-Tétange. Un café, une table ou juste une frite en passant — la porte est ouverte.</p>
+    </div>
+
+    <div class="acces-grid">
+      <div class="panel">
+        <h3 data-i18n="visit.hours">Horaires</h3>
+        <div class="hours-row"><span data-i18n="day.monfri">Lun – Ven</span><span>07:00 – 01:00</span></div>
+        <div class="hours-row"><span data-i18n="day.sat">Samedi</span><span>08:00 – 01:00</span></div>
+        <div class="hours-row"><span data-i18n="day.sun">Dimanche</span><span>09:00 – 01:00</span></div>
+        <div class="hours-row"><span data-i18n="day.week">7 jours / 7</span><span data-i18n="visit.late">tard le week-end</span></div>
+        <span class="aconf" data-i18n="visit.hoursconf">Horaires à confirmer avec l'établissement</span>
+      </div>
+
+      <div class="panel">
+        <h3 data-i18n="visit.contact">Contact</h3>
+        <div class="contact-line"><span class="ic">📍</span><span>42 Grand-Rue<br>L-3650 Kayl</span></div>
+        <div class="contact-line"><span class="ic">☎</span><a href="tel:+35226561804">+352 26 56 18 04</a></div>
+        <div class="contact-line"><span class="ic">f</span><a href="https://www.facebook.com/brasseriebeimpetz/" target="_blank" rel="noopener">Brasserie beim Petz</a></div>
+        <span class="aconf" data-i18n="visit.telconf">2e numéro à confirmer</span>
+      </div>
+
+      <div class="panel map-panel">
+        <span class="map-flag" data-i18n="visit.flag">Rond-point · Kayl</span>
+        <iframe title="Carte — 42 Grand-Rue, Kayl" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=42+Grand-Rue,+L-3650+Kayl,+Luxembourg&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <div class="anton">CAFÉ UM ROND POINT</div>
+      <p data-i18n="foot.tag">Friture beim Petz · le café du coin au rond-point de Kayl-Tétange.</p>
+    </div>
+    <div class="foot-col">
+      <h4 data-i18n="foot.nav">Navigation</h4>
+      <a href="#circuit" data-i18n="nav.day">Le tour du cadran</a>
+      <a href="#sorties" data-i18n="nav.menu">La carte</a>
+      <a href="#story" data-i18n="nav.story">Le café</a>
+      <a href="#visite" data-i18n="nav.visit">Accès</a>
+    </div>
+    <div class="foot-col">
+      <h4 data-i18n="foot.find">Nous trouver</h4>
+      <p>42 Grand-Rue, L-3650 Kayl</p>
+      <a href="tel:+35226561804">+352 26 56 18 04</a>
+      <a href="https://www.facebook.com/brasseriebeimpetz/" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© <span id="yr"></span> Café Um Rond Point — Friture beim Petz Sàrl</span>
+    <span class="demo-flag" data-i18n="foot.demo">Site de démonstration — contenu et visuels à valider</span>
+  </div>
+</footer>
+
+<script>
+/* ---------- i18n ---------- */
+const I18N = {
+  fr:{
+    "nav.day":"Le tour du cadran","nav.menu":"La carte","nav.story":"Le café","nav.visit":"Accès",
+    "hero.kicker":"Kayl · Tétange — au rond-point",
+    "hero.sub":"Le café du coin où tout Kayl tourne — burgers, friture et bonne ambiance.",
+    "hero.proposed":"Slogan proposé — à valider avec l'établissement",
+    "hero.badge1":"des cafés de Kayl","hero.badge2":"7j/7 · du matin tard dans la nuit",
+    "hero.cta1":"Réserver une table","hero.cta2":"Voir l'itinéraire",
+    "exit.morning":"Café du matin","exit.morning.s":"Sortie 1",
+    "exit.lunch":"Burgers & friture","exit.lunch.s":"Sortie 2",
+    "exit.apero":"Apéro & karaoké","exit.apero.s":"Sortie 3",
+    "exit.late":"Dernier verre","exit.late.s":"Sortie 4",
+    "circuit.kicker":"Une journée au rond-point","circuit.title":"Le tour du cadran",
+    "circuit.lead":"Ici la journée fait le tour : on entre pour un café, on revient pour le burger, on reste pour le karaoké. Un seul point de passage, du matin jusque tard.",
+    "mom1.t":"Le café","mom1.d":"Comptoir ouvert tôt : le premier café des habitués et des travailleurs du coin.",
+    "mom2.t":"Le déjeuner","mom2.d":"Les fameux burgers, l'Angus et la friture — la pause de midi de Kayl-Tétange.",
+    "mom3.t":"L'apéro","mom3.d":"Bière fraîche, ambiance de quartier et la salle qui se remplit doucement.",
+    "mom4.t":"La soirée","mom4.d":"Dessert maison, dernier verre et les soirées karaoké jusqu'à tard.",
+    "menu.kicker":"Toutes directions","menu.title":"Les sorties de la carte",
+    "menu.lead":"Prenez la sortie qui vous fait envie. Une carte café-brasserie et friture, généreuse et sans façon.",
+    "d1.t":"Burgers maison","d1.d":"La signature du café — réputée pour les meilleurs burgers du coin. Pain, viande et frites maison.",
+    "d2.t":"Saucisses à la moutarde & purée","d2.d":"Le plat brasserie par excellence : saucisses grillées, sauce moutarde onctueuse et purée maison, avec petite salade.",
+    "d3.t":"Bœuf Angus","d3.d":"Pièces de bœuf Angus grillées, servies avec frites et garniture du jour.",
+    "d4.t":"Friture & snacks","d4.d":"Frites croustillantes, filet américain, bifana portugaise — le côté friterie du coin.",
+    "d5.t":"Salades & fraîcheur","d5.d":"Salades généreuses et assiettes plus légères pour l'option fraîche du midi.",
+    "d6.t":"Mousse au chocolat","d6.d":"Le dessert-signature, maison et généreux — la bonne raison de rester encore un peu.",
+    "d7.t":"Bar & café toute la journée","d7.d":"Café le matin, bières et boissons du midi jusqu'au dernier verre du soir — le comptoir ne ferme jamais tôt.",
+    "menu.house":"Spécialité de la maison","menu.classic":"Grand classique brasserie","menu.grill":"Au grill",
+    "menu.togo":"À emporter aussi","menu.light":"Plus léger","menu.dessert":"Dessert maison","menu.bar":"Service continu",
+    "menu.note":"Sélection indicative — plats confirmés, prix à confirmer avec l'établissement. Aucune carte tarifaire n'est publiée officiellement.",
+    "story.kicker":"Depuis le rond-point","story.title":"Le café qui tient le carrefour",
+    "story.p1":"« Um Rond Point » : le café installé au rond-point de Kayl-Tétange, celui devant lequel tout le monde passe. On y prend son café le matin, son burger à midi, son verre le soir. Un vrai café de village.",
+    "story.p2":"Côté friterie, « beim Petz » régale le quartier depuis le comptoir : burgers maison, friture, plats brasserie et snacks portugais. Salle chaleureuse en bois, terrasse aux géraniums, accueil sympathique.",
+    "story.quote":"Superbe endroit avec superbe ambiance, surtout les soirs de karaoké.","story.cite":"— Avis client, Kayl",
+    "story.karaoke":"Soirées karaoké",
+    "visit.kicker":"Voie d'accès","visit.title":"Passez au rond-point",
+    "visit.lead":"42 Grand-Rue, au rond-point de Kayl-Tétange. Un café, une table ou juste une frite en passant — la porte est ouverte.",
+    "visit.hours":"Horaires","visit.late":"tard le week-end","visit.hoursconf":"Horaires à confirmer avec l'établissement",
+    "visit.contact":"Contact","visit.telconf":"2e numéro à confirmer","visit.flag":"Rond-point · Kayl",
+    "day.monfri":"Lun – Ven","day.sat":"Samedi","day.sun":"Dimanche","day.week":"7 jours / 7",
+    "foot.tag":"Friture beim Petz · le café du coin au rond-point de Kayl-Tétange.",
+    "foot.nav":"Navigation","foot.find":"Nous trouver","foot.demo":"Site de démonstration — contenu et visuels à valider"
+  },
+  de:{
+    "nav.day":"Rund um die Uhr","nav.menu":"Die Karte","nav.story":"Das Café","nav.visit":"Anfahrt",
+    "hero.kicker":"Kayl · Tétange — am Kreisverkehr",
+    "hero.sub":"Das Eck-Café, um das sich ganz Kayl dreht — Burger, Frittiertes und gute Stimmung.",
+    "hero.proposed":"Vorgeschlagener Slogan — mit dem Betrieb abzustimmen",
+    "hero.badge1":"der Cafés in Kayl","hero.badge2":"7 Tage · vom Morgen bis spät in die Nacht",
+    "hero.cta1":"Tisch reservieren","hero.cta2":"Route anzeigen",
+    "exit.morning":"Morgenkaffee","exit.morning.s":"Ausfahrt 1",
+    "exit.lunch":"Burger & Frittiertes","exit.lunch.s":"Ausfahrt 2",
+    "exit.apero":"Apéro & Karaoke","exit.apero.s":"Ausfahrt 3",
+    "exit.late":"Letztes Glas","exit.late.s":"Ausfahrt 4",
+    "circuit.kicker":"Ein Tag am Kreisverkehr","circuit.title":"Rund um die Uhr",
+    "circuit.lead":"Hier dreht sich der Tag im Kreis: rein auf einen Kaffee, zurück für den Burger, bleiben fürs Karaoke. Ein Treffpunkt, vom Morgen bis spät.",
+    "mom1.t":"Der Kaffee","mom1.d":"Früh geöffnete Theke: der erste Kaffee der Stammgäste und Arbeiter aus dem Viertel.",
+    "mom2.t":"Das Mittagessen","mom2.d":"Die berühmten Burger, das Angus-Rind und Frittiertes — die Mittagspause von Kayl-Tétange.",
+    "mom3.t":"Der Apéro","mom3.d":"Kühles Bier, Viertel-Atmosphäre und ein Saal, der sich langsam füllt.",
+    "mom4.t":"Der Abend","mom4.d":"Hausgemachtes Dessert, letztes Glas und Karaoke-Abende bis spät.",
+    "menu.kicker":"Alle Richtungen","menu.title":"Die Ausfahrten der Karte",
+    "menu.lead":"Nehmen Sie die Ausfahrt, auf die Sie Lust haben. Eine großzügige, unkomplizierte Café-Brasserie- und Friture-Karte.",
+    "d1.t":"Hausgemachte Burger","d1.d":"Das Markenzeichen des Cafés — bekannt für die besten Burger der Gegend. Brötchen, Fleisch und Pommes hausgemacht.",
+    "d2.t":"Senfwürstchen & Kartoffelpüree","d2.d":"Das Brasserie-Gericht schlechthin: gegrillte Würstchen, cremige Senfsoße und hausgemachtes Püree, mit kleinem Salat.",
+    "d3.t":"Angus-Rind","d3.d":"Gegrilltes Angus-Rindfleisch, serviert mit Pommes und Beilage des Tages.",
+    "d4.t":"Frittiertes & Snacks","d4.d":"Knusprige Pommes, Filet américain, portugiesische Bifana — die Friture-Seite des Viertels.",
+    "d5.t":"Salate & Frisches","d5.d":"Großzügige Salate und leichtere Teller für die frische Mittagsoption.",
+    "d6.t":"Mousse au Chocolat","d6.d":"Das Signatur-Dessert, hausgemacht und großzügig — der gute Grund, noch etwas zu bleiben.",
+    "d7.t":"Bar & Café den ganzen Tag","d7.d":"Kaffee am Morgen, Bier und Getränke vom Mittag bis zum letzten Glas am Abend — die Theke schließt nie früh.",
+    "menu.house":"Spezialität des Hauses","menu.classic":"Großer Brasserie-Klassiker","menu.grill":"Vom Grill",
+    "menu.togo":"Auch zum Mitnehmen","menu.light":"Leichter","menu.dessert":"Hausgemachtes Dessert","menu.bar":"Durchgehender Service",
+    "menu.note":"Auswahl als Orientierung — Gerichte bestätigt, Preise mit dem Betrieb abzustimmen. Es ist keine offizielle Preisliste veröffentlicht.",
+    "story.kicker":"Vom Kreisverkehr aus","story.title":"Das Café, das die Kreuzung hält",
+    "story.p1":"„Um Rond Point“: das Café direkt am Kreisverkehr von Kayl-Tétange, an dem alle vorbeikommen. Morgens der Kaffee, mittags der Burger, abends das Glas. Ein echtes Dorfcafé.",
+    "story.p2":"Auf der Friture-Seite verwöhnt „beim Petz“ das Viertel von der Theke aus: hausgemachte Burger, Frittiertes, Brasserie-Gerichte und portugiesische Snacks. Warmer Holzsaal, Terrasse mit Geranien, herzlicher Empfang.",
+    "story.quote":"Toller Ort mit toller Stimmung, besonders an den Karaoke-Abenden.","story.cite":"— Gästebewertung, Kayl",
+    "story.karaoke":"Karaoke-Abende",
+    "visit.kicker":"Anfahrt","visit.title":"Kommen Sie am Kreisverkehr vorbei",
+    "visit.lead":"42 Grand-Rue, am Kreisverkehr von Kayl-Tétange. Ein Kaffee, ein Tisch oder nur Pommes im Vorbeigehen — die Tür ist offen.",
+    "visit.hours":"Öffnungszeiten","visit.late":"am Wochenende spät","visit.hoursconf":"Öffnungszeiten mit dem Betrieb abzustimmen",
+    "visit.contact":"Kontakt","visit.telconf":"2. Nummer abzustimmen","visit.flag":"Kreisverkehr · Kayl",
+    "day.monfri":"Mo – Fr","day.sat":"Samstag","day.sun":"Sonntag","day.week":"7 Tage / Woche",
+    "foot.tag":"Friture beim Petz · das Eck-Café am Kreisverkehr von Kayl-Tétange.",
+    "foot.nav":"Navigation","foot.find":"So finden Sie uns","foot.demo":"Demo-Website — Inhalte und Bilder abzustimmen"
+  },
+  en:{
+    "nav.day":"Round the clock","nav.menu":"The menu","nav.story":"The café","nav.visit":"Find us",
+    "hero.kicker":"Kayl · Tétange — on the roundabout",
+    "hero.sub":"The corner café the whole of Kayl revolves around — burgers, fries and good vibes.",
+    "hero.proposed":"Proposed tagline — to confirm with the venue",
+    "hero.badge1":"of Kayl's cafés","hero.badge2":"7 days · from morning till late",
+    "hero.cta1":"Book a table","hero.cta2":"Get directions",
+    "exit.morning":"Morning coffee","exit.morning.s":"Exit 1",
+    "exit.lunch":"Burgers & fries","exit.lunch.s":"Exit 2",
+    "exit.apero":"Drinks & karaoke","exit.apero.s":"Exit 3",
+    "exit.late":"Last round","exit.late.s":"Exit 4",
+    "circuit.kicker":"A day on the roundabout","circuit.title":"Round the clock",
+    "circuit.lead":"Here the day goes round: in for a coffee, back for the burger, staying for the karaoke. One meeting point, from morning till late.",
+    "mom1.t":"The coffee","mom1.d":"Counter open early: the first coffee for the regulars and workers of the neighbourhood.",
+    "mom2.t":"Lunch","mom2.d":"The famous burgers, the Angus and the fries — Kayl-Tétange's midday break.",
+    "mom3.t":"Apéro","mom3.d":"A cold beer, neighbourhood atmosphere and a room slowly filling up.",
+    "mom4.t":"The evening","mom4.d":"Homemade dessert, a last drink and karaoke nights running late.",
+    "menu.kicker":"All directions","menu.title":"The menu's exits",
+    "menu.lead":"Take the exit you fancy. A generous, no-fuss café-brasserie and friterie menu.",
+    "d1.t":"Homemade burgers","d1.d":"The café's signature — famed for the best burgers around. Bun, patty and fries made in-house.",
+    "d2.t":"Mustard sausages & mash","d2.d":"The quintessential brasserie plate: grilled sausages, creamy mustard sauce and homemade mash, with a little salad.",
+    "d3.t":"Angus beef","d3.d":"Grilled Angus beef cuts, served with fries and the day's garnish.",
+    "d4.t":"Fries & snacks","d4.d":"Crispy fries, filet américain, Portuguese bifana — the friterie side of the corner.",
+    "d5.t":"Salads & fresh plates","d5.d":"Generous salads and lighter plates for the fresh midday option.",
+    "d6.t":"Chocolate mousse","d6.d":"The signature dessert, homemade and generous — the good reason to linger a little longer.",
+    "d7.t":"Bar & café all day","d7.d":"Coffee in the morning, beers and drinks from noon to the last round at night — the counter never closes early.",
+    "menu.house":"House speciality","menu.classic":"Great brasserie classic","menu.grill":"From the grill",
+    "menu.togo":"Takeaway too","menu.light":"Lighter","menu.dessert":"Homemade dessert","menu.bar":"All-day service",
+    "menu.note":"Indicative selection — dishes confirmed, prices to be confirmed with the venue. No official price list is published.",
+    "story.kicker":"From the roundabout","story.title":"The café that holds the junction",
+    "story.p1":"“Um Rond Point”: the café set right on the Kayl-Tétange roundabout, the one everyone passes. Coffee in the morning, a burger at noon, a drink in the evening. A true village café.",
+    "story.p2":"On the friterie side, “beim Petz” feeds the neighbourhood from the counter: homemade burgers, fries, brasserie plates and Portuguese snacks. A warm wood-panelled room, a geranium terrace, a friendly welcome.",
+    "story.quote":"Great spot with a great atmosphere, especially on karaoke nights.","story.cite":"— Guest review, Kayl",
+    "story.karaoke":"Karaoke nights",
+    "visit.kicker":"Access","visit.title":"Drop by the roundabout",
+    "visit.lead":"42 Grand-Rue, on the Kayl-Tétange roundabout. A coffee, a table, or just fries on the way past — the door's open.",
+    "visit.hours":"Opening hours","visit.late":"late at the weekend","visit.hoursconf":"Hours to be confirmed with the venue",
+    "visit.contact":"Contact","visit.telconf":"2nd number to confirm","visit.flag":"Roundabout · Kayl",
+    "day.monfri":"Mon – Fri","day.sat":"Saturday","day.sun":"Sunday","day.week":"7 days a week",
+    "foot.tag":"Friture beim Petz · the corner café on the Kayl-Tétange roundabout.",
+    "foot.nav":"Navigation","foot.find":"Find us","foot.demo":"Demonstration site — content and images to be confirmed"
+  }
+};
+function setLang(lang){
+  const dict=I18N[lang]||I18N.fr;
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const k=el.getAttribute("data-i18n");
+    if(dict[k]!==undefined) el.textContent=dict[k];
+  });
+  document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
+}
+document.querySelectorAll(".lang button").forEach(b=>{
+  b.addEventListener("click",()=>setLang(b.dataset.lang));
+});
+document.getElementById("yr").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

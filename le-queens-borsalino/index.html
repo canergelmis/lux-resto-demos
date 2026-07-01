@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Le Queen's Borsalino — Trattoria & Bar · Remich sur Moselle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --oxblood:#571620; --wine:#772230; --terra:#b8542f; --terra-soft:#c9693c;
+    --cream:#f7f0e0; --cream2:#efe3cc; --paper:#fbf6ea;
+    --ink:#231913; --ink-soft:#4a382e;
+    --gold:#c89a4c; --gold-lite:#d9b972; --gold-deep:#a67c31;
+    --shadow:0 24px 60px -30px rgba(35,18,12,.55);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Archivo',system-ui,sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  /* ===== decorative helpers ===== */
+  .pinstripe{
+    background-image:repeating-linear-gradient(90deg,transparent 0 6px,rgba(198,154,76,.16) 6px 7px);
+  }
+  .rule-gold{height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);border:0}
+
+  /* ===== top ribbon / lang ===== */
+  .topbar{
+    position:sticky;top:0;z-index:60;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:20px;
+    padding:10px clamp(18px,4vw,54px);
+    background:rgba(87,22,32,.96);
+    backdrop-filter:blur(6px);
+    border-bottom:2px solid var(--gold-deep);
+    color:var(--cream);
+  }
+  .topbar-brand{display:flex;align-items:center;gap:12px;font-family:'Fraunces';letter-spacing:.14em;text-transform:uppercase;font-size:.82rem;font-weight:600}
+  .topbar-brand .mini-emb{width:26px;height:26px;flex:none}
+  .topbar-nav{display:flex;gap:26px;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase}
+  .topbar-nav a{opacity:.82;transition:opacity .2s,color .2s;position:relative;padding-bottom:3px}
+  .topbar-nav a:hover{opacity:1;color:var(--gold-lite)}
+  .topbar-right{display:flex;align-items:center;gap:18px}
+  .langs{display:flex;border:1px solid rgba(217,185,114,.5);border-radius:2px;overflow:hidden}
+  .lang-tab{
+    background:transparent;color:var(--cream);border:0;cursor:pointer;
+    font-family:'Archivo';font-size:.72rem;letter-spacing:.12em;font-weight:600;
+    padding:5px 11px;opacity:.7;transition:.2s;
+  }
+  .lang-tab+.lang-tab{border-left:1px solid rgba(217,185,114,.35)}
+  .lang-tab:hover{opacity:1}
+  .lang-tab.active{background:var(--gold);color:var(--oxblood);opacity:1}
+  .call-pill{
+    display:inline-flex;align-items:center;gap:7px;
+    border:1px solid var(--gold-lite);color:var(--gold-lite);
+    padding:5px 14px;border-radius:40px;font-size:.72rem;letter-spacing:.1em;font-weight:600;
+    transition:.2s;
+  }
+  .call-pill:hover{background:var(--gold);color:var(--oxblood);border-color:var(--gold)}
+
+  /* ===== MASTHEAD ===== */
+  .masthead{
+    display:grid;grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);
+    min-height:calc(100vh - 46px);
+    background:
+      radial-gradient(120% 90% at 0% 0%,#fbf6ea, #f0e4cd 70%);
+  }
+  .mast-left{
+    position:relative;
+    padding:clamp(34px,5vw,78px) clamp(28px,4.5vw,72px);
+    display:flex;flex-direction:column;justify-content:center;
+    border-right:1px solid rgba(166,124,49,.35);
+  }
+  .mast-left::before{
+    content:"";position:absolute;inset:22px;
+    border:1px solid rgba(166,124,49,.4);
+    pointer-events:none;
+  }
+  .medallion{
+    align-self:flex-start;
+    border:2px solid var(--gold-deep);border-radius:50%/44%;
+    padding:26px 42px;margin-bottom:26px;
+    position:relative;background:rgba(251,246,234,.5);
+    box-shadow:inset 0 0 0 4px rgba(200,154,76,.18);
+  }
+  .medallion::after{
+    content:"";position:absolute;inset:6px;border:1px solid rgba(166,124,49,.45);border-radius:50%/44%;
+  }
+  .emb-crown{width:56px;height:30px;margin:0 auto 4px;display:block}
+  .emb-name-top{font-family:'Fraunces';letter-spacing:.42em;font-size:.72rem;text-transform:uppercase;color:var(--terra);text-align:center;padding-left:.42em}
+  .emb-name-main{
+    font-family:'Fraunces';font-weight:900;font-size:clamp(2.1rem,3vw,3rem);
+    line-height:.92;letter-spacing:.02em;color:var(--oxblood);text-align:center;margin:2px 0 4px;
+  }
+  .emb-hat{width:70px;height:30px;margin:2px auto 4px;display:block}
+  .emb-place{font-family:'Archivo';letter-spacing:.32em;font-size:.6rem;text-transform:uppercase;color:var(--ink-soft);text-align:center;padding-left:.32em}
+
+  .mast-kicker{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--terra);font-weight:700;margin-bottom:14px}
+  .mast-tagline{
+    font-family:'Fraunces';font-weight:400;font-style:italic;
+    font-size:clamp(1.4rem,2.1vw,2.05rem);line-height:1.28;color:var(--ink);
+    max-width:30ch;margin-bottom:8px;
+  }
+  .mast-tagline b{font-style:normal;font-weight:600;color:var(--wine)}
+  .mast-sub{font-size:.9rem;color:var(--ink-soft);max-width:44ch;margin-bottom:30px}
+  .mast-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:26px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:14px 26px;border-radius:2px;font-weight:600;font-size:.82rem;
+    letter-spacing:.06em;transition:.22s;cursor:pointer;border:1.5px solid var(--oxblood);
+  }
+  .btn-solid{background:var(--oxblood);color:var(--cream)}
+  .btn-solid:hover{background:var(--wine);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--oxblood)}
+  .btn-ghost:hover{background:var(--oxblood);color:var(--cream)}
+  .mast-addr{display:flex;align-items:center;gap:10px;font-size:.82rem;color:var(--ink-soft);letter-spacing:.02em}
+  .mast-addr svg{flex:none;color:var(--terra)}
+
+  .mast-right{position:relative;overflow:hidden;background:var(--oxblood)}
+  .mast-photo-frame{
+    position:absolute;inset:clamp(20px,3vw,44px);
+    border:2px solid var(--gold-deep);
+    border-top-left-radius:46% 60%;border-top-right-radius:46% 60%;
+    overflow:hidden;box-shadow:var(--shadow);
+  }
+  .mast-photo-frame::before{
+    content:"";position:absolute;inset:8px;border:1px solid rgba(217,185,114,.55);z-index:3;pointer-events:none;
+    border-top-left-radius:44% 58%;border-top-right-radius:44% 58%;
+  }
+  .mast-photo-frame img{width:100%;height:100%;object-fit:cover}
+  .seal{
+    position:absolute;left:clamp(30px,4vw,64px);bottom:clamp(30px,4vw,64px);z-index:5;
+    width:118px;height:118px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,var(--terra-soft),var(--terra) 70%);
+    border:2px solid var(--gold-lite);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    color:var(--cream);box-shadow:0 12px 30px -12px rgba(0,0,0,.6);transform:rotate(-9deg);
+  }
+  .seal b{font-family:'Fraunces';font-weight:900;font-size:1.9rem;line-height:1;letter-spacing:.02em}
+  .seal span{font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;margin-top:4px;padding-left:.22em;max-width:82px;line-height:1.3}
+
+  /* ===== HATBAND MARQUEE ===== */
+  .hatband{
+    background:var(--oxblood);color:var(--gold-lite);
+    border-top:3px solid var(--gold-deep);border-bottom:3px solid var(--gold-deep);
+    overflow:hidden;white-space:nowrap;padding:13px 0;position:relative;
+  }
+  .hatband::before,.hatband::after{content:"";position:absolute;top:0;bottom:0;width:80px;z-index:2}
+  .hatband::before{left:0;background:linear-gradient(90deg,var(--oxblood),transparent)}
+  .hatband::after{right:0;background:linear-gradient(270deg,var(--oxblood),transparent)}
+  .band-track{display:inline-block;animation:marq 34s linear infinite}
+  .band-track span{font-family:'Fraunces';font-weight:600;font-style:italic;font-size:1.02rem;letter-spacing:.12em;padding:0 6px}
+  .band-track .dot{color:var(--terra-soft);font-style:normal}
+  @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.band-track{animation:none}}
+
+  /* ===== SECTION SHELL ===== */
+  section{position:relative}
+  .wrap{max-width:1360px;margin:0 auto;padding:clamp(56px,7vw,110px) clamp(20px,4vw,54px)}
+  .sec-head{display:flex;align-items:flex-end;gap:22px;margin-bottom:40px;flex-wrap:wrap}
+  .sec-kicker{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--terra);font-weight:700;display:flex;align-items:center;gap:12px}
+  .sec-kicker::before{content:"";width:30px;height:2px;background:var(--gold)}
+  .sec-title{font-family:'Fraunces';font-weight:900;font-size:clamp(2rem,3.4vw,3.1rem);line-height:1;color:var(--oxblood)}
+  .sec-note{margin-left:auto;font-size:.78rem;color:var(--ink-soft);max-width:34ch;font-style:italic;text-align:right}
+
+  /* ===== LEDGER MENU ===== */
+  #menu{background:var(--paper);border-top:1px solid rgba(166,124,49,.3);border-bottom:1px solid rgba(166,124,49,.3)}
+  .ledger{
+    display:grid;grid-template-columns:1fr 1.35fr 1fr;gap:0;
+    border:2px solid var(--gold-deep);background:var(--cream);
+    box-shadow:var(--shadow);
+  }
+  .col{padding:clamp(24px,2.4vw,40px);position:relative}
+  .col+.col{border-left:1px dashed rgba(166,124,49,.55)}
+  .col.hero-col{background:linear-gradient(180deg,#fbf6ea,#f4e8d0)}
+  .col-stamp{
+    display:inline-block;font-family:'Fraunces';font-weight:700;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--terra);border:1.5px solid var(--terra);border-radius:40px;padding:4px 14px;margin-bottom:6px;
+  }
+  .col h3{font-size:clamp(1.35rem,1.9vw,1.75rem);color:var(--oxblood);margin:8px 0 4px;font-weight:900}
+  .col-sub{font-size:.76rem;color:var(--ink-soft);font-style:italic;margin-bottom:20px}
+  .dish{display:flex;align-items:baseline;gap:8px;margin:0 0 15px}
+  .dish-name{font-weight:600;color:var(--ink);white-space:nowrap;font-size:.98rem}
+  .dish-name em{display:block;font-family:'Archivo';font-style:normal;font-weight:400;font-size:.74rem;color:var(--ink-soft);white-space:normal;margin-top:1px}
+  .leader{flex:1;border-bottom:1.5px dotted rgba(166,124,49,.6);transform:translateY(-3px);min-width:14px}
+  .price{font-family:'Fraunces';font-style:italic;font-size:.76rem;color:var(--terra);white-space:nowrap;font-weight:600}
+  .thumb{
+    margin-top:22px;border:2px solid var(--gold-deep);overflow:hidden;
+    border-radius:50% 50% 6px 6px;height:150px;position:relative;
+  }
+  .thumb img{width:100%;height:100%;object-fit:cover}
+  .col-note{margin-top:18px;font-size:.76rem;color:var(--ink-soft);line-height:1.5;border-top:1px dashed rgba(166,124,49,.5);padding-top:14px}
+  .col-note b{color:var(--wine)}
+  .ledger-foot{
+    grid-column:1/-1;border-top:2px solid var(--gold-deep);
+    display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:center;align-items:center;
+    padding:16px 22px;background:var(--oxblood);color:var(--cream);font-size:.78rem;letter-spacing:.04em;
+  }
+  .ledger-foot b{color:var(--gold-lite);font-family:'Fraunces';font-style:italic;font-weight:600}
+
+  /* ===== HOUSE / STORY + GALLERY ===== */
+  #house{background:linear-gradient(180deg,var(--cream),#f1e5cf)}
+  .house-grid{display:grid;grid-template-columns:0.86fr 1.14fr;gap:clamp(30px,4vw,66px);align-items:center}
+  .house-copy p{margin-bottom:16px;color:var(--ink-soft);font-size:.98rem;max-width:46ch}
+  .house-copy p.lead{font-family:'Fraunces';font-style:italic;font-size:1.28rem;color:var(--ink);line-height:1.4;max-width:34ch}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+  .chip{display:inline-flex;align-items:center;gap:7px;background:var(--cream);border:1px solid var(--gold-deep);color:var(--wine);
+    padding:8px 15px;border-radius:40px;font-size:.76rem;font-weight:600;letter-spacing:.03em}
+  .chip svg{color:var(--terra);flex:none}
+  /* hatbox mosaic */
+  .mosaic{
+    display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:112px;gap:14px;
+  }
+  .m-cell{overflow:hidden;border:2px solid var(--gold-deep);position:relative;box-shadow:var(--shadow)}
+  .m-cell img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .m-cell:hover img{transform:scale(1.06)}
+  .m-cap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(0deg,rgba(35,18,12,.82),transparent);
+    color:var(--cream);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:16px 12px 9px;font-weight:600}
+  .m-a{grid-column:1/4;grid-row:1/3}
+  .m-b{grid-column:4/7;grid-row:1/2}
+  .m-c{grid-column:4/6;grid-row:2/4}
+  .m-d{grid-column:1/3;grid-row:3/4}
+  .m-e{grid-column:3/4;grid-row:3/4}
+  .m-f{grid-column:6/7;grid-row:2/4}
+  .m-cell.poster img{object-fit:cover;object-position:top}
+  .m-cell.poster{border-color:var(--terra)}
+
+  /* ===== VISIT ===== */
+  #visit{background:var(--oxblood);color:var(--cream)}
+  #visit .sec-title{color:var(--cream)}
+  #visit .sec-kicker{color:var(--gold-lite)}
+  #visit .sec-kicker::before{background:var(--gold-lite)}
+  #visit .sec-note{color:rgba(247,240,224,.66)}
+  .visit-grid{display:grid;grid-template-columns:0.92fr 0.82fr 1.26fr;gap:22px;align-items:stretch}
+  .card{background:rgba(251,246,234,.06);border:1px solid rgba(217,185,114,.45);padding:clamp(22px,2.4vw,34px)}
+  .card h3{color:var(--gold-lite);font-size:1.35rem;margin-bottom:18px;font-weight:700}
+  .hours-row{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px dotted rgba(217,185,114,.28);font-size:.86rem}
+  .hours-row:last-child{border-bottom:0}
+  .hours-row .d{font-weight:600;color:var(--cream);width:3.4em;flex:none}
+  .hours-row .t{margin-left:auto;color:rgba(247,240,224,.82);font-family:'Fraunces';font-style:italic;font-size:.84rem;text-align:right}
+  .hours-row.closed .t{color:var(--terra-soft)}
+  .card-note{margin-top:16px;font-size:.72rem;font-style:italic;color:rgba(247,240,224,.6);line-height:1.5}
+  .contact-line{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;font-size:.9rem}
+  .contact-line svg{flex:none;color:var(--gold-lite);margin-top:3px}
+  .contact-line b{color:var(--cream);font-weight:600}
+  .contact-line span{color:rgba(247,240,224,.8);font-size:.82rem}
+  .contact-line .tbc{color:var(--terra-soft);font-style:italic;font-size:.74rem}
+  .contact-line a:hover{color:var(--gold-lite)}
+  .map-card{padding:0;overflow:hidden;position:relative;min-height:360px;border-color:var(--gold-deep)}
+  .map-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:sepia(.18) saturate(1.05)}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--ink);color:var(--cream);border-top:4px solid var(--gold-deep)}
+  .foot-wrap{max-width:1360px;margin:0 auto;padding:clamp(44px,5vw,72px) clamp(20px,4vw,54px)}
+  .foot-top{display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:center;padding-bottom:32px;border-bottom:1px solid rgba(217,185,114,.24)}
+  .foot-emb{display:flex;align-items:center;gap:16px}
+  .foot-emb .fmed{width:52px;height:52px;flex:none}
+  .foot-emb .fname{font-family:'Fraunces';font-weight:900;font-size:1.35rem;color:var(--cream);line-height:1}
+  .foot-emb .fplace{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-lite);margin-top:4px}
+  .foot-tag{font-family:'Fraunces';font-style:italic;color:rgba(247,240,224,.7);text-align:center;font-size:1.02rem}
+  .foot-social a{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(217,185,114,.5);color:var(--gold-lite);
+    padding:9px 18px;border-radius:40px;font-size:.78rem;font-weight:600;transition:.2s}
+  .foot-social a:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+  .foot-bottom{display:flex;flex-wrap:wrap;gap:14px 40px;justify-content:space-between;padding-top:26px;font-size:.74rem;color:rgba(247,240,224,.55)}
+  .disclaimer{background:rgba(184,84,47,.16);border:1px solid rgba(200,154,76,.4);border-radius:4px;
+    padding:12px 18px;font-size:.74rem;color:rgba(247,240,224,.82);max-width:60ch;line-height:1.55}
+  .disclaimer b{color:var(--gold-lite)}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:1040px){
+    .masthead{grid-template-columns:1fr;min-height:auto}
+    .mast-right{min-height:56vh}
+    .ledger{grid-template-columns:1fr}
+    .col+.col{border-left:0;border-top:1px dashed rgba(166,124,49,.55)}
+    .house-grid{grid-template-columns:1fr}
+    .visit-grid{grid-template-columns:1fr;}
+    .map-card{min-height:320px}
+  }
+  @media(max-width:820px){
+    .topbar-nav{display:none}
+    .topbar{gap:12px}
+    .mosaic{grid-auto-rows:96px}
+  }
+  @media(max-width:560px){
+    .topbar-brand span.tb-txt{display:none}
+    .sec-note{margin-left:0;text-align:left}
+    .mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:120px}
+    .m-a,.m-b,.m-c,.m-d,.m-e,.m-f{grid-column:auto;grid-row:auto}
+    .m-a{grid-column:1/3}
+    .foot-top{grid-template-columns:1fr;text-align:center;justify-items:center}
+    .seal{width:96px;height:96px}
+    .seal b{font-size:1.5rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP RIBBON ============ -->
+<div class="topbar">
+  <a href="#top" class="topbar-brand">
+    <svg class="mini-emb" viewBox="0 0 100 100" aria-hidden="true">
+      <ellipse cx="50" cy="66" rx="42" ry="9" fill="none" stroke="#d9b972" stroke-width="4"/>
+      <path d="M22 62 C24 36 34 30 50 30 C66 30 76 36 78 62" fill="none" stroke="#d9b972" stroke-width="4"/>
+      <rect x="22" y="55" width="56" height="8" fill="#b8542f"/>
+      <path d="M30 24 L36 10 L43 18 L50 6 L57 18 L64 10 L70 24 Z" fill="#d9b972"/>
+    </svg>
+    <span class="tb-txt">Le Queen's Borsalino</span>
+  </a>
+  <nav class="topbar-nav">
+    <a href="#menu" data-i18n="nav_menu">La Carte</a>
+    <a href="#house" data-i18n="nav_house">La Maison</a>
+    <a href="#visit" data-i18n="nav_visit">Nous Trouver</a>
+  </nav>
+  <div class="topbar-right">
+    <a href="tel:+352661138964" class="call-pill">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .3l-2.2 2.2c-2.8-1.4-5.1-3.7-6.6-6.6l2.2-2.2c.3-.3.4-.7.3-1-.4-1.1-.6-2.4-.6-3.6 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1z"/></svg>
+      <span data-i18n="nav_call">Réserver</span>
+    </a>
+    <div class="langs" role="group" aria-label="Langue">
+      <button class="lang-tab active" data-lang="fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-tab" data-lang="de" onclick="setLang('de')">DE</button>
+      <button class="lang-tab" data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MASTHEAD ============ -->
+<header id="top" class="masthead">
+  <div class="mast-left">
+    <div class="medallion">
+      <svg class="emb-crown" viewBox="0 0 100 46" aria-hidden="true">
+        <path d="M12 40 L20 12 L34 28 L50 6 L66 28 L80 12 L88 40 Z" fill="#c89a4c"/>
+        <rect x="12" y="38" width="76" height="7" fill="#a67c31"/>
+        <circle cx="20" cy="12" r="4" fill="#772230"/><circle cx="50" cy="6" r="4.5" fill="#772230"/><circle cx="80" cy="12" r="4" fill="#772230"/>
+      </svg>
+      <div class="emb-name-top">Le Queen's</div>
+      <div class="emb-name-main">Borsalino</div>
+      <svg class="emb-hat" viewBox="0 0 120 52" aria-hidden="true">
+        <ellipse cx="60" cy="40" rx="54" ry="9" fill="none" stroke="#a67c31" stroke-width="3"/>
+        <path d="M28 40 C30 14 42 8 60 8 C78 8 90 14 92 40" fill="#571620"/>
+        <rect x="28" y="32" width="64" height="8" fill="#b8542f"/>
+      </svg>
+      <div class="emb-place">Remich · Moselle · Luxembourg</div>
+    </div>
+    <div class="mast-kicker" data-i18n="mast_kicker">Trattoria &amp; Bar de famille · depuis le cœur de Remich</div>
+    <h1 class="mast-tagline" data-i18n="mast_tagline">La table italienne de Remich — <b>générosité, fraîcheur</b> et esprit de famille, au bord de la Moselle.</h1>
+    <p class="mast-sub" data-i18n="mast_sub">Cuisine italienne &amp; française, produit frais et assiettes réputées XXL. Un accueil chaleureux, une terrasse dans la verdure, des soirées musicales.</p>
+    <div class="mast-cta">
+      <a href="tel:+352661138964" class="btn btn-solid" data-i18n="mast_cta1">Réserver une table</a>
+      <a href="#menu" class="btn btn-ghost" data-i18n="mast_cta2">Découvrir la carte</a>
+    </div>
+    <div class="mast-addr">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
+      <span>71, Rue de Macher · L-5550 Remich · <span data-i18n="mast_parking">parking sur place</span></span>
+    </div>
+  </div>
+
+  <div class="mast-right">
+    <div class="mast-photo-frame">
+      <img src="assets/food-vongole.jpg" alt="Spaghetti alle vongole servis en généreuses portions au Queen's Borsalino">
+    </div>
+    <div class="seal">
+      <b>XXL</b>
+      <span data-i18n="seal">Portions généreuses</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HATBAND MARQUEE ============ -->
+<div class="hatband" aria-hidden="true">
+  <div class="band-track">
+    <span>Generosità</span><span class="dot">✦</span><span>Freschezza</span><span class="dot">✦</span><span>Spirito di famiglia</span><span class="dot">✦</span><span>Al bordo della Mosella</span><span class="dot">✦</span>
+    <span>Generosità</span><span class="dot">✦</span><span>Freschezza</span><span class="dot">✦</span><span>Spirito di famiglia</span><span class="dot">✦</span><span>Al bordo della Mosella</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- ============ LEDGER MENU ============ -->
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-kicker" data-i18n="menu_kicker">Le registre de la maison</div>
+        <h2 class="sec-title" data-i18n="menu_title">La Carte</h2>
+      </div>
+      <p class="sec-note" data-i18n="menu_note">Plats relevés d'après la maison et les avis. Tarifs et disponibilités à confirmer avec l'établissement.</p>
+    </div>
+
+    <div class="ledger">
+      <!-- COL 1 -->
+      <div class="col">
+        <span class="col-stamp" data-i18n="c1_stamp">Pour commencer</span>
+        <h3 data-i18n="c1_title">Antipasti &amp; Salades</h3>
+        <p class="col-sub" data-i18n="c1_sub">Frais, généreux, sans chichi.</p>
+        <div class="dish"><span class="dish-name">Salade César<em data-i18n="d_cesar">poulet grillé, copeaux, sauce maison</em></span><span class="leader"></span><span class="price" data-i18n="tbc">à conf.</span></div>
+        <div class="dish"><span class="dish-name"><span data-i18n="d_antipasti">Antipasti de la maison</span><em data-i18n="d_antipasti_sub">assortiment du jour</em></span><span class="leader"></span><span class="price" data-i18n="tbc">à conf.</span></div>
+        <div class="thumb"><img src="assets/food-cesar.jpg" alt="Salade César du Queen's Borsalino"></div>
+        <p class="col-note" data-i18n="c1_note">Options <b>végétariennes &amp; véganes</b> disponibles — demandez à l'équipe.</p>
+      </div>
+
+      <!-- COL 2 (hero) -->
+      <div class="col hero-col">
+        <span class="col-stamp" data-i18n="c2_stamp">La signature · XXL</span>
+        <h3 data-i18n="c2_title">Les Généreuses</h3>
+        <p class="col-sub" data-i18n="c2_sub">Les plats qui ont fait la réputation de la maison : Italie, France &amp; Moselle dans l'assiette.</p>
+        <div class="dish"><span class="dish-name">Spaghetti alle vongole<em data-i18n="d_vongole">palourdes, tomate, basilic frais</em></span><span class="leader"></span><span class="price" data-i18n="tbc">à conf.</span></div>
+        <div class="dish"><span class="dish-name">Moules à la crème<em data-i18n="d_moules">servies avec frites</em></span><span class="leader"></span><span class="price" data-i18n="tbc">à conf.</span></div>
+        <div class="dish"><span class="dish-name">Bouillabaisse<em data-i18n="d_bouilla">soupe de poissons à la provençale</em></span><span class="leader"></span><span class="price" data-i18n="tbc">à conf.</span></div>
+        <div class="dish"><span class="dish-name">Goulash<em data-i18n="d_goulash">mijoté généreux, esprit brasserie</em></span><span class="leader"></span><span class="price" data-i18n="tbc">à conf.</span></div>
+        <div class="dish"><span class="dish-name">Fish &amp; chips<em data-i18n="d_fish">poisson pané croustillant, frites</em></span><span class="leader"></span><span class="price" data-i18n="tbc">à conf.</span></div>
+        <p class="col-note" data-i18n="c2_note"><b>Portions XXL :</b> la maison est connue pour ses assiettes copieuses. Venez avec l'appétit.</p>
+      </div>
+
+      <!-- COL 3 -->
+      <div class="col">
+        <span class="col-stamp" data-i18n="c3_stamp">La douceur</span>
+        <h3 data-i18n="c3_title">Dolci</h3>
+        <p class="col-sub" data-i18n="c3_sub">Pour finir en beauté.</p>
+        <div class="dish"><span class="dish-name">Tarte tatin<em data-i18n="d_tatin">tiède, glace vanille, crème</em></span><span class="leader"></span><span class="price" data-i18n="tbc">à conf.</span></div>
+        <div class="dish"><span class="dish-name"><span data-i18n="d_dolce">Dolce du jour</span><em data-i18n="d_dolce_sub">selon l'inspiration</em></span><span class="leader"></span><span class="price" data-i18n="tbc">à conf.</span></div>
+        <div class="thumb"><img src="assets/food-tarte-tatin.jpg" alt="Tarte tatin du Queen's Borsalino"></div>
+        <p class="col-note" data-i18n="c3_note">Racines de <b>pizzeria</b> : pizzas &amp; pâtes également à la carte.</p>
+      </div>
+
+      <div class="ledger-foot">
+        <span data-i18n="foot_take"><b>À emporter</b> disponible</span>
+        <span data-i18n="foot_fresh"><b>Produit frais</b>, cuisine du marché</span>
+        <span data-i18n="foot_conf">Carte complète &amp; prix — <b>à confirmer sur place</b></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOUSE / STORY + GALLERY ============ -->
+<section id="house">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-kicker" data-i18n="house_kicker">Une affaire de famille</div>
+        <h2 class="sec-title" data-i18n="house_title">La Maison</h2>
+      </div>
+    </div>
+
+    <div class="house-grid">
+      <div class="house-copy">
+        <p class="lead" data-i18n="house_lead">« Le chapeau de la reine » : un clin d'œil italien, une table de quartier au grand cœur.</p>
+        <p data-i18n="house_p1">Le Queen's Borsalino, c'est une trattoria familiale posée à Remich, sur la route des vins de la Moselle. On y vient pour l'assiette généreuse, le produit frais et surtout l'accueil : celui des patrons qui connaissent leurs habitués par leur prénom.</p>
+        <p data-i18n="house_p2">Italie et France se croisent dans la cuisine, avec quelques accents luxembourgeois. Et quand la belle saison arrive, la terrasse dans la verdure devient le meilleur salon de la ville — parfois en musique, entre deux soirées à thème.</p>
+        <div class="chips">
+          <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg><span data-i18n="chip_family">En famille</span></span>
+          <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 21V10l7-6 7 6v11h-5v-6H10v6z"/></svg><span data-i18n="chip_terrace">Terrasse dans la verdure</span></span>
+          <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.5A3.5 3.5 0 109 17V6h8V3z"/></svg><span data-i18n="chip_music">Soirées musique</span></span>
+          <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 12a2.5 2.5 0 11.001-5.001A2.5 2.5 0 014.5 12zm15 0a2.5 2.5 0 11.001-5.001A2.5 2.5 0 0119.5 12zM12 8a3 3 0 013 3c0 1.5 1.5 2 1.5 4 0 1.4-1.6 2-4.5 2s-4.5-.6-4.5-2c0-2 1.5-2.5 1.5-4a3 3 0 013-3z"/></svg><span data-i18n="chip_dogs">Chiens bienvenus</span></span>
+          <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2l1 2h10l1-2zM5 6h14l-1.5 14H6.5z"/></svg><span data-i18n="chip_take">À emporter</span></span>
+        </div>
+      </div>
+
+      <div class="mosaic">
+        <div class="m-cell m-a"><img src="assets/hero.jpg" alt="Salle du Queen's Borsalino avec escalier en colimaçon"><span class="m-cap" data-i18n="cap_salle">La salle &amp; sa mezzanine</span></div>
+        <div class="m-cell m-b"><img src="assets/interior-bar.jpg" alt="Le bar et les tables à nappe vichy"><span class="m-cap" data-i18n="cap_bar">Le bar, esprit trattoria</span></div>
+        <div class="m-cell m-c poster"><img src="assets/interior-2.jpg" alt="L'affiche maison — soirée hommage à Celentano"><span class="m-cap" data-i18n="cap_affiche">L'affiche maison</span></div>
+        <div class="m-cell m-d"><img src="assets/terrace.jpg" alt="Terrasse et jardin, coin VIP Lounge"><span class="m-cap" data-i18n="cap_jardin">Le coin jardin</span></div>
+        <div class="m-cell m-e"><img src="assets/dish-xxl.jpg" alt="Assiette XXL de la maison"><span class="m-cap" data-i18n="cap_xxl">Les portions XXL</span></div>
+        <div class="m-cell m-f"><img src="assets/food-vongole.jpg" alt="Assiette généreuse de spaghetti alle vongole"><span class="m-cap" data-i18n="cap_assiette">L'assiette signature</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-kicker" data-i18n="visit_kicker">Sur la route des vins</div>
+        <h2 class="sec-title" data-i18n="visit_title">Nous Trouver</h2>
+      </div>
+      <p class="sec-note" data-i18n="visit_note">Fermé le lundi · service midi &amp; soir du mardi au dimanche.</p>
+    </div>
+
+    <div class="visit-grid">
+      <!-- hours -->
+      <div class="card">
+        <h3 data-i18n="hours_title">Horaires</h3>
+        <div class="hours-row closed"><span class="d" data-i18n="day_mon">Lun</span><span class="t" data-i18n="closed">Fermé</span></div>
+        <div class="hours-row"><span class="d" data-i18n="day_tue">Mar</span><span class="t">17:30 – 23:00</span></div>
+        <div class="hours-row"><span class="d" data-i18n="day_wed">Mer</span><span class="t">11:30–14:00 · 17:30–23:00</span></div>
+        <div class="hours-row"><span class="d" data-i18n="day_thu">Jeu</span><span class="t">11:30–14:00 · 17:30–23:00</span></div>
+        <div class="hours-row"><span class="d" data-i18n="day_fri">Ven</span><span class="t">11:30–14:30 · 17:00–23:30</span></div>
+        <div class="hours-row"><span class="d" data-i18n="day_sat">Sam</span><span class="t">11:30–14:00 · 17:00–23:30</span></div>
+        <div class="hours-row"><span class="d" data-i18n="day_sun">Dim</span><span class="t">11:30 – 21:00</span></div>
+        <p class="card-note" data-i18n="hours_note">Les sources divergent sur les horaires exacts — à confirmer avec l'établissement avant votre visite.</p>
+      </div>
+
+      <!-- contact -->
+      <div class="card">
+        <h3 data-i18n="contact_title">Contact</h3>
+        <div class="contact-line">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
+          <div><b>71, Rue de Macher</b><br><span>L-5550 Remich, Luxembourg</span></div>
+        </div>
+        <div class="contact-line">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .3l-2.2 2.2c-2.8-1.4-5.1-3.7-6.6-6.6l2.2-2.2c.3-.3.4-.7.3-1-.4-1.1-.6-2.4-.6-3.6 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1z"/></svg>
+          <div>
+            <a href="tel:+352661138964"><b>+352 661 138 964</b></a><br>
+            <a href="tel:+35228990898"><span>+352 28 99 08 98</span></a>
+            <span class="tbc" data-i18n="phone_tbc"> — n° à confirmer</span>
+          </div>
+        </div>
+        <div class="contact-line">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M4 5h16v14H4zm2 3v9h12V8l-6 4z"/></svg>
+          <div><b data-i18n="contact_park">Parking sur place</b><br><span data-i18n="contact_take">Service à emporter</span></div>
+        </div>
+        <a href="https://www.facebook.com/LeQueensBorsalino/" target="_blank" rel="noopener" class="btn btn-ghost" style="border-color:var(--gold-lite);color:var(--gold-lite);margin-top:6px;font-size:.78rem;padding:11px 20px">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V8c0-1.1.4-2 2-2h2V2.2C18.4 2.1 17.3 2 16 2c-3 0-5 1.8-5 5.2V10H7v4h4v8z"/></svg>
+          <span data-i18n="fb">Suivre sur Facebook</span>
+        </a>
+      </div>
+
+      <!-- map -->
+      <div class="card map-card">
+        <iframe title="Carte — Le Queen's Borsalino, Remich" src="https://www.google.com/maps?q=71+Rue+de+Macher+L-5550+Remich+Luxembourg&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-top">
+      <div class="foot-emb">
+        <svg class="fmed" viewBox="0 0 100 100" aria-hidden="true">
+          <ellipse cx="50" cy="66" rx="42" ry="9" fill="none" stroke="#d9b972" stroke-width="4"/>
+          <path d="M22 62 C24 36 34 30 50 30 C66 30 76 36 78 62" fill="#571620" stroke="#d9b972" stroke-width="3"/>
+          <rect x="22" y="55" width="56" height="8" fill="#b8542f"/>
+          <path d="M30 24 L36 10 L43 18 L50 6 L57 18 L64 10 L70 24 Z" fill="#d9b972"/>
+        </svg>
+        <div>
+          <div class="fname">Le Queen's Borsalino</div>
+          <div class="fplace">Trattoria &amp; Bar · Remich</div>
+        </div>
+      </div>
+      <p class="foot-tag" data-i18n="foot_tag">Générosité, fraîcheur, esprit de famille — au bord de la Moselle.</p>
+      <div class="foot-social">
+        <a href="https://www.facebook.com/LeQueensBorsalino/" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V8c0-1.1.4-2 2-2h2V2.2C18.4 2.1 17.3 2 16 2c-3 0-5 1.8-5 5.2V10H7v4h4v8z"/></svg>
+          Facebook
+        </a>
+      </div>
+    </div>
+
+    <div class="disclaimer" style="margin:26px auto 0" data-i18n="disclaimer"><b>Site de démonstration.</b> Maquette réalisée pour présentation — non affiliée officiellement. Horaires, numéros de téléphone, plats et prix sont indicatifs et <b>à confirmer avec l'établissement</b>. Photographies fournies par les plateformes publiques du restaurant.</div>
+
+    <div class="foot-bottom">
+      <span>© 2026 Le Queen's Borsalino · 71 Rue de Macher, L-5550 Remich</span>
+      <span data-i18n="foot_demo">Maquette de démonstration · concept &amp; design sur mesure</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const I18N = {
+  fr:{
+    nav_menu:"La Carte", nav_house:"La Maison", nav_visit:"Nous Trouver", nav_call:"Réserver",
+    mast_kicker:"Trattoria &amp; Bar de famille · depuis le cœur de Remich",
+    mast_tagline:"La table italienne de Remich — <b>générosité, fraîcheur</b> et esprit de famille, au bord de la Moselle.",
+    mast_sub:"Cuisine italienne &amp; française, produit frais et assiettes réputées XXL. Un accueil chaleureux, une terrasse dans la verdure, des soirées musicales.",
+    mast_cta1:"Réserver une table", mast_cta2:"Découvrir la carte", mast_parking:"parking sur place",
+    seal:"Portions généreuses",
+    menu_kicker:"Le registre de la maison", menu_title:"La Carte",
+    menu_note:"Plats relevés d'après la maison et les avis. Tarifs et disponibilités à confirmer avec l'établissement.",
+    c1_stamp:"Pour commencer", c1_title:"Antipasti &amp; Salades", c1_sub:"Frais, généreux, sans chichi.",
+    d_cesar:"poulet grillé, copeaux, sauce maison", d_antipasti:"Antipasti de la maison", d_antipasti_sub:"assortiment du jour",
+    c1_note:"Options <b>végétariennes &amp; véganes</b> disponibles — demandez à l'équipe.",
+    c2_stamp:"La signature · XXL", c2_title:"Les Généreuses",
+    c2_sub:"Les plats qui ont fait la réputation de la maison : Italie, France &amp; Moselle dans l'assiette.",
+    d_vongole:"palourdes, tomate, basilic frais", d_moules:"servies avec frites", d_bouilla:"soupe de poissons à la provençale",
+    d_goulash:"mijoté généreux, esprit brasserie", d_fish:"poisson pané croustillant, frites",
+    c2_note:"<b>Portions XXL :</b> la maison est connue pour ses assiettes copieuses. Venez avec l'appétit.",
+    c3_stamp:"La douceur", c3_title:"Dolci", c3_sub:"Pour finir en beauté.",
+    d_tatin:"tiède, glace vanille, crème", d_dolce:"Dolce du jour", d_dolce_sub:"selon l'inspiration",
+    c3_note:"Racines de <b>pizzeria</b> : pizzas &amp; pâtes également à la carte.",
+    tbc:"à conf.",
+    foot_take:"<b>À emporter</b> disponible", foot_fresh:"<b>Produit frais</b>, cuisine du marché",
+    foot_conf:"Carte complète &amp; prix — <b>à confirmer sur place</b>",
+    house_kicker:"Une affaire de famille", house_title:"La Maison",
+    house_lead:"« Le chapeau de la reine » : un clin d'œil italien, une table de quartier au grand cœur.",
+    house_p1:"Le Queen's Borsalino, c'est une trattoria familiale posée à Remich, sur la route des vins de la Moselle. On y vient pour l'assiette généreuse, le produit frais et surtout l'accueil : celui des patrons qui connaissent leurs habitués par leur prénom.",
+    house_p2:"Italie et France se croisent dans la cuisine, avec quelques accents luxembourgeois. Et quand la belle saison arrive, la terrasse dans la verdure devient le meilleur salon de la ville — parfois en musique, entre deux soirées à thème.",
+    chip_family:"En famille", chip_terrace:"Terrasse dans la verdure", chip_music:"Soirées musique",
+    chip_dogs:"Chiens bienvenus", chip_take:"À emporter",
+    cap_salle:"La salle &amp; sa mezzanine", cap_bar:"Le bar, esprit trattoria", cap_affiche:"L'affiche maison",
+    cap_jardin:"Le coin jardin", cap_terrasse:"La terrasse", cap_xxl:"Les portions XXL", cap_assiette:"L'assiette signature",
+    visit_kicker:"Sur la route des vins", visit_title:"Nous Trouver",
+    visit_note:"Fermé le lundi · service midi &amp; soir du mardi au dimanche.",
+    hours_title:"Horaires", closed:"Fermé",
+    day_mon:"Lun", day_tue:"Mar", day_wed:"Mer", day_thu:"Jeu", day_fri:"Ven", day_sat:"Sam", day_sun:"Dim",
+    hours_note:"Les sources divergent sur les horaires exacts — à confirmer avec l'établissement avant votre visite.",
+    contact_title:"Contact", phone_tbc:" — n° à confirmer", contact_park:"Parking sur place", contact_take:"Service à emporter",
+    fb:"Suivre sur Facebook",
+    foot_tag:"Générosité, fraîcheur, esprit de famille — au bord de la Moselle.",
+    disclaimer:"<b>Site de démonstration.</b> Maquette réalisée pour présentation — non affiliée officiellement. Horaires, numéros de téléphone, plats et prix sont indicatifs et <b>à confirmer avec l'établissement</b>. Photographies fournies par les plateformes publiques du restaurant.",
+    foot_demo:"Maquette de démonstration · concept &amp; design sur mesure"
+  },
+  de:{
+    nav_menu:"Speisekarte", nav_house:"Das Haus", nav_visit:"Anfahrt", nav_call:"Reservieren",
+    mast_kicker:"Familiäre Trattoria &amp; Bar · mitten in Remich",
+    mast_tagline:"Der italienische Tisch von Remich — <b>Großzügigkeit, Frische</b> und Familiensinn, direkt an der Mosel.",
+    mast_sub:"Italienische &amp; französische Küche, frische Produkte und die berühmten XXL-Portionen. Herzlicher Empfang, Terrasse im Grünen, Musikabende.",
+    mast_cta1:"Tisch reservieren", mast_cta2:"Speisekarte entdecken", mast_parking:"Parkplätze vorhanden",
+    seal:"Großzügige Portionen",
+    menu_kicker:"Das Register des Hauses", menu_title:"Speisekarte",
+    menu_note:"Gerichte nach Angaben des Hauses und Gästebewertungen. Preise und Verfügbarkeit bitte im Restaurant bestätigen.",
+    c1_stamp:"Zum Anfang", c1_title:"Antipasti &amp; Salate", c1_sub:"Frisch, großzügig, ohne Schnickschnack.",
+    d_cesar:"gegrilltes Hähnchen, Käsespäne, Hausdressing", d_antipasti:"Antipasti des Hauses", d_antipasti_sub:"Auswahl des Tages",
+    c1_note:"<b>Vegetarische &amp; vegane</b> Optionen verfügbar — fragen Sie das Team.",
+    c2_stamp:"Das Aushängeschild · XXL", c2_title:"Die Großzügigen",
+    c2_sub:"Die Gerichte, die das Haus berühmt gemacht haben: Italien, Frankreich &amp; Mosel auf dem Teller.",
+    d_vongole:"Venusmuscheln, Tomate, frisches Basilikum", d_moules:"serviert mit Pommes", d_bouilla:"provenzalische Fischsuppe",
+    d_goulash:"großzügiger Schmortopf, Brasserie-Art", d_fish:"knuspriger Backfisch, Pommes",
+    c2_note:"<b>XXL-Portionen:</b> das Haus ist für seine üppigen Teller bekannt. Kommen Sie mit Appetit.",
+    c3_stamp:"Die Süße", c3_title:"Dolci", c3_sub:"Ein schöner Abschluss.",
+    d_tatin:"lauwarm, Vanilleeis, Sahne", d_dolce:"Dolce des Tages", d_dolce_sub:"je nach Inspiration",
+    c3_note:"<b>Pizzeria</b>-Wurzeln: auch Pizza &amp; Pasta auf der Karte.",
+    tbc:"n. Absp.",
+    foot_take:"<b>Zum Mitnehmen</b> möglich", foot_fresh:"<b>Frische Produkte</b>, Marktküche",
+    foot_conf:"Vollständige Karte &amp; Preise — <b>vor Ort bestätigen</b>",
+    house_kicker:"Eine Familiensache", house_title:"Das Haus",
+    house_lead:"„Der Hut der Königin“: ein italienisches Augenzwinkern, ein Quartierlokal mit großem Herzen.",
+    house_p1:"Das Queen's Borsalino ist eine familiäre Trattoria in Remich, an der Moselweinstraße. Man kommt für den großzügigen Teller, die frischen Produkte und vor allem den Empfang: die Gastgeber kennen ihre Stammgäste beim Vornamen.",
+    house_p2:"Italien und Frankreich treffen sich in der Küche, mit einigen luxemburgischen Akzenten. Und in der schönen Jahreszeit wird die Terrasse im Grünen zum besten Wohnzimmer der Stadt — manchmal mit Musik, zwischen zwei Themenabenden.",
+    chip_family:"Für Familien", chip_terrace:"Terrasse im Grünen", chip_music:"Musikabende",
+    chip_dogs:"Hunde willkommen", chip_take:"Zum Mitnehmen",
+    cap_salle:"Der Saal &amp; die Galerie", cap_bar:"Die Bar, Trattoria-Stil", cap_affiche:"Das Hausplakat",
+    cap_jardin:"Die Gartenecke", cap_terrasse:"Die Terrasse", cap_xxl:"Die XXL-Portionen", cap_assiette:"Der Signature-Teller",
+    visit_kicker:"An der Weinstraße", visit_title:"Anfahrt",
+    visit_note:"Montags geschlossen · Mittag- &amp; Abendservice von Dienstag bis Sonntag.",
+    hours_title:"Öffnungszeiten", closed:"Geschlossen",
+    day_mon:"Mo", day_tue:"Di", day_wed:"Mi", day_thu:"Do", day_fri:"Fr", day_sat:"Sa", day_sun:"So",
+    hours_note:"Die Quellen weichen bei den genauen Zeiten voneinander ab — bitte vor dem Besuch im Restaurant bestätigen.",
+    contact_title:"Kontakt", phone_tbc:" — Nr. zu bestätigen", contact_park:"Parkplätze vorhanden", contact_take:"Zum Mitnehmen",
+    fb:"Auf Facebook folgen",
+    foot_tag:"Großzügigkeit, Frische, Familiensinn — direkt an der Mosel.",
+    disclaimer:"<b>Demo-Website.</b> Musterentwurf zu Präsentationszwecken — nicht offiziell verbunden. Öffnungszeiten, Telefonnummern, Gerichte und Preise sind Richtwerte und <b>im Restaurant zu bestätigen</b>. Fotos von den öffentlichen Plattformen des Restaurants.",
+    foot_demo:"Demo-Entwurf · maßgeschneidertes Konzept &amp; Design"
+  },
+  en:{
+    nav_menu:"The Menu", nav_house:"The House", nav_visit:"Find Us", nav_call:"Reserve",
+    mast_kicker:"Family trattoria &amp; bar · from the heart of Remich",
+    mast_tagline:"Remich's Italian table — <b>generosity, freshness</b> and family spirit, on the banks of the Moselle.",
+    mast_sub:"Italian &amp; French cooking, fresh produce and the famous XXL plates. A warm welcome, a terrace in the greenery, live-music evenings.",
+    mast_cta1:"Book a table", mast_cta2:"See the menu", mast_parking:"on-site parking",
+    seal:"Generous portions",
+    menu_kicker:"The house ledger", menu_title:"The Menu",
+    menu_note:"Dishes noted from the house and guest reviews. Prices and availability to be confirmed with the restaurant.",
+    c1_stamp:"To begin", c1_title:"Antipasti &amp; Salads", c1_sub:"Fresh, generous, no fuss.",
+    d_cesar:"grilled chicken, shavings, house dressing", d_antipasti:"House antipasti", d_antipasti_sub:"selection of the day",
+    c1_note:"<b>Vegetarian &amp; vegan</b> options available — just ask the team.",
+    c2_stamp:"The signature · XXL", c2_title:"The Generous Ones",
+    c2_sub:"The dishes that built the house's reputation: Italy, France &amp; the Moselle on the plate.",
+    d_vongole:"clams, tomato, fresh basil", d_moules:"served with fries", d_bouilla:"Provençal fish soup",
+    d_goulash:"generous stew, brasserie style", d_fish:"crispy battered fish, fries",
+    c2_note:"<b>XXL portions:</b> the house is known for its hearty plates. Come hungry.",
+    c3_stamp:"Something sweet", c3_title:"Dolci", c3_sub:"A fine finish.",
+    d_tatin:"warm, vanilla ice cream, cream", d_dolce:"Dolce of the day", d_dolce_sub:"as inspiration strikes",
+    c3_note:"<b>Pizzeria</b> roots: pizza &amp; pasta on the menu too.",
+    tbc:"tbc",
+    foot_take:"<b>Takeaway</b> available", foot_fresh:"<b>Fresh produce</b>, market cooking",
+    foot_conf:"Full menu &amp; prices — <b>to confirm on site</b>",
+    house_kicker:"A family affair", house_title:"The House",
+    house_lead:"“The Queen's hat”: an Italian wink, a neighbourhood table with a big heart.",
+    house_p1:"Le Queen's Borsalino is a family trattoria in Remich, on the Moselle wine route. People come for the generous plate, the fresh produce and above all the welcome — hosts who know their regulars by name.",
+    house_p2:"Italy and France meet in the kitchen, with a few Luxembourgish accents. And when the warm season arrives, the terrace in the greenery becomes the best sitting room in town — sometimes with music, between themed evenings.",
+    chip_family:"Family-friendly", chip_terrace:"Terrace in the greenery", chip_music:"Live-music evenings",
+    chip_dogs:"Dogs welcome", chip_take:"Takeaway",
+    cap_salle:"The room &amp; mezzanine", cap_bar:"The bar, trattoria spirit", cap_affiche:"The house poster",
+    cap_jardin:"The garden corner", cap_terrasse:"The terrace", cap_xxl:"The XXL portions", cap_assiette:"The signature plate",
+    visit_kicker:"On the wine route", visit_title:"Find Us",
+    visit_note:"Closed Mondays · lunch &amp; dinner service Tuesday to Sunday.",
+    hours_title:"Opening hours", closed:"Closed",
+    day_mon:"Mon", day_tue:"Tue", day_wed:"Wed", day_thu:"Thu", day_fri:"Fri", day_sat:"Sat", day_sun:"Sun",
+    hours_note:"Sources disagree on the exact times — please confirm with the restaurant before your visit.",
+    contact_title:"Contact", phone_tbc:" — number to confirm", contact_park:"On-site parking", contact_take:"Takeaway service",
+    fb:"Follow on Facebook",
+    foot_tag:"Generosity, freshness, family spirit — on the banks of the Moselle.",
+    disclaimer:"<b>Demonstration site.</b> Mock-up built for presentation — not officially affiliated. Opening hours, phone numbers, dishes and prices are indicative and <b>to be confirmed with the restaurant</b>. Photographs sourced from the restaurant's public platforms.",
+    foot_demo:"Demonstration mock-up · bespoke concept &amp; design"
+  }
+};
+function setLang(l){
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k = el.getAttribute('data-i18n');
+    if(I18N[l] && I18N[l][k] !== undefined) el.innerHTML = I18N[l][k];
+  });
+  document.querySelectorAll('.lang-tab').forEach(function(b){
+    b.classList.toggle('active', b.dataset.lang === l);
+  });
+}
+</script>
+</body>
+</html>
